@@ -1,0 +1,24 @@
+[0727/132048.836:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0727/132048.843:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.
+[0727/194630.278:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0727/194630.301:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.
+[0728/001823.814:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0728/001823.861:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.
+[0729/225719.830:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0729/225719.842:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.
+[0729/231247.692:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0729/231247.721:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.
+[0729/231249.643:ERROR:command_buffer_proxy_impl.cc(133)] ContextResult::kTransientFailure: Failed to send GpuChannelMsg_CreateCommandBuffer.
+[0729/231249.644:WARNING:ipc_message_attachment_set.cc(49)] MessageAttachmentSet destroyed with unconsumed attachments: 0/1
+[0729/231433.789:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0729/231433.816:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.
+[0729/231434.016:ERROR:command_buffer_proxy_impl.cc(114)] ContextResult::kFatalFailure: Shared memory handle is not valid
+[0729/231521.844:INFO:CONSOLE(1)] "Uncaught TypeError: Document.GetElementById is not a function", source: about:blank (1)
+[0729/231604.154:INFO:CONSOLE(1)] "Uncaught TypeError: Document.GetElementById is not a function", source: about:blank (1)
+[0729/231621.529:INFO:CONSOLE(1)] "Uncaught TypeError: Document.GetElementById is not a function", source: about:blank (1)
+[0729/231935.456:INFO:CONSOLE(1)] "Uncaught SyntaxError: Invalid or unexpected token", source: about:blank (1)
+[0729/231951.087:INFO:CONSOLE(1)] "Uncaught SyntaxError: Invalid or unexpected token", source: about:blank (1)
+[0729/232100.335:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token (", source: about:blank (1)
+[0729/232200.827:INFO:CONSOLE(1)] "Uncaught SyntaxError: Invalid or unexpected token", source: about:blank (1)
+[0729/233324.978:INFO:CONSOLE(114)] "Mixed Content: The page at 'https://www.bcscertus.com/search/certificates.aspx?c=36' was loaded over HTTPS, but requested an insecure image 'http://certus-prod-logos.s3-website-us-east-1.amazonaws.com/daef7ae5-baac-455d-8679-9efab14eb56e.png'. This content should also be served over HTTPS.", source: https://www.bcscertus.com/search/certificates.aspx?c=36 (114)
+[0729/233346.124:INFO:CONSOLE(114)] "Mixed Content: The page at 'https://www.bcscertus.com/search/certificates.aspx?c=36' was loaded over HTTPS, but requested an insecure image 'http://certus-prod-logos.s3-website-us-east-1.amazonaws.com/daef7ae5-baac-455d-8679-9efab14eb56e.png'. This content should also be served over HTTPS.", source: https://www.bcscertus.com/search/certificates.aspx?c=36 (114)
