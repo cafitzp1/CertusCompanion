@@ -10,23 +10,23 @@ namespace CertusCompanion
     class ItemImports
     {
         // data
-        private List<ItemImport> itemImportsList;
-        private ItemImport itemImportBeingAdded;
-        private List<ItemImport> itemImportListBeingAdded;
+        private List<WorkflowItemCSVImport> itemImportsList;
+        private WorkflowItemCSVImport itemImportBeingAdded;
+        private List<WorkflowItemCSVImport> itemImportListBeingAdded;
 
-        internal List<ItemImport> ItemImportsList { get => itemImportsList; set => itemImportsList = value; }
-        internal ItemImport ItemImportBeingAdded { get => itemImportBeingAdded; set => itemImportBeingAdded = value; }
-        internal List<ItemImport> ItemImportListBeingAdded { get => itemImportListBeingAdded; set => itemImportListBeingAdded = value; }
+        internal List<WorkflowItemCSVImport> ItemImportsList { get => itemImportsList; set => itemImportsList = value; }
+        internal WorkflowItemCSVImport ItemImportBeingAdded { get => itemImportBeingAdded; set => itemImportBeingAdded = value; }
+        internal List<WorkflowItemCSVImport> ItemImportListBeingAdded { get => itemImportListBeingAdded; set => itemImportListBeingAdded = value; }
 
         // constructors
         public ItemImports()
         {
-            this.ItemImportsList = new List<ItemImport>();
+            this.ItemImportsList = new List<WorkflowItemCSVImport>();
             //this.ItemImportBeingAdded = new ItemImport();
             //this.ItemImportListBeingAdded = new List<ItemImport>();
         }
 
-        public ItemImports(List<ItemImport> itemImportsList)
+        public ItemImports(List<WorkflowItemCSVImport> itemImportsList)
         {
             this.ItemImportsList = itemImportsList;
             //this.ItemImportBeingAdded = new ItemImport();
@@ -34,7 +34,7 @@ namespace CertusCompanion
         }
 
         // methods
-        public void AddImport(ItemImport itemImportToAdd)
+        public void AddImport(WorkflowItemCSVImport itemImportToAdd)
         {
             this.ItemImportBeingAdded = itemImportToAdd;
 
@@ -49,21 +49,21 @@ namespace CertusCompanion
             }
         }
 
-        public void AddImportList(List<ItemImport> itemImportListToAdd)
+        public void AddImportList(List<WorkflowItemCSVImport> itemImportListToAdd)
         {
             this.ItemImportListBeingAdded = itemImportListToAdd;
 
-            foreach (ItemImport import in ItemImportListBeingAdded)
+            foreach (WorkflowItemCSVImport import in ItemImportListBeingAdded)
             {
                 this.AddImport(import);
             }
         }
 
-        public List<ItemImport> ReturnAllImports()
+        public List<WorkflowItemCSVImport> ReturnAllImports()
         {
-            List<ItemImport> imports = new List<ItemImport>();
+            List<WorkflowItemCSVImport> imports = new List<WorkflowItemCSVImport>();
 
-            foreach (ItemImport import in ItemImportsList)
+            foreach (WorkflowItemCSVImport import in ItemImportsList)
             {
                 imports.Add(import);
             }

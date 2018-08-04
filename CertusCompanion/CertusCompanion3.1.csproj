@@ -117,8 +117,15 @@
     <Compile Include="FiltersForm.Designer.cs">
       <DependentUpon>FiltersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Import.cs" />
+    <Compile Include="ImportFromDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportFromDatabaseForm.Designer.cs">
+      <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemComparer.cs" />
-    <Compile Include="ItemImport.cs" />
+    <Compile Include="WorkflowItemCSVImport.cs" />
     <Compile Include="ItemImports.cs" />
     <Compile Include="ItemsCompletedReport.cs" />
     <Compile Include="ItemsCompletedReports.cs" />
@@ -127,6 +134,12 @@
     </Compile>
     <Compile Include="LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyForm.Designer.cs">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
@@ -147,12 +160,6 @@
     </Compile>
     <Compile Include="ItemsView.Designer.cs">
       <DependentUpon>ItemsView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FilterQueryResultsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FilterQueryResultsForm.Designer.cs">
-      <DependentUpon>FilterQueryResultsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkflowManager.cs">
       <SubType>Form</SubType>
@@ -199,6 +206,12 @@
     <EmbeddedResource Include="FiltersForm.resx">
       <DependentUpon>FiltersForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ImportFromDatabaseForm.resx">
+      <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyForm.resx">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,9 +223,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemsView.resx">
       <DependentUpon>ItemsView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FilterQueryResultsForm.resx">
-      <DependentUpon>FilterQueryResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>

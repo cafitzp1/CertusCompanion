@@ -267,30 +267,51 @@ namespace CertusCompanion
             List<string> ls = new List<string>();
 
             if (this.DocumentWorkflowItemIDCheckChoice) ls.Add(wi.DocumentWorkflowItemID);
-            if (this.ContractIDCheckChoice) ls.Add(wi.ContractID);
-            if (this.CompanyNameCheckChoice) ls.Add(wi.VendorName);
-            if (this.ActiveCheckChoice) ls.Add(wi.Active.ToString());
-            if (this.CompliantCheckChoice) ls.Add(wi.Compliant.ToString());
-            if (this.IssueDateCheckChoice) ls.Add(wi.IssueDate.Value.ToShortDateString());
-            if (this.WorkflowAnalystCheckChoice) ls.Add(wi.WorkflowAnalyst);
-            if (this.ComplianceAnalystCheckChoice) ls.Add(wi.CompanyAnalyst);
-            if (this.EmailDateCheckChoice) ls.Add(wi.EmailDate.Value.ToShortDateString());
-            if (this.EmailFromAddressCheckChoice) ls.Add(wi.EmailFromAddress);
-            if (this.SubjectLineCheckChoice) ls.Add(wi.SubjectLine);
-            if (this.StatusCheckChoice) ls.Add(wi.Status);
-            if (this.CertusFileIDCheckChoice) ls.Add(wi.CertusFileID);
-            if (this.FileNameCheckChoice) ls.Add(wi.FileName);
-            if (this.FileURLCheckChoice) ls.Add(wi.FileURL);
-            if (this.FileSizeCheckChoice) ls.Add(wi.FileSize);
-            if (this.FileMIMECheckChoice) ls.Add(wi.FileMIME);
+            if (this.ContractIDCheckChoice) if (wi.ContractID != null) ls.Add(wi.ContractID);
+                else ls.Add("");
+            if (this.CompanyNameCheckChoice) if (wi.VendorName != null) ls.Add(wi.VendorName);
+                else ls.Add("");
+            if (this.ActiveCheckChoice) if (wi.Active != null) ls.Add(wi.Active.ToString());
+                else ls.Add("");
+            if (this.CompliantCheckChoice) if (wi.Compliant != null) ls.Add(wi.Compliant.ToString());
+                else ls.Add("");
+            if (this.IssueDateCheckChoice) if (wi.IssueDate != null) ls.Add(wi.IssueDate.Value.ToString());
+                else ls.Add("");
+            if (this.WorkflowAnalystCheckChoice) if (wi.WorkflowAnalyst != null) ls.Add(wi.WorkflowAnalyst);
+                else ls.Add("");
+            if (this.ComplianceAnalystCheckChoice) if (wi.CompanyAnalyst != null) ls.Add(wi.CompanyAnalyst);
+                else ls.Add("");
+            if (this.EmailDateCheckChoice) if (wi.EmailDate != null) ls.Add(wi.EmailDate.Value.ToString());
+                else ls.Add("");
+            if (this.EmailFromAddressCheckChoice) if (wi.EmailFromAddress != null) ls.Add(wi.EmailFromAddress);
+                else ls.Add("");
+            if (this.SubjectLineCheckChoice) if (wi.SubjectLine != null) ls.Add(wi.SubjectLine);
+                else ls.Add("");
+            if (this.StatusCheckChoice) if (wi.Status != null) ls.Add(wi.Status);
+                else ls.Add("");
+            if (this.CertusFileIDCheckChoice) if (wi.CertusFileID != null) ls.Add(wi.CertusFileID);
+                else ls.Add("");
+            if (this.FileNameCheckChoice) if (wi.FileName != null) ls.Add(wi.FileName);
+                else ls.Add("");
+            if (this.FileURLCheckChoice) if (wi.FileURL != null) ls.Add(wi.FileURL);
+                else ls.Add("");
+            if (this.FileSizeCheckChoice) if (wi.FileSize != null) ls.Add(wi.FileSize);
+                else ls.Add("");
+            if (this.FileMIMECheckChoice) if (wi.FileMIME != null) ls.Add(wi.FileMIME);
+                else ls.Add("");
             if (this.AssignedToCheckChoice)
             {
-                if (this.AssignedToComboBoxSelectedIndex == 0) ls.Add(wi.AssignedToName);
-                else if (this.AssignedToComboBoxSelectedIndex == 1) ls.Add(wi.AssignedToID);
+                if (this.AssignedToComboBoxSelectedIndex == 0) if (wi.AssignedToName != null) ls.Add(wi.AssignedToName);
+                    else ls.Add("");
+                else if (this.AssignedToComboBoxSelectedIndex == 1) if (wi.AssignedToID != null) ls.Add(wi.AssignedToID);
+                    else ls.Add("");
             }
-            if (this.DisplayColorCheckChoice) ls.Add(wi.DisplayColor);
-            if (this.ItemsAttachedCheckChoice) ls.Add(wi.ItemsAttached.Count.ToString());
-            if (this.NoteCheckChoice) ls.Add(wi.Note);
+            if (this.DisplayColorCheckChoice) if (wi.DisplayColor != null) ls.Add(wi.DisplayColor);
+                else ls.Add("");
+            if (this.ItemsAttachedCheckChoice) if (wi.ItemsAttached != null) ls.Add(wi.ItemsAttached.Count.ToString());
+                else ls.Add("");
+            if (this.NoteCheckChoice) if (wi.Note != null) ls.Add(wi.Note);
+                else ls.Add("");
 
             return ls;
         }
@@ -309,7 +330,7 @@ namespace CertusCompanion
                 this.WriteCSV();
 
                 // notify on items view
-                (Application.OpenForms["Items View"] as ItemsView).SetStatusLabelAndTimer("Export to CSV successful");
+                (Application.OpenForms["ItemsView"] as ItemsView).SetStatusLabelAndTimer("Export to CSV successful");
 
                 // close
                 this.Close();

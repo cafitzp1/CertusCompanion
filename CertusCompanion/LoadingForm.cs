@@ -12,8 +12,14 @@ namespace CertusCompanion
 {
     public partial class LoadingForm : Form
     {
+        #region Data Instantiation
         double barPercentage = 0.00;
         int barWidth = 0;
+        string dialogFormat;
+
+        public string SelectedComboBoxText { get; set; }
+        public int SelectedRadioButton { get; set; }
+        #endregion  
 
         public LoadingForm()
         {
@@ -62,6 +68,7 @@ namespace CertusCompanion
 
         public void ResetBar()
         {
+            this.loadForegroundPanel.Width = 0;
             barPercentage = 0.00;
         }
 
@@ -73,6 +80,14 @@ namespace CertusCompanion
         public void ShowCloseBtn()
         {
             closeBtn.Visible = true;
+        }
+
+        public void ChangeCloseBtnToSave()
+        {
+            this.closeBtn.Text = "Save";
+            this.closeBtn.Click -= closeBtn_Click;
+            this.closeBtn.Click += saveBtn_Click;
+            this.cancelBtn.Visible = true;
         }
 
         public void FormatForReport(int pixelsToMove)
@@ -88,65 +103,124 @@ namespace CertusCompanion
 
         public void FormatForDialog(string option1)
         {
+            dialogFormat = "radioButtons";
+
             this.loadBackgroundPanel.Visible = false;
             this.closeBtn.Visible = true;
-            this.panel1.Visible = true;
+            this.radioButtonsPanel.Visible = true;
             this.radioButton1.Text = option1;
             this.radioButton2.Visible = false;
             this.radioButton3.Visible = false;
-            this.closeBtn.Text = "Save";
-            this.closeBtn.Click -= closeBtn_Click;
-            this.closeBtn.Click += saveBtn_Click;
+
+            ChangeCloseBtnToSave();
         }
 
         public void FormatForDialog(string option1, string option2)
         {
+            dialogFormat = "radioButtons";
+
             this.loadBackgroundPanel.Visible = false;
             this.closeBtn.Visible = true;
-            this.panel1.Visible = true;
+            this.radioButtonsPanel.Visible = true;
             this.radioButton1.Text = option1;
             this.radioButton2.Text = option2;
             this.radioButton3.Visible = false;
-            this.closeBtn.Text = "Save";
-            this.closeBtn.Click -= closeBtn_Click;
-            this.closeBtn.Click += saveBtn_Click;
+
+            ChangeCloseBtnToSave();
         }
 
         public void FormatForDialog(string option1, string option2, string option3)
         {
+            dialogFormat = "radioButtons";
+
             this.loadBackgroundPanel.Visible = false;
             this.closeBtn.Visible = true;
-            this.panel1.Visible = true;
+            this.radioButtonsPanel.Visible = true;
             this.radioButton1.Text = option1;
             this.radioButton2.Text = option2;
             this.radioButton3.Text = option3;
-            this.closeBtn.Text = "Save";
-            this.closeBtn.Click -= closeBtn_Click;
-            this.closeBtn.Click += saveBtn_Click;
+
+            ChangeCloseBtnToSave();
         }
 
-        private void closeBtn_Click(object sender, EventArgs e)
+        public void FormatForDialog(List<string> options)
         {
-            Application.OpenForms["Transparent Form"].Close();
+            dialogFormat = "comboBox";
+
+            this.loadBackgroundPanel.Visible = false;
+            this.closeBtn.Visible = true;
+            this.optionsComboBox.Visible = true;
+            this.optionsComboBox.DropDownWidth = this.optionsComboBox.Width;
+            this.optionsComboBox.DropDownHeight = 550;
+            this.optionsComboBox.TabIndex = 0;
+            this.optionsComboBox.TabStop = true;
+            this.optionsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            foreach (string option in options)
+            {
+                this.optionsComboBox.Items.Add(option);
+            }
+
+            ChangeCloseBtnToSave();
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private void closeBtn_Click(object sender, EventArgs e) // handler uses the same button as saveBtn_Click
         {
-            Application.OpenForms["Transparent Form"].Close();
+            this.DialogResult = DialogResult.Cancel;
 
-            if(radioButton1.Checked)
-                this.DialogResult = DialogResult.None;
-            else if (radioButton2.Checked)
-                this.DialogResult = DialogResult.OK;
-            else if (radioButton3.Checked)
-                this.DialogResult = DialogResult.Cancel;
+            CloseForm();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e) // handler uses the same button as closeBtn_Click
         {
-            Application.OpenForms["Transparent Form"].Close();
+            if (dialogFormat == "comboBox")
+            {
+                if (optionsComboBox.Text == "Select one..." || optionsComboBox.Text == String.Empty)
+                {
+                    statusLabel.Text = "You must select an option first...";
+                    return;
+                }
+                else this.SelectedComboBoxText = optionsComboBox.SelectedItem.ToString();
+            }
+            else if (dialogFormat == "radioButtons")
+            {
+                if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
+                {
+                    statusLabel.Text = "You must select an option first";
+                    return;
+                }
+                else if (radioButton1.Checked) this.SelectedRadioButton = 1;
+                else if (radioButton2.Checked) this.SelectedRadioButton = 2;
+                else if (radioButton3.Checked) this.SelectedRadioButton = 3;
+            }
 
-            this.DialogResult = DialogResult.Abort;
+            this.DialogResult = DialogResult.OK;
+
+            CloseForm();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+
+            CloseForm();
+        }
+
+        private void CloseForm()
+        {
+            try
+            {
+                foreach (Form frm in Application.OpenForms)
+                {
+                    if (frm.Name == "Transparent Form")
+                    {
+                        Application.OpenForms["Transparent Form"].Close();
+                        return;
+                    }
+                }
+                this.Close();
+            }
+            catch (Exception) { }
         }
     }
 }

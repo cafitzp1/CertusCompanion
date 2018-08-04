@@ -21,7 +21,7 @@ namespace CertusCompanion
         private ItemImports itemImportsList;
         private ItemsCompletedReports ItemsCompletedReportsList;
         private List<WorkflowItem> allWorkflowItemsLoaded;
-        private List<ItemImport> allItemImportsLoaded;
+        private List<WorkflowItemCSVImport> allItemImportsLoaded;
         private List<ItemsCompletedReport> allItemsCompletedReportsLoaded;
 
         /* review which of the following data is necessary
@@ -50,7 +50,7 @@ namespace CertusCompanion
         internal ItemImports ItemImportsList { get => itemImportsList; set => itemImportsList = value; }
         internal ItemsCompletedReports ItemsCompletedReportsList1 { get => ItemsCompletedReportsList; set => ItemsCompletedReportsList = value; }
         public List<WorkflowItem> AllWorkflowItemsLoaded { get => allWorkflowItemsLoaded; set => allWorkflowItemsLoaded = value; }
-        internal List<ItemImport> AllItemImportsLoaded { get => allItemImportsLoaded; set => allItemImportsLoaded = value; }
+        internal List<WorkflowItemCSVImport> AllItemImportsLoaded { get => allItemImportsLoaded; set => allItemImportsLoaded = value; }
         internal List<ItemsCompletedReport> AllItemsCompletedReportsLoaded { get => allItemsCompletedReportsLoaded; set => allItemsCompletedReportsLoaded = value; }
 
         public MainForm()

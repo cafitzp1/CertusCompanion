@@ -31,7 +31,24 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkflowManager));
             this.splitContainerChild1 = new System.Windows.Forms.SplitContainer();
+            this.workflowItemsListView = new CertusCompanion.ListViewNF();
+            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewOptionsPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.importFromDatabaseBtn = new System.Windows.Forms.Button();
+            this.lockListViewColumnSizingBtn = new System.Windows.Forms.Button();
             this.showItemColorsBtn = new System.Windows.Forms.Button();
             this.contrastItemGroupsBtn = new System.Windows.Forms.Button();
             this.redrawItemsBtn = new System.Windows.Forms.Button();
@@ -40,7 +57,7 @@
             this.dividerPanel = new System.Windows.Forms.Panel();
             this.dividerLbl = new System.Windows.Forms.Label();
             this.bulkCheckBtn = new System.Windows.Forms.Button();
-            this.removeColorBtn = new System.Windows.Forms.Button();
+            this.removePaintBtn = new System.Windows.Forms.Button();
             this.addReferenceBtn = new System.Windows.Forms.Button();
             this.deselectBtn = new System.Windows.Forms.Button();
             this.paintFromListViewBtn = new System.Windows.Forms.Button();
@@ -228,8 +245,6 @@
             this.button18 = new System.Windows.Forms.Button();
             this.itemsAddedTbx = new System.Windows.Forms.TextBox();
             this.button19 = new System.Windows.Forms.Button();
-            this.reportsDataViewBtn = new System.Windows.Forms.Button();
-            this.importsDataViewBtn = new System.Windows.Forms.Button();
             this.reportPanel = new System.Windows.Forms.Panel();
             this.openReportBtn = new System.Windows.Forms.Button();
             this.saveReportBtn = new System.Windows.Forms.Button();
@@ -254,6 +269,8 @@
             this.button38 = new System.Windows.Forms.Button();
             this.reportNoteTbx = new System.Windows.Forms.TextBox();
             this.button39 = new System.Windows.Forms.Button();
+            this.reportsDataViewBtn = new System.Windows.Forms.Button();
+            this.importsDataViewBtn = new System.Windows.Forms.Button();
             this.formMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -285,6 +302,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.addRelatedFilesDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateContractDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getIDsForAnalystsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maximizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -307,40 +325,45 @@
             this.searchPanel = new System.Windows.Forms.Panel();
             this.clearBtn = new System.Windows.Forms.Button();
             this.searchHighlightBtn = new System.Windows.Forms.Button();
+            this.searchTbx = new CertusCompanion.PlaceHolderTextBox();
             this.statusLblTimer = new System.Windows.Forms.Timer(this.components);
             this.listViewContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyWithHeadersContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyIDsContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectAllContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.openLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createReferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.openLinksContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createReferencesContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFromExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.markCompletedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.markTrashContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.markExcludedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unassignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeNotificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.priorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.companyUpdatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contractInfoUpdatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contractOverridenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excludedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemChangedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.paintContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePaintContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markPriorityContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markExcludedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkPriorityContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkCompanyUpdatedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkContractInfoUpdatedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkContractOverridenContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkExcludedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkItemChangedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.findAndFillCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.findAndOverrideContractInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setStatusAndAssignmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setAssignmentManualToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.setAssignmentFindToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendContractInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendAssignmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendStatusAndAssignmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendStatusAndAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAssignmentFindContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAssignmentManuallyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unassignContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.symbolsImageList = new System.Windows.Forms.ImageList(this.components);
             this.paintColorDialog = new System.Windows.Forms.ColorDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -372,25 +395,13 @@
             this.findAndFillCompanyBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.findAndOverrideContractInformationBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.updateContractInformationBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.workflowItemsListView = new CertusCompanion.ListViewNF();
-            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.searchTbx = new CertusCompanion.PlaceHolderTextBox();
+            this.importFromDBBackGroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild1)).BeginInit();
             this.splitContainerChild1.Panel1.SuspendLayout();
             this.splitContainerChild1.Panel2.SuspendLayout();
             this.splitContainerChild1.SuspendLayout();
             this.listViewOptionsPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.dividerPanel2.SuspendLayout();
             this.dividerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild2)).BeginInit();
@@ -467,21 +478,130 @@
             this.splitContainerChild1.Panel2.Controls.Add(this.splitContainerChild2);
             this.splitContainerChild1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.splitContainerChild1.Panel2MinSize = 80;
-            this.splitContainerChild1.Size = new System.Drawing.Size(2534, 1289);
+            this.splitContainerChild1.Size = new System.Drawing.Size(2534, 1291);
             this.splitContainerChild1.SplitterDistance = 429;
             this.splitContainerChild1.SplitterWidth = 5;
             this.splitContainerChild1.TabIndex = 0;
             this.splitContainerChild1.TabStop = false;
             // 
+            // workflowItemsListView
+            // 
+            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.workflowItemsListView.CheckBoxes = true;
+            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.countColumnHeader,
+            this.itemIdColumnHeader,
+            this.companyColumnHeader,
+            this.contractIdColumnHeader,
+            this.dateColumnHeader,
+            this.senderColumnHeader,
+            this.emailSubjectColumnHeader,
+            this.fileNameColumnHeader,
+            this.sizeColumnHeader,
+            this.fileUrlColumnHeader,
+            this.assignedToColumnHeader,
+            this.statusColumnHeader});
+            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
+            this.workflowItemsListView.FullRowSelect = true;
+            this.workflowItemsListView.HideSelection = false;
+            this.workflowItemsListView.LabelWrap = false;
+            this.workflowItemsListView.Location = new System.Drawing.Point(15, 65);
+            this.workflowItemsListView.Name = "workflowItemsListView";
+            this.workflowItemsListView.OwnerDraw = true;
+            this.workflowItemsListView.Size = new System.Drawing.Size(2501, 362);
+            this.workflowItemsListView.TabIndex = 1;
+            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
+            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
+            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
+            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
+            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
+            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
+            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
+            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
+            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
+            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
+            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
+            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
+            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
+            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
+            // 
+            // countColumnHeader
+            // 
+            this.countColumnHeader.Text = "";
+            this.countColumnHeader.Width = 128;
+            // 
+            // itemIdColumnHeader
+            // 
+            this.itemIdColumnHeader.Text = "Item ID";
+            this.itemIdColumnHeader.Width = 140;
+            // 
+            // companyColumnHeader
+            // 
+            this.companyColumnHeader.Text = "Company";
+            this.companyColumnHeader.Width = 168;
+            // 
+            // contractIdColumnHeader
+            // 
+            this.contractIdColumnHeader.Text = "Contract";
+            this.contractIdColumnHeader.Width = 140;
+            // 
+            // dateColumnHeader
+            // 
+            this.dateColumnHeader.Text = "Date";
+            this.dateColumnHeader.Width = 138;
+            // 
+            // senderColumnHeader
+            // 
+            this.senderColumnHeader.Text = "Sender";
+            this.senderColumnHeader.Width = 188;
+            // 
+            // emailSubjectColumnHeader
+            // 
+            this.emailSubjectColumnHeader.Text = "Email Subject";
+            this.emailSubjectColumnHeader.Width = 230;
+            // 
+            // fileNameColumnHeader
+            // 
+            this.fileNameColumnHeader.Text = "File Name";
+            this.fileNameColumnHeader.Width = 338;
+            // 
+            // sizeColumnHeader
+            // 
+            this.sizeColumnHeader.Text = "Size";
+            this.sizeColumnHeader.Width = 104;
+            // 
+            // fileUrlColumnHeader
+            // 
+            this.fileUrlColumnHeader.Text = "File URL";
+            this.fileUrlColumnHeader.Width = 178;
+            // 
+            // assignedToColumnHeader
+            // 
+            this.assignedToColumnHeader.Text = "Assigned To";
+            this.assignedToColumnHeader.Width = 164;
+            // 
+            // statusColumnHeader
+            // 
+            this.statusColumnHeader.Text = "Status";
+            this.statusColumnHeader.Width = 138;
+            // 
             // listViewOptionsPanel
             // 
+            this.listViewOptionsPanel.Controls.Add(this.panel1);
+            this.listViewOptionsPanel.Controls.Add(this.importFromDatabaseBtn);
+            this.listViewOptionsPanel.Controls.Add(this.lockListViewColumnSizingBtn);
             this.listViewOptionsPanel.Controls.Add(this.showItemColorsBtn);
             this.listViewOptionsPanel.Controls.Add(this.contrastItemGroupsBtn);
             this.listViewOptionsPanel.Controls.Add(this.redrawItemsBtn);
             this.listViewOptionsPanel.Controls.Add(this.dividerPanel2);
             this.listViewOptionsPanel.Controls.Add(this.dividerPanel);
             this.listViewOptionsPanel.Controls.Add(this.bulkCheckBtn);
-            this.listViewOptionsPanel.Controls.Add(this.removeColorBtn);
+            this.listViewOptionsPanel.Controls.Add(this.removePaintBtn);
             this.listViewOptionsPanel.Controls.Add(this.addReferenceBtn);
             this.listViewOptionsPanel.Controls.Add(this.deselectBtn);
             this.listViewOptionsPanel.Controls.Add(this.paintFromListViewBtn);
@@ -500,6 +620,65 @@
             this.listViewOptionsPanel.Size = new System.Drawing.Size(1413, 49);
             this.listViewOptionsPanel.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.ForeColor = System.Drawing.Color.Transparent;
+            this.panel1.Location = new System.Drawing.Point(551, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(21, 40);
+            this.panel1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Gray;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.ForeColor = System.Drawing.Color.Lime;
+            this.label2.Location = new System.Drawing.Point(9, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(3, 40);
+            this.label2.TabIndex = 0;
+            // 
+            // importFromDatabaseBtn
+            // 
+            this.importFromDatabaseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.importFromDatabaseBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("importFromDatabaseBtn.BackgroundImage")));
+            this.importFromDatabaseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.importFromDatabaseBtn.FlatAppearance.BorderSize = 0;
+            this.importFromDatabaseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.importFromDatabaseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.importFromDatabaseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.importFromDatabaseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.importFromDatabaseBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.importFromDatabaseBtn.Location = new System.Drawing.Point(575, 5);
+            this.importFromDatabaseBtn.Name = "importFromDatabaseBtn";
+            this.importFromDatabaseBtn.Size = new System.Drawing.Size(40, 40);
+            this.importFromDatabaseBtn.TabIndex = 0;
+            this.importFromDatabaseBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.importFromDatabaseBtn, "Import From Database");
+            this.importFromDatabaseBtn.UseVisualStyleBackColor = false;
+            this.importFromDatabaseBtn.Click += new System.EventHandler(this.importFromDatabaseBtn_Click);
+            // 
+            // lockListViewColumnSizingBtn
+            // 
+            this.lockListViewColumnSizingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.lockListViewColumnSizingBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lockListViewColumnSizingBtn.BackgroundImage")));
+            this.lockListViewColumnSizingBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lockListViewColumnSizingBtn.FlatAppearance.BorderSize = 0;
+            this.lockListViewColumnSizingBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.lockListViewColumnSizingBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lockListViewColumnSizingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lockListViewColumnSizingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lockListViewColumnSizingBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lockListViewColumnSizingBtn.Location = new System.Drawing.Point(1209, 5);
+            this.lockListViewColumnSizingBtn.Name = "lockListViewColumnSizingBtn";
+            this.lockListViewColumnSizingBtn.Size = new System.Drawing.Size(40, 40);
+            this.lockListViewColumnSizingBtn.TabIndex = 0;
+            this.lockListViewColumnSizingBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.lockListViewColumnSizingBtn, "Lock ListView Column Sizing");
+            this.lockListViewColumnSizingBtn.UseVisualStyleBackColor = false;
+            this.lockListViewColumnSizingBtn.Click += new System.EventHandler(this.lockListViewColumnSizingBtn_Click);
+            // 
             // showItemColorsBtn
             // 
             this.showItemColorsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -511,7 +690,7 @@
             this.showItemColorsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showItemColorsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showItemColorsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.showItemColorsBtn.Location = new System.Drawing.Point(1101, 5);
+            this.showItemColorsBtn.Location = new System.Drawing.Point(1164, 5);
             this.showItemColorsBtn.Name = "showItemColorsBtn";
             this.showItemColorsBtn.Size = new System.Drawing.Size(40, 40);
             this.showItemColorsBtn.TabIndex = 0;
@@ -533,7 +712,7 @@
             this.contrastItemGroupsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.contrastItemGroupsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contrastItemGroupsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contrastItemGroupsBtn.Location = new System.Drawing.Point(1056, 5);
+            this.contrastItemGroupsBtn.Location = new System.Drawing.Point(1119, 5);
             this.contrastItemGroupsBtn.Name = "contrastItemGroupsBtn";
             this.contrastItemGroupsBtn.Size = new System.Drawing.Size(40, 40);
             this.contrastItemGroupsBtn.TabIndex = 0;
@@ -555,7 +734,7 @@
             this.redrawItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.redrawItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.redrawItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.redrawItemsBtn.Location = new System.Drawing.Point(1011, 5);
+            this.redrawItemsBtn.Location = new System.Drawing.Point(1074, 5);
             this.redrawItemsBtn.Name = "redrawItemsBtn";
             this.redrawItemsBtn.Size = new System.Drawing.Size(40, 40);
             this.redrawItemsBtn.TabIndex = 0;
@@ -570,7 +749,7 @@
             // 
             this.dividerPanel2.Controls.Add(this.dividerLbl2);
             this.dividerPanel2.ForeColor = System.Drawing.Color.Transparent;
-            this.dividerPanel2.Location = new System.Drawing.Point(555, 5);
+            this.dividerPanel2.Location = new System.Drawing.Point(618, 5);
             this.dividerPanel2.Name = "dividerPanel2";
             this.dividerPanel2.Size = new System.Drawing.Size(21, 40);
             this.dividerPanel2.TabIndex = 0;
@@ -626,27 +805,27 @@
             this.bulkCheckBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.bulkCheckBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // removeColorBtn
+            // removePaintBtn
             // 
-            this.removeColorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.removeColorBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeColorBtn.BackgroundImage")));
-            this.removeColorBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeColorBtn.FlatAppearance.BorderSize = 0;
-            this.removeColorBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.removeColorBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.removeColorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeColorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeColorBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.removeColorBtn.Location = new System.Drawing.Point(183, 5);
-            this.removeColorBtn.Name = "removeColorBtn";
-            this.removeColorBtn.Size = new System.Drawing.Size(40, 40);
-            this.removeColorBtn.TabIndex = 0;
-            this.removeColorBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.removeColorBtn, "Remove Paint");
-            this.removeColorBtn.UseVisualStyleBackColor = false;
-            this.removeColorBtn.Click += new System.EventHandler(this.removeColorBtn_Click);
-            this.removeColorBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.removeColorBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            this.removePaintBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.removePaintBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removePaintBtn.BackgroundImage")));
+            this.removePaintBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removePaintBtn.FlatAppearance.BorderSize = 0;
+            this.removePaintBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.removePaintBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.removePaintBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removePaintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removePaintBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.removePaintBtn.Location = new System.Drawing.Point(183, 5);
+            this.removePaintBtn.Name = "removePaintBtn";
+            this.removePaintBtn.Size = new System.Drawing.Size(40, 40);
+            this.removePaintBtn.TabIndex = 0;
+            this.removePaintBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.removePaintBtn, "Remove Paint");
+            this.removePaintBtn.UseVisualStyleBackColor = false;
+            this.removePaintBtn.Click += new System.EventHandler(this.removeColorBtn_Click);
+            this.removePaintBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.removePaintBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
             // addReferenceBtn
             // 
@@ -725,7 +904,7 @@
             this.enlargeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enlargeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enlargeBtn.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.enlargeBtn.Location = new System.Drawing.Point(921, 5);
+            this.enlargeBtn.Location = new System.Drawing.Point(984, 5);
             this.enlargeBtn.Name = "enlargeBtn";
             this.enlargeBtn.Size = new System.Drawing.Size(40, 40);
             this.enlargeBtn.TabIndex = 0;
@@ -769,7 +948,7 @@
             this.filterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filterBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.filterBtn.Location = new System.Drawing.Point(786, 5);
+            this.filterBtn.Location = new System.Drawing.Point(849, 5);
             this.filterBtn.Name = "filterBtn";
             this.filterBtn.Size = new System.Drawing.Size(40, 40);
             this.filterBtn.TabIndex = 0;
@@ -791,7 +970,7 @@
             this.itemsViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemsViewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsViewBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemsViewBtn.Location = new System.Drawing.Point(831, 5);
+            this.itemsViewBtn.Location = new System.Drawing.Point(894, 5);
             this.itemsViewBtn.Name = "itemsViewBtn";
             this.itemsViewBtn.Size = new System.Drawing.Size(40, 40);
             this.itemsViewBtn.TabIndex = 0;
@@ -830,7 +1009,7 @@
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.refreshBtn.Location = new System.Drawing.Point(966, 5);
+            this.refreshBtn.Location = new System.Drawing.Point(1029, 5);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(40, 40);
             this.refreshBtn.TabIndex = 0;
@@ -857,7 +1036,7 @@
             this.importBtn.Size = new System.Drawing.Size(40, 40);
             this.importBtn.TabIndex = 0;
             this.importBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.importBtn, "Import Workflow Items (Ctrl+Shift+I)");
+            this.buttonDescToolTip.SetToolTip(this.importBtn, "Import Workflow Items From CSV (Ctrl+Shift+I)");
             this.importBtn.UseVisualStyleBackColor = false;
             this.importBtn.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
             this.importBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -874,7 +1053,7 @@
             this.fullViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fullViewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullViewBtn.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.fullViewBtn.Location = new System.Drawing.Point(876, 5);
+            this.fullViewBtn.Location = new System.Drawing.Point(939, 5);
             this.fullViewBtn.Name = "fullViewBtn";
             this.fullViewBtn.Size = new System.Drawing.Size(40, 40);
             this.fullViewBtn.TabIndex = 0;
@@ -922,7 +1101,7 @@
             "Search Results",
             "Queried",
             "Export"});
-            this.viewChoiceComboBox.Location = new System.Drawing.Point(585, 7);
+            this.viewChoiceComboBox.Location = new System.Drawing.Point(648, 7);
             this.viewChoiceComboBox.Name = "viewChoiceComboBox";
             this.viewChoiceComboBox.Size = new System.Drawing.Size(185, 33);
             this.viewChoiceComboBox.TabIndex = 0;
@@ -961,7 +1140,7 @@
             this.splitContainerChild2.Panel2.Controls.Add(this.splitContainerChild3);
             this.splitContainerChild2.Panel2.ForeColor = System.Drawing.Color.White;
             this.splitContainerChild2.Panel2MinSize = 1211;
-            this.splitContainerChild2.Size = new System.Drawing.Size(2532, 845);
+            this.splitContainerChild2.Size = new System.Drawing.Size(2532, 844);
             this.splitContainerChild2.SplitterDistance = 1300;
             this.splitContainerChild2.SplitterWidth = 11;
             this.splitContainerChild2.TabIndex = 0;
@@ -998,7 +1177,7 @@
             this.priorityNotificationBtn.Size = new System.Drawing.Size(40, 40);
             this.priorityNotificationBtn.TabIndex = 0;
             this.priorityNotificationBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.priorityNotificationBtn, "Item company has been updated");
+            this.buttonDescToolTip.SetToolTip(this.priorityNotificationBtn, "Item has priority");
             this.priorityNotificationBtn.UseVisualStyleBackColor = false;
             this.priorityNotificationBtn.Visible = false;
             this.priorityNotificationBtn.Click += new System.EventHandler(this.priorityNotificationBtn_Click);
@@ -3137,6 +3316,7 @@
             this.assignedToTbx.HideSelection = false;
             this.assignedToTbx.Location = new System.Drawing.Point(33, 2);
             this.assignedToTbx.Name = "assignedToTbx";
+            this.assignedToTbx.ReadOnly = true;
             this.assignedToTbx.Size = new System.Drawing.Size(159, 24);
             this.assignedToTbx.TabIndex = 0;
             this.assignedToTbx.TabStop = false;
@@ -3190,11 +3370,11 @@
             this.splitContainerChild3.Panel2.AutoScroll = true;
             this.splitContainerChild3.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.splitContainerChild3.Panel2.Controls.Add(this.importPanel);
+            this.splitContainerChild3.Panel2.Controls.Add(this.reportPanel);
             this.splitContainerChild3.Panel2.Controls.Add(this.reportsDataViewBtn);
             this.splitContainerChild3.Panel2.Controls.Add(this.importsDataViewBtn);
-            this.splitContainerChild3.Panel2.Controls.Add(this.reportPanel);
             this.splitContainerChild3.Panel2MinSize = 600;
-            this.splitContainerChild3.Size = new System.Drawing.Size(1221, 845);
+            this.splitContainerChild3.Size = new System.Drawing.Size(1221, 844);
             this.splitContainerChild3.SplitterDistance = 604;
             this.splitContainerChild3.SplitterWidth = 11;
             this.splitContainerChild3.TabIndex = 0;
@@ -3326,6 +3506,8 @@
             "Item information different from Certus",
             "Item assignment colors",
             "Item colors not gray",
+            "Item has priority",
+            "Item does not have priority",
             "No attachments"});
             this.queryWhereComboBox.Location = new System.Drawing.Point(148, 586);
             this.queryWhereComboBox.Name = "queryWhereComboBox";
@@ -3513,19 +3695,20 @@
             this.importPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.importPanel.Location = new System.Drawing.Point(30, 60);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(524, 755);
+            this.importPanel.Size = new System.Drawing.Size(517, 755);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
             // 
-            this.importDateTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.importDateTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.importDateTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.importDateTbxPanel.Controls.Add(this.button26);
             this.importDateTbxPanel.Controls.Add(this.importDateTbx);
             this.importDateTbxPanel.Controls.Add(this.button27);
-            this.importDateTbxPanel.Location = new System.Drawing.Point(191, 458);
+            this.importDateTbxPanel.Location = new System.Drawing.Point(198, 458);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(322, 31);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(308, 31);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -3535,7 +3718,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(287, -2);
+            this.button26.Location = new System.Drawing.Point(273, -2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(35, 35);
             this.button26.TabIndex = 0;
@@ -3555,7 +3738,7 @@
             this.importDateTbx.Location = new System.Drawing.Point(33, 2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(256, 24);
+            this.importDateTbx.Size = new System.Drawing.Size(242, 24);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -3585,7 +3768,7 @@
             this.itemImportsLbx.ItemHeight = 25;
             this.itemImportsLbx.Location = new System.Drawing.Point(20, 15);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(494, 404);
+            this.itemImportsLbx.Size = new System.Drawing.Size(487, 404);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -3597,7 +3780,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(371, 609);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(364, 609);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(141, 31);
             this.importTotalItemsTbxPanel.TabIndex = 76;
@@ -3654,7 +3837,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsCompTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(372, 709);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(365, 709);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(140, 31);
             this.importsCompSinceTbxPanel.TabIndex = 78;
@@ -3706,14 +3889,15 @@
             // 
             // importDescriptionTbxPanel
             // 
-            this.importDescriptionTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.importDescriptionTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.importDescriptionTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.importDescriptionTbxPanel.Controls.Add(this.button22);
             this.importDescriptionTbxPanel.Controls.Add(this.importTypeTbx);
             this.importDescriptionTbxPanel.Controls.Add(this.button23);
-            this.importDescriptionTbxPanel.Location = new System.Drawing.Point(190, 559);
+            this.importDescriptionTbxPanel.Location = new System.Drawing.Point(197, 559);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(322, 31);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(308, 31);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -3723,7 +3907,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(287, -2);
+            this.button22.Location = new System.Drawing.Point(273, -2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(35, 35);
             this.button22.TabIndex = 0;
@@ -3743,7 +3927,7 @@
             this.importTypeTbx.Location = new System.Drawing.Point(33, 2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(256, 24);
+            this.importTypeTbx.Size = new System.Drawing.Size(242, 24);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -3807,14 +3991,15 @@
             // 
             // importFileNameTbxPanel
             // 
-            this.importFileNameTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.importFileNameTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.importFileNameTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.importFileNameTbxPanel.Controls.Add(this.button24);
             this.importFileNameTbxPanel.Controls.Add(this.importFileNameTbx);
             this.importFileNameTbxPanel.Controls.Add(this.button25);
-            this.importFileNameTbxPanel.Location = new System.Drawing.Point(190, 509);
+            this.importFileNameTbxPanel.Location = new System.Drawing.Point(197, 509);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(322, 31);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(308, 31);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -3824,7 +4009,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(287, -2);
+            this.button24.Location = new System.Drawing.Point(273, -2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(35, 35);
             this.button24.TabIndex = 0;
@@ -3844,7 +4029,7 @@
             this.importFileNameTbx.Location = new System.Drawing.Point(33, 2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(256, 24);
+            this.importFileNameTbx.Size = new System.Drawing.Size(242, 24);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -3891,7 +4076,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(371, 659);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(364, 659);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(141, 31);
             this.importNewItemsTbxPanel.TabIndex = 77;
@@ -3941,6 +4126,354 @@
             this.button19.TabStop = false;
             this.button19.UseVisualStyleBackColor = false;
             // 
+            // reportPanel
+            // 
+            this.reportPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.reportPanel.Controls.Add(this.openReportBtn);
+            this.reportPanel.Controls.Add(this.saveReportBtn);
+            this.reportPanel.Controls.Add(this.reportDateTbxPanel);
+            this.reportPanel.Controls.Add(this.reportLbx);
+            this.reportPanel.Controls.Add(this.reportDateLbl);
+            this.reportPanel.Controls.Add(this.reportStatusLbl);
+            this.reportPanel.Controls.Add(this.reportStatusTbxPanel);
+            this.reportPanel.Controls.Add(this.reportWorkflowItemsLbl);
+            this.reportPanel.Controls.Add(this.reportWorkflowItemsTbxPanel);
+            this.reportPanel.Controls.Add(this.reportNoteLbl);
+            this.reportPanel.Controls.Add(this.reportNoteTbxPanel);
+            this.reportPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.reportPanel.Location = new System.Drawing.Point(30, 60);
+            this.reportPanel.Name = "reportPanel";
+            this.reportPanel.Size = new System.Drawing.Size(517, 755);
+            this.reportPanel.TabIndex = 0;
+            this.reportPanel.Visible = false;
+            // 
+            // openReportBtn
+            // 
+            this.openReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.openReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.openReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openReportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.openReportBtn.Location = new System.Drawing.Point(296, 705);
+            this.openReportBtn.Name = "openReportBtn";
+            this.openReportBtn.Size = new System.Drawing.Size(100, 35);
+            this.openReportBtn.TabIndex = 0;
+            this.openReportBtn.TabStop = false;
+            this.openReportBtn.Text = "Open";
+            this.openReportBtn.UseVisualStyleBackColor = false;
+            // 
+            // saveReportBtn
+            // 
+            this.saveReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.saveReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveReportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.saveReportBtn.Location = new System.Drawing.Point(406, 705);
+            this.saveReportBtn.Name = "saveReportBtn";
+            this.saveReportBtn.Size = new System.Drawing.Size(100, 35);
+            this.saveReportBtn.TabIndex = 0;
+            this.saveReportBtn.TabStop = false;
+            this.saveReportBtn.Text = "Save";
+            this.saveReportBtn.UseVisualStyleBackColor = false;
+            // 
+            // reportDateTbxPanel
+            // 
+            this.reportDateTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportDateTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reportDateTbxPanel.Controls.Add(this.button28);
+            this.reportDateTbxPanel.Controls.Add(this.reportDateTbx);
+            this.reportDateTbxPanel.Controls.Add(this.button29);
+            this.reportDateTbxPanel.Location = new System.Drawing.Point(198, 438);
+            this.reportDateTbxPanel.Name = "reportDateTbxPanel";
+            this.reportDateTbxPanel.Size = new System.Drawing.Size(307, 31);
+            this.reportDateTbxPanel.TabIndex = 76;
+            // 
+            // button28
+            // 
+            this.button28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button28.Location = new System.Drawing.Point(272, -2);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(35, 35);
+            this.button28.TabIndex = 0;
+            this.button28.TabStop = false;
+            this.button28.UseVisualStyleBackColor = false;
+            // 
+            // reportDateTbx
+            // 
+            this.reportDateTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportDateTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.reportDateTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.reportDateTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportDateTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.reportDateTbx.HideSelection = false;
+            this.reportDateTbx.Location = new System.Drawing.Point(33, 2);
+            this.reportDateTbx.Name = "reportDateTbx";
+            this.reportDateTbx.ReadOnly = true;
+            this.reportDateTbx.Size = new System.Drawing.Size(241, 24);
+            this.reportDateTbx.TabIndex = 0;
+            this.reportDateTbx.TabStop = false;
+            // 
+            // button29
+            // 
+            this.button29.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button29.Location = new System.Drawing.Point(-2, -2);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(35, 35);
+            this.button29.TabIndex = 1;
+            this.button29.TabStop = false;
+            this.button29.UseVisualStyleBackColor = false;
+            // 
+            // reportLbx
+            // 
+            this.reportLbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportLbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.reportLbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportLbx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.reportLbx.FormattingEnabled = true;
+            this.reportLbx.ItemHeight = 25;
+            this.reportLbx.Location = new System.Drawing.Point(20, 15);
+            this.reportLbx.Name = "reportLbx";
+            this.reportLbx.Size = new System.Drawing.Size(487, 404);
+            this.reportLbx.TabIndex = 0;
+            this.reportLbx.TabStop = false;
+            this.reportLbx.SelectedIndexChanged += new System.EventHandler(this.reportsLbx_SelectedIndexChanged);
+            this.reportLbx.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.reportLbx_MouseDoubleClick);
+            // 
+            // reportDateLbl
+            // 
+            this.reportDateLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.reportDateLbl.AutoSize = true;
+            this.reportDateLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.reportDateLbl.Location = new System.Drawing.Point(16, 437);
+            this.reportDateLbl.Name = "reportDateLbl";
+            this.reportDateLbl.Size = new System.Drawing.Size(133, 25);
+            this.reportDateLbl.TabIndex = 75;
+            this.reportDateLbl.Text = "Report Date:";
+            // 
+            // reportStatusLbl
+            // 
+            this.reportStatusLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.reportStatusLbl.AutoSize = true;
+            this.reportStatusLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.reportStatusLbl.Location = new System.Drawing.Point(15, 486);
+            this.reportStatusLbl.Name = "reportStatusLbl";
+            this.reportStatusLbl.Size = new System.Drawing.Size(79, 25);
+            this.reportStatusLbl.TabIndex = 0;
+            this.reportStatusLbl.Text = "Status:";
+            // 
+            // reportStatusTbxPanel
+            // 
+            this.reportStatusTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportStatusTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reportStatusTbxPanel.Controls.Add(this.button32);
+            this.reportStatusTbxPanel.Controls.Add(this.reportStatusTbx);
+            this.reportStatusTbxPanel.Controls.Add(this.button33);
+            this.reportStatusTbxPanel.Location = new System.Drawing.Point(197, 489);
+            this.reportStatusTbxPanel.Name = "reportStatusTbxPanel";
+            this.reportStatusTbxPanel.Size = new System.Drawing.Size(307, 31);
+            this.reportStatusTbxPanel.TabIndex = 74;
+            // 
+            // button32
+            // 
+            this.button32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button32.Location = new System.Drawing.Point(272, -2);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(35, 35);
+            this.button32.TabIndex = 0;
+            this.button32.TabStop = false;
+            this.button32.UseVisualStyleBackColor = false;
+            // 
+            // reportStatusTbx
+            // 
+            this.reportStatusTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportStatusTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.reportStatusTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.reportStatusTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportStatusTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.reportStatusTbx.HideSelection = false;
+            this.reportStatusTbx.Location = new System.Drawing.Point(33, 2);
+            this.reportStatusTbx.Name = "reportStatusTbx";
+            this.reportStatusTbx.ReadOnly = true;
+            this.reportStatusTbx.Size = new System.Drawing.Size(241, 24);
+            this.reportStatusTbx.TabIndex = 0;
+            this.reportStatusTbx.TabStop = false;
+            // 
+            // button33
+            // 
+            this.button33.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button33.Location = new System.Drawing.Point(-2, -2);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(35, 35);
+            this.button33.TabIndex = 1;
+            this.button33.TabStop = false;
+            this.button33.UseVisualStyleBackColor = false;
+            // 
+            // reportWorkflowItemsLbl
+            // 
+            this.reportWorkflowItemsLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.reportWorkflowItemsLbl.AutoSize = true;
+            this.reportWorkflowItemsLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.reportWorkflowItemsLbl.Location = new System.Drawing.Point(15, 536);
+            this.reportWorkflowItemsLbl.Name = "reportWorkflowItemsLbl";
+            this.reportWorkflowItemsLbl.Size = new System.Drawing.Size(163, 25);
+            this.reportWorkflowItemsLbl.TabIndex = 0;
+            this.reportWorkflowItemsLbl.Text = "Workflow Items:";
+            // 
+            // reportWorkflowItemsTbxPanel
+            // 
+            this.reportWorkflowItemsTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportWorkflowItemsTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reportWorkflowItemsTbxPanel.Controls.Add(this.button36);
+            this.reportWorkflowItemsTbxPanel.Controls.Add(this.reportWorkflowItemsTbx);
+            this.reportWorkflowItemsTbxPanel.Controls.Add(this.button37);
+            this.reportWorkflowItemsTbxPanel.Location = new System.Drawing.Point(197, 539);
+            this.reportWorkflowItemsTbxPanel.Name = "reportWorkflowItemsTbxPanel";
+            this.reportWorkflowItemsTbxPanel.Size = new System.Drawing.Size(307, 31);
+            this.reportWorkflowItemsTbxPanel.TabIndex = 75;
+            // 
+            // button36
+            // 
+            this.button36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button36.Location = new System.Drawing.Point(272, -2);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(35, 35);
+            this.button36.TabIndex = 0;
+            this.button36.TabStop = false;
+            this.button36.UseVisualStyleBackColor = false;
+            // 
+            // reportWorkflowItemsTbx
+            // 
+            this.reportWorkflowItemsTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportWorkflowItemsTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.reportWorkflowItemsTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.reportWorkflowItemsTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportWorkflowItemsTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.reportWorkflowItemsTbx.HideSelection = false;
+            this.reportWorkflowItemsTbx.Location = new System.Drawing.Point(33, 2);
+            this.reportWorkflowItemsTbx.Name = "reportWorkflowItemsTbx";
+            this.reportWorkflowItemsTbx.ReadOnly = true;
+            this.reportWorkflowItemsTbx.Size = new System.Drawing.Size(241, 24);
+            this.reportWorkflowItemsTbx.TabIndex = 0;
+            this.reportWorkflowItemsTbx.TabStop = false;
+            // 
+            // button37
+            // 
+            this.button37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button37.Location = new System.Drawing.Point(-2, -2);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(35, 35);
+            this.button37.TabIndex = 1;
+            this.button37.TabStop = false;
+            this.button37.UseVisualStyleBackColor = false;
+            // 
+            // reportNoteLbl
+            // 
+            this.reportNoteLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.reportNoteLbl.AutoSize = true;
+            this.reportNoteLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.reportNoteLbl.Location = new System.Drawing.Point(15, 586);
+            this.reportNoteLbl.Name = "reportNoteLbl";
+            this.reportNoteLbl.Size = new System.Drawing.Size(63, 25);
+            this.reportNoteLbl.TabIndex = 0;
+            this.reportNoteLbl.Text = "Note:";
+            // 
+            // reportNoteTbxPanel
+            // 
+            this.reportNoteTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportNoteTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reportNoteTbxPanel.Controls.Add(this.button38);
+            this.reportNoteTbxPanel.Controls.Add(this.reportNoteTbx);
+            this.reportNoteTbxPanel.Controls.Add(this.button39);
+            this.reportNoteTbxPanel.Location = new System.Drawing.Point(196, 589);
+            this.reportNoteTbxPanel.Name = "reportNoteTbxPanel";
+            this.reportNoteTbxPanel.Size = new System.Drawing.Size(308, 100);
+            this.reportNoteTbxPanel.TabIndex = 76;
+            // 
+            // button38
+            // 
+            this.button38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button38.Location = new System.Drawing.Point(273, -2);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(35, 104);
+            this.button38.TabIndex = 0;
+            this.button38.TabStop = false;
+            this.button38.UseVisualStyleBackColor = false;
+            // 
+            // reportNoteTbx
+            // 
+            this.reportNoteTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportNoteTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.reportNoteTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.reportNoteTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportNoteTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.reportNoteTbx.HideSelection = false;
+            this.reportNoteTbx.Location = new System.Drawing.Point(33, 2);
+            this.reportNoteTbx.Multiline = true;
+            this.reportNoteTbx.Name = "reportNoteTbx";
+            this.reportNoteTbx.ReadOnly = true;
+            this.reportNoteTbx.Size = new System.Drawing.Size(242, 93);
+            this.reportNoteTbx.TabIndex = 0;
+            this.reportNoteTbx.TabStop = false;
+            // 
+            // button39
+            // 
+            this.button39.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.button39.Location = new System.Drawing.Point(-2, -2);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(35, 104);
+            this.button39.TabIndex = 1;
+            this.button39.TabStop = false;
+            this.button39.UseVisualStyleBackColor = false;
+            // 
             // reportsDataViewBtn
             // 
             this.reportsDataViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -3973,350 +4506,6 @@
             this.importsDataViewBtn.UseVisualStyleBackColor = false;
             this.importsDataViewBtn.Click += new System.EventHandler(this.importOrReportPanelTab_Click);
             // 
-            // reportPanel
-            // 
-            this.reportPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.reportPanel.Controls.Add(this.openReportBtn);
-            this.reportPanel.Controls.Add(this.saveReportBtn);
-            this.reportPanel.Controls.Add(this.reportDateTbxPanel);
-            this.reportPanel.Controls.Add(this.reportLbx);
-            this.reportPanel.Controls.Add(this.reportDateLbl);
-            this.reportPanel.Controls.Add(this.reportStatusLbl);
-            this.reportPanel.Controls.Add(this.reportStatusTbxPanel);
-            this.reportPanel.Controls.Add(this.reportWorkflowItemsLbl);
-            this.reportPanel.Controls.Add(this.reportWorkflowItemsTbxPanel);
-            this.reportPanel.Controls.Add(this.reportNoteLbl);
-            this.reportPanel.Controls.Add(this.reportNoteTbxPanel);
-            this.reportPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.reportPanel.Location = new System.Drawing.Point(30, 60);
-            this.reportPanel.Name = "reportPanel";
-            this.reportPanel.Size = new System.Drawing.Size(524, 755);
-            this.reportPanel.TabIndex = 0;
-            this.reportPanel.Visible = false;
-            // 
-            // openReportBtn
-            // 
-            this.openReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.openReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.openReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openReportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.openReportBtn.Location = new System.Drawing.Point(303, 705);
-            this.openReportBtn.Name = "openReportBtn";
-            this.openReportBtn.Size = new System.Drawing.Size(100, 35);
-            this.openReportBtn.TabIndex = 0;
-            this.openReportBtn.TabStop = false;
-            this.openReportBtn.Text = "Open";
-            this.openReportBtn.UseVisualStyleBackColor = false;
-            // 
-            // saveReportBtn
-            // 
-            this.saveReportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveReportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.saveReportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveReportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveReportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.saveReportBtn.Location = new System.Drawing.Point(413, 705);
-            this.saveReportBtn.Name = "saveReportBtn";
-            this.saveReportBtn.Size = new System.Drawing.Size(100, 35);
-            this.saveReportBtn.TabIndex = 0;
-            this.saveReportBtn.TabStop = false;
-            this.saveReportBtn.Text = "Save";
-            this.saveReportBtn.UseVisualStyleBackColor = false;
-            // 
-            // reportDateTbxPanel
-            // 
-            this.reportDateTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportDateTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reportDateTbxPanel.Controls.Add(this.button28);
-            this.reportDateTbxPanel.Controls.Add(this.reportDateTbx);
-            this.reportDateTbxPanel.Controls.Add(this.button29);
-            this.reportDateTbxPanel.Location = new System.Drawing.Point(191, 438);
-            this.reportDateTbxPanel.Name = "reportDateTbxPanel";
-            this.reportDateTbxPanel.Size = new System.Drawing.Size(321, 31);
-            this.reportDateTbxPanel.TabIndex = 76;
-            // 
-            // button28
-            // 
-            this.button28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button28.Location = new System.Drawing.Point(286, -2);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(35, 35);
-            this.button28.TabIndex = 0;
-            this.button28.TabStop = false;
-            this.button28.UseVisualStyleBackColor = false;
-            // 
-            // reportDateTbx
-            // 
-            this.reportDateTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportDateTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.reportDateTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.reportDateTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportDateTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.reportDateTbx.HideSelection = false;
-            this.reportDateTbx.Location = new System.Drawing.Point(33, 2);
-            this.reportDateTbx.Name = "reportDateTbx";
-            this.reportDateTbx.ReadOnly = true;
-            this.reportDateTbx.Size = new System.Drawing.Size(255, 24);
-            this.reportDateTbx.TabIndex = 0;
-            this.reportDateTbx.TabStop = false;
-            // 
-            // button29
-            // 
-            this.button29.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button29.Location = new System.Drawing.Point(-2, -2);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(35, 35);
-            this.button29.TabIndex = 1;
-            this.button29.TabStop = false;
-            this.button29.UseVisualStyleBackColor = false;
-            // 
-            // reportLbx
-            // 
-            this.reportLbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportLbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.reportLbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportLbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.reportLbx.FormattingEnabled = true;
-            this.reportLbx.ItemHeight = 25;
-            this.reportLbx.Location = new System.Drawing.Point(20, 15);
-            this.reportLbx.Name = "reportLbx";
-            this.reportLbx.Size = new System.Drawing.Size(494, 404);
-            this.reportLbx.TabIndex = 0;
-            this.reportLbx.TabStop = false;
-            this.reportLbx.SelectedIndexChanged += new System.EventHandler(this.reportsLbx_SelectedIndexChanged);
-            this.reportLbx.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.reportLbx_MouseDoubleClick);
-            // 
-            // reportDateLbl
-            // 
-            this.reportDateLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.reportDateLbl.AutoSize = true;
-            this.reportDateLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.reportDateLbl.Location = new System.Drawing.Point(16, 437);
-            this.reportDateLbl.Name = "reportDateLbl";
-            this.reportDateLbl.Size = new System.Drawing.Size(133, 25);
-            this.reportDateLbl.TabIndex = 75;
-            this.reportDateLbl.Text = "Report Date:";
-            // 
-            // reportStatusLbl
-            // 
-            this.reportStatusLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.reportStatusLbl.AutoSize = true;
-            this.reportStatusLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.reportStatusLbl.Location = new System.Drawing.Point(15, 486);
-            this.reportStatusLbl.Name = "reportStatusLbl";
-            this.reportStatusLbl.Size = new System.Drawing.Size(79, 25);
-            this.reportStatusLbl.TabIndex = 0;
-            this.reportStatusLbl.Text = "Status:";
-            // 
-            // reportStatusTbxPanel
-            // 
-            this.reportStatusTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportStatusTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reportStatusTbxPanel.Controls.Add(this.button32);
-            this.reportStatusTbxPanel.Controls.Add(this.reportStatusTbx);
-            this.reportStatusTbxPanel.Controls.Add(this.button33);
-            this.reportStatusTbxPanel.Location = new System.Drawing.Point(190, 489);
-            this.reportStatusTbxPanel.Name = "reportStatusTbxPanel";
-            this.reportStatusTbxPanel.Size = new System.Drawing.Size(321, 31);
-            this.reportStatusTbxPanel.TabIndex = 74;
-            // 
-            // button32
-            // 
-            this.button32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button32.Location = new System.Drawing.Point(286, -2);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(35, 35);
-            this.button32.TabIndex = 0;
-            this.button32.TabStop = false;
-            this.button32.UseVisualStyleBackColor = false;
-            // 
-            // reportStatusTbx
-            // 
-            this.reportStatusTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportStatusTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.reportStatusTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.reportStatusTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportStatusTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.reportStatusTbx.HideSelection = false;
-            this.reportStatusTbx.Location = new System.Drawing.Point(33, 2);
-            this.reportStatusTbx.Name = "reportStatusTbx";
-            this.reportStatusTbx.ReadOnly = true;
-            this.reportStatusTbx.Size = new System.Drawing.Size(255, 24);
-            this.reportStatusTbx.TabIndex = 0;
-            this.reportStatusTbx.TabStop = false;
-            // 
-            // button33
-            // 
-            this.button33.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.button33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button33.Location = new System.Drawing.Point(-2, -2);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(35, 35);
-            this.button33.TabIndex = 1;
-            this.button33.TabStop = false;
-            this.button33.UseVisualStyleBackColor = false;
-            // 
-            // reportWorkflowItemsLbl
-            // 
-            this.reportWorkflowItemsLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.reportWorkflowItemsLbl.AutoSize = true;
-            this.reportWorkflowItemsLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.reportWorkflowItemsLbl.Location = new System.Drawing.Point(15, 536);
-            this.reportWorkflowItemsLbl.Name = "reportWorkflowItemsLbl";
-            this.reportWorkflowItemsLbl.Size = new System.Drawing.Size(163, 25);
-            this.reportWorkflowItemsLbl.TabIndex = 0;
-            this.reportWorkflowItemsLbl.Text = "Workflow Items:";
-            // 
-            // reportWorkflowItemsTbxPanel
-            // 
-            this.reportWorkflowItemsTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportWorkflowItemsTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reportWorkflowItemsTbxPanel.Controls.Add(this.button36);
-            this.reportWorkflowItemsTbxPanel.Controls.Add(this.reportWorkflowItemsTbx);
-            this.reportWorkflowItemsTbxPanel.Controls.Add(this.button37);
-            this.reportWorkflowItemsTbxPanel.Location = new System.Drawing.Point(190, 539);
-            this.reportWorkflowItemsTbxPanel.Name = "reportWorkflowItemsTbxPanel";
-            this.reportWorkflowItemsTbxPanel.Size = new System.Drawing.Size(321, 31);
-            this.reportWorkflowItemsTbxPanel.TabIndex = 75;
-            // 
-            // button36
-            // 
-            this.button36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button36.Location = new System.Drawing.Point(286, -2);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(35, 35);
-            this.button36.TabIndex = 0;
-            this.button36.TabStop = false;
-            this.button36.UseVisualStyleBackColor = false;
-            // 
-            // reportWorkflowItemsTbx
-            // 
-            this.reportWorkflowItemsTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportWorkflowItemsTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.reportWorkflowItemsTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.reportWorkflowItemsTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportWorkflowItemsTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.reportWorkflowItemsTbx.HideSelection = false;
-            this.reportWorkflowItemsTbx.Location = new System.Drawing.Point(33, 2);
-            this.reportWorkflowItemsTbx.Name = "reportWorkflowItemsTbx";
-            this.reportWorkflowItemsTbx.ReadOnly = true;
-            this.reportWorkflowItemsTbx.Size = new System.Drawing.Size(255, 24);
-            this.reportWorkflowItemsTbx.TabIndex = 0;
-            this.reportWorkflowItemsTbx.TabStop = false;
-            // 
-            // button37
-            // 
-            this.button37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.button37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button37.Location = new System.Drawing.Point(-2, -2);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(35, 35);
-            this.button37.TabIndex = 1;
-            this.button37.TabStop = false;
-            this.button37.UseVisualStyleBackColor = false;
-            // 
-            // reportNoteLbl
-            // 
-            this.reportNoteLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.reportNoteLbl.AutoSize = true;
-            this.reportNoteLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.reportNoteLbl.Location = new System.Drawing.Point(15, 586);
-            this.reportNoteLbl.Name = "reportNoteLbl";
-            this.reportNoteLbl.Size = new System.Drawing.Size(63, 25);
-            this.reportNoteLbl.TabIndex = 0;
-            this.reportNoteLbl.Text = "Note:";
-            // 
-            // reportNoteTbxPanel
-            // 
-            this.reportNoteTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportNoteTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reportNoteTbxPanel.Controls.Add(this.button38);
-            this.reportNoteTbxPanel.Controls.Add(this.reportNoteTbx);
-            this.reportNoteTbxPanel.Controls.Add(this.button39);
-            this.reportNoteTbxPanel.Location = new System.Drawing.Point(189, 589);
-            this.reportNoteTbxPanel.Name = "reportNoteTbxPanel";
-            this.reportNoteTbxPanel.Size = new System.Drawing.Size(322, 100);
-            this.reportNoteTbxPanel.TabIndex = 76;
-            // 
-            // button38
-            // 
-            this.button38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button38.Location = new System.Drawing.Point(287, -2);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(35, 104);
-            this.button38.TabIndex = 0;
-            this.button38.TabStop = false;
-            this.button38.UseVisualStyleBackColor = false;
-            // 
-            // reportNoteTbx
-            // 
-            this.reportNoteTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportNoteTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.reportNoteTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.reportNoteTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportNoteTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.reportNoteTbx.HideSelection = false;
-            this.reportNoteTbx.Location = new System.Drawing.Point(33, 2);
-            this.reportNoteTbx.Multiline = true;
-            this.reportNoteTbx.Name = "reportNoteTbx";
-            this.reportNoteTbx.ReadOnly = true;
-            this.reportNoteTbx.Size = new System.Drawing.Size(256, 93);
-            this.reportNoteTbx.TabIndex = 0;
-            this.reportNoteTbx.TabStop = false;
-            // 
-            // button39
-            // 
-            this.button39.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.button39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button39.Location = new System.Drawing.Point(-2, -2);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(35, 104);
-            this.button39.TabIndex = 1;
-            this.button39.TabStop = false;
-            this.button39.UseVisualStyleBackColor = false;
-            // 
             // formMenuStrip
             // 
             this.formMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -4331,7 +4520,7 @@
             this.adminToolStripMenuItem});
             this.formMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.formMenuStrip.Name = "formMenuStrip";
-            this.formMenuStrip.Size = new System.Drawing.Size(2534, 42);
+            this.formMenuStrip.Size = new System.Drawing.Size(2534, 40);
             this.formMenuStrip.TabIndex = 7;
             this.formMenuStrip.Text = "menuStrip1";
             // 
@@ -4348,7 +4537,7 @@
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 36);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // loadToolStripMenuItem
@@ -4420,7 +4609,7 @@
             this.removeFromExportViewToolStripMenuItem});
             this.editToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 38);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 36);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
             // removeAllPaintToolStripMenuItem
@@ -4465,7 +4654,7 @@
             this.addToExportViewToolStripMenuItem.Name = "addToExportViewToolStripMenuItem";
             this.addToExportViewToolStripMenuItem.Size = new System.Drawing.Size(390, 38);
             this.addToExportViewToolStripMenuItem.Text = "Add to Export View";
-            this.addToExportViewToolStripMenuItem.Click += new System.EventHandler(this.addToExportViewToolStripMenuItem_Click);
+            this.addToExportViewToolStripMenuItem.Click += new System.EventHandler(this.addToExportViewContextMenuItem_Click);
             // 
             // addToExcludedToolStripMenuItem
             // 
@@ -4474,7 +4663,7 @@
             this.addToExcludedToolStripMenuItem.Name = "addToExcludedToolStripMenuItem";
             this.addToExcludedToolStripMenuItem.Size = new System.Drawing.Size(390, 38);
             this.addToExcludedToolStripMenuItem.Text = "Add to Excluded";
-            this.addToExcludedToolStripMenuItem.Click += new System.EventHandler(this.addToExcludedToolStripMenuItem_Click);
+            this.addToExcludedToolStripMenuItem.Click += new System.EventHandler(this.markExcludedContextMenuItem_Click);
             // 
             // removeFromExportViewToolStripMenuItem
             // 
@@ -4484,7 +4673,7 @@
             this.removeFromExportViewToolStripMenuItem.Name = "removeFromExportViewToolStripMenuItem";
             this.removeFromExportViewToolStripMenuItem.Size = new System.Drawing.Size(390, 38);
             this.removeFromExportViewToolStripMenuItem.Text = "Remove from Export View";
-            this.removeFromExportViewToolStripMenuItem.Click += new System.EventHandler(this.removeFromExportViewToolStripMenuItem_Click);
+            this.removeFromExportViewToolStripMenuItem.Click += new System.EventHandler(this.removeFromExportViewContextMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -4495,7 +4684,7 @@
             this.companiesToolStripMenuItem});
             this.viewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(78, 38);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(78, 36);
             this.viewToolStripMenuItem.Text = "&View";
             // 
             // excludedItemsViewToolStripMenuitem
@@ -4532,7 +4721,7 @@
             this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
             this.companiesToolStripMenuItem.Size = new System.Drawing.Size(359, 38);
             this.companiesToolStripMenuItem.Text = "Co&mpanies";
-            this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesToolStripMenuItem_Click);
+            this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesViewToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -4540,7 +4729,7 @@
             this.certusBrowserToolStripMenuItem});
             this.toolsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(82, 38);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(82, 36);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // certusBrowserToolStripMenuItem
@@ -4561,10 +4750,11 @@
             this.importCompaniesToolStripMenuItem,
             this.toolStripSeparator2,
             this.addRelatedFilesDataToolStripMenuItem,
-            this.updateContractDataToolStripMenuItem});
+            this.updateContractDataToolStripMenuItem,
+            this.getIDsForAnalystsToolStripMenuItem});
             this.dataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(76, 38);
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(76, 36);
             this.dataToolStripMenuItem.Text = "&Data";
             // 
             // importWorkflowItemsToolStripMenuItem
@@ -4572,7 +4762,7 @@
             this.importWorkflowItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.importWorkflowItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importWorkflowItemsToolStripMenuItem.Name = "importWorkflowItemsToolStripMenuItem";
-            this.importWorkflowItemsToolStripMenuItem.Size = new System.Drawing.Size(357, 38);
+            this.importWorkflowItemsToolStripMenuItem.Size = new System.Drawing.Size(418, 38);
             this.importWorkflowItemsToolStripMenuItem.Text = "Import &Workflow Items";
             this.importWorkflowItemsToolStripMenuItem.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
             // 
@@ -4581,7 +4771,7 @@
             this.importExcludedItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.importExcludedItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importExcludedItemsToolStripMenuItem.Name = "importExcludedItemsToolStripMenuItem";
-            this.importExcludedItemsToolStripMenuItem.Size = new System.Drawing.Size(357, 38);
+            this.importExcludedItemsToolStripMenuItem.Size = new System.Drawing.Size(418, 38);
             this.importExcludedItemsToolStripMenuItem.Text = "Import &Excluded Items";
             this.importExcludedItemsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.importExcludedItemsToolStripMenuItem.Click += new System.EventHandler(this.importExcludedItemsToolStripMenuItem_Click);
@@ -4591,7 +4781,7 @@
             this.importCertificatesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.importCertificatesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importCertificatesToolStripMenuItem.Name = "importCertificatesToolStripMenuItem";
-            this.importCertificatesToolStripMenuItem.Size = new System.Drawing.Size(357, 38);
+            this.importCertificatesToolStripMenuItem.Size = new System.Drawing.Size(418, 38);
             this.importCertificatesToolStripMenuItem.Text = "Import Cer&tificates";
             this.importCertificatesToolStripMenuItem.Click += new System.EventHandler(this.importCertificatesToolStripMenuItem_Click);
             // 
@@ -4600,7 +4790,7 @@
             this.importCompaniesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.importCompaniesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importCompaniesToolStripMenuItem.Name = "importCompaniesToolStripMenuItem";
-            this.importCompaniesToolStripMenuItem.Size = new System.Drawing.Size(357, 38);
+            this.importCompaniesToolStripMenuItem.Size = new System.Drawing.Size(418, 38);
             this.importCompaniesToolStripMenuItem.Text = "Import Co&mpanies";
             this.importCompaniesToolStripMenuItem.Click += new System.EventHandler(this.importCompaniesToolStripMenuItem_Click);
             // 
@@ -4610,14 +4800,14 @@
             this.toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(354, 2);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(415, 2);
             // 
             // addRelatedFilesDataToolStripMenuItem
             // 
             this.addRelatedFilesDataToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.addRelatedFilesDataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.addRelatedFilesDataToolStripMenuItem.Name = "addRelatedFilesDataToolStripMenuItem";
-            this.addRelatedFilesDataToolStripMenuItem.Size = new System.Drawing.Size(357, 38);
+            this.addRelatedFilesDataToolStripMenuItem.Size = new System.Drawing.Size(418, 38);
             this.addRelatedFilesDataToolStripMenuItem.Text = "&Add Related Files Data";
             this.addRelatedFilesDataToolStripMenuItem.Click += new System.EventHandler(this.updateDataToolStripMenuItem_Click);
             // 
@@ -4626,9 +4816,18 @@
             this.updateContractDataToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.updateContractDataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.updateContractDataToolStripMenuItem.Name = "updateContractDataToolStripMenuItem";
-            this.updateContractDataToolStripMenuItem.Size = new System.Drawing.Size(357, 38);
+            this.updateContractDataToolStripMenuItem.Size = new System.Drawing.Size(418, 38);
             this.updateContractDataToolStripMenuItem.Text = "U&pdate Contract Data";
             this.updateContractDataToolStripMenuItem.Click += new System.EventHandler(this.updateContractDataToolStripMenuItem_Click);
+            // 
+            // getIDsForAnalystsToolStripMenuItem
+            // 
+            this.getIDsForAnalystsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.getIDsForAnalystsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.getIDsForAnalystsToolStripMenuItem.Name = "getIDsForAnalystsToolStripMenuItem";
+            this.getIDsForAnalystsToolStripMenuItem.Size = new System.Drawing.Size(418, 38);
+            this.getIDsForAnalystsToolStripMenuItem.Text = "Get &IDs From Analyst Names";
+            this.getIDsForAnalystsToolStripMenuItem.Click += new System.EventHandler(this.getIDsForAnalystsToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -4638,7 +4837,7 @@
             this.maximizeToolStripMenuItem});
             this.windowToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
-            this.windowToolStripMenuItem.Size = new System.Drawing.Size(114, 38);
+            this.windowToolStripMenuItem.Size = new System.Drawing.Size(114, 36);
             this.windowToolStripMenuItem.Text = "&Window";
             // 
             // minimizeToolStripMenuItem
@@ -4670,7 +4869,7 @@
             this.clearCompItemsDataToolStripMenuItem});
             this.adminToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(97, 38);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(97, 36);
             this.adminToolStripMenuItem.Text = "&Admin";
             // 
             // performActionToolStripMenuItem
@@ -4886,6 +5085,23 @@
             this.searchHighlightBtn.UseVisualStyleBackColor = false;
             this.searchHighlightBtn.Click += new System.EventHandler(this.searchHighlightBtn_Click);
             // 
+            // searchTbx
+            // 
+            this.searchTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.searchTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F);
+            this.searchTbx.ForeColor = System.Drawing.Color.Gray;
+            this.searchTbx.Location = new System.Drawing.Point(33, 2);
+            this.searchTbx.Name = "searchTbx";
+            this.searchTbx.PlaceHolderText = null;
+            this.searchTbx.Size = new System.Drawing.Size(201, 24);
+            this.searchTbx.TabIndex = 0;
+            this.searchTbx.TabStop = false;
+            this.searchTbx.Text = "Search Item";
+            this.buttonDescToolTip.SetToolTip(this.searchTbx, "Search Current View (Ctrl+F)");
+            this.searchTbx.TextChanged += new System.EventHandler(this.searchTbx_TextChanged);
+            this.searchTbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTbx_KeyDown);
+            // 
             // statusLblTimer
             // 
             this.statusLblTimer.Interval = 7000;
@@ -4896,53 +5112,75 @@
             this.listViewContextMenuStrip.BackColor = System.Drawing.SystemColors.Control;
             this.listViewContextMenuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.listViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToolStripMenuItem,
-            this.copyIDsToolStripMenuItem,
+            this.copyContextMenuItem,
+            this.copyWithHeadersContextMenuItem,
+            this.copyIDsContextMenuItem,
+            this.selectAllContextMenuItem,
             this.toolStripSeparator4,
-            this.openLinkToolStripMenuItem,
-            this.createReferencesToolStripMenuItem,
-            this.removeColorToolStripMenuItem,
-            this.paintToolStripMenuItem,
-            this.toolStripSeparator3,
+            this.openLinksContextMenuItem,
+            this.createReferencesContextMenuItem,
             this.addToExportContextMenuItem,
             this.removeFromExportContextMenuItem,
-            this.markCompletedContextMenuItem,
-            this.markTrashContextMenuItem,
-            this.markExcludedToolStripMenuItem,
-            this.unassignToolStripMenuItem,
-            this.removeNotificationToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.paintContextMenuItem,
+            this.removePaintContextMenuItem,
+            this.markContextMenuItem,
+            this.unmarkToolStripMenuItem,
             this.toolStripSeparator5,
-            this.findAndFillCompanyToolStripMenuItem,
-            this.findAndOverrideContractInfoToolStripMenuItem,
-            this.setStatusAndAssignmentToolStripMenuItem,
-            this.appendToolStripMenuItem});
+            this.modifyContextMenuItem,
+            this.extractContextMenuItem,
+            this.appendContextMenuItem,
+            this.setAssignmentContextMenuItem,
+            this.unassignContextMenuItem});
             this.listViewContextMenuStrip.Name = "listboxContextMenuStrip";
             this.listViewContextMenuStrip.Size = new System.Drawing.Size(500, 724);
             // 
-            // copyToolStripMenuItem
+            // copyContextMenuItem
             // 
-            this.copyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.copyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.copyToolStripMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_copy_32;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.copyToolStripMenuItem.Text = "Copy Item(s)";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            this.copyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.copyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_copy_32;
+            this.copyContextMenuItem.Name = "copyContextMenuItem";
+            this.copyContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.copyContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.copyContextMenuItem.Text = "Copy";
+            this.copyContextMenuItem.Click += new System.EventHandler(this.copyContextMenuItem_Click);
             // 
-            // copyIDsToolStripMenuItem
+            // copyWithHeadersContextMenuItem
             // 
-            this.copyIDsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.copyIDsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.copyIDsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyIDsToolStripMenuItem.Image")));
-            this.copyIDsToolStripMenuItem.Name = "copyIDsToolStripMenuItem";
-            this.copyIDsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.copyIDsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.copyWithHeadersContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.copyWithHeadersContextMenuItem.Enabled = false;
+            this.copyWithHeadersContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyWithHeadersContextMenuItem.Name = "copyWithHeadersContextMenuItem";
+            this.copyWithHeadersContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.copyWithHeadersContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
-            this.copyIDsToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.copyIDsToolStripMenuItem.Text = "Copy Id(s)";
-            this.copyIDsToolStripMenuItem.Click += new System.EventHandler(this.copyIdsToolStripMenuItem_Click);
+            this.copyWithHeadersContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.copyWithHeadersContextMenuItem.Text = "Copy With Headers";
+            this.copyWithHeadersContextMenuItem.Click += new System.EventHandler(this.copyWithHeadersContextMenuItem_Click);
+            // 
+            // copyIDsContextMenuItem
+            // 
+            this.copyIDsContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.copyIDsContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyIDsContextMenuItem.Name = "copyIDsContextMenuItem";
+            this.copyIDsContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.copyIDsContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.copyIDsContextMenuItem.Text = "Copy Id(s)";
+            this.copyIDsContextMenuItem.Click += new System.EventHandler(this.copyIdsContextMenuItem_Click);
+            // 
+            // selectAllContextMenuItem
+            // 
+            this.selectAllContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.selectAllContextMenuItem.Enabled = false;
+            this.selectAllContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.selectAllContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("selectAllContextMenuItem.Image")));
+            this.selectAllContextMenuItem.Name = "selectAllContextMenuItem";
+            this.selectAllContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.selectAllContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.selectAllContextMenuItem.Text = "Select All";
+            this.selectAllContextMenuItem.Click += new System.EventHandler(this.selectAllContextMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -4952,60 +5190,30 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(496, 2);
             // 
-            // openLinkToolStripMenuItem
+            // openLinksContextMenuItem
             // 
-            this.openLinkToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.openLinkToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.openLinkToolStripMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_external_link_32;
-            this.openLinkToolStripMenuItem.Name = "openLinkToolStripMenuItem";
-            this.openLinkToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.openLinkToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openLinkToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.openLinkToolStripMenuItem.Text = "Open Link(s)";
-            this.openLinkToolStripMenuItem.Click += new System.EventHandler(this.openLinkToolStripMenuItem_Click);
+            this.openLinksContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.openLinksContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.openLinksContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_external_link_32;
+            this.openLinksContextMenuItem.Name = "openLinksContextMenuItem";
+            this.openLinksContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.openLinksContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openLinksContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.openLinksContextMenuItem.Text = "Open Link(s)";
+            this.openLinksContextMenuItem.Click += new System.EventHandler(this.openLinkContextMenuItem_Click);
             // 
-            // createReferencesToolStripMenuItem
+            // createReferencesContextMenuItem
             // 
-            this.createReferencesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.createReferencesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.createReferencesToolStripMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_down_3_32;
-            this.createReferencesToolStripMenuItem.Name = "createReferencesToolStripMenuItem";
-            this.createReferencesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.createReferencesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
+            this.createReferencesContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.createReferencesContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.createReferencesContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_down_3_32;
+            this.createReferencesContextMenuItem.Name = "createReferencesContextMenuItem";
+            this.createReferencesContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.createReferencesContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.Down)));
-            this.createReferencesToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.createReferencesToolStripMenuItem.Text = "Create Reference(s)";
-            this.createReferencesToolStripMenuItem.Click += new System.EventHandler(this.addAsReferenceBtn_Click);
-            // 
-            // removeColorToolStripMenuItem
-            // 
-            this.removeColorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.removeColorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeColorToolStripMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_erase_32;
-            this.removeColorToolStripMenuItem.Name = "removeColorToolStripMenuItem";
-            this.removeColorToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.removeColorToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.removeColorToolStripMenuItem.Text = "Remove Color from Item(s)";
-            this.removeColorToolStripMenuItem.Click += new System.EventHandler(this.removeColorBtn_Click);
-            // 
-            // paintToolStripMenuItem
-            // 
-            this.paintToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.paintToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.paintToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("paintToolStripMenuItem.Image")));
-            this.paintToolStripMenuItem.Name = "paintToolStripMenuItem";
-            this.paintToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.paintToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.paintToolStripMenuItem.Text = "Paint Item(s)";
-            this.paintToolStripMenuItem.Click += new System.EventHandler(this.paintBtn_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.AutoSize = false;
-            this.toolStripSeparator3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.toolStripSeparator3.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(496, 2);
+            this.createReferencesContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.createReferencesContextMenuItem.Text = "Create Reference(s)";
+            this.createReferencesContextMenuItem.Click += new System.EventHandler(this.createReferencesContextMenuItem_Click);
             // 
             // addToExportContextMenuItem
             // 
@@ -5016,7 +5224,7 @@
             this.addToExportContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.addToExportContextMenuItem.Size = new System.Drawing.Size(499, 42);
             this.addToExportContextMenuItem.Text = "Add Item(s) To Export View";
-            this.addToExportContextMenuItem.Click += new System.EventHandler(this.addToExportViewToolStripMenuItem_Click);
+            this.addToExportContextMenuItem.Click += new System.EventHandler(this.addToExportViewContextMenuItem_Click);
             // 
             // removeFromExportContextMenuItem
             // 
@@ -5028,129 +5236,146 @@
             this.removeFromExportContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.removeFromExportContextMenuItem.Size = new System.Drawing.Size(499, 42);
             this.removeFromExportContextMenuItem.Text = "Remove Item(s) From Export View";
-            this.removeFromExportContextMenuItem.Click += new System.EventHandler(this.removeFromExportViewToolStripMenuItem_Click);
+            this.removeFromExportContextMenuItem.Click += new System.EventHandler(this.removeFromExportViewContextMenuItem_Click);
             // 
-            // markCompletedContextMenuItem
+            // toolStripSeparator3
             // 
-            this.markCompletedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.markCompletedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.markCompletedContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("markCompletedContextMenuItem.Image")));
-            this.markCompletedContextMenuItem.Name = "markCompletedContextMenuItem";
-            this.markCompletedContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.markCompletedContextMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.markCompletedContextMenuItem.Text = "Mark Completed";
-            this.markCompletedContextMenuItem.Click += new System.EventHandler(this.markCompletedToolStripMenuItem_Click);
+            this.toolStripSeparator3.AutoSize = false;
+            this.toolStripSeparator3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.toolStripSeparator3.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(496, 2);
             // 
-            // markTrashContextMenuItem
+            // paintContextMenuItem
             // 
-            this.markTrashContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.markTrashContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.markTrashContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("markTrashContextMenuItem.Image")));
-            this.markTrashContextMenuItem.Name = "markTrashContextMenuItem";
-            this.markTrashContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.markTrashContextMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.markTrashContextMenuItem.Text = "Mark Trash";
-            this.markTrashContextMenuItem.Click += new System.EventHandler(this.markTrashToolStripMenuItem_Click);
+            this.paintContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.paintContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.paintContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("paintContextMenuItem.Image")));
+            this.paintContextMenuItem.Name = "paintContextMenuItem";
+            this.paintContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.paintContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.paintContextMenuItem.Text = "Paint";
+            this.paintContextMenuItem.Click += new System.EventHandler(this.paintContextMenuItem_Click);
             // 
-            // markExcludedToolStripMenuItem
+            // removePaintContextMenuItem
             // 
-            this.markExcludedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.markExcludedToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.markExcludedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("markExcludedToolStripMenuItem.Image")));
-            this.markExcludedToolStripMenuItem.Name = "markExcludedToolStripMenuItem";
-            this.markExcludedToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.markExcludedToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.markExcludedToolStripMenuItem.Text = "Mark Excluded";
-            this.markExcludedToolStripMenuItem.Click += new System.EventHandler(this.addToExcludedToolStripMenuItem_Click);
+            this.removePaintContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.removePaintContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removePaintContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_erase_32;
+            this.removePaintContextMenuItem.Name = "removePaintContextMenuItem";
+            this.removePaintContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.removePaintContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.removePaintContextMenuItem.Text = "Remove Paint";
+            this.removePaintContextMenuItem.Click += new System.EventHandler(this.removePaintContextMenuItem_Click);
             // 
-            // unassignToolStripMenuItem
+            // markContextMenuItem
             // 
-            this.unassignToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unassignToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unassignToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unassignToolStripMenuItem.Image")));
-            this.unassignToolStripMenuItem.Name = "unassignToolStripMenuItem";
-            this.unassignToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.unassignToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.unassignToolStripMenuItem.Text = "Unassign";
-            this.unassignToolStripMenuItem.Click += new System.EventHandler(this.unassignToolStripMenuItem_Click);
+            this.markContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.markContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.markPriorityContextMenuItem,
+            this.markExcludedContextMenuItem});
+            this.markContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.markContextMenuItem.Name = "markContextMenuItem";
+            this.markContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.markContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.markContextMenuItem.Text = "Mark";
             // 
-            // removeNotificationToolStripMenuItem
+            // markPriorityContextMenuItem
             // 
-            this.removeNotificationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.removeNotificationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.priorityToolStripMenuItem,
-            this.companyUpdatedToolStripMenuItem,
-            this.contractInfoUpdatedToolStripMenuItem,
-            this.contractOverridenToolStripMenuItem,
-            this.excludedToolStripMenuItem,
-            this.itemChangedToolStripMenuItem});
-            this.removeNotificationToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeNotificationToolStripMenuItem.Name = "removeNotificationToolStripMenuItem";
-            this.removeNotificationToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.removeNotificationToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.removeNotificationToolStripMenuItem.Text = "Remove Notification";
-            this.removeNotificationToolStripMenuItem.Click += new System.EventHandler(this.removeWarningToolStripMenuItem_Click);
+            this.markPriorityContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.markPriorityContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.markPriorityContextMenuItem.Name = "markPriorityContextMenuItem";
+            this.markPriorityContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.markPriorityContextMenuItem.Size = new System.Drawing.Size(209, 42);
+            this.markPriorityContextMenuItem.Text = "Priority";
+            this.markPriorityContextMenuItem.Click += new System.EventHandler(this.markPriorityContextMenuItem_Click);
             // 
-            // priorityToolStripMenuItem
+            // markExcludedContextMenuItem
             // 
-            this.priorityToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.priorityToolStripMenuItem.Enabled = false;
-            this.priorityToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.priorityToolStripMenuItem.Name = "priorityToolStripMenuItem";
-            this.priorityToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.priorityToolStripMenuItem.Size = new System.Drawing.Size(351, 42);
-            this.priorityToolStripMenuItem.Text = "Priority";
+            this.markExcludedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.markExcludedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.markExcludedContextMenuItem.Name = "markExcludedContextMenuItem";
+            this.markExcludedContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.markExcludedContextMenuItem.Size = new System.Drawing.Size(209, 42);
+            this.markExcludedContextMenuItem.Text = "Excluded";
+            this.markExcludedContextMenuItem.Click += new System.EventHandler(this.markExcludedContextMenuItem_Click);
             // 
-            // companyUpdatedToolStripMenuItem
+            // unmarkToolStripMenuItem
             // 
-            this.companyUpdatedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.companyUpdatedToolStripMenuItem.Enabled = false;
-            this.companyUpdatedToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.companyUpdatedToolStripMenuItem.Name = "companyUpdatedToolStripMenuItem";
-            this.companyUpdatedToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.companyUpdatedToolStripMenuItem.Size = new System.Drawing.Size(351, 42);
-            this.companyUpdatedToolStripMenuItem.Text = "Company Updated";
+            this.unmarkToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.unmarkPriorityContextMenuItem,
+            this.unmarkCompanyUpdatedContextMenuItem,
+            this.unmarkContractInfoUpdatedContextMenuItem,
+            this.unmarkContractOverridenContextMenuItem,
+            this.unmarkExcludedContextMenuItem,
+            this.unmarkItemChangedContextMenuItem});
+            this.unmarkToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkToolStripMenuItem.Name = "unmarkToolStripMenuItem";
+            this.unmarkToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unmarkToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.unmarkToolStripMenuItem.Text = "Unmark";
             // 
-            // contractInfoUpdatedToolStripMenuItem
+            // unmarkPriorityContextMenuItem
             // 
-            this.contractInfoUpdatedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.contractInfoUpdatedToolStripMenuItem.Enabled = false;
-            this.contractInfoUpdatedToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.contractInfoUpdatedToolStripMenuItem.Name = "contractInfoUpdatedToolStripMenuItem";
-            this.contractInfoUpdatedToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.contractInfoUpdatedToolStripMenuItem.Size = new System.Drawing.Size(351, 42);
-            this.contractInfoUpdatedToolStripMenuItem.Text = "Contract Info Updated";
+            this.unmarkPriorityContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkPriorityContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkPriorityContextMenuItem.Name = "unmarkPriorityContextMenuItem";
+            this.unmarkPriorityContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unmarkPriorityContextMenuItem.Size = new System.Drawing.Size(351, 42);
+            this.unmarkPriorityContextMenuItem.Text = "Priority";
+            this.unmarkPriorityContextMenuItem.Click += new System.EventHandler(this.unmarkPriorityContextMenuItem_Click);
             // 
-            // contractOverridenToolStripMenuItem
+            // unmarkCompanyUpdatedContextMenuItem
             // 
-            this.contractOverridenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.contractOverridenToolStripMenuItem.Enabled = false;
-            this.contractOverridenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.contractOverridenToolStripMenuItem.Name = "contractOverridenToolStripMenuItem";
-            this.contractOverridenToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.contractOverridenToolStripMenuItem.Size = new System.Drawing.Size(351, 42);
-            this.contractOverridenToolStripMenuItem.Text = "Contract Overriden";
+            this.unmarkCompanyUpdatedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkCompanyUpdatedContextMenuItem.Enabled = false;
+            this.unmarkCompanyUpdatedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkCompanyUpdatedContextMenuItem.Name = "unmarkCompanyUpdatedContextMenuItem";
+            this.unmarkCompanyUpdatedContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unmarkCompanyUpdatedContextMenuItem.Size = new System.Drawing.Size(351, 42);
+            this.unmarkCompanyUpdatedContextMenuItem.Text = "Company Updated";
             // 
-            // excludedToolStripMenuItem
+            // unmarkContractInfoUpdatedContextMenuItem
             // 
-            this.excludedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.excludedToolStripMenuItem.Enabled = false;
-            this.excludedToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.excludedToolStripMenuItem.Name = "excludedToolStripMenuItem";
-            this.excludedToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.excludedToolStripMenuItem.Size = new System.Drawing.Size(351, 42);
-            this.excludedToolStripMenuItem.Text = "Excluded";
+            this.unmarkContractInfoUpdatedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkContractInfoUpdatedContextMenuItem.Enabled = false;
+            this.unmarkContractInfoUpdatedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkContractInfoUpdatedContextMenuItem.Name = "unmarkContractInfoUpdatedContextMenuItem";
+            this.unmarkContractInfoUpdatedContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unmarkContractInfoUpdatedContextMenuItem.Size = new System.Drawing.Size(351, 42);
+            this.unmarkContractInfoUpdatedContextMenuItem.Text = "Contract Info Updated";
             // 
-            // itemChangedToolStripMenuItem
+            // unmarkContractOverridenContextMenuItem
             // 
-            this.itemChangedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.itemChangedToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.itemChangedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("itemChangedToolStripMenuItem.Image")));
-            this.itemChangedToolStripMenuItem.Name = "itemChangedToolStripMenuItem";
-            this.itemChangedToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.itemChangedToolStripMenuItem.Size = new System.Drawing.Size(351, 42);
-            this.itemChangedToolStripMenuItem.Text = "Item Changed";
-            this.itemChangedToolStripMenuItem.Click += new System.EventHandler(this.removeWarningToolStripMenuItem_Click);
+            this.unmarkContractOverridenContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkContractOverridenContextMenuItem.Enabled = false;
+            this.unmarkContractOverridenContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkContractOverridenContextMenuItem.Name = "unmarkContractOverridenContextMenuItem";
+            this.unmarkContractOverridenContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unmarkContractOverridenContextMenuItem.Size = new System.Drawing.Size(351, 42);
+            this.unmarkContractOverridenContextMenuItem.Text = "Contract Overriden";
+            // 
+            // unmarkExcludedContextMenuItem
+            // 
+            this.unmarkExcludedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkExcludedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkExcludedContextMenuItem.Name = "unmarkExcludedContextMenuItem";
+            this.unmarkExcludedContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unmarkExcludedContextMenuItem.Size = new System.Drawing.Size(351, 42);
+            this.unmarkExcludedContextMenuItem.Text = "Excluded";
+            this.unmarkExcludedContextMenuItem.Click += new System.EventHandler(this.unmarkExcludedContextMenuItem_Click);
+            // 
+            // unmarkItemChangedContextMenuItem
+            // 
+            this.unmarkItemChangedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkItemChangedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkItemChangedContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unmarkItemChangedContextMenuItem.Image")));
+            this.unmarkItemChangedContextMenuItem.Name = "unmarkItemChangedContextMenuItem";
+            this.unmarkItemChangedContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unmarkItemChangedContextMenuItem.Size = new System.Drawing.Size(351, 42);
+            this.unmarkItemChangedContextMenuItem.Text = "Item Changed";
+            this.unmarkItemChangedContextMenuItem.Click += new System.EventHandler(this.removeWarningContextMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -5160,124 +5385,149 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(496, 2);
             // 
-            // findAndFillCompanyToolStripMenuItem
+            // modifyContextMenuItem
             // 
-            this.findAndFillCompanyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.findAndFillCompanyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.findAndFillCompanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("findAndFillCompanyToolStripMenuItem.Image")));
-            this.findAndFillCompanyToolStripMenuItem.Name = "findAndFillCompanyToolStripMenuItem";
-            this.findAndFillCompanyToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.findAndFillCompanyToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.findAndFillCompanyToolStripMenuItem.Text = "Find Company";
-            this.findAndFillCompanyToolStripMenuItem.Click += new System.EventHandler(this.findAndFillCompanyToolStripMenuItem_Click);
+            this.modifyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.modifyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.modifyContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modifyContextMenuItem.Image")));
+            this.modifyContextMenuItem.Name = "modifyContextMenuItem";
+            this.modifyContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.modifyContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.modifyContextMenuItem.Text = "Modify";
+            this.modifyContextMenuItem.Click += new System.EventHandler(this.modifyContextMenuItem_Click);
             // 
-            // findAndOverrideContractInfoToolStripMenuItem
+            // extractContextMenuItem
             // 
-            this.findAndOverrideContractInfoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.findAndOverrideContractInfoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.findAndOverrideContractInfoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("findAndOverrideContractInfoToolStripMenuItem.Image")));
-            this.findAndOverrideContractInfoToolStripMenuItem.Name = "findAndOverrideContractInfoToolStripMenuItem";
-            this.findAndOverrideContractInfoToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.findAndOverrideContractInfoToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.findAndOverrideContractInfoToolStripMenuItem.Text = "Pull Contract Information";
-            this.findAndOverrideContractInfoToolStripMenuItem.Click += new System.EventHandler(this.findAndOverrideContractInfoToolStripMenuItem_Click);
+            this.extractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.extractContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.extractCompanyContextMenuItem,
+            this.extractContractContextMenuItem});
+            this.extractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.extractContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("extractContextMenuItem.Image")));
+            this.extractContextMenuItem.Name = "extractContextMenuItem";
+            this.extractContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.extractContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.extractContextMenuItem.Text = "Extract";
             // 
-            // setStatusAndAssignmentToolStripMenuItem
+            // extractCompanyContextMenuItem
             // 
-            this.setStatusAndAssignmentToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.setStatusAndAssignmentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setAssignmentManualToolStripComboBox,
-            this.setAssignmentFindToolStripMenuItem});
-            this.setStatusAndAssignmentToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.setStatusAndAssignmentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setStatusAndAssignmentToolStripMenuItem.Image")));
-            this.setStatusAndAssignmentToolStripMenuItem.Name = "setStatusAndAssignmentToolStripMenuItem";
-            this.setStatusAndAssignmentToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.setStatusAndAssignmentToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.setStatusAndAssignmentToolStripMenuItem.Text = "Set Assignment";
+            this.extractCompanyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.extractCompanyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.extractCompanyContextMenuItem.Name = "extractCompanyContextMenuItem";
+            this.extractCompanyContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.extractCompanyContextMenuItem.Size = new System.Drawing.Size(216, 42);
+            this.extractCompanyContextMenuItem.Text = "Company";
+            this.extractCompanyContextMenuItem.Click += new System.EventHandler(this.extractCompanyContextMenuItem_Click);
             // 
-            // setAssignmentManualToolStripComboBox
+            // extractContractContextMenuItem
             // 
-            this.setAssignmentManualToolStripComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.setAssignmentManualToolStripComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.setAssignmentManualToolStripComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.setAssignmentManualToolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.setAssignmentManualToolStripComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.setAssignmentManualToolStripComboBox.Font = new System.Drawing.Font("Segoe UI", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setAssignmentManualToolStripComboBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.setAssignmentManualToolStripComboBox.Name = "setAssignmentManualToolStripComboBox";
-            this.setAssignmentManualToolStripComboBox.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.setAssignmentManualToolStripComboBox.Size = new System.Drawing.Size(324, 33);
-            this.setAssignmentManualToolStripComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.setAssignmentManualToolStripComboBox_KeyDown);
+            this.extractContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.extractContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.extractContractContextMenuItem.Name = "extractContractContextMenuItem";
+            this.extractContractContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.extractContractContextMenuItem.Size = new System.Drawing.Size(216, 42);
+            this.extractContractContextMenuItem.Text = "Contract";
+            this.extractContractContextMenuItem.Click += new System.EventHandler(this.extractContractContextMenuItem_Click);
             // 
-            // setAssignmentFindToolStripMenuItem
+            // appendContextMenuItem
             // 
-            this.setAssignmentFindToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.setAssignmentFindToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.setAssignmentFindToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setAssignmentFindToolStripMenuItem.Image")));
-            this.setAssignmentFindToolStripMenuItem.Name = "setAssignmentFindToolStripMenuItem";
-            this.setAssignmentFindToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.setAssignmentFindToolStripMenuItem.Size = new System.Drawing.Size(408, 42);
-            this.setAssignmentFindToolStripMenuItem.Text = "Find";
-            this.setAssignmentFindToolStripMenuItem.Click += new System.EventHandler(this.setAnalystToolStripMenuItem_Click);
+            this.appendContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appendCompanyContextMenuItem,
+            this.appendContractContextMenuItem,
+            this.appendAssignmentContextMenuItem,
+            this.appendStatusAndAssignmentContextMenuItem});
+            this.appendContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendContextMenuItem.Image")));
+            this.appendContextMenuItem.Name = "appendContextMenuItem";
+            this.appendContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.appendContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.appendContextMenuItem.Text = "Append";
             // 
-            // appendToolStripMenuItem
+            // appendCompanyContextMenuItem
             // 
-            this.appendToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.appendCompanyToolStripMenuItem,
-            this.appendContractInformationToolStripMenuItem,
-            this.appendAssignmentToolStripMenuItem,
-            this.appendStatusAndAssignmentToolStripMenuItem});
-            this.appendToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendToolStripMenuItem.Image")));
-            this.appendToolStripMenuItem.Name = "appendToolStripMenuItem";
-            this.appendToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.appendToolStripMenuItem.Size = new System.Drawing.Size(499, 42);
-            this.appendToolStripMenuItem.Text = "Append";
+            this.appendCompanyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendCompanyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendCompanyContextMenuItem.Name = "appendCompanyContextMenuItem";
+            this.appendCompanyContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.appendCompanyContextMenuItem.Size = new System.Drawing.Size(357, 42);
+            this.appendCompanyContextMenuItem.Text = "Company";
+            this.appendCompanyContextMenuItem.Click += new System.EventHandler(this.appendCompaniesContextMenuItem_Click);
             // 
-            // appendCompanyToolStripMenuItem
+            // appendContractContextMenuItem
             // 
-            this.appendCompanyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendCompanyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendCompanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendCompanyToolStripMenuItem.Image")));
-            this.appendCompanyToolStripMenuItem.Name = "appendCompanyToolStripMenuItem";
-            this.appendCompanyToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.appendCompanyToolStripMenuItem.Size = new System.Drawing.Size(357, 42);
-            this.appendCompanyToolStripMenuItem.Text = "Company";
-            this.appendCompanyToolStripMenuItem.Click += new System.EventHandler(this.appendCompaniesToolStripMenuItem_Click);
+            this.appendContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendContractContextMenuItem.Name = "appendContractContextMenuItem";
+            this.appendContractContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.appendContractContextMenuItem.Size = new System.Drawing.Size(357, 42);
+            this.appendContractContextMenuItem.Text = "Contract Information";
+            this.appendContractContextMenuItem.Click += new System.EventHandler(this.appendContractContextMenuItem_Click);
             // 
-            // appendContractInformationToolStripMenuItem
+            // appendAssignmentContextMenuItem
             // 
-            this.appendContractInformationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendContractInformationToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendContractInformationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendContractInformationToolStripMenuItem.Image")));
-            this.appendContractInformationToolStripMenuItem.Name = "appendContractInformationToolStripMenuItem";
-            this.appendContractInformationToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.appendContractInformationToolStripMenuItem.Size = new System.Drawing.Size(357, 42);
-            this.appendContractInformationToolStripMenuItem.Text = "Contract Information";
-            this.appendContractInformationToolStripMenuItem.Click += new System.EventHandler(this.appendContractInformationToolStripMenuItem_Click);
+            this.appendAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendAssignmentContextMenuItem.Name = "appendAssignmentContextMenuItem";
+            this.appendAssignmentContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.appendAssignmentContextMenuItem.Size = new System.Drawing.Size(357, 42);
+            this.appendAssignmentContextMenuItem.Text = "Assignment";
+            this.appendAssignmentContextMenuItem.Click += new System.EventHandler(this.appendAssignmentContextMenuItem_Click);
             // 
-            // appendAssignmentToolStripMenuItem
+            // appendStatusAndAssignmentContextMenuItem
             // 
-            this.appendAssignmentToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendAssignmentToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendAssignmentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendAssignmentToolStripMenuItem.Image")));
-            this.appendAssignmentToolStripMenuItem.Name = "appendAssignmentToolStripMenuItem";
-            this.appendAssignmentToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.appendAssignmentToolStripMenuItem.Size = new System.Drawing.Size(357, 42);
-            this.appendAssignmentToolStripMenuItem.Text = "Assignment";
-            this.appendAssignmentToolStripMenuItem.Click += new System.EventHandler(this.appendAssignmentToolStripMenuItem_Click);
+            this.appendStatusAndAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendStatusAndAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendStatusAndAssignmentContextMenuItem.Name = "appendStatusAndAssignmentContextMenuItem";
+            this.appendStatusAndAssignmentContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.appendStatusAndAssignmentContextMenuItem.Size = new System.Drawing.Size(357, 42);
+            this.appendStatusAndAssignmentContextMenuItem.Text = "Status and Assignment";
+            this.appendStatusAndAssignmentContextMenuItem.Click += new System.EventHandler(this.appendStatusAndAssignmentContextMenuItem_Click);
             // 
-            // appendStatusAndAssignmentToolStripMenuItem
+            // setAssignmentContextMenuItem
             // 
-            this.appendStatusAndAssignmentToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendStatusAndAssignmentToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendStatusAndAssignmentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendStatusAndAssignmentToolStripMenuItem.Image")));
-            this.appendStatusAndAssignmentToolStripMenuItem.Name = "appendStatusAndAssignmentToolStripMenuItem";
-            this.appendStatusAndAssignmentToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.appendStatusAndAssignmentToolStripMenuItem.Size = new System.Drawing.Size(357, 42);
-            this.appendStatusAndAssignmentToolStripMenuItem.Text = "Status and Assignment";
-            this.appendStatusAndAssignmentToolStripMenuItem.Click += new System.EventHandler(this.appendStatusAndAssignmentToolStripMenuItem_Click);
+            this.setAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.setAssignmentContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setAssignmentFindContextMenuItem,
+            this.setAssignmentManuallyContextMenuItem});
+            this.setAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.setAssignmentContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setAssignmentContextMenuItem.Image")));
+            this.setAssignmentContextMenuItem.Name = "setAssignmentContextMenuItem";
+            this.setAssignmentContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.setAssignmentContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.setAssignmentContextMenuItem.Text = "Set Assignment";
+            // 
+            // setAssignmentFindContextMenuItem
+            // 
+            this.setAssignmentFindContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.setAssignmentFindContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.setAssignmentFindContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setAssignmentFindContextMenuItem.Image")));
+            this.setAssignmentFindContextMenuItem.Name = "setAssignmentFindContextMenuItem";
+            this.setAssignmentFindContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.setAssignmentFindContextMenuItem.Size = new System.Drawing.Size(253, 42);
+            this.setAssignmentFindContextMenuItem.Text = "Find";
+            this.setAssignmentFindContextMenuItem.Click += new System.EventHandler(this.setAssignmentFindContextMenuItem_Click);
+            // 
+            // setAssignmentManuallyContextMenuItem
+            // 
+            this.setAssignmentManuallyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.setAssignmentManuallyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.setAssignmentManuallyContextMenuItem.Name = "setAssignmentManuallyContextMenuItem";
+            this.setAssignmentManuallyContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.setAssignmentManuallyContextMenuItem.Size = new System.Drawing.Size(253, 42);
+            this.setAssignmentManuallyContextMenuItem.Text = "Set Manually";
+            this.setAssignmentManuallyContextMenuItem.Click += new System.EventHandler(this.setAssignmentManuallyContextMenuItem_Click);
+            // 
+            // unassignContextMenuItem
+            // 
+            this.unassignContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unassignContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unassignContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unassignContextMenuItem.Image")));
+            this.unassignContextMenuItem.Name = "unassignContextMenuItem";
+            this.unassignContextMenuItem.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.unassignContextMenuItem.Size = new System.Drawing.Size(499, 42);
+            this.unassignContextMenuItem.Text = "Unassign";
+            this.unassignContextMenuItem.Click += new System.EventHandler(this.unassignContextMenuItem_Click);
             // 
             // symbolsImageList
             // 
@@ -5308,14 +5558,14 @@
             // 
             this.splitContainerParent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.splitContainerParent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerParent.Location = new System.Drawing.Point(0, 42);
+            this.splitContainerParent.Location = new System.Drawing.Point(0, 40);
             this.splitContainerParent.Name = "splitContainerParent";
             this.splitContainerParent.Panel1Collapsed = true;
             // 
             // splitContainerParent.Panel2
             // 
             this.splitContainerParent.Panel2.Controls.Add(this.splitContainerChild1);
-            this.splitContainerParent.Size = new System.Drawing.Size(2534, 1289);
+            this.splitContainerParent.Size = new System.Drawing.Size(2534, 1291);
             this.splitContainerParent.SplitterDistance = 422;
             this.splitContainerParent.TabIndex = 0;
             this.splitContainerParent.TabStop = false;
@@ -5323,9 +5573,9 @@
             // importWorkflowItemsBackgroundWorker
             // 
             this.importWorkflowItemsBackgroundWorker.WorkerReportsProgress = true;
-            this.importWorkflowItemsBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importBackgroundWorker_DoWork);
+            this.importWorkflowItemsBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importWorkflowCSVBackgroundWorker_DoWork);
             this.importWorkflowItemsBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
-            this.importWorkflowItemsBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.importBackgroundWorker_RunWorkerCompleted);
+            this.importWorkflowItemsBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.importWorkflowCSVBackgroundWorker_RunWorkerCompleted);
             // 
             // saveBackgroundWorker
             // 
@@ -5500,128 +5750,12 @@
             this.updateContractInformationBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateContractInformationBackgroundWorker_DoWork);
             this.updateContractInformationBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.updateContractInformationBackgroundWorker_RunWorkerCompleted);
             // 
-            // workflowItemsListView
+            // importFromDBBackGroundWorker
             // 
-            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.workflowItemsListView.CheckBoxes = true;
-            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.countColumnHeader,
-            this.itemIdColumnHeader,
-            this.companyColumnHeader,
-            this.contractIdColumnHeader,
-            this.dateColumnHeader,
-            this.senderColumnHeader,
-            this.emailSubjectColumnHeader,
-            this.fileNameColumnHeader,
-            this.sizeColumnHeader,
-            this.fileUrlColumnHeader,
-            this.assignedToColumnHeader,
-            this.statusColumnHeader});
-            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
-            this.workflowItemsListView.FullRowSelect = true;
-            this.workflowItemsListView.HideSelection = false;
-            this.workflowItemsListView.LabelWrap = false;
-            this.workflowItemsListView.Location = new System.Drawing.Point(15, 65);
-            this.workflowItemsListView.Name = "workflowItemsListView";
-            this.workflowItemsListView.OwnerDraw = true;
-            this.workflowItemsListView.Size = new System.Drawing.Size(2501, 362);
-            this.workflowItemsListView.TabIndex = 1;
-            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
-            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
-            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
-            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
-            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
-            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
-            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
-            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
-            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
-            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
-            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
-            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
-            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
-            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
-            // 
-            // countColumnHeader
-            // 
-            this.countColumnHeader.Text = "";
-            this.countColumnHeader.Width = 128;
-            // 
-            // itemIdColumnHeader
-            // 
-            this.itemIdColumnHeader.Text = "Item ID";
-            this.itemIdColumnHeader.Width = 140;
-            // 
-            // companyColumnHeader
-            // 
-            this.companyColumnHeader.Text = "Company";
-            this.companyColumnHeader.Width = 168;
-            // 
-            // contractIdColumnHeader
-            // 
-            this.contractIdColumnHeader.Text = "Contract";
-            this.contractIdColumnHeader.Width = 140;
-            // 
-            // dateColumnHeader
-            // 
-            this.dateColumnHeader.Text = "Date";
-            this.dateColumnHeader.Width = 138;
-            // 
-            // senderColumnHeader
-            // 
-            this.senderColumnHeader.Text = "Sender";
-            this.senderColumnHeader.Width = 188;
-            // 
-            // emailSubjectColumnHeader
-            // 
-            this.emailSubjectColumnHeader.Text = "Email Subject";
-            this.emailSubjectColumnHeader.Width = 230;
-            // 
-            // fileNameColumnHeader
-            // 
-            this.fileNameColumnHeader.Text = "File Name";
-            this.fileNameColumnHeader.Width = 338;
-            // 
-            // sizeColumnHeader
-            // 
-            this.sizeColumnHeader.Text = "Size";
-            this.sizeColumnHeader.Width = 104;
-            // 
-            // fileUrlColumnHeader
-            // 
-            this.fileUrlColumnHeader.Text = "File URL";
-            this.fileUrlColumnHeader.Width = 178;
-            // 
-            // assignedToColumnHeader
-            // 
-            this.assignedToColumnHeader.Text = "Assigned To";
-            this.assignedToColumnHeader.Width = 164;
-            // 
-            // statusColumnHeader
-            // 
-            this.statusColumnHeader.Text = "Status";
-            this.statusColumnHeader.Width = 138;
-            // 
-            // searchTbx
-            // 
-            this.searchTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.searchTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F);
-            this.searchTbx.ForeColor = System.Drawing.Color.Gray;
-            this.searchTbx.Location = new System.Drawing.Point(33, 2);
-            this.searchTbx.Name = "searchTbx";
-            this.searchTbx.PlaceHolderText = null;
-            this.searchTbx.Size = new System.Drawing.Size(201, 24);
-            this.searchTbx.TabIndex = 0;
-            this.searchTbx.TabStop = false;
-            this.searchTbx.Text = "Search Item";
-            this.buttonDescToolTip.SetToolTip(this.searchTbx, "Search Current View (Ctrl+F)");
-            this.searchTbx.TextChanged += new System.EventHandler(this.searchTbx_TextChanged);
-            this.searchTbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTbx_KeyDown);
+            this.importFromDBBackGroundWorker.WorkerReportsProgress = true;
+            this.importFromDBBackGroundWorker.WorkerSupportsCancellation = true;
+            this.importFromDBBackGroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importFromDBBackGroundWorker_DoWork);
+            this.importFromDBBackGroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.importFromDBBackGroundWorker_RunWorkerCompleted);
             // 
             // WorkflowManager
             // 
@@ -5637,10 +5771,10 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.formMenuStrip);
             this.DoubleBuffered = true;
-            this.ForeColor = System.Drawing.Color.Red;
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "WorkflowManager";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Workflow Manager v3.0";
             this.Click += new System.EventHandler(this.certusConnectionBtn_Click);
@@ -5652,6 +5786,7 @@
             this.splitContainerChild1.ResumeLayout(false);
             this.listViewOptionsPanel.ResumeLayout(false);
             this.listViewOptionsPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.dividerPanel2.ResumeLayout(false);
             this.dividerPanel.ResumeLayout(false);
             this.splitContainerChild2.Panel1.ResumeLayout(false);
@@ -5792,8 +5927,8 @@
         private System.Windows.Forms.ListBox queriedItemsListbox;
         private System.Windows.Forms.Button openLinkBtn;
         private System.Windows.Forms.ContextMenuStrip listViewContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createReferencesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createReferencesContextMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ImageList symbolsImageList;
         private System.Windows.Forms.Button bulkCheckBtn;
@@ -5955,7 +6090,7 @@
         private System.Windows.Forms.Button clearItemDetailsBtn;
         private System.Windows.Forms.Button copyIdsBtn2;
         private System.Windows.Forms.Button deselectBtn;
-        private System.Windows.Forms.Button removeColorBtn;
+        private System.Windows.Forms.Button removePaintBtn;
         private System.Windows.Forms.Panel listViewOptionsPanel;
         private System.Windows.Forms.Button openInCertusBtn;
         private System.Windows.Forms.ToolStripMenuItem performAction2ToolStripMenuItem;
@@ -5976,17 +6111,15 @@
         private System.Windows.Forms.ToolStripMenuItem addRelatedFilesDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateContractDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem copyIDsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openLinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeColorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem paintToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyIDsContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openLinksContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removePaintContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem paintContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToExportContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeFromExportContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem markCompletedContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem markTrashContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeNotificationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unmarkToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem findAndFillCompanyToolStripMenuItem;
         private System.Windows.Forms.Button itemExcludedBtn;
         private System.Windows.Forms.Button companyUpdatedBtn;
         private System.Windows.Forms.Button contractInformationUpdatedBtn;
@@ -5994,23 +6127,21 @@
         private System.ComponentModel.BackgroundWorker fillCompanyBackgroundWorker;
         private System.ComponentModel.BackgroundWorker fillContractInformationBackgroundWorker;
         private System.ComponentModel.BackgroundWorker fillAssignmentAndStatusBackgroundWorker;
-        private System.Windows.Forms.ToolStripMenuItem markExcludedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem findAndOverrideContractInfoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setStatusAndAssignmentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setAssignmentContextMenuItem;
         private System.ComponentModel.BackgroundWorker fillAssignmentBackgroundWorker;
         private System.ComponentModel.BackgroundWorker setAnalystFromCompanyBackgroundWorker;
         private System.ComponentModel.BackgroundWorker setAnalystFromMarketBackgroundWorker;
         private System.ComponentModel.BackgroundWorker setAnalystFromCertificateBackgroundWorker;
         private System.ComponentModel.BackgroundWorker findAndFillCompanyBackgroundWorker;
-        private System.Windows.Forms.ToolStripMenuItem unassignToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unassignContextMenuItem;
         private System.ComponentModel.BackgroundWorker findAndOverrideContractInformationBackgroundWorker;
         private System.ComponentModel.BackgroundWorker updateContractInformationBackgroundWorker;
         private System.Windows.Forms.Panel detailNotificationsPanel;
-        private System.Windows.Forms.ToolStripMenuItem appendToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appendCompanyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appendContractInformationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appendAssignmentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appendStatusAndAssignmentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appendContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appendCompanyContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appendContractContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appendAssignmentContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appendStatusAndAssignmentContextMenuItem;
         private System.Windows.Forms.ColumnHeader contractIdColumnHeader;
         private System.Windows.Forms.Button redrawItemsBtn;
         private System.Windows.Forms.Button contrastItemGroupsBtn;
@@ -6108,13 +6239,27 @@
         private System.Windows.Forms.TextBox assignedToTbx;
         private System.Windows.Forms.Button focusDetailPanelBtn10;
         private System.Windows.Forms.Button priorityNotificationBtn;
-        private System.Windows.Forms.ToolStripMenuItem priorityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem companyUpdatedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contractInfoUpdatedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contractOverridenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem excludedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemChangedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setAssignmentFindToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox setAssignmentManualToolStripComboBox;
+        private System.Windows.Forms.ToolStripMenuItem unmarkPriorityContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unmarkCompanyUpdatedContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unmarkContractInfoUpdatedContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unmarkContractOverridenContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unmarkExcludedContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unmarkItemChangedContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setAssignmentFindContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markPriorityContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markExcludedContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem getIDsForAnalystsToolStripMenuItem;
+        private System.Windows.Forms.Button lockListViewColumnSizingBtn;
+        private System.Windows.Forms.ToolStripMenuItem setAssignmentManuallyContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyWithHeadersContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectAllContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifyContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractCompanyContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractContractContextMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button importFromDatabaseBtn;
+        private System.ComponentModel.BackgroundWorker importFromDBBackGroundWorker;
     }
 }
