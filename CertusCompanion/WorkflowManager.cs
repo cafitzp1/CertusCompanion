@@ -167,7 +167,7 @@ namespace CertusCompanion
 
         #endregion Data Declaration
 
-        // ----- REGION APPLICATION STARTUP ----- //
+        // ----- APPLICATION STARTUP ----- //
         #region Application Startup
 
         internal WorkflowManager()
@@ -412,7 +412,7 @@ namespace CertusCompanion
 
         #endregion Application Startup
 
-        // ----- REGION TOOL STRIP MENU ----- //
+        // ----- TOOL STRIP MENU ----- //
         #region Tool Strip Menu 
 
         //File
@@ -1138,7 +1138,7 @@ namespace CertusCompanion
 
         #endregion Tool Strip Menu
 
-        // ----- REGION SEARCH FUNCTIONALITY ----- //
+        // ----- SEARCH FUNCTIONALITY ----- //
         #region Search Functionality
 
         private void matchCaseBtn_Click(object sender, EventArgs e)
@@ -1345,7 +1345,7 @@ namespace CertusCompanion
 
         #endregion Search Functionality
 
-        // ----- REGION START PROCESSES ----- //
+        // ----- START PROCESSES ----- //
         #region Start Processes
 
         private void ItemsViewForm_OpenCertificate(object sender, string[] certificatesIds)
@@ -1360,7 +1360,7 @@ namespace CertusCompanion
 
         #endregion Start Processes
 
-        // ----- REGION LISTVIEW OPTIONS ----- //
+        // ----- LISTVIEW OPTIONS ----- //
         #region ListView Options
 
         private void checkInBulkBtn_Click(object sender, EventArgs e)
@@ -3468,7 +3468,7 @@ namespace CertusCompanion
 
         #endregion ListView Options
 
-        // ----- REGION LISTVIEW APPEARANCE AND BEHAVIOR ----- //
+        // ----- LISTVIEW APPEARANCE AND BEHAVIOR ----- //
         #region ListView Appearance and Behavior
 
         private void workflowItemsListView_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -4278,7 +4278,7 @@ namespace CertusCompanion
 
         #endregion ListView Appearance and Behavior
 
-        // ----- REGION ITEM DETAIL OPTIONS ----- //
+        // ----- ITEM DETAIL OPTIONS ----- //
         #region Item Detail Options
 
         #region Item Buttons/Tabs
@@ -5089,7 +5089,7 @@ namespace CertusCompanion
 
         #endregion Item Detail Options
 
-        // ----- REGION ITEM DETAIL APPEARANCE AND BEHAVIOR ----- //
+        // ----- ITEM DETAIL APPEARANCE AND BEHAVIOR ----- //
         #region Item Detail Appearance and Behavior
 
         private void UpdateItemButtonAppearance()
@@ -5343,7 +5343,7 @@ namespace CertusCompanion
 
         #endregion Item Detail Appearance and Behavior
 
-        // ----- REGION QUERY PANEL ----- //
+        // ----- QUERY PANEL ----- //
         #region Query Panel
 
         #region Query Options
@@ -6858,7 +6858,7 @@ namespace CertusCompanion
 
         #endregion Query Panel
 
-        // ----- REGION IMPORTS PANEL ----- //
+        // ----- IMPORTS PANEL ----- //
         #region Imports Panel
 
         private void itemImportsLbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -6898,7 +6898,7 @@ namespace CertusCompanion
 
         #endregion Imports Panel
 
-        // ----- REGION STATUS STRIP ----- //
+        // ----- STATUS STRIP ----- //
         #region Status Strip
 
         private void checkedToolStripDropDownButton_Click(object sender, EventArgs e)
@@ -7082,7 +7082,7 @@ namespace CertusCompanion
 
         #endregion Status Strip
 
-        // ----- REGION FORM MANEUVERABILITY ----- //
+        // ----- FORM MANEUVERABILITY ----- //
         #region Form Maneuverability
 
         private void focusDetailPanelBtn_Click(object sender, EventArgs e)
@@ -7527,7 +7527,7 @@ namespace CertusCompanion
 
         #endregion Form Maneuverability
 
-        // ----- REGION FORM APPEARANCE AND BEHAVIOR ----- //
+        // ----- FORM APPEARANCE AND BEHAVIOR ----- //
         #region Form Appearance and Behavior
 
         private void WorkflowManager_Resize(object sender, EventArgs e)
@@ -7569,7 +7569,7 @@ namespace CertusCompanion
 
         #endregion Form Appearance and Behavior
 
-        // ----- REGION PULL/EDIT DATA ----- //
+        // ----- PULL/EDIT DATA ----- //
         #region Pull/Edit Data
 
         private ListViewItem GetListViewItemFromWorkFlowItem(WorkflowItem item)
@@ -7832,7 +7832,7 @@ namespace CertusCompanion
 
         #endregion Pull/Edit Data
 
-        // ----- REGION POPULATE DATA ----- //
+        // ----- POPULATE DATA ----- //
         #region Populate Data
 
         public void PopulateListViewData(List<WorkflowItem> workflowItemListToPopulate)
@@ -8046,7 +8046,7 @@ namespace CertusCompanion
 
         #endregion Populate Data
 
-        // ----- REGION LONG PROCESS TASKS ----- //
+        // ----- LONG PROCESS TASKS ----- //
         #region Long Process Tasks
 
         #region Load App Data
@@ -11733,7 +11733,7 @@ namespace CertusCompanion
 
         #endregion Long Process Tasks
         
-        // ----- REGION OTHER ----- //
+        // ----- OTHER ----- //
         #region Other
 
         #region Mouse Hover Info
