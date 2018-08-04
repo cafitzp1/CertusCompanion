@@ -23,42 +23,44 @@ namespace CertusCompanion
 {
     public partial class WorkflowManager : Form
     {
-        // ----- REGION VARIABLE DECLARATIONS ----- //
-        #region Variable Declarations
+        // ----- DATA DECLARATIONS ----- //
+        #region Data Declaration
 
-        // --- FIELDS --- //
-        private WorkflowItemDatabase workflowItemDatabase;
-        private AppSave appSave;
-        private AppData appData;
-        private ItemImports itemImportsList;
-        private ItemsCompletedReports itemsCompletedReportsList;
-        private List<WorkflowItem> allWorkflowItemsLoaded;
-        private List<WorkflowItemCSVImport> allWorkflowItemCSVImportsLoaded;
-        private List<ItemsCompletedReport> allItemsCompletedReportsLoaded;
-        private WorkflowItemCSVImport currentWorkflowItemCSVImport;
-        private Filter currentFilter;
-        private ItemsCompletedReport currentCompletedReport;
-        private List<WorkflowItem> currentWorkflowItems;
-        private List<WorkflowItem> temporaryExportList;
-        private List<WorkflowItem> searchResultsList;
-        private List<Certificate> allCertificatesLoaded;
-        private BrowserForm certusBrowser;
-        private List<Company> allCompaniesLoaded;
-        private ListViewItem listViewItemCheckedChanging;
-        private NoteForm note;
-        private Form transparentForm;
-        private ItemsView itemViewForm;
-        private FiltersForm filterForm;
-        private WorkflowItem selectedWorkflowItem;
-        private ListViewItem previousItem;
-        private ListViewHitTestInfo hoverItem;
-        private ListViewHitTestInfo clickedItem;
-        private Color colorDialogSelection;
-        private Button[] itemButtons;
-        private Panel[] detailPanels;
-        private Button[] focusDetailPanelBtns;
-        private ListViewItem lastCheckedItem;
-        private ListViewItem shiftItemBeingChecked;
+        // Instances
+        internal WorkflowItemDatabase WorkflowItemDatabase { get; set; }
+        internal AppSave AppSave { get; set; }
+        internal AppData AppData { get; set; }
+        internal ItemImports ItemImportsList { get; set; }
+        internal ItemsCompletedReports ItemsCompletedReportsList { get; set; }
+        internal List<WorkflowItemCSVImport> AllItemImportsLoaded { get; set; }
+        internal List<ItemsCompletedReport> AllItemsCompletedReportsLoaded { get; set; }
+        internal WorkflowItemCSVImport CurrentImport { get; set; }
+        internal Filter CurrentFilter { get; set; }
+        internal WorkflowItemCSVImport SelectedImport { get; set; }
+        internal ItemsCompletedReport SelectedReport { get; set; }
+        internal NoteForm Note { get; set; }
+        internal Form TransparentForm { get; set; }
+        internal ItemsView ItemViewForm { get; set; }
+        internal FiltersForm FilterForm { get; set; }
+        internal WorkflowItem SelectedWorkflowItem { get; set; }
+        internal ListViewItem PreviousItem { get; set; }
+        internal BetterBrowser BetterBrowser { get; set; }
+        internal ThemeColors ThemeColors { get; set; }
+        internal MyRenderer CustomRenderer { get; set; }
+        internal LoadingForm LoadingForm { get; set; }
+        internal ModifyForm ModifyForm { get; set; }
+        internal ImportFromDatabaseForm ImportFromDBForm { get; set; }
+        internal BrowserForm CertusBrowser { get; set; }
+        internal WorkflowItemCSVImport CurrentWorkflowItemCSVImport { get; set; }
+        internal ItemsCompletedReport CurrentCompletedReport { get; set; }
+
+        // Lists
+        internal List<WorkflowItem> AllWorkflowItemsLoaded { get; set; }
+        internal List<WorkflowItem> CurrentWorkflowItems { get; set; }
+        internal List<WorkflowItem> SearchResultsList { get; set; }
+        internal List<WorkflowItem> TemporaryExportList { get; set; }
+        internal List<Certificate> AllCertificatesLoaded { get; set; }
+        internal List<Company> AllCompaniesLoaded { get; set; }
         private List<WorkflowItem> uniqueWorkflowItems;
         private List<WorkflowItem> workflowItemListPopulated;
         private List<WorkflowItem> imageWorkflowItems;
@@ -73,108 +75,97 @@ namespace CertusCompanion
         private List<ListViewItem> dupCertLvItems;
         private List<ListViewItem> dupCertOriginalLvItems;
         private List<ListViewItem> lvItemsShowing;
-        private ListViewColumnSorter lvwColumnSorter;
+        private List<WorkflowItem> currentWorkflowItems;
+        private List<WorkflowItem> temporaryExportList;
+        private List<ItemsCompletedReport> allItemsCompletedReportsLoaded;
         private List<string> excludedItems;
+        private List<string> companiesWhichHadDifferentAnalysts;
+        
+        // Dictionaries
+        private Dictionary<string, Company> companyDictionary;
+        private Dictionary<string, string> companyNameDictionary;
+        private Dictionary<string, List<Contact>> companyContactDictionary;
+        private Dictionary<string, Color> itemGroupsSortedColors;
+        private Dictionary<string, string> marketAssignments;
+        private Dictionary<string, WorkflowItem> workflowItemDictionary;
+        private Dictionary<string, string> systemUserIDsDictionary;
+        private Dictionary<string, Certificate> certificateDictionary;
+
+        // Objects
+        private Color currentColor;
+        private SolidBrush spaceDarkBrush;
+        private SolidBrush spaceLightBrush;
+        private SolidBrush spaceLightOffBrush;
+        private Panel selectedPanel;
+        private ListViewItem listViewItemCheckedChanging;
+        private ListViewHitTestInfo hoverItem;
+        private ListViewHitTestInfo clickedItem;
+        private Color colorDialogSelection;
+        private Button[] itemButtons;
+        private Panel[] detailPanels;
+        private Button[] focusDetailPanelBtns;
+        private ListViewItem lastCheckedItem;
+        private ListViewItem shiftItemBeingChecked;
+        private ListViewColumnSorter lvwColumnSorter;
+
+        // Variables
+        private string previousEmailDate;
+        private string previousSender;
         private string searchVal;
-        private int searchIndex;
         private string previousSearch;
-        private int nextAvailableButton = 1;
-        private int countOfListViewItems;
-        private bool fullView = false;
-        private int currentSplitter1Distance = 0;
-        private bool itemCheckedEventIgnored;
-        private bool selectedIndexChangedEventIgnored;
-        private bool ignoreThisSaveBtnTabPress;
-        private bool ignoreThisSelectedIndexChanged = false;
-        private WorkflowItemCSVImport selectedImport;
-        private ItemsCompletedReport selectedReport;
-        private const int tab_margin = 3;
-        private string excludedItemsFileName;
-        private int splitContainerChild1Panel2MinSize;
-        private string importFileName = "";
-        private int importFilesSelected = 0;
-        private int importFileBeingWorkedOn = 0;
-        private string selectSelection = "";
-        private string fromSelection = "";
-        private string whereSelection = "";
-        private bool showExcludedItems = false;
-        private bool matchSearchResultsCase = false;
         private string bindedColor1 = "Default";
         private string bindedColor2 = "Gray";
         private string bindedColor3 = "Teal";
         private string bindedColor4 = "Blue";
         private string bindedColor5 = "Black";
-        private LoadingForm loadingForm;
-        private ModifyForm modifyForm;
-        private ImportFromDatabaseForm importFromDBForm;
-        private bool connectedToCertus = false;
-        private Panel selectedPanel;
-        private bool tabWasPressed;
-        private bool checkedItemsAreFocused;
+        private string excludedItemsFileName;
+        private string importFileName = "";
+        private string selectSelection = "";
+        private string fromSelection = "";
+        private string whereSelection = "";
+        private const int tab_margin = 3;
+        private int currentSplitter1Distance = 0;
+        private int splitContainerChild1Panel2MinSize;
         private int itemsInfoAppended;
-        private bool itemsCouldNotBeAppended;
-        private Dictionary<string, Company> companyDictionary;
-        private Dictionary<string, string> companyNameDictionary;
-        private Dictionary<string, List<Contact>> companyContactDictionary;
+        private int nextAvailableButton = 1;
         private int itemsWithNoCompany;
         private int itemsWhereCompanyNotRecognized;
         private int itemsWhereCompanyHadDifferentAnalysts;
         private int itemsWhereCompanyHadNoAnalyst;
-        private List<string> companiesWhichHadDifferentAnalysts;
         private int itemsAlreadyCorrectlyAssigned;
         private int itemsWhereCompanyHadDifferentMarkets;
         private int itemsSuccessfullyAssigned;
         private int itemsWhereMarketNotFound;
         private int itemsWithNoCertificate;
         private int itemsWhereContractUnrecognized;
-        private Dictionary<string, string> marketAssignments;
-        private Dictionary<string, WorkflowItem> workflowItemDictionary;
-        private Dictionary<string, string> systemUserIDsDictionary;
-        private Dictionary<string, Certificate> certificateDictionary;
+        private int searchIndex;
         private int itemsUpdated;
         private int itemsUpToDate;
         private int contractsPulled;
         private int detailNotificationPanelTop;
         private int detailNotificationPanelLeft;
+        private int countOfListViewItems;
+        private int importFilesSelected = 0;
+        private int importFileBeingWorkedOn = 0;
+        private bool fullView = false;
+        private bool itemCheckedEventIgnored;
+        private bool selectedIndexChangedEventIgnored;
+        private bool ignoreThisSaveBtnTabPress;
+        private bool ignoreThisSelectedIndexChanged = false;
+        private bool showExcludedItems = false;
+        private bool matchSearchResultsCase = false;
+        private bool connectedToCertus = false;
+        private bool tabWasPressed;
+        private bool checkedItemsAreFocused;
+        private bool itemsCouldNotBeAppended;
         private bool contrastItemGroups = false;
         private bool showItemsWithColor = false;
-        private string previousEmailDate;
-        private string previousSender;
-        private Dictionary<string, Color> itemGroupsSortedColors;
-        private Color currentColor;
-        private BetterBrowser betterBrowser;
-        private ThemeColors themeColors;
-        private SolidBrush spaceDarkBrush;
-        private SolidBrush spaceLightBrush;
-        private SolidBrush spaceLightOffBrush;
-        MyRenderer customRenderer;
         private bool itemDetailsChanged = false;
-        //private bool itemBeingPopulated = false;
         private bool tabWasPressedOnSaveBtn;
         private bool enterWasPressedOnSaveBtn;
         private bool lockListViewColumnSizing;
 
-        // --- PROPERTIES --- //
-        internal WorkflowItemDatabase WorkflowItemDatabase { get => workflowItemDatabase; set => workflowItemDatabase = value; }
-        internal AppSave AppSave { get => appSave; set => appSave = value; }
-        internal AppData AppData { get => appData; set => appData = value; }
-        internal ItemImports ItemImportsList { get => itemImportsList; set => itemImportsList = value; }
-        internal ItemsCompletedReports ItemsCompletedReportsList { get => itemsCompletedReportsList; set => itemsCompletedReportsList = value; }
-        public List<WorkflowItem> AllWorkflowItemsLoaded { get => allWorkflowItemsLoaded; set => allWorkflowItemsLoaded = value; }
-        internal List<WorkflowItemCSVImport> AllItemImportsLoaded { get => allWorkflowItemCSVImportsLoaded; set => allWorkflowItemCSVImportsLoaded = value; }
-        internal List<ItemsCompletedReport> AllItemsCompletedReportsLoaded { get => allItemsCompletedReportsLoaded; set => allItemsCompletedReportsLoaded = value; }
-        internal WorkflowItemCSVImport CurrentImport { get => currentWorkflowItemCSVImport; set => currentWorkflowItemCSVImport = value; }
-        public List<WorkflowItem> CurrentWorkflowItems { get => currentWorkflowItems; set => currentWorkflowItems = value; }
-        public Filter CurrentFilter { get => currentFilter; set => currentFilter = value; }
-        public List<WorkflowItem> TemporaryExportList { get => temporaryExportList; set => temporaryExportList = value; }
-        public ItemsCompletedReport CurrentCompletedReport { get => currentCompletedReport; set => currentCompletedReport = value; }
-        public List<WorkflowItem> SearchResultsList { get => searchResultsList; set => searchResultsList = value; }
-        internal List<Certificate> AllCertificatesLoaded { get => allCertificatesLoaded; set => allCertificatesLoaded = value; }
-        public BrowserForm CertusBrowser { get => certusBrowser; set => certusBrowser = value; }
-        public List<Company> AllCompaniesLoaded { get => allCompaniesLoaded; set => allCompaniesLoaded = value; }
-        internal ThemeColors ThemeColors { get => themeColors; set => themeColors = value; }
-
-        #endregion Variable Declarations
+        #endregion Data Declaration
 
         // ----- REGION APPLICATION STARTUP ----- //
         #region Application Startup
@@ -245,8 +236,6 @@ namespace CertusCompanion
             this.previewDescLbl.Left = this.previewQueryComboBox.Left - (this.previewDescLbl.Width + 3);
             this.importsDataViewBtn.Visible = true;
             this.importsDataViewBtn.Left = this.importPanel.Left + 7;
-            this.reportsDataViewBtn.Visible = true;
-            this.reportsDataViewBtn.Left = this.importsDataViewBtn.Left + (50 + 8);
             this.queriedItemsListbox.Size = new Size(this.itemImportsLbx.Width, this.itemImportsLbx.Height);
             this.viewQueryBtn.Visible = true;
             this.viewQueryBtn.Left = this.queryPanel.Width - (50 + 8);
@@ -254,22 +243,6 @@ namespace CertusCompanion
             this.clearQueryOptionsBtn.Left = this.viewQueryBtn.Left - (50 + 8);
             this.clearQueryOptionsBtn.Top = this.viewQueryBtn.Top;
             this.detailsSaveBtn.Top = this.viewQueryBtn.Top;
-            this.reportPanel.Size = this.importPanel.Size;
-            this.reportLbx.Size = itemImportsLbx.Size;
-            this.reportDateLbl.Location = this.importDateLbl.Location;
-            this.reportDateTbxPanel.Location = this.importDateTbxPanel.Location;
-            this.reportStatusLbl.Location = this.importFileNameLbl.Location;
-            this.reportStatusTbxPanel.Location = this.importFileNameTbxPanel.Location;
-            this.reportWorkflowItemsLbl.Location = this.importTypeLbl.Location;
-            this.reportWorkflowItemsTbxPanel.Location = this.importDescriptionTbxPanel.Location;
-            this.reportNoteLbl.Location = this.totalItemsOnImportLbl.Location;
-            this.reportNoteTbxPanel.Top = this.importTotalItemsTbxPanel.Top;
-            this.reportNoteTbxPanel.Left = this.reportDateTbxPanel.Left;
-            this.reportNoteTbxPanel.Height -= 7;
-            this.saveReportBtn.Left = this.reportPanel.Width - (50 + 8);
-            this.saveReportBtn.Top = this.viewQueryBtn.Top;
-            this.openReportBtn.Left = this.saveReportBtn.Left - (50 + 8);
-            this.openReportBtn.Top = this.saveReportBtn.Top;
             this.toolStripStatusLabel.Width = this.Width - 755;
 
             // anchor subpanels
@@ -280,7 +253,7 @@ namespace CertusCompanion
 
         public void LoadForm()
         {
-            previousItem = new ListViewItem();
+            PreviousItem = new ListViewItem();
             lvwColumnSorter = new ListViewColumnSorter();
             filteredWfItems = new List<WorkflowItem>();
             allLvWorkflowItems = new List<ListViewItem>();
@@ -326,7 +299,7 @@ namespace CertusCompanion
             // enable controls
             viewChoiceComboBox.Enabled = true;
             fullViewBtn.Enabled = true;
-            enlargeBtn.Enabled = true;
+            //enlargeBtn.Enabled = true;
             collapseToolPanelsBtn.Enabled = true;
 
             // move/resize
@@ -344,9 +317,9 @@ namespace CertusCompanion
             workflowItemsListView.ForeColor = ThemeColors.ItemDefault;
 
             // change context menu renderer
-            customRenderer = new MyRenderer();
-            this.listViewContextMenuStrip.Renderer = customRenderer;
-            this.formMenuStrip.Renderer = customRenderer;
+            CustomRenderer = new MyRenderer();
+            this.listViewContextMenuStrip.Renderer = CustomRenderer;
+            this.formMenuStrip.Renderer = CustomRenderer;
         }
 
         private void LoadSupplementalData()
@@ -659,13 +632,13 @@ namespace CertusCompanion
                 return;
             }
 
-            itemViewForm = new ItemsView();
+            ItemViewForm = new ItemsView();
 
             // change for excluded items
-            itemViewForm.FormatForExcludedItemsView();
+            ItemViewForm.FormatForExcludedItemsView();
 
             // register event
-            itemViewForm.ChangeItemsColor += new ItemsColorUpdatedEventHandler(ItemsViewForm_SaveItemsColor);
+            ItemViewForm.ChangeItemsColor += new ItemsColorUpdatedEventHandler(ItemsViewForm_SaveItemsColor);
 
             // get current list
             try
@@ -678,9 +651,9 @@ namespace CertusCompanion
             }
 
             // pass items to view
-            itemViewForm.PopulateItems(workflowItemListPopulated, excludedItems);
+            ItemViewForm.PopulateItems(workflowItemListPopulated, excludedItems);
 
-            ShowAndFocusForm(itemViewForm);
+            ShowAndFocusForm(ItemViewForm);
 
             Cursor.Current = Cursors.Default;
         }
@@ -693,15 +666,15 @@ namespace CertusCompanion
 
             try
             {
-                itemViewForm = new ItemsView();
+                ItemViewForm = new ItemsView();
 
                 // register event
-                itemViewForm.SaveItemsCompletedReportToFullForm += new ItemsStatusChangedEventHandler(ItemsViewForm_SaveCompletedReport);
+                ItemViewForm.SaveItemsCompletedReportToFullForm += new ItemsStatusChangedEventHandler(ItemsViewForm_SaveCompletedReport);
 
                 // pass items viewing
-                itemViewForm.PopulateItems(workflowItemListPopulated);
+                ItemViewForm.PopulateItems(workflowItemListPopulated);
 
-                ShowAndFocusForm(itemViewForm);
+                ShowAndFocusForm(ItemViewForm);
             }
             catch (Exception)
             {
@@ -723,17 +696,17 @@ namespace CertusCompanion
                 return;
             }
 
-            itemViewForm = new ItemsView();
+            ItemViewForm = new ItemsView();
 
-            itemViewForm.FormatForCertificatesView();
+            ItemViewForm.FormatForCertificatesView();
 
             // pass items to view
-            itemViewForm.PopulateCertificates(AllCertificatesLoaded);
+            ItemViewForm.PopulateCertificates(AllCertificatesLoaded);
 
             // register event
             //itemViewForm.OpenCertificate += new OpenCertificateInBrowserEventHandler(ItemsViewForm_OpenCertificate);
 
-            ShowAndFocusForm(itemViewForm);
+            ShowAndFocusForm(ItemViewForm);
 
             Cursor.Current = Cursors.Default;
         }
@@ -749,17 +722,17 @@ namespace CertusCompanion
                 return;
             }
 
-            itemViewForm = new ItemsView();
+            ItemViewForm = new ItemsView();
 
-            itemViewForm.FormatForCompaniesView();
+            ItemViewForm.FormatForCompaniesView();
 
             // pass items to view
-            itemViewForm.PopulateCompanies(AllCompaniesLoaded);
+            ItemViewForm.PopulateCompanies(AllCompaniesLoaded);
 
             // register event
             //itemViewForm.OpenCompany += new OpenCompanyInBrowserEventHandler(ItemsViewForm_OpenCompany);
 
-            ShowAndFocusForm(itemViewForm);
+            ShowAndFocusForm(ItemViewForm);
 
             Cursor.Current = Cursors.Default;
         }
@@ -769,15 +742,15 @@ namespace CertusCompanion
 
         private void certusBrowserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0) this.betterBrowser = new BetterBrowser();
+            if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0) this.BetterBrowser = new BetterBrowser();
             else
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
                 UseWaitCursor = true;
-                this.betterBrowser = new BetterBrowser(GetWorkflowItemsFromChecked(workflowItemsListView));
+                this.BetterBrowser = new BetterBrowser(GetWorkflowItemsFromChecked(workflowItemsListView));
             }
-            this.betterBrowser.Show();
+            this.BetterBrowser.Show();
             UseWaitCursor = false;
             Application.UseWaitCursor = false;
         }
@@ -960,7 +933,7 @@ namespace CertusCompanion
             #region Close Transparent Form
             try
             {
-                this.transparentForm.Close();
+                this.TransparentForm.Close();
             }
             catch (Exception)
             {
@@ -1003,24 +976,24 @@ namespace CertusCompanion
         {
             #region Generate Form
             DimForm();
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             List<string> options = new List<string>();
-            loadingForm.ChangeHeaderLabel("Assign");
-            loadingForm.ChangeLabel("Assign to user: ");
+            LoadingForm.ChangeHeaderLabel("Assign");
+            LoadingForm.ChangeLabel("Assign to user: ");
             // generate options from system users
             foreach (var keyValPair in systemUserIDsDictionary)
             {
                 string s = $"{keyValPair.Value} <{keyValPair.Key}>";
                 options.Add(s);
             }
-            loadingForm.FormatForDialog(options);
-            DialogResult result = loadingForm.ShowDialog();
+            LoadingForm.FormatForDialog(options);
+            DialogResult result = LoadingForm.ShowDialog();
             this.Focus();
             #endregion
 
             if (result == DialogResult.OK)
             { 
-                string selectedText = loadingForm.SelectedComboBoxText;
+                string selectedText = LoadingForm.SelectedComboBoxText;
                 int idStartIndx = selectedText.IndexOf('<') + 1;
                 int idEndIndx = selectedText.IndexOf('>') - 1;
                 int idLen = idEndIndx - idStartIndx + 1;
@@ -1680,6 +1653,7 @@ namespace CertusCompanion
                 // set up data for reporting progress
                 valueToIncrement = (int)(currentImportItems.Count * .01);
                 valueToIncrement *= valueToIncrementBy;
+                if (valueToIncrement <= 0) valueToIncrement = 1;
             }
 
             // to speed up checking ID's...
@@ -1698,9 +1672,9 @@ namespace CertusCompanion
                     if (itemCount % valueToIncrement == 0)
                     {
                         if (this.InvokeRequired)
-                            this.Invoke(new Action(() => { loadingForm.MoveBar(1); }));
+                            this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
                         else
-                            loadingForm.MoveBar(1);
+                            LoadingForm.MoveBar(1);
                     }
                 }
 
@@ -1757,13 +1731,13 @@ namespace CertusCompanion
 
             // construct forms
             DimForm();
-            importFromDBForm = new ImportFromDatabaseForm();
+            ImportFromDBForm = new ImportFromDatabaseForm();
 
             // pass data sources
             // ...
 
             // show as dialog
-            DialogResult result = importFromDBForm.ShowDialog();
+            DialogResult result = ImportFromDBForm.ShowDialog();
             this.Focus();
 
             #endregion
@@ -2041,33 +2015,33 @@ namespace CertusCompanion
             // if there's currently a Filter Options, close it
             if (CheckIfFormIsOpened("Filter Options"))
             {
-                filterForm.Close();
+                FilterForm.Close();
             }
 
             // if currently there is a filter
             if (CurrentFilter != null)
             {
-                filterForm = new FiltersForm(CurrentFilter);
-                filterForm.Populate();
+                FilterForm = new FiltersForm(CurrentFilter);
+                FilterForm.Populate();
             }
             else
             {
-                filterForm = new FiltersForm();
+                FilterForm = new FiltersForm();
             }
 
             // register events
-            filterForm.SaveFilter += new FilterEventHandler(FiltersForm_SaveFilter);
+            FilterForm.SaveFilter += new FilterEventHandler(FiltersForm_SaveFilter);
 
             DimForm();
 
             // show form
-            filterForm.ShowDialog();
+            FilterForm.ShowDialog();
 
             // return form appearance to normal
-            transparentForm.Close();
+            TransparentForm.Close();
             (Application.OpenForms[0] as WorkflowManager).Focus();
 
-            if (filterForm.DialogResult == DialogResult.Cancel) return;
+            if (FilterForm.DialogResult == DialogResult.Cancel) return;
 
             // determine whether to show filtered items and show button as selected
             if (IsFilterActive())
@@ -2274,11 +2248,10 @@ namespace CertusCompanion
                 itemDetailsPanel.Visible = false;
                 queryPanel.Visible = false;
                 importPanel.Visible = false;
-                reportPanel.Visible = false;
                 detailsOptionsPanel.Visible = false;
 
                 // disable controls
-                this.enlargeBtn.Enabled = false;
+                //this.enlargeBtn.Enabled = false;
                 workflowItemsListView.Focus();
 
                 detailNotificationsPanel.Top = detailsOptionsPanel2.Top+1;
@@ -2303,10 +2276,9 @@ namespace CertusCompanion
                 itemDetailsPanel.Visible = true;
                 queryPanel.Visible = true;
                 importPanel.Visible = true;
-                reportPanel.Visible = true;
                 detailsOptionsPanel.Visible = true;
 
-                enlargeBtn.Enabled = true;
+                //enlargeBtn.Enabled = true;
 
                 detailNotificationsPanel.Top = detailNotificationPanelTop;
                 detailNotificationsPanel.Left = detailNotificationPanelLeft;
@@ -2337,12 +2309,10 @@ namespace CertusCompanion
                 // populate views 
                 this.RefreshListView();
                 this.PopulateImportLbx(AllItemImportsLoaded);
-                this.PopulateCompletedReportsLbx(AllItemsCompletedReportsLoaded);
 
                 // refresh views
                 //workflowItemsListView.Refresh();
                 itemImportsLbx.Refresh();
-                reportLbx.Refresh();
             }
             catch (Exception)
             {
@@ -3082,7 +3052,7 @@ namespace CertusCompanion
 
             #region Generate Form
             DimForm();
-            modifyForm = new ModifyForm();
+            ModifyForm = new ModifyForm();
             List<string> options = new List<string>();
 
             // generate options from system users
@@ -3092,7 +3062,7 @@ namespace CertusCompanion
                 options.Add(s);
             }
 
-            DialogResult result = modifyForm.ShowDialog();
+            DialogResult result = ModifyForm.ShowDialog();
             this.Focus();
             #endregion
 
@@ -3104,12 +3074,12 @@ namespace CertusCompanion
                 List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
                 List<WorkflowItem> checkedItems = GetWorkflowItemsFromChecked(workflowItemsListView);
 
-                string selectedCompany = modifyForm.SelectedCompany;
-                string selectedContract = modifyForm.SelectedContract;
-                string selectedAssignment = modifyForm.SelectedAssignment;
-                string selectedStatus = modifyForm.SelectedStatus;
-                string note = modifyForm.Note;
-                bool appendNote = modifyForm.AppendNote;
+                string selectedCompany = ModifyForm.SelectedCompany;
+                string selectedContract = ModifyForm.SelectedContract;
+                string selectedAssignment = ModifyForm.SelectedAssignment;
+                string selectedStatus = ModifyForm.SelectedStatus;
+                string note = ModifyForm.Note;
+                bool appendNote = ModifyForm.AppendNote;
 
                 foreach (WorkflowItem wi in checkedItems)
                 {
@@ -3176,16 +3146,16 @@ namespace CertusCompanion
             }
 
             DimForm();
-            loadingForm = new LoadingForm();
-            loadingForm.ChangeHeaderLabel("Find Company");
-            loadingForm.ChangeLabel("Find company by");
-            loadingForm.FormatForDialog("Sender", "Subject");
+            LoadingForm = new LoadingForm();
+            LoadingForm.ChangeHeaderLabel("Find Company");
+            LoadingForm.ChangeLabel("Find company by");
+            LoadingForm.FormatForDialog("Sender", "Subject");
 
             // show form
-            loadingForm.ShowDialog(transparentForm);
+            LoadingForm.ShowDialog(TransparentForm);
             this.Focus();
 
-            if (loadingForm.DialogResult == DialogResult.None)
+            if (LoadingForm.DialogResult == DialogResult.None)
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
@@ -3193,7 +3163,7 @@ namespace CertusCompanion
                 this.Refresh();
                 findAndFillCompanyBackgroundWorker.RunWorkerAsync("sender");
             }
-            else if (loadingForm.DialogResult == DialogResult.OK)
+            else if (LoadingForm.DialogResult == DialogResult.OK)
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
@@ -3201,7 +3171,7 @@ namespace CertusCompanion
                 this.Refresh();
                 findAndFillCompanyBackgroundWorker.RunWorkerAsync("subject");
             }
-            else if (loadingForm.DialogResult == DialogResult.Cancel)
+            else if (LoadingForm.DialogResult == DialogResult.Cancel)
             {
                 //UseWaitCursor = true;
                 //findAndFillCompanyBackgroundWorker.RunWorkerAsync("all");
@@ -3330,17 +3300,17 @@ namespace CertusCompanion
 
             #region Generate Form
             DimForm();
-            loadingForm = new LoadingForm();
-            loadingForm.ChangeHeaderLabel("Set Assignment");
-            loadingForm.ChangeLabel("Assign by (options sorted least to most accurate): ");
-            loadingForm.FormatForDialog("Market", "Company", "Certificate");
-            loadingForm.ShowDialog(transparentForm);
+            LoadingForm = new LoadingForm();
+            LoadingForm.ChangeHeaderLabel("Set Assignment");
+            LoadingForm.ChangeLabel("Assign by (options sorted least to most accurate): ");
+            LoadingForm.FormatForDialog("Market", "Company", "Certificate");
+            LoadingForm.ShowDialog(TransparentForm);
             this.Focus();
             #endregion
 
-            if (loadingForm.DialogResult == DialogResult.OK)
+            if (LoadingForm.DialogResult == DialogResult.OK)
             {
-                switch (loadingForm.SelectedRadioButton)
+                switch (LoadingForm.SelectedRadioButton)
                 {
                     case 1:
                         {
@@ -3398,18 +3368,18 @@ namespace CertusCompanion
 
             #region Generate Form
             DimForm();
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             List<string> options = new List<string>();
-            loadingForm.ChangeHeaderLabel("Assign");
-            loadingForm.ChangeLabel("Assign to user: ");
+            LoadingForm.ChangeHeaderLabel("Assign");
+            LoadingForm.ChangeLabel("Assign to user: ");
             // generate options from system users
             foreach (var keyValPair in systemUserIDsDictionary)
             {
                 string s = $"{keyValPair.Value} <{keyValPair.Key}>";
                 options.Add(s);
             }
-            loadingForm.FormatForDialog(options);
-            DialogResult result = loadingForm.ShowDialog();
+            LoadingForm.FormatForDialog(options);
+            DialogResult result = LoadingForm.ShowDialog();
             this.Focus();
             #endregion
 
@@ -3421,7 +3391,7 @@ namespace CertusCompanion
                 List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
                 List<WorkflowItem> checkedItems = GetWorkflowItemsFromChecked(workflowItemsListView);
 
-                string selectedText = loadingForm.SelectedComboBoxText;
+                string selectedText = LoadingForm.SelectedComboBoxText;
                 int idStartIndx = selectedText.IndexOf('<') + 1;
                 int idEndIndx = selectedText.IndexOf('>') - 1;
                 int idLen = idEndIndx - idStartIndx + 1;
@@ -4478,7 +4448,6 @@ namespace CertusCompanion
         {
             // add/edit tabs here
             importsDataViewBtn.BackColor = Color.FromArgb(0, 20, 20, 20);
-            reportsDataViewBtn.BackColor = Color.FromArgb(0, 20, 20, 20);
         }
 
         private void HideItemButton(int itemButton)
@@ -4633,20 +4602,20 @@ namespace CertusCompanion
                 // if there's currently a note, close it
                 if (CheckIfFormIsOpened("Note"))
                 {
-                    note.Close();
+                    Note.Close();
                 }
 
                 // make a new note
-                note = new NoteForm();
-                note.Populate(GetWorkflowItemFromCurrentViewByID(documentWorkflowItemIdTbx.Text));
+                Note = new NoteForm();
+                Note.Populate(GetWorkflowItemFromCurrentViewByID(documentWorkflowItemIdTbx.Text));
 
                 DimForm();
 
                 // show note
-                note.ShowDialog();
+                Note.ShowDialog();
 
                 // return form appearance to normal and focus the list view
-                transparentForm.Close();
+                TransparentForm.Close();
                 (Application.OpenForms[0] as WorkflowManager).Focus();
                 (Application.OpenForms[0] as WorkflowManager).workflowItemsListView.Focus();
 
@@ -4656,7 +4625,7 @@ namespace CertusCompanion
                 // close transparency form incase it opened
                 if (CheckIfFormIsOpened("Transparent Form"))
                 {
-                    transparentForm.Close();
+                    TransparentForm.Close();
                 }
 
                 // send a notification to the form and set focus to it
@@ -6668,16 +6637,16 @@ namespace CertusCompanion
                 return;
 
             // save reference to item in next available item button
-            AddReferenceButton(selectedWorkflowItem.DocumentWorkflowItemID);
+            AddReferenceButton(SelectedWorkflowItem.DocumentWorkflowItemID);
         }
 
         private void queriedItemsListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (queriedItemsListbox.SelectedItem != null)
             {
-                selectedWorkflowItem = (WorkflowItem)queriedItemsListbox.SelectedItem;
+                SelectedWorkflowItem = (WorkflowItem)queriedItemsListbox.SelectedItem;
 
-                PopulateDetailsViewData(selectedWorkflowItem);
+                PopulateDetailsViewData(SelectedWorkflowItem);
             }
         }
 
@@ -6889,99 +6858,16 @@ namespace CertusCompanion
 
         #endregion Query Panel
 
-        // ----- REGION IMPORTS AND REPORTS PANEL ----- //
-        #region Imports and Reports Panel
-
-        private void importOrReportPanelTab_Click(object sender, EventArgs e)
-        {
-            string selectedTabBtn = "";
-
-            try
-            {
-                UnselectDataViewTabs();
-
-                // 'select' button
-                foreach (Button btn in splitContainerChild3.Panel2.Controls.OfType<Button>())
-                {
-                    if (btn.Text == (sender as Button).Text)
-                    {
-                        selectedTabBtn = btn.Text;
-                        btn.BackColor = Color.FromName("Highlight");
-                    }
-                }
-
-                // show panel
-                if (selectedTabBtn == this.importsDataViewBtn.Text)
-                {
-                    //if (this.importPanel.Visible == true)
-                    //    return;
-                    //else
-                    //{
-                    this.reportPanel.Visible = false;
-                    this.importPanel.Visible = true;
-                    //}
-                }
-                else if (selectedTabBtn == this.reportsDataViewBtn.Text)
-                {
-                    //if (this.reportPanel.Visible == true)
-                    //    return;
-                    //else
-                    //{
-                    this.importPanel.Visible = false;
-                    this.reportPanel.Visible = true;
-                    //}
-                }
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Error selecting the tab", 3000);
-                MakeErrorSound();
-            }
-        }
-
-        private void reportLbx_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (this.reportLbx.SelectedItem != null && reportLbx.Items.Count > 0)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-
-                try
-                {
-                    itemViewForm = new ItemsView();
-                    itemViewForm.FormatForCompletedView();
-
-                    // pass items in import
-                    itemViewForm.PopulateItems((reportLbx.SelectedItem as ItemsCompletedReport).WorkflowItems);
-
-                    ShowAndFocusForm(itemViewForm);
-                }
-                catch (Exception)
-                {
-                    SetStatusLabelAndTimer("Could not open form", 3000);
-                    MakeErrorSound();
-                }
-
-                Cursor.Current = Cursors.Default;
-            }
-        }
+        // ----- REGION IMPORTS PANEL ----- //
+        #region Imports Panel
 
         private void itemImportsLbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.itemImportsLbx.SelectedItem != null)
             {
-                selectedImport = (WorkflowItemCSVImport)itemImportsLbx.SelectedItem;
+                SelectedImport = (WorkflowItemCSVImport)itemImportsLbx.SelectedItem;
 
-                PopulateImportViewData(selectedImport);
-            }
-        }
-
-        private void reportsLbx_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.reportLbx.SelectedItem != null)
-            {
-                selectedReport = (ItemsCompletedReport)reportLbx.SelectedItem;
-
-                PopulateReportViewData(selectedReport);
+                PopulateImportViewData(SelectedImport);
             }
         }
 
@@ -7010,7 +6896,7 @@ namespace CertusCompanion
             AllItemsCompletedReportsLoaded.Remove(report);
         }
 
-        #endregion Imports and Reports Panel
+        #endregion Imports Panel
 
         // ----- REGION STATUS STRIP ----- //
         #region Status Strip
@@ -7190,7 +7076,7 @@ namespace CertusCompanion
             }
             else
             {
-                loadingForm.ChangeLabel(text);
+                LoadingForm.ChangeLabel(text);
             }
         }
 
@@ -8140,21 +8026,6 @@ namespace CertusCompanion
             }
         }
 
-        private void PopulateCompletedReportsLbx(List<ItemsCompletedReport> reports)
-        {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = reports;
-
-            try
-            {
-                this.reportLbx.DataSource = bs;
-            }
-            catch
-            {
-
-            }
-        }
-
         private void PopulateImportViewData(WorkflowItemCSVImport itemImport)
         {
             this.importDateTbx.Text = itemImport.ImportDate.ToLongDateString();
@@ -8173,14 +8044,6 @@ namespace CertusCompanion
             }
         }
 
-        private void PopulateReportViewData(ItemsCompletedReport report)
-        {
-            this.reportDateTbx.Text = report.Date.ToLongDateString();
-            this.reportStatusTbx.Text = report.StatusChangedTo;
-            this.reportWorkflowItemsTbx.Text = report.WorkflowItems.Count.ToString();
-            this.reportNoteTbx.Text = report.ItemListDetails;
-        }
-
         #endregion Populate Data
 
         // ----- REGION LONG PROCESS TASKS ----- //
@@ -8191,26 +8054,26 @@ namespace CertusCompanion
         private void loadBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             DimForm();
-            loadingForm = new LoadingForm();
-            loadingForm.Owner = this.transparentForm;
+            LoadingForm = new LoadingForm();
+            LoadingForm.Owner = this.TransparentForm;
 
-            if (this.transparentForm.InvokeRequired)
-                this.transparentForm.Invoke(new Action(() => { loadingForm.Show(this.transparentForm); }));
+            if (this.TransparentForm.InvokeRequired)
+                this.TransparentForm.Invoke(new Action(() => { LoadingForm.Show(this.TransparentForm); }));
             else
-                loadingForm.Show(this.transparentForm);
+                LoadingForm.Show(this.TransparentForm);
 
             if (this.InvokeRequired)
             {
                 //this.Invoke(new Action(() => { ShowAndFocusForm(loadingForm); }));
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Loading App Data"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Loading App Data"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 this.Invoke(new Action(() => { LoadAppData(e.Argument.ToString()); }));
             }
             else
             {
                 //ShowAndFocusForm(loadingForm);
-                loadingForm.ChangeLabel("Loading App Data");
-                loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Loading App Data");
+                LoadingForm.Refresh();
                 LoadAppData(e.Argument.ToString());
             }
         }
@@ -8310,33 +8173,31 @@ namespace CertusCompanion
             {
                 MessageBox.Show("Could not load data\n\ne.Error.Message", "Error");
                 if (CheckIfFormIsOpened("Transparent Form"))
-                    this.Invoke(new Action(() => { transparentForm.Close(); }));
+                    this.Invoke(new Action(() => { TransparentForm.Close(); }));
             }
             else
             {
                 if (this.InvokeRequired)
-                    this.Invoke(new Action(() => { loadingForm.ChangeLabel("Populating views"); }));
+                    this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Populating views"); }));
                 else
-                    loadingForm.ChangeLabel("Populating views");
-                this.loadingForm.Refresh();
+                    LoadingForm.ChangeLabel("Populating views");
+                this.LoadingForm.Refresh();
 
                 // populate lv  
                 this.viewChoiceComboBox.SelectedIndex = 1;
 
                 PopulateImportLbx(this.AllItemImportsLoaded);
 
-                PopulateCompletedReportsLbx(this.AllItemsCompletedReportsLoaded);
-
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.CompleteProgress(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel("Items loaded successfully"); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.CompleteProgress(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Items loaded successfully"); }));
                     this.Invoke(new Action(() => { this.loadingFormTimer.Enabled = true; }));
                 }
                 else
                 {
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Items loaded successfully");
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Items loaded successfully");
                     this.loadingFormTimer.Enabled = true;
                 }
             }
@@ -8492,15 +8353,15 @@ namespace CertusCompanion
             OpenFileDialog openFileDialog = e.Argument as OpenFileDialog;
             importFilesSelected = openFileDialog.FileNames.Count();
             DimForm();
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
 
-            if (transparentForm.InvokeRequired)
+            if (TransparentForm.InvokeRequired)
             {
-                transparentForm.Invoke(new Action(() => { loadingForm.Show(transparentForm); }));
+                TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
             }
             else
             {
-                loadingForm.Show(transparentForm);
+                LoadingForm.Show(TransparentForm);
             }
 
             for (int i = 0; i < importFilesSelected; i++)
@@ -8519,13 +8380,13 @@ namespace CertusCompanion
                 //SetStatusLabelAndTimer($"Importing file {importFileBeingWorkedOn} of {importFilesSelected}", true);
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { loadingForm.ChangeLabel($"Importing file {i + 1} of {importFilesSelected}"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { LoadingForm.ChangeLabel($"Importing file {i + 1} of {importFilesSelected}"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    loadingForm.ChangeLabel($"Importing file {i + 1} of {importFilesSelected}");
-                    loadingForm.Refresh();
+                    LoadingForm.ChangeLabel($"Importing file {i + 1} of {importFilesSelected}");
+                    LoadingForm.Refresh();
                 }
 
                 // import the file
@@ -8535,14 +8396,14 @@ namespace CertusCompanion
                 if (this.InvokeRequired)
                 {
                     this.Invoke(new Action(() => { importWorkflowItemsBackgroundWorker.ReportProgress((int)(50 / importFilesSelected)); }));
-                    this.Invoke(new Action(() => { loadingForm.ChangeLabel("Adding imported items to the current list"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Adding imported items to the current list"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
                     //importWorkflowItemsBackgroundWorker.ReportProgress((int)(50 / importFilesSelected));
-                    loadingForm.ChangeLabel("Adding imported items to the current list");
-                    loadingForm.Refresh();
+                    LoadingForm.ChangeLabel("Adding imported items to the current list");
+                    LoadingForm.Refresh();
                 }
                 importFileBeingWorkedOn++;
 
@@ -8570,22 +8431,22 @@ namespace CertusCompanion
 
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Populating items"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Populating items"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("Populating items");
-                loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Populating items");
+                LoadingForm.Refresh();
             }
 
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.Refresh();
+                LoadingForm.Refresh();
             }
         }
 
@@ -8600,19 +8461,19 @@ namespace CertusCompanion
             {
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.HideBar(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeHeaderLabel("Import Unsuccessful"); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel($"{e.Error.Message}"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.HideBar(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful"); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel($"{e.Error.Message}"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.HideBar();
-                    this.loadingForm.ChangeHeaderLabel("Import Unsuccessful");
-                    this.loadingForm.ChangeLabel($"{e.Error.Message}");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.HideBar();
+                    this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful");
+                    this.LoadingForm.ChangeLabel($"{e.Error.Message}");
+                    this.LoadingForm.Refresh();
                 }
             }
             else
@@ -8626,17 +8487,17 @@ namespace CertusCompanion
                 //SetStatusLabelAndTimer("Import successful");
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.CompleteProgress(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel("Items imported successfully"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.CompleteProgress(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Items imported successfully"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Items imported successfully");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Items imported successfully");
+                    this.LoadingForm.Refresh();
                 }
             }
 
@@ -8649,7 +8510,7 @@ namespace CertusCompanion
             OpenFileDialog openFileDialog = e.Argument as OpenFileDialog;
             importFileName = openFileDialog.FileName;
             DimForm();
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             string csvFileHeaderLine;
             string[] csvFileHeaderValues;
             string[] acceptableHeaderValues =
@@ -8679,24 +8540,24 @@ namespace CertusCompanion
             certificateDictionary = new Dictionary<string, Certificate>();
             int fileOn = 0;
 
-            if (transparentForm.InvokeRequired)
+            if (TransparentForm.InvokeRequired)
             {
-                transparentForm.Invoke(new Action(() => { loadingForm.Show(transparentForm); }));
+                TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
             }
             else
             {
-                loadingForm.Show(transparentForm);
+                LoadingForm.Show(TransparentForm);
             }
 
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Importing certificates..."); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Importing certificates..."); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("Importing certificates...");
-                loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Importing certificates...");
+                LoadingForm.Refresh();
             }
 
             // Opens the csv file for reading
@@ -8916,16 +8777,16 @@ namespace CertusCompanion
                 {
                     this.Invoke(new Action(() =>
                     {
-                        loadingForm.ResetBar();
-                        loadingForm.ChangeLabel("Adding certificate information to workflow items...");
-                        loadingForm.Refresh();
+                        LoadingForm.ResetBar();
+                        LoadingForm.ChangeLabel("Adding certificate information to workflow items...");
+                        LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
-                    loadingForm.ResetBar();
-                    loadingForm.ChangeLabel("Adding certificate information to workflow items...");
-                    loadingForm.Refresh();
+                    LoadingForm.ResetBar();
+                    LoadingForm.ChangeLabel("Adding certificate information to workflow items...");
+                    LoadingForm.Refresh();
                 }
 
                 // update items with certificate data
@@ -8958,13 +8819,13 @@ namespace CertusCompanion
                         {
                             this.Invoke(new Action(() =>
                             {
-                                loadingForm.MoveBar(1);
+                                LoadingForm.MoveBar(1);
                                 //this.loadingForm.Refresh();
                             }));
                         }
                         else
                         {
-                            loadingForm.MoveBar(1);
+                            LoadingForm.MoveBar(1);
                             //this.loadingForm.Refresh();
                         }
                     }
@@ -9007,14 +8868,14 @@ namespace CertusCompanion
                 {
                     this.Invoke(new Action(() =>
                     {
-                        loadingForm.ChangeLabel("Updating items...");
-                        loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Updating items...");
+                        LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
-                    loadingForm.ChangeLabel("Updating items...");
-                    loadingForm.Refresh();
+                    LoadingForm.ChangeLabel("Updating items...");
+                    LoadingForm.Refresh();
                 }
 
                 if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
@@ -9033,36 +8894,36 @@ namespace CertusCompanion
             {
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.HideBar(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeHeaderLabel("Import Unsuccessful"); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel($"{e.Error.Message}"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.HideBar(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful"); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel($"{e.Error.Message}"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.HideBar();
-                    this.loadingForm.ChangeHeaderLabel("Import Unsuccessful");
-                    this.loadingForm.ChangeLabel($"{e.Error.Message}");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.HideBar();
+                    this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful");
+                    this.LoadingForm.ChangeLabel($"{e.Error.Message}");
+                    this.LoadingForm.Refresh();
                 }
             }
             else
             {
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.CompleteProgress(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel("Certificates imported successfully"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.CompleteProgress(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Certificates imported successfully"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Certificates imported successfully");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Certificates imported successfully");
+                    this.LoadingForm.Refresh();
                 }
             }
 
@@ -9074,7 +8935,7 @@ namespace CertusCompanion
             OpenFileDialog openFileDialog = e.Argument as OpenFileDialog;
             importFileName = openFileDialog.FileName;
             DimForm();
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             string csvFileHeaderLine;
             string[] csvFileHeaderValues;
             string csvLine = "";
@@ -9107,24 +8968,24 @@ namespace CertusCompanion
             #endregion Instantiate Acceptable Headers and Indexes List
 
             #region Set Up Loading Form
-            if (transparentForm.InvokeRequired)
+            if (TransparentForm.InvokeRequired)
             {
-                transparentForm.Invoke(new Action(() => { loadingForm.Show(transparentForm); }));
+                TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
             }
             else
             {
-                loadingForm.Show(transparentForm);
+                LoadingForm.Show(TransparentForm);
             }
 
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Importing companies"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Importing companies"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("Importing companies");
-                loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Importing companies");
+                LoadingForm.Refresh();
             }
             #endregion Set Up Loading Form
 
@@ -9397,36 +9258,36 @@ namespace CertusCompanion
             {
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.HideBar(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeHeaderLabel("Import Unsuccessful"); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel($"{e.Error.Message}"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.HideBar(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful"); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel($"{e.Error.Message}"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.HideBar();
-                    this.loadingForm.ChangeHeaderLabel("Import Unsuccessful");
-                    this.loadingForm.ChangeLabel($"{e.Error.Message}");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.HideBar();
+                    this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful");
+                    this.LoadingForm.ChangeLabel($"{e.Error.Message}");
+                    this.LoadingForm.Refresh();
                 }
             }
             else
             {
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.CompleteProgress(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel("Companies imported successfully"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.CompleteProgress(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Companies imported successfully"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Companies imported successfully");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Companies imported successfully");
+                    this.LoadingForm.Refresh();
                 }
             }
 
@@ -9652,23 +9513,23 @@ namespace CertusCompanion
             int valueToIncrement = (int)(this.AllWorkflowItemsLoaded.Count * .01);
             valueToIncrement *= 4;
             DimForm();
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
 
-            if (transparentForm.InvokeRequired)
-                transparentForm.Invoke(new Action(() => { loadingForm.Show(transparentForm); }));
+            if (TransparentForm.InvokeRequired)
+                TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
             else
-                loadingForm.Show(transparentForm);
+                LoadingForm.Show(TransparentForm);
 
             // update for connected items - this can skip items because all attached items will never change
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Finding each item's connected items"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Finding each item's connected items"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("Finding each item's connected items");
-                this.loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Finding each item's connected items");
+                this.LoadingForm.Refresh();
             }
 
             for (int j = 0; j < this.AllWorkflowItemsLoaded.Count; j++)
@@ -9695,22 +9556,22 @@ namespace CertusCompanion
                 if (j % valueToIncrement == 0)
                 {
                     if (this.InvokeRequired)
-                        this.Invoke(new Action(() => { loadingForm.MoveBar(1); }));
+                        this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
                     else
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                 }
             }
 
             // update for matching file sizes - needs to check every item every time
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Finding items with the same file size"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Finding items with the same file size"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("Finding items with the same file size");
-                this.loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Finding items with the same file size");
+                this.LoadingForm.Refresh();
             }
 
             for (int j = 0; j < this.AllWorkflowItemsLoaded.Count; j++)
@@ -9734,22 +9595,22 @@ namespace CertusCompanion
                 if (j % valueToIncrement == 0)
                 {
                     if (this.InvokeRequired)
-                        this.Invoke(new Action(() => { loadingForm.MoveBar(1); }));
+                        this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
                     else
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                 }
             }
 
             // update for matching file names - needs to check every item every time
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Finding items with the same file name"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Finding items with the same file name"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("Finding items with the same file name");
-                this.loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Finding items with the same file name");
+                this.LoadingForm.Refresh();
             }
 
             for (int j = 0; j < this.AllWorkflowItemsLoaded.Count; j++)
@@ -9772,22 +9633,22 @@ namespace CertusCompanion
                 if (j % valueToIncrement == 0)
                 {
                     if (this.InvokeRequired)
-                        this.Invoke(new Action(() => { loadingForm.MoveBar(1); }));
+                        this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
                     else
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                 }
             }
 
             // each items' total attachments size - doesn't need every item to be checked, only those without sizes
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Finding total size of attachments in each item"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Finding total size of attachments in each item"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("Finding total size of attachments in each item");
-                this.loadingForm.Refresh();
+                LoadingForm.ChangeLabel("Finding total size of attachments in each item");
+                this.LoadingForm.Refresh();
             }
 
             for (int j = 0; j < this.AllWorkflowItemsLoaded.Count; j++)
@@ -9812,22 +9673,22 @@ namespace CertusCompanion
                 if (j % valueToIncrement == 0)
                 {
                     if (this.InvokeRequired)
-                        this.Invoke(new Action(() => { loadingForm.MoveBar(1); }));
+                        this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
                     else
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                 }
             }
 
             // notify that update is being completed
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { loadingForm.ChangeLabel("Finishing putting the updated list of items together"); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Finishing putting the updated list of items together"); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.ChangeLabel("FFinishing putting the updated list of items together");
-                this.loadingForm.Refresh();
+                LoadingForm.ChangeLabel("FFinishing putting the updated list of items together");
+                this.LoadingForm.Refresh();
             }
         }
 
@@ -9842,7 +9703,7 @@ namespace CertusCompanion
             {
                 MessageBox.Show("Update unsuccessful\n\ne.Error.Message", "Error");
                 if (CheckIfFormIsOpened("Transparent Form"))
-                    this.Invoke(new Action(() => { transparentForm.Close(); }));
+                    this.Invoke(new Action(() => { TransparentForm.Close(); }));
             }
             else
             {
@@ -9851,17 +9712,17 @@ namespace CertusCompanion
 
                 if (this.InvokeRequired)
                 {
-                    this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.CompleteProgress(); }));
-                    this.Invoke(new Action(() => { this.loadingForm.ChangeLabel("Items updated successfully"); }));
-                    this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.CompleteProgress(); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Items updated successfully"); }));
+                    this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
                 }
                 else
                 {
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Items updated successfully");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Items updated successfully");
+                    this.LoadingForm.Refresh();
                 }
             }
         }
@@ -9885,8 +9746,8 @@ namespace CertusCompanion
                         valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count/75);
                         if (valueToIncrement <= 0) valueToIncrement = 1;
                         DimForm();
-                        loadingForm = new LoadingForm();
-                        loadingForm.Show(transparentForm);
+                        LoadingForm = new LoadingForm();
+                        LoadingForm.Show(TransparentForm);
                     }
 
                     WorkflowItem wi = new WorkflowItem();
@@ -9896,10 +9757,10 @@ namespace CertusCompanion
                     itemsCouldNotBeAppended = false;
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Finding items to append");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Finding items to append");
+                        this.LoadingForm.Refresh();
                     }
 
                     foreach (ListViewItem checkedItem in workflowItemsListView.CheckedItems)
@@ -9911,11 +9772,11 @@ namespace CertusCompanion
                         wi = GetWorkflowItemFromLvItem(checkedItem);
 
                         // update loading progress for increment value 
-                        if (loadingForm != null && loadingForm.Visible)
+                        if (LoadingForm != null && LoadingForm.Visible)
                         {
                             if (workflowItemsListView.CheckedItems.IndexOf(checkedItem) % valueToIncrement == 0)
                             {
-                                loadingForm.MoveBar(1);
+                                LoadingForm.MoveBar(1);
                             }
                         }
 
@@ -9965,10 +9826,10 @@ namespace CertusCompanion
                     }
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Updating items");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Updating items");
+                        this.LoadingForm.Refresh();
                     }
 
                     if (itemsToUpdate != null && itemsToUpdate.Count > 0)
@@ -9984,11 +9845,11 @@ namespace CertusCompanion
                             this.AllWorkflowItemsLoaded[index] = item;
 
                             // update loading progress for increment value 
-                            if (loadingForm != null && loadingForm.Visible)
+                            if (LoadingForm != null && LoadingForm.Visible)
                             {
                                 if (itemsToUpdate.IndexOf(item) % valueToIncrement == 0)
                                 {
-                                    loadingForm.MoveBar(1);
+                                    LoadingForm.MoveBar(1);
                                 }
                             }
                         }
@@ -10022,8 +9883,8 @@ namespace CertusCompanion
                         valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 75);
                         if (valueToIncrement <= 0) valueToIncrement = 1;
                         DimForm();
-                        loadingForm = new LoadingForm();
-                        loadingForm.Show(transparentForm);
+                        LoadingForm = new LoadingForm();
+                        LoadingForm.Show(TransparentForm);
                     }
 
                     WorkflowItem wi = new WorkflowItem();
@@ -10033,10 +9894,10 @@ namespace CertusCompanion
                     itemsCouldNotBeAppended = false;
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Finding items to append");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Finding items to append");
+                        this.LoadingForm.Refresh();
                     }
 
                     foreach (ListViewItem checkedItem in workflowItemsListView.CheckedItems)
@@ -10051,11 +9912,11 @@ namespace CertusCompanion
                         wi = GetWorkflowItemFromLvItem(checkedItem);
 
                         // update loading progress for increment value 
-                        if (loadingForm != null && loadingForm.Visible)
+                        if (LoadingForm != null && LoadingForm.Visible)
                         {
                             if (workflowItemsListView.CheckedItems.IndexOf(checkedItem) % valueToIncrement == 0)
                             {
-                                loadingForm.MoveBar(1);
+                                LoadingForm.MoveBar(1);
                             }
                         }
 
@@ -10116,10 +9977,10 @@ namespace CertusCompanion
                     }
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Updating items");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Updating items");
+                        this.LoadingForm.Refresh();
                     }
 
                     if (itemsToUpdate != null && itemsToUpdate.Count > 0)
@@ -10135,11 +9996,11 @@ namespace CertusCompanion
                             this.AllWorkflowItemsLoaded[index] = item;
 
                             // update loading progress for increment value 
-                            if (loadingForm != null && loadingForm.Visible)
+                            if (LoadingForm != null && LoadingForm.Visible)
                             {
                                 if (itemsToUpdate.IndexOf(item) % valueToIncrement == 0)
                                 {
-                                    loadingForm.MoveBar(1);
+                                    LoadingForm.MoveBar(1);
                                 }
                             }
                         }
@@ -10173,8 +10034,8 @@ namespace CertusCompanion
                         valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 75);
                         if (valueToIncrement <= 0) valueToIncrement = 1;
                         DimForm();
-                        loadingForm = new LoadingForm();
-                        loadingForm.Show(transparentForm);
+                        LoadingForm = new LoadingForm();
+                        LoadingForm.Show(TransparentForm);
                     }
 
                     WorkflowItem wi = new WorkflowItem();
@@ -10184,10 +10045,10 @@ namespace CertusCompanion
                     itemsCouldNotBeAppended = false;
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Finding items to append");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Finding items to append");
+                        this.LoadingForm.Refresh();
                     }
 
                     foreach (ListViewItem checkedItem in workflowItemsListView.CheckedItems)
@@ -10200,11 +10061,11 @@ namespace CertusCompanion
                         wi = GetWorkflowItemFromLvItem(checkedItem);
 
                         // update loading progress for increment value 
-                        if (loadingForm != null && loadingForm.Visible)
+                        if (LoadingForm != null && LoadingForm.Visible)
                         {
                             if (workflowItemsListView.CheckedItems.IndexOf(checkedItem) % valueToIncrement == 0)
                             {
-                                loadingForm.MoveBar(1);
+                                LoadingForm.MoveBar(1);
                             }
                         }
 
@@ -10312,10 +10173,10 @@ namespace CertusCompanion
                     }
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Updating items");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Updating items");
+                        this.LoadingForm.Refresh();
                     }
 
                     if (itemsToUpdate != null && itemsToUpdate.Count > 0)
@@ -10331,11 +10192,11 @@ namespace CertusCompanion
                             this.AllWorkflowItemsLoaded[index] = item;
 
                             // update loading progress for increment value 
-                            if (loadingForm != null && loadingForm.Visible)
+                            if (LoadingForm != null && LoadingForm.Visible)
                             {
                                 if (itemsToUpdate.IndexOf(item) % valueToIncrement == 0)
                                 {
-                                    loadingForm.MoveBar(1);
+                                    LoadingForm.MoveBar(1);
                                 }
                             }
                         }
@@ -10369,8 +10230,8 @@ namespace CertusCompanion
                         valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 75);
                         if (valueToIncrement <= 0) valueToIncrement = 1;
                         DimForm();
-                        loadingForm = new LoadingForm();
-                        loadingForm.Show(transparentForm);
+                        LoadingForm = new LoadingForm();
+                        LoadingForm.Show(TransparentForm);
                     }
 
                     WorkflowItem wi = new WorkflowItem();
@@ -10380,10 +10241,10 @@ namespace CertusCompanion
                     itemsCouldNotBeAppended = false;
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Finding items to append");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Finding items to append");
+                        this.LoadingForm.Refresh();
                     }
 
                     foreach (ListViewItem checkedItem in workflowItemsListView.CheckedItems)
@@ -10396,11 +10257,11 @@ namespace CertusCompanion
                         wi = GetWorkflowItemFromLvItem(checkedItem);
 
                         // update loading progress for increment value 
-                        if (loadingForm != null && loadingForm.Visible)
+                        if (LoadingForm != null && LoadingForm.Visible)
                         {
                             if (workflowItemsListView.CheckedItems.IndexOf(checkedItem) % valueToIncrement == 0)
                             {
-                                loadingForm.MoveBar(1);
+                                LoadingForm.MoveBar(1);
                             }
                         }
 
@@ -10460,10 +10321,10 @@ namespace CertusCompanion
                     }
 
                     // --- status update --- //
-                    if (loadingForm != null && loadingForm.Visible)
+                    if (LoadingForm != null && LoadingForm.Visible)
                     {
-                        loadingForm.ChangeLabel("Updating items");
-                        this.loadingForm.Refresh();
+                        LoadingForm.ChangeLabel("Updating items");
+                        this.LoadingForm.Refresh();
                     }
 
                     if (itemsToUpdate != null && itemsToUpdate.Count > 0)
@@ -10479,11 +10340,11 @@ namespace CertusCompanion
                             this.AllWorkflowItemsLoaded[index] = item;
 
                             // update loading progress for increment value 
-                            if (loadingForm != null && loadingForm.Visible)
+                            if (LoadingForm != null && LoadingForm.Visible)
                             {
                                 if (itemsToUpdate.IndexOf(item) % valueToIncrement == 0)
                                 {
-                                    loadingForm.MoveBar(1);
+                                    LoadingForm.MoveBar(1);
                                 }
                             }
                         }
@@ -10514,7 +10375,7 @@ namespace CertusCompanion
             {
                 MessageBox.Show("Data appending unsuccessful\n\ne.Error.Message", "Error");
                 if (CheckIfFormIsOpened("Transparent Form"))
-                    this.Invoke(new Action(() => { transparentForm.Close(); }));
+                    this.Invoke(new Action(() => { TransparentForm.Close(); }));
             }
             else
             {
@@ -10527,42 +10388,42 @@ namespace CertusCompanion
                     {
                         Application.UseWaitCursor = false;
 
-                        this.loadingForm.CompleteProgress();
+                        this.LoadingForm.CompleteProgress();
                         //this.loadingForm.ChangeLabel("Items appended successfully");
                         //this.loadingFormTimer.Enabled = true;
                         if (itemsCouldNotBeAppended)
                         {
-                            this.loadingForm.ChangeLabel($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended");
+                            this.LoadingForm.ChangeLabel($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended");
                             SetStatusLabelAndTimer($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended", true);
                         }
                         else
                         {
-                            this.loadingForm.ChangeLabel($"{itemsInfoAppended} item(s) appended");
+                            this.LoadingForm.ChangeLabel($"{itemsInfoAppended} item(s) appended");
                             SetStatusLabelAndTimer($"{itemsInfoAppended} item(s) appended", true);
                         }
-                        this.loadingForm.ShowCloseBtn();
-                        this.loadingForm.Refresh();
+                        this.LoadingForm.ShowCloseBtn();
+                        this.LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
                     Application.UseWaitCursor = false;
 
-                    this.loadingForm.CompleteProgress();
+                    this.LoadingForm.CompleteProgress();
                     //this.loadingForm.ChangeLabel("Items appended successfully");
                     //this.loadingFormTimer.Enabled = true;
                     if (itemsCouldNotBeAppended)
                     {
-                        this.loadingForm.ChangeLabel($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended");
+                        this.LoadingForm.ChangeLabel($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended");
                         SetStatusLabelAndTimer($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended", true);
                     }
                     else
                     {
-                        this.loadingForm.ChangeLabel($"{itemsInfoAppended} item(s) appended");
+                        this.LoadingForm.ChangeLabel($"{itemsInfoAppended} item(s) appended");
                         SetStatusLabelAndTimer($"{itemsInfoAppended} item(s) appended", true);
                     }
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
                 }
             }
         }
@@ -10576,12 +10437,12 @@ namespace CertusCompanion
         {
             this.Invoke(new Action(() =>
             {
-                if (CheckIfFormIsOpened("Transparent Form")) transparentForm.Close();
+                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
                 DimForm();
-                loadingForm = new LoadingForm();
-                loadingForm.Show(transparentForm);
-                loadingForm.ChangeLabel("Attempting to assign analysts based on company data...");
-                this.loadingForm.Refresh();
+                LoadingForm = new LoadingForm();
+                LoadingForm.Show(TransparentForm);
+                LoadingForm.ChangeLabel("Attempting to assign analysts based on company data...");
+                this.LoadingForm.Refresh();
             }));
 
             this.Invoke(new Action(() =>
@@ -10613,8 +10474,8 @@ namespace CertusCompanion
                         // update loading progress for increment value 
                         if (itemOn % valueToIncrement == 0)
                         {
-                            loadingForm.MoveBar(1);
-                            this.loadingForm.Refresh();
+                            LoadingForm.MoveBar(1);
+                            this.LoadingForm.Refresh();
                         }
 
                         // return if no company
@@ -10767,13 +10628,13 @@ namespace CertusCompanion
                 {
                     SetStatusLabelAndTimer("Operation unsuccessful");
                     MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
-                    if (CheckIfFormIsOpened("Transparent Form")) this.transparentForm.Close();
+                    if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
                 }
                 else
                 {
-                    this.loadingForm.FormatForReport(140);
-                    this.loadingForm.ChangeHeaderLabel("Operation Complete");
-                    this.loadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                    this.LoadingForm.FormatForReport(140);
+                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
                         $"Items assigned: {itemsSuccessfullyAssigned}\n" +
                         $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsWhereCompanyHadNoAnalyst + itemsWhereCompanyHadDifferentAnalysts + itemsAlreadyCorrectlyAssigned}\n" +
                         $"---------------------------------------------------------------------------\n" +
@@ -10782,8 +10643,8 @@ namespace CertusCompanion
                         $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
                         $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
                         $"    Items where the company had different analysts: {itemsWhereCompanyHadDifferentAnalysts}");
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
                 }
 
             }));
@@ -10794,12 +10655,12 @@ namespace CertusCompanion
         {
             this.Invoke(new Action(() =>
             {
-                if (CheckIfFormIsOpened("Transparent Form")) transparentForm.Close();
+                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
                 DimForm();
-                loadingForm = new LoadingForm();
-                loadingForm.Show(transparentForm);
-                loadingForm.ChangeLabel("Attempting to assign analysts based on company market data...");
-                this.loadingForm.Refresh();
+                LoadingForm = new LoadingForm();
+                LoadingForm.Show(TransparentForm);
+                LoadingForm.ChangeLabel("Attempting to assign analysts based on company market data...");
+                this.LoadingForm.Refresh();
             }));
 
             this.Invoke(new Action(() =>
@@ -10831,8 +10692,8 @@ namespace CertusCompanion
                         // update loading progress for increment value 
                         if (itemOn % valueToIncrement == 0)
                         {
-                            loadingForm.MoveBar(1);
-                            this.loadingForm.Refresh();
+                            LoadingForm.MoveBar(1);
+                            this.LoadingForm.Refresh();
                         }
 
                         // return if no company
@@ -10956,15 +10817,15 @@ namespace CertusCompanion
             {
                 SetStatusLabelAndTimer("Operation unsuccessful");
                 MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
-                if (CheckIfFormIsOpened("Transparent Form")) this.transparentForm.Close();
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
             }
             else
             {
                 if (this.InvokeRequired) this.Invoke(new Action(() =>
                     {
-                        this.loadingForm.FormatForReport(140);
-                        this.loadingForm.ChangeHeaderLabel("Operation Complete");
-                        this.loadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                        this.LoadingForm.FormatForReport(140);
+                        this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                        this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
                             $"Items assigned: {itemsSuccessfullyAssigned}\n" +
                             $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsAlreadyCorrectlyAssigned + itemsWhereCompanyHadDifferentMarkets + itemsWhereMarketNotFound}\n" +
                             $"---------------------------------------------------------------------------\n" +
@@ -10973,14 +10834,14 @@ namespace CertusCompanion
                             $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
                             $"    Items where the company had different markets: {itemsWhereCompanyHadDifferentMarkets}\n" +
                             $"    Items where the market was not found: {itemsWhereMarketNotFound}");
-                        this.loadingForm.ShowCloseBtn();
-                        this.loadingForm.Refresh();
+                        this.LoadingForm.ShowCloseBtn();
+                        this.LoadingForm.Refresh();
                     }));
                 else
                 {
-                    this.loadingForm.FormatForReport(140);
-                    this.loadingForm.ChangeHeaderLabel("Operation Complete");
-                    this.loadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                    this.LoadingForm.FormatForReport(140);
+                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
                         $"Items assigned: {itemsSuccessfullyAssigned}\n" +
                         $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsAlreadyCorrectlyAssigned + itemsWhereCompanyHadDifferentMarkets + itemsWhereMarketNotFound}\n" +
                         $"---------------------------------------------------------------------------\n" +
@@ -10989,8 +10850,8 @@ namespace CertusCompanion
                         $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
                         $"    Items where the company had different markets: {itemsWhereCompanyHadDifferentMarkets}\n" +
                         $"    Items where the market was not found: {itemsWhereMarketNotFound}");
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
                 }
             }
         }
@@ -11010,20 +10871,20 @@ namespace CertusCompanion
             itemsSuccessfullyAssigned = 0;
 
             // for loading bar
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
             if (valueToIncrement <= 0) valueToIncrement = 1;
             int itemOn = 0;
 
             // show loading form regardless
             DimForm();
-            if (transparentForm.InvokeRequired)
+            if (TransparentForm.InvokeRequired)
             {
-                transparentForm.Invoke(new Action(() => { loadingForm.Show(transparentForm); }));
+                TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
             }
             else
             {
-                loadingForm.Show(transparentForm);
+                LoadingForm.Show(TransparentForm);
             }
             
             // start process
@@ -11043,13 +10904,13 @@ namespace CertusCompanion
                     {
                         this.Invoke(new Action(() =>
                         {
-                            loadingForm.MoveBar(1);
+                            LoadingForm.MoveBar(1);
                             //this.loadingForm.Refresh();
                         }));
                     }
                     else
                     {
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                         //this.loadingForm.Refresh();
                     }
                 }
@@ -11116,7 +10977,7 @@ namespace CertusCompanion
             {
                 SetStatusLabelAndTimer("Operation unsuccessful");
                 MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
-                if (CheckIfFormIsOpened("Transparent Form")) this.transparentForm.Close();
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
             }
             else
             {
@@ -11124,9 +10985,9 @@ namespace CertusCompanion
                 {
                     this.Invoke(new Action(() =>
                     {
-                        this.loadingForm.FormatForReport(140);
-                        this.loadingForm.ChangeHeaderLabel("Operation Complete");
-                        this.loadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                        this.LoadingForm.FormatForReport(140);
+                        this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                        this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
                             $"Items assigned: {itemsSuccessfullyAssigned}\n" +
                             $"Items not assigned: {itemsWithNoCertificate + itemsWhereContractUnrecognized + itemsWhereCompanyHadNoAnalyst + itemsAlreadyCorrectlyAssigned}\n" +
                             $"---------------------------------------------------------------------------\n" +
@@ -11134,15 +10995,15 @@ namespace CertusCompanion
                             $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
                             $"    Items where the certificate was unrecognized: {itemsWhereContractUnrecognized}\n" +
                             $"    Items with no certificate: {itemsWithNoCertificate}\n");
-                        this.loadingForm.ShowCloseBtn();
-                        this.loadingForm.Refresh();
+                        this.LoadingForm.ShowCloseBtn();
+                        this.LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
-                    this.loadingForm.FormatForReport(140);
-                    this.loadingForm.ChangeHeaderLabel("Operation Complete");
-                    this.loadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                    this.LoadingForm.FormatForReport(140);
+                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
                         $"Items assigned: {itemsSuccessfullyAssigned}\n" +
                         $"Items not assigned: {itemsWithNoCertificate + itemsWhereContractUnrecognized + itemsWhereCompanyHadNoAnalyst + itemsAlreadyCorrectlyAssigned}\n" +
                         $"---------------------------------------------------------------------------\n" +
@@ -11150,8 +11011,8 @@ namespace CertusCompanion
                         $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
                         $"    Items where the certificate was unrecognized: {itemsWhereContractUnrecognized}\n" +
                         $"    Items with no certificate: {itemsWithNoCertificate}\n");
-                    this.loadingForm.ShowCloseBtn();
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
                 }
             }
         }
@@ -11206,7 +11067,7 @@ namespace CertusCompanion
             itemsUpdated = 0;
 
             // for loading bar
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
             if (valueToIncrement <= 0) valueToIncrement = 1;
             int itemOn = 0;
@@ -11216,22 +11077,22 @@ namespace CertusCompanion
             {
                 DimForm();
 
-                if (transparentForm.InvokeRequired)
+                if (TransparentForm.InvokeRequired)
                 {
-                    transparentForm.Invoke(new Action(() => 
+                    TransparentForm.Invoke(new Action(() => 
                     {
-                        loadingForm.Show(transparentForm);
-                        loadingForm.ChangeHeaderLabel("Loading");
-                        loadingForm.ChangeLabel("Processing the request...");
-                        loadingForm.Refresh();
+                        LoadingForm.Show(TransparentForm);
+                        LoadingForm.ChangeHeaderLabel("Loading");
+                        LoadingForm.ChangeLabel("Processing the request...");
+                        LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
-                    loadingForm.Show(transparentForm);
-                    loadingForm.ChangeHeaderLabel("Loading");
-                    loadingForm.ChangeLabel("Processing the request...");
-                    loadingForm.Refresh();
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
                 }
             }
             // use status label when less
@@ -11263,12 +11124,12 @@ namespace CertusCompanion
                     {
                         this.Invoke(new Action(() =>
                         {
-                            loadingForm.MoveBar(1);
+                            LoadingForm.MoveBar(1);
                         }));
                     }
                     else
                     {
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                     }
                 }
 
@@ -11332,7 +11193,7 @@ namespace CertusCompanion
             itemsUpdated = 0;
 
             // for loading bar
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
             if (valueToIncrement <= 0) valueToIncrement = 1;
             int itemOn = 0;
@@ -11342,22 +11203,22 @@ namespace CertusCompanion
             {
                 DimForm();
 
-                if (transparentForm.InvokeRequired)
+                if (TransparentForm.InvokeRequired)
                 {
-                    transparentForm.Invoke(new Action(() =>
+                    TransparentForm.Invoke(new Action(() =>
                     {
-                        loadingForm.Show(transparentForm);
-                        loadingForm.ChangeHeaderLabel("Loading");
-                        loadingForm.ChangeLabel("Processing the request...");
-                        loadingForm.Refresh();
+                        LoadingForm.Show(TransparentForm);
+                        LoadingForm.ChangeHeaderLabel("Loading");
+                        LoadingForm.ChangeLabel("Processing the request...");
+                        LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
-                    loadingForm.Show(transparentForm);
-                    loadingForm.ChangeHeaderLabel("Loading");
-                    loadingForm.ChangeLabel("Processing the request...");
-                    loadingForm.Refresh();
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
                 }
             }
             // use status label when less
@@ -11386,12 +11247,12 @@ namespace CertusCompanion
                     {
                         this.Invoke(new Action(() =>
                         {
-                            loadingForm.MoveBar(1);
+                            LoadingForm.MoveBar(1);
                         }));
                     }
                     else
                     {
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                     }
                 }
 
@@ -11467,7 +11328,7 @@ namespace CertusCompanion
             }
             else if (e.Error != null)
             {
-                if (CheckIfFormIsOpened("Transparent Form")) this.transparentForm.Close();
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
                 SetStatusLabelAndTimer("Operation unsuccessful");
                 MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
             }
@@ -11477,18 +11338,18 @@ namespace CertusCompanion
                 {
                     this.Invoke(new Action(() =>
                     {
-                        this.loadingForm.CompleteProgress();
-                        this.loadingForm.ChangeLabel("Loading Complete");
-                        this.loadingForm.Refresh();
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Loading Complete");
+                        this.LoadingForm.Refresh();
                         this.loadingFormTimer.Enabled = true;
                         this.SetStatusLabelAndTimer($"Company data updated for {itemsUpdated} item(s)", true);
                     }));
                 }
                 else
                 {
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Loading Complete");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Loading Complete");
+                    this.LoadingForm.Refresh();
                     this.loadingFormTimer.Enabled = true;
                     this.SetStatusLabelAndTimer($"Company data updated for {itemsUpdated} item(s)", true);
                 }
@@ -11503,7 +11364,7 @@ namespace CertusCompanion
             List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
             itemsUpdated = 0;
             contractsPulled = 0;
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
 
             // for loading bar
             int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
@@ -11515,22 +11376,22 @@ namespace CertusCompanion
             {
                 DimForm();
 
-                if (transparentForm.InvokeRequired)
+                if (TransparentForm.InvokeRequired)
                 {
-                    transparentForm.Invoke(new Action(() =>
+                    TransparentForm.Invoke(new Action(() =>
                     {
-                        loadingForm.Show(transparentForm);
-                        loadingForm.ChangeHeaderLabel("Loading");
-                        loadingForm.ChangeLabel("Processing the request...");
-                        loadingForm.Refresh();
+                        LoadingForm.Show(TransparentForm);
+                        LoadingForm.ChangeHeaderLabel("Loading");
+                        LoadingForm.ChangeLabel("Processing the request...");
+                        LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
-                    loadingForm.Show(transparentForm);
-                    loadingForm.ChangeHeaderLabel("Loading");
-                    loadingForm.ChangeLabel("Processing the request...");
-                    loadingForm.Refresh();
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
                 }
             }
             // use status label when less
@@ -11562,13 +11423,13 @@ namespace CertusCompanion
                     {
                         this.Invoke(new Action(() => 
                         {
-                            loadingForm.MoveBar(1);
+                            LoadingForm.MoveBar(1);
                             //this.loadingForm.Refresh();
                         }));
                     }
                     else
                     {
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                         //this.loadingForm.Refresh();
                     }
                 }
@@ -11644,7 +11505,7 @@ namespace CertusCompanion
             else if (e.Error != null)
             {
                 MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
-                if (CheckIfFormIsOpened("Transparent Form")) this.transparentForm.Close();
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
             }
             else
             {
@@ -11652,9 +11513,9 @@ namespace CertusCompanion
                 {
                     this.Invoke(new Action(() =>
                     {
-                        this.loadingForm.CompleteProgress();
-                        this.loadingForm.ChangeLabel("Loading Complete");
-                        this.loadingForm.Refresh();
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Loading Complete");
+                        this.LoadingForm.Refresh();
                         this.loadingFormTimer.Enabled = true;
                         if(itemsUpdated>0) this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s). Company data updated for {itemsUpdated} item(s)", true);
                         else this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s)");
@@ -11662,9 +11523,9 @@ namespace CertusCompanion
                 }
                 else
                 {
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Loading Complete");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Loading Complete");
+                    this.LoadingForm.Refresh();
                     this.loadingFormTimer.Enabled = true;
                     if (itemsUpdated > 0) this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s). Company data updated for {itemsUpdated} item(s)", true);
                     else this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s)");
@@ -11687,7 +11548,7 @@ namespace CertusCompanion
             itemsWithNoCertificate = 0;
 
             // for loading bar
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
             int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
             if (valueToIncrement <= 0) valueToIncrement = 1;
             int itemOn = 0;
@@ -11697,22 +11558,22 @@ namespace CertusCompanion
             {
                 DimForm();
 
-                if (transparentForm.InvokeRequired)
+                if (TransparentForm.InvokeRequired)
                 {
-                    transparentForm.Invoke(new Action(() =>
+                    TransparentForm.Invoke(new Action(() =>
                     {
-                        loadingForm.Show(transparentForm);
-                        loadingForm.ChangeHeaderLabel("Loading");
-                        loadingForm.ChangeLabel("Processing the request...");
-                        loadingForm.Refresh();
+                        LoadingForm.Show(TransparentForm);
+                        LoadingForm.ChangeHeaderLabel("Loading");
+                        LoadingForm.ChangeLabel("Processing the request...");
+                        LoadingForm.Refresh();
                     }));
                 }
                 else
                 {
-                    loadingForm.Show(transparentForm);
-                    loadingForm.ChangeHeaderLabel("Loading");
-                    loadingForm.ChangeLabel("Processing the request...");
-                    loadingForm.Refresh();
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
                 }
             }
             // use status label when less
@@ -11744,13 +11605,13 @@ namespace CertusCompanion
                     {
                         this.Invoke(new Action(() =>
                         {
-                            loadingForm.MoveBar(1);
+                            LoadingForm.MoveBar(1);
                             //this.loadingForm.Refresh();
                         }));
                     }
                     else
                     {
-                        loadingForm.MoveBar(1);
+                        LoadingForm.MoveBar(1);
                         //this.loadingForm.Refresh();
                     }
                 }
@@ -11810,7 +11671,7 @@ namespace CertusCompanion
             else if (e.Error != null)
             {
                 MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
-                if (CheckIfFormIsOpened("Transparent Form")) this.transparentForm.Close();
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
             }
             else
             {
@@ -11818,9 +11679,9 @@ namespace CertusCompanion
                 {
                     this.Invoke(new Action(() =>
                     {
-                        this.loadingForm.CompleteProgress();
-                        this.loadingForm.ChangeLabel("Loading Complete");
-                        this.loadingForm.Refresh();
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Loading Complete");
+                        this.LoadingForm.Refresh();
                         this.loadingFormTimer.Enabled = true;
                         this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
                             $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized, {itemsWithNoCertificate} w/ no contract(s)", true);
@@ -11828,9 +11689,9 @@ namespace CertusCompanion
                 }
                 else
                 {
-                    this.loadingForm.CompleteProgress();
-                    this.loadingForm.ChangeLabel("Loading Complete");
-                    this.loadingForm.Refresh();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Loading Complete");
+                    this.LoadingForm.Refresh();
                     this.loadingFormTimer.Enabled = true;
                     this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
                         $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized - {itemsWithNoCertificate} w/ no contract(s)", true);
@@ -11844,26 +11705,26 @@ namespace CertusCompanion
 
         private void backgroundWorkerIncrementalProgress_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (loadingForm != null)
+            if (LoadingForm != null)
             {
-                loadingForm.MoveBar(e.ProgressPercentage);
+                LoadingForm.MoveBar(e.ProgressPercentage);
             }
         }
 
         private void backgroundWorkerAllProgress_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (loadingForm != null)
+            if (LoadingForm != null)
             {
-                loadingForm.ReplaceBar(e.ProgressPercentage);
+                LoadingForm.ReplaceBar(e.ProgressPercentage);
             }
         }
 
         private void loadingFormTimer_Tick(object sender, EventArgs e)
         {
             if (this.InvokeRequired)
-                this.Invoke(new Action(() => { this.transparentForm.Close(); }));
+                this.Invoke(new Action(() => { this.TransparentForm.Close(); }));
             else
-                this.transparentForm.Close();
+                this.TransparentForm.Close();
 
             loadingFormTimer.Enabled = false;
         }
@@ -11905,45 +11766,45 @@ namespace CertusCompanion
             // custom message box type notification
             // display a message on the main form with all other controls covered by a dim form
             DimForm();
-            loadingForm = new LoadingForm();
+            LoadingForm = new LoadingForm();
 
-            loadingForm.Owner = this.transparentForm;
-            if (this.transparentForm.InvokeRequired)
+            LoadingForm.Owner = this.TransparentForm;
+            if (this.TransparentForm.InvokeRequired)
             {
-                this.transparentForm.Invoke(new Action(() => { loadingForm.Show(this.transparentForm); }));
-                this.transparentForm.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.TransparentForm.Invoke(new Action(() => { LoadingForm.Show(this.TransparentForm); }));
+                this.TransparentForm.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                loadingForm.Show(this.transparentForm);
-                loadingForm.Refresh();
+                LoadingForm.Show(this.TransparentForm);
+                LoadingForm.Refresh();
             }
 
 
-            if (transparentForm.InvokeRequired)
+            if (TransparentForm.InvokeRequired)
             {
-                transparentForm.Invoke(new Action(() => { loadingForm.Show(transparentForm); }));
+                TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
             }
             else
             {
-                loadingForm.Show(transparentForm);
+                LoadingForm.Show(TransparentForm);
             }
 
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { this.loadingForm.ShowCloseBtn(); }));
-                this.Invoke(new Action(() => { this.loadingForm.HideBar(); }));
-                this.Invoke(new Action(() => { this.loadingForm.ChangeHeaderLabel(header); }));
-                this.Invoke(new Action(() => { this.loadingForm.ChangeLabel(content); }));
-                this.Invoke(new Action(() => { loadingForm.Refresh(); }));
+                this.Invoke(new Action(() => { this.LoadingForm.ShowCloseBtn(); }));
+                this.Invoke(new Action(() => { this.LoadingForm.HideBar(); }));
+                this.Invoke(new Action(() => { this.LoadingForm.ChangeHeaderLabel(header); }));
+                this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel(content); }));
+                this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
             }
             else
             {
-                this.loadingForm.ShowCloseBtn();
-                this.loadingForm.HideBar();
-                this.loadingForm.ChangeHeaderLabel(header);
-                this.loadingForm.ChangeLabel(content);
-                this.loadingForm.Refresh();
+                this.LoadingForm.ShowCloseBtn();
+                this.LoadingForm.HideBar();
+                this.LoadingForm.ChangeHeaderLabel(header);
+                this.LoadingForm.ChangeLabel(content);
+                this.LoadingForm.Refresh();
             }
         }
 
@@ -11971,25 +11832,25 @@ namespace CertusCompanion
 
         private void DimForm()
         {
-            transparentForm = new Form();
-            transparentForm.ControlBox = false;
-            transparentForm.MinimizeBox = false;
-            transparentForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            transparentForm.Text = "Transparent Form";
-            transparentForm.Name = "Transparent Form";
-            transparentForm.Size = this.Size;
-            transparentForm.BackColor = Color.Black;
-            transparentForm.Opacity = 0.3f;
-            transparentForm.ShowInTaskbar = false;
+            TransparentForm = new Form();
+            TransparentForm.ControlBox = false;
+            TransparentForm.MinimizeBox = false;
+            TransparentForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            TransparentForm.Text = "Transparent Form";
+            TransparentForm.Name = "Transparent Form";
+            TransparentForm.Size = this.Size;
+            TransparentForm.BackColor = Color.Black;
+            TransparentForm.Opacity = 0.3f;
+            TransparentForm.ShowInTaskbar = false;
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => { transparentForm.Show(this); }));
-                this.Invoke(new Action(() => { transparentForm.Location = this.Location; }));
+                this.Invoke(new Action(() => { TransparentForm.Show(this); }));
+                this.Invoke(new Action(() => { TransparentForm.Location = this.Location; }));
             }
             else
             {
-                transparentForm.Show(this);
-                transparentForm.Location = this.Location;
+                TransparentForm.Show(this);
+                TransparentForm.Location = this.Location;
             }
         }
 
@@ -12001,7 +11862,7 @@ namespace CertusCompanion
             form.ShowDialog();
 
             // return form appearance to normal and focus the list view
-            transparentForm.Close();
+            TransparentForm.Close();
             (Application.OpenForms[0] as WorkflowManager).Focus();
             (Application.OpenForms[0] as WorkflowManager).workflowItemsListView.Focus();
 

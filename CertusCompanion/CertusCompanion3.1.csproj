@@ -147,12 +147,6 @@
     <Compile Include="TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TestForm2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm2.Designer.cs">
-      <DependentUpon>TestForm2.cs</DependentUpon>
-    </Compile>
     <Compile Include="ThemeColors.cs" />
     <Compile Include="WorkflowItemDatabase.cs" />
     <Compile Include="ItemsView.cs">
@@ -167,12 +161,6 @@
     <Compile Include="WorkflowManager.Designer.cs">
       <DependentUpon>WorkflowManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="NoteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,19 +169,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueriedItemsDataView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QueriedItemsDataView.Designer.cs">
-      <DependentUpon>QueriedItemsDataView.cs</DependentUpon>
-    </Compile>
     <Compile Include="WorkflowItem.cs" />
-    <Compile Include="WorkflowItemDataView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WorkflowItemDataView.Designer.cs">
-      <DependentUpon>WorkflowItemDataView.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="BetterBrowser.resx">
       <DependentUpon>BetterBrowser.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,9 +191,6 @@
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForm2.resx">
-      <DependentUpon>TestForm2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WorkflowManager.resx">
       <DependentUpon>WorkflowManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,9 +199,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NoteForm.resx">
       <DependentUpon>NoteForm.cs</DependentUpon>
@@ -243,12 +213,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="QueriedItemsDataView.resx">
-      <DependentUpon>QueriedItemsDataView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkflowItemDataView.resx">
-      <DependentUpon>WorkflowItemDataView.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

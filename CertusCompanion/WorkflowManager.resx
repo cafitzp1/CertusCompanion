@@ -117,126 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="itemButtonsPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="itemDetailsPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailsSaveBtn.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel18.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="itemNoteDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileMimeDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel9.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileSizeDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="filesAttachedDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dateCompDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel17.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="documentWorkflowItemIdDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileUrlDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel16.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="contractIdDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileNameDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="companyNameDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel11.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="activeDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="statusDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="compliantDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="subjectLineDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="nextExpDateDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="emailFromDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="assignedToDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="emailDateDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel10.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="splitContainerChild3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="importFromDatabaseBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -255,7 +135,7 @@
 </value>
   </data>
   <metadata name="buttonDescToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>493, 129</value>
+    <value>271, 95</value>
   </metadata>
   <data name="lockListViewColumnSizingBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -373,6 +253,27 @@
         u/oKTe4P4KI0/daJ/FcRmd6QIlOQFeY90AQmMIGkkEr9C3o5z/B/b7JyAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="copyIdsBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAC
+        owAAAqMBZNxfiQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKfSURBVGhD7ZnN
+        ahNRGIZzIVrxh6ZQEMSFd2NTvAKvw7+0ulNBmpRA7IyJol6CKF2ruNCNUmlssPUC4jmTd5qn7Qw95ptT
+        guSBd/Od9H2+SWY209qc/4W1je5Cs50mLgMlvd/qX9HxbKPlhy6jY9lbbyfn9LHZxS3qv3m/8KuHGy8v
+        PthMLjVbL1772Vo7fa6PzS5u0QO/7L1O77xGtUebyQVdwG+Nzp7l7s2FxbSR1NOVQT1tjHz8UmW5+6x7
+        XX9au9Pp3Sj6TJ68z3cvpavpcv9Wtc+LX94JhhPR6Rfg8nO907/mL6TZSncLzg9zvNdleLm3evgLmhl/
+        8yckhctMk6Ju92tU97y4woO8+P3g0yinaJlpkvNu9yMvorrnBaVSjXmSvi1c6F/y1HUQuqS3w1Ly9fvO
+        6HHypnCxkPgv4NuPHbWNoUt6OyyNDV3S22FpbOiS3g5LY0OX9HZYGhu6pLfD0tjQJb0dlsaGLuntsDQ2
+        dElvh6VlXN2+XRgSMqeLc0ZrhcPSMopEPiRkThfnjNYKh6VlFIl8SMicLs4ZrRUOS8ugwAJd0mewX6Nw
+        WFoGBRbokj6D/RqFw9IyKLBAl/QZ7NcoHJbGhi7p7bA0NnRJb4elsaFLejssLYP3qAW6pM9gv0bhsLQM
+        CizQJX0G+zUKh6VlUGCBLukz2K9ROCyNDV3S22FpbOiS3g5LY0OX9HZYWgbvUQt0SZ/Bfo3CYWkZFFig
+        S/oM9msUTj1d+ZOXbv/6ItVRKJiWD4PPvIB96TPYr1E4rqyH4jNKhS93F7caS670xOv1iNmr9PW6Z/IP
+        jsmb6gjZryeNrcqXD8F0jwYQu39+AacRu/+IgNFxhmXO6LhaikQ+Os6wzBkdV0uRyEfHGZY5o+M5M0at
+        9hdgMECm6lwd7wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="itemButtonsPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="priorityNotificationBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -442,145 +343,16 @@
         fwBqfmbMG04AkAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="copyIdsBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAC
-        owAAAqMBZNxfiQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKfSURBVGhD7ZnN
-        ahNRGIZzIVrxh6ZQEMSFd2NTvAKvw7+0ulNBmpRA7IyJol6CKF2ruNCNUmlssPUC4jmTd5qn7Qw95ptT
-        guSBd/Od9H2+SWY209qc/4W1je5Cs50mLgMlvd/qX9HxbKPlhy6jY9lbbyfn9LHZxS3qv3m/8KuHGy8v
-        PthMLjVbL1772Vo7fa6PzS5u0QO/7L1O77xGtUebyQVdwG+Nzp7l7s2FxbSR1NOVQT1tjHz8UmW5+6x7
-        XX9au9Pp3Sj6TJ68z3cvpavpcv9Wtc+LX94JhhPR6Rfg8nO907/mL6TZSncLzg9zvNdleLm3evgLmhl/
-        8yckhctMk6Ju92tU97y4woO8+P3g0yinaJlpkvNu9yMvorrnBaVSjXmSvi1c6F/y1HUQuqS3w1Ly9fvO
-        6HHypnCxkPgv4NuPHbWNoUt6OyyNDV3S22FpbOiS3g5LY0OX9HZYGhu6pLfD0tjQJb0dlsaGLuntsDQ2
-        dElvh6VlXN2+XRgSMqeLc0ZrhcPSMopEPiRkThfnjNYKh6VlFIl8SMicLs4ZrRUOS8ugwAJd0mewX6Nw
-        WFoGBRbokj6D/RqFw9IyKLBAl/QZ7NcoHJbGhi7p7bA0NnRJb4elsaFLejssLYP3qAW6pM9gv0bhsLQM
-        CizQJX0G+zUKh6VlUGCBLukz2K9ROCyNDV3S22FpbOiS3g5LY0OX9HZYWgbvUQt0SZ/Bfo3CYWkZFFig
-        S/oM9msUTj1d+ZOXbv/6ItVRKJiWD4PPvIB96TPYr1E4rqyH4jNKhS93F7caS670xOv1iNmr9PW6Z/IP
-        jsmb6gjZryeNrcqXD8F0jwYQu39+AacRu/+IgNFxhmXO6LhaikQ+Os6wzBkdV0uRyEfHGZY5o+M5M0at
-        9hdgMECm6lwd7wAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="detailsSaveBtn.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel18.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="itemNoteDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileMimeDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel9.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileSizeDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="filesAttachedDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dateCompDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel17.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="documentWorkflowItemIdDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileUrlDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel16.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="contractIdDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="fileNameDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="companyNameDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel11.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="activeDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="statusDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="compliantDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="subjectLineDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="nextExpDateDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="emailFromDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="assignedToDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="emailDateDescLbl.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="detailPanel10.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="formMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>537, 17</value>
+    <value>293, 17</value>
   </metadata>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1585, 17</value>
+    <value>886, 17</value>
   </metadata>
   <data name="displayingToolStripDropDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -595,7 +367,7 @@
   <data name="checkedToolStripDropDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -610,7 +382,7 @@
   <data name="queriedToolStripDropDownButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -623,10 +395,10 @@
 </value>
   </data>
   <metadata name="statusLblTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>774, 17</value>
+    <value>427, 17</value>
   </metadata>
   <metadata name="listViewContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1004, 17</value>
+    <value>558, 17</value>
   </metadata>
   <data name="selectAllContextMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -734,23 +506,6 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="setAssignmentContextMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
-        wgAAAcIB6Dx9VAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJeSURBVFhH7Za9
-        j0xRHIZnC2KJj2VXlhCERkSh0a1IFAohyCIKtVIiEZGQTRQ6qq38B0KIQkdE4ytsKIiIbwofifUVha/j
-        ec9572QmM2dnN/duQfZJnsy9v/Oe35m5c+7cqU0xxT9HCGEhDuFtfGd1fAz7HJscWGAvfsMcX3G349VC
-        40H8o1XgLA5gj92A51Aos8PTqoGGvfhZ3eGAyy0wdjBFwijOd7k8NDse2/LJXcpC5kKKhiGXykOz+6ln
-        GHApC5mNKRpGXCoPzbS5xCyXspCZnaLhi0vlodmn1HNCb2DUpfLQbCT1nNBXcMel8tDsaOoZLrqUhcyl
-        FA1HXCoPzfrwQ2zLreZyC4wdSpHwHntdrgYabsdf6g7FD9EM7MbGHyJltnpatdBYv4a/tUoGjQ06Xi00
-        3oKPtEoHnuFOT2sL42vwNE5zKQ+hLjyFjbxANSmeBTrWwo2ccIsmqK/GtzHBE9TlPIROpmz4gYexeCao
-        3u+YcvtQm08ZZUXTm+B8LSojLmO3h9pDQBtPqOEm13bhT9eaLjXni/262ZmPuMA1XaVi8Ss4U/UsBKbj
-        c6Wh6dbjXHfANh/PwWG9xkHD+X5c7+OV+BrFdWzKtoXQnhhPG6/L5RYYOx9TIdzAuS7XobYCXyoAN7El
-        0xaCZ+KUMZ7/gvHlWGzAe1j/W8bxKnyjAbiKHZ8ldQgXTde5lIXMMnwa0yE8xEXYeNmv4fgXF0z4HqeG
-        MM+lMSGnT/sqzkhX4kk6DHexx7HJhYWW4mOtavSdd95wVcKC/fgAb+H4NlzVsPASrPZp+J9Sq/0F7qiS
-        +s7rwq0AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="setAssignmentFindContextMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
@@ -766,6 +521,23 @@
         /wX5RRQ7HTWGwpXYSz//G0E/vx+cdfQHsmX4Fb9juFyTUNBOF0scNQX97XFZ4BauQ920DmL+de6k62ko
         6VSKdkfDQncF5t+chvyzlss4yUvKg6HVBz+G0/EA3sOHeAm7XS8XBq/G/C/e53j04KA7UNf/cUejDwdf
         7JdjiUrlNzmi1j91QaGuAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="setAssignmentContextMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
+        wgAAAcIB6Dx9VAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJeSURBVFhH7Za9
+        j0xRHIZnC2KJj2VXlhCERkSh0a1IFAohyCIKtVIiEZGQTRQ6qq38B0KIQkdE4ytsKIiIbwofifUVha/j
+        ec9572QmM2dnN/duQfZJnsy9v/Oe35m5c+7cqU0xxT9HCGEhDuFtfGd1fAz7HJscWGAvfsMcX3G349VC
+        40H8o1XgLA5gj92A51Aos8PTqoGGvfhZ3eGAyy0wdjBFwijOd7k8NDse2/LJXcpC5kKKhiGXykOz+6ln
+        GHApC5mNKRpGXCoPzbS5xCyXspCZnaLhi0vlodmn1HNCb2DUpfLQbCT1nNBXcMel8tDsaOoZLrqUhcyl
+        FA1HXCoPzfrwQ2zLreZyC4wdSpHwHntdrgYabsdf6g7FD9EM7MbGHyJltnpatdBYv4a/tUoGjQ06Xi00
+        3oKPtEoHnuFOT2sL42vwNE5zKQ+hLjyFjbxANSmeBTrWwo2ccIsmqK/GtzHBE9TlPIROpmz4gYexeCao
+        3u+YcvtQm08ZZUXTm+B8LSojLmO3h9pDQBtPqOEm13bhT9eaLjXni/262ZmPuMA1XaVi8Ss4U/UsBKbj
+        c6Wh6dbjXHfANh/PwWG9xkHD+X5c7+OV+BrFdWzKtoXQnhhPG6/L5RYYOx9TIdzAuS7XobYCXyoAN7El
+        0xaCZ+KUMZ7/gvHlWGzAe1j/W8bxKnyjAbiKHZ8ldQgXTde5lIXMMnwa0yE8xEXYeNmv4fgXF0z4HqeG
+        MM+lMSGnT/sqzkhX4kk6DHexx7HJhYWW4mOtavSdd95wVcKC/fgAb+H4NlzVsPASrPZp+J9Sq/0F7qiS
+        +s7rwq0AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="unassignContextMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -784,14 +556,14 @@
 </value>
   </data>
   <metadata name="symbolsImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1771, 17</value>
+    <value>995, 17</value>
   </metadata>
   <data name="symbolsImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADq
-        BgAAAk1TRnQBSQFMAwEBAAGoARUBqAEVAQUBAAEFAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        BgAAAk1TRnQBSQFMAwEBAAHQARUB0AEVAQUBAAEFAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
         ARQDAAEFAwABAQEAAQgFAAFkGQABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
         AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
         AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
@@ -824,88 +596,85 @@
 </value>
   </data>
   <metadata name="paintColorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2036, 17</value>
+    <value>1143, 17</value>
   </metadata>
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2293, 17</value>
+    <value>1287, 17</value>
   </metadata>
   <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>341, 73</value>
+    <value>195, 56</value>
   </metadata>
   <metadata name="unignoreEvents.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1345, 17</value>
+    <value>750, 17</value>
   </metadata>
   <metadata name="certusConnectionTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 73</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="progressTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>568, 73</value>
+    <value>324, 56</value>
   </metadata>
   <metadata name="importWorkflowItemsBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="saveBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>796, 73</value>
+    <value>454, 56</value>
   </metadata>
   <metadata name="queryBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1126, 73</value>
+    <value>635, 56</value>
   </metadata>
   <metadata name="updateDataBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1470, 73</value>
+    <value>823, 56</value>
   </metadata>
   <metadata name="loadBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1880, 73</value>
+    <value>1044, 56</value>
   </metadata>
   <metadata name="loadingFormTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2210, 73</value>
+    <value>1225, 56</value>
   </metadata>
   <metadata name="importCertificatesBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 129</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="tbxRemainsToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>772, 129</value>
+    <value>426, 95</value>
   </metadata>
   <metadata name="importCompaniesBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1051, 129</value>
+    <value>581, 95</value>
   </metadata>
   <metadata name="fillCompanyBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1528, 129</value>
+    <value>835, 95</value>
   </metadata>
   <metadata name="fillContractInformationBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1940, 129</value>
+    <value>1057, 95</value>
   </metadata>
   <metadata name="fillAssignmentAndStatusBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>463, 185</value>
+    <value>256, 134</value>
   </metadata>
   <metadata name="fillAssignmentBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1010, 185</value>
+    <value>545, 134</value>
   </metadata>
   <metadata name="setAnalystFromCompanyBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1446, 185</value>
+    <value>779, 134</value>
   </metadata>
   <metadata name="setAnalystFromMarketBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2000, 185</value>
+    <value>1072, 134</value>
   </metadata>
   <metadata name="setAnalystFromCertificateBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 241</value>
+    <value>17, 173</value>
   </metadata>
   <metadata name="findAndFillCompanyBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>577, 241</value>
+    <value>313, 173</value>
   </metadata>
   <metadata name="findAndOverrideContractInformationBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1080, 241</value>
+    <value>580, 173</value>
   </metadata>
   <metadata name="updateContractInformationBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1764, 241</value>
+    <value>938, 173</value>
   </metadata>
   <metadata name="importFromDBBackGroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 185</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+    <value>17, 134</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>232</value>
+    <value>156</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
