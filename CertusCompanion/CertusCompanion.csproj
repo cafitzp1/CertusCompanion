@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.3.3325.1758\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.3.3325.1758\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.3.3325.1758\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.3.3325.1758\build\cef.redist.x64.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6578E053-4FD9-411D-A2C9-4DA7DB5D0B26}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CertusCompanion</RootNamespace>
+    <AssemblyName>CertusCompanion</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>image001_zyE_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analyst.cs" />
+    <Compile Include="AppData.cs" />
+    <Compile Include="AppSave.cs" />
+    <Compile Include="CertusBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CertusBrowser.Designer.cs">
+      <DependentUpon>CertusBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Certificate.cs" />
+    <Compile Include="DBImport.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="CustomControls.cs" />
+    <Compile Include="CustomExceptions.cs" />
+    <Compile Include="DataSource.cs" />
+    <Compile Include="DataSourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSourceForm.Designer.cs">
+      <DependentUpon>DataSourceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export.cs" />
+    <Compile Include="ExportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportForm.Designer.cs">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filter.cs" />
+    <Compile Include="FiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FiltersForm.Designer.cs">
+      <DependentUpon>FiltersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Import.cs" />
+    <Compile Include="ImportFromDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportFromDatabaseForm.Designer.cs">
+      <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemComparer.cs" />
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSVImport.cs" />
+    <Compile Include="ItemImports.cs" />
+    <Compile Include="ItemsCompletedReport.cs" />
+    <Compile Include="ItemsCompletedReports.cs" />
+    <Compile Include="LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyForm.Designer.cs">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThemeColors.cs" />
+    <Compile Include="WorkflowItemDatabase.cs" />
+    <Compile Include="ItemsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemsView.Designer.cs">
+      <DependentUpon>ItemsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkflowManager.Designer.cs">
+      <DependentUpon>WorkflowManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkflowItem.cs" />
+    <EmbeddedResource Include="CertusBrowser.resx">
+      <DependentUpon>CertusBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSourceForm.resx">
+      <DependentUpon>DataSourceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportForm.resx">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FiltersForm.resx">
+      <DependentUpon>FiltersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportFromDatabaseForm.resx">
+      <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyForm.resx">
+      <DependentUpon>ModifyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkflowManager.resx">
+      <DependentUpon>WorkflowManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemsView.resx">
+      <DependentUpon>ItemsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-open-in-browser-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-available-updates-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-forward-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-back-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reset-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-restart-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-restore-window-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-minimize-window-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-maximize-window-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-minimize-window-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-paint-brush-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-fill-color-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-external-link-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-select-all-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-available-updates-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-expand-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-open-in-popup-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-slider-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-download-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-color-wheel-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-select-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-down-3-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-expand-arrow-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-checked-checkbox-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-unchecked-checkbox-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-checked-checkbox-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-unchecked-checkbox-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-select-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-expand-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-note-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connection-status-on-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connection-status-on-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-copy-to-clipboard-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-lowercase-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-uppercase-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-uppercase-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-lowercase-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-lowercase-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-uppercase-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-uppercase-48 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-lowercase-48 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-enlarge-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-enlarge-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-open-pane-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-pane-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-48 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-database-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-erase-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-erase-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-3d-touch-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-3d-touch-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-forward-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-back-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-erase-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-3d-touch-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-open-in-browser-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-eye-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-error-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-insert-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-copy-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-external-link-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-plus-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-paint-brush-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-erase-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-down-3-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_available_updates_48__1_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\BrowserConfiguration.txt" />
+    <EmbeddedResource Include="DBImportQueries\CompanyCertificateDS.sql" />
+    <EmbeddedResource Include="DBImportQueries\CompanyCertificateLocationDS.sql" />
+    <EmbeddedResource Include="DBImportQueries\CompanyDS.sql" />
+    <EmbeddedResource Include="DBImportQueries\ContactDS.sql" />
+    <EmbeddedResource Include="DBImportQueries\LocationsDS.sql" />
+    <EmbeddedResource Include="DBImportQueries\SystemUserDS.sql" />
+    <Content Include="image001_zyE_icon.ico" />
+    <EmbeddedResource Include="DBImportQueries\ClientDS.sql" />
+    <EmbeddedResource Include="DBImportQueries\WIR4.0_DS.sql" />
+    <None Include="Resources\icons8-search-24.png" />
+    <None Include="Resources\icons8-more-32 %282%29.png" />
+    <None Include="Resources\icons8-sort-down-24 %2810%29.png" />
+    <None Include="Resources\icons8-sort-down-24 %288%29.png" />
+    <None Include="Resources\icons8-sort-down-24 %287%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.3.3325.1758\build\cef.redist.x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.3.3325.1758\build\cef.redist.x64.props'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.3.3325.1758\build\cef.redist.x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.3.3325.1758\build\cef.redist.x86.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.targets'))" />
+  </Target>
+  <Import Project="..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.65.0.0\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.65.0.0\build\CefSharp.WinForms.targets')" />
+</Project>
