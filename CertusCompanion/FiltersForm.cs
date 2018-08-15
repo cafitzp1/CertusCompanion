@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CertusCompanion
@@ -16,6 +10,7 @@ namespace CertusCompanion
     {
         public event FilterEventHandler SaveFilter;
 
+        #region FiltersForm Data
         bool colorCheckChoice;
         bool analystCheckChoice;
         bool statusCheckChoice;
@@ -39,9 +34,9 @@ namespace CertusCompanion
         List<string> statuses;
         List<string> companies;
         HashSet<string> emails;
+        #endregion
 
-        public FiltersForm(List<string> colors, List<string> analysts, List<string> statuses,
-            List<string> companies, HashSet<string> emails)
+        public FiltersForm(List<string> colors, List<string> analysts, List<string> statuses, List<string> companies, HashSet<string> emails)
         {
             InitializeComponent();
 
@@ -54,8 +49,7 @@ namespace CertusCompanion
             PopulateSources();
         }
 
-        public FiltersForm(Filter filter, List<string> colors, List<string> analysts, List<string> statuses,
-            List<string> companies, HashSet<string> emails)
+        public FiltersForm(Filter filter, List<string> colors, List<string> analysts, List<string> statuses, List<string> companies, HashSet<string> emails)
         {
             InitializeComponent();
 
@@ -73,7 +67,6 @@ namespace CertusCompanion
         {
             this.startDateTimePicker.Value = DateTime.Now.Date.AddDays(-1);
         }
-
         private void PopulateSources()
         {
             // --- COLORS DDL --- //
@@ -135,7 +128,6 @@ namespace CertusCompanion
             senderEmailTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             senderEmailTbx.AutoCompleteCustomSource = emailsACS;
         }
-
         public void PopulateCurrentFilter()
         {
             this.colorCheckBox.Checked = currentFilter.ColorCheckChoice;
@@ -155,7 +147,6 @@ namespace CertusCompanion
             this.startDateTimePicker.Value = currentFilter.StartDate;
             this.endDateTimePicker.Value = currentFilter.EndDate;
         }
-
         private void Save()
         {
             this.colorCheckChoice = this.colorCheckBox.Checked;
@@ -175,7 +166,6 @@ namespace CertusCompanion
             this.startDate = this.startDateTimePicker.Value;
             this.endDate = this.endDateTimePicker.Value;
         }
-
         private bool FieldCheck()
         {
             if (this.colorCheckBox.Checked == true && colorSelection==String.Empty)
@@ -225,7 +215,6 @@ namespace CertusCompanion
                 return true;
             }
         }
-
         private void saveBtn_Click(object sender, EventArgs e)
         {
             try
@@ -273,7 +262,6 @@ namespace CertusCompanion
                 statusLbl.Text = "Error saving filter.";
             }
         }
-
         private void clearBtn_Click(object sender, EventArgs e)
         {
             // clear data
@@ -296,19 +284,16 @@ namespace CertusCompanion
         }
 
         #region Enable/Disable Tab Stops
-
         private void colorCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.colorCheckBox.Checked) colorComboBox.TabStop = true;
             else colorComboBox.TabStop = false;
         }
-
         private void analystCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.analystCheckBox.Checked) analystComboBox.TabStop = true;
             else analystComboBox.TabStop = false;
         }
-
         private void dateCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.dateCheckBox.Checked)
@@ -322,36 +307,30 @@ namespace CertusCompanion
                 endDateTimePicker.TabStop = true;
             }
         }
-
         private void subjectCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.subjectCheckBox.Checked) subjectTbx.TabStop = true;
             else subjectTbx.TabStop = false;
         }
-
         private void companyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.companyCheckBox.Checked) companyTbx.TabStop = true;
             else companyTbx.TabStop = false;
         }
-
         private void queriedCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             //
         }
-
         private void statusCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.statusCheckBox.Checked) statusComboBox.TabStop = true;
             else statusComboBox.TabStop = false;
         }
-
         private void senderCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.senderCheckBox.Checked) senderEmailTbx.TabStop = true;
             else senderEmailTbx.TabStop = false;
         }
-
         #endregion
     }
 }

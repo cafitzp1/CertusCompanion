@@ -2863,3 +2863,8 @@ C:\fakepath(87,10-42): warning X3571: pow(f, e) will not work for negative f, us
 [0813/025753.169:INFO:CONSOLE(1)] "Uncaught ReferenceError: fnSearchTBKeyPress is not defined", source: https://www.bcscertus.com/workflow.aspx?c=36 (1)
 [0813/025928.614:WARNING:render_frame_host_impl.cc(2751)] OnDidStopLoading was called twice.
 [0813/025929.252:INFO:CONSOLE(2)] "Uncaught TypeError: Cannot read property 'click' of undefined", source: https://www.bcscertus.com/ScriptResource.axd?d=cVT4KlmDnocm7XFkJA9JPUsvHHG9qE4RXkAsST5ll96bcArC_cFaYUjaTkZPrX3Z0S5-Cpt0hRniBf5OxVkRjEYUTrg7sA3EjhnfqjEJtErVwRNYRvOHwVNqXGZ_YLgA0&t=3a1336b1 (2)
+[0813/181526.346:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0813/181526.354:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.
+[0813/181526.791:ERROR:command_buffer_proxy_impl.cc(114)] ContextResult::kFatalFailure: Shared memory handle is not valid
+[0814/184948.186:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0814/184948.203:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.

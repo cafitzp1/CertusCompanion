@@ -245,7 +245,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -478,7 +480,6 @@
     <None Include="Resources\icons8-delete-48.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Configuration\BrowserConfiguration.txt" />
     <EmbeddedResource Include="DBImportQueries\CompanyCertificateDS.sql" />
     <EmbeddedResource Include="DBImportQueries\CompanyCertificateLocationDS.sql" />
     <EmbeddedResource Include="DBImportQueries\CompanyDS.sql" />
@@ -506,7 +507,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

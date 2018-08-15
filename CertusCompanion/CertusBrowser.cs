@@ -20,8 +20,6 @@ namespace CertusCompanion
         #region Certus Browser Data
         ChromiumWebBrowser chrome;
         List<WorkflowItem> itemList1;
-        List<WorkflowItem> itemList2;
-        List<WorkflowItem> itemList3;
         MyRenderer myRenderer;
         Dictionary<string, string> itemIDsAndAssignmentIDsDict;
         Dictionary<string, string> currentDict;
@@ -52,14 +50,8 @@ namespace CertusCompanion
         int perUserAssignedItems;
         int allAssignedItems;
         int allCompletedItems;
-        bool waitingForConsoleMessage;
         bool consoleInstructionReceived;
-        bool continueProcess;
-        bool userComplete;
-        bool processComplete;
-        bool abortProcess;
         bool panelVisible;
-        bool waitingForConsoleInstruction;
         #endregion
 
         // 
