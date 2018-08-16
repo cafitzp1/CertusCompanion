@@ -10,7 +10,8 @@ namespace CertusCompanion
         public string ClientID { get; set; }
         public string Name { get; set; }
         #endregion
-
+        //
+        // constructors
         public Analyst()
         {
 
@@ -21,7 +22,8 @@ namespace CertusCompanion
             ClientID = clientID;
             Name = name;
         }
-
+        //
+        // methods
         public override string ToString()
         {
             return $"{Name} <{SystemUserID}>";

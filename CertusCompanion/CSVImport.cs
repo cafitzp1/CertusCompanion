@@ -1251,7 +1251,7 @@ namespace CertusCompanion
                 {
                     mainContact.Name = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
                     mainContact.Title = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 1];
-                    mainContact.Phone = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 2];
+                    //mainContact.Phone = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 2];
                     mainContact.Email = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 3];
 
                     if (mainContact.Name != String.Empty) contacts.Add(mainContact);
@@ -1267,7 +1267,8 @@ namespace CertusCompanion
 
                         otherContact.Name = result[index];
                         otherContact.Title = result[++index];
-                        otherContact.Phone = result[++index];
+                        //otherContact.Phone = result[++index];
+                        ++index;
                         otherContact.Email = result[++index];
 
                         ++index;

@@ -69,9 +69,10 @@ namespace CertusCompanion
         private void PopulateItemsPanel()
         {
             selectedDataSource = (sourcesLbx.SelectedItem as DataSource);
-            selectedDataSourceCopy = new DataSource(selectedDataSource.Name,selectedDataSource.Type,selectedDataSource.Binded);
+            selectedDataSourceCopy = new DataSource(selectedDataSource.Name,selectedDataSource.Type,null,selectedDataSource.Binded);
             selectedDataSourceCopy.DateCreated = selectedDataSource.DateCreated;
             selectedDataSourceCopy.LastUpdated = selectedDataSource.LastUpdated;
+            selectedDataSourceCopy.Items = new List<object>();
             selectedDataSourceCopy.Items.AddRange(selectedDataSource.Items);
 
             nameTbx.Text = selectedDataSourceCopy.Name;

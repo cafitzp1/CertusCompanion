@@ -12,8 +12,10 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using System.Data;
 using System.Reflection;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace CertusCompanion
 {
@@ -72,12 +74,15 @@ namespace CertusCompanion
         private List<ListViewItem> dupCertOriginalLvItems;
         private List<ListViewItem> lvItemsShowing;
         private List<DataSource> DataSources { get; set; }
-        private List<Client> ClientsDataSource { get; set; }
-        private List<Company> CompaniesDataSource { get; set; }
-        private List<Certificate> CertificatesDataSource { get; set; }
-        private List<Analyst> AnalystsDataSource { get; set; }
-        private List<string> StatusesDataSource { get; set; }
         private List<string> ColorsDataSource { get; set; }
+        private List<string> StatusesDataSource { get; set; }
+        private List<Client> ClientsDataSource { get; set; }
+        private List<Analyst> AnalystsDataSource { get; set; }
+        private List<Certificate> CertificatesDataSource { get; set; }
+        private List<Company> CompaniesDataSource { get; set; }
+        private List<Contact> ContactsDataSource { get; set; }
+        private List<CertificateLocation> CertificateLocationsDataSource { get; set; }
+        private List<Location> LocationsDataSource { get; set; }
         private List<Company> CompaniesSubSource { get; set; }
         private List<Certificate> CertificatesSubSource { get; set; }
         private List<Analyst> AnalystsSubSource { get; set; }
@@ -94,7 +99,7 @@ namespace CertusCompanion
         private Dictionary<string, List<Contact>> CompanyContactDictionary { get; set; }
         private Dictionary<string, Color> ItemGroupsSortedColors { get; set; }
         private Dictionary<string, string> MarketAssignments {get;set;}
-    private Dictionary<string, WorkflowItem> WorkflowItemDictionary {get;set;}
+        private Dictionary<string, WorkflowItem> WorkflowItemDictionary {get;set;}
         private Dictionary<string, string> SystemUserIDsDictionary { get; set; }
         private Dictionary<string, Certificate> CertificateDictionary { get; set; }
         //
@@ -170,7 +175,7 @@ namespace CertusCompanion
         private bool ignoreThisSelectedIndexChanged = false;
         private bool showExcludedItems = false;
         private bool matchSearchResultsCase = false;
-        private bool connectedToCertus = false;
+        private bool connectionBtnActive = false;
         private bool tabWasPressed;
         private bool checkedItemsAreFocused;
         private bool itemsCouldNotBeAppended;
@@ -285,7 +290,7 @@ namespace CertusCompanion
         {
             //LoadMarketAssignments();
             InstantiateDataSources();
-            PopulateDataSources();
+            PopulateStatic();
         }
         private void LoadMarketAssignments()
         {
@@ -325,12 +330,15 @@ namespace CertusCompanion
         private void InstantiateDataSources()
         {
             DataSources = new List<DataSource>();
-            StatusesDataSource = new List<string>();
             ColorsDataSource = new List<string>();
+            StatusesDataSource = new List<string>();
             ClientsDataSource = new List<Client>();
-            CompaniesDataSource = new List<Company>();
-            CertificatesDataSource = new List<Certificate>();
             AnalystsDataSource = new List<Analyst>();
+            CertificatesDataSource = new List<Certificate>();
+            CompaniesDataSource = new List<Company>();
+            ContactsDataSource = new List<Contact>();
+            CertificateLocationsDataSource = new List<CertificateLocation>();
+            LocationsDataSource = new List<Location>();
             MarketAssignments = new Dictionary<string, string>();
             DataSource ds = new DataSource();
 
@@ -522,14 +530,6 @@ namespace CertusCompanion
             }
             #endregion
         }
-        private void PopulateDataSources()
-        {
-            PopulateStatic();
-
-            // event handler will call 'GenerateSubSources'
-            if (ClientsDataSource == null || ClientsDataSource.Count == 0) return;
-            clSelectionBtn.Text = "CBRE <36>";
-        }
         private void PopulateStatic()
         {
             DataSource ds = new DataSource();
@@ -537,7 +537,7 @@ namespace CertusCompanion
             // --- CLIENT COMBOBOX --- //
             clCustomDDLMenuStrip.Items.Clear();
 
-            if (ds.Items == null || ds.Items.Count == 0) return;
+            if (DataSources ==null || DataSources.Count <= 2) return;
             ds = DataSources.Where(d => d.Name == "ALL" && d.Type == "Clients").FirstOrDefault() as DataSource;
 
             foreach (var item in ds.Items)
@@ -548,8 +548,6 @@ namespace CertusCompanion
 
             clCustomDDLMenuStrip.AutoSize = false;
             clCustomDDLMenuStrip.Size = new Size(330, 330);
-
-
         }
         private void GenerateSubSources(string clientID)
         {
@@ -984,9 +982,6 @@ namespace CertusCompanion
             // pass items to view
             ItemViewIns.PopulateCertificates(AllCertificatesLoaded);
 
-            // register event
-            //itemViewForm.OpenCertificate += new OpenCertificateInBrowserEventHandler(ItemsViewForm_OpenCertificate);
-
             ShowAndFocusForm(ItemViewIns);
 
             Cursor.Current = Cursors.Default;
@@ -1033,51 +1028,37 @@ namespace CertusCompanion
         }
         private void certusConnectionBtn_Click(object sender, EventArgs e)
         {
-            UseWaitCursor = true;
+            Application.UseWaitCursor = true;
+            Application.DoEvents();
 
-            // turning on
-            if (CheckIfFormIsOpened("BrowserForm"))
+            if (!connectionBtnActive)
             {
-                //CertusBrowser.LogIn();
-                certusConnectionBtn.Enabled = false;
+                TurnOnCertusConnectionBtn();
+                ConnectToDB();
             }
             else
             {
-                UseWaitCursor = false;
-                SetStatusLabelAndTimer("This feature only works if you have the certus browser open (Tools > Certus Browser)");
-                TurnOffCertusConnectionBtn();
-                MakeErrorSound();
+                // do nothing
             }
 
-            // turning off
-            // ...(user should not be allowed to change the button once signed in)
+            Application.UseWaitCursor = false;
+            Application.DoEvents();
         }
         public void TurnOnCertusConnectionBtn()
         {
-            //certusConnectionRadioButton.Checked = true;
-            //isCertusRadioButtonChecked = false;
-
             certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48;
-            certusConnectionBtn.Enabled = false;
-            certusConnectionTimer.Enabled = true;
-            connectedToCertus = true;
+            connectionBtnActive = true;
+            buttonDescToolTip.SetToolTip(certusConnectionBtn, "Connected to CertusDB");
         }
         public void TurnOffCertusConnectionBtn()
         {
-            //certusConnectionRadioButton.Checked = false;
-
             certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48__1_;
-            certusConnectionBtn.Enabled = true;
-            connectedToCertus = false;
+            connectionBtnActive = false;
+            buttonDescToolTip.SetToolTip(certusConnectionBtn, "Connect to CertusDB");
         }
-        private void certusConnectionTimer_Tick(object sender, EventArgs e)
+        private void ConnectToDB()
         {
-            TurnOffCertusConnectionBtn();
-        }
-        public void ResetCertusConnectionTimer()
-        {
-            certusConnectionTimer.Enabled = false;
-            certusConnectionTimer.Enabled = true;
+            connectToDBBackgroundWorker.RunWorkerAsync();
         }
         //
         // Data
@@ -4793,7 +4774,7 @@ namespace CertusCompanion
             //UseWaitCursor = true;
             // ...
             // turning on
-            if (connectedToCertus && CheckIfFormIsOpened("BrowserForm"))
+            if (connectionBtnActive && CheckIfFormIsOpened("BrowserForm"))
             {
                 if (subjectTbx != null && subjectTbx.Text != String.Empty)
                 {
@@ -9693,7 +9674,7 @@ namespace CertusCompanion
                     {
                         mainContact.Name = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
                         mainContact.Title = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 1];
-                        mainContact.Phone = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 2];
+                        //mainContact.Phone = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 2];
                         mainContact.Email = result[(acceptableHeaderValuesAndTheirIndexes[indx].Item1) + 3];
 
                         if (mainContact.Name != String.Empty) contacts.Add(mainContact);
@@ -9710,7 +9691,8 @@ namespace CertusCompanion
 
                             otherContact.Name = result[index];
                             otherContact.Title = result[++index];
-                            otherContact.Phone = result[++index];
+                            //otherContact.Phone = result[++index];
+                            ++index;
                             otherContact.Email = result[++index];
 
                             ++index;
@@ -9818,78 +9800,9 @@ namespace CertusCompanion
         }
         private void ImportWorkflowItemsFromDB()
         {
-            // establish the connection
-            SqlConnection conn = new SqlConnection();
-            conn.Open();
+            //...
 
-            #region Write Command - ImportWorkflowItem
-            string query =
-                            @"
-                    SELECT		DocumentWorkflowItem.DocumentWorkflowItemID,
-                                ISNULL(CompanyCertificate.IdentityField, '') 
-                                AS ContractID,
-                                REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(Company.Name, ''), CHAR(13), ''), CHAR(10), ''), CHAR(9), ''), '=', ' ='), '""', ' ""')),' =', CHAR(9)), '=', '-'), CHAR(9), ' ='),' ""', CHAR(9)), '""', '-'), CHAR(9), ' 
-                                AS Vendor,
-                                DocumentWorkflowItem.CompanyID AS VendorID,
-                                CASE
-                                    WHEN DocumentWorkflowItem.DocumentWorkflowStatusID = 2 AND DocumentationAnalyst.SystemUserID IS NOT NULL
-                                        THEN DocumentationAnalyst.LastName + ', ' + DocumentationAnalyst.FirstName
-                                    WHEN DocumentWorkflowItem.DocumentWorkflowStatusID = 3 AND ComplianceAnalyst.SystemUserID IS NOT NULL
-                                        THEN ComplianceAnalyst.LastName + ', ' + ComplianceAnalyst.FirstName
-                                    ELSE '(Unassigned)'
-                                    END AS WorkflowAnalyst,
-                                CASE
-                                    WHEN DocumentWorkflowItem.DocumentWorkflowStatusID = 2 AND DocumentationAnalyst.SystemUserID IS NOT NULL
-                                        THEN DocumentationAnalyst.SystemUserID
-                                    WHEN DocumentWorkflowItem.DocumentWorkflowStatusID = 3 AND ComplianceAnalyst.SystemUserID IS NOT NULL
-                                        THEN ComplianceAnalyst.SystemUserID
-                                    END AS WorkflowAnalystID,
-                                CASE
-                                    WHEN Company.AnalystID IS NULL
-                                        THEN '(Unassigned)'
-                                    ELSE CompanyAnalyst.LastName + ', ' + CompanyAnalyst.FirstName
-                                    END AS CompanyAnalyst,
-                                CASE
-                                    WHEN Company.AnalystID IS NOT NULL
-                                        THEN CompanyAnalyst.SystemUserID
-                                    END AS CompanyAnalystID,
-                                CAST(DocumentWorkflowItem.EmailDate AS datetime) AS EmailDate,
-                                DocumentWorkflowItem.EmailFromAddress,
-                                REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(DocumentWorkflowItem.EmailSubject, CHAR(13), ''), CHAR(10), ''), CHAR(9), ''), '=', ' ='), '""', ' ""')), ' =', CHAR(9)), '=', '-'), CHAR(9), ' ='), ' ""', CHAR(9)), '""', '-'), CHAR(9), ' 
-                                    AS SubjectLine,
-                                DocumentWorkflowStatus.Description
-                                    AS Status,
-                                DocumentWorkflowItem.CertusFileID,
-                                ISNULL(CertusFile.FileName, '')
-                                    AS FileName,
-                                CertusFile.FileSize,
-                                ISNULL(CertusFile.FileMime, '')
-                                    AS FileMIME,
-                                CASE
-                                    WHEN CertusFile.CertusFileID IS NULL
-                                        THEN ''
-                                    ELSE 'https://www.bcscertus.com/handlers/viewfile.ashx?f=' + CAST(CertusFile.CertusFileID AS VARCHAR(MAX))
-                                    END AS FileURL
-                    FROM        DocumentWorkflowItem
-                                    LEFT JOIN CompanyCertificate ON DocumentWorkflowItem.CompanyCertificateID = CompanyCertificate.CompanyCertificateID
-                                    LEFT JOIN Company ON DocumentWorkflowItem.CompanyID = Company.CompanyID
-                                    LEFT JOIN SystemUser DocumentationAnalyst ON DocumentWorkflowItem.DocumentationAnalystID = DocumentationAnalyst.SystemUserID
-                                    LEFT JOIN SystemUser ComplianceAnalyst ON DocumentWorkflowItem.ComplianceAnalystID = ComplianceAnalyst.SystemUserID
-                                    LEFT JOIN SystemUser CompanyAnalyst ON Company.AnalystID = CompanyAnalyst.SystemUserID
-                                    JOIN DocumentWorkflowStatus ON DocumentWorkflowItem.DocumentWorkflowStatusID = DocumentWorkflowStatus.DocumentWorkflowStatusID
-                                    LEFT JOIN CertusFile ON DocumentWorkflowItem.CertusFileID = CertusFile.CertusFileID
-                    WHERE DocumentWorkflowItem.ClientID =
-                                AND DocumentWorkflowStatus.DocumentWorkflowStatusID < 4
-                    ORDER BY    DocumentWorkflowItem.DocumentWorkflowItemID desc, DocumentWorkflowItem.EmailDate desc
-";
-            SqlCommand cmd = new SqlCommand(query);
-            #endregion
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-
+            /*
             foreach (DataRow row in table.Rows)
             {
                 string documentWorkflowItemID = row["DocumentWorkflowItemID"] as string;
@@ -9941,6 +9854,7 @@ namespace CertusCompanion
                     null
                 );
             }
+            */
         }
         private void ImportCertificatesFromDB()
         {
@@ -10856,7 +10770,7 @@ namespace CertusCompanion
             }
             else if (e.Error != null)
             {
-                MessageBox.Show("Data appending unsuccessful\n\ne.Error.Message", "Error");
+                MessageBox.Show($"Data appending unsuccessful\n\n{e.Error.Message}", "Error");
                 if (CheckIfFormIsOpened("Transparent Form"))
                     this.Invoke(new Action(() => { TransparentForm.Close(); }));
             }
@@ -12140,44 +12054,325 @@ namespace CertusCompanion
             if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
         }
         private void updateContractInformationBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-                {
-                    UseWaitCursor = false;
+        {
+            UseWaitCursor = false;
 
-                    if (e.Cancelled == true)
+            if (e.Cancelled == true)
+            {
+                SetStatusLabelAndTimer("Operation was canceled");
+                MakeErrorSound();
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
+            }
+            else
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() =>
                     {
-                        SetStatusLabelAndTimer("Operation was canceled");
-                        MakeErrorSound();
-                    }
-                    else if (e.Error != null)
-                    {
-                        MessageBox.Show("Operation unsuccessful\n\ne.Error.Message", "Error");
-                        if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
-                    }
-                    else
-                    {
-                        if (this.InvokeRequired)
-                        {
-                            this.Invoke(new Action(() =>
-                            {
-                                this.LoadingForm.CompleteProgress();
-                                this.LoadingForm.ChangeLabel("Loading Complete");
-                                this.LoadingForm.Refresh();
-                                this.loadingFormTimer.Enabled = true;
-                                this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
-                                    $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized, {itemsWithNoCertificate} w/ no contract(s)", true);
-                            }));
-                        }
-                        else
-                        {
-                            this.LoadingForm.CompleteProgress();
-                            this.LoadingForm.ChangeLabel("Loading Complete");
-                            this.LoadingForm.Refresh();
-                            this.loadingFormTimer.Enabled = true;
-                            this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
-                                $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized - {itemsWithNoCertificate} w/ no contract(s)", true);
-                        }
-                    }
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Loading Complete");
+                        this.LoadingForm.Refresh();
+                        this.loadingFormTimer.Enabled = true;
+                        this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
+                            $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized, {itemsWithNoCertificate} w/ no contract(s)", true);
+                    }));
                 }
+                else
+                {
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Loading Complete");
+                    this.LoadingForm.Refresh();
+                    this.loadingFormTimer.Enabled = true;
+                    this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
+                        $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized - {itemsWithNoCertificate} w/ no contract(s)", true);
+                }
+            }
+        }
+        //
+        // DB connection
+        private void connectToDBBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // generate loading form
+            DimForm();
+            LoadingForm = new LoadingForm();
+            LoadingForm.Owner = this.TransparentForm;
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.Show(this.TransparentForm); }));
+            else LoadingForm.Show(this.TransparentForm);
+
+            this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Establishing DB Connection..."); }));
+            this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
+
+            string connectionString = ConfigurationManager.ConnectionStrings["CertusDB"].ToString();
+            string query;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand command = conn.CreateCommand();
+
+            // --- CLIENTS --- //
+            this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Populating Data..."); }));
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.ClientDS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter clAdapter = new SqlDataAdapter(command);
+
+            DataTable clTable = new DataTable();
+            clAdapter.Fill(clTable);
+
+            foreach (DataRow row in clTable.Rows)
+            {
+                Client cl = new Client(row["ClientID"].ToString(), row["Name"].ToString());
+
+                ClientsDataSource.Add(cl);
+            }
+
+            DataSource clDs = new DataSource("ALL", "Clients");
+            clDs.Items.AddRange(ClientsDataSource);
+            DataSources.Add(clDs);
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
+            else LoadingForm.MoveBar(15);
+
+            // --- ANALYSTS --- //
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.SystemUserDS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter anAdapter = new SqlDataAdapter(command);
+
+            DataTable anTable = new DataTable();
+            anAdapter.Fill(anTable);
+
+            foreach (DataRow row in anTable.Rows)
+            {
+                Analyst an = new Analyst(row["SystemUserID"].ToString(), row["ClientID"].ToString(), row["Name"].ToString());
+
+                AnalystsDataSource.Add(an);
+            }
+
+            DataSource anDs = new DataSource("ALL", "Analysts");
+            anDs.Items.AddRange(AnalystsDataSource);
+            DataSources.Add(anDs);
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
+            else LoadingForm.MoveBar(15);
+
+            // --- CERTIFICATES --- //
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.CompanyCertificateDS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter ctAdapter = new SqlDataAdapter(command);
+
+            DataTable ctTable = new DataTable();
+            ctAdapter.Fill(ctTable);
+
+            foreach (DataRow row in ctTable.Rows)
+            {
+                Certificate cc = new Certificate(row["CompanyCertificateID"].ToString(), row["Name"].ToString(), row["IdentityField"].ToString(), row["ClientID"].ToString());
+
+                CertificatesDataSource.Add(cc);
+            }
+
+            DataSource ctDs = new DataSource("ALL", "Certificates");
+            ctDs.Items.AddRange(CertificatesDataSource);
+            DataSources.Add(ctDs);
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
+            else LoadingForm.MoveBar(15);
+
+            // --- COMPANIES --- //
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.CompanyDS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter coAdapter = new SqlDataAdapter(command);
+        
+            DataTable coTable = new DataTable();
+            coAdapter.Fill(coTable);
+
+            foreach (DataRow row in coTable.Rows)
+            {
+                Company co = new Company(row["CompanyName"].ToString(), row["CompanyID"].ToString(), row["ClientID"].ToString());
+
+                CompaniesDataSource.Add(co);
+            }
+
+            DataSource coDs = new DataSource("ALL", "Companies");
+            coDs.Items.AddRange(CompaniesDataSource);
+            DataSources.Add(coDs);
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
+            else LoadingForm.MoveBar(15);
+
+            // --- CONTACTS --- //
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.ContactDS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter conAdapter = new SqlDataAdapter(command);
+
+            DataTable conTable = new DataTable();
+            conAdapter.Fill(conTable);
+
+            foreach (DataRow row in conTable.Rows)
+            {
+                Contact con = new Contact(row["ContactID"].ToString(), row["Name"].ToString(), row["Title"].ToString(), row["EmailAddress"].ToString(), row["CompanyID"].ToString());
+
+                ContactsDataSource.Add(con);
+            }
+
+            DataSource conDs = new DataSource("ALL", "Contacts");
+            conDs.Items.AddRange(ContactsDataSource);
+            DataSources.Add(conDs);
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
+            else LoadingForm.MoveBar(15);
+
+            // --- CERTIFICATELOCATIONS --- //
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.CertificateLocationDS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter ctlAdapter = new SqlDataAdapter(command);
+
+            DataTable ctlTable = new DataTable();
+            ctlAdapter.Fill(ctlTable);
+
+            foreach (DataRow row in ctlTable.Rows)
+            {
+                CertificateLocation ctl = new CertificateLocation(row["CertificateLocationID"].ToString(), row["CompanyCertificateID"].ToString(), row["LocationID"].ToString(), Convert.ToDateTime(row["DateCreated"]));
+
+                CertificateLocationsDataSource.Add(ctl);
+            }
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
+            else LoadingForm.MoveBar(15);
+
+            // --- LOCATIONS --- //
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.LocationDS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter loAdapter = new SqlDataAdapter(command);
+
+            DataTable loTable = new DataTable();
+            loAdapter.Fill(loTable);
+
+            foreach (DataRow row in loTable.Rows)
+            {
+                Location lo = new Location(row["LocationID"].ToString(), row["Name"].ToString(), row["Address1"].ToString(), row["Address2"].ToString());
+
+                LocationsDataSource.Add(lo);
+            }
+
+            DataSource loDs = new DataSource("ALL", "Locations");
+            loDs.Items.AddRange(LocationsDataSource);
+            DataSources.Add(loDs);
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
+            else LoadingForm.MoveBar(15);
+
+            // reset clients DDL
+            PopulateStatic();
+        }
+        private void connectToDBBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled == true)
+            {
+                SetStatusLabelAndTimer("Operation was canceled");
+                MakeErrorSound();
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show($"Connection to DB unsuccessful\n\n{e.Error.Message}", "Error");
+
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
+                ResetStatusStrip();
+            }
+            else
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Connection to DB Successful");
+                        this.LoadingForm.Refresh();
+                        this.loadingFormTimer.Enabled = true;
+                        this.SetStatusLabelAndTimer($"Connection to DB Successful", true);
+                    }));
+                }
+                else
+                {
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Connection to DB Successful");
+                    this.LoadingForm.Refresh();
+                    this.loadingFormTimer.Enabled = true;
+                    this.SetStatusLabelAndTimer($"Connection to DB Successful", true);
+                }
+            }
+        }
         //
         // Loading Form Manipulation
         private void backgroundWorkerIncrementalProgress_ProgressChanged(object sender, ProgressChangedEventArgs e)

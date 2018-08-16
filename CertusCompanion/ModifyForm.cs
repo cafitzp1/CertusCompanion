@@ -16,7 +16,7 @@ namespace CertusCompanion
         public bool AppendNote { get; set; }
         #endregion
 
-        public ModifyForm(List<string> companies, List<string> contracts, List<string> assignments, List<string> statuses)
+        public ModifyForm(List<string> companies, List<string> contracts, List<string> analysts, List<string> statuses)
         {
             InitializeComponent();
 
@@ -25,23 +25,32 @@ namespace CertusCompanion
             AutoCompleteStringCollection assignmentsCll = new AutoCompleteStringCollection();
             AutoCompleteStringCollection statusesCll = new AutoCompleteStringCollection();
 
-            foreach (string item in companies)
+            if (companies != null && companies.Count != 0)
             {
-                companiesCll.Add(item);
+                foreach (string item in companies)
+                {
+                    companiesCll.Add(item);
+                }
             }
 
-            foreach (string item in contracts)
+            if (contracts != null && contracts.Count != 0)
             {
-                contractsCll.Add(item);
+                foreach (string item in contracts)
+                {
+                    contractsCll.Add(item);
+                }
             }
 
-            assignments.Sort();
-            anDDLComboBox.Items.Clear();
-            anDDLComboBox.Items.Add("");
-            foreach (string item in assignments)
+            if (analysts != null && analysts.Count != 0)
             {
-                assignmentsCll.Add(item);
-                anDDLComboBox.Items.Add(item);
+                analysts.Sort();
+                anDDLComboBox.Items.Clear();
+                anDDLComboBox.Items.Add("");
+                foreach (string item in analysts)
+                {
+                    assignmentsCll.Add(item);
+                    anDDLComboBox.Items.Add(item);
+                }
             }
 
             stDDLComboBox.Items.Clear();

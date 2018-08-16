@@ -1208,8 +1208,8 @@ namespace CertusCompanion
                     $"SelectElement('ctl00_cphPopups_m_BulkDocumentWorkflowStatusDDL', '{currentStatusIDToAssign}'); " +
 
                     // click save button
-                    "document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
-                    //"document.getElementById('ctl00_cphPopups_m_WorkflowBulkCancelBTN').click(); " + // cancel button (for debugging)
+                    //"document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
+                    "document.getElementById('ctl00_cphPopups_m_WorkflowBulkCancelBTN').click(); " + // cancel button (for debugging)
 
                     // wait for response
                     "g(); " +

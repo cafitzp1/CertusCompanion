@@ -70,20 +70,6 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.fullViewBtn = new System.Windows.Forms.Button();
             this.colorDialogBtn = new System.Windows.Forms.Button();
-            this.workflowItemsListView = new CertusCompanion.ListViewNF();
-            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainerChild2 = new System.Windows.Forms.SplitContainer();
             this.detailsOptionsPanel = new System.Windows.Forms.Panel();
             this.openInCertusBtn = new System.Windows.Forms.Button();
@@ -310,8 +296,9 @@
             this.importCertificatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importCompaniesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.addRelatedFilesDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateContractDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addRelatedFilesDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tieUserIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maximizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -371,7 +358,6 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.unignoreEvents = new System.Windows.Forms.Timer(this.components);
-            this.certusConnectionTimer = new System.Windows.Forms.Timer(this.components);
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.splitContainerParent = new System.Windows.Forms.SplitContainer();
             this.importWorkflowItemsBackgroundWorker = new System.ComponentModel.BackgroundWorker();
@@ -427,7 +413,21 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tieUserIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectToDBBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.workflowItemsListView = new CertusCompanion.ListViewNF();
+            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild1)).BeginInit();
             this.splitContainerChild1.Panel1.SuspendLayout();
             this.splitContainerChild1.Panel2.SuspendLayout();
@@ -1276,119 +1276,6 @@
             this.colorDialogBtn.Click += new System.EventHandler(this.colorSelectionBtn_Click);
             this.colorDialogBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.colorDialogBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // workflowItemsListView
-            // 
-            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.workflowItemsListView.CheckBoxes = true;
-            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.countColumnHeader,
-            this.itemIdColumnHeader,
-            this.companyColumnHeader,
-            this.contractIdColumnHeader,
-            this.dateColumnHeader,
-            this.senderColumnHeader,
-            this.emailSubjectColumnHeader,
-            this.fileNameColumnHeader,
-            this.sizeColumnHeader,
-            this.fileUrlColumnHeader,
-            this.assignedToColumnHeader,
-            this.statusColumnHeader,
-            this.sizeFixHeader});
-            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
-            this.workflowItemsListView.FullRowSelect = true;
-            this.workflowItemsListView.HideSelection = false;
-            this.workflowItemsListView.LabelWrap = false;
-            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
-            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
-            this.workflowItemsListView.Name = "workflowItemsListView";
-            this.workflowItemsListView.OwnerDraw = true;
-            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
-            this.workflowItemsListView.TabIndex = 1;
-            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
-            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
-            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
-            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
-            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
-            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
-            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
-            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
-            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
-            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
-            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
-            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
-            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
-            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
-            // 
-            // countColumnHeader
-            // 
-            this.countColumnHeader.Text = "";
-            this.countColumnHeader.Width = 70;
-            // 
-            // itemIdColumnHeader
-            // 
-            this.itemIdColumnHeader.Text = "Item ID";
-            this.itemIdColumnHeader.Width = 70;
-            // 
-            // companyColumnHeader
-            // 
-            this.companyColumnHeader.Text = "Company";
-            this.companyColumnHeader.Width = 70;
-            // 
-            // contractIdColumnHeader
-            // 
-            this.contractIdColumnHeader.Text = "Contract";
-            this.contractIdColumnHeader.Width = 70;
-            // 
-            // dateColumnHeader
-            // 
-            this.dateColumnHeader.Text = "Date";
-            this.dateColumnHeader.Width = 70;
-            // 
-            // senderColumnHeader
-            // 
-            this.senderColumnHeader.Text = "Sender";
-            this.senderColumnHeader.Width = 70;
-            // 
-            // emailSubjectColumnHeader
-            // 
-            this.emailSubjectColumnHeader.Text = "Email Subject";
-            this.emailSubjectColumnHeader.Width = 70;
-            // 
-            // fileNameColumnHeader
-            // 
-            this.fileNameColumnHeader.Text = "File Name";
-            this.fileNameColumnHeader.Width = 70;
-            // 
-            // sizeColumnHeader
-            // 
-            this.sizeColumnHeader.Text = "Size";
-            this.sizeColumnHeader.Width = 70;
-            // 
-            // fileUrlColumnHeader
-            // 
-            this.fileUrlColumnHeader.Text = "File URL";
-            this.fileUrlColumnHeader.Width = 70;
-            // 
-            // assignedToColumnHeader
-            // 
-            this.assignedToColumnHeader.Text = "Assigned To";
-            this.assignedToColumnHeader.Width = 70;
-            // 
-            // statusColumnHeader
-            // 
-            this.statusColumnHeader.Text = "Status";
-            this.statusColumnHeader.Width = 70;
-            // 
-            // sizeFixHeader
-            // 
-            this.sizeFixHeader.Text = "";
-            this.sizeFixHeader.Width = 70;
             // 
             // splitContainerChild2
             // 
@@ -4416,7 +4303,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(273, 378);
+            this.importPanel.Size = new System.Drawing.Size(275, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4430,7 +4317,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(170, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(172, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4440,7 +4327,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(151, -1);
+            this.button26.Location = new System.Drawing.Point(153, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4462,7 +4349,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(147, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(149, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4493,7 +4380,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(258, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(260, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4505,7 +4392,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(176, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(178, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4566,7 +4453,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsCompTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(176, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(178, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4631,7 +4518,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(170, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(172, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4641,7 +4528,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(151, -1);
+            this.button22.Location = new System.Drawing.Point(153, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4663,7 +4550,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(147, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(149, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4741,7 +4628,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(170, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(172, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4751,7 +4638,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(151, -1);
+            this.button24.Location = new System.Drawing.Point(153, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4773,7 +4660,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(147, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(149, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4823,7 +4710,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(176, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(178, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -5209,6 +5096,15 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
             // 
+            // updateContractDataToolStripMenuItem
+            // 
+            this.updateContractDataToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.updateContractDataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.updateContractDataToolStripMenuItem.Name = "updateContractDataToolStripMenuItem";
+            this.updateContractDataToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.updateContractDataToolStripMenuItem.Text = "U&pdate Contract Data";
+            this.updateContractDataToolStripMenuItem.Click += new System.EventHandler(this.updateContractDataToolStripMenuItem_Click);
+            // 
             // addRelatedFilesDataToolStripMenuItem
             // 
             this.addRelatedFilesDataToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
@@ -5218,14 +5114,14 @@
             this.addRelatedFilesDataToolStripMenuItem.Text = "&Add Related Files Data";
             this.addRelatedFilesDataToolStripMenuItem.Click += new System.EventHandler(this.updatRelatedFilesDataToolStripMenuItem_Click);
             // 
-            // updateContractDataToolStripMenuItem
+            // tieUserIDsToolStripMenuItem
             // 
-            this.updateContractDataToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.updateContractDataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.updateContractDataToolStripMenuItem.Name = "updateContractDataToolStripMenuItem";
-            this.updateContractDataToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.updateContractDataToolStripMenuItem.Text = "U&pdate Contract Data";
-            this.updateContractDataToolStripMenuItem.Click += new System.EventHandler(this.updateContractDataToolStripMenuItem_Click);
+            this.tieUserIDsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.tieUserIDsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tieUserIDsToolStripMenuItem.Name = "tieUserIDsToolStripMenuItem";
+            this.tieUserIDsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.tieUserIDsToolStripMenuItem.Text = "&Tie User IDs";
+            this.tieUserIDsToolStripMenuItem.Click += new System.EventHandler(this.tieUserIDsToolStripMenuItem_Click);
             // 
             // windowToolStripMenuItem
             // 
@@ -5847,11 +5743,6 @@
             this.unignoreEvents.Interval = 1000;
             this.unignoreEvents.Tick += new System.EventHandler(this.unignoreEvents_Tick);
             // 
-            // certusConnectionTimer
-            // 
-            this.certusConnectionTimer.Interval = 3600000;
-            this.certusConnectionTimer.Tick += new System.EventHandler(this.certusConnectionTimer_Tick);
-            // 
             // splitContainerParent
             // 
             this.splitContainerParent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -5887,7 +5778,7 @@
             this.queryBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.queryBackgroundWorker_DoWork);
             this.queryBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.queryBackgroundWorker_RunWorkerCompleted);
             // 
-            // updateDataBackgroundWorker
+            // updateRelatedFilesDataBackgroundWorker
             // 
             this.updateRelatedFilesDataBackgroundWorker.WorkerReportsProgress = true;
             this.updateRelatedFilesDataBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateDataBackgroundWorker_DoWork);
@@ -5920,7 +5811,6 @@
             this.certusConnectionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.certusConnectionBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_connection_status_on_48__1_;
             this.certusConnectionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.certusConnectionBtn.Enabled = false;
             this.certusConnectionBtn.FlatAppearance.BorderSize = 0;
             this.certusConnectionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.certusConnectionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -5928,13 +5818,13 @@
             this.certusConnectionBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.certusConnectionBtn.ForeColor = System.Drawing.Color.DimGray;
             this.certusConnectionBtn.ImageIndex = 0;
-            this.certusConnectionBtn.Location = new System.Drawing.Point(1029, 4);
+            this.certusConnectionBtn.Location = new System.Drawing.Point(1056, 4);
             this.certusConnectionBtn.Margin = new System.Windows.Forms.Padding(2);
             this.certusConnectionBtn.Name = "certusConnectionBtn";
             this.certusConnectionBtn.Size = new System.Drawing.Size(15, 15);
             this.certusConnectionBtn.TabIndex = 0;
             this.certusConnectionBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Connected With Certus Browser");
+            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Connect to CertusDB");
             this.certusConnectionBtn.UseVisualStyleBackColor = false;
             this.certusConnectionBtn.Click += new System.EventHandler(this.certusConnectionBtn_Click);
             // 
@@ -5951,7 +5841,7 @@
             this.matchCaseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matchCaseBtn.ForeColor = System.Drawing.Color.DimGray;
             this.matchCaseBtn.ImageIndex = 0;
-            this.matchCaseBtn.Location = new System.Drawing.Point(1051, 4);
+            this.matchCaseBtn.Location = new System.Drawing.Point(1013, 4);
             this.matchCaseBtn.Margin = new System.Windows.Forms.Padding(2);
             this.matchCaseBtn.Name = "matchCaseBtn";
             this.matchCaseBtn.Size = new System.Drawing.Size(16, 16);
@@ -5959,6 +5849,7 @@
             this.matchCaseBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.matchCaseBtn, "Match Casing");
             this.matchCaseBtn.UseVisualStyleBackColor = false;
+            this.matchCaseBtn.Visible = false;
             this.matchCaseBtn.Click += new System.EventHandler(this.matchCaseBtn_Click);
             // 
             // searchTbx
@@ -6364,14 +6255,124 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
             this.toolStripMenuItem1.Text = "Item 3";
             // 
-            // tieUserIDsToolStripMenuItem
+            // connectToDBBackgroundWorker
             // 
-            this.tieUserIDsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.tieUserIDsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tieUserIDsToolStripMenuItem.Name = "tieUserIDsToolStripMenuItem";
-            this.tieUserIDsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.tieUserIDsToolStripMenuItem.Text = "&Tie User IDs";
-            this.tieUserIDsToolStripMenuItem.Click += new System.EventHandler(this.tieUserIDsToolStripMenuItem_Click);
+            this.connectToDBBackgroundWorker.WorkerReportsProgress = true;
+            this.connectToDBBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.connectToDBBackgroundWorker_DoWork);
+            this.connectToDBBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.connectToDBBackgroundWorker_RunWorkerCompleted);
+            // 
+            // workflowItemsListView
+            // 
+            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.workflowItemsListView.CheckBoxes = true;
+            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.countColumnHeader,
+            this.itemIdColumnHeader,
+            this.companyColumnHeader,
+            this.contractIdColumnHeader,
+            this.dateColumnHeader,
+            this.senderColumnHeader,
+            this.emailSubjectColumnHeader,
+            this.fileNameColumnHeader,
+            this.sizeColumnHeader,
+            this.fileUrlColumnHeader,
+            this.assignedToColumnHeader,
+            this.statusColumnHeader,
+            this.sizeFixHeader});
+            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
+            this.workflowItemsListView.FullRowSelect = true;
+            this.workflowItemsListView.HideSelection = false;
+            this.workflowItemsListView.LabelWrap = false;
+            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
+            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
+            this.workflowItemsListView.Name = "workflowItemsListView";
+            this.workflowItemsListView.OwnerDraw = true;
+            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
+            this.workflowItemsListView.TabIndex = 1;
+            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
+            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
+            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
+            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
+            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
+            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
+            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
+            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
+            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
+            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
+            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
+            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
+            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
+            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
+            // 
+            // countColumnHeader
+            // 
+            this.countColumnHeader.Text = "";
+            this.countColumnHeader.Width = 70;
+            // 
+            // itemIdColumnHeader
+            // 
+            this.itemIdColumnHeader.Text = "Item ID";
+            this.itemIdColumnHeader.Width = 70;
+            // 
+            // companyColumnHeader
+            // 
+            this.companyColumnHeader.Text = "Company";
+            this.companyColumnHeader.Width = 70;
+            // 
+            // contractIdColumnHeader
+            // 
+            this.contractIdColumnHeader.Text = "Contract";
+            this.contractIdColumnHeader.Width = 70;
+            // 
+            // dateColumnHeader
+            // 
+            this.dateColumnHeader.Text = "Date";
+            this.dateColumnHeader.Width = 70;
+            // 
+            // senderColumnHeader
+            // 
+            this.senderColumnHeader.Text = "Sender";
+            this.senderColumnHeader.Width = 70;
+            // 
+            // emailSubjectColumnHeader
+            // 
+            this.emailSubjectColumnHeader.Text = "Email Subject";
+            this.emailSubjectColumnHeader.Width = 70;
+            // 
+            // fileNameColumnHeader
+            // 
+            this.fileNameColumnHeader.Text = "File Name";
+            this.fileNameColumnHeader.Width = 70;
+            // 
+            // sizeColumnHeader
+            // 
+            this.sizeColumnHeader.Text = "Size";
+            this.sizeColumnHeader.Width = 70;
+            // 
+            // fileUrlColumnHeader
+            // 
+            this.fileUrlColumnHeader.Text = "File URL";
+            this.fileUrlColumnHeader.Width = 70;
+            // 
+            // assignedToColumnHeader
+            // 
+            this.assignedToColumnHeader.Text = "Assigned To";
+            this.assignedToColumnHeader.Width = 70;
+            // 
+            // statusColumnHeader
+            // 
+            this.statusColumnHeader.Text = "Status";
+            this.statusColumnHeader.Width = 70;
+            // 
+            // sizeFixHeader
+            // 
+            this.sizeFixHeader.Text = "";
+            this.sizeFixHeader.Width = 70;
             // 
             // WorkflowManager
             // 
@@ -6593,7 +6594,6 @@
         private System.Windows.Forms.CheckBox addAndUpdateCheckBox;
         private System.Windows.Forms.ToolStripMenuItem removeAllPaintToolStripMenuItem;
         private System.Windows.Forms.Label previewDescLbl;
-        private System.Windows.Forms.Timer certusConnectionTimer;
         private System.Windows.Forms.ToolStripStatusLabel displayingCountStatusLbl;
         private System.Windows.Forms.ToolStripStatusLabel checkedCountStatusLbl;
         private System.Windows.Forms.ToolStripStatusLabel queriedCountStatusLbl;
@@ -6922,5 +6922,6 @@
         private System.Windows.Forms.Button clDropBtn;
         private System.Windows.Forms.Label importsLbl;
         private System.Windows.Forms.ToolStripMenuItem tieUserIDsToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker connectToDBBackgroundWorker;
     }
 }

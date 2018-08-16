@@ -56,7 +56,7 @@ namespace CertusCompanion
             Binded = binded;
         }
 
-        public DataSource(string name, string type, List<object> items, bool binded)
+        public DataSource(string name, string type, List<object> items, bool? binded = null)
         {
             Name = name;
             Type = type;

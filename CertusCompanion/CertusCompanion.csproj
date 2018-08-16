@@ -86,6 +86,7 @@
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web" />
@@ -110,6 +111,7 @@
       <DependentUpon>CertusBrowser.cs</DependentUpon>
     </Compile>
     <Compile Include="Certificate.cs" />
+    <Compile Include="CertificateLocation.cs" />
     <Compile Include="DBImport.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Company.cs" />
@@ -145,6 +147,7 @@
       <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemComparer.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -480,15 +483,15 @@
     <None Include="Resources\icons8-delete-48.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DBImportQueries\CompanyCertificateDS.sql" />
-    <EmbeddedResource Include="DBImportQueries\CompanyCertificateLocationDS.sql" />
-    <EmbeddedResource Include="DBImportQueries\CompanyDS.sql" />
-    <EmbeddedResource Include="DBImportQueries\ContactDS.sql" />
-    <EmbeddedResource Include="DBImportQueries\LocationsDS.sql" />
-    <EmbeddedResource Include="DBImportQueries\SystemUserDS.sql" />
+    <EmbeddedResource Include="ImportQueries\CompanyCertificateDS.sql" />
+    <EmbeddedResource Include="ImportQueries\CertificateLocationDS.sql" />
+    <EmbeddedResource Include="ImportQueries\CompanyDS.sql" />
+    <EmbeddedResource Include="ImportQueries\ContactDS.sql" />
+    <EmbeddedResource Include="ImportQueries\LocationDS.sql" />
+    <EmbeddedResource Include="ImportQueries\SystemUserDS.sql" />
     <Content Include="image001_zyE_icon.ico" />
-    <EmbeddedResource Include="DBImportQueries\ClientDS.sql" />
-    <EmbeddedResource Include="DBImportQueries\WIR4.0_DS.sql" />
+    <EmbeddedResource Include="ImportQueries\ClientDS.sql" />
+    <EmbeddedResource Include="ImportQueries\WIR4.0_DS.sql" />
     <None Include="Resources\icons8-search-24.png" />
     <None Include="Resources\icons8-more-32 %282%29.png" />
     <None Include="Resources\icons8-sort-down-24 %2810%29.png" />

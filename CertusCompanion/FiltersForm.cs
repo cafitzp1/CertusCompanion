@@ -88,45 +88,55 @@ namespace CertusCompanion
             {
                 statusComboBox.Items.Add(i);
             }
-
+            
             statusComboBox.Items.Add("All");
             statusComboBox.Items.Add("Completed/Trash");
             statusComboBox.Items.Add("Current");
 
+
             // --- ANALYSTS DDL --- //
             analystComboBox.Items.Clear();
 
-            foreach (string i in analysts)
+            if (analysts != null && analysts.Count != 0)
             {
-                analystComboBox.Items.Add(i);
-            }
+                foreach (string i in analysts)
+                {
+                    analystComboBox.Items.Add(i);
+                }
 
-            analystComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            analystComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                analystComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                analystComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            }
 
             // --- COMPANIES TBX --- //
             AutoCompleteStringCollection companyACS = new AutoCompleteStringCollection();
 
-            foreach (string i in companies)
+            if (companies != null && companies.Count != 0)
             {
-                companyACS.Add(i);
-            }
+                foreach (string i in companies)
+                {
+                    companyACS.Add(i);
+                }
 
-            companyTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            companyTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            companyTbx.AutoCompleteCustomSource = companyACS;
+                companyTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                companyTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                companyTbx.AutoCompleteCustomSource = companyACS;
+            }
 
             // --- EMAILS TBX --- //
             AutoCompleteStringCollection emailsACS = new AutoCompleteStringCollection();
 
-            foreach (string i in emails)
+            if (emails != null && emails.Count != 0)
             {
-                emailsACS.Add(i);
-            }
+                foreach (string i in emails)
+                {
+                    emailsACS.Add(i);
+                }
 
-            senderEmailTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            senderEmailTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            senderEmailTbx.AutoCompleteCustomSource = emailsACS;
+                senderEmailTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                senderEmailTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                senderEmailTbx.AutoCompleteCustomSource = emailsACS;
+            }
         }
         public void PopulateCurrentFilter()
         {
