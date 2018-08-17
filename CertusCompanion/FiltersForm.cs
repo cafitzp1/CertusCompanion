@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CertusCompanion
 {
@@ -33,36 +34,36 @@ namespace CertusCompanion
         List<string> analysts;
         List<string> statuses;
         List<string> companies;
-        HashSet<string> emails;
+        List<string> emails;
         #endregion
 
         //
         // constructors
-        public FiltersForm(List<string> colors, List<string> analysts, List<string> statuses, List<string> companies, HashSet<string> emails)
+        public FiltersForm(List<string> colors, List<Analyst> analysts, List<string> statuses, List<Company> companies, List<Contact> contacts)
         {
             InitializeComponent();
 
             this.colors = colors;
-            this.analysts = analysts;
+            this.analysts = analysts.Select(i=>i.Name).ToList();
             this.statuses = statuses;
-            this.companies = companies;
-            this.emails = emails;
+            this.companies = companies.Select(i => i.CompanyName).ToList();
+            this.emails = contacts.Select(i => i.Email).ToList();
 
             //AnalystsSubSource.OrderBy(i => i.ToString());
             if(this.analysts!=null&&this.analysts.Count>0) this.analysts.Sort();
 
             PopulateSources();
         }
-        public FiltersForm(Filter filter, List<string> colors, List<string> analysts, List<string> statuses, List<string> companies, HashSet<string> emails)
+        public FiltersForm(Filter filter, List<string> colors, List<Analyst> analysts, List<string> statuses, List<Company> companies, List<Contact> contacts)
         {
             InitializeComponent();
 
             this.currentFilter = filter;
             this.colors = colors;
-            this.analysts = analysts;
+            this.analysts = analysts.Select(i => i.Name).ToList();
             this.statuses = statuses;
-            this.companies = companies;
-            this.emails = emails;
+            this.companies = companies.Select(i => i.CompanyName).ToList();
+            this.emails = contacts.Select(i => i.Email).ToList();
 
             if (this.analysts != null && this.analysts.Count > 0) this.analysts.Sort();
 

@@ -30,18 +30,20 @@ namespace CertusCompanion
             this.ImportName = String.Empty;
             this.ImportType = String.Empty;
             this.ItemsAdded = new List<string>();
+            this.ItemsUpdated = new List<string>();
             this.FilePath = String.Empty;
             this.FileName = String.Empty;
             this.TotalItemsOnImport = new List<string>();
 
             this.currentImportItems = new List<WorkflowItem>();
         }
-        public CSVImport(DateTime importDate, string importName, string importType, List<string> newItemsAdded, string fileName, string filePath, List<string> totalItemsOnImport)
+        public CSVImport(DateTime importDate, string importName, string importType, List<string> newItemsAdded, List<string> itemsUpdated, string fileName, string filePath, List<string> totalItemsOnImport)
         {
             this.ImportDate = importDate;
             this.ImportName = importName;
             this.ImportType = importType;
             this.ItemsAdded = newItemsAdded;
+            this.ItemsUpdated = itemsUpdated;
             this.FilePath = filePath;
             this.FileName = fileName;
             this.TotalItemsOnImport = totalItemsOnImport;
@@ -634,6 +636,8 @@ namespace CertusCompanion
                 #endregion Read And Store Data Per Line
             }
             sr.Dispose();
+
+            WorkflowImportRouter(3);
         }
         private void SaveWorkflowImportData()
         {
@@ -641,30 +645,32 @@ namespace CertusCompanion
             List<string> itemsAdded = new List<string>();
             List<string> itemsCompleted = new List<string>();
             List<string> importItemsInDB = new List<string>();
-            WorkflowItem updateItem = new WorkflowItem();
+            List<WorkflowItem> updateList = new List<WorkflowItem>();
+            int indx = 0;
 
             // edit WFM data
             foreach (WorkflowItem item in currentImportItems)
             {
-                // find old
-                int indx = currentImportItems.IndexOf(item);
+                // add to new list
+                updateList.Add(item);
 
-                // edit new
-                if (item.Status == "Completed/Trash" || item.Status == "Completed" || item.Status == "Trash")
+                // edit
+                if (updateList[indx].Status == "Completed/Trash" || updateList[indx].Status == "Completed" || updateList[indx].Status == "Trash")
                 {
-                    item.DisplayColor = "Gray";
-                    item.Note += $"<item added as completed/trash via '{FileName}' > ";
+                    updateList[indx].DisplayColor = "Gray";
+                    updateList[indx].Note += $"<item added as completed/trash via '{FileName}' > ";
                 }
                 else
                 {
-                    item.Note += $"<added via '{FileName}'> ";
+                    updateList[indx].Note += $"<added via '{FileName}'> ";
                 }
 
-                // replace old with new
-                currentImportItems[indx] = item;
-
-                itemsOnImport.Add(item.ToString());
+                itemsOnImport.Add(updateList[indx].ToString());
+                ++indx;
             }
+
+            // replace lists
+            currentImportItems = updateList;
 
             // save items on import
             TotalItemsOnImport.AddRange(itemsOnImport);

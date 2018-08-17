@@ -23,7 +23,7 @@ namespace CertusCompanion
 
         //
         // constructor
-        public ModifyForm(List<string> companies, List<string> contracts, List<Analyst> analysts, List<string> statuses)
+        public ModifyForm(List<Company> companiesDS, List<Certificate> contractsDS, List<Analyst> analysts, List<string> statuses)
         {
             InitializeComponent();
 
@@ -33,6 +33,7 @@ namespace CertusCompanion
             AutoCompleteStringCollection statusesCll = new AutoCompleteStringCollection();
 
             // --- COMPANIES --- //
+            List<string> companies = companiesDS.Select(i => i.CompanyName).ToList();
             if (companies != null && companies.Count != 0)
             {
                 foreach (string item in companies)
@@ -42,6 +43,7 @@ namespace CertusCompanion
             }
 
             // --- CONTRACTS --- //
+            List<string> contracts = contractsDS.Select(i => i.CertificateName).ToList();
             if (contracts != null && contracts.Count != 0)
             {
                 foreach (string item in contracts)
@@ -76,10 +78,10 @@ namespace CertusCompanion
                 stDDLComboBox.Items.Add(item);
             }
 
-            coTbx.AutoCompleteMode = AutoCompleteMode.Append;
+            coTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             coTbx.AutoCompleteCustomSource = companiesCll;
             coTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            ctTbx.AutoCompleteMode = AutoCompleteMode.Append;
+            ctTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             ctTbx.AutoCompleteCustomSource = contractsCll;
             ctTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
 

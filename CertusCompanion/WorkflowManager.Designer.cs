@@ -259,14 +259,14 @@
             this.button21 = new System.Windows.Forms.Button();
             this.importsCompSinceTbxPanel = new System.Windows.Forms.Panel();
             this.button16 = new System.Windows.Forms.Button();
-            this.itemsCompTbx = new System.Windows.Forms.TextBox();
+            this.itemsUpdatedTbx = new System.Windows.Forms.TextBox();
             this.button17 = new System.Windows.Forms.Button();
             this.importDescriptionTbxPanel = new System.Windows.Forms.Panel();
             this.button22 = new System.Windows.Forms.Button();
             this.importTypeTbx = new System.Windows.Forms.TextBox();
             this.button23 = new System.Windows.Forms.Button();
             this.importTypeLbl = new System.Windows.Forms.Label();
-            this.compSinceLastImportLbl = new System.Windows.Forms.Label();
+            this.updatedSinceLastImportLbl = new System.Windows.Forms.Label();
             this.newItemsAddedLbl = new System.Windows.Forms.Label();
             this.importFileNameLbl = new System.Windows.Forms.Label();
             this.importFileNameTbxPanel = new System.Windows.Forms.Panel();
@@ -4391,9 +4391,9 @@
             this.importsLbl.Location = new System.Drawing.Point(23, 11);
             this.importsLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.importsLbl.Name = "importsLbl";
-            this.importsLbl.Size = new System.Drawing.Size(44, 13);
+            this.importsLbl.Size = new System.Drawing.Size(92, 13);
             this.importsLbl.TabIndex = 1;
-            this.importsLbl.Text = "Imports:";
+            this.importsLbl.Text = "Workflow Imports:";
             // 
             // importPanel
             // 
@@ -4406,7 +4406,7 @@
             this.importPanel.Controls.Add(this.importsCompSinceTbxPanel);
             this.importPanel.Controls.Add(this.importDescriptionTbxPanel);
             this.importPanel.Controls.Add(this.importTypeLbl);
-            this.importPanel.Controls.Add(this.compSinceLastImportLbl);
+            this.importPanel.Controls.Add(this.updatedSinceLastImportLbl);
             this.importPanel.Controls.Add(this.newItemsAddedLbl);
             this.importPanel.Controls.Add(this.importFileNameLbl);
             this.importPanel.Controls.Add(this.importFileNameTbxPanel);
@@ -4417,7 +4417,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(278, 378);
+            this.importPanel.Size = new System.Drawing.Size(279, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4431,7 +4431,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(175, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(176, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4441,7 +4441,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(156, -1);
+            this.button26.Location = new System.Drawing.Point(157, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4463,7 +4463,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(152, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(153, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4494,7 +4494,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(263, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(264, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4506,7 +4506,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(181, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(182, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4565,9 +4565,9 @@
             this.importsCompSinceTbxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.importsCompSinceTbxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
-            this.importsCompSinceTbxPanel.Controls.Add(this.itemsCompTbx);
+            this.importsCompSinceTbxPanel.Controls.Add(this.itemsUpdatedTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(181, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(182, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4588,23 +4588,23 @@
             this.button16.TabStop = false;
             this.button16.UseVisualStyleBackColor = false;
             // 
-            // itemsCompTbx
+            // itemsUpdatedTbx
             // 
-            this.itemsCompTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.itemsUpdatedTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemsCompTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.itemsCompTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.itemsCompTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemsCompTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.itemsCompTbx.HideSelection = false;
-            this.itemsCompTbx.Location = new System.Drawing.Point(16, 1);
-            this.itemsCompTbx.Margin = new System.Windows.Forms.Padding(2);
-            this.itemsCompTbx.Name = "itemsCompTbx";
-            this.itemsCompTbx.ReadOnly = true;
-            this.itemsCompTbx.Size = new System.Drawing.Size(55, 12);
-            this.itemsCompTbx.TabIndex = 0;
-            this.itemsCompTbx.TabStop = false;
+            this.itemsUpdatedTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.itemsUpdatedTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.itemsUpdatedTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemsUpdatedTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.itemsUpdatedTbx.HideSelection = false;
+            this.itemsUpdatedTbx.Location = new System.Drawing.Point(16, 1);
+            this.itemsUpdatedTbx.Margin = new System.Windows.Forms.Padding(2);
+            this.itemsUpdatedTbx.Name = "itemsUpdatedTbx";
+            this.itemsUpdatedTbx.ReadOnly = true;
+            this.itemsUpdatedTbx.Size = new System.Drawing.Size(55, 12);
+            this.itemsUpdatedTbx.TabIndex = 0;
+            this.itemsUpdatedTbx.TabStop = false;
             // 
             // button17
             // 
@@ -4632,7 +4632,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(175, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(176, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4642,7 +4642,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(156, -1);
+            this.button22.Location = new System.Drawing.Point(157, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4664,7 +4664,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(152, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(153, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4695,17 +4695,17 @@
             this.importTypeLbl.TabIndex = 0;
             this.importTypeLbl.Text = "Description:";
             // 
-            // compSinceLastImportLbl
+            // updatedSinceLastImportLbl
             // 
-            this.compSinceLastImportLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.compSinceLastImportLbl.AutoSize = true;
-            this.compSinceLastImportLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.compSinceLastImportLbl.Location = new System.Drawing.Point(4, 354);
-            this.compSinceLastImportLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.compSinceLastImportLbl.Name = "compSinceLastImportLbl";
-            this.compSinceLastImportLbl.Size = new System.Drawing.Size(125, 13);
-            this.compSinceLastImportLbl.TabIndex = 0;
-            this.compSinceLastImportLbl.Text = "Comp. Since Last Import:";
+            this.updatedSinceLastImportLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.updatedSinceLastImportLbl.AutoSize = true;
+            this.updatedSinceLastImportLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.updatedSinceLastImportLbl.Location = new System.Drawing.Point(4, 354);
+            this.updatedSinceLastImportLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.updatedSinceLastImportLbl.Name = "updatedSinceLastImportLbl";
+            this.updatedSinceLastImportLbl.Size = new System.Drawing.Size(157, 13);
+            this.updatedSinceLastImportLbl.TabIndex = 0;
+            this.updatedSinceLastImportLbl.Text = "Items from Last Import Updated:";
             // 
             // newItemsAddedLbl
             // 
@@ -4742,7 +4742,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(175, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(176, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4752,7 +4752,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(156, -1);
+            this.button24.Location = new System.Drawing.Point(157, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4774,7 +4774,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(152, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(153, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4824,7 +4824,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(181, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(182, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -6608,9 +6608,9 @@
         private System.Windows.Forms.ToolStripStatusLabel queriedCountStatusLbl;
         private System.Windows.Forms.Panel importsCompSinceTbxPanel;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.TextBox itemsCompTbx;
+        private System.Windows.Forms.TextBox itemsUpdatedTbx;
         private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Label compSinceLastImportLbl;
+        private System.Windows.Forms.Label updatedSinceLastImportLbl;
         private System.Windows.Forms.Panel importNewItemsTbxPanel;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.TextBox itemsAddedTbx;

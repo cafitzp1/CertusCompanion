@@ -1768,6 +1768,7 @@ namespace CertusCompanion
                     {
                         AllWorkflowItemsLoaded.Add(importItem);
                         existingIDs.Add(importItem.DocumentWorkflowItemID);
+                        if (AllItemImportsLoaded != null && AllItemImportsLoaded.Count != 0) AllItemImportsLoaded[AllItemImportsLoaded.Count - 1].ItemsAdded.Add(importItem.DocumentWorkflowItemID);
                     }
                     else
                     {
@@ -1810,6 +1811,7 @@ namespace CertusCompanion
                                     $" -> {newStatus} : {newAssignment} via '{fileName}'> ";
 
                                 AllWorkflowItemsLoaded[indx] = wi;
+                                if (AllItemImportsLoaded != null && AllItemImportsLoaded.Count != 0) AllItemImportsLoaded[AllItemImportsLoaded.Count - 1].ItemsUpdated.Add(importItem.DocumentWorkflowItemID);
                             }
                             else // item status/assignment did not change
                             {
@@ -1843,6 +1845,7 @@ namespace CertusCompanion
             else // this is the first import
             {
                 AllWorkflowItemsLoaded = currentImportItems;
+                if(AllItemImportsLoaded !=null && AllItemImportsLoaded.Count!=0) AllItemImportsLoaded[AllItemImportsLoaded.Count - 1].ItemsAdded.AddRange(currentImportItems.Select(i => i.DocumentWorkflowItemID).ToList());
             }
 
 
@@ -1907,7 +1910,14 @@ namespace CertusCompanion
 
             if (result == DialogResult.OK)
             {
-                importFromDBBackGroundWorker.RunWorkerAsync();
+                try
+                {
+                    importFromDBBackGroundWorker.RunWorkerAsync(result);
+                }
+                catch (Exception m)
+                {
+                    MessageBox.Show("Error: " + m.Message);
+                }
             }
         }
         private void vcCustomDDLSelectionBtn_TextChanged(object sender, EventArgs e)
@@ -2181,12 +2191,12 @@ namespace CertusCompanion
             // if currently there is a filter
             if (CurrentFilter != null)
             {
-                FiltersFormIns = new FiltersForm(CurrentFilter, ColorsDataSource, AnalystNamesSubSource, StatusesDataSource, CompanyNamesSubSource, SenderEmailsSubSource);
+                FiltersFormIns = new FiltersForm(CurrentFilter, ColorsDataSource, AnalystsSubSource, StatusesDataSource, CompaniesSubSource, ContactsSubSource);
                 FiltersFormIns.PopulateCurrentFilter();
             }
             else
             {
-                FiltersFormIns = new FiltersForm(ColorsDataSource, AnalystNamesSubSource, StatusesDataSource, CompanyNamesSubSource, SenderEmailsSubSource);
+                FiltersFormIns = new FiltersForm(ColorsDataSource, AnalystsSubSource, StatusesDataSource, CompaniesSubSource, ContactsSubSource);
             }
 
             // register events
@@ -3245,7 +3255,7 @@ namespace CertusCompanion
             #region Generate Form
 
             DimForm();
-            ModifyForm = new ModifyForm(CompanyNamesSubSource, CertificateNamesSubSource, AnalystsSubSource, StatusesDataSource);
+            ModifyForm = new ModifyForm(CompaniesSubSource, CertificatesSubSource, AnalystsSubSource, StatusesDataSource);
             List<string> options = new List<string>();
 
             DialogResult result = ModifyForm.ShowDialog();
@@ -8404,10 +8414,11 @@ namespace CertusCompanion
         private void PopulateImportViewData(CSVImport itemImport)
         {
             this.importDateTbx.Text = itemImport.ImportDate.ToLongDateString();
-            this.importFileNameTbx.Text = itemImport.FilePath;
+            this.importFileNameTbx.Text = itemImport.FileName;
             this.importTypeTbx.Text = itemImport.ImportType;
-            this.itemsOnImportTbx.Text = itemImport.TotalItemsOnImport.ToString();
+            this.itemsOnImportTbx.Text = itemImport.TotalItemsOnImport.Count.ToString();
             this.itemsAddedTbx.Text = itemImport.ItemsAdded.Count.ToString();
+            this.itemsUpdatedTbx.Text = itemImport.ItemsUpdated.Count.ToString();
         }
         #endregion
 
@@ -8686,13 +8697,13 @@ namespace CertusCompanion
                 if (this.InvokeRequired)
                 {
                     this.Invoke(new Action(() => { this.LoadingForm.CompleteProgress(); }));
-                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Items loaded successfully"); }));
+                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Data loaded successfully"); }));
                     this.Invoke(new Action(() => { this.loadingFormTimer.Enabled = true; }));
                 }
                 else
                 {
                     this.LoadingForm.CompleteProgress();
-                    this.LoadingForm.ChangeLabel("Items loaded successfully");
+                    this.LoadingForm.ChangeLabel("Data loaded successfully");
                     this.loadingFormTimer.Enabled = true;
                 }
             }
@@ -8925,14 +8936,14 @@ namespace CertusCompanion
                 }
                 importFileBeingWorkedOn++;
 
+                // save this import
+                AllItemImportsLoaded.Add(import.ReturnCSVImport());
+
                 // add to AllWorkflowItemsLoaded - will report progress within the method
                 AddItemsToAllWorkflowItemsLoaded(importFileName, import.ReturnWorkflowItems(), importFilesSelected * 2);
 
                 // set non completed items list
                 SetNonCompletedItemsList();
-
-                // save this import
-                AllItemImportsLoaded.Add(import.ReturnCSVImport());
             }
 
             if (this.InvokeRequired)
@@ -9912,31 +9923,95 @@ namespace CertusCompanion
         }
         private void ImportWorkflowItemsFromDB()
         {
-            //...
+            string wiCount;
+            string clientID;
 
-            /*
-            foreach (DataRow row in table.Rows)
+            wiCount = ImportFromDBForm.WorkflowItemsAmount.ToString();
+            clientID = ImportFromDBForm.ClientIDSelection;
+
+            // test DB connection
+            #region TestConn
+            string connectionString = ConfigurationManager.ConnectionStrings["CertusDB"].ToString();
+            string query;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand command = conn.CreateCommand();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string documentWorkflowItemID = row["DocumentWorkflowItemID"] as string;
-                string contractID = row["ContractID"] as string;
-                string vendorName = row["Vendor"] as string;
-                string vendorID = row["VendorID"] as string;
-                string workflowAnalyst = row["WorkflowAnalyst"] as string;
-                string workflowAnalystID = row["WorkflowAnalystID"] as string;
-                string companyAnalyst = row["CompanyAnalyst"] as string;
-                string companyAnalystID = row["CompanyAnalystID"] as string;
+                connection.Open();
+            }
+            #endregion
+
+            // get query
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.WIR4.0_DS.sql"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    query = sr.ReadToEnd();
+                }
+            }
+
+            // manipulate query
+            if (ImportFromDBForm.WorkflowItemsSelection == "Non-completed")
+            {
+                query = query.Replace("TOP", "--TOP");
+                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
+                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>");
+            }
+            else if (ImportFromDBForm.WorkflowItemsSelection == "Most Recent...")
+            {
+                query = query.Replace("TOP 0", $"TOP {wiCount}");
+                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
+                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>");
+                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>");
+            }
+            else if (ImportFromDBForm.WorkflowItemsSelection == "Most Recent (Non-completed)...")
+            {
+                query = query.Replace("TOP 0", $"TOP {wiCount}");
+                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
+                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>");
+            }
+            else if (ImportFromDBForm.WorkflowItemsSelection == "Most Recent (Completed)...")
+            {
+                query = query.Replace("TOP 0", $"TOP {wiCount}");
+                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
+                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>");
+            }
+
+            // execute query
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+            command.CommandTimeout = 450;
+
+            SqlDataAdapter wiAdapter = new SqlDataAdapter(command);
+            DataTable wiTable = new DataTable();
+            wiAdapter.Fill(wiTable);
+
+            // add to WI
+            foreach (DataRow row in wiTable.Rows)
+            {
+                string documentWorkflowItemID = row[0].ToString();
+                string contractID = row[1].ToString();
+                string vendorName = row[2].ToString();
+                string vendorID = row[3].ToString();
+                string clID = row[4].ToString();
+                string workflowAnalyst = row[5].ToString();
+                string workflowAnalystID = row[6].ToString();
+                string companyAnalyst = row[7].ToString();
+                string companyAnalystID = row[8].ToString();
                 DateTime parsedDateTimeValue;
                 DateTime? emailDate = null;
-                DateTime.TryParse(row["EmailDate"] as string, out parsedDateTimeValue);
+                DateTime.TryParse(row[9].ToString(), out parsedDateTimeValue);
                 emailDate = parsedDateTimeValue;
-                string emailFromAddress = row["EmailFromAddress"] as string;
-                string subjectLine = row["SubjectLine"] as string;
-                string status = row["Status"] as string;
-                string certusFileID = row["CertusFileID"] as string;
-                string fileName = row["FileName"] as string;
-                string fileSize = row["FileSize"] as string;
-                string fileMIME = row["FileMIME"] as string;
-                string fileURL = row["FileURL"] as string;
+                string emailFromAddress = row[10].ToString();
+                string subjectLine = row[11].ToString();
+                string status = row[12].ToString();
+                string certusFileID = row[13].ToString();
+                string fileName = row[14].ToString();
+                string fileSize = row[15].ToString();
+                string fileMIME = row[16].ToString();
+                string fileURL = row[17].ToString();
 
                 WorkflowItem wi = new WorkflowItem
                 (
@@ -9944,7 +10019,7 @@ namespace CertusCompanion
                     contractID,
                     vendorName,
                     vendorID,
-                    null, // need to add client id here when it's included in the script
+                    clID,
                     null,
                     null,
                     null,
@@ -9966,7 +10041,8 @@ namespace CertusCompanion
                     null
                 );
             }
-            */
+
+            // import...
         }
         private void ImportCertificatesFromDB()
         {
@@ -9978,7 +10054,40 @@ namespace CertusCompanion
         }
         private void importFromDBBackGroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (e.Cancelled == true)
+            {
+                SetStatusLabelAndTimer("Operation was canceled");
+                MakeErrorSound();
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show($"Data generation unsuccessful\n\n{e.Error.Message}", "Error");
 
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
+                ResetStatusStrip();
+            }
+            else
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Data generation successful");
+                        this.LoadingForm.Refresh();
+                        this.loadingFormTimer.Enabled = true;
+                        this.SetStatusLabelAndTimer($"Data generation successful", true);
+                    }));
+                }
+                else
+                {
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Data generation successful");
+                    this.LoadingForm.Refresh();
+                    this.loadingFormTimer.Enabled = true;
+                    this.SetStatusLabelAndTimer($"Data generation successful", true);
+                }
+            }
         }
         //
         // LINQ Query

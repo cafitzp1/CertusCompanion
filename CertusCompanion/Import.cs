@@ -12,6 +12,7 @@ namespace CertusCompanion
         public string ImportName { get; set; } 
         public string ImportType { get; set; }
         public List<string> ItemsAdded { get; set; }
+        public List<string> ItemsUpdated { get; set; }
 
         //
         // default constructor
