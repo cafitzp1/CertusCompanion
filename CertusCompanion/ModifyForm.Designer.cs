@@ -63,9 +63,9 @@
             this.stDDLComboBox = new System.Windows.Forms.ComboBox();
             this.analystIDLbl = new System.Windows.Forms.Label();
             this.t9Panel = new System.Windows.Forms.Panel();
+            this.enterIDManuallyBtn = new System.Windows.Forms.Button();
             this.analystIDTbx = new System.Windows.Forms.TextBox();
             this.buttonDescToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.enterIDManuallyBtn = new System.Windows.Forms.Button();
             this.coOuterPanel.SuspendLayout();
             this.coInnerPanel.SuspendLayout();
             this.ctOuterPanel.SuspendLayout();
@@ -82,7 +82,7 @@
             this.replaceRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.replaceRadioButton.AutoSize = true;
             this.replaceRadioButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.replaceRadioButton.Location = new System.Drawing.Point(19, 222);
+            this.replaceRadioButton.Location = new System.Drawing.Point(19, 210);
             this.replaceRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.replaceRadioButton.Name = "replaceRadioButton";
             this.replaceRadioButton.Size = new System.Drawing.Size(65, 17);
@@ -96,7 +96,7 @@
             this.appendRadioButton.AutoSize = true;
             this.appendRadioButton.Checked = true;
             this.appendRadioButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendRadioButton.Location = new System.Drawing.Point(19, 198);
+            this.appendRadioButton.Location = new System.Drawing.Point(19, 186);
             this.appendRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.appendRadioButton.Name = "appendRadioButton";
             this.appendRadioButton.Size = new System.Drawing.Size(62, 17);
@@ -112,7 +112,7 @@
             this.noteTbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.noteTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteTbx.ForeColor = System.Drawing.SystemColors.Control;
-            this.noteTbx.Location = new System.Drawing.Point(126, 168);
+            this.noteTbx.Location = new System.Drawing.Point(126, 156);
             this.noteTbx.Margin = new System.Windows.Forms.Padding(2);
             this.noteTbx.Multiline = true;
             this.noteTbx.Name = "noteTbx";
@@ -124,7 +124,7 @@
             this.noteLbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.noteLbl.AutoSize = true;
             this.noteLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.noteLbl.Location = new System.Drawing.Point(17, 173);
+            this.noteLbl.Location = new System.Drawing.Point(17, 161);
             this.noteLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.noteLbl.Name = "noteLbl";
             this.noteLbl.Size = new System.Drawing.Size(33, 13);
@@ -136,7 +136,7 @@
             this.statusLbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.statusLbl.AutoSize = true;
             this.statusLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.statusLbl.Location = new System.Drawing.Point(17, 143);
+            this.statusLbl.Location = new System.Drawing.Point(17, 131);
             this.statusLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.statusLbl.Name = "statusLbl";
             this.statusLbl.Size = new System.Drawing.Size(40, 13);
@@ -183,7 +183,7 @@
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.cancelBtn.Location = new System.Drawing.Point(278, 267);
+            this.cancelBtn.Location = new System.Drawing.Point(278, 255);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(50, 18);
@@ -199,7 +199,7 @@
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.saveBtn.Location = new System.Drawing.Point(221, 267);
+            this.saveBtn.Location = new System.Drawing.Point(221, 255);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(50, 18);
@@ -400,7 +400,7 @@
             this.stOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stOuterPanel.Controls.Add(this.stInnerPanel);
             this.stOuterPanel.Controls.Add(this.stDDLComboBox);
-            this.stOuterPanel.Location = new System.Drawing.Point(126, 140);
+            this.stOuterPanel.Location = new System.Drawing.Point(126, 128);
             this.stOuterPanel.Name = "stOuterPanel";
             this.stOuterPanel.Size = new System.Drawing.Size(202, 21);
             this.stOuterPanel.TabIndex = 41;
@@ -469,13 +469,13 @@
             // analystIDLbl
             // 
             this.analystIDLbl.AutoSize = true;
-            this.analystIDLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.analystIDLbl.Location = new System.Drawing.Point(17, 102);
+            this.analystIDLbl.ForeColor = System.Drawing.Color.Gray;
+            this.analystIDLbl.Location = new System.Drawing.Point(222, 104);
             this.analystIDLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.analystIDLbl.Name = "analystIDLbl";
-            this.analystIDLbl.Size = new System.Drawing.Size(58, 13);
+            this.analystIDLbl.Size = new System.Drawing.Size(21, 13);
             this.analystIDLbl.TabIndex = 42;
-            this.analystIDLbl.Text = "Analyst ID:";
+            this.analystIDLbl.Text = "ID:";
             // 
             // t9Panel
             // 
@@ -488,26 +488,11 @@
             this.t9Panel.Size = new System.Drawing.Size(82, 21);
             this.t9Panel.TabIndex = 43;
             // 
-            // analystIDTbx
-            // 
-            this.analystIDTbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.analystIDTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.analystIDTbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.analystIDTbx.ForeColor = System.Drawing.SystemColors.Control;
-            this.analystIDTbx.Location = new System.Drawing.Point(-1, -1);
-            this.analystIDTbx.Multiline = true;
-            this.analystIDTbx.Name = "analystIDTbx";
-            this.analystIDTbx.ReadOnly = true;
-            this.analystIDTbx.Size = new System.Drawing.Size(63, 21);
-            this.analystIDTbx.TabIndex = 0;
-            this.analystIDTbx.TabStop = false;
-            // 
             // enterIDManuallyBtn
             // 
             this.enterIDManuallyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.enterIDManuallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.enterIDManuallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.enterIDManuallyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_rename_32__1_;
             this.enterIDManuallyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.enterIDManuallyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -527,12 +512,27 @@
             this.enterIDManuallyBtn.UseVisualStyleBackColor = false;
             this.enterIDManuallyBtn.Click += new System.EventHandler(this.enterIDManuallyBtn_Click);
             // 
+            // analystIDTbx
+            // 
+            this.analystIDTbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.analystIDTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.analystIDTbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.analystIDTbx.ForeColor = System.Drawing.SystemColors.Control;
+            this.analystIDTbx.Location = new System.Drawing.Point(-1, -1);
+            this.analystIDTbx.Multiline = true;
+            this.analystIDTbx.Name = "analystIDTbx";
+            this.analystIDTbx.ReadOnly = true;
+            this.analystIDTbx.Size = new System.Drawing.Size(63, 21);
+            this.analystIDTbx.TabIndex = 0;
+            this.analystIDTbx.TabStop = false;
+            // 
             // ModifyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(349, 297);
+            this.ClientSize = new System.Drawing.Size(349, 285);
             this.Controls.Add(this.t9Panel);
             this.Controls.Add(this.analystIDLbl);
             this.Controls.Add(this.stOuterPanel);

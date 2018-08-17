@@ -12,7 +12,6 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
-using System.Data;
 using System.Reflection;
 using System.Diagnostics;
 using System.Configuration;
@@ -89,6 +88,7 @@ namespace CertusCompanion
         private List<string> CompanyNamesSubSource { get; set; }
         private List<string> CertificateNamesSubSource { get; set; }
         private List<string> AnalystNamesSubSource { get; set; }
+        List<string> CurrentDetailTbxVals { get; set; }
         //
         // Dictionaries
         private Dictionary<string, Company> CompanyDictionary { get; set; }
@@ -992,7 +992,12 @@ namespace CertusCompanion
             switch (connectionBtnStatus)
             {
                 case 1:
-                    connectToDBBackgroundWorker.RunWorkerAsync();
+                    if (connectToDBBackgroundWorker.IsBusy)
+                    {
+                        MessageBox.Show("Process is still running. Wait a few moments before trying again.");
+                        break;
+                    }
+                    else connectToDBBackgroundWorker.RunWorkerAsync();
                     break;
                 case 2:
                     MessageBox.Show("Select a client from the client drop down list");
@@ -1307,7 +1312,7 @@ namespace CertusCompanion
                             if (searchIndex > 0)
                             {
                                 FocusItemInListView(searchIndex - 1);
-                                SetStatusLabelAndTimer("End of data.");
+                                SetStatusLabelAndTimer("Reached the starting point of the seach.");
                                 searchIndex = 0;
                                 searchTbx.Focus();
                                 return;
@@ -1737,7 +1742,6 @@ namespace CertusCompanion
         {
             // for reporting loading progress
             int valueToIncrement = 0;
-            int itemCount = 0;
             int valueToIncrementBy = valueToIncrementByIfLoading;
             bool loadingFormIsActive = (CheckIfFormIsOpened("LoadingForm"));
 
@@ -2640,7 +2644,12 @@ namespace CertusCompanion
                 return;
             }
 
-            changeClientBackgroundWorker.RunWorkerAsync(SelectedClientID);
+            if (changeClientBackgroundWorker.IsBusy)
+            {
+                MessageBox.Show("Process is still running. Wait a few moments before trying again.");
+                return;
+            }
+            else changeClientBackgroundWorker.RunWorkerAsync(SelectedClientID);
         }
         private void optionButtons_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -7303,15 +7312,19 @@ namespace CertusCompanion
                 }
                 else if (e.Control && e.KeyCode == Keys.V)
                 {
-                    ((sender as Button).Parent.Controls.OfType<TextBox>() as TextBox).Focus();
-                    if (((sender as Button).Parent.Controls.OfType<TextBox>() as TextBox).ReadOnly == false)
+                    foreach (Control c in ((sender as Button).Parent as Panel).Controls)
                     {
-                        ((sender as Button).Parent.Controls.OfType<TextBox>() as TextBox).Text = String.Empty;
-                        ((sender as Button).Parent.Controls.OfType<TextBox>() as TextBox).Text = Clipboard.GetText();
-                        ((sender as Button).Parent.Controls.OfType<TextBox>() as TextBox).SelectionStart = ((sender as Button).Parent.Controls.OfType<TextBox>() as TextBox).TextLength;
+                        if (c is TextBox) // c is the tbx
+                        {
+                            (c as TextBox).Focus();
+                            if ((c as TextBox).ReadOnly == false)
+                            {
+                                (c as TextBox).Text = String.Empty;
+                                (c as TextBox).Text = Clipboard.GetText();
+                                (c as TextBox).SelectionStart = (c as TextBox).TextLength;
+                            }
+                        }
                     }
-
-                    itemDetailsChanged = true;
                     return;
                 }
                 else if (e.KeyCode == Keys.Enter)
@@ -7341,28 +7354,27 @@ namespace CertusCompanion
         }
         private void detailPanelTbx_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.V)
-            {
-                itemDetailsChanged = true;
-            }
+            //
         }
         private void detailPanelTbx_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (sender is Button)
             {
-                DetailPanelTbx((sender as Button).Parent as Panel).Focus();
-                if (DetailPanelTbx((sender as Button).Parent as Panel).ReadOnly == false)
+                foreach (Control c in ((sender as Button).Parent as Panel).Controls)
                 {
-                    DetailPanelTbx((sender as Button).Parent as Panel).Text = String.Empty;
-                    DetailPanelTbx((sender as Button).Parent as Panel).Text += e.KeyChar.ToString();
-                    DetailPanelTbx((sender as Button).Parent as Panel).SelectionStart = DetailPanelTbx((sender as Button).Parent as Panel).TextLength;
+                    if (c is TextBox)
+                    {
+                        (c as TextBox).Focus();
+                        if ((c as TextBox).ReadOnly == false)
+                        {
+                            (c as TextBox).Text = String.Empty;
+                            (c as TextBox).Text += e.KeyChar.ToString();
+                            (c as TextBox).SelectionStart = (c as TextBox).TextLength;
+                        }
+                        break;
+                    }
                 }
                 return;
-            }
-
-            if (sender is TextBox)
-            {
-                if ((sender as TextBox).ReadOnly == false && Char.IsLetterOrDigit(e.KeyChar)) itemDetailsChanged = true;
             }
         }
         private void detailTbx_TextChanged(object sender, EventArgs e)
@@ -7473,22 +7485,73 @@ namespace CertusCompanion
             DetailPanelTbx(selectedPanel).TabStop = false;
             DetailPanelTbx(selectedPanel).DeselectAll();
         }
+        private List<string> ReturnDetailPanelValues()
+        {
+            List<string> vals = new List<string>();
+
+            // add tbx text vals from each panel individually
+            foreach (Panel p in splitterPanelSection1.Controls.OfType<Panel>())
+            {
+                if (p.Name.StartsWith("detailPanel"))
+                {
+                    foreach (Control c in p.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            vals.Add((c as TextBox).Text);
+                        }
+                    }
+                }
+            }
+            foreach (Panel p in splitterPanelSection2.Controls.OfType<Panel>())
+            {
+                if (p.Name.StartsWith("detailPanel"))
+                {
+                    foreach (Control c in p.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            vals.Add((c as TextBox).Text);
+                        }
+                    }
+                }
+            }
+            foreach (Panel p in itemDetailsPanel.Controls.OfType<Panel>())
+            {
+                if (p.Name.StartsWith("detailPanel"))
+                {
+                    foreach (Control c in p.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            vals.Add((c as TextBox).Text);
+                        }
+                    }
+                }
+            }
+
+            return vals;
+        }
         private void itemDetailsPanel_Enter(object sender, EventArgs e)
         {
-            //return;
-            //foreach (Panel panel in detailPanels)
-            //{
-            //    Button btn = DetailPanelFocusBtn(panel);
-
-            //    if (btn.Text == "-")
-            //    {
-            //        btn.Focus();
-            //        btn.PerformClick();
-            //    }
-            //}
+            CurrentDetailTbxVals = ReturnDetailPanelValues();
         }
         private void itemDetailsPanel_Leave(object sender, EventArgs e)
         {
+            // find out if changes were made
+            int indx = 0;
+            List<string> vals = ReturnDetailPanelValues();
+            foreach (string s in vals)
+            {
+                if(s != CurrentDetailTbxVals[indx])
+                {
+                    itemDetailsChanged = true;
+                    break;
+                }
+
+                ++indx;
+            }
+
             // prompt if changes made
             if (itemDetailsChanged)
             {
@@ -12325,14 +12388,23 @@ namespace CertusCompanion
             if (this.InvokeRequired) this.Invoke(new Action(() =>
             {
                 LoadingForm.Show(this.TransparentForm);
+                LoadingForm.ChangeLabel("Establishing DB Connection...");
+                LoadingForm.ShowCloseBtn();
+                LoadingForm.Refresh();
             }));
             else
             {
                 LoadingForm.Show(this.TransparentForm);
+                LoadingForm.ChangeLabel("Establishing DB Connection...");
+                LoadingForm.ShowCloseBtn();
+                LoadingForm.Refresh();
             }
 
-            this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Establishing DB Connection..."); }));
-            this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
+            //this.Invoke(new Action(() => 
+            //{
+            //    LoadingForm.ChangeLabel("Establishing DB Connection...");
+            //    LoadingForm.Refresh();
+            //}));
             #endregion
 
             // establish DB connection
@@ -12350,7 +12422,11 @@ namespace CertusCompanion
 
             // get static data (Clients)
             #region Clients
-            this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Populating Data..."); }));
+            this.Invoke(new Action(() => 
+            {
+                LoadingForm.ChangeLabel("Populating Data...");
+                LoadingForm.HideCloseBtn();
+            }));
             using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.ClientDS.sql"))
             {
                 using (StreamReader sr = new StreamReader(strm))

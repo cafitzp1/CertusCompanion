@@ -787,7 +787,7 @@ namespace CertusCompanion
                             if (searchIndex > 0)
                             {
                                 FocusItemInListView(searchIndex - 1);
-                                SetStatusLabelAndTimer("End of data.");
+                                SetStatusLabelAndTimer("Reached the starting point of the seach.");
                                 searchIndex = 0;
                                 searchTbx.Focus();
                                 return;

@@ -76,17 +76,15 @@ namespace CertusCompanion
         {
             this.loadBackgroundPanel.Visible = true;
         }
-        public void ShowCloseBtn()
+        public void ShowCloseBtn(string btnText = "Close")
         {
+            closeBtn.Text = btnText;
             closeBtn.Visible = true;
             closeBtn.Focus();
         }
-        public void ChangeCloseBtnToSave()
+        public void HideCloseBtn()
         {
-            this.closeBtn.Text = "Save";
-            this.closeBtn.Click -= closeBtn_Click;
-            this.closeBtn.Click += saveBtn_Click;
-            this.cancelBtn.Visible = true;
+            closeBtn.Visible = false;
         }
         public void FormatForReport(int pixelsToMove)
         {
@@ -109,7 +107,7 @@ namespace CertusCompanion
             this.radioButton2.Visible = false;
             this.radioButton3.Visible = false;
 
-            ChangeCloseBtnToSave();
+            saveBtn.Visible = true;
         }
         public void FormatForDialog(string option1, string option2)
         {
@@ -122,7 +120,7 @@ namespace CertusCompanion
             this.radioButton2.Text = option2;
             this.radioButton3.Visible = false;
 
-            ChangeCloseBtnToSave();
+            saveBtn.Visible = true;
         }
         public void FormatForDialog(string option1, string option2, string option3)
         {
@@ -135,7 +133,7 @@ namespace CertusCompanion
             this.radioButton2.Text = option2;
             this.radioButton3.Text = option3;
 
-            ChangeCloseBtnToSave();
+            saveBtn.Visible = true;
         }
         public void FormatForDialog(List<string> options)
         {
@@ -155,15 +153,15 @@ namespace CertusCompanion
                 this.optionsComboBox.Items.Add(option);
             }
 
-            ChangeCloseBtnToSave();
+            saveBtn.Visible = true;
         }
-        private void closeBtn_Click(object sender, EventArgs e) // handler uses the same button as saveBtn_Click
+        private void closeBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
 
             CloseForm();
         }
-        private void saveBtn_Click(object sender, EventArgs e) // handler uses the same button as closeBtn_Click
+        private void saveBtn_Click(object sender, EventArgs e)
         {
             if (dialogFormat == "comboBox")
             {
@@ -190,12 +188,6 @@ namespace CertusCompanion
 
             CloseForm();
         }
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-
-            CloseForm();
-        }
         private void CloseForm()
         {
             try
@@ -211,6 +203,14 @@ namespace CertusCompanion
                 this.Close();
             }
             catch (Exception) { }
+        }
+
+        private void LoadingForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.F4)
+            {
+                this.CloseForm();
+            }
         }
     }
 }

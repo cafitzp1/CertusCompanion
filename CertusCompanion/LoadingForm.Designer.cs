@@ -33,7 +33,7 @@
             this.loadBackgroundPanel = new System.Windows.Forms.Panel();
             this.loadForegroundPanel = new System.Windows.Forms.Panel();
             this.borderPanel = new CertusCompanion.BorderPanel();
-            this.cancelBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.optionsComboBox = new System.Windows.Forms.ComboBox();
             this.radioButtonsPanel = new System.Windows.Forms.Panel();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -52,7 +52,7 @@
             this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.headerPanel.Controls.Add(this.headerLabel);
             this.headerPanel.Location = new System.Drawing.Point(1, 1);
-            this.headerPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.headerPanel.Margin = new System.Windows.Forms.Padding(2);
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(398, 22);
             this.headerPanel.TabIndex = 0;
@@ -79,7 +79,7 @@
             this.loadBackgroundPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.loadBackgroundPanel.Controls.Add(this.loadForegroundPanel);
             this.loadBackgroundPanel.Location = new System.Drawing.Point(14, 75);
-            this.loadBackgroundPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loadBackgroundPanel.Margin = new System.Windows.Forms.Padding(2);
             this.loadBackgroundPanel.Name = "loadBackgroundPanel";
             this.loadBackgroundPanel.Size = new System.Drawing.Size(372, 17);
             this.loadBackgroundPanel.TabIndex = 0;
@@ -88,7 +88,7 @@
             // 
             this.loadForegroundPanel.BackColor = System.Drawing.Color.Lime;
             this.loadForegroundPanel.Location = new System.Drawing.Point(0, 0);
-            this.loadForegroundPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loadForegroundPanel.Margin = new System.Windows.Forms.Padding(2);
             this.loadForegroundPanel.Name = "loadForegroundPanel";
             this.loadForegroundPanel.Size = new System.Drawing.Size(48, 19);
             this.loadForegroundPanel.TabIndex = 0;
@@ -98,33 +98,32 @@
             this.borderPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.borderPanel.Controls.Add(this.cancelBtn);
             this.borderPanel.Controls.Add(this.optionsComboBox);
             this.borderPanel.Controls.Add(this.radioButtonsPanel);
             this.borderPanel.Controls.Add(this.closeBtn);
             this.borderPanel.Controls.Add(this.statusLabel);
             this.borderPanel.Location = new System.Drawing.Point(0, -1);
-            this.borderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.borderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.borderPanel.Name = "borderPanel";
             this.borderPanel.Size = new System.Drawing.Size(401, 142);
             this.borderPanel.TabIndex = 0;
             // 
-            // cancelBtn
+            // saveBtn
             // 
-            this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.cancelBtn.Location = new System.Drawing.Point(277, 108);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(50, 18);
-            this.cancelBtn.TabIndex = 1;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Visible = false;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveBtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.saveBtn.Location = new System.Drawing.Point(274, 35);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(50, 18);
+            this.saveBtn.TabIndex = 0;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Visible = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // optionsComboBox
             // 
@@ -137,7 +136,7 @@
             this.optionsComboBox.FormattingEnabled = true;
             this.optionsComboBox.IntegralHeight = false;
             this.optionsComboBox.Location = new System.Drawing.Point(16, 74);
-            this.optionsComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optionsComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.optionsComboBox.Name = "optionsComboBox";
             this.optionsComboBox.Size = new System.Drawing.Size(190, 23);
             this.optionsComboBox.TabIndex = 0;
@@ -147,11 +146,12 @@
             // 
             // radioButtonsPanel
             // 
+            this.radioButtonsPanel.Controls.Add(this.saveBtn);
             this.radioButtonsPanel.Controls.Add(this.radioButton3);
             this.radioButtonsPanel.Controls.Add(this.radioButton2);
             this.radioButtonsPanel.Controls.Add(this.radioButton1);
             this.radioButtonsPanel.Location = new System.Drawing.Point(6, 73);
-            this.radioButtonsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonsPanel.Name = "radioButtonsPanel";
             this.radioButtonsPanel.Size = new System.Drawing.Size(326, 59);
             this.radioButtonsPanel.TabIndex = 0;
@@ -162,7 +162,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.radioButton3.Location = new System.Drawing.Point(178, 4);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(65, 17);
             this.radioButton3.TabIndex = 0;
@@ -174,7 +174,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.radioButton2.Location = new System.Drawing.Point(94, 4);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(65, 17);
             this.radioButton2.TabIndex = 0;
@@ -186,7 +186,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.radioButton1.Location = new System.Drawing.Point(8, 4);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(65, 17);
             this.radioButton1.TabIndex = 0;
@@ -201,10 +201,10 @@
             this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.Control;
             this.closeBtn.Location = new System.Drawing.Point(336, 108);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(50, 18);
-            this.closeBtn.TabIndex = 0;
+            this.closeBtn.TabIndex = 1;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = true;
             this.closeBtn.Visible = false;
@@ -232,10 +232,12 @@
             this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.borderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoadingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "LoadingForm";
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.LoadingForm_PreviewKeyDown);
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
             this.loadBackgroundPanel.ResumeLayout(false);
@@ -258,7 +260,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.ComboBox optionsComboBox;
     }
 }

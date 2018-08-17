@@ -117,8 +117,8 @@ namespace CertusCompanion
             else
             {
                 enterIDManuallyActive = false;
-                analystIDTbx.BackColor = Color.FromArgb(27,27,27);
-                enterIDManuallyBtn.BackColor = Color.FromArgb(27,27,27);
+                analystIDTbx.BackColor = Color.FromArgb(20, 20, 20);
+                enterIDManuallyBtn.BackColor = Color.FromArgb(20, 20, 20);
                 analystIDTbx.ReadOnly = true;
                 anTbx_TextChanged(this, null);
             }

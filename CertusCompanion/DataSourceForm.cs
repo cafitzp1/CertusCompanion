@@ -111,7 +111,7 @@ namespace CertusCompanion
                 if (searchIndex > 0)
                 {
                     e.Index = searchIndex - 1;
-                    MessageBox.Show("End of data.");
+                    MessageBox.Show("Reached the starting point of the seach.");
                     searchIndex = 0;
                     searchTbx.Focus();
                     return;
