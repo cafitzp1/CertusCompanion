@@ -3,7 +3,7 @@
 namespace CertusCompanion
 {
     [Serializable]
-    public class CertificateLocation
+    public class CertificateLocation : IEquatable<CertificateLocation>, IComparable<CertificateLocation>
     {
         #region CertificateLocation Data
         public string CertificateLocationID { get; set; }
@@ -11,6 +11,7 @@ namespace CertusCompanion
         public string LocationID { get; set; }
         public DateTime DateCreated { get; set; }
         #endregion
+
         //
         // constructors
         public CertificateLocation()
@@ -24,8 +25,26 @@ namespace CertusCompanion
             LocationID = locationID;
             DateCreated = dateCreated;
         }
+
         //
-        // methods
+        // interfaces
+        public bool Equals(CertificateLocation other)
+        {
+            if (other == null) return false;
+            return (this.CertificateLocationID.Equals(other.CertificateLocationID)); // object id
+        }
+        public int CompareTo(CertificateLocation other)
+        {
+            if (other == null) return 1;
+            else return this.CertificateID.CompareTo(other.CertificateID); // attribute to compare
+        }
+
+        //
+        // overrides
+        public override int GetHashCode()
+        {
+            return Convert.ToInt32(CertificateLocationID); // object id
+        }
         public override string ToString()
         {
             return $"{CertificateLocationID}";

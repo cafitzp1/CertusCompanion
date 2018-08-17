@@ -78,10 +78,10 @@
             this.startDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startDateTimePicker.CalendarForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startDateTimePicker.Location = new System.Drawing.Point(125, 216);
+            this.startDateTimePicker.Location = new System.Drawing.Point(149, 216);
             this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.startDateTimePicker.Name = "startDateTimePicker";
-            this.startDateTimePicker.Size = new System.Drawing.Size(203, 20);
+            this.startDateTimePicker.Size = new System.Drawing.Size(179, 20);
             this.startDateTimePicker.TabIndex = 15;
             this.startDateTimePicker.TabStop = false;
             // 
@@ -95,10 +95,10 @@
             this.senderEmailTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.senderEmailTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.senderEmailTbx.HideSelection = false;
-            this.senderEmailTbx.Location = new System.Drawing.Point(125, 143);
+            this.senderEmailTbx.Location = new System.Drawing.Point(149, 143);
             this.senderEmailTbx.Margin = new System.Windows.Forms.Padding(2);
             this.senderEmailTbx.Name = "senderEmailTbx";
-            this.senderEmailTbx.Size = new System.Drawing.Size(204, 20);
+            this.senderEmailTbx.Size = new System.Drawing.Size(180, 20);
             this.senderEmailTbx.TabIndex = 11;
             this.senderEmailTbx.TabStop = false;
             // 
@@ -112,10 +112,10 @@
             this.companyTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.companyTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.companyTbx.HideSelection = false;
-            this.companyTbx.Location = new System.Drawing.Point(125, 117);
+            this.companyTbx.Location = new System.Drawing.Point(149, 117);
             this.companyTbx.Margin = new System.Windows.Forms.Padding(2);
             this.companyTbx.Name = "companyTbx";
-            this.companyTbx.Size = new System.Drawing.Size(204, 20);
+            this.companyTbx.Size = new System.Drawing.Size(180, 20);
             this.companyTbx.TabIndex = 9;
             this.companyTbx.TabStop = false;
             // 
@@ -123,7 +123,7 @@
             // 
             this.startDateLbl.AutoSize = true;
             this.startDateLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.startDateLbl.Location = new System.Drawing.Point(89, 219);
+            this.startDateLbl.Location = new System.Drawing.Point(76, 219);
             this.startDateLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.startDateLbl.Name = "startDateLbl";
             this.startDateLbl.Size = new System.Drawing.Size(32, 13);
@@ -134,7 +134,7 @@
             // 
             this.endDateLbl.AutoSize = true;
             this.endDateLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.endDateLbl.Location = new System.Drawing.Point(91, 245);
+            this.endDateLbl.Location = new System.Drawing.Point(78, 245);
             this.endDateLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.endDateLbl.Name = "endDateLbl";
             this.endDateLbl.Size = new System.Drawing.Size(29, 13);
@@ -146,10 +146,10 @@
             this.endDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endDateTimePicker.CalendarForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.endDateTimePicker.Location = new System.Drawing.Point(125, 240);
+            this.endDateTimePicker.Location = new System.Drawing.Point(149, 240);
             this.endDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.endDateTimePicker.Name = "endDateTimePicker";
-            this.endDateTimePicker.Size = new System.Drawing.Size(203, 20);
+            this.endDateTimePicker.Size = new System.Drawing.Size(179, 20);
             this.endDateTimePicker.TabIndex = 16;
             this.endDateTimePicker.TabStop = false;
             // 
@@ -298,10 +298,10 @@
             this.subjectTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subjectTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.subjectTbx.HideSelection = false;
-            this.subjectTbx.Location = new System.Drawing.Point(125, 169);
+            this.subjectTbx.Location = new System.Drawing.Point(149, 169);
             this.subjectTbx.Margin = new System.Windows.Forms.Padding(2);
             this.subjectTbx.Name = "subjectTbx";
-            this.subjectTbx.Size = new System.Drawing.Size(204, 20);
+            this.subjectTbx.Size = new System.Drawing.Size(180, 20);
             this.subjectTbx.TabIndex = 13;
             this.subjectTbx.TabStop = false;
             // 
@@ -312,9 +312,9 @@
             this.colorPanel.BackColor = System.Drawing.Color.Red;
             this.colorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.colorPanel.Controls.Add(this.colorComboBox);
-            this.colorPanel.Location = new System.Drawing.Point(125, 15);
+            this.colorPanel.Location = new System.Drawing.Point(149, 15);
             this.colorPanel.Name = "colorPanel";
-            this.colorPanel.Size = new System.Drawing.Size(204, 21);
+            this.colorPanel.Size = new System.Drawing.Size(180, 21);
             this.colorPanel.TabIndex = 119;
             // 
             // colorComboBox
@@ -322,7 +322,6 @@
             this.colorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.colorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.colorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.colorComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorComboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -337,7 +336,7 @@
             this.colorComboBox.Location = new System.Drawing.Point(-1, -1);
             this.colorComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.colorComboBox.Name = "colorComboBox";
-            this.colorComboBox.Size = new System.Drawing.Size(203, 21);
+            this.colorComboBox.Size = new System.Drawing.Size(179, 21);
             this.colorComboBox.TabIndex = 1;
             this.colorComboBox.TabStop = false;
             // 
@@ -348,9 +347,9 @@
             this.analystPanel.BackColor = System.Drawing.Color.Red;
             this.analystPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.analystPanel.Controls.Add(this.analystComboBox);
-            this.analystPanel.Location = new System.Drawing.Point(125, 43);
+            this.analystPanel.Location = new System.Drawing.Point(149, 43);
             this.analystPanel.Name = "analystPanel";
-            this.analystPanel.Size = new System.Drawing.Size(204, 21);
+            this.analystPanel.Size = new System.Drawing.Size(180, 21);
             this.analystPanel.TabIndex = 120;
             // 
             // analystComboBox
@@ -358,7 +357,6 @@
             this.analystComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.analystComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.analystComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.analystComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.analystComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.analystComboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -373,7 +371,7 @@
             this.analystComboBox.Location = new System.Drawing.Point(-1, -1);
             this.analystComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.analystComboBox.Name = "analystComboBox";
-            this.analystComboBox.Size = new System.Drawing.Size(203, 21);
+            this.analystComboBox.Size = new System.Drawing.Size(179, 21);
             this.analystComboBox.TabIndex = 0;
             this.analystComboBox.TabStop = false;
             // 
@@ -384,9 +382,9 @@
             this.statusPanel.BackColor = System.Drawing.Color.Red;
             this.statusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statusPanel.Controls.Add(this.statusComboBox);
-            this.statusPanel.Location = new System.Drawing.Point(125, 71);
+            this.statusPanel.Location = new System.Drawing.Point(149, 71);
             this.statusPanel.Name = "statusPanel";
-            this.statusPanel.Size = new System.Drawing.Size(204, 21);
+            this.statusPanel.Size = new System.Drawing.Size(180, 21);
             this.statusPanel.TabIndex = 121;
             // 
             // statusComboBox
@@ -394,7 +392,6 @@
             this.statusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.statusComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statusComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.statusComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusComboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -409,7 +406,7 @@
             this.statusComboBox.Location = new System.Drawing.Point(-1, -1);
             this.statusComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(203, 21);
+            this.statusComboBox.Size = new System.Drawing.Size(179, 21);
             this.statusComboBox.TabIndex = 0;
             this.statusComboBox.TabStop = false;
             // 
@@ -440,7 +437,6 @@
             this.Controls.Add(this.startDateLbl);
             this.Controls.Add(this.startDateTimePicker);
             this.Controls.Add(this.saveBtn);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -6,4 +6,3 @@ SELECT		CO.CompanyID
 			, CO.Name as CompanyName
 
 FROM		dbo.Company CO
-;

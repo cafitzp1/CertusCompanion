@@ -3,7 +3,7 @@
 namespace CertusCompanion
 {
     [Serializable]
-    public class Certificate
+    public class Certificate : IEquatable<Certificate>, IComparable<Certificate>
     {
         #region Certificate Data
         public string BcsCertificateID { get; set; }
@@ -24,7 +24,6 @@ namespace CertusCompanion
         public string Market { get; set; }
         public string ServiceType { get; set; }
         #endregion
-
         //
         // constructors
         public Certificate()
@@ -103,9 +102,26 @@ namespace CertusCompanion
             Market = market;
             ServiceType = serviceType;
         }
-
+        
         //
-        // return data
+        // interfaces
+        public bool Equals(Certificate other)
+        {
+            if (other == null) return false;
+            return (this.BcsCertificateID.Equals(other.BcsCertificateID)); // object id
+        }
+        public int CompareTo(Certificate other)
+        {
+            if (other == null) return 1;
+            else return this.CertificateName.CompareTo(other.CertificateName); // attribute to compare
+        }
+        
+        //
+        // overrides
+        public override int GetHashCode()
+        {
+            return Convert.ToInt32(BcsCertificateID); // object id
+        }
         public override string ToString()
         {
             return $"{CertificateName} <{BcsCertificateID}> : {CertificateIdentityField}";

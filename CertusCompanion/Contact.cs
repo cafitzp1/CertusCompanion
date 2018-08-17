@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CertusCompanion
 {
     [Serializable]
-    public class Contact
+    public class Contact : IEquatable<Contact>, IComparable<Contact>
     {
         #region Contact Data
         public string ContactID { get; set; }
@@ -16,6 +12,7 @@ namespace CertusCompanion
         public string Email { get; set; }
         public string CompanyID { get; set; }
         #endregion
+
         //
         // constructors
         public Contact()
@@ -34,11 +31,29 @@ namespace CertusCompanion
             Email = email;
             CompanyID = companyID;
         }
+
         //
-        // methods
+        // interfaces
+        public bool Equals(Contact other)
+        {
+            if (other == null) return false;
+            return (this.ContactID.Equals(other.ContactID)); // object id
+        }
+        public int CompareTo(Contact other)
+        {
+            if (other == null) return 1;
+            else return this.Name.CompareTo(other.Name); // attribute to compare
+        }
+
+        //
+        // overrides
+        public override int GetHashCode()
+        {
+            return Convert.ToInt32(ContactID); // object id
+        }
         public override string ToString()
         {
-            return $"{Name} <{ContactID}>";
+            return $"{Name} - {Title} <{ContactID}>";
         }
     }
 }

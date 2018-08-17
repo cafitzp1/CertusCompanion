@@ -181,7 +181,20 @@ namespace CertusCompanion
 
             try
             {
-                selectedDataSourceCopy.Items.Sort();
+                List<string> itemsSortedAlphabetically = new List<string>();
+
+                // query for a list of strings
+                var query = from i in selectedDataSourceCopy.Items
+                            select i.ToString();
+
+                foreach (string item in query)
+                {
+                    itemsSortedAlphabetically.Add(item);
+                }
+
+                itemsSortedAlphabetically.Sort();
+                selectedDataSourceCopy.Items.Clear();
+                selectedDataSourceCopy.Items.AddRange(itemsSortedAlphabetically);
             }
             catch (InvalidOperationException m)
             {

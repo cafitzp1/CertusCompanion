@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CertusCompanion
 {
     [Serializable]
-    public class Company
+    public class Company : IEquatable<Company>, IComparable<Company>
     {
         #region Company Data
         public string CompanyName { get; set; }
@@ -61,9 +61,26 @@ namespace CertusCompanion
             //MainContact = mainContact;
             Contacts = contacts;
         }
+        
+        //
+        // interfaces
+        public bool Equals(Company other)
+        {
+            if (other == null) return false;
+            return (this.BcsCompanyID.Equals(other.BcsCompanyID)); // object id
+        }
+        public int CompareTo(Company other)
+        {
+            if (other == null) return 1;
+            else return this.CompanyName.CompareTo(other.CompanyName); // attribute to compare
+        }
 
         //
-        // return data
+        // overrides
+        public override int GetHashCode()
+        {
+            return Convert.ToInt32(BcsCompanyID); // object id
+        }
         public override string ToString()
         {
             return $"{CompanyName} <{BcsCompanyID}>";

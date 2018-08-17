@@ -36,6 +36,8 @@ namespace CertusCompanion
         HashSet<string> emails;
         #endregion
 
+        //
+        // constructors
         public FiltersForm(List<string> colors, List<string> analysts, List<string> statuses, List<string> companies, HashSet<string> emails)
         {
             InitializeComponent();
@@ -46,9 +48,11 @@ namespace CertusCompanion
             this.companies = companies;
             this.emails = emails;
 
+            //AnalystsSubSource.OrderBy(i => i.ToString());
+            if(this.analysts!=null&&this.analysts.Count>0) this.analysts.Sort();
+
             PopulateSources();
         }
-
         public FiltersForm(Filter filter, List<string> colors, List<string> analysts, List<string> statuses, List<string> companies, HashSet<string> emails)
         {
             InitializeComponent();
@@ -60,9 +64,12 @@ namespace CertusCompanion
             this.companies = companies;
             this.emails = emails;
 
+            if (this.analysts != null && this.analysts.Count > 0) this.analysts.Sort();
+
             PopulateSources();
         }
-
+        //
+        // methods
         private void FiltersForm_Load(object sender, EventArgs e)
         {
             this.startDateTimePicker.Value = DateTime.Now.Date.AddDays(-1);

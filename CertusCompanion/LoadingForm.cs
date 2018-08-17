@@ -12,7 +12,7 @@ namespace CertusCompanion
 {
     public partial class LoadingForm : Form
     {
-        #region Data Instantiation
+        #region LoadingForm Data
         double barPercentage = 0.00;
         int barWidth = 0;
         string dialogFormat;
@@ -20,7 +20,8 @@ namespace CertusCompanion
         public string SelectedComboBoxText { get; set; }
         public int SelectedRadioButton { get; set; }
         #endregion  
-
+        //
+        // constructor
         public LoadingForm()
         {
             InitializeComponent();
@@ -34,55 +35,52 @@ namespace CertusCompanion
             this.loadForegroundPanel.Width = 0;
             this.barWidth = this.loadBackgroundPanel.Width-1;
         }
-
+        //
+        // loading form manipulation methods
         public void ChangeLabel(string label)
         {
             this.statusLabel.Text = label;   
         }
-
         public void ChangeHeaderLabel(string label)
         {
             this.headerLabel.Text = label;
         }
-
         public void MoveBar(int incrementPercent)
         {
             barPercentage += (incrementPercent * .01);
 
             this.loadForegroundPanel.Width = (int)(barPercentage * barWidth);
         }
-
         public void ReplaceBar(int incrementPercent)
         {
             barPercentage = (incrementPercent * .01);
 
             this.loadForegroundPanel.Width = (int)(barPercentage * barWidth);
         }
-
         public void CompleteProgress()
         {
             barPercentage = 1.00;
             this.loadForegroundPanel.Width = (int)(barPercentage * barWidth);
             this.headerLabel.Text = "Complete";
         }
-
         public void ResetBar()
         {
             this.loadForegroundPanel.Width = 0;
             barPercentage = 0.00;
         }
-
         public void HideBar()
         {
             this.loadBackgroundPanel.Visible = false;
         }
-
+        public void ShowBar()
+        {
+            this.loadBackgroundPanel.Visible = true;
+        }
         public void ShowCloseBtn()
         {
             closeBtn.Visible = true;
             closeBtn.Focus();
         }
-
         public void ChangeCloseBtnToSave()
         {
             this.closeBtn.Text = "Save";
@@ -90,7 +88,6 @@ namespace CertusCompanion
             this.closeBtn.Click += saveBtn_Click;
             this.cancelBtn.Visible = true;
         }
-
         public void FormatForReport(int pixelsToMove)
         {
             int fix = pixelsToMove;
@@ -100,8 +97,7 @@ namespace CertusCompanion
             this.Height += fix;
             this.statusLabel.Top -= fix;
             this.statusLabel.Height += fix;
-        }
-
+        } 
         public void FormatForDialog(string option1)
         {
             dialogFormat = "radioButtons";
@@ -115,7 +111,6 @@ namespace CertusCompanion
 
             ChangeCloseBtnToSave();
         }
-
         public void FormatForDialog(string option1, string option2)
         {
             dialogFormat = "radioButtons";
@@ -129,7 +124,6 @@ namespace CertusCompanion
 
             ChangeCloseBtnToSave();
         }
-
         public void FormatForDialog(string option1, string option2, string option3)
         {
             dialogFormat = "radioButtons";
@@ -143,7 +137,6 @@ namespace CertusCompanion
 
             ChangeCloseBtnToSave();
         }
-
         public void FormatForDialog(List<string> options)
         {
             dialogFormat = "comboBox";
@@ -164,14 +157,12 @@ namespace CertusCompanion
 
             ChangeCloseBtnToSave();
         }
-
         private void closeBtn_Click(object sender, EventArgs e) // handler uses the same button as saveBtn_Click
         {
             this.DialogResult = DialogResult.Cancel;
 
             CloseForm();
         }
-
         private void saveBtn_Click(object sender, EventArgs e) // handler uses the same button as closeBtn_Click
         {
             if (dialogFormat == "comboBox")
@@ -199,14 +190,12 @@ namespace CertusCompanion
 
             CloseForm();
         }
-
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
 
             CloseForm();
         }
-
         private void CloseForm()
         {
             try

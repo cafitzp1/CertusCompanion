@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.replaceRadioButton = new System.Windows.Forms.RadioButton();
             this.appendRadioButton = new System.Windows.Forms.RadioButton();
             this.noteTbx = new System.Windows.Forms.TextBox();
@@ -60,6 +61,11 @@
             this.stTopMarginPanel = new System.Windows.Forms.Panel();
             this.stTbx = new System.Windows.Forms.TextBox();
             this.stDDLComboBox = new System.Windows.Forms.ComboBox();
+            this.analystIDLbl = new System.Windows.Forms.Label();
+            this.t9Panel = new System.Windows.Forms.Panel();
+            this.analystIDTbx = new System.Windows.Forms.TextBox();
+            this.enterIDManuallyBtn = new System.Windows.Forms.Button();
+            this.buttonDescToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.coOuterPanel.SuspendLayout();
             this.coInnerPanel.SuspendLayout();
             this.ctOuterPanel.SuspendLayout();
@@ -68,14 +74,15 @@
             this.anInnerPanel.SuspendLayout();
             this.stOuterPanel.SuspendLayout();
             this.stInnerPanel.SuspendLayout();
+            this.t9Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // replaceRadioButton
             // 
-            this.replaceRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.replaceRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.replaceRadioButton.AutoSize = true;
             this.replaceRadioButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.replaceRadioButton.Location = new System.Drawing.Point(19, 194);
+            this.replaceRadioButton.Location = new System.Drawing.Point(19, 222);
             this.replaceRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.replaceRadioButton.Name = "replaceRadioButton";
             this.replaceRadioButton.Size = new System.Drawing.Size(65, 17);
@@ -85,11 +92,11 @@
             // 
             // appendRadioButton
             // 
-            this.appendRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.appendRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.appendRadioButton.AutoSize = true;
             this.appendRadioButton.Checked = true;
             this.appendRadioButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendRadioButton.Location = new System.Drawing.Point(19, 170);
+            this.appendRadioButton.Location = new System.Drawing.Point(19, 198);
             this.appendRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.appendRadioButton.Name = "appendRadioButton";
             this.appendRadioButton.Size = new System.Drawing.Size(62, 17);
@@ -100,14 +107,12 @@
             // 
             // noteTbx
             // 
-            this.noteTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noteTbx.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.noteTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
             this.noteTbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.noteTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteTbx.ForeColor = System.Drawing.SystemColors.Control;
-            this.noteTbx.Location = new System.Drawing.Point(126, 140);
+            this.noteTbx.Location = new System.Drawing.Point(126, 168);
             this.noteTbx.Margin = new System.Windows.Forms.Padding(2);
             this.noteTbx.Multiline = true;
             this.noteTbx.Name = "noteTbx";
@@ -116,10 +121,10 @@
             // 
             // noteLbl
             // 
-            this.noteLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.noteLbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.noteLbl.AutoSize = true;
             this.noteLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.noteLbl.Location = new System.Drawing.Point(17, 145);
+            this.noteLbl.Location = new System.Drawing.Point(17, 173);
             this.noteLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.noteLbl.Name = "noteLbl";
             this.noteLbl.Size = new System.Drawing.Size(33, 13);
@@ -128,9 +133,10 @@
             // 
             // statusLbl
             // 
+            this.statusLbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.statusLbl.AutoSize = true;
             this.statusLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.statusLbl.Location = new System.Drawing.Point(16, 102);
+            this.statusLbl.Location = new System.Drawing.Point(17, 130);
             this.statusLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.statusLbl.Name = "statusLbl";
             this.statusLbl.Size = new System.Drawing.Size(40, 13);
@@ -141,12 +147,12 @@
             // 
             this.assignmentLbl.AutoSize = true;
             this.assignmentLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.assignmentLbl.Location = new System.Drawing.Point(16, 74);
+            this.assignmentLbl.Location = new System.Drawing.Point(17, 74);
             this.assignmentLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.assignmentLbl.Name = "assignmentLbl";
-            this.assignmentLbl.Size = new System.Drawing.Size(64, 13);
+            this.assignmentLbl.Size = new System.Drawing.Size(44, 13);
             this.assignmentLbl.TabIndex = 17;
-            this.assignmentLbl.Text = "Assignment:";
+            this.assignmentLbl.Text = "Analyst:";
             // 
             // contractLbl
             // 
@@ -172,12 +178,12 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.cancelBtn.Location = new System.Drawing.Point(278, 239);
+            this.cancelBtn.Location = new System.Drawing.Point(278, 267);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(50, 18);
@@ -188,12 +194,12 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.saveBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.saveBtn.Location = new System.Drawing.Point(221, 239);
+            this.saveBtn.Location = new System.Drawing.Point(221, 267);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(50, 18);
@@ -365,10 +371,10 @@
             this.anTbx.Location = new System.Drawing.Point(3, 5);
             this.anTbx.Multiline = true;
             this.anTbx.Name = "anTbx";
-            this.anTbx.ReadOnly = true;
             this.anTbx.Size = new System.Drawing.Size(180, 18);
             this.anTbx.TabIndex = 0;
             this.anTbx.TabStop = false;
+            this.anTbx.TextChanged += new System.EventHandler(this.anTbx_TextChanged);
             // 
             // anDDLComboBox
             // 
@@ -389,13 +395,12 @@
             // 
             // stOuterPanel
             // 
-            this.stOuterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.stOuterPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.stOuterPanel.BackColor = System.Drawing.Color.Red;
             this.stOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stOuterPanel.Controls.Add(this.stInnerPanel);
             this.stOuterPanel.Controls.Add(this.stDDLComboBox);
-            this.stOuterPanel.Location = new System.Drawing.Point(126, 99);
+            this.stOuterPanel.Location = new System.Drawing.Point(126, 127);
             this.stOuterPanel.Name = "stOuterPanel";
             this.stOuterPanel.Size = new System.Drawing.Size(202, 21);
             this.stOuterPanel.TabIndex = 41;
@@ -440,7 +445,6 @@
             this.stTbx.Location = new System.Drawing.Point(3, 5);
             this.stTbx.Multiline = true;
             this.stTbx.Name = "stTbx";
-            this.stTbx.ReadOnly = true;
             this.stTbx.Size = new System.Drawing.Size(180, 18);
             this.stTbx.TabIndex = 0;
             this.stTbx.TabStop = false;
@@ -462,12 +466,75 @@
             this.stDDLComboBox.TabStop = false;
             this.stDDLComboBox.SelectedIndexChanged += new System.EventHandler(this.tbxCmbxComboBox_SelectedIndexChanged);
             // 
+            // analystIDLbl
+            // 
+            this.analystIDLbl.AutoSize = true;
+            this.analystIDLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.analystIDLbl.Location = new System.Drawing.Point(17, 103);
+            this.analystIDLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.analystIDLbl.Name = "analystIDLbl";
+            this.analystIDLbl.Size = new System.Drawing.Size(58, 13);
+            this.analystIDLbl.TabIndex = 42;
+            this.analystIDLbl.Text = "Analyst ID:";
+            // 
+            // t9Panel
+            // 
+            this.t9Panel.BackColor = System.Drawing.Color.Red;
+            this.t9Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.t9Panel.Controls.Add(this.analystIDTbx);
+            this.t9Panel.Controls.Add(this.enterIDManuallyBtn);
+            this.t9Panel.Location = new System.Drawing.Point(246, 99);
+            this.t9Panel.Name = "t9Panel";
+            this.t9Panel.Size = new System.Drawing.Size(82, 21);
+            this.t9Panel.TabIndex = 43;
+            // 
+            // analystIDTbx
+            // 
+            this.analystIDTbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.analystIDTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.analystIDTbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.analystIDTbx.ForeColor = System.Drawing.SystemColors.Control;
+            this.analystIDTbx.Location = new System.Drawing.Point(-1, -1);
+            this.analystIDTbx.Multiline = true;
+            this.analystIDTbx.Name = "analystIDTbx";
+            this.analystIDTbx.ReadOnly = true;
+            this.analystIDTbx.Size = new System.Drawing.Size(63, 21);
+            this.analystIDTbx.TabIndex = 0;
+            this.analystIDTbx.TabStop = false;
+            // 
+            // enterIDManuallyBtn
+            // 
+            this.enterIDManuallyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.enterIDManuallyBtn.BackColor = System.Drawing.SystemColors.Menu;
+            this.enterIDManuallyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_rename_32__1_;
+            this.enterIDManuallyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.enterIDManuallyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.enterIDManuallyBtn.FlatAppearance.BorderSize = 0;
+            this.enterIDManuallyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Menu;
+            this.enterIDManuallyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Menu;
+            this.enterIDManuallyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enterIDManuallyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enterIDManuallyBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.enterIDManuallyBtn.Location = new System.Drawing.Point(61, 0);
+            this.enterIDManuallyBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.enterIDManuallyBtn.Name = "enterIDManuallyBtn";
+            this.enterIDManuallyBtn.Size = new System.Drawing.Size(19, 19);
+            this.enterIDManuallyBtn.TabIndex = 0;
+            this.enterIDManuallyBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.enterIDManuallyBtn, "Enter ID Manually");
+            this.enterIDManuallyBtn.UseVisualStyleBackColor = false;
+            this.enterIDManuallyBtn.Click += new System.EventHandler(this.enterIDManuallyBtn_Click);
+            // 
             // ModifyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(349, 269);
+            this.ClientSize = new System.Drawing.Size(349, 297);
+            this.Controls.Add(this.t9Panel);
+            this.Controls.Add(this.analystIDLbl);
             this.Controls.Add(this.stOuterPanel);
             this.Controls.Add(this.anOuterPanel);
             this.Controls.Add(this.ctOuterPanel);
@@ -501,6 +568,8 @@
             this.stOuterPanel.ResumeLayout(false);
             this.stInnerPanel.ResumeLayout(false);
             this.stInnerPanel.PerformLayout();
+            this.t9Panel.ResumeLayout(false);
+            this.t9Panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -540,5 +609,10 @@
         private System.Windows.Forms.Panel stTopMarginPanel;
         private System.Windows.Forms.TextBox stTbx;
         private System.Windows.Forms.ComboBox stDDLComboBox;
+        private System.Windows.Forms.Label analystIDLbl;
+        private System.Windows.Forms.Panel t9Panel;
+        private System.Windows.Forms.TextBox analystIDTbx;
+        private System.Windows.Forms.Button enterIDManuallyBtn;
+        private System.Windows.Forms.ToolTip buttonDescToolTip;
     }
 }

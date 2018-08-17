@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CertusCompanion
 {
@@ -11,12 +12,17 @@ namespace CertusCompanion
         public string SelectedCompany { get; set; }
         public string SelectedContract { get; set; }
         public string SelectedAssignment { get; set; }
+        public string SelectedAssignmentID { get; set; }
         public string SelectedStatus { get; set; }
         public string Note { get; set; }
         public bool AppendNote { get; set; }
+        private List<Analyst> analystList;
+        private HashSet<string> analystNames;
+        private bool enterIDManuallyActive;
         #endregion
-
-        public ModifyForm(List<string> companies, List<string> contracts, List<string> analysts, List<string> statuses)
+        //
+        // constructor
+        public ModifyForm(List<string> companies, List<string> contracts, List<Analyst> analysts, List<string> statuses)
         {
             InitializeComponent();
 
@@ -25,6 +31,7 @@ namespace CertusCompanion
             AutoCompleteStringCollection assignmentsCll = new AutoCompleteStringCollection();
             AutoCompleteStringCollection statusesCll = new AutoCompleteStringCollection();
 
+            // --- COMPANIES --- //
             if (companies != null && companies.Count != 0)
             {
                 foreach (string item in companies)
@@ -33,6 +40,7 @@ namespace CertusCompanion
                 }
             }
 
+            // --- CONTRACTS --- //
             if (contracts != null && contracts.Count != 0)
             {
                 foreach (string item in contracts)
@@ -41,18 +49,24 @@ namespace CertusCompanion
                 }
             }
 
+            // --- ANALYSTS --- //
             if (analysts != null && analysts.Count != 0)
             {
+                analystList = analysts;
                 analysts.Sort();
                 anDDLComboBox.Items.Clear();
                 anDDLComboBox.Items.Add("");
-                foreach (string item in analysts)
+                List<string> anNames = analysts.Select(i => i.Name).ToList();
+                analystNames = new HashSet<string>();
+                analystNames.UnionWith(anNames);
+                foreach (string item in analystNames)
                 {
                     assignmentsCll.Add(item);
                     anDDLComboBox.Items.Add(item);
                 }
             }
 
+            // --- STATUSES --- //
             stDDLComboBox.Items.Clear();
             stDDLComboBox.Items.Add("");
             foreach (string item in statuses)
@@ -74,6 +88,15 @@ namespace CertusCompanion
             this.Location = new Point(x, y);
 
             this.ShowInTaskbar = false;
+        }
+        private void anTbx_TextChanged(object sender, EventArgs e)
+        {
+            if (analystNames == null || analystNames.Count == 0) return;
+            if (analystNames.Contains(anTbx.Text) && !this.enterIDManuallyActive)
+            {
+                analystIDTbx.Text = (analystList.Where(i => i.Name == anTbx.Text).FirstOrDefault() as Analyst).SystemUserID;
+            }
+            else analystIDTbx.Text = "NULL";
         }
         private void saveBtn_Click(object sender, EventArgs e)
         {
@@ -134,6 +157,24 @@ namespace CertusCompanion
                 this.Close();
             }
             catch (Exception) { }
+        }
+
+        private void enterIDManuallyBtn_Click(object sender, EventArgs e)
+        {
+            if (!enterIDManuallyActive)
+            {
+                enterIDManuallyActive = true;
+                analystIDTbx.BackColor = Color.FromArgb(20, 20, 20);
+                analystIDTbx.ReadOnly = false;
+                analystIDTbx.Focus();
+            }
+            else
+            {
+                enterIDManuallyActive = false;
+                analystIDTbx.BackColor = Color.FromArgb(27, 27, 27);
+                analystIDTbx.ReadOnly = true;
+                anTbx_TextChanged(this, null);
+            }
         }
     }
 }

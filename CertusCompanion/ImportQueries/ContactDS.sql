@@ -1,5 +1,4 @@
-USE CertusDB
-;
+USE CertusDB;
 
 SELECT			C.ContactID
 				, C.Name
@@ -9,4 +8,3 @@ SELECT			C.ContactID
 FROM			Contact C
 LEFT JOIN		CompanyContact CC on CC.ContactID = C.ContactID
 LEFT JOIN		Company CO on CO.CompanyID = CC.CompanyID
-;

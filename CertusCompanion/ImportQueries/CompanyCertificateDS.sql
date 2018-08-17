@@ -11,6 +11,4 @@ FROM			CompanyCertificate CC
 LEFT JOIN		Company CO on CC.CompanyID = CO.CompanyID
 LEFT JOIN		Client CL on CO.ClientID = CL.ClientID
 
-WHERE			CL.ClientID = 36
-;
 
