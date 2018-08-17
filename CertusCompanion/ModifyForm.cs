@@ -20,6 +20,7 @@ namespace CertusCompanion
         private HashSet<string> analystNames;
         private bool enterIDManuallyActive;
         #endregion
+
         //
         // constructor
         public ModifyForm(List<string> companies, List<string> contracts, List<Analyst> analysts, List<string> statuses)
@@ -89,6 +90,9 @@ namespace CertusCompanion
 
             this.ShowInTaskbar = false;
         }
+
+        //
+        // methods
         private void anTbx_TextChanged(object sender, EventArgs e)
         {
             if (analystNames == null || analystNames.Count == 0) return;
@@ -98,11 +102,31 @@ namespace CertusCompanion
             }
             else analystIDTbx.Text = "NULL";
         }
+        private void enterIDManuallyBtn_Click(object sender, EventArgs e)
+        {
+            if (!enterIDManuallyActive)
+            {
+                enterIDManuallyActive = true;
+                analystIDTbx.BackColor = Color.FromArgb(20, 20, 20);
+                enterIDManuallyBtn.BackColor = Color.FromArgb(20, 20, 20);
+                analystIDTbx.ReadOnly = false;
+                analystIDTbx.Focus();
+            }
+            else
+            {
+                enterIDManuallyActive = false;
+                analystIDTbx.BackColor = Color.FromArgb(27,27,27);
+                enterIDManuallyBtn.BackColor = Color.FromArgb(27,27,27);
+                analystIDTbx.ReadOnly = true;
+                anTbx_TextChanged(this, null);
+            }
+        }
         private void saveBtn_Click(object sender, EventArgs e)
         {
             this.SelectedCompany = this.coTbx.Text;
             this.SelectedContract = this.ctTbx.Text;
             this.SelectedAssignment = this.anTbx.Text;
+            this.SelectedAssignmentID = this.analystIDTbx.Text;
             this.SelectedStatus = this.stTbx.Text;
             this.Note = this.noteTbx.Text;
             this.AppendNote = this.appendRadioButton.Checked;
@@ -157,24 +181,6 @@ namespace CertusCompanion
                 this.Close();
             }
             catch (Exception) { }
-        }
-
-        private void enterIDManuallyBtn_Click(object sender, EventArgs e)
-        {
-            if (!enterIDManuallyActive)
-            {
-                enterIDManuallyActive = true;
-                analystIDTbx.BackColor = Color.FromArgb(20, 20, 20);
-                analystIDTbx.ReadOnly = false;
-                analystIDTbx.Focus();
-            }
-            else
-            {
-                enterIDManuallyActive = false;
-                analystIDTbx.BackColor = Color.FromArgb(27, 27, 27);
-                analystIDTbx.ReadOnly = true;
-                anTbx_TextChanged(this, null);
-            }
         }
     }
 }

@@ -95,8 +95,8 @@ namespace CertusCompanion
         private Dictionary<string, string> CompanyNameDictionary { get; set; }
         private Dictionary<string, List<Contact>> CompanyContactDictionary { get; set; }
         private Dictionary<string, Color> ItemGroupsSortedColors { get; set; }
-        private Dictionary<string, string> MarketAssignments {get;set;}
-        private Dictionary<string, WorkflowItem> WorkflowItemDictionary {get;set;}
+        private Dictionary<string, string> MarketAssignments { get; set; }
+        private Dictionary<string, WorkflowItem> WorkflowItemDictionary { get; set; }
         private Dictionary<string, string> SystemUserIDsDictionary { get; set; }
         private Dictionary<string, Certificate> CertificateDictionary { get; set; }
         //
@@ -172,12 +172,12 @@ namespace CertusCompanion
         private bool ignoreThisSelectedIndexChanged = false;
         private bool showExcludedItems = false;
         private bool matchSearchResultsCase = false;
-        private bool connectionBtnActive = false;
+        private int connectionBtnStatus;
         private bool tabWasPressed;
         private bool checkedItemsAreFocused;
         private bool itemsCouldNotBeAppended;
         private bool contrastItemGroups = false;
-        private bool showItemsWithColor = false;
+        private bool showItemsMonotone = false;
         private bool itemDetailsChanged = false;
         private bool tabWasPressedOnSaveBtn;
         private bool enterWasPressedOnSaveBtn;
@@ -185,6 +185,8 @@ namespace CertusCompanion
         private string loadedWorkspaceFileName;
         private string workspacePathToLoad;
         private string workspacePathToSave;
+        private bool ignoreThisTextChange;
+
         public string SelectedClientID { get; set; }
         #endregion
 
@@ -227,6 +229,7 @@ namespace CertusCompanion
             highlightPen = new Pen(Color.FromKnownColor(KnownColor.Highlight));
             mainThemePen = new Pen(ThemeColors.MainTheme);
             imgToUse = img;
+            connectionBtnStatus = 1;
 
             workflowItemsListView.ForeColor = ThemeColors.ItemDefault;
             workflowItemsListView.ListViewItemSorter = lvwColumnSorter;
@@ -537,19 +540,35 @@ namespace CertusCompanion
             // --- CLIENT COMBOBOX --- //
             clCustomDDLMenuStrip.Items.Clear();
 
-            if (DataSources ==null || DataSources.Count <= 2) return;
+            if (DataSources == null || DataSources.Count <= 2) return;
             ds = DataSources.Where(d => d.Name == "ALL" && d.Type == "Clients").FirstOrDefault() as DataSource;
 
-            foreach (var item in ds.Items)
+            if (this.InvokeRequired) this.Invoke(new Action(() =>
             {
-                clCustomDDLMenuStrip.Items.Add(item.ToString());
-                clCustomDDLMenuStrip.Items[clCustomDDLMenuStrip.Items.Count - 1].ForeColor = Color.FromKnownColor(KnownColor.Control);
-            }
+                foreach (var item in ds.Items)
+                {
+                    clCustomDDLMenuStrip.Items.Add(item.ToString());
+                    clCustomDDLMenuStrip.Items[clCustomDDLMenuStrip.Items.Count - 1].ForeColor = Color.FromKnownColor(KnownColor.Control);
+                }
 
-            clCustomDDLMenuStrip.AutoSize = false;
-            clCustomDDLMenuStrip.Size = new Size(330, 330);
-            if (this.InvokeRequired) this.Invoke(new Action(() => { clSelectionBtn.Text = "Select one..."; }));
-            else clSelectionBtn.Text = "Select one...";
+                clCustomDDLMenuStrip.AutoSize = false;
+                clCustomDDLMenuStrip.Size = new Size(330, 330);
+                if (this.InvokeRequired) this.Invoke(new Action(() => { clSelectionBtn.Text = "Select one..."; }));
+                else clSelectionBtn.Text = "Select one...";
+            }));
+            else
+            {
+                foreach (var item in ds.Items)
+                {
+                    clCustomDDLMenuStrip.Items.Add(item.ToString());
+                    clCustomDDLMenuStrip.Items[clCustomDDLMenuStrip.Items.Count - 1].ForeColor = Color.FromKnownColor(KnownColor.Control);
+                }
+
+                clCustomDDLMenuStrip.AutoSize = false;
+                clCustomDDLMenuStrip.Size = new Size(330, 330);
+                if (this.InvokeRequired) this.Invoke(new Action(() => { clSelectionBtn.Text = "Select one..."; }));
+                else clSelectionBtn.Text = "Select one...";
+            }
         }
         private void PopulateMainFormDynamic()
         {
@@ -933,7 +952,7 @@ namespace CertusCompanion
                         itemsMissingID = true;
                     }
                 }
-                if(itemsMissingID)
+                if (itemsMissingID)
                 {
                     DialogResult dr = MessageBox.Show
                     (
@@ -970,34 +989,64 @@ namespace CertusCompanion
             Application.UseWaitCursor = true;
             Application.DoEvents();
 
-            if (!connectionBtnActive)
+            switch (connectionBtnStatus)
             {
-                TurnOnCertusConnectionBtn();
-                ConnectToDB();
-            }
-            else
-            {
-                // do nothing
+                case 1:
+                    connectToDBBackgroundWorker.RunWorkerAsync();
+                    break;
+                case 2:
+                    MessageBox.Show("Select a client from the client drop down list");
+                    break;
+                case 3:
+                    DialogResult dr = MessageBox.Show("Reset datasources?", "", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        // remove sources
+                        while (DataSources.Count > 2)
+                        {
+                            DataSources.RemoveAt(2);
+                        }
+
+                        // reset client ddl items
+                        clCustomDDLMenuStrip.Items.Clear();
+                        clSelectionBtn.Text = String.Empty;
+                        
+                        ConnectionBtnNoConnection();
+                    }
+                    break;
+                case 4:
+                    MessageBox.Show("Select/reselect a client from the drop down list to update client data");
+                    break;
             }
 
             Application.UseWaitCursor = false;
             Application.DoEvents();
         }
-        public void TurnOnCertusConnectionBtn()
+        public void ConnectionBtnIncomplete()
+        {
+            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48_2;
+            buttonDescToolTip.SetToolTip(certusConnectionBtn, $"Clients have been successfully imported. Select a client to complete the import process.");
+            connectionBtnStatus = 2;
+        }
+        public void ConnectionBtnGood()
         {
             certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48;
-            connectionBtnActive = true;
-            buttonDescToolTip.SetToolTip(certusConnectionBtn, "Connected to CertusDB");
+            buttonDescToolTip.SetToolTip(certusConnectionBtn,
+                $"Data successfully imported from CertusDB. Clients imported: {DataSources[2].DateCreated.ToShortDateString()}. Client information imported: {DataSources[3].DateCreated.ToShortDateString()}");
+            connectionBtnStatus = 3;
         }
-        public void TurnOffCertusConnectionBtn()
+        public void ConnectionBtnOutdated()
+        {
+            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48_3;
+            buttonDescToolTip.SetToolTip(certusConnectionBtn,
+                $"Client information last updated over a week ago");
+            connectionBtnStatus = 4;
+        }
+        public void ConnectionBtnNoConnection()
         {
             certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48__1_;
-            connectionBtnActive = false;
-            buttonDescToolTip.SetToolTip(certusConnectionBtn, "Connect to CertusDB");
-        }
-        private void ConnectToDB()
-        {
-            connectToDBBackgroundWorker.RunWorkerAsync();
+            buttonDescToolTip.SetToolTip(certusConnectionBtn, "Import App Data from CertusDB");
+            connectionBtnStatus = 1;
         }
         //
         // Data
@@ -1016,7 +1065,7 @@ namespace CertusCompanion
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
 
-        #endregion
+            #endregion
         }
         private void importExcludedItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1099,7 +1148,7 @@ namespace CertusCompanion
         {
             if (this.AllWorkflowItemsLoaded == null || this.AllWorkflowItemsLoaded.Count == 0)
                 return;
-            
+
             Application.UseWaitCursor = true;
             Application.DoEvents();
 
@@ -1109,7 +1158,7 @@ namespace CertusCompanion
 
             try
             {
-                if(AnalystsSubSource==null||AnalystsSubSource.Count==0)
+                if (AnalystsSubSource == null || AnalystsSubSource.Count == 0)
                 {
                     throw new Exception("No analyst datasource is available");
                 }
@@ -1130,7 +1179,7 @@ namespace CertusCompanion
                         string idToAssign = (AnalystsSubSource.Where(i => i.Name == item.AssignedToName).FirstOrDefault() as Analyst).SystemUserID;
 
                         // if the user id isn't there
-                        if(item.AssignedToID==String.Empty || item.AssignedToID == null)
+                        if (item.AssignedToID == String.Empty || item.AssignedToID == null)
                         {
                             // assign
                             item.AssignedToID = idToAssign;
@@ -1149,14 +1198,14 @@ namespace CertusCompanion
                         }
                     }
                 }
-            } 
+            }
             catch (Exception m)
             {
                 MessageBox.Show("Could not process the request. \n\nReason: " + m.Message, "Error");
                 ResetStatusStrip();
             }
 
-            if(idsAssigned==0) SetStatusLabelAndTimer($"IDs tied for 0 items", true);
+            if (idsAssigned == 0) SetStatusLabelAndTimer($"IDs tied for 0 items", true);
             else SetStatusLabelAndTimer($"{idsAssigned} id(s) successfully assigned for {usersToAssignTo} user(s)", true);
             Application.UseWaitCursor = false;
             Application.DoEvents();
@@ -1838,7 +1887,7 @@ namespace CertusCompanion
         }
         private void importFromDatabaseBtn_Click(object sender, EventArgs e)
         {
-        #region Generate Form
+            #region Generate Form
 
             // construct forms
             DimForm();
@@ -1854,7 +1903,7 @@ namespace CertusCompanion
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
 
-        #endregion
+            #endregion
 
             if (result == DialogResult.OK)
             {
@@ -2137,7 +2186,7 @@ namespace CertusCompanion
             }
             else
             {
-                FiltersFormIns = new FiltersForm(ColorsDataSource,AnalystNamesSubSource,StatusesDataSource,CompanyNamesSubSource,SenderEmailsSubSource);
+                FiltersFormIns = new FiltersForm(ColorsDataSource, AnalystNamesSubSource, StatusesDataSource, CompanyNamesSubSource, SenderEmailsSubSource);
             }
 
             // register events
@@ -2549,15 +2598,15 @@ namespace CertusCompanion
         }
         private void showItemsMonotoneBtn_Click(object sender, EventArgs e)
         {
-            if (!showItemsWithColor)
+            if (!showItemsMonotone)
             {
-                showItemsWithColor = true;
-                showItemColorsBtn.BackColor = Color.FromName("Highlight");
+                showItemsMonotone = true;
+                showItemsMonotoneBtn.BackColor = Color.FromName("Highlight");
             }
             else
             {
-                showItemsWithColor = false;
-                showItemColorsBtn.BackColor = ThemeColors.Space;
+                showItemsMonotone = false;
+                showItemsMonotoneBtn.BackColor = ThemeColors.Space;
             }
         }
         private void fixListViewColumnSizingBtn_Click(object sender, EventArgs e)
@@ -2570,9 +2619,16 @@ namespace CertusCompanion
         private void clCustomDDLSelectionBtn_TextChanged(object sender, EventArgs e)
         {
             string client = clSelectionBtn.Text;
-            if (client == "Select one...") return;
+            if (client == "Select one..." || client==String.Empty) return;
             int delim = client.IndexOf('<');
             SelectedClientID = client.Substring(delim + 1, client.Length - 1 - delim - 1);
+
+            // return if loading client selection as opposed to generating info from client selection
+            if (ignoreThisTextChange)
+            {
+                ignoreThisTextChange = false;
+                return;
+            }
 
             changeClientBackgroundWorker.RunWorkerAsync(SelectedClientID);
         }
@@ -3189,7 +3245,7 @@ namespace CertusCompanion
             #region Generate Form
 
             DimForm();
-            ModifyForm = new ModifyForm(CompanyNamesSubSource,CertificateNamesSubSource,AnalystsSubSource,StatusesDataSource);
+            ModifyForm = new ModifyForm(CompanyNamesSubSource, CertificateNamesSubSource, AnalystsSubSource, StatusesDataSource);
             List<string> options = new List<string>();
 
             DialogResult result = ModifyForm.ShowDialog();
@@ -3209,6 +3265,7 @@ namespace CertusCompanion
                 string selectedCompany = ModifyForm.SelectedCompany;
                 string selectedContract = ModifyForm.SelectedContract;
                 string selectedAssignment = ModifyForm.SelectedAssignment;
+                string selectedAssignmentID = ModifyForm.SelectedAssignmentID;
                 string selectedStatus = ModifyForm.SelectedStatus;
                 string note = ModifyForm.Note;
                 bool appendNote = ModifyForm.AppendNote;
@@ -3232,8 +3289,15 @@ namespace CertusCompanion
                     if (selectedAssignment != null && selectedAssignment != String.Empty)
                     {
                         wi.AssignedToName = selectedAssignment;
-                        if (AnalystsSubSource.Any(i => i.Name == selectedAssignment))
-                            wi.AssignedToID = (AnalystsSubSource.Where(i => i.Name == selectedAssignment).FirstOrDefault() as Analyst).SystemUserID;
+                        //if (AnalystsSubSource.Any(i => i.Name == selectedAssignment))
+                        //    wi.AssignedToID = (AnalystsSubSource.Where(i => i.Name == selectedAssignment).FirstOrDefault() as Analyst).SystemUserID;
+                        wi.WorkflowItemInformationDifferentThanCertus = true;
+                        wi.DisplayColor = "SpringGreen";
+                        itemsToUpdate.Add(wi);
+                    }
+                    if (selectedAssignmentID != null && selectedAssignmentID != String.Empty)
+                    {
+                        wi.AssignedToID = selectedAssignmentID;
                         wi.WorkflowItemInformationDifferentThanCertus = true;
                         wi.DisplayColor = "SpringGreen";
                         itemsToUpdate.Add(wi);
@@ -3769,7 +3833,7 @@ namespace CertusCompanion
                 // just so the program doesn't crash if there's any issues drawing an item (when items get removed from the view)
             }
 
-            if (showItemsWithColor)
+            if (!showItemsMonotone)
             {
                 if (itemBeingDrawn.DisplayColor == "Default") e.Item.ForeColor = ThemeColors.ItemDefault;
                 else e.Item.ForeColor = Color.FromName(itemBeingDrawn.DisplayColor);
@@ -4715,10 +4779,11 @@ namespace CertusCompanion
         }
         private void openInCertusBtn_Click(object sender, EventArgs e)
         {
+            /*
             //UseWaitCursor = true;
             // ...
             // turning on
-            if (connectionBtnActive && CheckIfFormIsOpened("BrowserForm"))
+            if (connectionBtnStatus && CheckIfFormIsOpened("BrowserForm"))
             {
                 if (subjectTbx != null && subjectTbx.Text != String.Empty)
                 {
@@ -4738,6 +4803,7 @@ namespace CertusCompanion
                 SetStatusLabelAndTimer("This feature only works if you are connected with the certus browser and have it open (Tools > Certus Browser)");
                 MakeErrorSound();
             }
+            */
         }
         private void filesAttachedBtn_Click(object sender, EventArgs e)
         {
@@ -7884,6 +7950,7 @@ namespace CertusCompanion
         }
         private void clCustomDDLContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            clSelectionBtn.Text = String.Empty;
             clSelectionBtn.Text = e.ClickedItem.Text;
             clCustomDDLPanel_MouseLeave(sender, e);
             contextMenuOpened = false;
@@ -8390,11 +8457,9 @@ namespace CertusCompanion
 
             try
             {
-                //this.loadingForm.ChangeLabel("Loading app data");
                 this.AppData = AppSave.MostRecentSave;
                 this.StoreAppDataToForm(AppData);
                 this.loadBackgroundWorker.ReportProgress(10);
-                //this.loadingForm.Refresh();
             }
             catch (Exception)
             {
@@ -8402,10 +8467,8 @@ namespace CertusCompanion
             }
             try
             {
-                //this.loadingForm.ChangeLabel("Loading imports list");
                 this.ItemImportsList = AppData.ItemImportsList;
                 this.loadBackgroundWorker.ReportProgress(10);
-                //this.loadingForm.Refresh();
             }
             catch (Exception)
             {
@@ -8413,10 +8476,8 @@ namespace CertusCompanion
             }
             try
             {
-                //this.loadingForm.ChangeLabel("Loading completed reports");
                 this.ItemsCompletedReportsList = AppData.ItemsCompletedReportsList;
                 this.loadBackgroundWorker.ReportProgress(10);
-                //this.loadingForm.Refresh();
             }
             catch (Exception)
             {
@@ -8424,15 +8485,136 @@ namespace CertusCompanion
             }
             try
             {
-                //this.loadingForm.ChangeLabel("Loading item list");
+                this.DataSources = AppData.DataSources;
+                this.StoreDataSources();
+
+                // ascertain connection btn status based on amount of sources
+                if (DataSources.Count == 2) ConnectionBtnNoConnection();
+                else if (DataSources.Count == 3) // count of 3 means there are clients
+                {
+                    PopulateMainFormStatic();
+                    ConnectionBtnIncomplete();
+                }
+                else if (DataSources.Count > 3)
+                { 
+                    PopulateMainFormStatic();
+                    PopulateMainFormDynamic();
+
+                    // outdated if date is over a week ago
+                    if (DataSources[3].LastUpdated.Value < DateTime.Now.AddDays(-7)) ConnectionBtnOutdated();
+                    else ConnectionBtnGood();
+
+                    // show client as DDL selection but don't generate any data
+                    ignoreThisTextChange = true;
+                    string clientName = DataSources[3].Name;
+                    string clientID = (ClientsDataSource.Where(i => i.Name == clientName).FirstOrDefault() as Client).ClientID;
+                    clSelectionBtn.Text = $"{clientName} <{clientID}>";
+                }
+
+                this.loadBackgroundWorker.ReportProgress(10);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Loading failed; could not load 'DataSources'");
+            }
+            try
+            {
                 this.WorkflowItemDatabase = AppData.WorkflowItemDatabase;
                 this.loadBackgroundWorker.ReportProgress(10);
-                //this.loadingForm.Refresh();
             }
             catch (Exception)
             {
                 throw new WorkflowItemDatabaseLoadFailedException("Loading failed; could not load 'WorkflowItemDatabase'");
             }
+        }
+        private void StoreDataSources()
+        {
+            // instantiate sources lists
+            #region Instantiate
+            ColorsDataSource = new List<string>();
+            StatusesDataSource = new List<string>();
+            ClientsDataSource = new List<Client>();
+            CompaniesSubSource = new List<Company>();
+            CertificatesSubSource = new List<Certificate>();
+            AnalystsSubSource = new List<Analyst>();
+            ContactsSubSource = new List<Contact>();
+            CertificateLocationsSubSource = new List<CertificateLocation>();
+            LocationsSubSource = new List<Location>();
+            #endregion
+
+            if (DataSources == null || DataSources.Count == 0) return;
+            int indx = 0;
+
+            // colors
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.ColorsDataSource.Add(item as string);
+            }
+            ++indx;
+
+            // statuses
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.StatusesDataSource.Add(item as string);
+            }
+            ++indx;
+
+            // clients
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.ClientsDataSource.Add(item as Client);
+            }
+            ++indx;
+
+            // companies
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.CompaniesSubSource.Add(item as Company);
+            }
+            ++indx;
+
+            // certificates
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.CertificatesSubSource.Add(item as Certificate);
+            }
+            ++indx;
+
+            // analysts
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.AnalystsSubSource.Add(item as Analyst);
+            }
+            ++indx;
+
+            // contacts
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.ContactsSubSource.Add(item as Contact);
+            }
+            ++indx;
+
+            // certificateLocations
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.CertificateLocationsSubSource.Add(item as CertificateLocation);
+            }
+            ++indx;
+
+            // locations
+            if (DataSources.Count <= indx) return;
+            foreach (var item in DataSources[indx].Items)
+            {
+                this.LocationsSubSource.Add(item as Location);
+            }
+            ++indx;
         }
         internal void StoreAppDataToForm(AppData appData)
         {
@@ -8449,14 +8631,6 @@ namespace CertusCompanion
 
             // save reports
             this.AllItemsCompletedReportsLoaded = AppData.ItemsCompletedReportsList.ReturnAllReports();
-
-            // add emails to hashset
-            var query = AllWorkflowItemsLoaded.Select(i => i.EmailFromAddress).Distinct().ToList();
-
-            foreach (var item in query)
-            {
-                SenderEmailsSubSource.Add(item.ToString());
-            }
         }
         private void loadBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -8625,41 +8799,17 @@ namespace CertusCompanion
         }
         private void SaveItemsCompletedReportsToItemsCompletedReportsList()
         {
-            //// if the list doesn't currently exist, we want to assign the current list through the constructor 
-            //if (ItemsCompletedReportsList == null || ItemsCompletedReportsList.CountOfReportsInList() == 0)
-            //{
-            // pass list in constructor to assign all current imports to the list within the DB
             ItemsCompletedReportsList = new ItemsCompletedReports(AllItemsCompletedReportsLoaded);
-            //}
-            //// if there is a list and it has reports
-            //else if (ItemsCompletedReportsList != null && ItemsCompletedReportsList.CountOfReportsInList() > 0)
-            //{
-            //    // add current loaded reports (class method will ignore duplicate imports)
-            //    ItemsCompletedReportsList.AddItemsCompletedReportList(AllItemsCompletedReportsLoaded);
-            //}
+        }
+        private void SaveDataSources()
+        {
+            ItemsCompletedReportsList = new ItemsCompletedReports(AllItemsCompletedReportsLoaded);
         }
         private void SaveAppData(string file)
         {
             string fileName = file;
 
-            //if (this.AppData == null)
-            //{
-            //    AppData = new AppData(WorkflowItemDatabase, ItemImportsList, ItemsCompletedReportsList);
-            //}
-            //else
-            //{
-            //    AppData = new AppData(workflowItemDatabase, AppData.WorkflowItemDatabase, ItemImportsList, ItemsCompletedReportsList);
-            //}
-            AppData = new AppData(WorkflowItemDatabase, ItemImportsList, ItemsCompletedReportsList);
-
-            //if(AppSave==null||AppSave.SaveCount()==0)
-            //if (AppSave == null)
-            //{
-            //    // add instance
-            //    AppSave = new AppSave();
-            //}
-            //AppSave.AddSave(AppData);
-            //AppSave.Save(fileName);
+            AppData = new AppData(WorkflowItemDatabase, ItemImportsList, ItemsCompletedReportsList, DataSources);
 
             AppSave = new AppSave();
             AppSave.AddSave(AppData);
@@ -8678,7 +8828,7 @@ namespace CertusCompanion
             }
             else
             {
-#region Save Saved Workspace Info
+                #region Save Saved Workspace Info
 
                 // set filePath
                 loadedWorkspacePath = workspacePathToSave;
@@ -8690,7 +8840,7 @@ namespace CertusCompanion
                 int indx = revFileName.IndexOf(@"\");
                 loadedWorkspaceFileName = loadedWorkspacePath.Substring(loadedWorkspacePath.Length - indx);
 
-#endregion
+                #endregion
 
                 // change save btn texts
                 if (this.InvokeRequired) this.Invoke(new Action(() =>
@@ -12119,201 +12269,9 @@ namespace CertusCompanion
                 else LoadingForm.MoveBar(1);
             }
 
-            DataSource clDs = new DataSource("ALL", "Clients");
+            DataSource clDs = new DataSource("ALL", "Clients", true);
             clDs.Items.AddRange(ClientsDataSource);
             DataSources.Add(clDs);
-            #endregion
-
-            #region oldcode
-            /*
-            // --- ANALYSTS --- //
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.SystemUserDS.sql"))
-            {
-                using (StreamReader sr = new StreamReader(strm))
-                {
-                    query = sr.ReadToEnd();
-                }
-            }
-
-            command.CommandText = query;
-            command.CommandType = CommandType.Text;
-            command.CommandTimeout = 450;
-
-            SqlDataAdapter anAdapter = new SqlDataAdapter(command);
-
-            DataTable anTable = new DataTable();
-            anAdapter.Fill(anTable);
-
-            foreach (DataRow row in anTable.Rows)
-            {
-                Analyst an = new Analyst(row["SystemUserID"].ToString(), row["ClientID"].ToString(), row["Name"].ToString());
-
-                AnalystsDataSource.Add(an);
-            }
-
-            DataSource anDs = new DataSource("ALL", "Analysts");
-            anDs.Items.AddRange(AnalystsDataSource);
-            DataSources.Add(anDs);
-
-            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
-            else LoadingForm.MoveBar(15);
-
-            // --- CERTIFICATES --- //
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.CompanyCertificateDS.sql"))
-            {
-                using (StreamReader sr = new StreamReader(strm))
-                {
-                    query = sr.ReadToEnd();
-                }
-            }
-
-            command.CommandText = query;
-            command.CommandType = CommandType.Text;
-            command.CommandTimeout = 450;
-
-            SqlDataAdapter ctAdapter = new SqlDataAdapter(command);
-
-            DataTable ctTable = new DataTable();
-            ctAdapter.Fill(ctTable);
-
-            foreach (DataRow row in ctTable.Rows)
-            {
-                Certificate cc = new Certificate(row["CompanyCertificateID"].ToString(), row["Name"].ToString(), row["IdentityField"].ToString(), row["ClientID"].ToString());
-
-                CertificatesDataSource.Add(cc);
-            }
-
-            DataSource ctDs = new DataSource("ALL", "Certificates");
-            ctDs.Items.AddRange(CertificatesDataSource);
-            DataSources.Add(ctDs);
-
-            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(33); }));
-            else LoadingForm.MoveBar(33);
-
-            // --- COMPANIES --- //
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.CompanyDS.sql"))
-            {
-                using (StreamReader sr = new StreamReader(strm))
-                {
-                    query = sr.ReadToEnd();
-                }
-            }
-
-            command.CommandText = query;
-            command.CommandType = CommandType.Text;
-            command.CommandTimeout = 450;
-
-            SqlDataAdapter coAdapter = new SqlDataAdapter(command);
-        
-            DataTable coTable = new DataTable();
-            coAdapter.Fill(coTable);
-
-            foreach (DataRow row in coTable.Rows)
-            {
-                Company co = new Company(row["CompanyName"].ToString(), row["CompanyID"].ToString(), row["ClientID"].ToString());
-
-                CompaniesDataSource.Add(co);
-            }
-
-            DataSource coDs = new DataSource("ALL", "Companies");
-            coDs.Items.AddRange(CompaniesDataSource);
-            DataSources.Add(coDs);
-
-            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(33); }));
-            else LoadingForm.MoveBar(33);
-
-            // --- CONTACTS --- //
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.ContactDS.sql"))
-            {
-                using (StreamReader sr = new StreamReader(strm))
-                {
-                    query = sr.ReadToEnd();
-                }
-            }
-
-            command.CommandText = query;
-            command.CommandType = CommandType.Text;
-            command.CommandTimeout = 450;
-
-            SqlDataAdapter conAdapter = new SqlDataAdapter(command);
-
-            DataTable conTable = new DataTable();
-            conAdapter.Fill(conTable);
-
-            foreach (DataRow row in conTable.Rows)
-            {
-                Contact con = new Contact(row["ContactID"].ToString(), row["Name"].ToString(), row["Title"].ToString(), row["EmailAddress"].ToString(), row["CompanyID"].ToString());
-
-                ContactsDataSource.Add(con);
-            }
-
-            DataSource conDs = new DataSource("ALL", "Contacts");
-            conDs.Items.AddRange(ContactsDataSource);
-            DataSources.Add(conDs);
-
-            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
-            else LoadingForm.MoveBar(15);
-
-            // --- CERTIFICATELOCATIONS --- //
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.CertificateLocationDS.sql"))
-            {
-                using (StreamReader sr = new StreamReader(strm))
-                {
-                    query = sr.ReadToEnd();
-                }
-            }
-
-            command.CommandText = query;
-            command.CommandType = CommandType.Text;
-            command.CommandTimeout = 450;
-
-            SqlDataAdapter ctlAdapter = new SqlDataAdapter(command);
-
-            DataTable ctlTable = new DataTable();
-            ctlAdapter.Fill(ctlTable);
-
-            foreach (DataRow row in ctlTable.Rows)
-            {
-                CertificateLocation ctl = new CertificateLocation(row["CertificateLocationID"].ToString(), row["CompanyCertificateID"].ToString(), row["LocationID"].ToString(), Convert.ToDateTime(row["DateCreated"]));
-
-                CertificateLocationsDataSource.Add(ctl);
-            }
-
-            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
-            else LoadingForm.MoveBar(15);
-
-            // --- LOCATIONS --- //
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.LocationDS.sql"))
-            {
-                using (StreamReader sr = new StreamReader(strm))
-                {
-                    query = sr.ReadToEnd();
-                }
-            }
-
-            command.CommandText = query;
-            command.CommandType = CommandType.Text;
-            command.CommandTimeout = 450;
-
-            SqlDataAdapter loAdapter = new SqlDataAdapter(command);
-
-            DataTable loTable = new DataTable();
-            loAdapter.Fill(loTable);
-
-            foreach (DataRow row in loTable.Rows)
-            {
-                Location lo = new Location(row["LocationID"].ToString(), row["Name"].ToString(), row["Address1"].ToString(), row["Address2"].ToString());
-
-                LocationsDataSource.Add(lo);
-            }
-
-            DataSource loDs = new DataSource("ALL", "Locations");
-            loDs.Items.AddRange(LocationsDataSource);
-            DataSources.Add(loDs);
-
-            if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(15); }));
-            else LoadingForm.MoveBar(15);
-            */
             #endregion
 
             conn.Close();
@@ -12331,7 +12289,7 @@ namespace CertusCompanion
                 MessageBox.Show($"Connection unsuccessful\n\n{e.Error.Message}", "Error");
 
                 if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
-                TurnOffCertusConnectionBtn();
+                ConnectionBtnNoConnection();
                 ResetStatusStrip();
             }
             else
@@ -12345,6 +12303,7 @@ namespace CertusCompanion
                         this.LoadingForm.Refresh();
                         this.loadingFormTimer.Enabled = true;
                         this.SetStatusLabelAndTimer($"Connection Successful", true);
+                        ConnectionBtnIncomplete();
                     }));
                 }
                 else
@@ -12354,6 +12313,7 @@ namespace CertusCompanion
                     this.LoadingForm.Refresh();
                     this.loadingFormTimer.Enabled = true;
                     this.SetStatusLabelAndTimer($"Connection Successful", true);
+                    ConnectionBtnIncomplete();
                 }
             }
         }
@@ -12608,14 +12568,17 @@ namespace CertusCompanion
             else LoadingForm.MoveBar(20);
             #endregion
 
-            // --- LOCATIONS --- //
+            // --- CERTIFICATELOCATIONS --- //
             #region CertificateLocations
+            ds = new DataSource();
+            ds.Name = clientName;
+            ds.Type = "CertificateLocations";
+            ds.Binded = null;
 
             this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Generating locations..."); }));
             this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
 
-            // table for connection locations and certificates
-            // this source doesn't need to be added to the DS form...
+            // connect to db, grab items for client id, add to subsource items list
             using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.CertificateLocationDS.sql"))
             {
                 using (StreamReader sr = new StreamReader(strm))
@@ -12641,7 +12604,13 @@ namespace CertusCompanion
 
                 CertificateLocationsSubSource.Add(ctl);
             }
+
+            // add subsource items to ds items
+            ds.Items.AddRange(CertificateLocationsSubSource);
+            DataSources.Add(ds);
             #endregion
+
+            // --- LOCATIONS --- //
             #region Locations
 
             ds = new DataSource();
@@ -12674,6 +12643,9 @@ namespace CertusCompanion
 
                 LocationsSubSource.Add(lo);
             }
+
+            // close connection
+            conn.Close();
 
             // add subsource items to ds items
             ds.Items.AddRange(LocationsSubSource);
@@ -12722,6 +12694,7 @@ namespace CertusCompanion
                         this.LoadingForm.Refresh();
                         this.loadingFormTimer.Enabled = true;
                         this.SetStatusLabelAndTimer($"Data generation successful", true);
+                        ConnectionBtnGood();
                     }));
                 }
                 else
@@ -12731,6 +12704,7 @@ namespace CertusCompanion
                     this.LoadingForm.Refresh();
                     this.loadingFormTimer.Enabled = true;
                     this.SetStatusLabelAndTimer($"Data generation successful", true);
+                    ConnectionBtnGood();
                 }
             }
         }

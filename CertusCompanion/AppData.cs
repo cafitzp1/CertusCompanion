@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CertusCompanion
 {
@@ -9,6 +10,7 @@ namespace CertusCompanion
         public WorkflowItemDatabase WorkflowItemDatabase { get; set; }
         internal ItemImports ItemImportsList { get; set; }
         internal ItemsCompletedReports ItemsCompletedReportsList { get; set; }
+        internal List<DataSource> DataSources { get; set; }
         internal AppSave AppSave { get; set; }
         #endregion
 
@@ -18,11 +20,12 @@ namespace CertusCompanion
         {
 
         }
-        public AppData(WorkflowItemDatabase workflowItemDatabase, ItemImports itemImportsList, ItemsCompletedReports itemsCompletedReportsList)
+        public AppData(WorkflowItemDatabase workflowItemDatabase, ItemImports itemImportsList, ItemsCompletedReports itemsCompletedReportsList, List<DataSource> dataSources)
         {
             this.WorkflowItemDatabase = workflowItemDatabase;
             this.ItemImportsList = itemImportsList;
             this.ItemsCompletedReportsList = itemsCompletedReportsList;
+            this.DataSources = dataSources;
         }
         //
         // Return data

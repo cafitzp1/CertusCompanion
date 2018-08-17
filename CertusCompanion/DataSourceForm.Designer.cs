@@ -42,7 +42,6 @@
             this.searchTbx = new System.Windows.Forms.TextBox();
             this.removeItemBtn = new System.Windows.Forms.Button();
             this.addItemBtn = new System.Windows.Forms.Button();
-            this.itemsLbx = new System.Windows.Forms.ListBox();
             this.itemsPanel = new System.Windows.Forms.Panel();
             this.tbxContainerSplitterPanel = new System.Windows.Forms.Panel();
             this.tbxPanel2 = new System.Windows.Forms.Panel();
@@ -242,6 +241,7 @@
             this.searchTbx.MouseLeave += new System.EventHandler(this.searchTbx_MouseLeave);
             this.searchTbx.MouseHover += new System.EventHandler(this.searchTbx_MouseHover);
             this.searchTbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.searchTbx_MouseMove);
+            this.searchTbx.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.searchTbx_PreviewKeyDown);
             // 
             // removeItemBtn
             // 
@@ -278,25 +278,6 @@
             this.addItemBtn.TabIndex = 3;
             this.addItemBtn.Text = "&Add";
             this.addItemBtn.UseVisualStyleBackColor = true;
-            // 
-            // itemsLbx
-            // 
-            this.itemsLbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemsLbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.itemsLbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.itemsLbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemsLbx.ForeColor = System.Drawing.SystemColors.Control;
-            this.itemsLbx.FormattingEnabled = true;
-            this.itemsLbx.Location = new System.Drawing.Point(83, 349);
-            this.itemsLbx.Name = "itemsLbx";
-            this.itemsLbx.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.itemsLbx.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.itemsLbx.Size = new System.Drawing.Size(107, 39);
-            this.itemsLbx.TabIndex = 0;
-            this.itemsLbx.TabStop = false;
-            this.itemsLbx.Visible = false;
             // 
             // itemsPanel
             // 
@@ -673,7 +654,7 @@
             // 
             // sortNumericallyBtn
             // 
-            this.sortNumericallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.sortNumericallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.sortNumericallyBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sortNumericallyBtn.BackgroundImage")));
             this.sortNumericallyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.sortNumericallyBtn.FlatAppearance.BorderSize = 0;
@@ -774,6 +755,7 @@
             // importDSBtn
             // 
             this.importDSBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.importDSBtn.Enabled = false;
             this.importDSBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight;
             this.importDSBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.importDSBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -803,7 +785,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.CancelButton = this.cancelBtn;
             this.ClientSize = new System.Drawing.Size(526, 400);
-            this.Controls.Add(this.itemsLbx);
             this.Controls.Add(this.importDSBtn);
             this.Controls.Add(this.importFromCSVBtn);
             this.Controls.Add(this.importFromDBBtn);
@@ -865,7 +846,6 @@
         private System.Windows.Forms.TextBox searchTbx;
         private System.Windows.Forms.Button removeItemBtn;
         private System.Windows.Forms.Button addItemBtn;
-        private System.Windows.Forms.ListBox itemsLbx;
         private System.Windows.Forms.Panel itemsPanel;
         private System.Windows.Forms.Panel tbxContainerSplitterPanel;
         private System.Windows.Forms.Panel tbxPanel2;

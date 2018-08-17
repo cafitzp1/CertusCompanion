@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CertusCompanion
@@ -27,6 +21,7 @@ namespace CertusCompanion
         private bool sortAlphabetically;
         private bool showItems;
         private SolidBrush spaceDarkBrush;
+        List<string> itemsSortedAlphabetically;
         #endregion
 
         // --- STARTUP --- //
@@ -50,6 +45,7 @@ namespace CertusCompanion
             selectedDataSourceCopy = dataSources[0];
             itemsListView.VirtualListSize = 1;
             itemsListView.RetrieveVirtualItem += itemsListView_RetrieveVirtualItem;
+            itemsListView.SearchForVirtualItem += ItemsListView_SearchForVirtualItem;
             DataSourceForm_Resize(this, null);
         }
         private void DataSources_Load(object sender, EventArgs e)
@@ -93,6 +89,37 @@ namespace CertusCompanion
             else lvi.Text = selectedDataSourceCopy.Items[e.ItemIndex].ToString();
 
             e.Item = lvi; 		
+        }
+        private void ItemsListView_SearchForVirtualItem(object sender, SearchForVirtualItemEventArgs e)
+        {
+            int index = 0;
+            if (sortAlphabetically)
+            {
+                List<object> items = new List<object>();
+                items.AddRange(itemsSortedAlphabetically);
+                index = FindMyStringInList(items, searchVal, searchIndex);
+            }
+            else index = FindMyStringInList((sourcesLbx.SelectedItem as DataSource).Items, searchVal, searchIndex);
+
+            // find the item if index >= 0
+            if (index >= 0)
+            {
+                e.Index = index;
+            }
+            else
+            {
+                if (searchIndex > 0)
+                {
+                    e.Index = searchIndex - 1;
+                    MessageBox.Show("End of data.");
+                    searchIndex = 0;
+                    searchTbx.Focus();
+                    return;
+                }
+                System.Media.SystemSounds.Hand.Play();
+                MessageBox.Show("No items were found for that search", "Warning");
+            }
+                        
         }
         private void LoadSampleData()
         {
@@ -154,7 +181,7 @@ namespace CertusCompanion
             if (sortAlphabetically)
             {
                 sortAlphabetically = false;
-                sortAlphabeticallyBtn.BackColor = Color.FromArgb(15, 15, 15);
+                sortAlphabeticallyBtn.BackColor = Color.FromArgb(20, 20, 20);
             }
 
             sortNumerically = true;
@@ -173,7 +200,7 @@ namespace CertusCompanion
             if (sortNumerically)
             {
                 sortNumerically = false;
-                sortNumericallyBtn.BackColor = Color.FromArgb(15, 15, 15);
+                sortNumericallyBtn.BackColor = Color.FromArgb(20, 20, 20);
             }
 
             sortAlphabetically = true;
@@ -181,7 +208,7 @@ namespace CertusCompanion
 
             try
             {
-                List<string> itemsSortedAlphabetically = new List<string>();
+                itemsSortedAlphabetically = new List<string>();
 
                 // query for a list of strings
                 var query = from i in selectedDataSourceCopy.Items
@@ -199,7 +226,7 @@ namespace CertusCompanion
             catch (InvalidOperationException m)
             {
                 sortAlphabetically = false;
-                sortAlphabeticallyBtn.BackColor = Color.FromArgb(15, 15, 15);
+                sortAlphabeticallyBtn.BackColor = Color.FromArgb(20, 20, 20);
                 MessageBox.Show("Could not sort. Reason: " + m.Message, "Error");
             }
 
@@ -372,6 +399,10 @@ namespace CertusCompanion
             previousSearch = searchVal;
             searchVal = searchTbx.Text;
         }
+        private void searchTbx_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) e.IsInputKey = true;
+        }
         private void searchTbx_KeyDown(object sender, KeyEventArgs e)
         {
             if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.Space)
@@ -381,7 +412,7 @@ namespace CertusCompanion
                 e.SuppressKeyPress = true;
                 return;
             }
-            else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Menu)
+            else if (e.KeyCode == Keys.Enter)
             {
                 //return if no items
                 if ((sourcesLbx.SelectedItem as DataSource) == null || (sourcesLbx.SelectedItem as DataSource).Items == null || 
@@ -391,7 +422,6 @@ namespace CertusCompanion
                     return;
                 }
 
-                int index = 0;
                 searchVal = searchTbx.Text;
                 searchTbx.SelectAll();
 
@@ -406,35 +436,6 @@ namespace CertusCompanion
                             item.Selected = true;
                             item.EnsureVisible();
                         }
-
-                        /*
-                        index = FindMyStringInList((sourcesLbx.SelectedItem as DataSource).Items, searchVal, searchIndex);
-
-                        // find the item if index >= 0
-                        if (index >= 0)
-                        {
-                            itemsListView.ClearSelected();
-                            itemsListView.SetSelected(index,true);
-
-                            e.Handled = true;
-                            e.SuppressKeyPress = true;
-                        }
-                        else
-                        {
-                            if (searchIndex > 0)
-                            {
-                                itemsListView.ClearSelected();
-                                itemsListView.SetSelected(searchIndex-1,true);
-                                System.Media.SystemSounds.Hand.Play();
-                                searchIndex = 0;
-                                searchTbx.Focus();
-                                return;
-                            }
-
-                            System.Media.SystemSounds.Hand.Play();
-                            MessageBox.Show("No items were found for that search", "Warning");
-                        }
-                        */
                     }
                 }
                 catch (Exception)
@@ -459,8 +460,8 @@ namespace CertusCompanion
         {
             for (int i = startIndex; i < items.Count; ++i)
             {
-                string s = items[i].ToString();
-                if (s.Contains(searchString))
+                string s = items[i].ToString().ToLower();
+                if (s.Contains(searchString.ToLower()))
                 {
                     searchIndex = i + 1;
                     return i;
@@ -486,7 +487,7 @@ namespace CertusCompanion
                 if (sortAlphabetically)
                 {
                     sortAlphabetically = false;
-                    sortAlphabeticallyBtn.BackColor = Color.FromArgb(15, 15, 15);
+                    sortAlphabeticallyBtn.BackColor = Color.FromArgb(20, 20, 20);
                 }
 
                 sortNumerically = true;

@@ -49,7 +49,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.importFromDatabaseBtn = new System.Windows.Forms.Button();
             this.lockListViewColumnSizingBtn = new System.Windows.Forms.Button();
-            this.showItemColorsBtn = new System.Windows.Forms.Button();
+            this.showItemsMonotoneBtn = new System.Windows.Forms.Button();
             this.contrastItemGroupsBtn = new System.Windows.Forms.Button();
             this.redrawItemsBtn = new System.Windows.Forms.Button();
             this.dividerPanel2 = new System.Windows.Forms.Panel();
@@ -70,6 +70,20 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.fullViewBtn = new System.Windows.Forms.Button();
             this.colorDialogBtn = new System.Windows.Forms.Button();
+            this.workflowItemsListView = new CertusCompanion.ListViewNF();
+            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainerChild2 = new System.Windows.Forms.SplitContainer();
             this.detailsOptionsPanel = new System.Windows.Forms.Panel();
             this.openInCertusBtn = new System.Windows.Forms.Button();
@@ -414,20 +428,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToDBBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.workflowItemsListView = new CertusCompanion.ListViewNF();
-            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.changeClientBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild1)).BeginInit();
             this.splitContainerChild1.Panel1.SuspendLayout();
@@ -663,7 +663,7 @@
             this.listViewOptionsPanel.Controls.Add(this.button1);
             this.listViewOptionsPanel.Controls.Add(this.importFromDatabaseBtn);
             this.listViewOptionsPanel.Controls.Add(this.lockListViewColumnSizingBtn);
-            this.listViewOptionsPanel.Controls.Add(this.showItemColorsBtn);
+            this.listViewOptionsPanel.Controls.Add(this.showItemsMonotoneBtn);
             this.listViewOptionsPanel.Controls.Add(this.contrastItemGroupsBtn);
             this.listViewOptionsPanel.Controls.Add(this.redrawItemsBtn);
             this.listViewOptionsPanel.Controls.Add(this.dividerPanel2);
@@ -850,28 +850,28 @@
             this.lockListViewColumnSizingBtn.UseVisualStyleBackColor = false;
             this.lockListViewColumnSizingBtn.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
             // 
-            // showItemColorsBtn
+            // showItemsMonotoneBtn
             // 
-            this.showItemColorsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.showItemColorsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showItemColorsBtn.BackgroundImage")));
-            this.showItemColorsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.showItemColorsBtn.FlatAppearance.BorderSize = 0;
-            this.showItemColorsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.showItemColorsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.showItemColorsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showItemColorsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showItemColorsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.showItemColorsBtn.Location = new System.Drawing.Point(588, 1);
-            this.showItemColorsBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.showItemColorsBtn.Name = "showItemColorsBtn";
-            this.showItemColorsBtn.Size = new System.Drawing.Size(20, 20);
-            this.showItemColorsBtn.TabIndex = 0;
-            this.showItemColorsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.showItemColorsBtn, "Show Item Colors");
-            this.showItemColorsBtn.UseVisualStyleBackColor = false;
-            this.showItemColorsBtn.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
-            this.showItemColorsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.showItemColorsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            this.showItemsMonotoneBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.showItemsMonotoneBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showItemsMonotoneBtn.BackgroundImage")));
+            this.showItemsMonotoneBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.showItemsMonotoneBtn.FlatAppearance.BorderSize = 0;
+            this.showItemsMonotoneBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.showItemsMonotoneBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.showItemsMonotoneBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showItemsMonotoneBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showItemsMonotoneBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.showItemsMonotoneBtn.Location = new System.Drawing.Point(588, 1);
+            this.showItemsMonotoneBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.showItemsMonotoneBtn.Name = "showItemsMonotoneBtn";
+            this.showItemsMonotoneBtn.Size = new System.Drawing.Size(20, 20);
+            this.showItemsMonotoneBtn.TabIndex = 0;
+            this.showItemsMonotoneBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.showItemsMonotoneBtn, "Show Items all the Same Color");
+            this.showItemsMonotoneBtn.UseVisualStyleBackColor = false;
+            this.showItemsMonotoneBtn.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
+            this.showItemsMonotoneBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.showItemsMonotoneBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
             // contrastItemGroupsBtn
             // 
@@ -1277,6 +1277,119 @@
             this.colorDialogBtn.Click += new System.EventHandler(this.colorSelectionBtn_Click);
             this.colorDialogBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.colorDialogBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // workflowItemsListView
+            // 
+            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.workflowItemsListView.CheckBoxes = true;
+            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.countColumnHeader,
+            this.itemIdColumnHeader,
+            this.companyColumnHeader,
+            this.contractIdColumnHeader,
+            this.dateColumnHeader,
+            this.senderColumnHeader,
+            this.emailSubjectColumnHeader,
+            this.fileNameColumnHeader,
+            this.sizeColumnHeader,
+            this.fileUrlColumnHeader,
+            this.assignedToColumnHeader,
+            this.statusColumnHeader,
+            this.sizeFixHeader});
+            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
+            this.workflowItemsListView.FullRowSelect = true;
+            this.workflowItemsListView.HideSelection = false;
+            this.workflowItemsListView.LabelWrap = false;
+            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
+            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
+            this.workflowItemsListView.Name = "workflowItemsListView";
+            this.workflowItemsListView.OwnerDraw = true;
+            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
+            this.workflowItemsListView.TabIndex = 1;
+            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
+            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
+            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
+            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
+            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
+            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
+            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
+            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
+            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
+            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
+            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
+            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
+            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
+            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
+            // 
+            // countColumnHeader
+            // 
+            this.countColumnHeader.Text = "";
+            this.countColumnHeader.Width = 70;
+            // 
+            // itemIdColumnHeader
+            // 
+            this.itemIdColumnHeader.Text = "Item ID";
+            this.itemIdColumnHeader.Width = 70;
+            // 
+            // companyColumnHeader
+            // 
+            this.companyColumnHeader.Text = "Company";
+            this.companyColumnHeader.Width = 70;
+            // 
+            // contractIdColumnHeader
+            // 
+            this.contractIdColumnHeader.Text = "Contract";
+            this.contractIdColumnHeader.Width = 70;
+            // 
+            // dateColumnHeader
+            // 
+            this.dateColumnHeader.Text = "Date";
+            this.dateColumnHeader.Width = 70;
+            // 
+            // senderColumnHeader
+            // 
+            this.senderColumnHeader.Text = "Sender";
+            this.senderColumnHeader.Width = 70;
+            // 
+            // emailSubjectColumnHeader
+            // 
+            this.emailSubjectColumnHeader.Text = "Email Subject";
+            this.emailSubjectColumnHeader.Width = 70;
+            // 
+            // fileNameColumnHeader
+            // 
+            this.fileNameColumnHeader.Text = "File Name";
+            this.fileNameColumnHeader.Width = 70;
+            // 
+            // sizeColumnHeader
+            // 
+            this.sizeColumnHeader.Text = "Size";
+            this.sizeColumnHeader.Width = 70;
+            // 
+            // fileUrlColumnHeader
+            // 
+            this.fileUrlColumnHeader.Text = "File URL";
+            this.fileUrlColumnHeader.Width = 70;
+            // 
+            // assignedToColumnHeader
+            // 
+            this.assignedToColumnHeader.Text = "Assigned To";
+            this.assignedToColumnHeader.Width = 70;
+            // 
+            // statusColumnHeader
+            // 
+            this.statusColumnHeader.Text = "Status";
+            this.statusColumnHeader.Width = 70;
+            // 
+            // sizeFixHeader
+            // 
+            this.sizeFixHeader.Text = "";
+            this.sizeFixHeader.Width = 70;
             // 
             // splitContainerChild2
             // 
@@ -4304,7 +4417,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(276, 378);
+            this.importPanel.Size = new System.Drawing.Size(278, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4318,7 +4431,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(173, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(175, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4328,7 +4441,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(154, -1);
+            this.button26.Location = new System.Drawing.Point(156, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4350,7 +4463,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(150, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(152, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4381,7 +4494,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(261, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(263, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4393,7 +4506,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(179, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(181, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4454,7 +4567,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsCompTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(179, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(181, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4519,7 +4632,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(173, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(175, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4529,7 +4642,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(154, -1);
+            this.button22.Location = new System.Drawing.Point(156, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4551,7 +4664,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(150, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(152, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4629,7 +4742,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(173, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(175, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4639,7 +4752,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(154, -1);
+            this.button24.Location = new System.Drawing.Point(156, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4661,7 +4774,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(150, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(152, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4711,7 +4824,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(179, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(181, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -5827,7 +5940,7 @@
             this.certusConnectionBtn.Size = new System.Drawing.Size(15, 15);
             this.certusConnectionBtn.TabIndex = 0;
             this.certusConnectionBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Connect to CertusDB");
+            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Import App Data from CertusDB");
             this.certusConnectionBtn.UseVisualStyleBackColor = false;
             this.certusConnectionBtn.Click += new System.EventHandler(this.certusConnectionBtn_Click);
             // 
@@ -6264,119 +6377,6 @@
             this.connectToDBBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.connectToDBBackgroundWorker_DoWork);
             this.connectToDBBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.connectToDBBackgroundWorker_RunWorkerCompleted);
             // 
-            // workflowItemsListView
-            // 
-            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.workflowItemsListView.CheckBoxes = true;
-            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.countColumnHeader,
-            this.itemIdColumnHeader,
-            this.companyColumnHeader,
-            this.contractIdColumnHeader,
-            this.dateColumnHeader,
-            this.senderColumnHeader,
-            this.emailSubjectColumnHeader,
-            this.fileNameColumnHeader,
-            this.sizeColumnHeader,
-            this.fileUrlColumnHeader,
-            this.assignedToColumnHeader,
-            this.statusColumnHeader,
-            this.sizeFixHeader});
-            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
-            this.workflowItemsListView.FullRowSelect = true;
-            this.workflowItemsListView.HideSelection = false;
-            this.workflowItemsListView.LabelWrap = false;
-            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
-            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
-            this.workflowItemsListView.Name = "workflowItemsListView";
-            this.workflowItemsListView.OwnerDraw = true;
-            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
-            this.workflowItemsListView.TabIndex = 1;
-            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
-            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
-            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
-            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
-            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
-            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
-            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
-            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
-            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
-            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
-            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
-            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
-            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
-            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
-            // 
-            // countColumnHeader
-            // 
-            this.countColumnHeader.Text = "";
-            this.countColumnHeader.Width = 70;
-            // 
-            // itemIdColumnHeader
-            // 
-            this.itemIdColumnHeader.Text = "Item ID";
-            this.itemIdColumnHeader.Width = 70;
-            // 
-            // companyColumnHeader
-            // 
-            this.companyColumnHeader.Text = "Company";
-            this.companyColumnHeader.Width = 70;
-            // 
-            // contractIdColumnHeader
-            // 
-            this.contractIdColumnHeader.Text = "Contract";
-            this.contractIdColumnHeader.Width = 70;
-            // 
-            // dateColumnHeader
-            // 
-            this.dateColumnHeader.Text = "Date";
-            this.dateColumnHeader.Width = 70;
-            // 
-            // senderColumnHeader
-            // 
-            this.senderColumnHeader.Text = "Sender";
-            this.senderColumnHeader.Width = 70;
-            // 
-            // emailSubjectColumnHeader
-            // 
-            this.emailSubjectColumnHeader.Text = "Email Subject";
-            this.emailSubjectColumnHeader.Width = 70;
-            // 
-            // fileNameColumnHeader
-            // 
-            this.fileNameColumnHeader.Text = "File Name";
-            this.fileNameColumnHeader.Width = 70;
-            // 
-            // sizeColumnHeader
-            // 
-            this.sizeColumnHeader.Text = "Size";
-            this.sizeColumnHeader.Width = 70;
-            // 
-            // fileUrlColumnHeader
-            // 
-            this.fileUrlColumnHeader.Text = "File URL";
-            this.fileUrlColumnHeader.Width = 70;
-            // 
-            // assignedToColumnHeader
-            // 
-            this.assignedToColumnHeader.Text = "Assigned To";
-            this.assignedToColumnHeader.Width = 70;
-            // 
-            // statusColumnHeader
-            // 
-            this.statusColumnHeader.Text = "Status";
-            this.statusColumnHeader.Width = 70;
-            // 
-            // sizeFixHeader
-            // 
-            this.sizeFixHeader.Text = "";
-            this.sizeFixHeader.Width = 70;
-            // 
             // changeClientBackgroundWorker
             // 
             this.changeClientBackgroundWorker.WorkerReportsProgress = true;
@@ -6735,7 +6735,7 @@
         private System.Windows.Forms.ColumnHeader contractIdColumnHeader;
         private System.Windows.Forms.Button redrawItemsBtn;
         private System.Windows.Forms.Button contrastItemGroupsBtn;
-        private System.Windows.Forms.Button showItemColorsBtn;
+        private System.Windows.Forms.Button showItemsMonotoneBtn;
         private System.Windows.Forms.Panel itemDetailsPanel;
         private System.Windows.Forms.Button detailsSaveBtn;
         private System.Windows.Forms.Panel detailPanel18;

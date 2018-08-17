@@ -483,6 +483,8 @@
     <None Include="Resources\icons8-delete-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-connection-status-on-48_3.png" />
+    <None Include="Resources\icons8-connection-status-on-48_2.png" />
     <None Include="Resources\icons8-rename-32 %281%29.png" />
     <EmbeddedResource Include="ImportQueries\CompanyCertificateDS.sql" />
     <EmbeddedResource Include="ImportQueries\CertificateLocationDS.sql" />

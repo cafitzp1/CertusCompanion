@@ -47,7 +47,7 @@ namespace CertusCompanion
         }
         public override string ToString()
         {
-            return $"{CertificateLocationID}";
+            return $"{CertificateLocationID}\t<{CertificateID}>\t<{LocationID}>";
         }
     }
 }

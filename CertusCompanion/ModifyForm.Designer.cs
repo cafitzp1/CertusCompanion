@@ -64,8 +64,8 @@
             this.analystIDLbl = new System.Windows.Forms.Label();
             this.t9Panel = new System.Windows.Forms.Panel();
             this.analystIDTbx = new System.Windows.Forms.TextBox();
-            this.enterIDManuallyBtn = new System.Windows.Forms.Button();
             this.buttonDescToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.enterIDManuallyBtn = new System.Windows.Forms.Button();
             this.coOuterPanel.SuspendLayout();
             this.coInnerPanel.SuspendLayout();
             this.ctOuterPanel.SuspendLayout();
@@ -136,7 +136,7 @@
             this.statusLbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.statusLbl.AutoSize = true;
             this.statusLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.statusLbl.Location = new System.Drawing.Point(17, 130);
+            this.statusLbl.Location = new System.Drawing.Point(17, 143);
             this.statusLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.statusLbl.Name = "statusLbl";
             this.statusLbl.Size = new System.Drawing.Size(40, 13);
@@ -400,7 +400,7 @@
             this.stOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stOuterPanel.Controls.Add(this.stInnerPanel);
             this.stOuterPanel.Controls.Add(this.stDDLComboBox);
-            this.stOuterPanel.Location = new System.Drawing.Point(126, 127);
+            this.stOuterPanel.Location = new System.Drawing.Point(126, 140);
             this.stOuterPanel.Name = "stOuterPanel";
             this.stOuterPanel.Size = new System.Drawing.Size(202, 21);
             this.stOuterPanel.TabIndex = 41;
@@ -470,7 +470,7 @@
             // 
             this.analystIDLbl.AutoSize = true;
             this.analystIDLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.analystIDLbl.Location = new System.Drawing.Point(17, 103);
+            this.analystIDLbl.Location = new System.Drawing.Point(17, 102);
             this.analystIDLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.analystIDLbl.Name = "analystIDLbl";
             this.analystIDLbl.Size = new System.Drawing.Size(58, 13);
@@ -481,8 +481,8 @@
             // 
             this.t9Panel.BackColor = System.Drawing.Color.Red;
             this.t9Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t9Panel.Controls.Add(this.analystIDTbx);
             this.t9Panel.Controls.Add(this.enterIDManuallyBtn);
+            this.t9Panel.Controls.Add(this.analystIDTbx);
             this.t9Panel.Location = new System.Drawing.Point(246, 99);
             this.t9Panel.Name = "t9Panel";
             this.t9Panel.Size = new System.Drawing.Size(82, 21);
@@ -507,13 +507,13 @@
             // 
             this.enterIDManuallyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.enterIDManuallyBtn.BackColor = System.Drawing.SystemColors.Menu;
+            this.enterIDManuallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.enterIDManuallyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_rename_32__1_;
             this.enterIDManuallyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.enterIDManuallyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.enterIDManuallyBtn.FlatAppearance.BorderSize = 0;
-            this.enterIDManuallyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Menu;
-            this.enterIDManuallyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Menu;
+            this.enterIDManuallyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.enterIDManuallyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.enterIDManuallyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterIDManuallyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enterIDManuallyBtn.ForeColor = System.Drawing.Color.DimGray;
