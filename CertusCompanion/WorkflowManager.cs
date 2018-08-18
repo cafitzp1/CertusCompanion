@@ -9995,10 +9995,6 @@ namespace CertusCompanion
         // DB Import
         private void importFromDBBackGroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            ImportFromDB();
-        }
-        private void ImportFromDB()
-        {
             ImportWorkflowItemsFromDB();
         }
         private void ImportWorkflowItemsFromDB()
@@ -10011,13 +10007,13 @@ namespace CertusCompanion
 
             if (this.InvokeRequired) this.Invoke(new Action(() => 
             {
-                LoadingForm.ChangeLabel($"Importing items from DB");
+                LoadingForm.ChangeLabel($"Establishing DB Connection...");
                 LoadingForm.ShowCloseBtn("Close");
                 LoadingForm.Refresh();
             }));
             else
             {
-                LoadingForm.ChangeLabel($"Importing items from DB");
+                LoadingForm.ChangeLabel($"Establishing DB Connection...");
                 LoadingForm.ShowCloseBtn("Close");
                 LoadingForm.Refresh();
             }
@@ -12383,6 +12379,7 @@ namespace CertusCompanion
             {
                 LoadingForm.ChangeLabel("Populating Data...");
                 LoadingForm.HideCloseBtn();
+                LoadingForm.Refresh();
             }));
             using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.ClientDS.sql"))
             {
@@ -13029,7 +13026,7 @@ namespace CertusCompanion
         }
         //
         // Quality of life methods
-        public bool CheckIfFormIsOpened(string name)
+        static public bool CheckIfFormIsOpened(string name)
         {
             FormCollection fc = Application.OpenForms;
 

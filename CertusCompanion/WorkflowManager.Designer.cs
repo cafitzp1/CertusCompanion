@@ -6124,6 +6124,7 @@
             this.importFromDBBackGroundWorker.WorkerReportsProgress = true;
             this.importFromDBBackGroundWorker.WorkerSupportsCancellation = true;
             this.importFromDBBackGroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importFromDBBackGroundWorker_DoWork);
+            this.importFromDBBackGroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerAllProgress_ProgressChanged);
             this.importFromDBBackGroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.importFromDBBackGroundWorker_RunWorkerCompleted);
             // 
             // searchTbxActiveBorder

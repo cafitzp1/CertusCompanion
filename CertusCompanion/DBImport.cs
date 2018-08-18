@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace CertusCompanion
 {
@@ -15,9 +16,6 @@ namespace CertusCompanion
         // data declaration
         public List<string> TotalItemsOnImport { get; set; }
         private List<WorkflowItem> currentImportItems;
-        private string csvFileHeaderLine;
-        private ItemImports itemImportsList;
-        private List<Tuple<int, string>> acceptableHeaderValuesAndTheirIndexes;
         private int itemCount;
         private string clientID;
         private string workflowItemSelection;
@@ -81,6 +79,25 @@ namespace CertusCompanion
             }
             #endregion
 
+            // if there is a LoadingForm, report progress
+            if (WorkflowManager.CheckIfFormIsOpened("LoadingForm"))
+            {
+                if (Application.OpenForms[0].InvokeRequired) Application.OpenForms[0].Invoke(new Action(() =>
+                {
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Executing query...");
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).HideCloseBtn();
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
+                }));
+                else
+                {
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Executing query...");
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).HideCloseBtn();
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
+                }
+            }
+
             // generate items
             WorkflowImportRouter(2);
         }
@@ -137,6 +154,23 @@ namespace CertusCompanion
             DataTable wiTable = new DataTable();
             wiAdapter.Fill(wiTable);
 
+            // if there is a LoadingForm, report progress
+            if (WorkflowManager.CheckIfFormIsOpened("LoadingForm"))
+            {
+                if (Application.OpenForms[0].InvokeRequired) Application.OpenForms[0].Invoke(new Action(() =>
+                {
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Generating items...");
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
+                }));
+                else
+                {
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Generating items...");
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
+                }
+            }
+
             // add to WI
             foreach (DataRow row in wiTable.Rows)
             {
@@ -191,6 +225,23 @@ namespace CertusCompanion
                 );
 
                 this.currentImportItems.Add(wi);
+            }
+
+            // if there is a LoadingForm, report progress
+            if (WorkflowManager.CheckIfFormIsOpened("LoadingForm"))
+            {
+                if (Application.OpenForms[0].InvokeRequired) Application.OpenForms[0].Invoke(new Action(() =>
+                {
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Saving item data...");
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
+                }));
+                else
+                {
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Saving item data...");
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
+                    (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
+                }
             }
 
             WorkflowImportRouter(3);
