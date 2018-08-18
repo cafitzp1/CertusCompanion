@@ -36,6 +36,8 @@ namespace CertusCompanion
             this.TotalItemsOnImport = new List<string>();
 
             this.currentImportItems = new List<WorkflowItem>();
+            this.currentImportCertificates = new List<Certificate>();
+            this.currentImportCompanies = new List<Company>();
         }
         public CSVImport(DateTime importDate, string importName, string importType, List<string> newItemsAdded, List<string> itemsUpdated, string fileName, string filePath, List<string> totalItemsOnImport)
         {
@@ -49,6 +51,8 @@ namespace CertusCompanion
             this.TotalItemsOnImport = totalItemsOnImport;
 
             this.currentImportItems = new List<WorkflowItem>();
+            this.currentImportCertificates = new List<Certificate>();
+            this.currentImportCompanies = new List<Company>();
         }
         
         //

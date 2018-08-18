@@ -715,6 +715,7 @@
             this.importFromDBBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.importFromDBBtn, "Import from DB");
             this.importFromDBBtn.UseVisualStyleBackColor = false;
+            this.importFromDBBtn.Visible = false;
             this.importFromDBBtn.Click += new System.EventHandler(this.importFromDBBtn_Click);
             // 
             // importFromCSVBtn
@@ -738,6 +739,7 @@
             this.importFromCSVBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.importFromCSVBtn, "Import from CSV");
             this.importFromCSVBtn.UseVisualStyleBackColor = false;
+            this.importFromCSVBtn.Visible = false;
             this.importFromCSVBtn.Click += new System.EventHandler(this.importFromCSVBtn_Click);
             // 
             // panel2

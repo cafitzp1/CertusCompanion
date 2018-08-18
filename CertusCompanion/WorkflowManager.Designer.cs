@@ -44,17 +44,17 @@
             this.vcSelectionBtn = new System.Windows.Forms.Button();
             this.vcSplitPanel = new System.Windows.Forms.Panel();
             this.vcDropBtn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.listViewOptionsDividerPanel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.importFromDatabaseBtn = new System.Windows.Forms.Button();
-            this.lockListViewColumnSizingBtn = new System.Windows.Forms.Button();
+            this.correctListViewColumnSizingBtn = new System.Windows.Forms.Button();
             this.showItemsMonotoneBtn = new System.Windows.Forms.Button();
             this.contrastItemGroupsBtn = new System.Windows.Forms.Button();
             this.redrawItemsBtn = new System.Windows.Forms.Button();
-            this.dividerPanel2 = new System.Windows.Forms.Panel();
+            this.listViewOptionsDividerPanel3 = new System.Windows.Forms.Panel();
             this.dividerLbl2 = new System.Windows.Forms.Label();
-            this.dividerPanel = new System.Windows.Forms.Panel();
+            this.listViewOptionsDividerPanel1 = new System.Windows.Forms.Panel();
             this.dividerLbl = new System.Windows.Forms.Label();
             this.bulkCheckBtn = new System.Windows.Forms.Button();
             this.removePaintBtn = new System.Windows.Forms.Button();
@@ -291,15 +291,17 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeAllPaintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.dividerEditToolStripmenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.addToExportViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToExcludedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFromExportViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excludedItemsViewToolStripMenuitem = new System.Windows.Forms.ToolStripMenuItem();
-            this.currentListViewItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certificatesViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.popOutWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.correctPanelSizingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.correctListViewColumnSizingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certusBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -309,7 +311,7 @@
             this.importExcludedItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importCertificatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importCompaniesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.dividerDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.updateContractDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRelatedFilesDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tieUserIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -429,6 +431,12 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToDBBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.changeClientBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.contrastItemGroupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showItemsSameColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dividerViewToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.dividerViewToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.listViewOptionsDividerPanel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild1)).BeginInit();
             this.splitContainerChild1.Panel1.SuspendLayout();
             this.splitContainerChild1.Panel2.SuspendLayout();
@@ -438,9 +446,9 @@
             this.clOuterPanel.SuspendLayout();
             this.listViewOptionsPanel.SuspendLayout();
             this.vcOuterPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.dividerPanel2.SuspendLayout();
-            this.dividerPanel.SuspendLayout();
+            this.listViewOptionsDividerPanel2.SuspendLayout();
+            this.listViewOptionsDividerPanel3.SuspendLayout();
+            this.listViewOptionsDividerPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild2)).BeginInit();
             this.splitContainerChild2.Panel1.SuspendLayout();
             this.splitContainerChild2.Panel2.SuspendLayout();
@@ -501,6 +509,7 @@
             this.qfndCustomDDLMenuStrip.SuspendLayout();
             this.vcCustomDDLMenuStrip.SuspendLayout();
             this.clCustomDDLMenuStrip.SuspendLayout();
+            this.listViewOptionsDividerPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerChild1
@@ -658,16 +667,17 @@
             // 
             // listViewOptionsPanel
             // 
+            this.listViewOptionsPanel.Controls.Add(this.listViewOptionsDividerPanel4);
             this.listViewOptionsPanel.Controls.Add(this.vcOuterPanel);
-            this.listViewOptionsPanel.Controls.Add(this.panel1);
+            this.listViewOptionsPanel.Controls.Add(this.listViewOptionsDividerPanel2);
             this.listViewOptionsPanel.Controls.Add(this.button1);
             this.listViewOptionsPanel.Controls.Add(this.importFromDatabaseBtn);
-            this.listViewOptionsPanel.Controls.Add(this.lockListViewColumnSizingBtn);
+            this.listViewOptionsPanel.Controls.Add(this.correctListViewColumnSizingBtn);
             this.listViewOptionsPanel.Controls.Add(this.showItemsMonotoneBtn);
             this.listViewOptionsPanel.Controls.Add(this.contrastItemGroupsBtn);
             this.listViewOptionsPanel.Controls.Add(this.redrawItemsBtn);
-            this.listViewOptionsPanel.Controls.Add(this.dividerPanel2);
-            this.listViewOptionsPanel.Controls.Add(this.dividerPanel);
+            this.listViewOptionsPanel.Controls.Add(this.listViewOptionsDividerPanel3);
+            this.listViewOptionsPanel.Controls.Add(this.listViewOptionsDividerPanel1);
             this.listViewOptionsPanel.Controls.Add(this.bulkCheckBtn);
             this.listViewOptionsPanel.Controls.Add(this.removePaintBtn);
             this.listViewOptionsPanel.Controls.Add(this.addReferenceBtn);
@@ -685,7 +695,7 @@
             this.listViewOptionsPanel.Location = new System.Drawing.Point(6, 2);
             this.listViewOptionsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.listViewOptionsPanel.Name = "listViewOptionsPanel";
-            this.listViewOptionsPanel.Size = new System.Drawing.Size(706, 24);
+            this.listViewOptionsPanel.Size = new System.Drawing.Size(732, 24);
             this.listViewOptionsPanel.TabIndex = 0;
             // 
             // vcOuterPanel
@@ -771,15 +781,15 @@
             this.vcDropBtn.MouseHover += new System.EventHandler(this.vcCustomDDLPanel_MouseHover);
             this.vcDropBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.vcCustomDDLPanel_MouseMove);
             // 
-            // panel1
+            // listViewOptionsDividerPanel2
             // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.ForeColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(279, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 20);
-            this.panel1.TabIndex = 1;
+            this.listViewOptionsDividerPanel2.Controls.Add(this.label2);
+            this.listViewOptionsDividerPanel2.ForeColor = System.Drawing.Color.Transparent;
+            this.listViewOptionsDividerPanel2.Location = new System.Drawing.Point(279, 1);
+            this.listViewOptionsDividerPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewOptionsDividerPanel2.Name = "listViewOptionsDividerPanel2";
+            this.listViewOptionsDividerPanel2.Size = new System.Drawing.Size(10, 20);
+            this.listViewOptionsDividerPanel2.TabIndex = 1;
             // 
             // label2
             // 
@@ -799,13 +809,14 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(637, 1);
+            this.button1.Location = new System.Drawing.Point(648, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(60, 21);
             this.button1.TabIndex = 0;
             this.button1.TabStop = false;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.testBtn_Click);
             // 
             // importFromDatabaseBtn
@@ -829,26 +840,26 @@
             this.importFromDatabaseBtn.UseVisualStyleBackColor = false;
             this.importFromDatabaseBtn.Click += new System.EventHandler(this.importFromDatabaseBtn_Click);
             // 
-            // lockListViewColumnSizingBtn
+            // correctListViewColumnSizingBtn
             // 
-            this.lockListViewColumnSizingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.lockListViewColumnSizingBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lockListViewColumnSizingBtn.BackgroundImage")));
-            this.lockListViewColumnSizingBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.lockListViewColumnSizingBtn.FlatAppearance.BorderSize = 0;
-            this.lockListViewColumnSizingBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.lockListViewColumnSizingBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lockListViewColumnSizingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lockListViewColumnSizingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lockListViewColumnSizingBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lockListViewColumnSizingBtn.Location = new System.Drawing.Point(610, 1);
-            this.lockListViewColumnSizingBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.lockListViewColumnSizingBtn.Name = "lockListViewColumnSizingBtn";
-            this.lockListViewColumnSizingBtn.Size = new System.Drawing.Size(20, 20);
-            this.lockListViewColumnSizingBtn.TabIndex = 0;
-            this.lockListViewColumnSizingBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.lockListViewColumnSizingBtn, "Reset ListView Column Sizing");
-            this.lockListViewColumnSizingBtn.UseVisualStyleBackColor = false;
-            this.lockListViewColumnSizingBtn.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
+            this.correctListViewColumnSizingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.correctListViewColumnSizingBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("correctListViewColumnSizingBtn.BackgroundImage")));
+            this.correctListViewColumnSizingBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.correctListViewColumnSizingBtn.FlatAppearance.BorderSize = 0;
+            this.correctListViewColumnSizingBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.correctListViewColumnSizingBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.correctListViewColumnSizingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.correctListViewColumnSizingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correctListViewColumnSizingBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.correctListViewColumnSizingBtn.Location = new System.Drawing.Point(521, 1);
+            this.correctListViewColumnSizingBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.correctListViewColumnSizingBtn.Name = "correctListViewColumnSizingBtn";
+            this.correctListViewColumnSizingBtn.Size = new System.Drawing.Size(20, 20);
+            this.correctListViewColumnSizingBtn.TabIndex = 0;
+            this.correctListViewColumnSizingBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.correctListViewColumnSizingBtn, "Reset ListView Column Sizing");
+            this.correctListViewColumnSizingBtn.UseVisualStyleBackColor = false;
+            this.correctListViewColumnSizingBtn.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
             // 
             // showItemsMonotoneBtn
             // 
@@ -861,7 +872,7 @@
             this.showItemsMonotoneBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showItemsMonotoneBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showItemsMonotoneBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.showItemsMonotoneBtn.Location = new System.Drawing.Point(588, 1);
+            this.showItemsMonotoneBtn.Location = new System.Drawing.Point(565, 1);
             this.showItemsMonotoneBtn.Margin = new System.Windows.Forms.Padding(2);
             this.showItemsMonotoneBtn.Name = "showItemsMonotoneBtn";
             this.showItemsMonotoneBtn.Size = new System.Drawing.Size(20, 20);
@@ -884,7 +895,7 @@
             this.contrastItemGroupsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.contrastItemGroupsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contrastItemGroupsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contrastItemGroupsBtn.Location = new System.Drawing.Point(566, 1);
+            this.contrastItemGroupsBtn.Location = new System.Drawing.Point(543, 1);
             this.contrastItemGroupsBtn.Margin = new System.Windows.Forms.Padding(2);
             this.contrastItemGroupsBtn.Name = "contrastItemGroupsBtn";
             this.contrastItemGroupsBtn.Size = new System.Drawing.Size(20, 20);
@@ -907,7 +918,7 @@
             this.redrawItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.redrawItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.redrawItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.redrawItemsBtn.Location = new System.Drawing.Point(543, 1);
+            this.redrawItemsBtn.Location = new System.Drawing.Point(599, 1);
             this.redrawItemsBtn.Margin = new System.Windows.Forms.Padding(2);
             this.redrawItemsBtn.Name = "redrawItemsBtn";
             this.redrawItemsBtn.Size = new System.Drawing.Size(20, 20);
@@ -919,15 +930,15 @@
             this.redrawItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.redrawItemsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // dividerPanel2
+            // listViewOptionsDividerPanel3
             // 
-            this.dividerPanel2.Controls.Add(this.dividerLbl2);
-            this.dividerPanel2.ForeColor = System.Drawing.Color.Transparent;
-            this.dividerPanel2.Location = new System.Drawing.Point(312, 1);
-            this.dividerPanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.dividerPanel2.Name = "dividerPanel2";
-            this.dividerPanel2.Size = new System.Drawing.Size(10, 20);
-            this.dividerPanel2.TabIndex = 0;
+            this.listViewOptionsDividerPanel3.Controls.Add(this.dividerLbl2);
+            this.listViewOptionsDividerPanel3.ForeColor = System.Drawing.Color.Transparent;
+            this.listViewOptionsDividerPanel3.Location = new System.Drawing.Point(312, 1);
+            this.listViewOptionsDividerPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewOptionsDividerPanel3.Name = "listViewOptionsDividerPanel3";
+            this.listViewOptionsDividerPanel3.Size = new System.Drawing.Size(10, 20);
+            this.listViewOptionsDividerPanel3.TabIndex = 0;
             // 
             // dividerLbl2
             // 
@@ -940,15 +951,15 @@
             this.dividerLbl2.Size = new System.Drawing.Size(2, 21);
             this.dividerLbl2.TabIndex = 0;
             // 
-            // dividerPanel
+            // listViewOptionsDividerPanel1
             // 
-            this.dividerPanel.Controls.Add(this.dividerLbl);
-            this.dividerPanel.ForeColor = System.Drawing.Color.Transparent;
-            this.dividerPanel.Location = new System.Drawing.Point(158, 1);
-            this.dividerPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.dividerPanel.Name = "dividerPanel";
-            this.dividerPanel.Size = new System.Drawing.Size(10, 20);
-            this.dividerPanel.TabIndex = 0;
+            this.listViewOptionsDividerPanel1.Controls.Add(this.dividerLbl);
+            this.listViewOptionsDividerPanel1.ForeColor = System.Drawing.Color.Transparent;
+            this.listViewOptionsDividerPanel1.Location = new System.Drawing.Point(158, 1);
+            this.listViewOptionsDividerPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewOptionsDividerPanel1.Name = "listViewOptionsDividerPanel1";
+            this.listViewOptionsDividerPanel1.Size = new System.Drawing.Size(10, 20);
+            this.listViewOptionsDividerPanel1.TabIndex = 0;
             // 
             // dividerLbl
             // 
@@ -1164,7 +1175,7 @@
             this.itemsViewBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.itemsViewBtn, "View Items in Pop-up Window (Ctrl+Shift+V)");
             this.itemsViewBtn.UseVisualStyleBackColor = false;
-            this.itemsViewBtn.Click += new System.EventHandler(this.currentListViewItemsViewToolStripMenuItem_Click);
+            this.itemsViewBtn.Click += new System.EventHandler(this.itemsViewBtn_Click);
             this.itemsViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.itemsViewBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
@@ -1197,7 +1208,7 @@
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.refreshBtn.Location = new System.Drawing.Point(520, 1);
+            this.refreshBtn.Location = new System.Drawing.Point(622, 1);
             this.refreshBtn.Margin = new System.Windows.Forms.Padding(2);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(20, 20);
@@ -1205,7 +1216,7 @@
             this.refreshBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.refreshBtn, "Refresh View (Ctrl+R)");
             this.refreshBtn.UseVisualStyleBackColor = false;
-            this.refreshBtn.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.refreshBtn.Click += new System.EventHandler(this.refreshListViewBtn_Click);
             this.refreshBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.refreshBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
@@ -1251,7 +1262,7 @@
             this.fullViewBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.fullViewBtn, "Maximize Items View (Ctrl+Enter)");
             this.fullViewBtn.UseVisualStyleBackColor = false;
-            this.fullViewBtn.Click += new System.EventHandler(this.fullScreenToolStripMenuItem_Click);
+            this.fullViewBtn.Click += new System.EventHandler(this.fullViewBtn_Click);
             this.fullViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.fullViewBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
@@ -3293,7 +3304,7 @@
             this.detailPanel18.Location = new System.Drawing.Point(169, 301);
             this.detailPanel18.Margin = new System.Windows.Forms.Padding(2);
             this.detailPanel18.Name = "detailPanel18";
-            this.detailPanel18.Size = new System.Drawing.Size(460, 16);
+            this.detailPanel18.Size = new System.Drawing.Size(421, 16);
             this.detailPanel18.TabIndex = 0;
             this.detailPanel18.Enter += new System.EventHandler(this.detailPanel_Enter);
             this.detailPanel18.Leave += new System.EventHandler(this.detailPanel_Leave);
@@ -3330,7 +3341,7 @@
             this.openNoteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.openNoteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openNoteBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.openNoteBtn.Location = new System.Drawing.Point(441, -2);
+            this.openNoteBtn.Location = new System.Drawing.Point(402, -2);
             this.openNoteBtn.Margin = new System.Windows.Forms.Padding(2);
             this.openNoteBtn.Name = "openNoteBtn";
             this.openNoteBtn.Size = new System.Drawing.Size(18, 18);
@@ -3353,7 +3364,7 @@
             this.detailNoteTbx.Location = new System.Drawing.Point(15, 1);
             this.detailNoteTbx.Margin = new System.Windows.Forms.Padding(2);
             this.detailNoteTbx.Name = "detailNoteTbx";
-            this.detailNoteTbx.Size = new System.Drawing.Size(427, 12);
+            this.detailNoteTbx.Size = new System.Drawing.Size(388, 12);
             this.detailNoteTbx.TabIndex = 0;
             this.detailNoteTbx.TabStop = false;
             this.detailNoteTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
@@ -3386,7 +3397,7 @@
             this.detailPanel17.Location = new System.Drawing.Point(169, 275);
             this.detailPanel17.Margin = new System.Windows.Forms.Padding(2);
             this.detailPanel17.Name = "detailPanel17";
-            this.detailPanel17.Size = new System.Drawing.Size(460, 16);
+            this.detailPanel17.Size = new System.Drawing.Size(421, 16);
             this.detailPanel17.TabIndex = 0;
             this.detailPanel17.Enter += new System.EventHandler(this.detailPanel_Enter);
             this.detailPanel17.Leave += new System.EventHandler(this.detailPanel_Leave);
@@ -3419,7 +3430,7 @@
             this.actionDetailPanelBtn17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.actionDetailPanelBtn17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.actionDetailPanelBtn17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.actionDetailPanelBtn17.Location = new System.Drawing.Point(441, -1);
+            this.actionDetailPanelBtn17.Location = new System.Drawing.Point(402, -1);
             this.actionDetailPanelBtn17.Margin = new System.Windows.Forms.Padding(2);
             this.actionDetailPanelBtn17.Name = "actionDetailPanelBtn17";
             this.actionDetailPanelBtn17.Size = new System.Drawing.Size(18, 18);
@@ -3441,7 +3452,7 @@
             this.fileUrlTbx.Margin = new System.Windows.Forms.Padding(2);
             this.fileUrlTbx.Name = "fileUrlTbx";
             this.fileUrlTbx.ReadOnly = true;
-            this.fileUrlTbx.Size = new System.Drawing.Size(427, 12);
+            this.fileUrlTbx.Size = new System.Drawing.Size(388, 12);
             this.fileUrlTbx.TabIndex = 0;
             this.fileUrlTbx.TabStop = false;
             this.fileUrlTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
@@ -3474,7 +3485,7 @@
             this.detailPanel16.Location = new System.Drawing.Point(169, 251);
             this.detailPanel16.Margin = new System.Windows.Forms.Padding(2);
             this.detailPanel16.Name = "detailPanel16";
-            this.detailPanel16.Size = new System.Drawing.Size(460, 16);
+            this.detailPanel16.Size = new System.Drawing.Size(421, 16);
             this.detailPanel16.TabIndex = 0;
             this.detailPanel16.Enter += new System.EventHandler(this.detailPanel_Enter);
             this.detailPanel16.Leave += new System.EventHandler(this.detailPanel_Leave);
@@ -3507,7 +3518,7 @@
             this.actionDetailPanelBtn16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.actionDetailPanelBtn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.actionDetailPanelBtn16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.actionDetailPanelBtn16.Location = new System.Drawing.Point(441, -1);
+            this.actionDetailPanelBtn16.Location = new System.Drawing.Point(402, -1);
             this.actionDetailPanelBtn16.Margin = new System.Windows.Forms.Padding(2);
             this.actionDetailPanelBtn16.Name = "actionDetailPanelBtn16";
             this.actionDetailPanelBtn16.Size = new System.Drawing.Size(18, 18);
@@ -3529,7 +3540,7 @@
             this.fileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.fileNameTbx.Name = "fileNameTbx";
             this.fileNameTbx.ReadOnly = true;
-            this.fileNameTbx.Size = new System.Drawing.Size(427, 12);
+            this.fileNameTbx.Size = new System.Drawing.Size(388, 12);
             this.fileNameTbx.TabIndex = 0;
             this.fileNameTbx.TabStop = false;
             this.fileNameTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
@@ -3562,7 +3573,7 @@
             this.detailPanel15.Location = new System.Drawing.Point(169, 225);
             this.detailPanel15.Margin = new System.Windows.Forms.Padding(2);
             this.detailPanel15.Name = "detailPanel15";
-            this.detailPanel15.Size = new System.Drawing.Size(460, 16);
+            this.detailPanel15.Size = new System.Drawing.Size(421, 16);
             this.detailPanel15.TabIndex = 0;
             this.detailPanel15.Enter += new System.EventHandler(this.detailPanel_Enter);
             this.detailPanel15.Leave += new System.EventHandler(this.detailPanel_Leave);
@@ -3595,7 +3606,7 @@
             this.actionDetailPanelBtn15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.actionDetailPanelBtn15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.actionDetailPanelBtn15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.actionDetailPanelBtn15.Location = new System.Drawing.Point(441, -1);
+            this.actionDetailPanelBtn15.Location = new System.Drawing.Point(402, -1);
             this.actionDetailPanelBtn15.Margin = new System.Windows.Forms.Padding(2);
             this.actionDetailPanelBtn15.Name = "actionDetailPanelBtn15";
             this.actionDetailPanelBtn15.Size = new System.Drawing.Size(18, 18);
@@ -3617,7 +3628,7 @@
             this.subjectTbx.Margin = new System.Windows.Forms.Padding(2);
             this.subjectTbx.Name = "subjectTbx";
             this.subjectTbx.ReadOnly = true;
-            this.subjectTbx.Size = new System.Drawing.Size(427, 12);
+            this.subjectTbx.Size = new System.Drawing.Size(388, 12);
             this.subjectTbx.TabIndex = 0;
             this.subjectTbx.TabStop = false;
             this.subjectTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
@@ -3650,7 +3661,7 @@
             this.detailPanel14.Location = new System.Drawing.Point(169, 201);
             this.detailPanel14.Margin = new System.Windows.Forms.Padding(2);
             this.detailPanel14.Name = "detailPanel14";
-            this.detailPanel14.Size = new System.Drawing.Size(460, 16);
+            this.detailPanel14.Size = new System.Drawing.Size(421, 16);
             this.detailPanel14.TabIndex = 0;
             this.detailPanel14.Enter += new System.EventHandler(this.detailPanel_Enter);
             this.detailPanel14.Leave += new System.EventHandler(this.detailPanel_Leave);
@@ -3683,7 +3694,7 @@
             this.actionDetailPanelBtn14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.actionDetailPanelBtn14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.actionDetailPanelBtn14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.actionDetailPanelBtn14.Location = new System.Drawing.Point(441, -1);
+            this.actionDetailPanelBtn14.Location = new System.Drawing.Point(402, -1);
             this.actionDetailPanelBtn14.Margin = new System.Windows.Forms.Padding(2);
             this.actionDetailPanelBtn14.Name = "actionDetailPanelBtn14";
             this.actionDetailPanelBtn14.Size = new System.Drawing.Size(18, 18);
@@ -3705,7 +3716,7 @@
             this.emailFromTbx.Margin = new System.Windows.Forms.Padding(2);
             this.emailFromTbx.Name = "emailFromTbx";
             this.emailFromTbx.ReadOnly = true;
-            this.emailFromTbx.Size = new System.Drawing.Size(427, 12);
+            this.emailFromTbx.Size = new System.Drawing.Size(388, 12);
             this.emailFromTbx.TabIndex = 0;
             this.emailFromTbx.TabStop = false;
             this.emailFromTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
@@ -3738,7 +3749,7 @@
             this.detailPanel13.Location = new System.Drawing.Point(169, 175);
             this.detailPanel13.Margin = new System.Windows.Forms.Padding(2);
             this.detailPanel13.Name = "detailPanel13";
-            this.detailPanel13.Size = new System.Drawing.Size(460, 16);
+            this.detailPanel13.Size = new System.Drawing.Size(421, 16);
             this.detailPanel13.TabIndex = 0;
             this.detailPanel13.Enter += new System.EventHandler(this.detailPanel_Enter);
             this.detailPanel13.Leave += new System.EventHandler(this.detailPanel_Leave);
@@ -3771,7 +3782,7 @@
             this.actionDetailPanelBtn13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.actionDetailPanelBtn13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.actionDetailPanelBtn13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.actionDetailPanelBtn13.Location = new System.Drawing.Point(441, -1);
+            this.actionDetailPanelBtn13.Location = new System.Drawing.Point(402, -1);
             this.actionDetailPanelBtn13.Margin = new System.Windows.Forms.Padding(2);
             this.actionDetailPanelBtn13.Name = "actionDetailPanelBtn13";
             this.actionDetailPanelBtn13.Size = new System.Drawing.Size(18, 18);
@@ -3793,7 +3804,7 @@
             this.emailDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.emailDateTbx.Name = "emailDateTbx";
             this.emailDateTbx.ReadOnly = true;
-            this.emailDateTbx.Size = new System.Drawing.Size(427, 12);
+            this.emailDateTbx.Size = new System.Drawing.Size(388, 12);
             this.emailDateTbx.TabIndex = 0;
             this.emailDateTbx.TabStop = false;
             this.emailDateTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
@@ -3842,7 +3853,7 @@
             this.splitContainerChild3.Panel2.Controls.Add(this.importPanel);
             this.splitContainerChild3.Panel2MinSize = 288;
             this.splitContainerChild3.Size = new System.Drawing.Size(600, 422);
-            this.splitContainerChild3.SplitterDistance = 300;
+            this.splitContainerChild3.SplitterDistance = 299;
             this.splitContainerChild3.SplitterWidth = 3;
             this.splitContainerChild3.TabIndex = 0;
             this.splitContainerChild3.TabStop = false;
@@ -3855,7 +3866,7 @@
             this.qfndOuterPanel.Controls.Add(this.qfndSelectionBtn);
             this.qfndOuterPanel.Controls.Add(this.qfndSplitPanel);
             this.qfndOuterPanel.Controls.Add(this.qfndDropBtn);
-            this.qfndOuterPanel.Location = new System.Drawing.Point(186, 7);
+            this.qfndOuterPanel.Location = new System.Drawing.Point(185, 7);
             this.qfndOuterPanel.Name = "qfndOuterPanel";
             this.qfndOuterPanel.Size = new System.Drawing.Size(92, 21);
             this.qfndOuterPanel.TabIndex = 1;
@@ -3967,7 +3978,7 @@
             this.queryPanel.Location = new System.Drawing.Point(15, 30);
             this.queryPanel.Margin = new System.Windows.Forms.Padding(2);
             this.queryPanel.Name = "queryPanel";
-            this.queryPanel.Size = new System.Drawing.Size(270, 378);
+            this.queryPanel.Size = new System.Drawing.Size(269, 378);
             this.queryPanel.TabIndex = 0;
             // 
             // qwOuterPanel
@@ -3980,7 +3991,7 @@
             this.qwOuterPanel.Controls.Add(this.queryWhereComboBox);
             this.qwOuterPanel.Location = new System.Drawing.Point(84, 291);
             this.qwOuterPanel.Name = "qwOuterPanel";
-            this.qwOuterPanel.Size = new System.Drawing.Size(179, 21);
+            this.qwOuterPanel.Size = new System.Drawing.Size(178, 21);
             this.qwOuterPanel.TabIndex = 0;
             // 
             // qwInnerPanel
@@ -3992,7 +4003,7 @@
             this.qwInnerPanel.Controls.Add(this.qwTbx);
             this.qwInnerPanel.Location = new System.Drawing.Point(-1, -2);
             this.qwInnerPanel.Name = "qwInnerPanel";
-            this.qwInnerPanel.Size = new System.Drawing.Size(160, 25);
+            this.qwInnerPanel.Size = new System.Drawing.Size(159, 25);
             this.qwInnerPanel.TabIndex = 0;
             // 
             // qwLeftMarginPanel
@@ -4010,7 +4021,7 @@
             this.qwTopMarginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.qwTopMarginPanel.Location = new System.Drawing.Point(-1, 0);
             this.qwTopMarginPanel.Name = "qwTopMarginPanel";
-            this.qwTopMarginPanel.Size = new System.Drawing.Size(162, 5);
+            this.qwTopMarginPanel.Size = new System.Drawing.Size(161, 5);
             this.qwTopMarginPanel.TabIndex = 0;
             // 
             // qwTbx
@@ -4024,7 +4035,7 @@
             this.qwTbx.Multiline = true;
             this.qwTbx.Name = "qwTbx";
             this.qwTbx.ReadOnly = true;
-            this.qwTbx.Size = new System.Drawing.Size(157, 18);
+            this.qwTbx.Size = new System.Drawing.Size(156, 18);
             this.qwTbx.TabIndex = 0;
             this.qwTbx.TabStop = false;
             // 
@@ -4088,7 +4099,7 @@
             this.queryWhereComboBox.Location = new System.Drawing.Point(-1, -2);
             this.queryWhereComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.queryWhereComboBox.Name = "queryWhereComboBox";
-            this.queryWhereComboBox.Size = new System.Drawing.Size(178, 23);
+            this.queryWhereComboBox.Size = new System.Drawing.Size(177, 23);
             this.queryWhereComboBox.TabIndex = 0;
             this.queryWhereComboBox.TabStop = false;
             this.queryWhereComboBox.SelectedIndexChanged += new System.EventHandler(this.tbxComboBoxPair_SelectedIndexChanged);
@@ -4103,7 +4114,7 @@
             this.qfOuterPanel.Controls.Add(this.queryFromComboBox);
             this.qfOuterPanel.Location = new System.Drawing.Point(84, 261);
             this.qfOuterPanel.Name = "qfOuterPanel";
-            this.qfOuterPanel.Size = new System.Drawing.Size(179, 21);
+            this.qfOuterPanel.Size = new System.Drawing.Size(178, 21);
             this.qfOuterPanel.TabIndex = 0;
             // 
             // qfInnerPanel
@@ -4115,7 +4126,7 @@
             this.qfInnerPanel.Controls.Add(this.qfTbx);
             this.qfInnerPanel.Location = new System.Drawing.Point(-1, -2);
             this.qfInnerPanel.Name = "qfInnerPanel";
-            this.qfInnerPanel.Size = new System.Drawing.Size(160, 25);
+            this.qfInnerPanel.Size = new System.Drawing.Size(159, 25);
             this.qfInnerPanel.TabIndex = 0;
             // 
             // qfLeftMarginPanel
@@ -4133,7 +4144,7 @@
             this.qfTopMarginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.qfTopMarginPanel.Location = new System.Drawing.Point(-1, 0);
             this.qfTopMarginPanel.Name = "qfTopMarginPanel";
-            this.qfTopMarginPanel.Size = new System.Drawing.Size(162, 5);
+            this.qfTopMarginPanel.Size = new System.Drawing.Size(161, 5);
             this.qfTopMarginPanel.TabIndex = 0;
             // 
             // qfTbx
@@ -4147,7 +4158,7 @@
             this.qfTbx.Multiline = true;
             this.qfTbx.Name = "qfTbx";
             this.qfTbx.ReadOnly = true;
-            this.qfTbx.Size = new System.Drawing.Size(157, 18);
+            this.qfTbx.Size = new System.Drawing.Size(156, 18);
             this.qfTbx.TabIndex = 0;
             this.qfTbx.TabStop = false;
             // 
@@ -4167,7 +4178,7 @@
             this.queryFromComboBox.Location = new System.Drawing.Point(-1, -2);
             this.queryFromComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.queryFromComboBox.Name = "queryFromComboBox";
-            this.queryFromComboBox.Size = new System.Drawing.Size(178, 23);
+            this.queryFromComboBox.Size = new System.Drawing.Size(177, 23);
             this.queryFromComboBox.TabIndex = 0;
             this.queryFromComboBox.TabStop = false;
             this.queryFromComboBox.SelectedIndexChanged += new System.EventHandler(this.tbxComboBoxPair_SelectedIndexChanged);
@@ -4182,7 +4193,7 @@
             this.qsOuterPanel.Controls.Add(this.querySelectComboBox);
             this.qsOuterPanel.Location = new System.Drawing.Point(84, 231);
             this.qsOuterPanel.Name = "qsOuterPanel";
-            this.qsOuterPanel.Size = new System.Drawing.Size(179, 21);
+            this.qsOuterPanel.Size = new System.Drawing.Size(178, 21);
             this.qsOuterPanel.TabIndex = 0;
             // 
             // qsInnerPanel
@@ -4194,7 +4205,7 @@
             this.qsInnerPanel.Controls.Add(this.qsTbx);
             this.qsInnerPanel.Location = new System.Drawing.Point(-1, -2);
             this.qsInnerPanel.Name = "qsInnerPanel";
-            this.qsInnerPanel.Size = new System.Drawing.Size(160, 25);
+            this.qsInnerPanel.Size = new System.Drawing.Size(159, 25);
             this.qsInnerPanel.TabIndex = 0;
             // 
             // qsLeftMarginPanel
@@ -4212,7 +4223,7 @@
             this.qsTopMarginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.qsTopMarginPanel.Location = new System.Drawing.Point(-1, 0);
             this.qsTopMarginPanel.Name = "qsTopMarginPanel";
-            this.qsTopMarginPanel.Size = new System.Drawing.Size(162, 5);
+            this.qsTopMarginPanel.Size = new System.Drawing.Size(161, 5);
             this.qsTopMarginPanel.TabIndex = 0;
             // 
             // qsTbx
@@ -4226,7 +4237,7 @@
             this.qsTbx.Multiline = true;
             this.qsTbx.Name = "qsTbx";
             this.qsTbx.ReadOnly = true;
-            this.qsTbx.Size = new System.Drawing.Size(157, 18);
+            this.qsTbx.Size = new System.Drawing.Size(156, 18);
             this.qsTbx.TabIndex = 0;
             this.qsTbx.TabStop = false;
             // 
@@ -4245,7 +4256,7 @@
             this.querySelectComboBox.Location = new System.Drawing.Point(-1, -2);
             this.querySelectComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.querySelectComboBox.Name = "querySelectComboBox";
-            this.querySelectComboBox.Size = new System.Drawing.Size(178, 23);
+            this.querySelectComboBox.Size = new System.Drawing.Size(177, 23);
             this.querySelectComboBox.TabIndex = 0;
             this.querySelectComboBox.TabStop = false;
             this.querySelectComboBox.SelectedIndexChanged += new System.EventHandler(this.tbxComboBoxPair_SelectedIndexChanged);
@@ -4272,7 +4283,7 @@
             this.clearQueryOptionsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearQueryOptionsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearQueryOptionsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clearQueryOptionsBtn.Location = new System.Drawing.Point(156, 352);
+            this.clearQueryOptionsBtn.Location = new System.Drawing.Point(155, 352);
             this.clearQueryOptionsBtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearQueryOptionsBtn.Name = "clearQueryOptionsBtn";
             this.clearQueryOptionsBtn.Size = new System.Drawing.Size(50, 18);
@@ -4324,7 +4335,7 @@
             this.queriedItemsListbox.Location = new System.Drawing.Point(8, 6);
             this.queriedItemsListbox.Margin = new System.Windows.Forms.Padding(2);
             this.queriedItemsListbox.Name = "queriedItemsListbox";
-            this.queriedItemsListbox.Size = new System.Drawing.Size(255, 210);
+            this.queriedItemsListbox.Size = new System.Drawing.Size(254, 210);
             this.queriedItemsListbox.TabIndex = 0;
             this.queriedItemsListbox.TabStop = false;
             this.queriedItemsListbox.SelectedIndexChanged += new System.EventHandler(this.queriedItemsListbox_SelectedIndexChanged);
@@ -4338,7 +4349,7 @@
             this.viewQueryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewQueryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewQueryBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.viewQueryBtn.Location = new System.Drawing.Point(213, 352);
+            this.viewQueryBtn.Location = new System.Drawing.Point(212, 352);
             this.viewQueryBtn.Margin = new System.Windows.Forms.Padding(2);
             this.viewQueryBtn.Name = "viewQueryBtn";
             this.viewQueryBtn.Size = new System.Drawing.Size(50, 18);
@@ -4354,7 +4365,7 @@
             this.previewDescLbl.AutoSize = true;
             this.previewDescLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previewDescLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.previewDescLbl.Location = new System.Drawing.Point(121, 11);
+            this.previewDescLbl.Location = new System.Drawing.Point(120, 11);
             this.previewDescLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.previewDescLbl.Name = "previewDescLbl";
             this.previewDescLbl.Size = new System.Drawing.Size(61, 13);
@@ -4417,7 +4428,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(279, 378);
+            this.importPanel.Size = new System.Drawing.Size(269, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4431,7 +4442,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(176, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(166, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4441,7 +4452,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(157, -1);
+            this.button26.Location = new System.Drawing.Point(147, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4463,7 +4474,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(153, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(143, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4494,7 +4505,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(264, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(254, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4506,7 +4517,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(182, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(172, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4567,7 +4578,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsUpdatedTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(182, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(172, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4632,7 +4643,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(176, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(166, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4642,7 +4653,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(157, -1);
+            this.button22.Location = new System.Drawing.Point(147, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4664,7 +4675,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(153, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(143, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4742,7 +4753,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(176, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(166, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4752,7 +4763,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(157, -1);
+            this.button24.Location = new System.Drawing.Point(147, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4774,7 +4785,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(153, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(143, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4824,7 +4835,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(182, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(172, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -5003,9 +5014,8 @@
             this.editToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeAllPaintToolStripMenuItem,
-            this.toolStripSeparator1,
+            this.dividerEditToolStripmenuItem,
             this.addToExportViewToolStripMenuItem,
-            this.addToExcludedToolStripMenuItem,
             this.removeFromExportViewToolStripMenuItem});
             this.editToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -5022,13 +5032,13 @@
             this.removeAllPaintToolStripMenuItem.Text = "Remove All Paint";
             this.removeAllPaintToolStripMenuItem.Click += new System.EventHandler(this.removeAllPaintToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // dividerEditToolStripmenuItem
             // 
-            this.toolStripSeparator1.AutoSize = false;
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
+            this.dividerEditToolStripmenuItem.AutoSize = false;
+            this.dividerEditToolStripmenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerEditToolStripmenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerEditToolStripmenuItem.Name = "dividerEditToolStripmenuItem";
+            this.dividerEditToolStripmenuItem.Size = new System.Drawing.Size(207, 6);
             // 
             // addToExportViewToolStripMenuItem
             // 
@@ -5036,17 +5046,8 @@
             this.addToExportViewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.addToExportViewToolStripMenuItem.Name = "addToExportViewToolStripMenuItem";
             this.addToExportViewToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.addToExportViewToolStripMenuItem.Text = "Add to Export View";
+            this.addToExportViewToolStripMenuItem.Text = "Add to Export View         ";
             this.addToExportViewToolStripMenuItem.Click += new System.EventHandler(this.addToExportViewContextMenuItem_Click);
-            // 
-            // addToExcludedToolStripMenuItem
-            // 
-            this.addToExcludedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.addToExcludedToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addToExcludedToolStripMenuItem.Name = "addToExcludedToolStripMenuItem";
-            this.addToExcludedToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.addToExcludedToolStripMenuItem.Text = "Add to Excluded";
-            this.addToExcludedToolStripMenuItem.Click += new System.EventHandler(this.markExcludedContextMenuItem_Click);
             // 
             // removeFromExportViewToolStripMenuItem
             // 
@@ -5062,8 +5063,15 @@
             // 
             this.viewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.popOutWindowToolStripMenuItem,
+            this.fullScreenToolStripMenuItem,
+            this.correctPanelSizingToolStripMenuItem,
+            this.correctListViewColumnSizingToolStripMenuItem,
+            this.dividerViewToolStripMenuItem1,
+            this.contrastItemGroupsToolStripMenuItem,
+            this.showItemsSameColorToolStripMenuItem,
+            this.dividerViewToolStripMenuItem2,
             this.excludedItemsViewToolStripMenuitem,
-            this.currentListViewItemsToolStripMenuItem,
             this.certificatesViewToolStripMenuItem,
             this.companiesToolStripMenuItem});
             this.viewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -5077,26 +5085,19 @@
             this.excludedItemsViewToolStripMenuitem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.excludedItemsViewToolStripMenuitem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.excludedItemsViewToolStripMenuitem.Name = "excludedItemsViewToolStripMenuitem";
-            this.excludedItemsViewToolStripMenuitem.Size = new System.Drawing.Size(195, 22);
+            this.excludedItemsViewToolStripMenuitem.Size = new System.Drawing.Size(248, 22);
             this.excludedItemsViewToolStripMenuitem.Text = "&Excluded Items";
+            this.excludedItemsViewToolStripMenuitem.Visible = false;
             this.excludedItemsViewToolStripMenuitem.Click += new System.EventHandler(this.excludedItemsViewToolStripMenuItem_Click);
-            // 
-            // currentListViewItemsToolStripMenuItem
-            // 
-            this.currentListViewItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.currentListViewItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.currentListViewItemsToolStripMenuItem.Name = "currentListViewItemsToolStripMenuItem";
-            this.currentListViewItemsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.currentListViewItemsToolStripMenuItem.Text = "Current &List View Items";
-            this.currentListViewItemsToolStripMenuItem.Click += new System.EventHandler(this.currentListViewItemsViewToolStripMenuItem_Click);
             // 
             // certificatesViewToolStripMenuItem
             // 
             this.certificatesViewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.certificatesViewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.certificatesViewToolStripMenuItem.Name = "certificatesViewToolStripMenuItem";
-            this.certificatesViewToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.certificatesViewToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.certificatesViewToolStripMenuItem.Text = "Cer&tificates";
+            this.certificatesViewToolStripMenuItem.Visible = false;
             this.certificatesViewToolStripMenuItem.Click += new System.EventHandler(this.certificatesViewToolStripMenuItem_Click);
             // 
             // companiesToolStripMenuItem
@@ -5104,9 +5105,50 @@
             this.companiesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.companiesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
-            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.companiesToolStripMenuItem.Text = "Co&mpanies";
+            this.companiesToolStripMenuItem.Visible = false;
             this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesViewToolStripMenuItem_Click);
+            // 
+            // popOutWindowToolStripMenuItem
+            // 
+            this.popOutWindowToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.popOutWindowToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.popOutWindowToolStripMenuItem.Name = "popOutWindowToolStripMenuItem";
+            this.popOutWindowToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.V)));
+            this.popOutWindowToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.popOutWindowToolStripMenuItem.Text = "&Pop Out Window";
+            this.popOutWindowToolStripMenuItem.Click += new System.EventHandler(this.itemsViewBtn_Click);
+            // 
+            // fullScreenToolStripMenuItem
+            // 
+            this.fullScreenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.fullScreenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
+            this.fullScreenToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Enter";
+            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.fullScreenToolStripMenuItem.Text = "&Full Screen";
+            this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.fullViewBtn_Click);
+            // 
+            // correctPanelSizingToolStripMenuItem
+            // 
+            this.correctPanelSizingToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.correctPanelSizingToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.correctPanelSizingToolStripMenuItem.Name = "correctPanelSizingToolStripMenuItem";
+            this.correctPanelSizingToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.correctPanelSizingToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.correctPanelSizingToolStripMenuItem.Text = "Correct Pane&l Sizing";
+            this.correctPanelSizingToolStripMenuItem.Click += new System.EventHandler(this.enlargeBtn_Click);
+            // 
+            // correctListViewColumnSizingToolStripMenuItem
+            // 
+            this.correctListViewColumnSizingToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.correctListViewColumnSizingToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.correctListViewColumnSizingToolStripMenuItem.Name = "correctListViewColumnSizingToolStripMenuItem";
+            this.correctListViewColumnSizingToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.correctListViewColumnSizingToolStripMenuItem.Text = "Correct Colum&n Sizing";
+            this.correctListViewColumnSizingToolStripMenuItem.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -5124,7 +5166,7 @@
             this.certusBrowserToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.certusBrowserToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.certusBrowserToolStripMenuItem.Name = "certusBrowserToolStripMenuItem";
-            this.certusBrowserToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.certusBrowserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.certusBrowserToolStripMenuItem.Text = "&Certus Browser";
             this.certusBrowserToolStripMenuItem.ToolTipText = "Currently can only be opened once per application session. Save changes and resta" +
     "rt if re-opening";
@@ -5136,7 +5178,7 @@
             this.dataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dataSourcesToolStripMenuItem,
             this.importCSVToolStripMenuItem,
-            this.toolStripSeparator2,
+            this.dividerDataToolStripMenuItem1,
             this.updateContractDataToolStripMenuItem,
             this.addRelatedFilesDataToolStripMenuItem,
             this.tieUserIDsToolStripMenuItem});
@@ -5173,7 +5215,7 @@
             this.importWorkflowItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importWorkflowItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importWorkflowItemsToolStripMenuItem.Name = "importWorkflowItemsToolStripMenuItem";
-            this.importWorkflowItemsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.importWorkflowItemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importWorkflowItemsToolStripMenuItem.Text = "Workflow Items";
             this.importWorkflowItemsToolStripMenuItem.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
             // 
@@ -5182,8 +5224,9 @@
             this.importExcludedItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importExcludedItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importExcludedItemsToolStripMenuItem.Name = "importExcludedItemsToolStripMenuItem";
-            this.importExcludedItemsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.importExcludedItemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importExcludedItemsToolStripMenuItem.Text = "Excluded Items";
+            this.importExcludedItemsToolStripMenuItem.Visible = false;
             this.importExcludedItemsToolStripMenuItem.Click += new System.EventHandler(this.importExcludedItemsToolStripMenuItem_Click);
             // 
             // importCertificatesToolStripMenuItem
@@ -5191,8 +5234,9 @@
             this.importCertificatesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importCertificatesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importCertificatesToolStripMenuItem.Name = "importCertificatesToolStripMenuItem";
-            this.importCertificatesToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.importCertificatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importCertificatesToolStripMenuItem.Text = "Certificates";
+            this.importCertificatesToolStripMenuItem.Visible = false;
             this.importCertificatesToolStripMenuItem.Click += new System.EventHandler(this.importCertificatesToolStripMenuItem_Click);
             // 
             // importCompaniesToolStripMenuItem1
@@ -5200,17 +5244,18 @@
             this.importCompaniesToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importCompaniesToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importCompaniesToolStripMenuItem1.Name = "importCompaniesToolStripMenuItem1";
-            this.importCompaniesToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.importCompaniesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.importCompaniesToolStripMenuItem1.Text = "Companies";
+            this.importCompaniesToolStripMenuItem1.Visible = false;
             this.importCompaniesToolStripMenuItem1.Click += new System.EventHandler(this.importCompaniesToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
+            // dividerDataToolStripMenuItem1
             // 
-            this.toolStripSeparator2.AutoSize = false;
-            this.toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
+            this.dividerDataToolStripMenuItem1.AutoSize = false;
+            this.dividerDataToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerDataToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerDataToolStripMenuItem1.Name = "dividerDataToolStripMenuItem1";
+            this.dividerDataToolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
             // 
             // updateContractDataToolStripMenuItem
             // 
@@ -5256,7 +5301,7 @@
             this.minimizeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.minimizeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.minimizeToolStripMenuItem.Text = "Mi&nimize";
             this.minimizeToolStripMenuItem.Click += new System.EventHandler(this.minimizeToolStripMenuItem_Click);
             // 
@@ -5265,7 +5310,7 @@
             this.maximizeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.maximizeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.maximizeToolStripMenuItem.Name = "maximizeToolStripMenuItem";
-            this.maximizeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.maximizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.maximizeToolStripMenuItem.Text = "Ma&ximize";
             this.maximizeToolStripMenuItem.Click += new System.EventHandler(this.maximizeToolStripMenuItem_Click);
             // 
@@ -5280,6 +5325,7 @@
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 22);
             this.adminToolStripMenuItem.Text = "&Admin";
             this.adminToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.adminToolStripMenuItem.Visible = false;
             // 
             // updateToolStripMenuItem
             // 
@@ -5287,7 +5333,7 @@
             this.updateToolStripMenuItem.Enabled = false;
             this.updateToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateToolStripMenuItem.Text = "&Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updatRelatedFilesDataToolStripMenuItem_Click);
             // 
@@ -5940,7 +5986,7 @@
             this.certusConnectionBtn.Size = new System.Drawing.Size(15, 15);
             this.certusConnectionBtn.TabIndex = 0;
             this.certusConnectionBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Import App Data from CertusDB");
+            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Import Data Sources from CertusDB");
             this.certusConnectionBtn.UseVisualStyleBackColor = false;
             this.certusConnectionBtn.Click += new System.EventHandler(this.certusConnectionBtn_Click);
             // 
@@ -6383,6 +6429,62 @@
             this.changeClientBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.changeClientBackgroundWorker_DoWork);
             this.changeClientBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.changeClientBackgroundWorker_RunWorkerCompleted);
             // 
+            // contrastItemGroupsToolStripMenuItem
+            // 
+            this.contrastItemGroupsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.contrastItemGroupsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.contrastItemGroupsToolStripMenuItem.Name = "contrastItemGroupsToolStripMenuItem";
+            this.contrastItemGroupsToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.contrastItemGroupsToolStripMenuItem.Text = "&Contrast Item Groups";
+            this.contrastItemGroupsToolStripMenuItem.Click += new System.EventHandler(this.contrastItemGroupsBtn_Click);
+            // 
+            // showItemsSameColorToolStripMenuItem
+            // 
+            this.showItemsSameColorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.showItemsSameColorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.showItemsSameColorToolStripMenuItem.Name = "showItemsSameColorToolStripMenuItem";
+            this.showItemsSameColorToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.showItemsSameColorToolStripMenuItem.Text = "&Show Items as the Same Color     ";
+            this.showItemsSameColorToolStripMenuItem.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
+            // 
+            // dividerViewToolStripMenuItem2
+            // 
+            this.dividerViewToolStripMenuItem2.AutoSize = false;
+            this.dividerViewToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem2.Name = "dividerViewToolStripMenuItem2";
+            this.dividerViewToolStripMenuItem2.Size = new System.Drawing.Size(245, 6);
+            this.dividerViewToolStripMenuItem2.Visible = false;
+            // 
+            // dividerViewToolStripMenuItem1
+            // 
+            this.dividerViewToolStripMenuItem1.AutoSize = false;
+            this.dividerViewToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem1.Name = "dividerViewToolStripMenuItem1";
+            this.dividerViewToolStripMenuItem1.Size = new System.Drawing.Size(245, 6);
+            // 
+            // listViewOptionsDividerPanel4
+            // 
+            this.listViewOptionsDividerPanel4.Controls.Add(this.label1);
+            this.listViewOptionsDividerPanel4.ForeColor = System.Drawing.Color.Transparent;
+            this.listViewOptionsDividerPanel4.Location = new System.Drawing.Point(587, 1);
+            this.listViewOptionsDividerPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewOptionsDividerPanel4.Name = "listViewOptionsDividerPanel4";
+            this.listViewOptionsDividerPanel4.Size = new System.Drawing.Size(10, 20);
+            this.listViewOptionsDividerPanel4.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Gray;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.ForeColor = System.Drawing.Color.Lime;
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(2, 21);
+            this.label1.TabIndex = 0;
+            // 
             // WorkflowManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -6416,9 +6518,9 @@
             this.listViewOptionsPanel.ResumeLayout(false);
             this.listViewOptionsPanel.PerformLayout();
             this.vcOuterPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.dividerPanel2.ResumeLayout(false);
-            this.dividerPanel.ResumeLayout(false);
+            this.listViewOptionsDividerPanel2.ResumeLayout(false);
+            this.listViewOptionsDividerPanel3.ResumeLayout(false);
+            this.listViewOptionsDividerPanel1.ResumeLayout(false);
             this.splitContainerChild2.Panel1.ResumeLayout(false);
             this.splitContainerChild2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild2)).EndInit();
@@ -6516,6 +6618,7 @@
             this.qfndCustomDDLMenuStrip.ResumeLayout(false);
             this.vcCustomDDLMenuStrip.ResumeLayout(false);
             this.clCustomDDLMenuStrip.ResumeLayout(false);
+            this.listViewOptionsDividerPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -6640,11 +6743,10 @@
         private System.Windows.Forms.Timer progressTimer;
         private System.Windows.Forms.ToolStripStatusLabel filterStatusLbl;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator dividerEditToolStripmenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToExportViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeFromExportViewToolStripMenuItem;
         private System.Windows.Forms.Panel importPanel;
-        private System.Windows.Forms.ToolStripMenuItem addToExcludedToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainerParent;
         private System.ComponentModel.BackgroundWorker importWorkflowItemsBackgroundWorker;
         private System.Windows.Forms.Button filterBtn;
@@ -6661,7 +6763,6 @@
         private System.Windows.Forms.ToolStripDropDownButton queriedToolStripDropDownButton;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excludedItemsViewToolStripMenuitem;
-        private System.Windows.Forms.ToolStripMenuItem currentListViewItemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker updateRelatedFilesDataBackgroundWorker;
@@ -6686,9 +6787,9 @@
         private System.Windows.Forms.Button removePaintBtn;
         private System.Windows.Forms.Panel listViewOptionsPanel;
         private System.Windows.Forms.Button openInCertusBtn;
-        private System.Windows.Forms.Panel dividerPanel;
+        private System.Windows.Forms.Panel listViewOptionsDividerPanel1;
         private System.Windows.Forms.Label dividerLbl;
-        private System.Windows.Forms.Panel dividerPanel2;
+        private System.Windows.Forms.Panel listViewOptionsDividerPanel3;
         private System.Windows.Forms.Label dividerLbl2;
         private System.Windows.Forms.ToolTip buttonDescToolTip;
         private System.Windows.Forms.ToolStripSeparator dividerFileToolStripMenuItem2;
@@ -6697,7 +6798,7 @@
         private System.Windows.Forms.ToolStripMenuItem companiesToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker importCompaniesBackgroundWorker;
         private System.Windows.Forms.Button itemIsDifferentBtn;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator dividerDataToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addRelatedFilesDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateContractDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -6838,7 +6939,7 @@
         private System.Windows.Forms.ToolStripMenuItem setAssignmentFindContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markPriorityContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem markExcludedContextMenuItem;
-        private System.Windows.Forms.Button lockListViewColumnSizingBtn;
+        private System.Windows.Forms.Button correctListViewColumnSizingBtn;
         private System.Windows.Forms.ToolStripMenuItem setAssignmentManuallyContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyWithHeadersContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectAllContextMenuItem;
@@ -6846,7 +6947,7 @@
         private System.Windows.Forms.ToolStripMenuItem extractContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractCompanyContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractContractContextMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel listViewOptionsDividerPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button importFromDatabaseBtn;
         private System.ComponentModel.BackgroundWorker importFromDBBackGroundWorker;
@@ -6933,5 +7034,15 @@
         private System.Windows.Forms.ToolStripMenuItem tieUserIDsToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker connectToDBBackgroundWorker;
         private System.ComponentModel.BackgroundWorker changeClientBackgroundWorker;
+        private System.Windows.Forms.ToolStripMenuItem popOutWindowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem correctPanelSizingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem correctListViewColumnSizingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator dividerViewToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem contrastItemGroupsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showItemsSameColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator dividerViewToolStripMenuItem2;
+        private System.Windows.Forms.Panel listViewOptionsDividerPanel4;
+        private System.Windows.Forms.Label label1;
     }
 }

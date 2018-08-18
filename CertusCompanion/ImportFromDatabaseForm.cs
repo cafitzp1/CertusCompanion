@@ -13,12 +13,21 @@ namespace CertusCompanion
         private List<Client> clients;
 
         //
-        // constructor
+        // constructors
         public ImportFromDatabaseForm(List<Client> clients)
         {
             InitializeComponent();
 
             this.clients = clients;
+
+            PopulateSources();
+        }
+        public ImportFromDatabaseForm(List<Client> clients, string selectedClient)
+        {
+            InitializeComponent();
+
+            this.clients = clients;
+            this.clientComboBox.Text = selectedClient;
 
             PopulateSources();
         }
@@ -37,53 +46,99 @@ namespace CertusCompanion
         }
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            tickCountLbl1.Text = (trackBar1.Value * 5000).ToString();
+            tickCountLbl.Text = (trackBar1.Value * 5000).ToString();
         }
-        private void clearBtn_Click(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            this.clientComboBox.SelectedIndex = -1;
-            this.workflowItemsComboBox.SelectedIndex = -1;
-
-            this.trackBar1.Value = 0;
-
-            this.tickCountLbl1.Text = "0";
-
-        }
-        private void importBtn_Click(object sender, EventArgs e)
-        {
-            if (clientComboBox.SelectedIndex < 0 || (workflowItemsComboBox.SelectedIndex < 0))
-            {
-                statusLbl.Visible = true;
-                return;
-            }
-
-            // extract client id
-            string clientSel = this.clientComboBox.SelectedItem.ToString();
-            int delim1 = clientSel.IndexOf('<');
-            int delim2 = clientSel.IndexOf('>');
-            string clientID = clientSel.Substring(delim1+1, delim2 - delim1-1);
-
-            ClientIDSelection = clientID;
-            WorkflowItemsSelection = this.workflowItemsComboBox.SelectedItem.ToString();
-            WorkflowItemsAmount = Convert.ToInt32(this.tickCountLbl1.Text);
-            AddAndUpdate = addAndUpdateCheckBox.Checked;
-
-            this.DialogResult = DialogResult.OK;
-
-            CloseForm();
-        }
-        private void workflowItemsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (workflowItemsComboBox.SelectedIndex == 0)
+            if (radioButton1.Checked)
             {
                 trackBar1.Enabled = false;
-                tickCountLbl1.Visible = false;
+                tickCountLbl.Visible = false;
             }
             else
             {
                 trackBar1.Enabled = true;
-                tickCountLbl1.Visible = true;
+                tickCountLbl.Visible = true;
             }
+        }
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            CloseForm();
+        }
+        private void importBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!FieldCheck()) return;
+
+                // extract client id
+                string clientSel = this.clientComboBox.Text.ToString();
+                int delim1 = clientSel.IndexOf('<');
+                int delim2 = clientSel.IndexOf('>');
+                string clientID = clientSel.Substring(delim1 + 1, delim2 - delim1 - 1);
+
+                ClientIDSelection = clientID;
+                foreach (char c in clientID)
+                {
+                    if (!Char.IsDigit(c)) throw new Exception();
+                }
+
+                if (radioButton1.Checked) WorkflowItemsSelection = radioButton1.Text;
+                else if (radioButton2.Checked) WorkflowItemsSelection = radioButton2.Text;
+                else if (radioButton3.Checked) WorkflowItemsSelection = radioButton3.Text;
+                else if (radioButton4.Checked) WorkflowItemsSelection = radioButton4.Text;
+
+                WorkflowItemsAmount = Convert.ToInt32(this.tickCountLbl.Text);
+                AddAndUpdate = addAndUpdateCheckBox.Checked;
+
+                this.DialogResult = DialogResult.OK;
+                CloseForm();
+            }
+            catch (Exception)
+            {
+                this.DialogResult = DialogResult.Abort;
+                CloseForm();
+            }
+        }
+        private bool FieldCheck()
+        {
+            if (clientComboBox.Text == String.Empty || clientComboBox.Text == null)
+            {
+                statusLbl.Visible = true;
+                statusLbl.Text = "You must select a client";
+                return false;
+            }
+
+            if (clientComboBox.Items != null && clientComboBox.Items.Count > 0 && !clientComboBox.Items.Contains(clientComboBox.Text))
+            {
+                statusLbl.Visible = true;
+                statusLbl.Text = "Not a valid client";
+                return false;
+            }
+
+            if (!clientComboBox.Text.Contains("<") || !clientComboBox.Text.Contains(">"))
+            {
+                statusLbl.Visible = true;
+                statusLbl.Text = "Client ID required, like so: <36>";
+                return false;
+            }
+
+            if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked && !radioButton4.Checked)
+            {
+                statusLbl.Visible = true;
+                statusLbl.Text = "You must select an option";
+                return false;
+            }
+
+            if (!radioButton1.Checked && tickCountLbl.Text == "0")
+            {
+                statusLbl.Visible = true;
+                statusLbl.Text = "Specify an amount (greater than 0)";
+                return false;
+            }
+
+            return true;
         }
         private void CloseForm()
         {

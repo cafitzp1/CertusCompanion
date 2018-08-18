@@ -29,11 +29,11 @@ namespace CertusCompanion
         internal AppData AppData { get; set; }
         internal ItemImports ItemImportsList { get; set; }
         internal ItemsCompletedReports ItemsCompletedReportsList { get; set; }
-        internal List<CSVImport> AllItemImportsLoaded { get; set; }
+        internal List<Import> AllItemImportsLoaded { get; set; }
         internal List<ItemsCompletedReport> AllItemsCompletedReportsLoaded { get; set; }
         internal CSVImport CurrentImport { get; set; }
         internal Filter CurrentFilter { get; set; }
-        internal CSVImport SelectedImport { get; set; }
+        internal Import SelectedImport { get; set; }
         internal ItemsCompletedReport SelectedReport { get; set; }
         internal NoteForm NoteIns { get; set; }
         internal Form TransparentForm { get; set; }
@@ -215,7 +215,7 @@ namespace CertusCompanion
             lvItemsShowing = new List<ListViewItem>();
             AllWorkflowItemsLoaded = new List<WorkflowItem>();
             SenderEmailsSubSource = new HashSet<string>();
-            AllItemImportsLoaded = new List<CSVImport>();
+            AllItemImportsLoaded = new List<Import>();
             AllItemsCompletedReportsLoaded = new List<ItemsCompletedReport>();
             CurrentWorkflowItems = new List<WorkflowItem>();
             TemporaryExportList = new List<WorkflowItem>();
@@ -860,11 +860,9 @@ namespace CertusCompanion
 
             Cursor.Current = Cursors.Default;
         }
-        private void currentListViewItemsViewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void itemsViewBtn_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            //itemViewForm = new ItemsView();
-            //itemViewForm.Show();
 
             try
             {
@@ -1015,7 +1013,7 @@ namespace CertusCompanion
                         // reset client ddl items
                         clCustomDDLMenuStrip.Items.Clear();
                         clSelectionBtn.Text = String.Empty;
-                        
+
                         ConnectionBtnNoConnection();
                     }
                     break;
@@ -1050,7 +1048,7 @@ namespace CertusCompanion
         public void ConnectionBtnNoConnection()
         {
             certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48__1_;
-            buttonDescToolTip.SetToolTip(certusConnectionBtn, "Import App Data from CertusDB");
+            buttonDescToolTip.SetToolTip(certusConnectionBtn, "Import Data Sources from CertusDB");
             connectionBtnStatus = 1;
         }
         //
@@ -1849,7 +1847,7 @@ namespace CertusCompanion
             else // this is the first import
             {
                 AllWorkflowItemsLoaded = currentImportItems;
-                if(AllItemImportsLoaded !=null && AllItemImportsLoaded.Count!=0) AllItemImportsLoaded[AllItemImportsLoaded.Count - 1].ItemsAdded.AddRange(currentImportItems.Select(i => i.DocumentWorkflowItemID).ToList());
+                if (AllItemImportsLoaded != null && AllItemImportsLoaded.Count != 0) AllItemImportsLoaded[AllItemImportsLoaded.Count - 1].ItemsAdded.AddRange(currentImportItems.Select(i => i.DocumentWorkflowItemID).ToList());
             }
 
 
@@ -1896,12 +1894,21 @@ namespace CertusCompanion
         {
             #region Generate Form
 
+            if(importFromDBBackGroundWorker.IsBusy)
+            {
+                MessageBox.Show("Process is still running. Wait a few moments before trying again.");
+                return;
+            }
+
+            UseWaitCursor = true;
+
             // construct forms
             DimForm();
-            ImportFromDBForm = new ImportFromDatabaseForm(ClientsDataSource);
+            string client = clSelectionBtn.Text;
+            if( client!=null && client != String.Empty && client != "Select one...") ImportFromDBForm = new ImportFromDatabaseForm(ClientsDataSource, client);
+            else ImportFromDBForm = new ImportFromDatabaseForm(ClientsDataSource);
 
-            // pass data sources
-            // ...
+            UseWaitCursor = false;
 
             // show as dialog
             DialogResult result = ImportFromDBForm.ShowDialog();
@@ -1914,14 +1921,14 @@ namespace CertusCompanion
 
             if (result == DialogResult.OK)
             {
-                try
-                {
-                    importFromDBBackGroundWorker.RunWorkerAsync(result);
-                }
-                catch (Exception m)
-                {
-                    MessageBox.Show("Error: " + m.Message);
-                }
+                DisableWFDataOptions();
+                importFromDatabaseBtn.Enabled = true;
+
+                importFromDBBackGroundWorker.RunWorkerAsync(result);
+            }
+            else if (result == DialogResult.Abort)
+            {
+                MessageBox.Show("Something went wrong while setting up the import", "Error");
             }
         }
         private void vcCustomDDLSelectionBtn_TextChanged(object sender, EventArgs e)
@@ -2388,7 +2395,7 @@ namespace CertusCompanion
                 return true;
             }
         }
-        private void fullScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void fullViewBtn_Click(object sender, EventArgs e)
         {
             // hide LV while the other controls have a chance to change 
             workflowItemsListView.Visible = false;
@@ -2458,7 +2465,7 @@ namespace CertusCompanion
             this.splitContainerChild2.SplitterDistance = 5000;
             workflowItemsListView.Focus();
         }
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        private void refreshListViewBtn_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
 
@@ -2633,7 +2640,7 @@ namespace CertusCompanion
         private void clCustomDDLSelectionBtn_TextChanged(object sender, EventArgs e)
         {
             string client = clSelectionBtn.Text;
-            if (client == "Select one..." || client==String.Empty) return;
+            if (client == "Select one..." || client == String.Empty) return;
             int delim = client.IndexOf('<');
             SelectedClientID = client.Substring(delim + 1, client.Length - 1 - delim - 1);
 
@@ -2664,6 +2671,20 @@ namespace CertusCompanion
             {
                 e.Handled = true;
             }
+        }
+        private void DisableWFDataOptions()
+        {
+            this.loadWorkspaceToolStripMenuItem.Enabled = false;
+            this.dataToolStripMenuItem.Enabled = false;
+            this.importBtn.Enabled = false;
+            this.importFromDatabaseBtn.Enabled = false;
+        }
+        private void EnableWFDataOptions()
+        {
+            this.loadWorkspaceToolStripMenuItem.Enabled = true;
+            this.dataToolStripMenuItem.Enabled = true;
+            this.importBtn.Enabled = true;
+            this.importFromDatabaseBtn.Enabled = true;
         }
         //
         // ContextMenu
@@ -3746,6 +3767,8 @@ namespace CertusCompanion
         }
         private void workflowItemsListView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
+            if (AllWorkflowItemsLoaded == null || AllWorkflowItemsLoaded.Count == 0) return;
+
             string idBeingDrawn = e.Item.SubItems[1].Text;
             WorkflowItem itemBeingDrawn = GetWorkflowItemFromCurrentViewByID(idBeingDrawn);
             ListViewItem lvItem = workflowItemsListView.Items[e.ItemIndex] as ListViewItem;
@@ -6955,7 +6978,7 @@ namespace CertusCompanion
         {
             if (this.itemImportsLbx.SelectedItem != null)
             {
-                SelectedImport = (CSVImport)itemImportsLbx.SelectedItem;
+                SelectedImport = (Import)itemImportsLbx.SelectedItem;
 
                 PopulateImportViewData(SelectedImport);
             }
@@ -8460,7 +8483,7 @@ namespace CertusCompanion
             if (wi.ItemHasPriority) priorityNotificationBtn.Visible = true;
             else priorityNotificationBtn.Visible = false;
         }
-        private void PopulateImportLbx(List<CSVImport> imports)
+        private void PopulateImportLbx(List<Import> imports)
         {
             BindingSource bs = new BindingSource();
             bs.DataSource = imports;
@@ -8474,14 +8497,26 @@ namespace CertusCompanion
 
             }
         }
-        private void PopulateImportViewData(CSVImport itemImport)
+        private void PopulateImportViewData(Import itemImport)
         {
-            this.importDateTbx.Text = itemImport.ImportDate.ToLongDateString();
-            this.importFileNameTbx.Text = itemImport.FileName;
-            this.importTypeTbx.Text = itemImport.ImportType;
-            this.itemsOnImportTbx.Text = itemImport.TotalItemsOnImport.Count.ToString();
-            this.itemsAddedTbx.Text = itemImport.ItemsAdded.Count.ToString();
-            this.itemsUpdatedTbx.Text = itemImport.ItemsUpdated.Count.ToString();
+            if (itemImport is CSVImport)
+            {
+                this.importDateTbx.Text = (itemImport as CSVImport).ImportDate.ToLongDateString();
+                this.importFileNameTbx.Text = (itemImport as CSVImport).FileName;
+                this.importTypeTbx.Text = (itemImport as CSVImport).ImportType;
+                this.itemsOnImportTbx.Text = (itemImport as CSVImport).TotalItemsOnImport.Count.ToString();
+                this.itemsAddedTbx.Text = (itemImport as CSVImport).ItemsAdded.Count.ToString();
+                this.itemsUpdatedTbx.Text = (itemImport as CSVImport).ItemsUpdated.Count.ToString();
+            }
+            else if (itemImport is DBImport)
+            {
+                this.importDateTbx.Text = (itemImport as DBImport).ImportDate.ToLongDateString();
+                this.importFileNameTbx.Text = (itemImport as DBImport).ImportName;
+                this.importTypeTbx.Text = (itemImport as DBImport).ImportType;
+                this.itemsOnImportTbx.Text = (itemImport as DBImport).TotalItemsOnImport.Count.ToString();
+                this.itemsAddedTbx.Text = (itemImport as DBImport).ItemsAdded.Count.ToString();
+                this.itemsUpdatedTbx.Text = (itemImport as DBImport).ItemsUpdated.Count.ToString();
+            }
         }
         #endregion
 
@@ -8953,8 +8988,7 @@ namespace CertusCompanion
             }
             catch (Exception m)
             {
-                MessageBox.Show(m.Message, "Error");
-                return;
+                MessageBox.Show("Something went wrong with the import.\n\nReason " + m.Message);
             }
         }
         private void ImportWorkflowCSV(OpenFileDialog ofd)
@@ -9963,157 +9997,58 @@ namespace CertusCompanion
         {
             ImportFromDB();
         }
-        private void ImportFromDBRouter(int i)
-        {
-            switch (i)
-            {
-                case 1:
-                    ImportWorkflowItemsFromDB();
-                    break;
-                case 2:
-                    ImportCertificatesFromDB();
-                    break;
-                case 3:
-                    ImportCompaniesFromDB();
-                    break;
-                default:
-                    break;
-            }
-        }
         private void ImportFromDB()
         {
-            ImportFromDBRouter(1);
+            ImportWorkflowItemsFromDB();
         }
         private void ImportWorkflowItemsFromDB()
         {
-            string wiCount;
-            string clientID;
+            DimForm();
+            LoadingForm = new LoadingForm();
 
-            wiCount = ImportFromDBForm.WorkflowItemsAmount.ToString();
-            clientID = ImportFromDBForm.ClientIDSelection;
+            if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
+            else LoadingForm.Show(TransparentForm);
 
-            // test DB connection
-            #region TestConn
-            string connectionString = ConfigurationManager.ConnectionStrings["CertusDB"].ToString();
-            string query;
-
-            SqlConnection conn = new SqlConnection(connectionString);
-            SqlCommand command = conn.CreateCommand();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (this.InvokeRequired) this.Invoke(new Action(() => 
             {
-                connection.Open();
+                LoadingForm.ChangeLabel($"Importing items from DB");
+                LoadingForm.ShowCloseBtn("Close");
+                LoadingForm.Refresh();
+            }));
+            else
+            {
+                LoadingForm.ChangeLabel($"Importing items from DB");
+                LoadingForm.ShowCloseBtn("Close");
+                LoadingForm.Refresh();
             }
-            #endregion
 
-            // get query
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.ImportQueries.WIR4.0_DS.sql"))
+            DBImport import = new DBImport();
+            import.InitiateWorkflowImport(ImportFromDBForm.ClientIDSelection, ImportFromDBForm.WorkflowItemsSelection, ImportFromDBForm.WorkflowItemsAmount);
+
+            if (this.InvokeRequired)
             {
-                using (StreamReader sr = new StreamReader(strm))
+                this.Invoke(new Action(() => 
                 {
-                    query = sr.ReadToEnd();
-                }
+                    importWorkflowItemsBackgroundWorker.ReportProgress(50);
+                    LoadingForm.ChangeLabel("Adding imported items to the current list"); 
+                    LoadingForm.Refresh();
+                }));
             }
-
-            // manipulate query
-            if (ImportFromDBForm.WorkflowItemsSelection == "Non-completed")
+            else
             {
-                query = query.Replace("TOP", "--TOP");
-                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
-                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>");
-            }
-            else if (ImportFromDBForm.WorkflowItemsSelection == "Most Recent...")
-            {
-                query = query.Replace("TOP 0", $"TOP {wiCount}");
-                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
-                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>");
-                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>");
-            }
-            else if (ImportFromDBForm.WorkflowItemsSelection == "Most Recent (Non-completed)...")
-            {
-                query = query.Replace("TOP 0", $"TOP {wiCount}");
-                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
-                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID > 3--<c2>");
-            }
-            else if (ImportFromDBForm.WorkflowItemsSelection == "Most Recent (Completed)...")
-            {
-                query = query.Replace("TOP 0", $"TOP {wiCount}");
-                query = query.Replace("0--<cl>", $"{clientID}--<cl>");
-                query = query.Replace("AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>", "--AND DocumentWorkflowStatus.DocumentWorkflowStatusID <= 3--<c1>");
+                importWorkflowItemsBackgroundWorker.ReportProgress(50);
+                LoadingForm.ChangeLabel("Adding imported items to the current list");
+                LoadingForm.Refresh();
             }
 
-            // execute query
-            command.CommandText = query;
-            command.CommandType = CommandType.Text;
-            command.CommandTimeout = 450;
+            // save import
+            AllItemImportsLoaded.Add(import.ReturnDBImport());
 
-            SqlDataAdapter wiAdapter = new SqlDataAdapter(command);
-            DataTable wiTable = new DataTable();
-            wiAdapter.Fill(wiTable);
+            // add to AllWorkflowItemsLoaded - will report progress within the method
+            AddItemsToAllWorkflowItemsLoaded($"{import.ImportType} - {import.ImportDate}", import.ReturnWorkflowItems());
 
-            // add to WI
-            foreach (DataRow row in wiTable.Rows)
-            {
-                string documentWorkflowItemID = row[0].ToString();
-                string contractID = row[1].ToString();
-                string vendorName = row[2].ToString();
-                string vendorID = row[3].ToString();
-                string clID = row[4].ToString();
-                string workflowAnalyst = row[5].ToString();
-                string workflowAnalystID = row[6].ToString();
-                string companyAnalyst = row[7].ToString();
-                string companyAnalystID = row[8].ToString();
-                DateTime parsedDateTimeValue;
-                DateTime? emailDate = null;
-                DateTime.TryParse(row[9].ToString(), out parsedDateTimeValue);
-                emailDate = parsedDateTimeValue;
-                string emailFromAddress = row[10].ToString();
-                string subjectLine = row[11].ToString();
-                string status = row[12].ToString();
-                string certusFileID = row[13].ToString();
-                string fileName = row[14].ToString();
-                string fileSize = row[15].ToString();
-                string fileMIME = row[16].ToString();
-                string fileURL = row[17].ToString();
-
-                WorkflowItem wi = new WorkflowItem
-                (
-                    documentWorkflowItemID,
-                    contractID,
-                    vendorName,
-                    vendorID,
-                    clID,
-                    null,
-                    null,
-                    null,
-                    null,
-                    workflowAnalyst,
-                    workflowAnalystID,
-                    companyAnalyst,
-                    companyAnalystID,
-                    emailDate,
-                    emailFromAddress,
-                    subjectLine,
-                    null,
-                    status,
-                    certusFileID,
-                    fileName,
-                    fileURL,
-                    fileSize,
-                    fileMIME,
-                    null
-                );
-            }
-
-            // import...
-        }
-        private void ImportCertificatesFromDB()
-        {
-
-        }
-        private void ImportCompaniesFromDB()
-        {
-
+            // set non completed items list
+            SetNonCompletedItemsList();
         }
         private void importFromDBBackGroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -10124,6 +10059,23 @@ namespace CertusCompanion
             }
             else if (e.Error != null)
             {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
+                {
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.HideBar();
+                    this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful");
+                    this.LoadingForm.ChangeLabel($"{e.Error.Message}");
+                    this.LoadingForm.Refresh();
+                }));
+                else
+                {
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.HideBar();
+                    this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful");
+                    this.LoadingForm.ChangeLabel($"{e.Error.Message}");
+                    this.LoadingForm.Refresh();
+                }
+
                 MessageBox.Show($"Data generation unsuccessful\n\n{e.Error.Message}", "Error");
 
                 if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
@@ -10131,26 +10083,31 @@ namespace CertusCompanion
             }
             else
             {
-                if (this.InvokeRequired)
+                // populate lv
+                this.vcSelectionBtn.Text = "Non-completed";
+
+                // populate lbx
+                PopulateImportLbx(this.AllItemImportsLoaded);
+
+                //SetStatusLabelAndTimer("Import successful");
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
                 {
-                    this.Invoke(new Action(() =>
-                    {
-                        this.LoadingForm.CompleteProgress();
-                        this.LoadingForm.ChangeLabel("Data generation successful");
-                        this.LoadingForm.Refresh();
-                        this.loadingFormTimer.Enabled = true;
-                        this.SetStatusLabelAndTimer($"Data generation successful", true);
-                    }));
-                }
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Items imported successfully");
+                    this.LoadingForm.Refresh();
+                }));
                 else
                 {
+                    this.LoadingForm.ShowCloseBtn();
                     this.LoadingForm.CompleteProgress();
-                    this.LoadingForm.ChangeLabel("Data generation successful");
+                    this.LoadingForm.ChangeLabel("Items imported successfully");
                     this.LoadingForm.Refresh();
-                    this.loadingFormTimer.Enabled = true;
-                    this.SetStatusLabelAndTimer($"Data generation successful", true);
                 }
             }
+
+            EnableWFDataOptions();
+            UseWaitCursor = false;
         }
         //
         // LINQ Query

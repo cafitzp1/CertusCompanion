@@ -9,27 +9,28 @@ namespace CertusCompanion
     {
         //
         // data
-        internal List<CSVImport> ItemImportsList { get; set; }
-        internal CSVImport ItemImportBeingAdded { get; set; }
-        internal List<CSVImport> ItemImportListBeingAdded { get; set; }
+        internal List<Import> ItemImportsList { get; set; }
+        internal Import ItemImportBeingAdded { get; set; }
+        internal List<Import> ItemImportListBeingAdded { get; set; }
 
         //
         // constructors
         public ItemImports()
         {
-            this.ItemImportsList = new List<CSVImport>();
+            this.ItemImportsList = new List<Import>();
             //this.ItemImportBeingAdded = new ItemImport();
             //this.ItemImportListBeingAdded = new List<ItemImport>();
         }
-        public ItemImports(List<CSVImport> itemImportsList)
+        public ItemImports(List<Import> itemImportsList)
         {
             this.ItemImportsList = itemImportsList;
             //this.ItemImportBeingAdded = new ItemImport();
             //this.ItemImportListBeingAdded = new List<ItemImport>();
         }
+
         //
         // methods
-        public void AddImport(CSVImport itemImportToAdd)
+        public void AddImport(Import itemImportToAdd)
         {
             this.ItemImportBeingAdded = itemImportToAdd;
 
@@ -43,20 +44,20 @@ namespace CertusCompanion
                 //throw new ItemImportAlreadyAddedException("This import has already been added");
             }
         }
-        public void AddImportList(List<CSVImport> itemImportListToAdd)
+        public void AddImportList(List<Import> itemImportListToAdd)
         {
             this.ItemImportListBeingAdded = itemImportListToAdd;
 
-            foreach (CSVImport import in ItemImportListBeingAdded)
+            foreach (Import import in ItemImportListBeingAdded)
             {
                 this.AddImport(import);
             }
         }
-        public List<CSVImport> ReturnAllImports()
+        public List<Import> ReturnAllImports()
         {
-            List<CSVImport> imports = new List<CSVImport>();
+            List<Import> imports = new List<Import>();
 
-            foreach (CSVImport import in ItemImportsList)
+            foreach (Import import in ItemImportsList)
             {
                 imports.Add(import);
             }
