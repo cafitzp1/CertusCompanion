@@ -569,6 +569,7 @@
             this.clientInnerPanel.Name = "clientInnerPanel";
             this.clientInnerPanel.Size = new System.Drawing.Size(138, 24);
             this.clientInnerPanel.TabIndex = 3;
+            this.clientInnerPanel.Tag = "138";
             // 
             // clOuterPanel
             // 
@@ -857,7 +858,7 @@
             this.correctListViewColumnSizingBtn.Size = new System.Drawing.Size(20, 20);
             this.correctListViewColumnSizingBtn.TabIndex = 0;
             this.correctListViewColumnSizingBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.correctListViewColumnSizingBtn, "Reset ListView Column Sizing");
+            this.buttonDescToolTip.SetToolTip(this.correctListViewColumnSizingBtn, "Correct Column Sizing");
             this.correctListViewColumnSizingBtn.UseVisualStyleBackColor = false;
             this.correctListViewColumnSizingBtn.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
             // 
@@ -924,7 +925,7 @@
             this.redrawItemsBtn.Size = new System.Drawing.Size(20, 20);
             this.redrawItemsBtn.TabIndex = 0;
             this.redrawItemsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.redrawItemsBtn, "Update List Items");
+            this.buttonDescToolTip.SetToolTip(this.redrawItemsBtn, "Update Checked Items");
             this.redrawItemsBtn.UseVisualStyleBackColor = false;
             this.redrawItemsBtn.Click += new System.EventHandler(this.redrawItemsBtn_Click);
             this.redrawItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -1104,7 +1105,7 @@
             this.enlargeBtn.Size = new System.Drawing.Size(20, 20);
             this.enlargeBtn.TabIndex = 0;
             this.enlargeBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.enlargeBtn, "Enlarge Items View (Ctrl+E)");
+            this.buttonDescToolTip.SetToolTip(this.enlargeBtn, "Correct Panel Sizing (Ctrl+E)");
             this.enlargeBtn.UseVisualStyleBackColor = false;
             this.enlargeBtn.Click += new System.EventHandler(this.enlargeBtn_Click);
             this.enlargeBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -1173,7 +1174,7 @@
             this.itemsViewBtn.Size = new System.Drawing.Size(20, 20);
             this.itemsViewBtn.TabIndex = 0;
             this.itemsViewBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.itemsViewBtn, "View Items in Pop-up Window (Ctrl+Shift+V)");
+            this.buttonDescToolTip.SetToolTip(this.itemsViewBtn, "View Items in Pop Out Window (Ctrl+Shift+V)");
             this.itemsViewBtn.UseVisualStyleBackColor = false;
             this.itemsViewBtn.Click += new System.EventHandler(this.itemsViewBtn_Click);
             this.itemsViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -1260,7 +1261,7 @@
             this.fullViewBtn.Size = new System.Drawing.Size(20, 20);
             this.fullViewBtn.TabIndex = 0;
             this.fullViewBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.fullViewBtn, "Maximize Items View (Ctrl+Enter)");
+            this.buttonDescToolTip.SetToolTip(this.fullViewBtn, "Full Screen (Ctrl+Enter)");
             this.fullViewBtn.UseVisualStyleBackColor = false;
             this.fullViewBtn.Click += new System.EventHandler(this.fullViewBtn_Click);
             this.fullViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -3277,9 +3278,12 @@
             // 
             this.detailsSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.detailsSaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.detailsSaveBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.detailsSaveBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.detailsSaveBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.detailsSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.detailsSaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detailsSaveBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.detailsSaveBtn.ForeColor = System.Drawing.SystemColors.Control;
             this.detailsSaveBtn.Location = new System.Drawing.Point(578, 352);
             this.detailsSaveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.detailsSaveBtn.Name = "detailsSaveBtn";
@@ -4280,9 +4284,12 @@
             // 
             this.clearQueryOptionsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.clearQueryOptionsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.clearQueryOptionsBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.clearQueryOptionsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.clearQueryOptionsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.clearQueryOptionsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearQueryOptionsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearQueryOptionsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.clearQueryOptionsBtn.ForeColor = System.Drawing.SystemColors.Control;
             this.clearQueryOptionsBtn.Location = new System.Drawing.Point(155, 352);
             this.clearQueryOptionsBtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearQueryOptionsBtn.Name = "clearQueryOptionsBtn";
@@ -4346,9 +4353,12 @@
             // 
             this.viewQueryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.viewQueryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.viewQueryBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.viewQueryBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.viewQueryBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.viewQueryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewQueryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewQueryBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.viewQueryBtn.ForeColor = System.Drawing.SystemColors.Control;
             this.viewQueryBtn.Location = new System.Drawing.Point(212, 352);
             this.viewQueryBtn.Margin = new System.Windows.Forms.Padding(2);
             this.viewQueryBtn.Name = "viewQueryBtn";

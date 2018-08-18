@@ -630,7 +630,7 @@ namespace CertusCompanion
         }
         private void clearWorkspaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //
+            this.LoadForm();
         }
         private void saveWorkspaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2404,8 +2404,6 @@ namespace CertusCompanion
             if (fullView == false)
             {
                 fullView = true;
-
-                // change appearance of button 
                 fullViewBtn.BackColor = Color.FromName("Highlight");
 
                 // save current splitter distance
@@ -2419,6 +2417,7 @@ namespace CertusCompanion
 
                 // lock 
                 splitContainerChild1.IsSplitterFixed = true;
+                enlargeBtn.Enabled = false;
 
                 // hide panels
                 itemDetailsPanel.Visible = false;
@@ -2426,33 +2425,26 @@ namespace CertusCompanion
                 importPanel.Visible = false;
                 detailsOptionsPanel.Visible = false;
 
-                // disable controls
-                workflowItemsListView.Focus();
-
+                // move notifications panel
                 detailNotificationsPanel.Top = detailsOptionsPanel2.Top + 1;
                 detailNotificationsPanel.Left = detailsOptionsPanel2.Left - 250;
+
+                workflowItemsListView.Focus();
             }
             else
             {
                 // exiting full view
-
                 fullView = false;
-
                 fullViewBtn.BackColor = Color.FromArgb(20, 20, 20);
-
                 splitContainerChild1.SplitterDistance = currentSplitter1Distance;
-
-
                 detailsOptionsPanel2.Visible = false;
-
                 splitContainerChild1.IsSplitterFixed = false;
-
+                enlargeBtn.Enabled = true;
                 itemDetailsPanel.Visible = true;
                 queryPanel.Visible = true;
                 importPanel.Visible = true;
                 detailsOptionsPanel.Visible = true;
                 enlargeBtn.Enabled = true;
-
                 detailNotificationsPanel.Top = detailNotificationPanelTop;
                 detailNotificationsPanel.Left = detailNotificationPanelLeft;
             }
@@ -8756,7 +8748,7 @@ namespace CertusCompanion
             }
             else
             {
-#region Save Loaded Workspace Info
+                #region Save Loaded Workspace Info
 
                 // set filePath
                 loadedWorkspacePath = workspacePathToLoad;
@@ -8768,7 +8760,7 @@ namespace CertusCompanion
                 int indx = revFileName.IndexOf(@"\");
                 loadedWorkspaceFileName = loadedWorkspacePath.Substring(loadedWorkspacePath.Length - indx);
 
-#endregion
+                #endregion
 
                 // change save btn texts
                 if (this.InvokeRequired) this.Invoke(new Action(() =>
@@ -8789,6 +8781,9 @@ namespace CertusCompanion
 
                 // populate lv  
                 this.vcSelectionBtn.Text = "Non-completed";
+
+                // enable clear
+                this.clearWorkspaceToolStripMenuItem.Enabled = true;
 
                 PopulateImportLbx(this.AllItemImportsLoaded);
 
