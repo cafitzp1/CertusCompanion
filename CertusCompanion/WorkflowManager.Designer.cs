@@ -40,6 +40,8 @@
             this.clDropBtn = new System.Windows.Forms.Button();
             this.clientLbl = new System.Windows.Forms.Label();
             this.listViewOptionsPanel = new System.Windows.Forms.Panel();
+            this.listViewOptionsDividerPanel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.vcOuterPanel = new System.Windows.Forms.Panel();
             this.vcSelectionBtn = new System.Windows.Forms.Button();
             this.vcSplitPanel = new System.Windows.Forms.Panel();
@@ -70,20 +72,6 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.fullViewBtn = new System.Windows.Forms.Button();
             this.colorDialogBtn = new System.Windows.Forms.Button();
-            this.workflowItemsListView = new CertusCompanion.ListViewNF();
-            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainerChild2 = new System.Windows.Forms.SplitContainer();
             this.detailsOptionsPanel = new System.Windows.Forms.Panel();
             this.openInCertusBtn = new System.Windows.Forms.Button();
@@ -295,13 +283,17 @@
             this.addToExportViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFromExportViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excludedItemsViewToolStripMenuitem = new System.Windows.Forms.ToolStripMenuItem();
-            this.certificatesViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.companiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.popOutWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.correctPanelSizingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.correctListViewColumnSizingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dividerViewToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.contrastItemGroupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showItemsSameColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dividerViewToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.excludedItemsViewToolStripMenuitem = new System.Windows.Forms.ToolStripMenuItem();
+            this.certificatesViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.companiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certusBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -431,12 +423,20 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToDBBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.changeClientBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.contrastItemGroupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showItemsSameColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dividerViewToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.dividerViewToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.listViewOptionsDividerPanel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.workflowItemsListView = new CertusCompanion.ListViewNF();
+            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild1)).BeginInit();
             this.splitContainerChild1.Panel1.SuspendLayout();
             this.splitContainerChild1.Panel2.SuspendLayout();
@@ -445,6 +445,7 @@
             this.clientInnerPanel.SuspendLayout();
             this.clOuterPanel.SuspendLayout();
             this.listViewOptionsPanel.SuspendLayout();
+            this.listViewOptionsDividerPanel4.SuspendLayout();
             this.vcOuterPanel.SuspendLayout();
             this.listViewOptionsDividerPanel2.SuspendLayout();
             this.listViewOptionsDividerPanel3.SuspendLayout();
@@ -509,7 +510,6 @@
             this.qfndCustomDDLMenuStrip.SuspendLayout();
             this.vcCustomDDLMenuStrip.SuspendLayout();
             this.clCustomDDLMenuStrip.SuspendLayout();
-            this.listViewOptionsDividerPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerChild1
@@ -533,7 +533,7 @@
             // 
             this.splitContainerChild1.Panel2.Controls.Add(this.splitContainerChild2);
             this.splitContainerChild1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.splitContainerChild1.Panel2MinSize = 37;
+            this.splitContainerChild1.Panel2MinSize = 408;
             this.splitContainerChild1.Size = new System.Drawing.Size(1264, 637);
             this.splitContainerChild1.SplitterDistance = 213;
             this.splitContainerChild1.SplitterWidth = 2;
@@ -698,6 +698,27 @@
             this.listViewOptionsPanel.Name = "listViewOptionsPanel";
             this.listViewOptionsPanel.Size = new System.Drawing.Size(732, 24);
             this.listViewOptionsPanel.TabIndex = 0;
+            // 
+            // listViewOptionsDividerPanel4
+            // 
+            this.listViewOptionsDividerPanel4.Controls.Add(this.label1);
+            this.listViewOptionsDividerPanel4.ForeColor = System.Drawing.Color.Transparent;
+            this.listViewOptionsDividerPanel4.Location = new System.Drawing.Point(587, 1);
+            this.listViewOptionsDividerPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewOptionsDividerPanel4.Name = "listViewOptionsDividerPanel4";
+            this.listViewOptionsDividerPanel4.Size = new System.Drawing.Size(10, 20);
+            this.listViewOptionsDividerPanel4.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Gray;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.ForeColor = System.Drawing.Color.Lime;
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(2, 21);
+            this.label1.TabIndex = 0;
             // 
             // vcOuterPanel
             // 
@@ -1289,119 +1310,6 @@
             this.colorDialogBtn.Click += new System.EventHandler(this.colorSelectionBtn_Click);
             this.colorDialogBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.colorDialogBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // workflowItemsListView
-            // 
-            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.workflowItemsListView.CheckBoxes = true;
-            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.countColumnHeader,
-            this.itemIdColumnHeader,
-            this.companyColumnHeader,
-            this.contractIdColumnHeader,
-            this.dateColumnHeader,
-            this.senderColumnHeader,
-            this.emailSubjectColumnHeader,
-            this.fileNameColumnHeader,
-            this.sizeColumnHeader,
-            this.fileUrlColumnHeader,
-            this.assignedToColumnHeader,
-            this.statusColumnHeader,
-            this.sizeFixHeader});
-            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
-            this.workflowItemsListView.FullRowSelect = true;
-            this.workflowItemsListView.HideSelection = false;
-            this.workflowItemsListView.LabelWrap = false;
-            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
-            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
-            this.workflowItemsListView.Name = "workflowItemsListView";
-            this.workflowItemsListView.OwnerDraw = true;
-            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
-            this.workflowItemsListView.TabIndex = 1;
-            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
-            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
-            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
-            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
-            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
-            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
-            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
-            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
-            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
-            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
-            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
-            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
-            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
-            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
-            // 
-            // countColumnHeader
-            // 
-            this.countColumnHeader.Text = "";
-            this.countColumnHeader.Width = 70;
-            // 
-            // itemIdColumnHeader
-            // 
-            this.itemIdColumnHeader.Text = "Item ID";
-            this.itemIdColumnHeader.Width = 70;
-            // 
-            // companyColumnHeader
-            // 
-            this.companyColumnHeader.Text = "Company";
-            this.companyColumnHeader.Width = 70;
-            // 
-            // contractIdColumnHeader
-            // 
-            this.contractIdColumnHeader.Text = "Contract";
-            this.contractIdColumnHeader.Width = 70;
-            // 
-            // dateColumnHeader
-            // 
-            this.dateColumnHeader.Text = "Date";
-            this.dateColumnHeader.Width = 70;
-            // 
-            // senderColumnHeader
-            // 
-            this.senderColumnHeader.Text = "Sender";
-            this.senderColumnHeader.Width = 70;
-            // 
-            // emailSubjectColumnHeader
-            // 
-            this.emailSubjectColumnHeader.Text = "Email Subject";
-            this.emailSubjectColumnHeader.Width = 70;
-            // 
-            // fileNameColumnHeader
-            // 
-            this.fileNameColumnHeader.Text = "File Name";
-            this.fileNameColumnHeader.Width = 70;
-            // 
-            // sizeColumnHeader
-            // 
-            this.sizeColumnHeader.Text = "Size";
-            this.sizeColumnHeader.Width = 70;
-            // 
-            // fileUrlColumnHeader
-            // 
-            this.fileUrlColumnHeader.Text = "File URL";
-            this.fileUrlColumnHeader.Width = 70;
-            // 
-            // assignedToColumnHeader
-            // 
-            this.assignedToColumnHeader.Text = "Assigned To";
-            this.assignedToColumnHeader.Width = 70;
-            // 
-            // statusColumnHeader
-            // 
-            this.statusColumnHeader.Text = "Status";
-            this.statusColumnHeader.Width = 70;
-            // 
-            // sizeFixHeader
-            // 
-            this.sizeFixHeader.Text = "";
-            this.sizeFixHeader.Width = 70;
             // 
             // splitContainerChild2
             // 
@@ -4438,7 +4346,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(269, 378);
+            this.importPanel.Size = new System.Drawing.Size(271, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4452,7 +4360,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(166, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(168, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4462,7 +4370,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(147, -1);
+            this.button26.Location = new System.Drawing.Point(149, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4484,7 +4392,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(143, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(145, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4515,7 +4423,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(254, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(256, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4527,7 +4435,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(172, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(174, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4588,7 +4496,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsUpdatedTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(172, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(174, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4653,7 +4561,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(166, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(168, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4663,7 +4571,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(147, -1);
+            this.button22.Location = new System.Drawing.Point(149, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4685,7 +4593,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(143, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(145, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4763,7 +4671,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(166, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(168, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4773,7 +4681,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(147, -1);
+            this.button24.Location = new System.Drawing.Point(149, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4795,7 +4703,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(143, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(145, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4845,7 +4753,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(172, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(174, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -5090,36 +4998,6 @@
             this.viewToolStripMenuItem.Text = "&View";
             this.viewToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // excludedItemsViewToolStripMenuitem
-            // 
-            this.excludedItemsViewToolStripMenuitem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.excludedItemsViewToolStripMenuitem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.excludedItemsViewToolStripMenuitem.Name = "excludedItemsViewToolStripMenuitem";
-            this.excludedItemsViewToolStripMenuitem.Size = new System.Drawing.Size(248, 22);
-            this.excludedItemsViewToolStripMenuitem.Text = "&Excluded Items";
-            this.excludedItemsViewToolStripMenuitem.Visible = false;
-            this.excludedItemsViewToolStripMenuitem.Click += new System.EventHandler(this.excludedItemsViewToolStripMenuItem_Click);
-            // 
-            // certificatesViewToolStripMenuItem
-            // 
-            this.certificatesViewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.certificatesViewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.certificatesViewToolStripMenuItem.Name = "certificatesViewToolStripMenuItem";
-            this.certificatesViewToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.certificatesViewToolStripMenuItem.Text = "Cer&tificates";
-            this.certificatesViewToolStripMenuItem.Visible = false;
-            this.certificatesViewToolStripMenuItem.Click += new System.EventHandler(this.certificatesViewToolStripMenuItem_Click);
-            // 
-            // companiesToolStripMenuItem
-            // 
-            this.companiesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.companiesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
-            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.companiesToolStripMenuItem.Text = "Co&mpanies";
-            this.companiesToolStripMenuItem.Visible = false;
-            this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesViewToolStripMenuItem_Click);
-            // 
             // popOutWindowToolStripMenuItem
             // 
             this.popOutWindowToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
@@ -5160,6 +5038,71 @@
             this.correctListViewColumnSizingToolStripMenuItem.Text = "Correct Colum&n Sizing";
             this.correctListViewColumnSizingToolStripMenuItem.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
             // 
+            // dividerViewToolStripMenuItem1
+            // 
+            this.dividerViewToolStripMenuItem1.AutoSize = false;
+            this.dividerViewToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem1.Name = "dividerViewToolStripMenuItem1";
+            this.dividerViewToolStripMenuItem1.Size = new System.Drawing.Size(245, 6);
+            // 
+            // contrastItemGroupsToolStripMenuItem
+            // 
+            this.contrastItemGroupsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.contrastItemGroupsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.contrastItemGroupsToolStripMenuItem.Name = "contrastItemGroupsToolStripMenuItem";
+            this.contrastItemGroupsToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.contrastItemGroupsToolStripMenuItem.Text = "&Contrast Item Groups";
+            this.contrastItemGroupsToolStripMenuItem.Click += new System.EventHandler(this.contrastItemGroupsBtn_Click);
+            // 
+            // showItemsSameColorToolStripMenuItem
+            // 
+            this.showItemsSameColorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.showItemsSameColorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.showItemsSameColorToolStripMenuItem.Name = "showItemsSameColorToolStripMenuItem";
+            this.showItemsSameColorToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.showItemsSameColorToolStripMenuItem.Text = "&Show Items as the Same Color     ";
+            this.showItemsSameColorToolStripMenuItem.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
+            // 
+            // dividerViewToolStripMenuItem2
+            // 
+            this.dividerViewToolStripMenuItem2.AutoSize = false;
+            this.dividerViewToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.dividerViewToolStripMenuItem2.Name = "dividerViewToolStripMenuItem2";
+            this.dividerViewToolStripMenuItem2.Size = new System.Drawing.Size(245, 6);
+            this.dividerViewToolStripMenuItem2.Visible = false;
+            // 
+            // excludedItemsViewToolStripMenuitem
+            // 
+            this.excludedItemsViewToolStripMenuitem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.excludedItemsViewToolStripMenuitem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.excludedItemsViewToolStripMenuitem.Name = "excludedItemsViewToolStripMenuitem";
+            this.excludedItemsViewToolStripMenuitem.Size = new System.Drawing.Size(248, 22);
+            this.excludedItemsViewToolStripMenuitem.Text = "&Excluded Items";
+            this.excludedItemsViewToolStripMenuitem.Visible = false;
+            this.excludedItemsViewToolStripMenuitem.Click += new System.EventHandler(this.excludedItemsViewToolStripMenuItem_Click);
+            // 
+            // certificatesViewToolStripMenuItem
+            // 
+            this.certificatesViewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.certificatesViewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.certificatesViewToolStripMenuItem.Name = "certificatesViewToolStripMenuItem";
+            this.certificatesViewToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.certificatesViewToolStripMenuItem.Text = "Cer&tificates";
+            this.certificatesViewToolStripMenuItem.Visible = false;
+            this.certificatesViewToolStripMenuItem.Click += new System.EventHandler(this.certificatesViewToolStripMenuItem_Click);
+            // 
+            // companiesToolStripMenuItem
+            // 
+            this.companiesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.companiesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
+            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.companiesToolStripMenuItem.Text = "Co&mpanies";
+            this.companiesToolStripMenuItem.Visible = false;
+            this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesViewToolStripMenuItem_Click);
+            // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -5176,7 +5119,7 @@
             this.certusBrowserToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.certusBrowserToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.certusBrowserToolStripMenuItem.Name = "certusBrowserToolStripMenuItem";
-            this.certusBrowserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.certusBrowserToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.certusBrowserToolStripMenuItem.Text = "&Certus Browser";
             this.certusBrowserToolStripMenuItem.ToolTipText = "Currently can only be opened once per application session. Save changes and resta" +
     "rt if re-opening";
@@ -5225,7 +5168,7 @@
             this.importWorkflowItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importWorkflowItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importWorkflowItemsToolStripMenuItem.Name = "importWorkflowItemsToolStripMenuItem";
-            this.importWorkflowItemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importWorkflowItemsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.importWorkflowItemsToolStripMenuItem.Text = "Workflow Items";
             this.importWorkflowItemsToolStripMenuItem.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
             // 
@@ -5234,7 +5177,7 @@
             this.importExcludedItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importExcludedItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importExcludedItemsToolStripMenuItem.Name = "importExcludedItemsToolStripMenuItem";
-            this.importExcludedItemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importExcludedItemsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.importExcludedItemsToolStripMenuItem.Text = "Excluded Items";
             this.importExcludedItemsToolStripMenuItem.Visible = false;
             this.importExcludedItemsToolStripMenuItem.Click += new System.EventHandler(this.importExcludedItemsToolStripMenuItem_Click);
@@ -5244,7 +5187,7 @@
             this.importCertificatesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importCertificatesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importCertificatesToolStripMenuItem.Name = "importCertificatesToolStripMenuItem";
-            this.importCertificatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importCertificatesToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.importCertificatesToolStripMenuItem.Text = "Certificates";
             this.importCertificatesToolStripMenuItem.Visible = false;
             this.importCertificatesToolStripMenuItem.Click += new System.EventHandler(this.importCertificatesToolStripMenuItem_Click);
@@ -5254,7 +5197,7 @@
             this.importCompaniesToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.importCompaniesToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importCompaniesToolStripMenuItem1.Name = "importCompaniesToolStripMenuItem1";
-            this.importCompaniesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.importCompaniesToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
             this.importCompaniesToolStripMenuItem1.Text = "Companies";
             this.importCompaniesToolStripMenuItem1.Visible = false;
             this.importCompaniesToolStripMenuItem1.Click += new System.EventHandler(this.importCompaniesToolStripMenuItem_Click);
@@ -5311,7 +5254,7 @@
             this.minimizeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.minimizeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.minimizeToolStripMenuItem.Text = "Mi&nimize";
             this.minimizeToolStripMenuItem.Click += new System.EventHandler(this.minimizeToolStripMenuItem_Click);
             // 
@@ -5320,7 +5263,7 @@
             this.maximizeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.maximizeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.maximizeToolStripMenuItem.Name = "maximizeToolStripMenuItem";
-            this.maximizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.maximizeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.maximizeToolStripMenuItem.Text = "Ma&ximize";
             this.maximizeToolStripMenuItem.Click += new System.EventHandler(this.maximizeToolStripMenuItem_Click);
             // 
@@ -5343,7 +5286,7 @@
             this.updateToolStripMenuItem.Enabled = false;
             this.updateToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.updateToolStripMenuItem.Text = "&Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updatRelatedFilesDataToolStripMenuItem_Click);
             // 
@@ -6440,61 +6383,118 @@
             this.changeClientBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.changeClientBackgroundWorker_DoWork);
             this.changeClientBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.changeClientBackgroundWorker_RunWorkerCompleted);
             // 
-            // contrastItemGroupsToolStripMenuItem
+            // workflowItemsListView
             // 
-            this.contrastItemGroupsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.contrastItemGroupsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contrastItemGroupsToolStripMenuItem.Name = "contrastItemGroupsToolStripMenuItem";
-            this.contrastItemGroupsToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.contrastItemGroupsToolStripMenuItem.Text = "&Contrast Item Groups";
-            this.contrastItemGroupsToolStripMenuItem.Click += new System.EventHandler(this.contrastItemGroupsBtn_Click);
+            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.workflowItemsListView.CheckBoxes = true;
+            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.countColumnHeader,
+            this.itemIdColumnHeader,
+            this.companyColumnHeader,
+            this.contractIdColumnHeader,
+            this.dateColumnHeader,
+            this.senderColumnHeader,
+            this.emailSubjectColumnHeader,
+            this.fileNameColumnHeader,
+            this.sizeColumnHeader,
+            this.fileUrlColumnHeader,
+            this.assignedToColumnHeader,
+            this.statusColumnHeader,
+            this.sizeFixHeader});
+            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
+            this.workflowItemsListView.FullRowSelect = true;
+            this.workflowItemsListView.HideSelection = false;
+            this.workflowItemsListView.LabelWrap = false;
+            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
+            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
+            this.workflowItemsListView.Name = "workflowItemsListView";
+            this.workflowItemsListView.OwnerDraw = true;
+            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
+            this.workflowItemsListView.TabIndex = 1;
+            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
+            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
+            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
+            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
+            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
+            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
+            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
+            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
+            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
+            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
+            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
+            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
+            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
+            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
             // 
-            // showItemsSameColorToolStripMenuItem
+            // countColumnHeader
             // 
-            this.showItemsSameColorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.showItemsSameColorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.showItemsSameColorToolStripMenuItem.Name = "showItemsSameColorToolStripMenuItem";
-            this.showItemsSameColorToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.showItemsSameColorToolStripMenuItem.Text = "&Show Items as the Same Color     ";
-            this.showItemsSameColorToolStripMenuItem.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
+            this.countColumnHeader.Text = "";
+            this.countColumnHeader.Width = 70;
             // 
-            // dividerViewToolStripMenuItem2
+            // itemIdColumnHeader
             // 
-            this.dividerViewToolStripMenuItem2.AutoSize = false;
-            this.dividerViewToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.dividerViewToolStripMenuItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.dividerViewToolStripMenuItem2.Name = "dividerViewToolStripMenuItem2";
-            this.dividerViewToolStripMenuItem2.Size = new System.Drawing.Size(245, 6);
-            this.dividerViewToolStripMenuItem2.Visible = false;
+            this.itemIdColumnHeader.Text = "Item ID";
+            this.itemIdColumnHeader.Width = 70;
             // 
-            // dividerViewToolStripMenuItem1
+            // companyColumnHeader
             // 
-            this.dividerViewToolStripMenuItem1.AutoSize = false;
-            this.dividerViewToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.dividerViewToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.dividerViewToolStripMenuItem1.Name = "dividerViewToolStripMenuItem1";
-            this.dividerViewToolStripMenuItem1.Size = new System.Drawing.Size(245, 6);
+            this.companyColumnHeader.Text = "Company";
+            this.companyColumnHeader.Width = 70;
             // 
-            // listViewOptionsDividerPanel4
+            // contractIdColumnHeader
             // 
-            this.listViewOptionsDividerPanel4.Controls.Add(this.label1);
-            this.listViewOptionsDividerPanel4.ForeColor = System.Drawing.Color.Transparent;
-            this.listViewOptionsDividerPanel4.Location = new System.Drawing.Point(587, 1);
-            this.listViewOptionsDividerPanel4.Margin = new System.Windows.Forms.Padding(2);
-            this.listViewOptionsDividerPanel4.Name = "listViewOptionsDividerPanel4";
-            this.listViewOptionsDividerPanel4.Size = new System.Drawing.Size(10, 20);
-            this.listViewOptionsDividerPanel4.TabIndex = 3;
+            this.contractIdColumnHeader.Text = "Contract";
+            this.contractIdColumnHeader.Width = 70;
             // 
-            // label1
+            // dateColumnHeader
             // 
-            this.label1.BackColor = System.Drawing.Color.Gray;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(2, 21);
-            this.label1.TabIndex = 0;
+            this.dateColumnHeader.Text = "Date";
+            this.dateColumnHeader.Width = 70;
+            // 
+            // senderColumnHeader
+            // 
+            this.senderColumnHeader.Text = "Sender";
+            this.senderColumnHeader.Width = 70;
+            // 
+            // emailSubjectColumnHeader
+            // 
+            this.emailSubjectColumnHeader.Text = "Email Subject";
+            this.emailSubjectColumnHeader.Width = 70;
+            // 
+            // fileNameColumnHeader
+            // 
+            this.fileNameColumnHeader.Text = "File Name";
+            this.fileNameColumnHeader.Width = 70;
+            // 
+            // sizeColumnHeader
+            // 
+            this.sizeColumnHeader.Text = "Size";
+            this.sizeColumnHeader.Width = 70;
+            // 
+            // fileUrlColumnHeader
+            // 
+            this.fileUrlColumnHeader.Text = "File URL";
+            this.fileUrlColumnHeader.Width = 70;
+            // 
+            // assignedToColumnHeader
+            // 
+            this.assignedToColumnHeader.Text = "Assigned To";
+            this.assignedToColumnHeader.Width = 70;
+            // 
+            // statusColumnHeader
+            // 
+            this.statusColumnHeader.Text = "Status";
+            this.statusColumnHeader.Width = 70;
+            // 
+            // sizeFixHeader
+            // 
+            this.sizeFixHeader.Text = "";
+            this.sizeFixHeader.Width = 70;
             // 
             // WorkflowManager
             // 
@@ -6512,9 +6512,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "WorkflowManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Workflow Manager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Click += new System.EventHandler(this.certusConnectionBtn_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WorkflowManager_KeyDown);
             this.Resize += new System.EventHandler(this.WorkflowManager_Resize);
@@ -6528,6 +6530,7 @@
             this.clOuterPanel.ResumeLayout(false);
             this.listViewOptionsPanel.ResumeLayout(false);
             this.listViewOptionsPanel.PerformLayout();
+            this.listViewOptionsDividerPanel4.ResumeLayout(false);
             this.vcOuterPanel.ResumeLayout(false);
             this.listViewOptionsDividerPanel2.ResumeLayout(false);
             this.listViewOptionsDividerPanel3.ResumeLayout(false);
@@ -6629,7 +6632,6 @@
             this.qfndCustomDDLMenuStrip.ResumeLayout(false);
             this.vcCustomDDLMenuStrip.ResumeLayout(false);
             this.clCustomDDLMenuStrip.ResumeLayout(false);
-            this.listViewOptionsDividerPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

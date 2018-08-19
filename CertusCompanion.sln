@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertusCompanion", "CertusCompanion\CertusCompanion.csproj", "{6578E053-4FD9-411D-A2C9-4DA7DB5D0B26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager", "CertusCompanion\WorkflowManager.csproj", "{6578E053-4FD9-411D-A2C9-4DA7DB5D0B26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

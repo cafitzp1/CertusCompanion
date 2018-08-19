@@ -147,6 +147,12 @@
       <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemComparer.cs" />
+    <Compile Include="Launcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Launcher.Designer.cs">
+      <DependentUpon>Launcher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location.cs" />
     <Compile Include="Test.cs">
       <SubType>Form</SubType>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImportFromDatabaseForm.resx">
       <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Launcher.resx">
+      <DependentUpon>Launcher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyForm.resx">
       <DependentUpon>ModifyForm.cs</DependentUpon>

@@ -1,0 +1,10 @@
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\bin\Debug\Launcher.exe.config
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\bin\Debug\Launcher.exe
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\bin\Debug\Launcher.pdb
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\obj\Debug\Launcher.csprojAssemblyReference.cache
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\obj\Debug\Launcher.Form1.resources
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\obj\Debug\Launcher.csproj.GenerateResource.cache
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\obj\Debug\Launcher.csproj.CoreCompileInputs.cache
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\obj\Debug\Launcher.exe
+C:\Users\fitz0\source\repos\CertusCompanion\Launcher\obj\Debug\Launcher.pdb

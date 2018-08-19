@@ -1,6 +1,4 @@
-﻿//Certus Companion v1.4
-//#define DEBUG
-//#undef DEBUG
+﻿//WorkflowManager v4.3
 
 using System;
 using System.Collections.Generic;
@@ -196,12 +194,17 @@ namespace CertusCompanion
         {
             InitializeComponent();
 
+            InstantiateWorkflowManagerData();
             LoadForm();
-            LoadSupplementalData();
+            InstantiateDataSources();
+            PopulateMainFormStatic();
+
+            #if !DEBUG
+                //TestDBConnection();
+            #endif
         }
-        public void LoadForm()
+        private void InstantiateWorkflowManagerData()
         {
-            #region Instantiate 
             PreviousItem = new ListViewItem();
             lvwColumnSorter = new ListViewColumnSorter();
             filteredWfItems = new List<WorkflowItem>();
@@ -256,8 +259,9 @@ namespace CertusCompanion
                 focusDetailPanelBtn13, focusDetailPanelBtn14, focusDetailPanelBtn15, focusDetailPanelBtn16,
                 focusDetailPanelBtn17, focusDetailPanelBtn18
             };
-            #endregion
-
+        }
+        private void LoadForm()
+        {
             // enable controls
             fullViewBtn.Enabled = true;
             enlargeBtn.Enabled = true;
@@ -285,12 +289,6 @@ namespace CertusCompanion
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             this.Text = "Workflow Manager v" + fvi.FileVersion;
-        }
-        private void LoadSupplementalData()
-        {
-            //LoadMarketAssignments();
-            InstantiateDataSources();
-            PopulateMainFormStatic();
         }
         private void LoadMarketAssignments()
         {
@@ -600,6 +598,27 @@ namespace CertusCompanion
         {
             listViewOptionsPanel.Enabled = true;
             detailsOptionsPanel.Enabled = true;
+        }
+        private void TestDBConnection()
+        {
+            try
+            {
+                string connectionString = ConfigurationManager.ConnectionStrings["CertusDB"].ToString();
+                string query;
+
+                SqlConnection conn = new SqlConnection(connectionString);
+                SqlCommand command = conn.CreateCommand();
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You currently have no database connection. You will not be able to perform any database imports without a connection.", "Warning");
+            }
         }
         #endregion
 
@@ -2397,9 +2416,6 @@ namespace CertusCompanion
         }
         private void fullViewBtn_Click(object sender, EventArgs e)
         {
-            // hide LV while the other controls have a chance to change 
-            workflowItemsListView.Visible = false;
-
             // entering full view
             if (fullView == false)
             {
@@ -2408,6 +2424,9 @@ namespace CertusCompanion
 
                 // save current splitter distance
                 currentSplitter1Distance = splitContainerChild1.SplitterDistance;
+
+                // set min panel size
+                splitContainerChild1.Panel2MinSize = 37;
 
                 // move splitter distance to as far as it'll go
                 splitContainerChild1.SplitterDistance = 5000;
@@ -2437,6 +2456,7 @@ namespace CertusCompanion
                 fullView = false;
                 fullViewBtn.BackColor = Color.FromArgb(20, 20, 20);
                 splitContainerChild1.SplitterDistance = currentSplitter1Distance;
+                splitContainerChild1.Panel2MinSize = 408;
                 detailsOptionsPanel2.Visible = false;
                 splitContainerChild1.IsSplitterFixed = false;
                 enlargeBtn.Enabled = true;
@@ -2448,8 +2468,6 @@ namespace CertusCompanion
                 detailNotificationsPanel.Top = detailNotificationPanelTop;
                 detailNotificationsPanel.Left = detailNotificationPanelLeft;
             }
-
-            workflowItemsListView.Visible = true;
         }
         private void enlargeBtn_Click(object sender, EventArgs e)
         {
@@ -7750,13 +7768,17 @@ namespace CertusCompanion
         {
             try
             {
+                // status strip
                 this.toolStripStatusLabel.Width = this.ClientSize.Width - (displayingToolStripDropDownButton.Width +
                     displayingCountStatusLbl.Width + checkedToolStripDropDownButton.Width + checkedCountStatusLbl.Width +
                     queriedToolStripDropDownButton.Width + queriedCountStatusLbl.Width + filterStatusLbl.Width);
+
+                // splitter distance
+                if(!fullView) splitContainerChild1.SplitterDistance = (Convert.ToInt32(splitContainerChild1.Height * .43));
             }
             catch (Exception)
             {
-                SetStatusLabelAndTimer("Could not resize the status bar", 3000);
+                // dont crash while resizing the status strip or splitter distance
             }
 
             try
@@ -7782,7 +7804,7 @@ namespace CertusCompanion
             }
             catch (Exception)
             {
-                SetStatusLabelAndTimer("Could not resize the columns", 3000);
+                // dont crash while resizing the columns
             }
         }
         private void tbxComboBoxPair_SelectedIndexChanged(object sender, EventArgs e)
