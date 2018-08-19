@@ -1888,6 +1888,7 @@
             this.splitterPanel.Size = new System.Drawing.Size(584, 152);
             this.splitterPanel.TabIndex = 0;
             this.splitterPanel.TabStop = true;
+            this.splitterPanel.Resize += new System.EventHandler(this.splitterPanel_Resize);
             // 
             // splitter1
             // 

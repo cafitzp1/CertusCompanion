@@ -1,5 +1,8 @@
 ﻿//WorkflowManager v4.3
 
+#define DEBUG
+//#undef DEBUG
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +16,7 @@ using System.Data.SqlClient;
 using System.Reflection;
 using System.Diagnostics;
 using System.Configuration;
+using System.Threading;
 
 namespace CertusCompanion
 {
@@ -184,6 +188,9 @@ namespace CertusCompanion
         private string workspacePathToLoad;
         private string workspacePathToSave;
         private bool ignoreThisTextChange;
+        private string delayedAlertMessage;
+        private string delayedAlertHeader;
+        private System.Windows.Forms.Timer delayedAlertTimer;
 
         public string SelectedClientID { get; set; }
         #endregion
@@ -198,10 +205,15 @@ namespace CertusCompanion
             LoadForm();
             InstantiateDataSources();
             PopulateMainFormStatic();
+            Launcher.MoveBar(50);
 
+            Launcher.ReportStatus("Attempting to establish database connection...");
             #if !DEBUG
-                //TestDBConnection();
+            TestDBConnection(5);
+            #else
+            Thread.Sleep(1000);
             #endif
+            Launcher.MoveBar(50);
         }
         private void InstantiateWorkflowManagerData()
         {
@@ -341,7 +353,7 @@ namespace CertusCompanion
             DataSource ds = new DataSource();
 
             // hardcode
-            #region HardCode DataSources
+#region HardCode DataSources
             // --- COLORS --- //
             ds = new DataSource("ALL", "Colors", true);
             ds.Items.Add("Default");
@@ -389,12 +401,12 @@ namespace CertusCompanion
             StatusesDataSource.Add("Compliance Analyst");
             StatusesDataSource.Add("Completed");
             StatusesDataSource.Add("Trash");
-            #endregion
+#endregion
 
-            #region Old code (reading datasources from .txt - now generated fron DB conn)
+#region Old code (reading datasources from .txt - now generated fron DB conn)
             /*
             // get datasources from txt
-            #region Pull DataSources
+#region Pull DataSources
             string itemType = "";
             List<object> itemsToAdd = new List<object>();
             Client cl = new Client();
@@ -529,7 +541,7 @@ namespace CertusCompanion
                 }
             }
             */
-            #endregion
+#endregion
         }
         private void PopulateMainFormStatic()
         {
@@ -599,26 +611,46 @@ namespace CertusCompanion
             listViewOptionsPanel.Enabled = true;
             detailsOptionsPanel.Enabled = true;
         }
-        private void TestDBConnection()
+        private void TestDBConnection(int timeout = 10)
         {
             try
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["CertusDB"].ToString();
-                string query;
-
-                SqlConnection conn = new SqlConnection(connectionString);
-                SqlCommand command = conn.CreateCommand();
+                connectionString = connectionString.Replace("connection timeout=15", $"connection timeout={timeout.ToString()}");
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    
                 }
+            }
+            catch (SqlException)
+            {
+                delayedAlertTimer = new System.Windows.Forms.Timer();
+                delayedAlertTimer.Tick += DelayedPromptTimer_Tick;
+                SetDelayedAlert("You currently do not have connection to the Certus Database. Many features in this application require database " +
+                    "connectivity but it is not required. You will not be able to import workflow items from the database but you can still import via .CSV. You currently will " +
+                    "not be able to import datasources without a connection but you can load a pre-saved Workspace which does contain the data sources you intend on using.", "Warning");
+                delayedAlertTimer.Interval = 1500;
+                delayedAlertTimer.Enabled = true;
             }
             catch (Exception)
             {
-                MessageBox.Show("You currently have no database connection. You will not be able to perform any database imports without a connection.", "Warning");
+                delayedAlertTimer = new System.Windows.Forms.Timer();
+                delayedAlertTimer.Tick += DelayedPromptTimer_Tick;
+                SetDelayedAlert("Something went wrong while attempting to connect to the database", "Warning");
+                delayedAlertTimer.Interval = 1500;
+                delayedAlertTimer.Enabled = true;
             }
+        }
+        private void SetDelayedAlert(string message, string header)
+        {
+            delayedAlertMessage = message;
+            delayedAlertHeader = header;
+        }
+        private void DelayedPromptTimer_Tick(object sender, EventArgs e)
+        {
+            delayedAlertTimer.Enabled = false;
+            MessageBox.Show(delayedAlertMessage, delayedAlertHeader);
         }
         #endregion
 
@@ -1075,7 +1107,7 @@ namespace CertusCompanion
         private void dataSourcesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // generate form
-            #region Generate Form
+#region Generate Form
             DimForm();
 
             if (DataSources != null && DataSources.Count != 0) DataSourceFormIns = new DataSourceForm(DataSources);
@@ -1087,7 +1119,7 @@ namespace CertusCompanion
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
 
-            #endregion
+#endregion
         }
         private void importExcludedItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1911,7 +1943,7 @@ namespace CertusCompanion
         }
         private void importFromDatabaseBtn_Click(object sender, EventArgs e)
         {
-            #region Generate Form
+#region Generate Form
 
             if(importFromDBBackGroundWorker.IsBusy)
             {
@@ -1936,7 +1968,7 @@ namespace CertusCompanion
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
 
-            #endregion
+#endregion
 
             if (result == DialogResult.OK)
             {
@@ -3292,7 +3324,7 @@ namespace CertusCompanion
                 return;
             }
 
-            #region Generate Form
+#region Generate Form
 
             DimForm();
             ModifyForm = new ModifyForm(CompaniesSubSource, CertificatesSubSource, AnalystsSubSource, StatusesDataSource);
@@ -3302,7 +3334,7 @@ namespace CertusCompanion
 
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
-            #endregion
+#endregion
 
             if (result == DialogResult.OK)
             {
@@ -3528,7 +3560,7 @@ namespace CertusCompanion
                 return;
             }
 
-            #region Generate Form
+#region Generate Form
             DimForm();
             LoadingForm = new LoadingForm();
             LoadingForm.ChangeHeaderLabel("Set Assignment");
@@ -3536,7 +3568,7 @@ namespace CertusCompanion
             LoadingForm.FormatForDialog("Market", "Company", "Certificate");
             LoadingForm.ShowDialog(TransparentForm);
             this.Focus();
-            #endregion
+#endregion
 
             if (LoadingForm.DialogResult == DialogResult.OK)
             {
@@ -3596,7 +3628,7 @@ namespace CertusCompanion
                 return;
             }
 
-            #region Generate Form
+#region Generate Form
             DimForm();
             LoadingForm = new LoadingForm();
             List<string> options = new List<string>();
@@ -3611,7 +3643,7 @@ namespace CertusCompanion
             LoadingForm.FormatForDialog(options);
             DialogResult result = LoadingForm.ShowDialog();
             this.Focus();
-            #endregion
+#endregion
 
             if (result == DialogResult.OK)
             {
@@ -4944,7 +4976,7 @@ namespace CertusCompanion
             string itemID = documentWorkflowItemIdTbx.Text;
             WorkflowItem wi;
 
-            #region Generate Form
+#region Generate Form
             DimForm();
             NoteIns = new NoteForm();
 
@@ -4964,7 +4996,7 @@ namespace CertusCompanion
 
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
-            #endregion
+#endregion
 
             if (result == DialogResult.OK)
             {
@@ -7774,7 +7806,7 @@ namespace CertusCompanion
                     queriedToolStripDropDownButton.Width + queriedCountStatusLbl.Width + filterStatusLbl.Width);
 
                 // splitter distance
-                if(!fullView) splitContainerChild1.SplitterDistance = (Convert.ToInt32(splitContainerChild1.Height * .43));
+                if(!fullView) splitContainerChild1.SplitterDistance = (Convert.ToInt32(splitContainerChild1.Height * .44));
             }
             catch (Exception)
             {
@@ -7834,21 +7866,17 @@ namespace CertusCompanion
                 }
             }
         }
-        private void customDDLPanel_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-        private void customDDLPanel_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-        private void customDDLPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
         private void testBtn_Click(object sender, EventArgs e)
         {
 
+        }
+        private void splitterPanel_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                splitterPanelSection1.Width = Convert.ToInt32(splitterPanel.Width * .5428);
+            }
+            catch (Exception) { }
         }
         //
         // Custom DDLS
@@ -8653,7 +8681,7 @@ namespace CertusCompanion
         private void StoreDataSources()
         {
             // instantiate sources lists
-            #region Instantiate
+#region Instantiate
             ColorsDataSource = new List<string>();
             StatusesDataSource = new List<string>();
             ClientsDataSource = new List<Client>();
@@ -8663,7 +8691,7 @@ namespace CertusCompanion
             ContactsSubSource = new List<Contact>();
             CertificateLocationsSubSource = new List<CertificateLocation>();
             LocationsSubSource = new List<Location>();
-            #endregion
+#endregion
 
             if (DataSources == null || DataSources.Count == 0) return;
             int indx = 0;
@@ -8770,7 +8798,7 @@ namespace CertusCompanion
             }
             else
             {
-                #region Save Loaded Workspace Info
+#region Save Loaded Workspace Info
 
                 // set filePath
                 loadedWorkspacePath = workspacePathToLoad;
@@ -8782,7 +8810,7 @@ namespace CertusCompanion
                 int indx = revFileName.IndexOf(@"\");
                 loadedWorkspaceFileName = loadedWorkspacePath.Substring(loadedWorkspacePath.Length - indx);
 
-                #endregion
+#endregion
 
                 // change save btn texts
                 if (this.InvokeRequired) this.Invoke(new Action(() =>
@@ -8954,7 +8982,7 @@ namespace CertusCompanion
             }
             else
             {
-                #region Save Saved Workspace Info
+#region Save Saved Workspace Info
 
                 // set filePath
                 loadedWorkspacePath = workspacePathToSave;
@@ -8966,7 +8994,7 @@ namespace CertusCompanion
                 int indx = revFileName.IndexOf(@"\");
                 loadedWorkspaceFileName = loadedWorkspacePath.Substring(loadedWorkspacePath.Length - indx);
 
-                #endregion
+#endregion
 
                 // change save btn texts
                 if (this.InvokeRequired) this.Invoke(new Action(() =>
@@ -9606,7 +9634,7 @@ namespace CertusCompanion
             int otherContactHeaders = 0;
             bool stopSettingIndex = false;
 
-            #region Instantiate Acceptable Headers and Indexes List
+#region Instantiate Acceptable Headers and Indexes List
             List<Tuple<int, string>> acceptableHeaderValuesAndTheirIndexes = new List<Tuple<int, string>>();
 
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "BCS Company ID"));
@@ -9629,9 +9657,9 @@ namespace CertusCompanion
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company Last Note Date"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Main Contact"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Other Contact"));
-            #endregion Instantiate Acceptable Headers and Indexes List
+#endregion Instantiate Acceptable Headers and Indexes List
 
-            #region Set Up Loading Form
+#region Set Up Loading Form
             if (TransparentForm.InvokeRequired)
             {
                 TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
@@ -9651,7 +9679,7 @@ namespace CertusCompanion
                 LoadingForm.ChangeLabel("Importing companies");
                 LoadingForm.Refresh();
             }
-            #endregion Set Up Loading Form
+#endregion Set Up Loading Form
 
             // Open csv file for reading
             using (StreamReader sr = new StreamReader(importFileName))
@@ -9660,7 +9688,7 @@ namespace CertusCompanion
                 Stream baseStream = sr.BaseStream;
                 long length = baseStream.Length;
 
-                #region Save Header
+#region Save Header
                 // Read header first and store
                 csvFileHeaderLine = sr.ReadLine();
                 csvFileHeaderValues = Regex.Split(csvFileHeaderLine, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
@@ -9727,7 +9755,7 @@ namespace CertusCompanion
                 {
                     throw new CompanyImportNotCorrectFormatException("CSV file is not recognized as an acceptable Company Export. BCS Company ID must be in the first column followed by the Company Name in the second column.");
                 }
-                #endregion Save Header
+#endregion Save Header
 
                 // instantiate data if CSV header is an acceptable format
                 AllCompaniesLoaded = new List<Company>();
@@ -9752,7 +9780,7 @@ namespace CertusCompanion
                         }
                     }
 
-                    #region Read And Store Data Per Line
+#region Read And Store Data Per Line
 
                     // BCS Company ID has to be there and has to be first***
                     int indx = 0;
@@ -9950,7 +9978,7 @@ namespace CertusCompanion
                     this.CompanyContactDictionary.Add(companyToImport.BcsCompanyID, companyToImport.Contacts);
                     //this.companyNameHashSet.Add(companyToImport.CompanyName);
 
-                    #endregion Read And Store Data Per Line
+#endregion Read And Store Data Per Line
 
                     // report progress
                     if (this.InvokeRequired)
@@ -11096,7 +11124,7 @@ namespace CertusCompanion
             {
                 try
                 {
-                            #region Data Declaration/Instantiation
+#region Data Declaration/Instantiation
                             itemsWithNoCompany = 0;
                     itemsWhereCompanyNotRecognized = 0;
                     itemsWhereCompanyHadDifferentAnalysts = 0;
@@ -11111,7 +11139,7 @@ namespace CertusCompanion
 
                     List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
                     List<WorkflowItem> workflowItemsUpdated = new List<WorkflowItem>();
-                            #endregion Data Declaration/Instantiation
+#endregion Data Declaration/Instantiation
 
                             foreach (WorkflowItem wi in checkedWorkflowItems)
                     {
@@ -11315,7 +11343,7 @@ namespace CertusCompanion
             {
                 try
                 {
-                    #region Data Declaration/Instantiation
+#region Data Declaration/Instantiation
                     itemsWithNoCompany = 0;
                     itemsWhereCompanyNotRecognized = 0;
                     itemsAlreadyCorrectlyAssigned = 0;
@@ -11330,7 +11358,7 @@ namespace CertusCompanion
 
                     List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
                     List<WorkflowItem> workflowItemsUpdated = new List<WorkflowItem>();
-                    #endregion Data Declaration/Instantiation
+#endregion Data Declaration/Instantiation
 
                     foreach (WorkflowItem wi in checkedWorkflowItems)
                     {
@@ -12350,7 +12378,7 @@ namespace CertusCompanion
         // DB connection
         private void connectToDBBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            #region Loading form settup
+#region Loading form settup
             DimForm();
             LoadingForm = new LoadingForm();
             LoadingForm.Owner = this.TransparentForm;
@@ -12375,7 +12403,7 @@ namespace CertusCompanion
             //    LoadingForm.ChangeLabel("Establishing DB Connection...");
             //    LoadingForm.Refresh();
             //}));
-            #endregion
+#endregion
 
             // establish DB connection
             string connectionString = ConfigurationManager.ConnectionStrings["CertusDB"].ToString();
@@ -12391,7 +12419,7 @@ namespace CertusCompanion
             }
 
             // get static data (Clients)
-            #region Clients
+#region Clients
             this.Invoke(new Action(() => 
             {
                 LoadingForm.ChangeLabel("Populating Data...");
@@ -12428,7 +12456,7 @@ namespace CertusCompanion
             DataSource clDs = new DataSource("ALL", "Clients", true);
             clDs.Items.AddRange(ClientsDataSource);
             DataSources.Add(clDs);
-            #endregion
+#endregion
 
             conn.Close();
             PopulateMainFormStatic();
@@ -12478,17 +12506,17 @@ namespace CertusCompanion
             // called on client DDL btn text changed...
             //
             // make sure clients are there first (should always be if this handler is executing... check anyway)
-            #region Check for Clients
+#region Check for Clients
             string clientID = e.Argument as string;
             if (ClientsDataSource == null || ClientsDataSource.Count == 0)
             {
                 throw new Exception("The clients data source was missing or empty");
             }
             string clientName = (ClientsDataSource.Where(i => i.ClientID == clientID).FirstOrDefault() as Client).Name;
-            #endregion
+#endregion
 
             // instantiate subsource lists
-            #region Instantiate
+#region Instantiate
             CompaniesSubSource = new List<Company>();
             CertificatesSubSource = new List<Certificate>();
             AnalystsSubSource = new List<Analyst>();
@@ -12496,10 +12524,10 @@ namespace CertusCompanion
             CertificateLocationsSubSource = new List<CertificateLocation>();
             LocationsSubSource = new List<Location>();
             DataSource ds;
-            #endregion
+#endregion
 
             // set up the loading form
-            #region Loading form settup
+#region Loading form settup
             DimForm();
             LoadingForm = new LoadingForm();
             LoadingForm.Owner = this.TransparentForm;
@@ -12515,10 +12543,10 @@ namespace CertusCompanion
 
             this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Connecting..."); }));
             this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
-            #endregion
+#endregion
 
             // retest DB connection
-            #region TestConn
+#region TestConn
             string connectionString = ConfigurationManager.ConnectionStrings["CertusDB"].ToString();
             string query;
 
@@ -12529,7 +12557,7 @@ namespace CertusCompanion
             {
                 connection.Open();
             }
-            #endregion
+#endregion
 
             // remove any existing datasources after 3 (dynamic). First 3 will be static--colors, statuses, clients (static)
             if (DataSources.Count > 3)
@@ -12543,7 +12571,7 @@ namespace CertusCompanion
             // populate subsources (dynamic)...
             //
             // --- COMPANIES --- //
-            #region Companies
+#region Companies
             ds = new DataSource();
             ds.Name = clientName;
             ds.Type = "Companies";
@@ -12586,10 +12614,10 @@ namespace CertusCompanion
 
             if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(20); }));
             else LoadingForm.MoveBar(20);
-            #endregion
+#endregion
 
             // --- CERTIFICATES --- //
-            #region Certificates
+#region Certificates
             ds = new DataSource();
             ds.Name = clientName;
             ds.Type = "Certificates";
@@ -12632,10 +12660,10 @@ namespace CertusCompanion
 
             if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(20); }));
             else LoadingForm.MoveBar(20);
-            #endregion
+#endregion
 
             // --- ANALYSTS --- //
-            #region Analysts
+#region Analysts
             ds = new DataSource();
             ds.Name = clientName;
             ds.Type = "Analysts";
@@ -12677,10 +12705,10 @@ namespace CertusCompanion
 
             if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(20); }));
             else LoadingForm.MoveBar(20);
-            #endregion
+#endregion
 
             // --- CONTACTS --- //
-            #region Contacts
+#region Contacts
             ds = new DataSource();
             ds.Name = clientName;
             ds.Type = "Contacts";
@@ -12722,10 +12750,10 @@ namespace CertusCompanion
 
             if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(20); }));
             else LoadingForm.MoveBar(20);
-            #endregion
+#endregion
 
             // --- CERTIFICATELOCATIONS --- //
-            #region CertificateLocations
+#region CertificateLocations
             ds = new DataSource();
             ds.Name = clientName;
             ds.Type = "CertificateLocations";
@@ -12764,10 +12792,10 @@ namespace CertusCompanion
             // add subsource items to ds items
             ds.Items.AddRange(CertificateLocationsSubSource);
             DataSources.Add(ds);
-            #endregion
+#endregion
 
             // --- LOCATIONS --- //
-            #region Locations
+#region Locations
 
             ds = new DataSource();
             ds.Name = clientName;
@@ -12809,7 +12837,7 @@ namespace CertusCompanion
 
             if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(20); }));
             else LoadingForm.MoveBar(20);
-            #endregion
+#endregion
 
             if(this.InvokeRequired) this.Invoke(new Action(() => 
             {
