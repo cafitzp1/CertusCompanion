@@ -187,6 +187,7 @@ namespace CertusCompanion
         private string delayedAlertHeader;
         private System.Windows.Forms.Timer delayedAlertTimer;
         private bool certusBrowserOpened;
+        private bool ignorethisEvent;
 
         public string SelectedClientID { get; set; }
         #endregion
@@ -255,6 +256,7 @@ namespace CertusCompanion
             connectionBtnStatus = 1;
             workflowItemsListView.ForeColor = ThemeColors.ItemDefault;
             workflowItemsListView.ListViewItemSorter = lvwColumnSorter;
+            colorDialogSelection = Color.FromKnownColor(KnownColor.Black);
 
             // arrays
             itemButtons = new Button[]
@@ -292,9 +294,7 @@ namespace CertusCompanion
             this.WorkflowManager_Resize(this, null);
 
             // set starting color for paint button texts / tool tips
-            buttonDescToolTip.SetToolTip(paintBtn, $"Paint ({paintColorDialog.Color.Name})");
-            buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint Queried Items ({paintColorDialog.Color.Name})");
-            paintContextMenuItem.Text = $"Paint ({paintColorDialog.Color.Name})";
+            ChangeColorToolTips();
 
             // change context menu renderers
             CustomRenderer = new MyRenderer();
@@ -303,6 +303,7 @@ namespace CertusCompanion
             this.qfndCustomDDLMenuStrip.Renderer = CustomRenderer;
             this.vcCustomDDLMenuStrip.Renderer = CustomRenderer;
             this.clCustomDDLMenuStrip.Renderer = CustomRenderer;
+            this.colorDialogContextMenuStrip.Renderer = CustomRenderer;
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -1711,23 +1712,41 @@ namespace CertusCompanion
         }
         private void colorSelectionBtn_Click(object sender, EventArgs e)
         {
-            if (paintColorDialog.ShowDialog() == DialogResult.OK)
+            colorDialogContextMenuStrip.Show(colorDialogBtn, new Point(-50, colorDialogBtn.Height+2));
+        }
+        private void colorItem_CheckedChanged(object sender, EventArgs e)
+        {
+            try
             {
-                // store selected color
-                colorDialogSelection = paintColorDialog.Color;
+                if (ignorethisEvent)
+                {
+                    ignorethisEvent = false;
+                    return;
+                }
+                foreach (ToolStripMenuItem item in colorDialogContextMenuStrip.Items)
+                {
+                    ignorethisEvent = true;
+                    item.Checked = false;
+                }
 
-                // change button appearances
-                colorDialogBtn.ForeColor = colorDialogSelection;
-                paintBtn.ForeColor = colorDialogSelection;
-                paintFromQueryBtn.ForeColor = colorDialogSelection;
+                ignorethisEvent = true;
+                (sender as ToolStripMenuItem).Checked = true;
+                colorDialogSelection = (sender as ToolStripMenuItem).ForeColor;
+
+                ChangeColorToolTips();
+                workflowItemsListView.Focus();
             }
-
-            // now change the tooltips and texts to the new color selected
-            buttonDescToolTip.SetToolTip(paintBtn, $"Paint ({paintColorDialog.Color.Name})");
-            buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint Queried Items ({paintColorDialog.Color.Name})");
-            paintContextMenuItem.Text = $"Paint ({paintColorDialog.Color.Name})";
-
-            workflowItemsListView.Focus();
+            catch (Exception)
+            {
+                SetStatusLabelAndTimer("Could not process the request");
+                MakeErrorSound();
+            }
+        }
+        private void ChangeColorToolTips()
+        {
+            buttonDescToolTip.SetToolTip(paintBtn, $"Paint ({colorDialogSelection.Name}) (5)");
+            buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint Queried Items ({colorDialogSelection.Name})");
+            paintContextMenuItem.Text = $"Paint ({colorDialogSelection.Name})";
         }
         private void importWorkflowItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2462,7 +2481,7 @@ namespace CertusCompanion
                 fullView = false;
                 fullViewBtn.BackColor = Color.FromArgb(20, 20, 20);
                 splitContainerChild1.SplitterDistance = currentSplitter1Distance;
-                splitContainerChild1.Panel2MinSize = 408;
+                splitContainerChild1.Panel2MinSize = 410;
                 detailsOptionsPanel2.Visible = false;
                 splitContainerChild1.IsSplitterFixed = false;
                 enlargeBtn.Enabled = true;
@@ -8005,7 +8024,7 @@ namespace CertusCompanion
             clCustomDDLPanel_Enter(sender, e);
 
             // specific to each DDL
-            clCustomDDLMenuStrip.Show(clOuterPanel, new Point(-1, clOuterPanel.Height - 2));
+            clCustomDDLMenuStrip.Show(clOuterPanel, new Point(-clCustomDDLMenuStrip.Width+clOuterPanel.Width-1, clOuterPanel.Height - 1));
         }
         private void clCustomDDLPanel_Enter(object sender, EventArgs e)
         {

@@ -97,6 +97,46 @@ namespace CertusCompanion
         {
             get { return Color.FromArgb(64,64,64); }
         }
+
+        public override Color CheckBackground
+        {
+            get { return ThemeColors.MainTheme; }
+        }
+
+        public override Color CheckPressedBackground
+        {
+            get { return ThemeColors.MainTheme; }
+        }
+
+        public override Color CheckSelectedBackground
+        {
+            get { return ThemeColors.MainTheme; }
+        }
+
+        //public override Color ButtonCheckedHighlightBorder
+        //{
+        //    get { return Color.FromArgb(0, 255, 0); }
+        //}
+
+        //public override Color ButtonCheckedHighlight
+        //{
+        //    get { return Color.FromArgb(0, 255, 0); }
+        //}
+
+        //public override Color ButtonCheckedGradientBegin
+        //{
+        //    get { return Color.FromArgb(0, 255, 0); }
+        //}
+
+        //public override Color ButtonCheckedGradientMiddle
+        //{
+        //    get { return Color.FromArgb(0, 255, 0); }
+        //}
+
+        //public override Color ButtonCheckedGradientEnd
+        //{
+        //    get { return Color.FromArgb(0, 255, 0); }
+        //}
     }
 
     class BorderPanel : Panel
