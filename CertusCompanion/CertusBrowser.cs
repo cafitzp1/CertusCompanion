@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -30,9 +32,6 @@ namespace CertusCompanion
         string clientID;
         string currentUserIDToAssign;
         string currentStatusIDToAssign;
-        string uri;
-        string userName;
-        string passWord;
         string logMessage;
         string consoleMessage;
         string consoleInstruction;
@@ -40,8 +39,6 @@ namespace CertusCompanion
         string messageTag;
         string trackTag;
         string script;
-        const string ASSIGNSTATUSIDHARDCODED = "2"; // change IDs here if necessary (1-ER, 2-DA, 3-CA, 4-C, 5-T)
-        const string COMPLETESTATUSIDHARDCODED = "5"; // 
         int widthWhenPanelVisible;
         int itemsChecked;
         int itemsToAssign;
@@ -52,6 +49,16 @@ namespace CertusCompanion
         int allCompletedItems;
         bool consoleInstructionReceived;
         bool panelVisible;
+        //
+        // instantiated through config file
+        string homeURI; //https://www.bcscertus.com/sign-in.aspx?returnURL=%2fworkflow.aspx%3fc%3d36
+        string userName; //username
+        string passWord; //password
+        string completeStatusID; //4
+        string assignStatusID; //2
+        string customScript1; //...
+        string customScript2; //...
+        string customScript3; //...
         #endregion
 
         // 
@@ -90,8 +97,8 @@ namespace CertusCompanion
 
             Cef.Initialize(settings);
 
-            uri = "https://www.bcscertus.com/sign-in.aspx?returnURL=%2fworkflow.aspx%3fc%3d36";
-            chrome = new ChromiumWebBrowser(uri);
+            homeURI = "https://www.bcscertus.com/sign-in.aspx?returnURL=%2fworkflow.aspx%3fc%3d36";
+            chrome = new ChromiumWebBrowser(homeURI);
             this.browserPanel.Controls.Add(chrome);
             chrome.Dock = DockStyle.Fill;
             panelVisible = false;
@@ -110,6 +117,161 @@ namespace CertusCompanion
             // this is the only way I can get the panel to close properly on form load...
             this.showPanelBtn_Click(sender, e);
             this.showPanelBtn_Click(sender, e);
+
+            // read the configration .txt file
+            string configFileContents = ReadConfig();
+
+            // store options
+            try
+            {
+                homeURI = ExtractConfig(configFileContents, "<< HOMEPAGE >>"); //https://www.bcscertus.com/sign-in.aspx?returnURL=%2fworkflow.aspx%3fc%3d36
+                userName = ExtractConfig(configFileContents, "<< USERNAME >>"); //username
+                passWord = ExtractConfig(configFileContents, "<< PASSWORD >>"); //password
+                completeStatusID = ExtractConfig(configFileContents, "<< COMPLETE STATUS ID >>"); //4
+                assignStatusID = ExtractConfig(configFileContents, "<< DISTRIBUTE STATUS ID >>"); //2
+                customScript1 = ExtractConfig(configFileContents, "<< CUSTOM SCRIPT 1 >>"); //...
+                customScript2 = ExtractConfig(configFileContents, "<< CUSTOM SCRIPT 2 >>"); //...
+                customScript3 = ExtractConfig(configFileContents, "<< CUSTOM SCRIPT 3 >>"); //...
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show("There was a problem extracting data from the browser configuration file. Ensure data is entered correctly and instructions " +
+                    "are followed as specified in the document. It is crucial that the header tags are not edited and that the correct content goes in each field " +
+                    "beneath its corresponding tag. If you do not wish to enter content, leave the area blank or put '...' in the line directly beneath the tag.\n\n" +
+                    $"Error message: {m.Message}", "Error");
+            }
+
+            // set buttons
+            SetCustomScriptButtons();
+        }
+        private string ReadConfig()
+        {
+            string s=String.Empty;
+
+            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.BrowserConfiguration.txt"))
+            {
+                using (StreamReader sr = new StreamReader(strm))
+                {
+                    s = sr.ReadToEnd();
+                }
+            }
+
+            return s;
+        }
+        private string ExtractConfig(string fileContents, string tag)
+        {
+            string s = String.Empty;
+
+            // get lines beneath tag up to either '#' or '<' symbol IF line is not blank or '...'
+            //
+            
+            // get start of tag and from it the start of input
+            int tagStart = fileContents.IndexOf(tag);
+            int inputStart = tagStart + tag.Length + 2;
+            int inputEnd = 0;
+
+            // search each char after input begin looking for '/'
+            int searchIndx = inputStart;
+            bool endFound = false;
+            int loopCount = 0;
+            while (!endFound)
+            {
+                ++loopCount;
+
+                if (fileContents[searchIndx] == '/')
+                {
+                    ++searchIndx;
+                    if (fileContents[searchIndx] == '/')
+                    {
+                        ++searchIndx;
+                        if (fileContents[searchIndx] == '/')
+                        {
+                            endFound = true;
+                            inputEnd = searchIndx;
+                        }
+                    }
+                }
+
+                ++searchIndx;
+
+                if (loopCount >= 50000)
+                    throw new Exception("End tag ('///') was not found");
+            }
+
+            // get string between start and end
+            s = fileContents.Substring(inputStart, inputEnd - inputStart - 2);
+
+            // trim
+            s.TrimStart(' ');
+            s.TrimEnd(' ');
+            if (s.EndsWith("\r\n")) s = s.Remove(s.Length - 2, 2);
+
+            return s;
+        }
+        private void SetCustomScriptButtons()
+        {
+            try
+            {
+                if(itemList1!=null && itemList1.Count>0) InitializeItemIDs();
+
+                if (customScript1 != null && customScript1 != String.Empty && customScript1 != "...")
+                {
+                    // write
+#if DEBUG
+                    itemIDs = new List<string>();
+                    itemIDs.Add("123");
+                    itemIDs.Add("234");
+                    itemIDs.Add("345");
+#endif
+
+                    if (itemIDs != null && itemIDs.Count > 0)
+                    {
+                        customScript1 = AddTransferArrayFunctionToScript(customScript1);
+                    }
+
+                    customScript1Btn.Enabled = true;
+                }
+                if (customScript2 != null && customScript2 != String.Empty && customScript2 != "...")
+                {
+                    customScript2Btn.Enabled = true;
+                }
+                if (customScript3 != null && customScript3 != String.Empty && customScript3 != "...")
+                {
+                    customScript3Btn.Enabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There was an error setting the custom scripts. Make sure the script was entered correctly " +
+                    "in the browser configuration file");
+
+                customScript1Btn.Enabled = false;
+                customScript2Btn.Enabled = false;
+                customScript3Btn.Enabled = false;
+            }
+        }
+        private string AddTransferArrayFunctionToScript(string script)
+        {
+            string s = script;
+
+            string fScript =
+                            "function transferArray() { " +
+                            "\r\tvar i, array; " +
+                            "\r\tarray = []; \r\n";
+
+            foreach (var itemID in itemIDs)
+            {
+                fScript +=
+                        $"\r\tarray.push({itemID}); ";
+            }
+
+            fScript +=
+                        "\r\n\r\treturn array; " +
+                        "\n} ";
+
+            s = s.Insert(0, $"{fScript}\r\n\r\n");
+
+            return s;
         }
         #endregion
 
@@ -471,7 +633,7 @@ namespace CertusCompanion
             // transferArray function definition
             #region region
             string scriptX =
-                        "function transferarray() { " +
+                        "function transferArray() { " +
                         "var i, array; " +
                         "array = []; ";
 
@@ -530,7 +692,7 @@ namespace CertusCompanion
             // call transferArray
             #region region
             scriptX +=
-                        "myData = transferarray(); ";
+                        "myData = transferArray(); ";
             #endregion
 
             // call
@@ -630,11 +792,14 @@ namespace CertusCompanion
                     "} " +
 
                     // set ddl's
-                    $"SelectElement('ctl00_cphPopups_m_BulkDocumentWorkflowStatusDDL', '{COMPLETESTATUSIDHARDCODED}'); " +
+                    $"SelectElement('ctl00_cphPopups_m_BulkDocumentWorkflowStatusDDL', '{completeStatusID}'); " +
 
-                    // click save
-                    //"document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
+                    // click save button
+#if !DEBUG
+                    "document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
+#elif DEBUG
                     "document.getElementById('ctl00_cphPopups_m_WorkflowBulkCancelBTN').click(); " + // cancel button (for debugging)
+#endif
 
                     // wait for response
                     "g(); " +
@@ -917,7 +1082,7 @@ namespace CertusCompanion
                 #region Log Assignment Information
                 currentDict = dict;
                 currentUserIDToAssign = dict.Values.FirstOrDefault();
-                currentStatusIDToAssign = ASSIGNSTATUSIDHARDCODED;
+                currentStatusIDToAssign = assignStatusID;
                 itemsToAssign = dict.Count;
                 ++dictCount;
                 perUserAssignedItems = 0;
@@ -1045,7 +1210,7 @@ namespace CertusCompanion
             // transferArray function definition
             #region region
             string scriptX =
-                        "function transferarray() { " +
+                        "function transferArray() { " +
                         "var i, array; " +
                         "array = []; ";
 
@@ -1104,7 +1269,7 @@ namespace CertusCompanion
             // call transferArray
             #region region
             scriptX +=
-                        "myData = transferarray(); ";
+                        "myData = transferArray(); ";
             #endregion
 
             // call
@@ -1208,8 +1373,11 @@ namespace CertusCompanion
                     $"SelectElement('ctl00_cphPopups_m_BulkDocumentWorkflowStatusDDL', '{currentStatusIDToAssign}'); " +
 
                     // click save button
-                    //"document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
+#if !DEBUG
+                    "document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
+#elif DEBUG
                     "document.getElementById('ctl00_cphPopups_m_WorkflowBulkCancelBTN').click(); " + // cancel button (for debugging)
+#endif
 
                     // wait for response
                     "g(); " +
@@ -1219,7 +1387,7 @@ namespace CertusCompanion
                 // call
                 "bulkAction(); ";
 
-            #endregion
+#endregion
 
             // Execute as task
             var taskY = chrome.EvaluateScriptAsync(scriptY, 300001);
@@ -1228,7 +1396,7 @@ namespace CertusCompanion
             taskY.Wait();
 
             // Evaluate
-            #region Evaluate
+#region Evaluate
             var responseY = taskY.Result;
 
             if (responseY.Success)
@@ -1274,14 +1442,14 @@ namespace CertusCompanion
 
                 throw new Exception($"Process failed while executing '{script}' script for userID: {currentUserIDToAssign} ({dictCount}/{subItemIDsAndAssignmentIDsDictList.Count})");
             }
-            #endregion
+#endregion
         }
         private void DistributeStep4()
         {
             this.Invoke(new Action(() => { LogEvent("Navigating to previous page..."); this.Refresh(); }));
 
             // write script - Prev page
-            #region scriptZ
+#region scriptZ
             script = "Navigate to prev page";
 
             string scriptZ =
@@ -1317,7 +1485,7 @@ namespace CertusCompanion
                 // call
                 "prevPage(); ";
 
-            #endregion
+#endregion
 
             // Execute as task
             var taskZ = chrome.EvaluateScriptAsync(scriptZ, 300001);
@@ -1326,7 +1494,7 @@ namespace CertusCompanion
             taskZ.Wait();
 
             // Evaluate
-            #region Evaluate
+#region Evaluate
             var responseZ = taskZ.Result;
 
             if (responseZ.Success)
@@ -1371,7 +1539,91 @@ namespace CertusCompanion
 
                 throw new Exception($"Process failed while executing '{script}' script for userID: {currentUserIDToAssign} ({dictCount}/{subItemIDsAndAssignmentIDsDictList.Count})");
             }
-            #endregion
+#endregion
+        }
+        //
+        // custom scripts
+        private void InitializeItemIDs()
+        {
+            // make a List of ids
+            itemIDs = new List<string>();
+            allCompletedItems = 0;
+
+            // generate item list if list available
+            if (itemList1 != null && itemList1.Count > 0)
+            {
+                foreach (WorkflowItem item in itemList1)
+                {
+                    string docID = item.DocumentWorkflowItemID;
+
+                    itemIDs.Add(docID);
+                }
+            }
+        }
+        private void customScript1BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            InitializeItemIDs();
+            ExecuteCustomScript1();
+        }
+        private void ExecuteCustomScript1()
+        {
+            try
+            {
+                this.Invoke(new Action(() => { LogEvent($"Executing custom script 1"); this.Refresh(); }));
+
+                // Execute as task
+                var task = chrome.EvaluateScriptAsync(customScript1);
+
+                // Wait for task to complete
+                task.Wait();
+
+                // Evaluate
+                var response = task.Result;
+
+                if (response.Success)
+                {
+                    this.Invoke(new Action(() => { LogEvent($"Script executed successfully\r\n\r\n", 1); this.Refresh(); }));
+                }
+                else
+                {
+                    this.Invoke(new Action(() => { LogEvent($"Script failed\r\n\r\n", 1); this.Refresh(); }));
+                }
+            }
+
+            catch (Exception m)
+            {
+                this.Invoke(new Action(() => { LogEvent("--Process Failed--\r\n", 1); this.Refresh(); }));
+                MessageBox.Show($"There was an error processing the request.\n\nReason: {m.Message}");
+                return;
+            }
+        }
+        private void customScript2BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            InitializeItemIDs();
+            ExecuteCustomScript2();
+        }
+        private void ExecuteCustomScript2()
+        {
+
+        }
+        private void customScript3BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            InitializeItemIDs();
+            ExecuteCustomScript3();
+        }
+        private void ExecuteCustomScript3()
+        {
+
+        }
+        private void customScriptBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { LogEvent("--Process failed--\r\n", 1); this.Refresh(); }));
+                else { LogEvent("--Process Failed--\r\n", 1); this.Refresh(); }
+
+                MessageBox.Show($"There was a problem executing the script.\n\nError message: {e.Error.Message}");
+            }
         }
         #endregion
 
@@ -1391,8 +1643,8 @@ namespace CertusCompanion
         }
         private void homePageBtn_Click(object sender, EventArgs e)
         {
-            navigationComboBox.Text = uri;
-            chrome.Load(uri);
+            navigationComboBox.Text = homeURI;
+            chrome.Load(homeURI);
         }
         //
         // Will not work unless user has configured their credentials
@@ -1564,15 +1816,15 @@ namespace CertusCompanion
         }
         private void customScript1Btn_Click(object sender, EventArgs e) //*
         {
-            //
+            customScript1BackgroundWorker.RunWorkerAsync();
         }
         private void customScript2Btn_Click(object sender, EventArgs e) //*
         {
-            //
+            customScript2BackgroundWorker.RunWorkerAsync();
         }
         private void customScript3Btn_Click(object sender, EventArgs e) //*
         {
-            //
+            customScript3BackgroundWorker.RunWorkerAsync();
         }
         //
         // Used to cancel the preconfigured running scripts (comp & dist)
@@ -1628,14 +1880,14 @@ namespace CertusCompanion
 
             if (s != String.Empty) Clipboard.SetText(s);
         }
-        #endregion Form Controls
+#endregion Form Controls
 
         // --- OTHER --- //
-        #region Other
-        private void SetCredentials() //*
+#region Other
+        private void SetCredentials()
         {
-            userName = "cfitzpatrick@bcsops.com";
-            passWord = "Monday1!";
+            //userName = "cfitzpatrick@bcsops.com";
+            //passWord = "Monday1!";
         }
         private void navigationComboBox_KeyDown(object sender, KeyEventArgs e)
         {

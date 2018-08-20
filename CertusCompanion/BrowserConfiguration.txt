@@ -1,0 +1,59 @@
+﻿--- Certus Browser Configuration ---
+
+Use this file for configuring the Certus Browser
+Edit only in the areas directly beneath the header tags (example - << EXAMPLE >>) up until
+the input end point (the triple slashes - '///'). DO NOT leave any white space. Begin input
+on the line directly beneath the tag and end on the line directly above the 3 slashes.
+
+
+The page navigated to when pressing the home button
+
+<< HOMEPAGE >>
+https://www.bcscertus.com/sign-in.aspx?returnURL=%2fworkflow.aspx%3fc%3d36
+///
+
+Your user credentials to authenticate when pressing the sign in button (not required
+but you will have to manually enter them every time if not included here)
+
+<< USERNAME >>
+username
+///
+<< PASSWORD >>
+password
+///
+
+The specific status you want items to end up as when using either the complete items
+script or the distribute items script. Complete will change the status to '4: complete'
+as default and distribute will change the status to '2: documentation analyst'. For your
+reference... 1-ER, 2-DA, 3-CA, 4-C, 5-T. I've included this option incase you would like to
+trash items instead of complete them or assign items as compliance analyst instead of docu-
+mentation analyst... etc.
+
+<< COMPLETE STATUS ID >>
+4
+///
+<< DISTRIBUTE STATUS ID >>
+2
+///
+
+Custom scripts to be used with the browser (the code will automatically generate a function
+to transfer the checked items if there are checked items from the Workflow Manager into an array of IDs. 
+All you have to do is call the function 'trasnferArray();' and assign it to a variable such as 
+'myData' if you intend on using this array of IDs. If you do not intend on using this array, just 
+don't call the function. If you do not intend on using any custom scripts, leave the edit area 
+blank or as '...' otherwise whatever you put in that area will be binded to the custom script 
+buttons. Same goes for white space here. The script should be fine with white space, just make sure
+it begins on the line directly under the tag and ends on the line directly above the end (///).
+
+<< CUSTOM SCRIPT 1 >>
+...
+///
+<< CUSTOM SCRIPT 2 >>
+...
+///
+<< CUSTOM SCRIPT 3 >>
+...
+///
+
+
+--- End Certus Browser Configuration ---

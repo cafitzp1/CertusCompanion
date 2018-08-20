@@ -1,7 +1,4 @@
-﻿#define DEBUG
-//#undef DEBUG
-
-using System;
+﻿using System;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -46,7 +43,7 @@ namespace CertusCompanion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WorkflowManager());
+            Application.Run(new CertusBrowser());
         }
         #endif
 

@@ -72,6 +72,9 @@
             this.statusLblTimer = new System.Windows.Forms.Timer(this.components);
             this.companyInputContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.companyInputContextMenuStripTbx = new System.Windows.Forms.ToolStripTextBox();
+            this.customScript1BackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.customScript2BackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.customScript3BackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.browserPanel.SuspendLayout();
             this.dividerPanel.SuspendLayout();
             this.navBarPanel.SuspendLayout();
@@ -728,6 +731,21 @@
             this.companyInputContextMenuStripTbx.Size = new System.Drawing.Size(100, 23);
             this.companyInputContextMenuStripTbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.companyInputContextMenuTbx_KeyDown);
             // 
+            // customScript1BackgroundWorker
+            // 
+            this.customScript1BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.customScript1BackgroundWorker_DoWork);
+            this.customScript1BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.customScriptBackgroundWorker_RunWorkerCompleted);
+            // 
+            // customScript2BackgroundWorker
+            // 
+            this.customScript2BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.customScript2BackgroundWorker_DoWork);
+            this.customScript2BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.customScriptBackgroundWorker_RunWorkerCompleted);
+            // 
+            // customScript3BackgroundWorker
+            // 
+            this.customScript3BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.customScript3BackgroundWorker_DoWork);
+            this.customScript3BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.customScriptBackgroundWorker_RunWorkerCompleted);
+            // 
             // CertusBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,5 +827,8 @@
         private System.Windows.Forms.Timer statusLblTimer;
         private System.Windows.Forms.ContextMenuStrip companyInputContextMenuStrip;
         private System.Windows.Forms.ToolStripTextBox companyInputContextMenuStripTbx;
+        private System.ComponentModel.BackgroundWorker customScript1BackgroundWorker;
+        private System.ComponentModel.BackgroundWorker customScript2BackgroundWorker;
+        private System.ComponentModel.BackgroundWorker customScript3BackgroundWorker;
     }
 }

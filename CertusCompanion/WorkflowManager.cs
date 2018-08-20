@@ -1,8 +1,5 @@
 ﻿//WorkflowManager v4.3
 
-#define DEBUG
-//#undef DEBUG
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +74,7 @@ namespace CertusCompanion
         internal List<string> ColorsDataSource { get; set; }
         internal List<string> StatusesDataSource { get; set; }
         internal List<Client> ClientsDataSource { get; set; }
+        public string PopulatedClientText { get; private set; }
         internal List<Company> CompaniesSubSource { get; set; }
         internal List<Certificate> CertificatesSubSource { get; set; }
         internal List<Analyst> AnalystsSubSource { get; set; }
@@ -715,6 +713,10 @@ namespace CertusCompanion
             this.queriedCountStatusLbl.Text = "0";
             this.checkedCountStatusLbl.Text = "0";
 
+            // reset connection button and client 
+            this.ConnectionBtnNoConnection();
+            this.clSelectionBtn.Text = String.Empty;
+
             // repopulate static data sources
             this.PopulateMainFormStatic();
 
@@ -1020,7 +1022,7 @@ namespace CertusCompanion
                     MessageBox.Show("Select a client from the client drop down list");
                     break;
                 case 3:
-                    DialogResult dr = MessageBox.Show("Reset datasources?", "", MessageBoxButtons.YesNo);
+                    DialogResult dr = MessageBox.Show($"Data Sources were successfully imported from CertusDB. Clients imported: {DataSources[2].DateCreated.ToShortDateString()}. Client information imported: {DataSources[3].DateCreated.ToShortDateString()}\n\nReset Data Sources?", "", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
                     {
                         // remove sources
@@ -8048,6 +8050,9 @@ namespace CertusCompanion
         }
         private void clCustomDDLContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            // save choice before switching incase there's no DB connection and the client is not actually switched
+            PopulatedClientText = clSelectionBtn.Text;
+
             clSelectionBtn.Text = String.Empty;
             clSelectionBtn.Text = e.ClickedItem.Text;
             clCustomDDLPanel_MouseLeave(sender, e);
@@ -8793,7 +8798,7 @@ namespace CertusCompanion
                 this.LoadingForm.Refresh();
 
                 // populate lv  
-                this.vcSelectionBtn.Text = "Non-completed";
+                if(AllWorkflowItemsLoaded != null && AllWorkflowItemsLoaded.Count>0) this.vcSelectionBtn.Text = "Non-completed";
 
                 PopulateImportLbx(this.AllItemImportsLoaded);
 
@@ -12479,7 +12484,7 @@ namespace CertusCompanion
                 throw new Exception("The clients data source was missing or empty");
             }
             string clientName = (ClientsDataSource.Where(i => i.ClientID == clientID).FirstOrDefault() as Client).Name;
-#endregion
+            #endregion
 
             // instantiate subsource lists
 #region Instantiate
@@ -12507,8 +12512,18 @@ namespace CertusCompanion
                 LoadingForm.Show(this.TransparentForm);
             }
 
-            this.Invoke(new Action(() => { LoadingForm.ChangeLabel("Connecting..."); }));
-            this.Invoke(new Action(() => { LoadingForm.Refresh(); }));
+            if (this.InvokeRequired) this.Invoke(new Action(() => 
+            {
+                LoadingForm.ChangeLabel("Connecting..."); 
+                LoadingForm.ShowCloseBtn();
+                LoadingForm.Refresh();
+            }));
+            else
+            {
+                LoadingForm.ChangeLabel("Connecting...");
+                LoadingForm.ShowCloseBtn();
+                LoadingForm.Refresh();
+            }
 #endregion
 
             // retest DB connection
@@ -12830,7 +12845,8 @@ namespace CertusCompanion
                 MessageBox.Show($"Data generation unsuccessful\n\n{e.Error.Message}", "Error");
 
                 if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
-                clSelectionBtn.Text = "Select one...";
+                ignoreThisTextChange = true;
+                clSelectionBtn.Text = PopulatedClientText;
                 ResetStatusStrip();
             }
             else

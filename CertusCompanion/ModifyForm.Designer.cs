@@ -492,13 +492,13 @@
             // 
             this.enterIDManuallyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.enterIDManuallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.enterIDManuallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.enterIDManuallyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.renameIcon;
             this.enterIDManuallyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.enterIDManuallyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.enterIDManuallyBtn.FlatAppearance.BorderSize = 0;
             this.enterIDManuallyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.enterIDManuallyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.enterIDManuallyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.enterIDManuallyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterIDManuallyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enterIDManuallyBtn.ForeColor = System.Drawing.Color.DimGray;
@@ -516,7 +516,7 @@
             // 
             this.analystIDTbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.analystIDTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.analystIDTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.analystIDTbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.analystIDTbx.ForeColor = System.Drawing.SystemColors.Control;
             this.analystIDTbx.Location = new System.Drawing.Point(-1, -1);

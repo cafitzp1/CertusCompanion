@@ -2898,3 +2898,29 @@ C:\fakepath(87,10-42): warning X3571: pow(f, e) will not work for negative f, us
 [0816/172330.994:INFO:CONSOLE(1)] ":continue:", source: about:blank (1)
 [0816/172354.997:INFO:CONSOLE(2)] "Mixed Content: The page at 'https://www.bcscertus.com/workflow.aspx?c=36' was loaded over HTTPS, but requested an insecure image 'http://certus-prod-logos.s3-website-us-east-1.amazonaws.com/daef7ae5-baac-455d-8679-9efab14eb56e.png'. This content should also be served over HTTPS.", source: https://www.bcscertus.com/ScriptResource.axd?d=SWKHTWn8YMGAH-1yQg9H5ga2cQT_pHNRJyQ9MrzIN9qTEVNKgah0UsaoUtNJNmFrBS8fvP5OwQ3vNs5EJDpqdkHoT6UnR7gyS0RwO96NlYQhloolw_8c4h58NH-air54tK8BgHw-3fEG84JKZmapeA2&t=3a1336b1 (2)
 [0816/172357.564:INFO:CONSOLE(1)] ":continue:", source: about:blank (1)
+[0819/234327.654:INFO:CONSOLE(85)] "Mixed Content: The page at 'https://www.bcscertus.com/workflow.aspx?c=36' was loaded over HTTPS, but requested an insecure image 'http://certus-prod-logos.s3-website-us-east-1.amazonaws.com/daef7ae5-baac-455d-8679-9efab14eb56e.png'. This content should also be served over HTTPS.", source: https://www.bcscertus.com/workflow.aspx?c=36 (85)
+[0819/234327.698:WARNING:angle_platform_impl.cc(59)] compileToBinary(228): 
+C:\fakepath(65,10-42): warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+C:\fakepath(87,10-42): warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+
+[0819/234719.747:INFO:CONSOLE(2)] "Uncaught SyntaxError: Invalid or unexpected token", source: about:blank (2)
+[0820/003942.555:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0820/004029.387:INFO:CONSOLE(14)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (14)
+[0820/004040.822:INFO:CONSOLE(14)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (14)
+[0820/004137.757:ERROR:broker_win.cc(57)] Error reading broker pipe: The pipe has been ended. (0x6D)
+[0820/004137.757:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0820/004137.763:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0820/004137.763:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0820/004215.008:INFO:CONSOLE(14)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (14)
+[0820/004238.048:INFO:CONSOLE(27)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (27)
+[0820/004345.460:INFO:CONSOLE(27)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (27)
+[0820/004409.308:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0820/005005.650:INFO:CONSOLE(10)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (10)
+[0820/005220.026:INFO:CONSOLE(12)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (12)
+[0820/005237.942:INFO:CONSOLE(12)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (12)
+[0820/005556.091:INFO:CONSOLE(12)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (12)
+[0820/005601.902:INFO:CONSOLE(12)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (12)
+[0820/005605.505:INFO:CONSOLE(12)] "Uncaught SyntaxError: Unexpected identifier", source: about:blank (12)
+[0820/005616.681:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0820/010122.438:INFO:CONSOLE(1)] "Uncaught SyntaxError: Invalid or unexpected token", source: about:blank (1)
+[0820/010126.610:INFO:CONSOLE(1)] "Uncaught SyntaxError: Invalid or unexpected token", source: about:blank (1)
