@@ -33,9 +33,9 @@
             this.loadBackgroundPanel = new System.Windows.Forms.Panel();
             this.loadForegroundPanel = new System.Windows.Forms.Panel();
             this.borderPanel = new CertusCompanion.BorderPanel();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.optionsComboBox = new System.Windows.Forms.ComboBox();
             this.radioButtonsPanel = new System.Windows.Forms.Panel();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -78,7 +78,7 @@
             this.loadBackgroundPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.loadBackgroundPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.loadBackgroundPanel.Controls.Add(this.loadForegroundPanel);
-            this.loadBackgroundPanel.Location = new System.Drawing.Point(14, 75);
+            this.loadBackgroundPanel.Location = new System.Drawing.Point(14, 76);
             this.loadBackgroundPanel.Margin = new System.Windows.Forms.Padding(2);
             this.loadBackgroundPanel.Name = "loadBackgroundPanel";
             this.loadBackgroundPanel.Size = new System.Drawing.Size(372, 17);
@@ -107,23 +107,6 @@
             this.borderPanel.Name = "borderPanel";
             this.borderPanel.Size = new System.Drawing.Size(401, 142);
             this.borderPanel.TabIndex = 0;
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.saveBtn.Location = new System.Drawing.Point(274, 35);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(50, 18);
-            this.saveBtn.TabIndex = 0;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Visible = false;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // optionsComboBox
             // 
@@ -156,6 +139,23 @@
             this.radioButtonsPanel.Size = new System.Drawing.Size(326, 59);
             this.radioButtonsPanel.TabIndex = 0;
             this.radioButtonsPanel.Visible = false;
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveBtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.saveBtn.Location = new System.Drawing.Point(274, 38);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(50, 18);
+            this.saveBtn.TabIndex = 0;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Visible = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // radioButton3
             // 
@@ -200,7 +200,7 @@
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.closeBtn.Location = new System.Drawing.Point(336, 108);
+            this.closeBtn.Location = new System.Drawing.Point(336, 111);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(50, 18);

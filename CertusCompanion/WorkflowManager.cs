@@ -1990,6 +1990,7 @@ namespace CertusCompanion
                         try
                         {
                             PopulateListViewData(AllWorkflowItemsLoaded);
+                            CountListViewItems(workflowItemsListView);
                         }
                         catch (Exception)
                         {
@@ -2016,6 +2017,7 @@ namespace CertusCompanion
                         try
                         {
                             PopulateListViewData(CurrentWorkflowItems);
+                            CountListViewItems(workflowItemsListView);
                         }
                         catch (Exception)
                         {
@@ -2042,6 +2044,7 @@ namespace CertusCompanion
                         try
                         {
                             PopulateListViewData(TemporaryExportList);
+                            CountListViewItems(workflowItemsListView);
                         }
                         catch (Exception)
                         {
@@ -2127,6 +2130,7 @@ namespace CertusCompanion
                         try
                         {
                             PopulateListViewData(SearchResultsList);
+                            CountListViewItems(workflowItemsListView);
                         }
                         catch (Exception)
                         {
@@ -2154,6 +2158,7 @@ namespace CertusCompanion
                         try
                         {
                             PopulateListViewData(QueriedItemList);
+                            CountListViewItems(workflowItemsListView);
                         }
                         catch (Exception)
                         {
