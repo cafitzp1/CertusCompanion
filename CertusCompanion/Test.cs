@@ -13,8 +13,8 @@ namespace CertusCompanion
     public partial class Test : Form
     {
         MyRenderer myRenderer;
-        Image img = CertusCompanion.Properties.Resources.icons8_sort_down_24__8_;
-        Image img2 = CertusCompanion.Properties.Resources.icons8_sort_down_24__10_;
+        Image img = CertusCompanion.Properties.Resources.dropDownMouseOverIcon;
+        Image img2 = CertusCompanion.Properties.Resources.dropDownSelectedIcon;
         Image imgToUse;
         private bool contextMenuOpened;
 
@@ -72,7 +72,7 @@ namespace CertusCompanion
             // mouse off effect
             t4SelectionBtn.BackColor = Color.FromArgb(27,27,27);
             t4SplitPanel.Visible = false;
-            t4DropBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
+            t4DropBtn.BackgroundImage = CertusCompanion.Properties.Resources.dropDownIcon;
             imgToUse = img;
         }
 

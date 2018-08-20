@@ -63,9 +63,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_3d_touch_48__1_ {
+        internal static System.Drawing.Bitmap backIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_3d_touch_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("backIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_available_updates_48__1_ {
+        internal static System.Drawing.Bitmap batchAssignIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_available_updates_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("batchAssignIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_back_48__2_ {
+        internal static System.Drawing.Bitmap checkedIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_back_48__2_", resourceCulture);
+                object obj = ResourceManager.GetObject("checkedIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_batch_assign_30 {
+        internal static System.Drawing.Bitmap colorWheelIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-batch-assign-30", resourceCulture);
+                object obj = ResourceManager.GetObject("colorWheelIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_checked_checkbox_48__1_ {
+        internal static System.Drawing.Bitmap companyIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_checked_checkbox_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("companyIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_close_pane_48 {
+        internal static System.Drawing.Bitmap connectionGoodIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_close_pane_48", resourceCulture);
+                object obj = ResourceManager.GetObject("connectionGoodIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_close_window_48__1_ {
+        internal static System.Drawing.Bitmap copyIcon1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_close_window_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("copyIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_close_window_48__3_ {
+        internal static System.Drawing.Bitmap copyIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_close_window_48__3_", resourceCulture);
+                object obj = ResourceManager.GetObject("copyIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_color_wheel_48 {
+        internal static System.Drawing.Bitmap databaseDeleteIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_color_wheel_48", resourceCulture);
+                object obj = ResourceManager.GetObject("databaseDeleteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_connection_status_on_48 {
+        internal static System.Drawing.Bitmap deleteIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_connection_status_on_48", resourceCulture);
+                object obj = ResourceManager.GetObject("deleteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_connection_status_on_48__1_ {
+        internal static System.Drawing.Bitmap deleteIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_connection_status_on_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("deleteIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_connection_status_on_48_2 {
+        internal static System.Drawing.Bitmap deselectIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_connection_status_on_48_2", resourceCulture);
+                object obj = ResourceManager.GetObject("deselectIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_connection_status_on_48_3 {
+        internal static System.Drawing.Bitmap detailsIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_connection_status_on_48_3", resourceCulture);
+                object obj = ResourceManager.GetObject("detailsIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_copy_32 {
+        internal static System.Drawing.Bitmap downArrowIcon1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_copy_32", resourceCulture);
+                object obj = ResourceManager.GetObject("downArrowIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_copy_to_clipboard_48 {
+        internal static System.Drawing.Bitmap downArrowIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_copy_to_clipboard_48", resourceCulture);
+                object obj = ResourceManager.GetObject("downArrowIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_delete_48 {
+        internal static System.Drawing.Bitmap dropDownIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_delete_48", resourceCulture);
+                object obj = ResourceManager.GetObject("dropDownIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_delete_database_48 {
+        internal static System.Drawing.Bitmap dropDownMouseOverIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_delete_database_48", resourceCulture);
+                object obj = ResourceManager.GetObject("dropDownMouseOverIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_document_32__1_ {
+        internal static System.Drawing.Bitmap dropDownSelectedIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-document-32 (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("dropDownSelectedIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_down_3_32 {
+        internal static System.Drawing.Bitmap enlargeIcon1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_down_3_32", resourceCulture);
+                object obj = ResourceManager.GetObject("enlargeIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +253,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_down_3_48 {
+        internal static System.Drawing.Bitmap enlargeIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_down_3_48", resourceCulture);
+                object obj = ResourceManager.GetObject("enlargeIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_download_48 {
+        internal static System.Drawing.Bitmap eraseIcon1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_download_48", resourceCulture);
+                object obj = ResourceManager.GetObject("eraseIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_enlarge_48 {
+        internal static System.Drawing.Bitmap eraseIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_enlarge_48", resourceCulture);
+                object obj = ResourceManager.GetObject("eraseIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +283,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_enlarge_48__1_ {
+        internal static System.Drawing.Bitmap externalLinkIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_enlarge_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("externalLinkIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +293,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_erase_32 {
+        internal static System.Drawing.Bitmap externalLinkIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8_erase_32", resourceCulture);
+                object obj = ResourceManager.GetObject("externalLinkIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,9 +303,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_erase_48 {
+        internal static System.Drawing.Bitmap fillColorIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_erase_48", resourceCulture);
+                object obj = ResourceManager.GetObject("fillColorIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,9 +313,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_erase_48__1_ {
+        internal static System.Drawing.Bitmap findCompanyIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_erase_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("findCompanyIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,9 +323,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_erase_48__2_ {
+        internal static System.Drawing.Bitmap fullScreenIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_erase_48__2_", resourceCulture);
+                object obj = ResourceManager.GetObject("fullScreenIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -333,9 +333,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_error_48 {
+        internal static System.Drawing.Bitmap homeIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_error_48", resourceCulture);
+                object obj = ResourceManager.GetObject("homeIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,9 +343,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_expand_48__1_ {
+        internal static System.Drawing.Bitmap importIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_expand_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("importIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -353,9 +353,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_external_link_32 {
+        internal static System.Drawing.Bitmap insertIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_external_link_32", resourceCulture);
+                object obj = ResourceManager.GetObject("insertIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,9 +363,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_external_link_48 {
+        internal static System.Drawing.Bitmap lowerCaseIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_external_link_48", resourceCulture);
+                object obj = ResourceManager.GetObject("lowerCaseIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,9 +373,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_eye_filled_50 {
+        internal static System.Drawing.Bitmap moreIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_eye_filled_50", resourceCulture);
+                object obj = ResourceManager.GetObject("moreIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -383,9 +383,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_fill_color_48 {
+        internal static System.Drawing.Bitmap nextIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_fill_color_48", resourceCulture);
+                object obj = ResourceManager.GetObject("nextIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -393,9 +393,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_forward_48__1_ {
+        internal static System.Drawing.Bitmap noConnectionIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_forward_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("noConnectionIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -403,9 +403,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_house_32 {
+        internal static System.Drawing.Bitmap noteIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-house-32", resourceCulture);
+                object obj = ResourceManager.GetObject("noteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -413,9 +413,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_insert_32 {
+        internal static System.Drawing.Bitmap openInBrowserIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_insert_32", resourceCulture);
+                object obj = ResourceManager.GetObject("openInBrowserIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -423,9 +423,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_ios_application_placeholder_32__1_ {
+        internal static System.Drawing.Bitmap outdatedConnectionIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-ios-application-placeholder-32 (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("outdatedConnectionIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,9 +433,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_lowercase_48__3_ {
+        internal static System.Drawing.Bitmap paintBrushIcon1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_lowercase_48__3_", resourceCulture);
+                object obj = ResourceManager.GetObject("paintBrushIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -443,9 +443,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_more_32__2_ {
+        internal static System.Drawing.Bitmap paintBrushIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8-more-32 (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("paintBrushIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,9 +453,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_note_48__1_ {
+        internal static System.Drawing.Bitmap partialConnectionIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_note_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("partialConnectionIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -463,9 +463,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_open_in_browser_48__1_ {
+        internal static System.Drawing.Bitmap placeHolderIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_open_in_browser_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("placeHolderIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,9 +473,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_open_pane_48 {
+        internal static System.Drawing.Bitmap plusIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_open_pane_48", resourceCulture);
+                object obj = ResourceManager.GetObject("plusIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -483,9 +483,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_organization_32__8_ {
+        internal static System.Drawing.Bitmap priorityIcon2 {
             get {
-                object obj = ResourceManager.GetObject("icons8-organization-32 (8)", resourceCulture);
+                object obj = ResourceManager.GetObject("priorityIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,9 +493,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_paint_brush_32 {
+        internal static System.Drawing.Bitmap refreshIcon1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_paint_brush_32", resourceCulture);
+                object obj = ResourceManager.GetObject("refreshIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -503,9 +503,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_paint_brush_48 {
+        internal static System.Drawing.Bitmap removeIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_paint_brush_48", resourceCulture);
+                object obj = ResourceManager.GetObject("removeIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,9 +513,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_plus_32 {
+        internal static System.Drawing.Bitmap renameIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_plus_32", resourceCulture);
+                object obj = ResourceManager.GetObject("renameIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -523,9 +523,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_rename_32__1_ {
+        internal static System.Drawing.Bitmap searchDocumentIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-rename-32 (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("searchDocumentIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,9 +533,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_search_24 {
+        internal static System.Drawing.Bitmap searchIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-search-24", resourceCulture);
+                object obj = ResourceManager.GetObject("searchIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -543,9 +543,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_select_48__2_ {
+        internal static System.Drawing.Bitmap selectAllIcon1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_select_48__2_", resourceCulture);
+                object obj = ResourceManager.GetObject("selectAllIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -553,9 +553,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_select_all_48 {
+        internal static System.Drawing.Bitmap selectIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_select_all_48", resourceCulture);
+                object obj = ResourceManager.GetObject("selectIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -563,9 +563,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_signin_32 {
+        internal static System.Drawing.Bitmap signInIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-signin-32", resourceCulture);
+                object obj = ResourceManager.GetObject("signInIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -573,9 +573,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_slider_48 {
+        internal static System.Drawing.Bitmap sliderIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_slider_48", resourceCulture);
+                object obj = ResourceManager.GetObject("sliderIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -583,9 +583,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_sort_down_24__10_ {
+        internal static System.Drawing.Bitmap termIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-sort-down-24 (10)", resourceCulture);
+                object obj = ResourceManager.GetObject("termIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -593,9 +593,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_sort_down_24__7_ {
+        internal static System.Drawing.Bitmap tickBoxIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-sort-down-24 (7)", resourceCulture);
+                object obj = ResourceManager.GetObject("tickBoxIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -603,9 +603,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_sort_down_24__8_ {
+        internal static System.Drawing.Bitmap uncheckedIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-sort-down-24 (8)", resourceCulture);
+                object obj = ResourceManager.GetObject("uncheckedIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -613,9 +613,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_tick_box_32 {
+        internal static System.Drawing.Bitmap upperCaseIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-tick-box-32", resourceCulture);
+                object obj = ResourceManager.GetObject("upperCaseIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -623,9 +623,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_unchecked_checkbox_48__1_ {
+        internal static System.Drawing.Bitmap userIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_unchecked_checkbox_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("userIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -633,9 +633,9 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_uppercase_48__3_ {
+        internal static System.Drawing.Bitmap viewDetailsIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8_uppercase_48__3_", resourceCulture);
+                object obj = ResourceManager.GetObject("viewDetailsIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -643,9 +643,29 @@ namespace CertusCompanion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_view_details_32 {
+        internal static System.Drawing.Bitmap viewIcon {
             get {
-                object obj = ResourceManager.GetObject("icons8-view-details-32", resourceCulture);
+                object obj = ResourceManager.GetObject("viewIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warningIcon1 {
+            get {
+                object obj = ResourceManager.GetObject("warningIcon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warningIcon2 {
+            get {
+                object obj = ResourceManager.GetObject("warningIcon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

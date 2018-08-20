@@ -37,7 +37,6 @@
             this.clOuterPanel = new System.Windows.Forms.Panel();
             this.clSelectionBtn = new System.Windows.Forms.Button();
             this.clSplitPanel = new System.Windows.Forms.Panel();
-            this.clDropBtn = new System.Windows.Forms.Button();
             this.clientLbl = new System.Windows.Forms.Label();
             this.listViewOptionsPanel = new System.Windows.Forms.Panel();
             this.listViewOptionsDividerPanel4 = new System.Windows.Forms.Panel();
@@ -45,41 +44,30 @@
             this.vcOuterPanel = new System.Windows.Forms.Panel();
             this.vcSelectionBtn = new System.Windows.Forms.Button();
             this.vcSplitPanel = new System.Windows.Forms.Panel();
-            this.vcDropBtn = new System.Windows.Forms.Button();
             this.listViewOptionsDividerPanel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.importFromDatabaseBtn = new System.Windows.Forms.Button();
-            this.correctListViewColumnSizingBtn = new System.Windows.Forms.Button();
-            this.showItemsMonotoneBtn = new System.Windows.Forms.Button();
-            this.contrastItemGroupsBtn = new System.Windows.Forms.Button();
-            this.redrawItemsBtn = new System.Windows.Forms.Button();
             this.listViewOptionsDividerPanel3 = new System.Windows.Forms.Panel();
             this.dividerLbl2 = new System.Windows.Forms.Label();
             this.listViewOptionsDividerPanel1 = new System.Windows.Forms.Panel();
             this.dividerLbl = new System.Windows.Forms.Label();
-            this.bulkCheckBtn = new System.Windows.Forms.Button();
-            this.removePaintBtn = new System.Windows.Forms.Button();
-            this.addReferenceBtn = new System.Windows.Forms.Button();
-            this.deselectBtn = new System.Windows.Forms.Button();
-            this.paintBtn = new System.Windows.Forms.Button();
-            this.enlargeBtn = new System.Windows.Forms.Button();
-            this.singleCheckBtn = new System.Windows.Forms.Button();
-            this.filterBtn = new System.Windows.Forms.Button();
-            this.itemsViewBtn = new System.Windows.Forms.Button();
             this.addAndUpdateCheckBox = new System.Windows.Forms.CheckBox();
-            this.refreshBtn = new System.Windows.Forms.Button();
-            this.importBtn = new System.Windows.Forms.Button();
-            this.fullViewBtn = new System.Windows.Forms.Button();
-            this.colorDialogBtn = new System.Windows.Forms.Button();
+            this.workflowItemsListView = new CertusCompanion.ListViewNF();
+            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainerChild2 = new System.Windows.Forms.SplitContainer();
             this.detailsOptionsPanel = new System.Windows.Forms.Panel();
-            this.openInCertusBtn = new System.Windows.Forms.Button();
-            this.clearItemDetailsBtn = new System.Windows.Forms.Button();
-            this.copyIdsBtn = new System.Windows.Forms.Button();
-            this.selectAllItemsBtn = new System.Windows.Forms.Button();
-            this.openLinkBtn = new System.Windows.Forms.Button();
-            this.closeItemTabBtn = new System.Windows.Forms.Button();
             this.detailsOptionsPanel2 = new System.Windows.Forms.Panel();
             this.copyIdsBtn2 = new System.Windows.Forms.Button();
             this.selectAllItemsBtn2 = new System.Windows.Forms.Button();
@@ -107,7 +95,6 @@
             this.assignedToTbx = new System.Windows.Forms.TextBox();
             this.detailPanel7 = new System.Windows.Forms.Panel();
             this.focusDetailPanelBtn7 = new System.Windows.Forms.Button();
-            this.filesAttachedBtn = new System.Windows.Forms.Button();
             this.filesAttachedTbx = new System.Windows.Forms.TextBox();
             this.fileMimeDescLbl = new System.Windows.Forms.Label();
             this.detailPanel11 = new System.Windows.Forms.Panel();
@@ -163,16 +150,9 @@
             this.actionDetailPanelBtn6 = new System.Windows.Forms.Button();
             this.compliantTbx = new System.Windows.Forms.TextBox();
             this.detailNotificationsPanel = new System.Windows.Forms.Panel();
-            this.priorityNotificationBtn = new System.Windows.Forms.Button();
-            this.contractInformationUpdatedBtn = new System.Windows.Forms.Button();
-            this.itemExcludedBtn = new System.Windows.Forms.Button();
-            this.itemIsDifferentBtn = new System.Windows.Forms.Button();
-            this.companyUpdatedBtn = new System.Windows.Forms.Button();
-            this.contractIdOverridenBtn = new System.Windows.Forms.Button();
             this.detailsSaveBtn = new System.Windows.Forms.Button();
             this.detailPanel18 = new System.Windows.Forms.Panel();
             this.focusDetailPanelBtn18 = new System.Windows.Forms.Button();
-            this.openNoteBtn = new System.Windows.Forms.Button();
             this.detailNoteTbx = new System.Windows.Forms.TextBox();
             this.itemNoteDescLbl = new System.Windows.Forms.Label();
             this.detailPanel17 = new System.Windows.Forms.Panel();
@@ -204,8 +184,6 @@
             this.qfndOuterPanel = new System.Windows.Forms.Panel();
             this.qfndSelectionBtn = new System.Windows.Forms.Button();
             this.qfndSplitPanel = new System.Windows.Forms.Panel();
-            this.qfndDropBtn = new System.Windows.Forms.Button();
-            this.paintFromQueryBtn = new System.Windows.Forms.Button();
             this.queryPanel = new System.Windows.Forms.Panel();
             this.qwOuterPanel = new System.Windows.Forms.Panel();
             this.qwInnerPanel = new System.Windows.Forms.Panel();
@@ -233,7 +211,6 @@
             this.queriedItemsListbox = new System.Windows.Forms.ListBox();
             this.viewQueryBtn = new System.Windows.Forms.Button();
             this.previewDescLbl = new System.Windows.Forms.Label();
-            this.checkQueriedItemsBtn = new System.Windows.Forms.Button();
             this.importsLbl = new System.Windows.Forms.Label();
             this.importPanel = new System.Windows.Forms.Panel();
             this.importDateTbxPanel = new System.Windows.Forms.Panel();
@@ -290,10 +267,6 @@
             this.dividerViewToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.contrastItemGroupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showItemsSameColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dividerViewToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.excludedItemsViewToolStripMenuitem = new System.Windows.Forms.ToolStripMenuItem();
-            this.certificatesViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.companiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certusBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -314,53 +287,21 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.displayingToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.displayingCountStatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.checkedToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.checkedCountStatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.queriedToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.queriedCountStatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.filterStatusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblTimer = new System.Windows.Forms.Timer(this.components);
             this.listViewContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyWithHeadersContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyIDsContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectAllContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.openLinksContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createReferencesContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeFromExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.paintContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removePaintContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.markContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.markPriorityContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.markExcludedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unmarkPriorityContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unmarkCompanyUpdatedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unmarkContractInfoUpdatedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unmarkContractOverridenContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unmarkExcludedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unmarkItemChangedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.modifyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extractCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extractContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendStatusAndAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setAssignmentFindContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setAssignmentManuallyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unassignContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.symbolsImageList = new System.Windows.Forms.ImageList(this.components);
             this.paintColorDialog = new System.Windows.Forms.ColorDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -376,8 +317,6 @@
             this.loadingFormTimer = new System.Windows.Forms.Timer(this.components);
             this.importCertificatesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.buttonDescToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.certusConnectionBtn = new System.Windows.Forms.Button();
-            this.matchCaseBtn = new System.Windows.Forms.Button();
             this.searchTbx = new System.Windows.Forms.TextBox();
             this.tbxRemainsToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.importCompaniesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
@@ -397,10 +336,8 @@
             this.qfndCustomDDLMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.item1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.item2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.item4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noAttachToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoReplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preventDropDownReopen = new System.Windows.Forms.Timer(this.components);
             this.vcCustomDDLMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.vcToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -423,20 +360,73 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToDBBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.changeClientBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.workflowItemsListView = new CertusCompanion.ListViewNF();
-            this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileUrlColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.assignedToColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sizeFixHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.certusConnectionBtn = new System.Windows.Forms.Button();
+            this.matchCaseBtn = new System.Windows.Forms.Button();
+            this.clDropBtn = new System.Windows.Forms.Button();
+            this.vcDropBtn = new System.Windows.Forms.Button();
+            this.importFromDatabaseBtn = new System.Windows.Forms.Button();
+            this.correctListViewColumnSizingBtn = new System.Windows.Forms.Button();
+            this.showItemsMonotoneBtn = new System.Windows.Forms.Button();
+            this.contrastItemGroupsBtn = new System.Windows.Forms.Button();
+            this.redrawItemsBtn = new System.Windows.Forms.Button();
+            this.bulkCheckBtn = new System.Windows.Forms.Button();
+            this.removePaintBtn = new System.Windows.Forms.Button();
+            this.addReferenceBtn = new System.Windows.Forms.Button();
+            this.deselectBtn = new System.Windows.Forms.Button();
+            this.paintBtn = new System.Windows.Forms.Button();
+            this.enlargeBtn = new System.Windows.Forms.Button();
+            this.singleCheckBtn = new System.Windows.Forms.Button();
+            this.filterBtn = new System.Windows.Forms.Button();
+            this.itemsViewBtn = new System.Windows.Forms.Button();
+            this.refreshBtn = new System.Windows.Forms.Button();
+            this.importBtn = new System.Windows.Forms.Button();
+            this.fullViewBtn = new System.Windows.Forms.Button();
+            this.colorDialogBtn = new System.Windows.Forms.Button();
+            this.openInCertusBtn = new System.Windows.Forms.Button();
+            this.clearItemDetailsBtn = new System.Windows.Forms.Button();
+            this.copyIdsBtn = new System.Windows.Forms.Button();
+            this.selectAllItemsBtn = new System.Windows.Forms.Button();
+            this.openLinkBtn = new System.Windows.Forms.Button();
+            this.closeItemTabBtn = new System.Windows.Forms.Button();
+            this.filesAttachedBtn = new System.Windows.Forms.Button();
+            this.priorityNotificationBtn = new System.Windows.Forms.Button();
+            this.contractInformationUpdatedBtn = new System.Windows.Forms.Button();
+            this.itemExcludedBtn = new System.Windows.Forms.Button();
+            this.itemIsDifferentBtn = new System.Windows.Forms.Button();
+            this.companyUpdatedBtn = new System.Windows.Forms.Button();
+            this.contractIdOverridenBtn = new System.Windows.Forms.Button();
+            this.openNoteBtn = new System.Windows.Forms.Button();
+            this.qfndDropBtn = new System.Windows.Forms.Button();
+            this.paintFromQueryBtn = new System.Windows.Forms.Button();
+            this.checkQueriedItemsBtn = new System.Windows.Forms.Button();
+            this.displayingToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.checkedToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.queriedToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.copyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectAllContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openLinksContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createReferencesContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeFromExportContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paintContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePaintContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markPriorityContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markExcludedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkPriorityContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkExcludedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unmarkItemChangedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAssignmentFindContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAssignmentManuallyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unassignContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild1)).BeginInit();
             this.splitContainerChild1.Panel1.SuspendLayout();
             this.splitContainerChild1.Panel2.SuspendLayout();
@@ -626,34 +616,6 @@
             this.clSplitPanel.TabIndex = 0;
             this.clSplitPanel.Visible = false;
             // 
-            // clDropBtn
-            // 
-            this.clDropBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.clDropBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.clDropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
-            this.clDropBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.clDropBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.clDropBtn.FlatAppearance.BorderSize = 0;
-            this.clDropBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.clDropBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.clDropBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clDropBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clDropBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.clDropBtn.Location = new System.Drawing.Point(73, 0);
-            this.clDropBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.clDropBtn.Name = "clDropBtn";
-            this.clDropBtn.Size = new System.Drawing.Size(18, 19);
-            this.clDropBtn.TabIndex = 0;
-            this.clDropBtn.TabStop = false;
-            this.clDropBtn.UseVisualStyleBackColor = false;
-            this.clDropBtn.Enter += new System.EventHandler(this.clCustomDDLPanel_Enter);
-            this.clDropBtn.Leave += new System.EventHandler(this.clCustomDDLPanel_Leave);
-            this.clDropBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.clCustomDDLBtns_MouseDown);
-            this.clDropBtn.MouseLeave += new System.EventHandler(this.clCustomDDLPanel_MouseLeave);
-            this.clDropBtn.MouseHover += new System.EventHandler(this.clCustomDDLPanel_MouseHover);
-            this.clDropBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.clCustomDDLPanel_MouseMove);
-            // 
             // clientLbl
             // 
             this.clientLbl.AutoSize = true;
@@ -774,35 +736,6 @@
             this.vcSplitPanel.TabIndex = 0;
             this.vcSplitPanel.Visible = false;
             // 
-            // vcDropBtn
-            // 
-            this.vcDropBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.vcDropBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.vcDropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
-            this.vcDropBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.vcDropBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.vcDropBtn.FlatAppearance.BorderSize = 0;
-            this.vcDropBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.vcDropBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.vcDropBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vcDropBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vcDropBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.vcDropBtn.Location = new System.Drawing.Point(78, 0);
-            this.vcDropBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.vcDropBtn.Name = "vcDropBtn";
-            this.vcDropBtn.Size = new System.Drawing.Size(18, 19);
-            this.vcDropBtn.TabIndex = 0;
-            this.vcDropBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.vcDropBtn, "View Choice");
-            this.vcDropBtn.UseVisualStyleBackColor = false;
-            this.vcDropBtn.Enter += new System.EventHandler(this.vcCustomDDLPanel_Enter);
-            this.vcDropBtn.Leave += new System.EventHandler(this.vcCustomDDLPanel_Leave);
-            this.vcDropBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.vcCustomDDLBtns_MouseDown);
-            this.vcDropBtn.MouseLeave += new System.EventHandler(this.vcCustomDDLPanel_MouseLeave);
-            this.vcDropBtn.MouseHover += new System.EventHandler(this.vcCustomDDLPanel_MouseHover);
-            this.vcDropBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.vcCustomDDLPanel_MouseMove);
-            // 
             // listViewOptionsDividerPanel2
             // 
             this.listViewOptionsDividerPanel2.Controls.Add(this.label2);
@@ -840,117 +773,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.testBtn_Click);
-            // 
-            // importFromDatabaseBtn
-            // 
-            this.importFromDatabaseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.importFromDatabaseBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("importFromDatabaseBtn.BackgroundImage")));
-            this.importFromDatabaseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.importFromDatabaseBtn.FlatAppearance.BorderSize = 0;
-            this.importFromDatabaseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.importFromDatabaseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.importFromDatabaseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.importFromDatabaseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.importFromDatabaseBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.importFromDatabaseBtn.Location = new System.Drawing.Point(291, 1);
-            this.importFromDatabaseBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.importFromDatabaseBtn.Name = "importFromDatabaseBtn";
-            this.importFromDatabaseBtn.Size = new System.Drawing.Size(20, 20);
-            this.importFromDatabaseBtn.TabIndex = 0;
-            this.importFromDatabaseBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.importFromDatabaseBtn, "Import From Database");
-            this.importFromDatabaseBtn.UseVisualStyleBackColor = false;
-            this.importFromDatabaseBtn.Click += new System.EventHandler(this.importFromDatabaseBtn_Click);
-            // 
-            // correctListViewColumnSizingBtn
-            // 
-            this.correctListViewColumnSizingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.correctListViewColumnSizingBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("correctListViewColumnSizingBtn.BackgroundImage")));
-            this.correctListViewColumnSizingBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.correctListViewColumnSizingBtn.FlatAppearance.BorderSize = 0;
-            this.correctListViewColumnSizingBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.correctListViewColumnSizingBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.correctListViewColumnSizingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.correctListViewColumnSizingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correctListViewColumnSizingBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.correctListViewColumnSizingBtn.Location = new System.Drawing.Point(521, 1);
-            this.correctListViewColumnSizingBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.correctListViewColumnSizingBtn.Name = "correctListViewColumnSizingBtn";
-            this.correctListViewColumnSizingBtn.Size = new System.Drawing.Size(20, 20);
-            this.correctListViewColumnSizingBtn.TabIndex = 0;
-            this.correctListViewColumnSizingBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.correctListViewColumnSizingBtn, "Correct Column Sizing");
-            this.correctListViewColumnSizingBtn.UseVisualStyleBackColor = false;
-            this.correctListViewColumnSizingBtn.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
-            // 
-            // showItemsMonotoneBtn
-            // 
-            this.showItemsMonotoneBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.showItemsMonotoneBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showItemsMonotoneBtn.BackgroundImage")));
-            this.showItemsMonotoneBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.showItemsMonotoneBtn.FlatAppearance.BorderSize = 0;
-            this.showItemsMonotoneBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.showItemsMonotoneBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.showItemsMonotoneBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showItemsMonotoneBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showItemsMonotoneBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.showItemsMonotoneBtn.Location = new System.Drawing.Point(565, 1);
-            this.showItemsMonotoneBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.showItemsMonotoneBtn.Name = "showItemsMonotoneBtn";
-            this.showItemsMonotoneBtn.Size = new System.Drawing.Size(20, 20);
-            this.showItemsMonotoneBtn.TabIndex = 0;
-            this.showItemsMonotoneBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.showItemsMonotoneBtn, "Show Items all the Same Color");
-            this.showItemsMonotoneBtn.UseVisualStyleBackColor = false;
-            this.showItemsMonotoneBtn.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
-            this.showItemsMonotoneBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.showItemsMonotoneBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // contrastItemGroupsBtn
-            // 
-            this.contrastItemGroupsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.contrastItemGroupsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contrastItemGroupsBtn.BackgroundImage")));
-            this.contrastItemGroupsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contrastItemGroupsBtn.FlatAppearance.BorderSize = 0;
-            this.contrastItemGroupsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.contrastItemGroupsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.contrastItemGroupsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.contrastItemGroupsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contrastItemGroupsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contrastItemGroupsBtn.Location = new System.Drawing.Point(543, 1);
-            this.contrastItemGroupsBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.contrastItemGroupsBtn.Name = "contrastItemGroupsBtn";
-            this.contrastItemGroupsBtn.Size = new System.Drawing.Size(20, 20);
-            this.contrastItemGroupsBtn.TabIndex = 0;
-            this.contrastItemGroupsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.contrastItemGroupsBtn, "Contrast Item Groups");
-            this.contrastItemGroupsBtn.UseVisualStyleBackColor = false;
-            this.contrastItemGroupsBtn.Click += new System.EventHandler(this.contrastItemGroupsBtn_Click);
-            this.contrastItemGroupsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.contrastItemGroupsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // redrawItemsBtn
-            // 
-            this.redrawItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.redrawItemsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("redrawItemsBtn.BackgroundImage")));
-            this.redrawItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.redrawItemsBtn.FlatAppearance.BorderSize = 0;
-            this.redrawItemsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.redrawItemsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.redrawItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.redrawItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.redrawItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.redrawItemsBtn.Location = new System.Drawing.Point(599, 1);
-            this.redrawItemsBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.redrawItemsBtn.Name = "redrawItemsBtn";
-            this.redrawItemsBtn.Size = new System.Drawing.Size(20, 20);
-            this.redrawItemsBtn.TabIndex = 0;
-            this.redrawItemsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.redrawItemsBtn, "Update Checked Items");
-            this.redrawItemsBtn.UseVisualStyleBackColor = false;
-            this.redrawItemsBtn.Click += new System.EventHandler(this.redrawItemsBtn_Click);
-            this.redrawItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.redrawItemsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
             // listViewOptionsDividerPanel3
             // 
@@ -994,213 +816,6 @@
             this.dividerLbl.Size = new System.Drawing.Size(2, 21);
             this.dividerLbl.TabIndex = 0;
             // 
-            // bulkCheckBtn
-            // 
-            this.bulkCheckBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.bulkCheckBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_unchecked_checkbox_48__1_;
-            this.bulkCheckBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bulkCheckBtn.FlatAppearance.BorderSize = 0;
-            this.bulkCheckBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.bulkCheckBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bulkCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bulkCheckBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bulkCheckBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bulkCheckBtn.Location = new System.Drawing.Point(2, 1);
-            this.bulkCheckBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.bulkCheckBtn.Name = "bulkCheckBtn";
-            this.bulkCheckBtn.Size = new System.Drawing.Size(20, 20);
-            this.bulkCheckBtn.TabIndex = 0;
-            this.bulkCheckBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.bulkCheckBtn, "Check / Uncheck all (Alt+Shift+A)");
-            this.bulkCheckBtn.UseVisualStyleBackColor = false;
-            this.bulkCheckBtn.Click += new System.EventHandler(this.checkInBulkBtn_Click);
-            this.bulkCheckBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.bulkCheckBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // removePaintBtn
-            // 
-            this.removePaintBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.removePaintBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removePaintBtn.BackgroundImage")));
-            this.removePaintBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removePaintBtn.FlatAppearance.BorderSize = 0;
-            this.removePaintBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.removePaintBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.removePaintBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removePaintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removePaintBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.removePaintBtn.Location = new System.Drawing.Point(92, 1);
-            this.removePaintBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.removePaintBtn.Name = "removePaintBtn";
-            this.removePaintBtn.Size = new System.Drawing.Size(20, 20);
-            this.removePaintBtn.TabIndex = 0;
-            this.removePaintBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.removePaintBtn, "Remove Paint");
-            this.removePaintBtn.UseVisualStyleBackColor = false;
-            this.removePaintBtn.Click += new System.EventHandler(this.removePaintBtn_Click);
-            this.removePaintBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.removePaintBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // addReferenceBtn
-            // 
-            this.addReferenceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.addReferenceBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_down_3_48;
-            this.addReferenceBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addReferenceBtn.FlatAppearance.BorderSize = 0;
-            this.addReferenceBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.addReferenceBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.addReferenceBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addReferenceBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addReferenceBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addReferenceBtn.Location = new System.Drawing.Point(69, 1);
-            this.addReferenceBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.addReferenceBtn.Name = "addReferenceBtn";
-            this.addReferenceBtn.Size = new System.Drawing.Size(20, 20);
-            this.addReferenceBtn.TabIndex = 0;
-            this.addReferenceBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.addReferenceBtn, "Create References (Alt+Shift+Down)");
-            this.addReferenceBtn.UseVisualStyleBackColor = false;
-            this.addReferenceBtn.Click += new System.EventHandler(this.addReferenceBtn_Click);
-            this.addReferenceBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.addReferenceBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // deselectBtn
-            // 
-            this.deselectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.deselectBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deselectBtn.BackgroundImage")));
-            this.deselectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deselectBtn.FlatAppearance.BorderSize = 0;
-            this.deselectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.deselectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.deselectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deselectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deselectBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.deselectBtn.Location = new System.Drawing.Point(46, 2);
-            this.deselectBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.deselectBtn.Name = "deselectBtn";
-            this.deselectBtn.Size = new System.Drawing.Size(20, 20);
-            this.deselectBtn.TabIndex = 0;
-            this.deselectBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.deselectBtn, "Deselect (Alt+D)");
-            this.deselectBtn.UseVisualStyleBackColor = false;
-            this.deselectBtn.Click += new System.EventHandler(this.deselectBtn_Click);
-            this.deselectBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.deselectBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // paintBtn
-            // 
-            this.paintBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.paintBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_paint_brush_48;
-            this.paintBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.paintBtn.FlatAppearance.BorderSize = 0;
-            this.paintBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.paintBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.paintBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.paintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paintBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.paintBtn.Location = new System.Drawing.Point(114, 1);
-            this.paintBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.paintBtn.Name = "paintBtn";
-            this.paintBtn.Size = new System.Drawing.Size(20, 20);
-            this.paintBtn.TabIndex = 0;
-            this.paintBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.paintBtn, "Paint");
-            this.paintBtn.UseVisualStyleBackColor = false;
-            this.paintBtn.Click += new System.EventHandler(this.paintBtn_Click);
-            this.paintBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.paintBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // enlargeBtn
-            // 
-            this.enlargeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.enlargeBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_enlarge_48__1_;
-            this.enlargeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.enlargeBtn.FlatAppearance.BorderSize = 0;
-            this.enlargeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.enlargeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.enlargeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enlargeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enlargeBtn.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.enlargeBtn.Location = new System.Drawing.Point(498, 1);
-            this.enlargeBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.enlargeBtn.Name = "enlargeBtn";
-            this.enlargeBtn.Size = new System.Drawing.Size(20, 20);
-            this.enlargeBtn.TabIndex = 0;
-            this.enlargeBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.enlargeBtn, "Correct Panel Sizing (Ctrl+E)");
-            this.enlargeBtn.UseVisualStyleBackColor = false;
-            this.enlargeBtn.Click += new System.EventHandler(this.enlargeBtn_Click);
-            this.enlargeBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.enlargeBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // singleCheckBtn
-            // 
-            this.singleCheckBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.singleCheckBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_select_48__2_;
-            this.singleCheckBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.singleCheckBtn.FlatAppearance.BorderSize = 0;
-            this.singleCheckBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.singleCheckBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.singleCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.singleCheckBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.singleCheckBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.singleCheckBtn.Location = new System.Drawing.Point(24, 1);
-            this.singleCheckBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.singleCheckBtn.Name = "singleCheckBtn";
-            this.singleCheckBtn.Size = new System.Drawing.Size(20, 20);
-            this.singleCheckBtn.TabIndex = 0;
-            this.singleCheckBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.singleCheckBtn, "Check Focused Item (Alt+X)");
-            this.singleCheckBtn.UseVisualStyleBackColor = false;
-            this.singleCheckBtn.Click += new System.EventHandler(this.singleCheckBtn_Click);
-            this.singleCheckBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.singleCheckBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // filterBtn
-            // 
-            this.filterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.filterBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_slider_48;
-            this.filterBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.filterBtn.FlatAppearance.BorderSize = 0;
-            this.filterBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.filterBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.filterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filterBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.filterBtn.Location = new System.Drawing.Point(430, 1);
-            this.filterBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.filterBtn.Name = "filterBtn";
-            this.filterBtn.Size = new System.Drawing.Size(20, 20);
-            this.filterBtn.TabIndex = 0;
-            this.filterBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.filterBtn, "Filter Items (Ctrl+T)");
-            this.filterBtn.UseVisualStyleBackColor = false;
-            this.filterBtn.Click += new System.EventHandler(this.lvFiltersBtn_Click);
-            this.filterBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.filterBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // itemsViewBtn
-            // 
-            this.itemsViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.itemsViewBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_eye_filled_50;
-            this.itemsViewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.itemsViewBtn.FlatAppearance.BorderSize = 0;
-            this.itemsViewBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.itemsViewBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.itemsViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemsViewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemsViewBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemsViewBtn.Location = new System.Drawing.Point(453, 1);
-            this.itemsViewBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.itemsViewBtn.Name = "itemsViewBtn";
-            this.itemsViewBtn.Size = new System.Drawing.Size(20, 20);
-            this.itemsViewBtn.TabIndex = 0;
-            this.itemsViewBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.itemsViewBtn, "View Items in Pop Out Window (Ctrl+Shift+V)");
-            this.itemsViewBtn.UseVisualStyleBackColor = false;
-            this.itemsViewBtn.Click += new System.EventHandler(this.itemsViewBtn_Click);
-            this.itemsViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.itemsViewBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
             // addAndUpdateCheckBox
             // 
             this.addAndUpdateCheckBox.AutoSize = true;
@@ -1219,97 +834,118 @@
             this.addAndUpdateCheckBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.addAndUpdateCheckBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // refreshBtn
+            // workflowItemsListView
             // 
-            this.refreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.refreshBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_available_updates_48__1_;
-            this.refreshBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refreshBtn.FlatAppearance.BorderSize = 0;
-            this.refreshBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.refreshBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.refreshBtn.Location = new System.Drawing.Point(622, 1);
-            this.refreshBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(20, 20);
-            this.refreshBtn.TabIndex = 0;
-            this.refreshBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.refreshBtn, "Refresh View (Ctrl+R)");
-            this.refreshBtn.UseVisualStyleBackColor = false;
-            this.refreshBtn.Click += new System.EventHandler(this.refreshListViewBtn_Click);
-            this.refreshBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.refreshBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.workflowItemsListView.CheckBoxes = true;
+            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.countColumnHeader,
+            this.itemIdColumnHeader,
+            this.companyColumnHeader,
+            this.contractIdColumnHeader,
+            this.dateColumnHeader,
+            this.senderColumnHeader,
+            this.emailSubjectColumnHeader,
+            this.fileNameColumnHeader,
+            this.sizeColumnHeader,
+            this.fileUrlColumnHeader,
+            this.assignedToColumnHeader,
+            this.statusColumnHeader,
+            this.sizeFixHeader});
+            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
+            this.workflowItemsListView.FullRowSelect = true;
+            this.workflowItemsListView.HideSelection = false;
+            this.workflowItemsListView.LabelWrap = false;
+            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
+            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
+            this.workflowItemsListView.Name = "workflowItemsListView";
+            this.workflowItemsListView.OwnerDraw = true;
+            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
+            this.workflowItemsListView.TabIndex = 1;
+            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
+            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
+            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
+            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
+            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
+            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
+            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
+            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
+            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
+            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
+            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
+            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
+            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
+            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
             // 
-            // importBtn
+            // countColumnHeader
             // 
-            this.importBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.importBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_download_48;
-            this.importBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.importBtn.FlatAppearance.BorderSize = 0;
-            this.importBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.importBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.importBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.importBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.importBtn.Location = new System.Drawing.Point(170, 1);
-            this.importBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.importBtn.Name = "importBtn";
-            this.importBtn.Size = new System.Drawing.Size(20, 20);
-            this.importBtn.TabIndex = 0;
-            this.importBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.importBtn, "Import Workflow Items From CSV (Ctrl+Shift+I)");
-            this.importBtn.UseVisualStyleBackColor = false;
-            this.importBtn.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
-            this.importBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.importBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            this.countColumnHeader.Text = "";
+            this.countColumnHeader.Width = 70;
             // 
-            // fullViewBtn
+            // itemIdColumnHeader
             // 
-            this.fullViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.fullViewBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_expand_48__1_;
-            this.fullViewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.fullViewBtn.FlatAppearance.BorderSize = 0;
-            this.fullViewBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.fullViewBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.fullViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fullViewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullViewBtn.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.fullViewBtn.Location = new System.Drawing.Point(476, 1);
-            this.fullViewBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.fullViewBtn.Name = "fullViewBtn";
-            this.fullViewBtn.Size = new System.Drawing.Size(20, 20);
-            this.fullViewBtn.TabIndex = 0;
-            this.fullViewBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.fullViewBtn, "Full Screen (Ctrl+Enter)");
-            this.fullViewBtn.UseVisualStyleBackColor = false;
-            this.fullViewBtn.Click += new System.EventHandler(this.fullViewBtn_Click);
-            this.fullViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.fullViewBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            this.itemIdColumnHeader.Text = "Item ID";
+            this.itemIdColumnHeader.Width = 70;
             // 
-            // colorDialogBtn
+            // companyColumnHeader
             // 
-            this.colorDialogBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.colorDialogBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_color_wheel_48;
-            this.colorDialogBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.colorDialogBtn.FlatAppearance.BorderSize = 0;
-            this.colorDialogBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.colorDialogBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.colorDialogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colorDialogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorDialogBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.colorDialogBtn.Location = new System.Drawing.Point(136, 1);
-            this.colorDialogBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.colorDialogBtn.Name = "colorDialogBtn";
-            this.colorDialogBtn.Size = new System.Drawing.Size(20, 20);
-            this.colorDialogBtn.TabIndex = 0;
-            this.colorDialogBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.colorDialogBtn, "Select Color");
-            this.colorDialogBtn.UseVisualStyleBackColor = false;
-            this.colorDialogBtn.Click += new System.EventHandler(this.colorSelectionBtn_Click);
-            this.colorDialogBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.colorDialogBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            this.companyColumnHeader.Text = "Company";
+            this.companyColumnHeader.Width = 70;
+            // 
+            // contractIdColumnHeader
+            // 
+            this.contractIdColumnHeader.Text = "Contract";
+            this.contractIdColumnHeader.Width = 70;
+            // 
+            // dateColumnHeader
+            // 
+            this.dateColumnHeader.Text = "Date";
+            this.dateColumnHeader.Width = 70;
+            // 
+            // senderColumnHeader
+            // 
+            this.senderColumnHeader.Text = "Sender";
+            this.senderColumnHeader.Width = 70;
+            // 
+            // emailSubjectColumnHeader
+            // 
+            this.emailSubjectColumnHeader.Text = "Email Subject";
+            this.emailSubjectColumnHeader.Width = 70;
+            // 
+            // fileNameColumnHeader
+            // 
+            this.fileNameColumnHeader.Text = "File Name";
+            this.fileNameColumnHeader.Width = 70;
+            // 
+            // sizeColumnHeader
+            // 
+            this.sizeColumnHeader.Text = "Size";
+            this.sizeColumnHeader.Width = 70;
+            // 
+            // fileUrlColumnHeader
+            // 
+            this.fileUrlColumnHeader.Text = "File URL";
+            this.fileUrlColumnHeader.Width = 70;
+            // 
+            // assignedToColumnHeader
+            // 
+            this.assignedToColumnHeader.Text = "Assigned To";
+            this.assignedToColumnHeader.Width = 70;
+            // 
+            // statusColumnHeader
+            // 
+            this.statusColumnHeader.Text = "Status";
+            this.statusColumnHeader.Width = 70;
+            // 
+            // sizeFixHeader
+            // 
+            this.sizeFixHeader.Text = "";
+            this.sizeFixHeader.Width = 70;
             // 
             // splitContainerChild2
             // 
@@ -1358,156 +994,6 @@
             this.detailsOptionsPanel.Size = new System.Drawing.Size(24, 148);
             this.detailsOptionsPanel.TabIndex = 0;
             // 
-            // openInCertusBtn
-            // 
-            this.openInCertusBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.openInCertusBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.openInCertusBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_open_in_browser_48__1_;
-            this.openInCertusBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.openInCertusBtn.Enabled = false;
-            this.openInCertusBtn.FlatAppearance.BorderSize = 0;
-            this.openInCertusBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.openInCertusBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.openInCertusBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openInCertusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openInCertusBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.openInCertusBtn.ImageIndex = 0;
-            this.openInCertusBtn.Location = new System.Drawing.Point(2, 97);
-            this.openInCertusBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.openInCertusBtn.Name = "openInCertusBtn";
-            this.openInCertusBtn.Size = new System.Drawing.Size(22, 22);
-            this.openInCertusBtn.TabIndex = 7;
-            this.openInCertusBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.openInCertusBtn, "Open in Certus Browser");
-            this.openInCertusBtn.UseVisualStyleBackColor = false;
-            this.openInCertusBtn.Click += new System.EventHandler(this.openInCertusBtn_Click);
-            this.openInCertusBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.openInCertusBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // clearItemDetailsBtn
-            // 
-            this.clearItemDetailsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearItemDetailsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.clearItemDetailsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_close_window_48__1_;
-            this.clearItemDetailsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.clearItemDetailsBtn.FlatAppearance.BorderSize = 0;
-            this.clearItemDetailsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.clearItemDetailsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.clearItemDetailsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearItemDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearItemDetailsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clearItemDetailsBtn.ImageIndex = 0;
-            this.clearItemDetailsBtn.Location = new System.Drawing.Point(2, 122);
-            this.clearItemDetailsBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.clearItemDetailsBtn.Name = "clearItemDetailsBtn";
-            this.clearItemDetailsBtn.Size = new System.Drawing.Size(22, 22);
-            this.clearItemDetailsBtn.TabIndex = 6;
-            this.clearItemDetailsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.clearItemDetailsBtn, "Clear Details View");
-            this.clearItemDetailsBtn.UseVisualStyleBackColor = false;
-            this.clearItemDetailsBtn.Click += new System.EventHandler(this.clearItemDetailsBtn_Click);
-            this.clearItemDetailsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.clearItemDetailsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // copyIdsBtn
-            // 
-            this.copyIdsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.copyIdsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyIdsBtn.BackgroundImage")));
-            this.copyIdsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.copyIdsBtn.FlatAppearance.BorderSize = 0;
-            this.copyIdsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.copyIdsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.copyIdsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.copyIdsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.copyIdsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.copyIdsBtn.ImageIndex = 0;
-            this.copyIdsBtn.Location = new System.Drawing.Point(2, 72);
-            this.copyIdsBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.copyIdsBtn.Name = "copyIdsBtn";
-            this.copyIdsBtn.Size = new System.Drawing.Size(22, 22);
-            this.copyIdsBtn.TabIndex = 4;
-            this.copyIdsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.copyIdsBtn, "Copy Reference ID(s) to Clipboard");
-            this.copyIdsBtn.UseVisualStyleBackColor = false;
-            this.copyIdsBtn.Click += new System.EventHandler(this.copyIdsBtn_Click);
-            this.copyIdsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.copyIdsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // selectAllItemsBtn
-            // 
-            this.selectAllItemsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectAllItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.selectAllItemsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_select_all_48;
-            this.selectAllItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectAllItemsBtn.FlatAppearance.BorderSize = 0;
-            this.selectAllItemsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.selectAllItemsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.selectAllItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.selectAllItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectAllItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.selectAllItemsBtn.ImageIndex = 0;
-            this.selectAllItemsBtn.Location = new System.Drawing.Point(2, 22);
-            this.selectAllItemsBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.selectAllItemsBtn.Name = "selectAllItemsBtn";
-            this.selectAllItemsBtn.Size = new System.Drawing.Size(22, 22);
-            this.selectAllItemsBtn.TabIndex = 2;
-            this.selectAllItemsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.selectAllItemsBtn, "Select All References (Ctrl+Alt+A)");
-            this.selectAllItemsBtn.UseVisualStyleBackColor = false;
-            this.selectAllItemsBtn.Click += new System.EventHandler(this.selectAllItemsBtn_Click);
-            this.selectAllItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.selectAllItemsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // openLinkBtn
-            // 
-            this.openLinkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.openLinkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.openLinkBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_external_link_48;
-            this.openLinkBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.openLinkBtn.FlatAppearance.BorderSize = 0;
-            this.openLinkBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.openLinkBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.openLinkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openLinkBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openLinkBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.openLinkBtn.ImageIndex = 0;
-            this.openLinkBtn.Location = new System.Drawing.Point(2, 47);
-            this.openLinkBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.openLinkBtn.Name = "openLinkBtn";
-            this.openLinkBtn.Size = new System.Drawing.Size(22, 22);
-            this.openLinkBtn.TabIndex = 1;
-            this.openLinkBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.openLinkBtn, "Open File Link(s) (Ctrl+Shift+O)");
-            this.openLinkBtn.UseVisualStyleBackColor = false;
-            this.openLinkBtn.Click += new System.EventHandler(this.openAllLinks_Click);
-            this.openLinkBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.openLinkBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
-            // closeItemTabBtn
-            // 
-            this.closeItemTabBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeItemTabBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.closeItemTabBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closeItemTabBtn.BackgroundImage")));
-            this.closeItemTabBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closeItemTabBtn.FlatAppearance.BorderSize = 0;
-            this.closeItemTabBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.closeItemTabBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.closeItemTabBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeItemTabBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeItemTabBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeItemTabBtn.ImageIndex = 0;
-            this.closeItemTabBtn.Location = new System.Drawing.Point(2, 0);
-            this.closeItemTabBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.closeItemTabBtn.Name = "closeItemTabBtn";
-            this.closeItemTabBtn.Size = new System.Drawing.Size(22, 22);
-            this.closeItemTabBtn.TabIndex = 0;
-            this.closeItemTabBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.closeItemTabBtn, "Remove Reference(s) (Ctrl+Shift+X)");
-            this.closeItemTabBtn.UseVisualStyleBackColor = false;
-            this.closeItemTabBtn.Click += new System.EventHandler(this.closeItemButton_Click);
-            this.closeItemTabBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            this.closeItemTabBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
-            // 
             // detailsOptionsPanel2
             // 
             this.detailsOptionsPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1540,6 +1026,7 @@
             this.copyIdsBtn2.TabIndex = 3;
             this.copyIdsBtn2.TabStop = false;
             this.copyIdsBtn2.Text = "C";
+            this.buttonDescToolTip.SetToolTip(this.copyIdsBtn2, "Copy Reference ID(s) to Clipboard");
             this.copyIdsBtn2.UseVisualStyleBackColor = false;
             this.copyIdsBtn2.Click += new System.EventHandler(this.copyIdsBtn_Click);
             // 
@@ -1561,6 +1048,7 @@
             this.selectAllItemsBtn2.TabIndex = 2;
             this.selectAllItemsBtn2.TabStop = false;
             this.selectAllItemsBtn2.Text = "A";
+            this.buttonDescToolTip.SetToolTip(this.selectAllItemsBtn2, "Select All References (Ctrl+Alt+A)");
             this.selectAllItemsBtn2.UseVisualStyleBackColor = false;
             this.selectAllItemsBtn2.Click += new System.EventHandler(this.selectAllItemsBtn_Click);
             this.selectAllItemsBtn2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -1584,6 +1072,7 @@
             this.openLinkBtn2.TabIndex = 1;
             this.openLinkBtn2.TabStop = false;
             this.openLinkBtn2.Text = "O";
+            this.buttonDescToolTip.SetToolTip(this.openLinkBtn2, "Open File Link(s) (Ctrl+Shift+O)");
             this.openLinkBtn2.UseVisualStyleBackColor = false;
             this.openLinkBtn2.Click += new System.EventHandler(this.openAllLinks_Click);
             this.openLinkBtn2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -1607,6 +1096,7 @@
             this.closeItemBtn2.TabIndex = 0;
             this.closeItemBtn2.TabStop = false;
             this.closeItemBtn2.Text = "X";
+            this.buttonDescToolTip.SetToolTip(this.closeItemBtn2, "Remove Reference(s) (Ctrl+Shift+X)");
             this.closeItemBtn2.UseVisualStyleBackColor = false;
             this.closeItemBtn2.Click += new System.EventHandler(this.closeItemButton_Click);
             this.closeItemBtn2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
@@ -2033,29 +1523,6 @@
             this.focusDetailPanelBtn7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.focusDetailPanelBtn_KeyDown);
             this.focusDetailPanelBtn7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.focusDetailPanelBtn_KeyPress);
             this.focusDetailPanelBtn7.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.focusDetailPanelBtn_PreviewKeyDown);
-            // 
-            // filesAttachedBtn
-            // 
-            this.filesAttachedBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filesAttachedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.filesAttachedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("filesAttachedBtn.BackgroundImage")));
-            this.filesAttachedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.filesAttachedBtn.FlatAppearance.BorderSize = 0;
-            this.filesAttachedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.filesAttachedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filesAttachedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.filesAttachedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filesAttachedBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.filesAttachedBtn.Location = new System.Drawing.Point(112, -2);
-            this.filesAttachedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.filesAttachedBtn.Name = "filesAttachedBtn";
-            this.filesAttachedBtn.Size = new System.Drawing.Size(18, 18);
-            this.filesAttachedBtn.TabIndex = 0;
-            this.filesAttachedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.filesAttachedBtn, "Create References(s)");
-            this.filesAttachedBtn.UseVisualStyleBackColor = false;
-            this.filesAttachedBtn.Click += new System.EventHandler(this.filesAttachedBtn_Click);
             // 
             // filesAttachedTbx
             // 
@@ -3040,149 +2507,6 @@
             this.detailNotificationsPanel.Size = new System.Drawing.Size(144, 20);
             this.detailNotificationsPanel.TabIndex = 3;
             // 
-            // priorityNotificationBtn
-            // 
-            this.priorityNotificationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.priorityNotificationBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("priorityNotificationBtn.BackgroundImage")));
-            this.priorityNotificationBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.priorityNotificationBtn.FlatAppearance.BorderSize = 0;
-            this.priorityNotificationBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.priorityNotificationBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.priorityNotificationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.priorityNotificationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priorityNotificationBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.priorityNotificationBtn.ImageIndex = 0;
-            this.priorityNotificationBtn.Location = new System.Drawing.Point(0, 0);
-            this.priorityNotificationBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.priorityNotificationBtn.Name = "priorityNotificationBtn";
-            this.priorityNotificationBtn.Size = new System.Drawing.Size(20, 20);
-            this.priorityNotificationBtn.TabIndex = 0;
-            this.priorityNotificationBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.priorityNotificationBtn, "Item has priority");
-            this.priorityNotificationBtn.UseVisualStyleBackColor = false;
-            this.priorityNotificationBtn.Visible = false;
-            this.priorityNotificationBtn.Click += new System.EventHandler(this.priorityNotificationBtn_Click);
-            // 
-            // contractInformationUpdatedBtn
-            // 
-            this.contractInformationUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.contractInformationUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contractInformationUpdatedBtn.BackgroundImage")));
-            this.contractInformationUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contractInformationUpdatedBtn.FlatAppearance.BorderSize = 0;
-            this.contractInformationUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.contractInformationUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.contractInformationUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.contractInformationUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contractInformationUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contractInformationUpdatedBtn.ImageIndex = 0;
-            this.contractInformationUpdatedBtn.Location = new System.Drawing.Point(46, 0);
-            this.contractInformationUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.contractInformationUpdatedBtn.Name = "contractInformationUpdatedBtn";
-            this.contractInformationUpdatedBtn.Size = new System.Drawing.Size(20, 20);
-            this.contractInformationUpdatedBtn.TabIndex = 0;
-            this.contractInformationUpdatedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.contractInformationUpdatedBtn, "Item contract information has been updated");
-            this.contractInformationUpdatedBtn.UseVisualStyleBackColor = false;
-            this.contractInformationUpdatedBtn.Visible = false;
-            this.contractInformationUpdatedBtn.Click += new System.EventHandler(this.contractInformationUpdatedBtn_Click);
-            this.contractInformationUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // itemExcludedBtn
-            // 
-            this.itemExcludedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.itemExcludedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("itemExcludedBtn.BackgroundImage")));
-            this.itemExcludedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.itemExcludedBtn.FlatAppearance.BorderSize = 0;
-            this.itemExcludedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.itemExcludedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.itemExcludedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemExcludedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemExcludedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemExcludedBtn.ImageIndex = 0;
-            this.itemExcludedBtn.Location = new System.Drawing.Point(92, 0);
-            this.itemExcludedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.itemExcludedBtn.Name = "itemExcludedBtn";
-            this.itemExcludedBtn.Size = new System.Drawing.Size(20, 20);
-            this.itemExcludedBtn.TabIndex = 0;
-            this.itemExcludedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.itemExcludedBtn, "Item is excluded (click to override)");
-            this.itemExcludedBtn.UseVisualStyleBackColor = false;
-            this.itemExcludedBtn.Visible = false;
-            this.itemExcludedBtn.Click += new System.EventHandler(this.itemExcludedBtn_Click);
-            this.itemExcludedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // itemIsDifferentBtn
-            // 
-            this.itemIsDifferentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.itemIsDifferentBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_error_48;
-            this.itemIsDifferentBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.itemIsDifferentBtn.FlatAppearance.BorderSize = 0;
-            this.itemIsDifferentBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.itemIsDifferentBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.itemIsDifferentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemIsDifferentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemIsDifferentBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemIsDifferentBtn.ImageIndex = 0;
-            this.itemIsDifferentBtn.Location = new System.Drawing.Point(114, 0);
-            this.itemIsDifferentBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.itemIsDifferentBtn.Name = "itemIsDifferentBtn";
-            this.itemIsDifferentBtn.Size = new System.Drawing.Size(20, 20);
-            this.itemIsDifferentBtn.TabIndex = 0;
-            this.itemIsDifferentBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.itemIsDifferentBtn, "Item data is not reflected on Certus (click to override)");
-            this.itemIsDifferentBtn.UseVisualStyleBackColor = false;
-            this.itemIsDifferentBtn.Visible = false;
-            this.itemIsDifferentBtn.Click += new System.EventHandler(this.itemIsDifferentBtn_Click);
-            this.itemIsDifferentBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // companyUpdatedBtn
-            // 
-            this.companyUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.companyUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("companyUpdatedBtn.BackgroundImage")));
-            this.companyUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.companyUpdatedBtn.FlatAppearance.BorderSize = 0;
-            this.companyUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.companyUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.companyUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.companyUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.companyUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.companyUpdatedBtn.ImageIndex = 0;
-            this.companyUpdatedBtn.Location = new System.Drawing.Point(22, 0);
-            this.companyUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.companyUpdatedBtn.Name = "companyUpdatedBtn";
-            this.companyUpdatedBtn.Size = new System.Drawing.Size(20, 20);
-            this.companyUpdatedBtn.TabIndex = 0;
-            this.companyUpdatedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.companyUpdatedBtn, "Item company has been updated");
-            this.companyUpdatedBtn.UseVisualStyleBackColor = false;
-            this.companyUpdatedBtn.Visible = false;
-            this.companyUpdatedBtn.Click += new System.EventHandler(this.companyUpdatedBtn_Click);
-            this.companyUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // contractIdOverridenBtn
-            // 
-            this.contractIdOverridenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.contractIdOverridenBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contractIdOverridenBtn.BackgroundImage")));
-            this.contractIdOverridenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contractIdOverridenBtn.FlatAppearance.BorderSize = 0;
-            this.contractIdOverridenBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.contractIdOverridenBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.contractIdOverridenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.contractIdOverridenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contractIdOverridenBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contractIdOverridenBtn.ImageIndex = 0;
-            this.contractIdOverridenBtn.Location = new System.Drawing.Point(70, 0);
-            this.contractIdOverridenBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.contractIdOverridenBtn.Name = "contractIdOverridenBtn";
-            this.contractIdOverridenBtn.Size = new System.Drawing.Size(20, 20);
-            this.contractIdOverridenBtn.TabIndex = 0;
-            this.contractIdOverridenBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.contractIdOverridenBtn, "Item contract information has been overridden");
-            this.contractIdOverridenBtn.UseVisualStyleBackColor = false;
-            this.contractIdOverridenBtn.Visible = false;
-            this.contractIdOverridenBtn.Click += new System.EventHandler(this.contractIdOverridenBtn_Click);
-            this.contractIdOverridenBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
             // detailsSaveBtn
             // 
             this.detailsSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -3241,28 +2565,6 @@
             this.focusDetailPanelBtn18.KeyDown += new System.Windows.Forms.KeyEventHandler(this.focusDetailPanelBtn_KeyDown);
             this.focusDetailPanelBtn18.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.focusDetailPanelBtn_KeyPress);
             this.focusDetailPanelBtn18.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.focusDetailPanelBtn_PreviewKeyDown);
-            // 
-            // openNoteBtn
-            // 
-            this.openNoteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.openNoteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.openNoteBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("openNoteBtn.BackgroundImage")));
-            this.openNoteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.openNoteBtn.FlatAppearance.BorderSize = 0;
-            this.openNoteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.openNoteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.openNoteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openNoteBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.openNoteBtn.Location = new System.Drawing.Point(402, -2);
-            this.openNoteBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.openNoteBtn.Name = "openNoteBtn";
-            this.openNoteBtn.Size = new System.Drawing.Size(18, 18);
-            this.openNoteBtn.TabIndex = 0;
-            this.openNoteBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.openNoteBtn, "View Note in Separate Window");
-            this.openNoteBtn.UseVisualStyleBackColor = false;
-            this.openNoteBtn.Click += new System.EventHandler(this.openNoteBtn_Click);
             // 
             // detailNoteTbx
             // 
@@ -3825,55 +3127,6 @@
             this.qfndSplitPanel.TabIndex = 0;
             this.qfndSplitPanel.Visible = false;
             // 
-            // qfndDropBtn
-            // 
-            this.qfndDropBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.qfndDropBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.qfndDropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
-            this.qfndDropBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.qfndDropBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.qfndDropBtn.FlatAppearance.BorderSize = 0;
-            this.qfndDropBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.qfndDropBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.qfndDropBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.qfndDropBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qfndDropBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.qfndDropBtn.Location = new System.Drawing.Point(73, 0);
-            this.qfndDropBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.qfndDropBtn.Name = "qfndDropBtn";
-            this.qfndDropBtn.Size = new System.Drawing.Size(18, 19);
-            this.qfndDropBtn.TabIndex = 0;
-            this.qfndDropBtn.TabStop = false;
-            this.qfndDropBtn.UseVisualStyleBackColor = false;
-            this.qfndDropBtn.Leave += new System.EventHandler(this.qfndCustomDDLPanel_Leave);
-            this.qfndDropBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.qfndCustomDDLBtns_MouseDown);
-            this.qfndDropBtn.MouseLeave += new System.EventHandler(this.qfndCustomDDLPanel_MouseLeave);
-            this.qfndDropBtn.MouseHover += new System.EventHandler(this.qfndCustomDDLPanel_MouseHover);
-            this.qfndDropBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.qfndCustomDDLPanel_MouseMove);
-            // 
-            // paintFromQueryBtn
-            // 
-            this.paintFromQueryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.paintFromQueryBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_paint_brush_48;
-            this.paintFromQueryBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.paintFromQueryBtn.FlatAppearance.BorderSize = 0;
-            this.paintFromQueryBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.paintFromQueryBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.paintFromQueryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.paintFromQueryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paintFromQueryBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.paintFromQueryBtn.Location = new System.Drawing.Point(45, 6);
-            this.paintFromQueryBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.paintFromQueryBtn.Name = "paintFromQueryBtn";
-            this.paintFromQueryBtn.Size = new System.Drawing.Size(22, 22);
-            this.paintFromQueryBtn.TabIndex = 0;
-            this.paintFromQueryBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.paintFromQueryBtn, "Paint Queried Items");
-            this.paintFromQueryBtn.UseVisualStyleBackColor = false;
-            this.paintFromQueryBtn.Click += new System.EventHandler(this.paintFromQueryBtn_Click);
-            this.paintFromQueryBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
             // queryPanel
             // 
             this.queryPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -4291,28 +3544,6 @@
             this.previewDescLbl.TabIndex = 0;
             this.previewDescLbl.Text = "Quick Find:";
             // 
-            // checkQueriedItemsBtn
-            // 
-            this.checkQueriedItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.checkQueriedItemsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_checked_checkbox_48__1_;
-            this.checkQueriedItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.checkQueriedItemsBtn.FlatAppearance.BorderSize = 0;
-            this.checkQueriedItemsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.checkQueriedItemsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.checkQueriedItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkQueriedItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkQueriedItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkQueriedItemsBtn.Location = new System.Drawing.Point(21, 6);
-            this.checkQueriedItemsBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.checkQueriedItemsBtn.Name = "checkQueriedItemsBtn";
-            this.checkQueriedItemsBtn.Size = new System.Drawing.Size(22, 22);
-            this.checkQueriedItemsBtn.TabIndex = 0;
-            this.checkQueriedItemsBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.checkQueriedItemsBtn, "Check Queried Items on Main Display");
-            this.checkQueriedItemsBtn.UseVisualStyleBackColor = false;
-            this.checkQueriedItemsBtn.Click += new System.EventHandler(this.checkAllItemsInListBtn_Click);
-            this.checkQueriedItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
             // importsLbl
             // 
             this.importsLbl.AutoSize = true;
@@ -4347,7 +3578,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(271, 378);
+            this.importPanel.Size = new System.Drawing.Size(274, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4361,7 +3592,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(168, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(171, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4371,7 +3602,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(149, -1);
+            this.button26.Location = new System.Drawing.Point(152, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4393,7 +3624,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(145, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(148, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4424,7 +3655,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(256, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(259, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4436,7 +3667,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(174, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(177, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4497,7 +3728,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsUpdatedTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(174, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(177, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4562,7 +3793,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(168, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(171, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4572,7 +3803,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(149, -1);
+            this.button22.Location = new System.Drawing.Point(152, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4594,7 +3825,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(145, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(148, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4672,7 +3903,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(168, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(171, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4682,7 +3913,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(149, -1);
+            this.button24.Location = new System.Drawing.Point(152, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4704,7 +3935,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(145, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(148, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4754,7 +3985,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(174, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(177, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4988,11 +4219,7 @@
             this.correctListViewColumnSizingToolStripMenuItem,
             this.dividerViewToolStripMenuItem1,
             this.contrastItemGroupsToolStripMenuItem,
-            this.showItemsSameColorToolStripMenuItem,
-            this.dividerViewToolStripMenuItem2,
-            this.excludedItemsViewToolStripMenuitem,
-            this.certificatesViewToolStripMenuItem,
-            this.companiesToolStripMenuItem});
+            this.showItemsSameColorToolStripMenuItem});
             this.viewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
@@ -5064,45 +4291,6 @@
             this.showItemsSameColorToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.showItemsSameColorToolStripMenuItem.Text = "&Show Items as the Same Color     ";
             this.showItemsSameColorToolStripMenuItem.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
-            // 
-            // dividerViewToolStripMenuItem2
-            // 
-            this.dividerViewToolStripMenuItem2.AutoSize = false;
-            this.dividerViewToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.dividerViewToolStripMenuItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.dividerViewToolStripMenuItem2.Name = "dividerViewToolStripMenuItem2";
-            this.dividerViewToolStripMenuItem2.Size = new System.Drawing.Size(245, 6);
-            this.dividerViewToolStripMenuItem2.Visible = false;
-            // 
-            // excludedItemsViewToolStripMenuitem
-            // 
-            this.excludedItemsViewToolStripMenuitem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.excludedItemsViewToolStripMenuitem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.excludedItemsViewToolStripMenuitem.Name = "excludedItemsViewToolStripMenuitem";
-            this.excludedItemsViewToolStripMenuitem.Size = new System.Drawing.Size(248, 22);
-            this.excludedItemsViewToolStripMenuitem.Text = "&Excluded Items";
-            this.excludedItemsViewToolStripMenuitem.Visible = false;
-            this.excludedItemsViewToolStripMenuitem.Click += new System.EventHandler(this.excludedItemsViewToolStripMenuItem_Click);
-            // 
-            // certificatesViewToolStripMenuItem
-            // 
-            this.certificatesViewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.certificatesViewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.certificatesViewToolStripMenuItem.Name = "certificatesViewToolStripMenuItem";
-            this.certificatesViewToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.certificatesViewToolStripMenuItem.Text = "Cer&tificates";
-            this.certificatesViewToolStripMenuItem.Visible = false;
-            this.certificatesViewToolStripMenuItem.Click += new System.EventHandler(this.certificatesViewToolStripMenuItem_Click);
-            // 
-            // companiesToolStripMenuItem
-            // 
-            this.companiesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.companiesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.companiesToolStripMenuItem.Name = "companiesToolStripMenuItem";
-            this.companiesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.companiesToolStripMenuItem.Text = "Co&mpanies";
-            this.companiesToolStripMenuItem.Visible = false;
-            this.companiesToolStripMenuItem.Click += new System.EventHandler(this.companiesViewToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -5326,21 +4514,6 @@
             this.toolStripStatusLabel.Text = "Ready";
             this.toolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // displayingToolStripDropDownButton
-            // 
-            this.displayingToolStripDropDownButton.AutoSize = false;
-            this.displayingToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.displayingToolStripDropDownButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displayingToolStripDropDownButton.ForeColor = System.Drawing.Color.White;
-            this.displayingToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("displayingToolStripDropDownButton.Image")));
-            this.displayingToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.displayingToolStripDropDownButton.Margin = new System.Windows.Forms.Padding(0);
-            this.displayingToolStripDropDownButton.Name = "displayingToolStripDropDownButton";
-            this.displayingToolStripDropDownButton.ShowDropDownArrow = false;
-            this.displayingToolStripDropDownButton.Size = new System.Drawing.Size(62, 22);
-            this.displayingToolStripDropDownButton.Text = "Displaying";
-            this.displayingToolStripDropDownButton.Click += new System.EventHandler(this.displayingToolStripDropDownButton_Click);
-            // 
             // displayingCountStatusLbl
             // 
             this.displayingCountStatusLbl.AutoSize = false;
@@ -5352,21 +4525,6 @@
             this.displayingCountStatusLbl.Size = new System.Drawing.Size(65, 22);
             this.displayingCountStatusLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // checkedToolStripDropDownButton
-            // 
-            this.checkedToolStripDropDownButton.AutoSize = false;
-            this.checkedToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.checkedToolStripDropDownButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedToolStripDropDownButton.ForeColor = System.Drawing.Color.White;
-            this.checkedToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("checkedToolStripDropDownButton.Image")));
-            this.checkedToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.checkedToolStripDropDownButton.Margin = new System.Windows.Forms.Padding(0);
-            this.checkedToolStripDropDownButton.Name = "checkedToolStripDropDownButton";
-            this.checkedToolStripDropDownButton.ShowDropDownArrow = false;
-            this.checkedToolStripDropDownButton.Size = new System.Drawing.Size(53, 22);
-            this.checkedToolStripDropDownButton.Text = "Checked";
-            this.checkedToolStripDropDownButton.Click += new System.EventHandler(this.checkedToolStripDropDownButton_Click);
-            // 
             // checkedCountStatusLbl
             // 
             this.checkedCountStatusLbl.AutoSize = false;
@@ -5376,21 +4534,6 @@
             this.checkedCountStatusLbl.Name = "checkedCountStatusLbl";
             this.checkedCountStatusLbl.Size = new System.Drawing.Size(65, 22);
             this.checkedCountStatusLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // queriedToolStripDropDownButton
-            // 
-            this.queriedToolStripDropDownButton.AutoSize = false;
-            this.queriedToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.queriedToolStripDropDownButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.queriedToolStripDropDownButton.ForeColor = System.Drawing.Color.White;
-            this.queriedToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("queriedToolStripDropDownButton.Image")));
-            this.queriedToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.queriedToolStripDropDownButton.Margin = new System.Windows.Forms.Padding(0);
-            this.queriedToolStripDropDownButton.Name = "queriedToolStripDropDownButton";
-            this.queriedToolStripDropDownButton.ShowDropDownArrow = false;
-            this.queriedToolStripDropDownButton.Size = new System.Drawing.Size(50, 22);
-            this.queriedToolStripDropDownButton.Text = "Queried";
-            this.queriedToolStripDropDownButton.Click += new System.EventHandler(this.queriedToolStripDropDownButton_Click);
             // 
             // queriedCountStatusLbl
             // 
@@ -5451,18 +4594,6 @@
             this.listViewContextMenuStrip.Name = "listboxContextMenuStrip";
             this.listViewContextMenuStrip.Size = new System.Drawing.Size(325, 402);
             // 
-            // copyContextMenuItem
-            // 
-            this.copyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.copyContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.copyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.copyContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_copy_32;
-            this.copyContextMenuItem.Name = "copyContextMenuItem";
-            this.copyContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.copyContextMenuItem.Text = "Copy";
-            this.copyContextMenuItem.Click += new System.EventHandler(this.copyContextMenuItem_Click);
-            // 
             // copyWithHeadersContextMenuItem
             // 
             this.copyWithHeadersContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
@@ -5485,17 +4616,6 @@
             this.copyIDsContextMenuItem.Text = "Copy Id(s)";
             this.copyIDsContextMenuItem.Click += new System.EventHandler(this.copyIdsContextMenuItem_Click);
             // 
-            // selectAllContextMenuItem
-            // 
-            this.selectAllContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.selectAllContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectAllContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.selectAllContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("selectAllContextMenuItem.Image")));
-            this.selectAllContextMenuItem.Name = "selectAllContextMenuItem";
-            this.selectAllContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.selectAllContextMenuItem.Text = "Select All";
-            this.selectAllContextMenuItem.Click += new System.EventHandler(this.selectAllContextMenuItem_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.AutoSize = false;
@@ -5505,54 +4625,6 @@
             this.toolStripSeparator4.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.toolStripSeparator4.Size = new System.Drawing.Size(321, 6);
             // 
-            // openLinksContextMenuItem
-            // 
-            this.openLinksContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.openLinksContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openLinksContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.openLinksContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_external_link_32;
-            this.openLinksContextMenuItem.Name = "openLinksContextMenuItem";
-            this.openLinksContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openLinksContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.openLinksContextMenuItem.Text = "Open Link(s)";
-            this.openLinksContextMenuItem.Click += new System.EventHandler(this.openLinkContextMenuItem_Click);
-            // 
-            // createReferencesContextMenuItem
-            // 
-            this.createReferencesContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.createReferencesContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createReferencesContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.createReferencesContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_down_3_32;
-            this.createReferencesContextMenuItem.Name = "createReferencesContextMenuItem";
-            this.createReferencesContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Down)));
-            this.createReferencesContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.createReferencesContextMenuItem.Text = "Create Reference(s)                    ";
-            this.createReferencesContextMenuItem.Click += new System.EventHandler(this.createReferencesContextMenuItem_Click);
-            // 
-            // addToExportContextMenuItem
-            // 
-            this.addToExportContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.addToExportContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addToExportContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addToExportContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addToExportContextMenuItem.Image")));
-            this.addToExportContextMenuItem.Name = "addToExportContextMenuItem";
-            this.addToExportContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.addToExportContextMenuItem.Text = "Add Item(s) To Export View";
-            this.addToExportContextMenuItem.Click += new System.EventHandler(this.addToExportViewContextMenuItem_Click);
-            // 
-            // removeFromExportContextMenuItem
-            // 
-            this.removeFromExportContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.removeFromExportContextMenuItem.Enabled = false;
-            this.removeFromExportContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeFromExportContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeFromExportContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("removeFromExportContextMenuItem.Image")));
-            this.removeFromExportContextMenuItem.Name = "removeFromExportContextMenuItem";
-            this.removeFromExportContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.removeFromExportContextMenuItem.Text = "Remove Item(s) From Export View";
-            this.removeFromExportContextMenuItem.Click += new System.EventHandler(this.removeFromExportViewContextMenuItem_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.AutoSize = false;
@@ -5561,28 +4633,6 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.toolStripSeparator3.Size = new System.Drawing.Size(321, 6);
-            // 
-            // paintContextMenuItem
-            // 
-            this.paintContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.paintContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paintContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.paintContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("paintContextMenuItem.Image")));
-            this.paintContextMenuItem.Name = "paintContextMenuItem";
-            this.paintContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.paintContextMenuItem.Text = "Paint";
-            this.paintContextMenuItem.Click += new System.EventHandler(this.paintContextMenuItem_Click);
-            // 
-            // removePaintContextMenuItem
-            // 
-            this.removePaintContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.removePaintContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removePaintContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removePaintContextMenuItem.Image = global::CertusCompanion.Properties.Resources.icons8_erase_32;
-            this.removePaintContextMenuItem.Name = "removePaintContextMenuItem";
-            this.removePaintContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.removePaintContextMenuItem.Text = "Remove Paint";
-            this.removePaintContextMenuItem.Click += new System.EventHandler(this.removePaintContextMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -5604,32 +4654,11 @@
             this.markContextMenuItem.Size = new System.Drawing.Size(324, 22);
             this.markContextMenuItem.Text = "Mark";
             // 
-            // markPriorityContextMenuItem
-            // 
-            this.markPriorityContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.markPriorityContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.markPriorityContextMenuItem.Name = "markPriorityContextMenuItem";
-            this.markPriorityContextMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.markPriorityContextMenuItem.Text = "Priority";
-            this.markPriorityContextMenuItem.Click += new System.EventHandler(this.markPriorityContextMenuItem_Click);
-            // 
-            // markExcludedContextMenuItem
-            // 
-            this.markExcludedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.markExcludedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.markExcludedContextMenuItem.Name = "markExcludedContextMenuItem";
-            this.markExcludedContextMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.markExcludedContextMenuItem.Text = "Excluded";
-            this.markExcludedContextMenuItem.Click += new System.EventHandler(this.markExcludedContextMenuItem_Click);
-            // 
             // unmarkToolStripMenuItem
             // 
             this.unmarkToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.unmarkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.unmarkPriorityContextMenuItem,
-            this.unmarkCompanyUpdatedContextMenuItem,
-            this.unmarkContractInfoUpdatedContextMenuItem,
-            this.unmarkContractOverridenContextMenuItem,
             this.unmarkExcludedContextMenuItem,
             this.unmarkItemChangedContextMenuItem});
             this.unmarkToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -5637,61 +4666,6 @@
             this.unmarkToolStripMenuItem.Name = "unmarkToolStripMenuItem";
             this.unmarkToolStripMenuItem.Size = new System.Drawing.Size(324, 22);
             this.unmarkToolStripMenuItem.Text = "Unmark";
-            // 
-            // unmarkPriorityContextMenuItem
-            // 
-            this.unmarkPriorityContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unmarkPriorityContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unmarkPriorityContextMenuItem.Name = "unmarkPriorityContextMenuItem";
-            this.unmarkPriorityContextMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.unmarkPriorityContextMenuItem.Text = "Priority";
-            this.unmarkPriorityContextMenuItem.Click += new System.EventHandler(this.unmarkPriorityContextMenuItem_Click);
-            // 
-            // unmarkCompanyUpdatedContextMenuItem
-            // 
-            this.unmarkCompanyUpdatedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unmarkCompanyUpdatedContextMenuItem.Enabled = false;
-            this.unmarkCompanyUpdatedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unmarkCompanyUpdatedContextMenuItem.Name = "unmarkCompanyUpdatedContextMenuItem";
-            this.unmarkCompanyUpdatedContextMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.unmarkCompanyUpdatedContextMenuItem.Text = "Company Updated";
-            // 
-            // unmarkContractInfoUpdatedContextMenuItem
-            // 
-            this.unmarkContractInfoUpdatedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unmarkContractInfoUpdatedContextMenuItem.Enabled = false;
-            this.unmarkContractInfoUpdatedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unmarkContractInfoUpdatedContextMenuItem.Name = "unmarkContractInfoUpdatedContextMenuItem";
-            this.unmarkContractInfoUpdatedContextMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.unmarkContractInfoUpdatedContextMenuItem.Text = "Contract Info Updated";
-            // 
-            // unmarkContractOverridenContextMenuItem
-            // 
-            this.unmarkContractOverridenContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unmarkContractOverridenContextMenuItem.Enabled = false;
-            this.unmarkContractOverridenContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unmarkContractOverridenContextMenuItem.Name = "unmarkContractOverridenContextMenuItem";
-            this.unmarkContractOverridenContextMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.unmarkContractOverridenContextMenuItem.Text = "Contract Overriden";
-            // 
-            // unmarkExcludedContextMenuItem
-            // 
-            this.unmarkExcludedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unmarkExcludedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unmarkExcludedContextMenuItem.Name = "unmarkExcludedContextMenuItem";
-            this.unmarkExcludedContextMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.unmarkExcludedContextMenuItem.Text = "Excluded";
-            this.unmarkExcludedContextMenuItem.Click += new System.EventHandler(this.unmarkExcludedContextMenuItem_Click);
-            // 
-            // unmarkItemChangedContextMenuItem
-            // 
-            this.unmarkItemChangedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unmarkItemChangedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unmarkItemChangedContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unmarkItemChangedContextMenuItem.Image")));
-            this.unmarkItemChangedContextMenuItem.Name = "unmarkItemChangedContextMenuItem";
-            this.unmarkItemChangedContextMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.unmarkItemChangedContextMenuItem.Text = "Item Changed";
-            this.unmarkItemChangedContextMenuItem.Click += new System.EventHandler(this.removeWarningContextMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -5701,143 +4675,6 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.toolStripSeparator5.Size = new System.Drawing.Size(321, 6);
-            // 
-            // modifyContextMenuItem
-            // 
-            this.modifyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.modifyContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.modifyContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modifyContextMenuItem.Image")));
-            this.modifyContextMenuItem.Name = "modifyContextMenuItem";
-            this.modifyContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.modifyContextMenuItem.Text = "Modify";
-            this.modifyContextMenuItem.Click += new System.EventHandler(this.modifyContextMenuItem_Click);
-            // 
-            // extractContextMenuItem
-            // 
-            this.extractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.extractContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.extractCompanyContextMenuItem,
-            this.extractContractContextMenuItem});
-            this.extractContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.extractContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("extractContextMenuItem.Image")));
-            this.extractContextMenuItem.Name = "extractContextMenuItem";
-            this.extractContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.extractContextMenuItem.Text = "Extract";
-            // 
-            // extractCompanyContextMenuItem
-            // 
-            this.extractCompanyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.extractCompanyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.extractCompanyContextMenuItem.Name = "extractCompanyContextMenuItem";
-            this.extractCompanyContextMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.extractCompanyContextMenuItem.Text = "Company";
-            this.extractCompanyContextMenuItem.Click += new System.EventHandler(this.extractCompanyContextMenuItem_Click);
-            // 
-            // extractContractContextMenuItem
-            // 
-            this.extractContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.extractContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.extractContractContextMenuItem.Name = "extractContractContextMenuItem";
-            this.extractContractContextMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.extractContractContextMenuItem.Text = "Contract";
-            this.extractContractContextMenuItem.Click += new System.EventHandler(this.extractContractContextMenuItem_Click);
-            // 
-            // appendContextMenuItem
-            // 
-            this.appendContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.appendCompanyContextMenuItem,
-            this.appendContractContextMenuItem,
-            this.appendAssignmentContextMenuItem,
-            this.appendStatusAndAssignmentContextMenuItem});
-            this.appendContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appendContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendContextMenuItem.Image")));
-            this.appendContextMenuItem.Name = "appendContextMenuItem";
-            this.appendContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.appendContextMenuItem.Text = "Append";
-            // 
-            // appendCompanyContextMenuItem
-            // 
-            this.appendCompanyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendCompanyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendCompanyContextMenuItem.Name = "appendCompanyContextMenuItem";
-            this.appendCompanyContextMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.appendCompanyContextMenuItem.Text = "Company";
-            this.appendCompanyContextMenuItem.Click += new System.EventHandler(this.appendCompaniesContextMenuItem_Click);
-            // 
-            // appendContractContextMenuItem
-            // 
-            this.appendContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendContractContextMenuItem.Name = "appendContractContextMenuItem";
-            this.appendContractContextMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.appendContractContextMenuItem.Text = "Contract Information";
-            this.appendContractContextMenuItem.Click += new System.EventHandler(this.appendContractContextMenuItem_Click);
-            // 
-            // appendAssignmentContextMenuItem
-            // 
-            this.appendAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendAssignmentContextMenuItem.Name = "appendAssignmentContextMenuItem";
-            this.appendAssignmentContextMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.appendAssignmentContextMenuItem.Text = "Assignment";
-            this.appendAssignmentContextMenuItem.Click += new System.EventHandler(this.appendAssignmentContextMenuItem_Click);
-            // 
-            // appendStatusAndAssignmentContextMenuItem
-            // 
-            this.appendStatusAndAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendStatusAndAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendStatusAndAssignmentContextMenuItem.Name = "appendStatusAndAssignmentContextMenuItem";
-            this.appendStatusAndAssignmentContextMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.appendStatusAndAssignmentContextMenuItem.Text = "Status and Assignment";
-            this.appendStatusAndAssignmentContextMenuItem.Click += new System.EventHandler(this.appendStatusAndAssignmentContextMenuItem_Click);
-            // 
-            // setAssignmentContextMenuItem
-            // 
-            this.setAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.setAssignmentContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setAssignmentFindContextMenuItem,
-            this.setAssignmentManuallyContextMenuItem});
-            this.setAssignmentContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.setAssignmentContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setAssignmentContextMenuItem.Image")));
-            this.setAssignmentContextMenuItem.Name = "setAssignmentContextMenuItem";
-            this.setAssignmentContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.setAssignmentContextMenuItem.Text = "Set Assignment";
-            // 
-            // setAssignmentFindContextMenuItem
-            // 
-            this.setAssignmentFindContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.setAssignmentFindContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.setAssignmentFindContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setAssignmentFindContextMenuItem.Image")));
-            this.setAssignmentFindContextMenuItem.Name = "setAssignmentFindContextMenuItem";
-            this.setAssignmentFindContextMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.setAssignmentFindContextMenuItem.Text = "Find";
-            this.setAssignmentFindContextMenuItem.Click += new System.EventHandler(this.setAssignmentFindContextMenuItem_Click);
-            // 
-            // setAssignmentManuallyContextMenuItem
-            // 
-            this.setAssignmentManuallyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.setAssignmentManuallyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.setAssignmentManuallyContextMenuItem.Name = "setAssignmentManuallyContextMenuItem";
-            this.setAssignmentManuallyContextMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.setAssignmentManuallyContextMenuItem.Text = "Set Manually";
-            this.setAssignmentManuallyContextMenuItem.Visible = false;
-            this.setAssignmentManuallyContextMenuItem.Click += new System.EventHandler(this.setAssignmentManuallyContextMenuItem_Click);
-            // 
-            // unassignContextMenuItem
-            // 
-            this.unassignContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.unassignContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unassignContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.unassignContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unassignContextMenuItem.Image")));
-            this.unassignContextMenuItem.Name = "unassignContextMenuItem";
-            this.unassignContextMenuItem.Size = new System.Drawing.Size(324, 22);
-            this.unassignContextMenuItem.Text = "Unassign";
-            this.unassignContextMenuItem.Click += new System.EventHandler(this.unassignContextMenuItem_Click);
             // 
             // symbolsImageList
             // 
@@ -5920,53 +4757,6 @@
             this.importCertificatesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importCertificatesBackgroundWorker_DoWork);
             this.importCertificatesBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerAllProgress_ProgressChanged);
             this.importCertificatesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.importCertificatesBackgroundWorker_RunWorkerCompleted);
-            // 
-            // certusConnectionBtn
-            // 
-            this.certusConnectionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.certusConnectionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.certusConnectionBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_connection_status_on_48__1_;
-            this.certusConnectionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.certusConnectionBtn.FlatAppearance.BorderSize = 0;
-            this.certusConnectionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.certusConnectionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.certusConnectionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.certusConnectionBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.certusConnectionBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.certusConnectionBtn.ImageIndex = 0;
-            this.certusConnectionBtn.Location = new System.Drawing.Point(1056, 4);
-            this.certusConnectionBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.certusConnectionBtn.Name = "certusConnectionBtn";
-            this.certusConnectionBtn.Size = new System.Drawing.Size(15, 15);
-            this.certusConnectionBtn.TabIndex = 0;
-            this.certusConnectionBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Import Data Sources from CertusDB");
-            this.certusConnectionBtn.UseVisualStyleBackColor = false;
-            this.certusConnectionBtn.Click += new System.EventHandler(this.certusConnectionBtn_Click);
-            // 
-            // matchCaseBtn
-            // 
-            this.matchCaseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.matchCaseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.matchCaseBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_lowercase_48__3_;
-            this.matchCaseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.matchCaseBtn.FlatAppearance.BorderSize = 0;
-            this.matchCaseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.matchCaseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.matchCaseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.matchCaseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.matchCaseBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.matchCaseBtn.ImageIndex = 0;
-            this.matchCaseBtn.Location = new System.Drawing.Point(1013, 4);
-            this.matchCaseBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.matchCaseBtn.Name = "matchCaseBtn";
-            this.matchCaseBtn.Size = new System.Drawing.Size(16, 16);
-            this.matchCaseBtn.TabIndex = 0;
-            this.matchCaseBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.matchCaseBtn, "Match Casing");
-            this.matchCaseBtn.UseVisualStyleBackColor = false;
-            this.matchCaseBtn.Visible = false;
-            this.matchCaseBtn.Click += new System.EventHandler(this.matchCaseBtn_Click);
             // 
             // searchTbx
             // 
@@ -6109,14 +4899,12 @@
             this.qfndCustomDDLMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.item1ToolStripMenuItem,
             this.item2ToolStripMenuItem,
-            this.item3ToolStripMenuItem,
             this.item4ToolStripMenuItem,
-            this.noAttachToolStripMenuItem,
-            this.autoReplyToolStripMenuItem});
+            this.noAttachToolStripMenuItem});
             this.qfndCustomDDLMenuStrip.Name = "contextMenuStrip1";
             this.qfndCustomDDLMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.qfndCustomDDLMenuStrip.ShowImageMargin = false;
-            this.qfndCustomDDLMenuStrip.Size = new System.Drawing.Size(108, 136);
+            this.qfndCustomDDLMenuStrip.Size = new System.Drawing.Size(104, 92);
             this.qfndCustomDDLMenuStrip.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.qfndCustomDDLContextMenuStrip_Closed);
             this.qfndCustomDDLMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.customDDLContextMenuStrip_Opening);
             this.qfndCustomDDLMenuStrip.Opened += new System.EventHandler(this.qfndCustomDDLPanel_Enter);
@@ -6128,7 +4916,7 @@
             this.item1ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.item1ToolStripMenuItem.Name = "item1ToolStripMenuItem";
             this.item1ToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.item1ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.item1ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.item1ToolStripMenuItem.Text = "Images";
             // 
             // item2ToolStripMenuItem
@@ -6137,17 +4925,8 @@
             this.item2ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.item2ToolStripMenuItem.Name = "item2ToolStripMenuItem";
             this.item2ToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.item2ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.item2ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.item2ToolStripMenuItem.Text = "Req Tmp";
-            // 
-            // item3ToolStripMenuItem
-            // 
-            this.item3ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.item3ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.item3ToolStripMenuItem.Name = "item3ToolStripMenuItem";
-            this.item3ToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.item3ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.item3ToolStripMenuItem.Text = "Same COI";
             // 
             // item4ToolStripMenuItem
             // 
@@ -6155,22 +4934,15 @@
             this.item4ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.item4ToolStripMenuItem.Name = "item4ToolStripMenuItem";
             this.item4ToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.item4ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.item4ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.item4ToolStripMenuItem.Text = "Clutter";
             // 
             // noAttachToolStripMenuItem
             // 
             this.noAttachToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.noAttachToolStripMenuItem.Name = "noAttachToolStripMenuItem";
-            this.noAttachToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.noAttachToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.noAttachToolStripMenuItem.Text = "No Attach";
-            // 
-            // autoReplyToolStripMenuItem
-            // 
-            this.autoReplyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.autoReplyToolStripMenuItem.Name = "autoReplyToolStripMenuItem";
-            this.autoReplyToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.autoReplyToolStripMenuItem.Text = "Auto Reply";
             // 
             // preventDropDownReopen
             // 
@@ -6384,118 +5156,1250 @@
             this.changeClientBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.changeClientBackgroundWorker_DoWork);
             this.changeClientBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.changeClientBackgroundWorker_RunWorkerCompleted);
             // 
-            // workflowItemsListView
+            // certusConnectionBtn
             // 
-            this.workflowItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.certusConnectionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.certusConnectionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.certusConnectionBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.noConnectionIcon;
+            this.certusConnectionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.certusConnectionBtn.FlatAppearance.BorderSize = 0;
+            this.certusConnectionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.certusConnectionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.certusConnectionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.certusConnectionBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.certusConnectionBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.certusConnectionBtn.ImageIndex = 0;
+            this.certusConnectionBtn.Location = new System.Drawing.Point(1056, 4);
+            this.certusConnectionBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.certusConnectionBtn.Name = "certusConnectionBtn";
+            this.certusConnectionBtn.Size = new System.Drawing.Size(15, 15);
+            this.certusConnectionBtn.TabIndex = 0;
+            this.certusConnectionBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.certusConnectionBtn, "Import Data Sources from CertusDB");
+            this.certusConnectionBtn.UseVisualStyleBackColor = false;
+            this.certusConnectionBtn.Click += new System.EventHandler(this.certusConnectionBtn_Click);
+            // 
+            // matchCaseBtn
+            // 
+            this.matchCaseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.matchCaseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.matchCaseBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.lowerCaseIcon;
+            this.matchCaseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.matchCaseBtn.FlatAppearance.BorderSize = 0;
+            this.matchCaseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.matchCaseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.matchCaseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.matchCaseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.matchCaseBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.matchCaseBtn.ImageIndex = 0;
+            this.matchCaseBtn.Location = new System.Drawing.Point(1013, 4);
+            this.matchCaseBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.matchCaseBtn.Name = "matchCaseBtn";
+            this.matchCaseBtn.Size = new System.Drawing.Size(16, 16);
+            this.matchCaseBtn.TabIndex = 0;
+            this.matchCaseBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.matchCaseBtn, "Match Casing");
+            this.matchCaseBtn.UseVisualStyleBackColor = false;
+            this.matchCaseBtn.Visible = false;
+            this.matchCaseBtn.Click += new System.EventHandler(this.matchCaseBtn_Click);
+            // 
+            // clDropBtn
+            // 
+            this.clDropBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.workflowItemsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.workflowItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.workflowItemsListView.CheckBoxes = true;
-            this.workflowItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.countColumnHeader,
-            this.itemIdColumnHeader,
-            this.companyColumnHeader,
-            this.contractIdColumnHeader,
-            this.dateColumnHeader,
-            this.senderColumnHeader,
-            this.emailSubjectColumnHeader,
-            this.fileNameColumnHeader,
-            this.sizeColumnHeader,
-            this.fileUrlColumnHeader,
-            this.assignedToColumnHeader,
-            this.statusColumnHeader,
-            this.sizeFixHeader});
-            this.workflowItemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workflowItemsListView.ForeColor = System.Drawing.Color.LightGray;
-            this.workflowItemsListView.FullRowSelect = true;
-            this.workflowItemsListView.HideSelection = false;
-            this.workflowItemsListView.LabelWrap = false;
-            this.workflowItemsListView.Location = new System.Drawing.Point(8, 32);
-            this.workflowItemsListView.Margin = new System.Windows.Forms.Padding(2);
-            this.workflowItemsListView.Name = "workflowItemsListView";
-            this.workflowItemsListView.OwnerDraw = true;
-            this.workflowItemsListView.Size = new System.Drawing.Size(1247, 182);
-            this.workflowItemsListView.TabIndex = 1;
-            this.workflowItemsListView.UseCompatibleStateImageBehavior = false;
-            this.workflowItemsListView.View = System.Windows.Forms.View.Details;
-            this.workflowItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.workflowItemsListView_ColumnClick);
-            this.workflowItemsListView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.workflowItemsListView_DrawColumnHeader);
-            this.workflowItemsListView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.workflowItemsListView_DrawItem);
-            this.workflowItemsListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.workflowItemsListView_ItemChecked);
-            this.workflowItemsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.workflowItemsListView_ItemSelectionChanged);
-            this.workflowItemsListView.SelectedIndexChanged += new System.EventHandler(this.workflowItemsListView_SelectedIndexChanged);
-            this.workflowItemsListView.VisibleChanged += new System.EventHandler(this.workflowItemsListView_VisibleChanged);
-            this.workflowItemsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.workflowItemsListView_KeyDown);
-            this.workflowItemsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseClick);
-            this.workflowItemsListView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseDown);
-            this.workflowItemsListView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseMove);
-            this.workflowItemsListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.workflowItemsListView_MouseUp);
+            this.clDropBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.clDropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.dropDownIcon;
+            this.clDropBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.clDropBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.clDropBtn.FlatAppearance.BorderSize = 0;
+            this.clDropBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.clDropBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.clDropBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clDropBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clDropBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.clDropBtn.Location = new System.Drawing.Point(73, 0);
+            this.clDropBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.clDropBtn.Name = "clDropBtn";
+            this.clDropBtn.Size = new System.Drawing.Size(18, 19);
+            this.clDropBtn.TabIndex = 0;
+            this.clDropBtn.TabStop = false;
+            this.clDropBtn.UseVisualStyleBackColor = false;
+            this.clDropBtn.Enter += new System.EventHandler(this.clCustomDDLPanel_Enter);
+            this.clDropBtn.Leave += new System.EventHandler(this.clCustomDDLPanel_Leave);
+            this.clDropBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.clCustomDDLBtns_MouseDown);
+            this.clDropBtn.MouseLeave += new System.EventHandler(this.clCustomDDLPanel_MouseLeave);
+            this.clDropBtn.MouseHover += new System.EventHandler(this.clCustomDDLPanel_MouseHover);
+            this.clDropBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.clCustomDDLPanel_MouseMove);
             // 
-            // countColumnHeader
+            // vcDropBtn
             // 
-            this.countColumnHeader.Text = "";
-            this.countColumnHeader.Width = 70;
+            this.vcDropBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.vcDropBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.vcDropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.dropDownIcon;
+            this.vcDropBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.vcDropBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.vcDropBtn.FlatAppearance.BorderSize = 0;
+            this.vcDropBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.vcDropBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vcDropBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vcDropBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vcDropBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.vcDropBtn.Location = new System.Drawing.Point(78, 0);
+            this.vcDropBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.vcDropBtn.Name = "vcDropBtn";
+            this.vcDropBtn.Size = new System.Drawing.Size(18, 19);
+            this.vcDropBtn.TabIndex = 0;
+            this.vcDropBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.vcDropBtn, "View Choice");
+            this.vcDropBtn.UseVisualStyleBackColor = false;
+            this.vcDropBtn.Enter += new System.EventHandler(this.vcCustomDDLPanel_Enter);
+            this.vcDropBtn.Leave += new System.EventHandler(this.vcCustomDDLPanel_Leave);
+            this.vcDropBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.vcCustomDDLBtns_MouseDown);
+            this.vcDropBtn.MouseLeave += new System.EventHandler(this.vcCustomDDLPanel_MouseLeave);
+            this.vcDropBtn.MouseHover += new System.EventHandler(this.vcCustomDDLPanel_MouseHover);
+            this.vcDropBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.vcCustomDDLPanel_MouseMove);
             // 
-            // itemIdColumnHeader
+            // importFromDatabaseBtn
             // 
-            this.itemIdColumnHeader.Text = "Item ID";
-            this.itemIdColumnHeader.Width = 70;
+            this.importFromDatabaseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.importFromDatabaseBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("importFromDatabaseBtn.BackgroundImage")));
+            this.importFromDatabaseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.importFromDatabaseBtn.FlatAppearance.BorderSize = 0;
+            this.importFromDatabaseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.importFromDatabaseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.importFromDatabaseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.importFromDatabaseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.importFromDatabaseBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.importFromDatabaseBtn.Location = new System.Drawing.Point(291, 1);
+            this.importFromDatabaseBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.importFromDatabaseBtn.Name = "importFromDatabaseBtn";
+            this.importFromDatabaseBtn.Size = new System.Drawing.Size(20, 20);
+            this.importFromDatabaseBtn.TabIndex = 0;
+            this.importFromDatabaseBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.importFromDatabaseBtn, "Import From Database");
+            this.importFromDatabaseBtn.UseVisualStyleBackColor = false;
+            this.importFromDatabaseBtn.Click += new System.EventHandler(this.importFromDatabaseBtn_Click);
             // 
-            // companyColumnHeader
+            // correctListViewColumnSizingBtn
             // 
-            this.companyColumnHeader.Text = "Company";
-            this.companyColumnHeader.Width = 70;
+            this.correctListViewColumnSizingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.correctListViewColumnSizingBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("correctListViewColumnSizingBtn.BackgroundImage")));
+            this.correctListViewColumnSizingBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.correctListViewColumnSizingBtn.FlatAppearance.BorderSize = 0;
+            this.correctListViewColumnSizingBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.correctListViewColumnSizingBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.correctListViewColumnSizingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.correctListViewColumnSizingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correctListViewColumnSizingBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.correctListViewColumnSizingBtn.Location = new System.Drawing.Point(521, 1);
+            this.correctListViewColumnSizingBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.correctListViewColumnSizingBtn.Name = "correctListViewColumnSizingBtn";
+            this.correctListViewColumnSizingBtn.Size = new System.Drawing.Size(20, 20);
+            this.correctListViewColumnSizingBtn.TabIndex = 0;
+            this.correctListViewColumnSizingBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.correctListViewColumnSizingBtn, "Correct Column Sizing");
+            this.correctListViewColumnSizingBtn.UseVisualStyleBackColor = false;
+            this.correctListViewColumnSizingBtn.Click += new System.EventHandler(this.fixListViewColumnSizingBtn_Click);
             // 
-            // contractIdColumnHeader
+            // showItemsMonotoneBtn
             // 
-            this.contractIdColumnHeader.Text = "Contract";
-            this.contractIdColumnHeader.Width = 70;
+            this.showItemsMonotoneBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.showItemsMonotoneBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showItemsMonotoneBtn.BackgroundImage")));
+            this.showItemsMonotoneBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.showItemsMonotoneBtn.FlatAppearance.BorderSize = 0;
+            this.showItemsMonotoneBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.showItemsMonotoneBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.showItemsMonotoneBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showItemsMonotoneBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showItemsMonotoneBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.showItemsMonotoneBtn.Location = new System.Drawing.Point(565, 1);
+            this.showItemsMonotoneBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.showItemsMonotoneBtn.Name = "showItemsMonotoneBtn";
+            this.showItemsMonotoneBtn.Size = new System.Drawing.Size(20, 20);
+            this.showItemsMonotoneBtn.TabIndex = 0;
+            this.showItemsMonotoneBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.showItemsMonotoneBtn, "Show Items all the Same Color");
+            this.showItemsMonotoneBtn.UseVisualStyleBackColor = false;
+            this.showItemsMonotoneBtn.Click += new System.EventHandler(this.showItemsMonotoneBtn_Click);
+            this.showItemsMonotoneBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.showItemsMonotoneBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // dateColumnHeader
+            // contrastItemGroupsBtn
             // 
-            this.dateColumnHeader.Text = "Date";
-            this.dateColumnHeader.Width = 70;
+            this.contrastItemGroupsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.contrastItemGroupsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contrastItemGroupsBtn.BackgroundImage")));
+            this.contrastItemGroupsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.contrastItemGroupsBtn.FlatAppearance.BorderSize = 0;
+            this.contrastItemGroupsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.contrastItemGroupsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.contrastItemGroupsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.contrastItemGroupsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contrastItemGroupsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.contrastItemGroupsBtn.Location = new System.Drawing.Point(543, 1);
+            this.contrastItemGroupsBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.contrastItemGroupsBtn.Name = "contrastItemGroupsBtn";
+            this.contrastItemGroupsBtn.Size = new System.Drawing.Size(20, 20);
+            this.contrastItemGroupsBtn.TabIndex = 0;
+            this.contrastItemGroupsBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.contrastItemGroupsBtn, "Contrast Item Groups");
+            this.contrastItemGroupsBtn.UseVisualStyleBackColor = false;
+            this.contrastItemGroupsBtn.Click += new System.EventHandler(this.contrastItemGroupsBtn_Click);
+            this.contrastItemGroupsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.contrastItemGroupsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // senderColumnHeader
+            // redrawItemsBtn
             // 
-            this.senderColumnHeader.Text = "Sender";
-            this.senderColumnHeader.Width = 70;
+            this.redrawItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.redrawItemsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("redrawItemsBtn.BackgroundImage")));
+            this.redrawItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.redrawItemsBtn.FlatAppearance.BorderSize = 0;
+            this.redrawItemsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.redrawItemsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.redrawItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.redrawItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.redrawItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.redrawItemsBtn.Location = new System.Drawing.Point(599, 1);
+            this.redrawItemsBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.redrawItemsBtn.Name = "redrawItemsBtn";
+            this.redrawItemsBtn.Size = new System.Drawing.Size(20, 20);
+            this.redrawItemsBtn.TabIndex = 0;
+            this.redrawItemsBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.redrawItemsBtn, "Update Checked Items");
+            this.redrawItemsBtn.UseVisualStyleBackColor = false;
+            this.redrawItemsBtn.Click += new System.EventHandler(this.redrawItemsBtn_Click);
+            this.redrawItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.redrawItemsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // emailSubjectColumnHeader
+            // bulkCheckBtn
             // 
-            this.emailSubjectColumnHeader.Text = "Email Subject";
-            this.emailSubjectColumnHeader.Width = 70;
+            this.bulkCheckBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.bulkCheckBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.uncheckedIcon;
+            this.bulkCheckBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bulkCheckBtn.FlatAppearance.BorderSize = 0;
+            this.bulkCheckBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.bulkCheckBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bulkCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bulkCheckBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bulkCheckBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bulkCheckBtn.Location = new System.Drawing.Point(2, 1);
+            this.bulkCheckBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.bulkCheckBtn.Name = "bulkCheckBtn";
+            this.bulkCheckBtn.Size = new System.Drawing.Size(20, 20);
+            this.bulkCheckBtn.TabIndex = 0;
+            this.bulkCheckBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.bulkCheckBtn, "Check / Uncheck all (Alt+Shift+A)");
+            this.bulkCheckBtn.UseVisualStyleBackColor = false;
+            this.bulkCheckBtn.Click += new System.EventHandler(this.checkInBulkBtn_Click);
+            this.bulkCheckBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.bulkCheckBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // fileNameColumnHeader
+            // removePaintBtn
             // 
-            this.fileNameColumnHeader.Text = "File Name";
-            this.fileNameColumnHeader.Width = 70;
+            this.removePaintBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.removePaintBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removePaintBtn.BackgroundImage")));
+            this.removePaintBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removePaintBtn.FlatAppearance.BorderSize = 0;
+            this.removePaintBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.removePaintBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.removePaintBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removePaintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removePaintBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.removePaintBtn.Location = new System.Drawing.Point(92, 1);
+            this.removePaintBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.removePaintBtn.Name = "removePaintBtn";
+            this.removePaintBtn.Size = new System.Drawing.Size(20, 20);
+            this.removePaintBtn.TabIndex = 0;
+            this.removePaintBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.removePaintBtn, "Remove Paint");
+            this.removePaintBtn.UseVisualStyleBackColor = false;
+            this.removePaintBtn.Click += new System.EventHandler(this.removePaintBtn_Click);
+            this.removePaintBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.removePaintBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // sizeColumnHeader
+            // addReferenceBtn
             // 
-            this.sizeColumnHeader.Text = "Size";
-            this.sizeColumnHeader.Width = 70;
+            this.addReferenceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.addReferenceBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.downArrowIcon1;
+            this.addReferenceBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addReferenceBtn.FlatAppearance.BorderSize = 0;
+            this.addReferenceBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.addReferenceBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.addReferenceBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addReferenceBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addReferenceBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.addReferenceBtn.Location = new System.Drawing.Point(69, 1);
+            this.addReferenceBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.addReferenceBtn.Name = "addReferenceBtn";
+            this.addReferenceBtn.Size = new System.Drawing.Size(20, 20);
+            this.addReferenceBtn.TabIndex = 0;
+            this.addReferenceBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.addReferenceBtn, "Create References (Alt+Shift+Down)");
+            this.addReferenceBtn.UseVisualStyleBackColor = false;
+            this.addReferenceBtn.Click += new System.EventHandler(this.addReferenceBtn_Click);
+            this.addReferenceBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.addReferenceBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // fileUrlColumnHeader
+            // deselectBtn
             // 
-            this.fileUrlColumnHeader.Text = "File URL";
-            this.fileUrlColumnHeader.Width = 70;
+            this.deselectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.deselectBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deselectBtn.BackgroundImage")));
+            this.deselectBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deselectBtn.FlatAppearance.BorderSize = 0;
+            this.deselectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.deselectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.deselectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deselectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deselectBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.deselectBtn.Location = new System.Drawing.Point(46, 2);
+            this.deselectBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.deselectBtn.Name = "deselectBtn";
+            this.deselectBtn.Size = new System.Drawing.Size(20, 20);
+            this.deselectBtn.TabIndex = 0;
+            this.deselectBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.deselectBtn, "Deselect (Alt+D)");
+            this.deselectBtn.UseVisualStyleBackColor = false;
+            this.deselectBtn.Click += new System.EventHandler(this.deselectBtn_Click);
+            this.deselectBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.deselectBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // assignedToColumnHeader
+            // paintBtn
             // 
-            this.assignedToColumnHeader.Text = "Assigned To";
-            this.assignedToColumnHeader.Width = 70;
+            this.paintBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.paintBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.paintBrushIcon1;
+            this.paintBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.paintBtn.FlatAppearance.BorderSize = 0;
+            this.paintBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.paintBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.paintBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.paintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paintBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.paintBtn.Location = new System.Drawing.Point(114, 1);
+            this.paintBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.paintBtn.Name = "paintBtn";
+            this.paintBtn.Size = new System.Drawing.Size(20, 20);
+            this.paintBtn.TabIndex = 0;
+            this.paintBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.paintBtn, "Paint");
+            this.paintBtn.UseVisualStyleBackColor = false;
+            this.paintBtn.Click += new System.EventHandler(this.paintBtn_Click);
+            this.paintBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.paintBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // statusColumnHeader
+            // enlargeBtn
             // 
-            this.statusColumnHeader.Text = "Status";
-            this.statusColumnHeader.Width = 70;
+            this.enlargeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.enlargeBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.enlargeIcon2;
+            this.enlargeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.enlargeBtn.FlatAppearance.BorderSize = 0;
+            this.enlargeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.enlargeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.enlargeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enlargeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enlargeBtn.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.enlargeBtn.Location = new System.Drawing.Point(498, 1);
+            this.enlargeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.enlargeBtn.Name = "enlargeBtn";
+            this.enlargeBtn.Size = new System.Drawing.Size(20, 20);
+            this.enlargeBtn.TabIndex = 0;
+            this.enlargeBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.enlargeBtn, "Correct Panel Sizing (Ctrl+E)");
+            this.enlargeBtn.UseVisualStyleBackColor = false;
+            this.enlargeBtn.Click += new System.EventHandler(this.enlargeBtn_Click);
+            this.enlargeBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.enlargeBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
-            // sizeFixHeader
+            // singleCheckBtn
             // 
-            this.sizeFixHeader.Text = "";
-            this.sizeFixHeader.Width = 70;
+            this.singleCheckBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.singleCheckBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.selectIcon;
+            this.singleCheckBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.singleCheckBtn.FlatAppearance.BorderSize = 0;
+            this.singleCheckBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.singleCheckBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.singleCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.singleCheckBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.singleCheckBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.singleCheckBtn.Location = new System.Drawing.Point(24, 1);
+            this.singleCheckBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.singleCheckBtn.Name = "singleCheckBtn";
+            this.singleCheckBtn.Size = new System.Drawing.Size(20, 20);
+            this.singleCheckBtn.TabIndex = 0;
+            this.singleCheckBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.singleCheckBtn, "Check Focused Item (Alt+X)");
+            this.singleCheckBtn.UseVisualStyleBackColor = false;
+            this.singleCheckBtn.Click += new System.EventHandler(this.singleCheckBtn_Click);
+            this.singleCheckBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.singleCheckBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // filterBtn
+            // 
+            this.filterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.filterBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.sliderIcon;
+            this.filterBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.filterBtn.FlatAppearance.BorderSize = 0;
+            this.filterBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.filterBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.filterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.filterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.filterBtn.Location = new System.Drawing.Point(430, 1);
+            this.filterBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.filterBtn.Name = "filterBtn";
+            this.filterBtn.Size = new System.Drawing.Size(20, 20);
+            this.filterBtn.TabIndex = 0;
+            this.filterBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.filterBtn, "Filter Items (Ctrl+T)");
+            this.filterBtn.UseVisualStyleBackColor = false;
+            this.filterBtn.Click += new System.EventHandler(this.lvFiltersBtn_Click);
+            this.filterBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.filterBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // itemsViewBtn
+            // 
+            this.itemsViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.itemsViewBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.viewIcon;
+            this.itemsViewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemsViewBtn.FlatAppearance.BorderSize = 0;
+            this.itemsViewBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.itemsViewBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.itemsViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemsViewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemsViewBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.itemsViewBtn.Location = new System.Drawing.Point(453, 1);
+            this.itemsViewBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.itemsViewBtn.Name = "itemsViewBtn";
+            this.itemsViewBtn.Size = new System.Drawing.Size(20, 20);
+            this.itemsViewBtn.TabIndex = 0;
+            this.itemsViewBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.itemsViewBtn, "View Items in Pop Out Window (Ctrl+Shift+V)");
+            this.itemsViewBtn.UseVisualStyleBackColor = false;
+            this.itemsViewBtn.Click += new System.EventHandler(this.itemsViewBtn_Click);
+            this.itemsViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.itemsViewBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // refreshBtn
+            // 
+            this.refreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.refreshBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.refreshIcon1;
+            this.refreshBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refreshBtn.FlatAppearance.BorderSize = 0;
+            this.refreshBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.refreshBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.refreshBtn.Location = new System.Drawing.Point(622, 1);
+            this.refreshBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(20, 20);
+            this.refreshBtn.TabIndex = 0;
+            this.refreshBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.refreshBtn, "Refresh View (Ctrl+R)");
+            this.refreshBtn.UseVisualStyleBackColor = false;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshListViewBtn_Click);
+            this.refreshBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.refreshBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // importBtn
+            // 
+            this.importBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.importBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.importIcon;
+            this.importBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.importBtn.FlatAppearance.BorderSize = 0;
+            this.importBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.importBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.importBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.importBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.importBtn.Location = new System.Drawing.Point(170, 1);
+            this.importBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.importBtn.Name = "importBtn";
+            this.importBtn.Size = new System.Drawing.Size(20, 20);
+            this.importBtn.TabIndex = 0;
+            this.importBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.importBtn, "Import Workflow Items From CSV (Ctrl+Shift+I)");
+            this.importBtn.UseVisualStyleBackColor = false;
+            this.importBtn.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
+            this.importBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.importBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // fullViewBtn
+            // 
+            this.fullViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.fullViewBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.fullScreenIcon;
+            this.fullViewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fullViewBtn.FlatAppearance.BorderSize = 0;
+            this.fullViewBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.fullViewBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.fullViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fullViewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullViewBtn.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.fullViewBtn.Location = new System.Drawing.Point(476, 1);
+            this.fullViewBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.fullViewBtn.Name = "fullViewBtn";
+            this.fullViewBtn.Size = new System.Drawing.Size(20, 20);
+            this.fullViewBtn.TabIndex = 0;
+            this.fullViewBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.fullViewBtn, "Full Screen (Ctrl+Enter)");
+            this.fullViewBtn.UseVisualStyleBackColor = false;
+            this.fullViewBtn.Click += new System.EventHandler(this.fullViewBtn_Click);
+            this.fullViewBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.fullViewBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // colorDialogBtn
+            // 
+            this.colorDialogBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.colorDialogBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.colorWheelIcon;
+            this.colorDialogBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.colorDialogBtn.FlatAppearance.BorderSize = 0;
+            this.colorDialogBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.colorDialogBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.colorDialogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorDialogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorDialogBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.colorDialogBtn.Location = new System.Drawing.Point(136, 1);
+            this.colorDialogBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.colorDialogBtn.Name = "colorDialogBtn";
+            this.colorDialogBtn.Size = new System.Drawing.Size(20, 20);
+            this.colorDialogBtn.TabIndex = 0;
+            this.colorDialogBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.colorDialogBtn, "Select Color");
+            this.colorDialogBtn.UseVisualStyleBackColor = false;
+            this.colorDialogBtn.Click += new System.EventHandler(this.colorSelectionBtn_Click);
+            this.colorDialogBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.colorDialogBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // openInCertusBtn
+            // 
+            this.openInCertusBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.openInCertusBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.openInCertusBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.openInBrowserIcon;
+            this.openInCertusBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.openInCertusBtn.Enabled = false;
+            this.openInCertusBtn.FlatAppearance.BorderSize = 0;
+            this.openInCertusBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.openInCertusBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.openInCertusBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openInCertusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openInCertusBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.openInCertusBtn.ImageIndex = 0;
+            this.openInCertusBtn.Location = new System.Drawing.Point(2, 97);
+            this.openInCertusBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.openInCertusBtn.Name = "openInCertusBtn";
+            this.openInCertusBtn.Size = new System.Drawing.Size(22, 22);
+            this.openInCertusBtn.TabIndex = 7;
+            this.openInCertusBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.openInCertusBtn, "Open in Certus Browser");
+            this.openInCertusBtn.UseVisualStyleBackColor = false;
+            this.openInCertusBtn.Click += new System.EventHandler(this.openInCertusBtn_Click);
+            this.openInCertusBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.openInCertusBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // clearItemDetailsBtn
+            // 
+            this.clearItemDetailsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clearItemDetailsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.clearItemDetailsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.removeIcon;
+            this.clearItemDetailsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.clearItemDetailsBtn.FlatAppearance.BorderSize = 0;
+            this.clearItemDetailsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.clearItemDetailsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.clearItemDetailsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearItemDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearItemDetailsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.clearItemDetailsBtn.ImageIndex = 0;
+            this.clearItemDetailsBtn.Location = new System.Drawing.Point(2, 122);
+            this.clearItemDetailsBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.clearItemDetailsBtn.Name = "clearItemDetailsBtn";
+            this.clearItemDetailsBtn.Size = new System.Drawing.Size(22, 22);
+            this.clearItemDetailsBtn.TabIndex = 6;
+            this.clearItemDetailsBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.clearItemDetailsBtn, "Clear Details View");
+            this.clearItemDetailsBtn.UseVisualStyleBackColor = false;
+            this.clearItemDetailsBtn.Click += new System.EventHandler(this.clearItemDetailsBtn_Click);
+            this.clearItemDetailsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.clearItemDetailsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // copyIdsBtn
+            // 
+            this.copyIdsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.copyIdsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyIdsBtn.BackgroundImage")));
+            this.copyIdsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.copyIdsBtn.FlatAppearance.BorderSize = 0;
+            this.copyIdsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.copyIdsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.copyIdsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyIdsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copyIdsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.copyIdsBtn.ImageIndex = 0;
+            this.copyIdsBtn.Location = new System.Drawing.Point(2, 72);
+            this.copyIdsBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.copyIdsBtn.Name = "copyIdsBtn";
+            this.copyIdsBtn.Size = new System.Drawing.Size(22, 22);
+            this.copyIdsBtn.TabIndex = 4;
+            this.copyIdsBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.copyIdsBtn, "Copy Reference ID(s) to Clipboard");
+            this.copyIdsBtn.UseVisualStyleBackColor = false;
+            this.copyIdsBtn.Click += new System.EventHandler(this.copyIdsBtn_Click);
+            this.copyIdsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.copyIdsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // selectAllItemsBtn
+            // 
+            this.selectAllItemsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectAllItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.selectAllItemsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.selectAllIcon1;
+            this.selectAllItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.selectAllItemsBtn.FlatAppearance.BorderSize = 0;
+            this.selectAllItemsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.selectAllItemsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.selectAllItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.selectAllItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectAllItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.selectAllItemsBtn.ImageIndex = 0;
+            this.selectAllItemsBtn.Location = new System.Drawing.Point(2, 22);
+            this.selectAllItemsBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.selectAllItemsBtn.Name = "selectAllItemsBtn";
+            this.selectAllItemsBtn.Size = new System.Drawing.Size(22, 22);
+            this.selectAllItemsBtn.TabIndex = 2;
+            this.selectAllItemsBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.selectAllItemsBtn, "Select All References (Ctrl+Alt+A)");
+            this.selectAllItemsBtn.UseVisualStyleBackColor = false;
+            this.selectAllItemsBtn.Click += new System.EventHandler(this.selectAllItemsBtn_Click);
+            this.selectAllItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.selectAllItemsBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // openLinkBtn
+            // 
+            this.openLinkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.openLinkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.openLinkBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.externalLinkIcon2;
+            this.openLinkBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.openLinkBtn.FlatAppearance.BorderSize = 0;
+            this.openLinkBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.openLinkBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.openLinkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openLinkBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openLinkBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.openLinkBtn.ImageIndex = 0;
+            this.openLinkBtn.Location = new System.Drawing.Point(2, 47);
+            this.openLinkBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.openLinkBtn.Name = "openLinkBtn";
+            this.openLinkBtn.Size = new System.Drawing.Size(22, 22);
+            this.openLinkBtn.TabIndex = 1;
+            this.openLinkBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.openLinkBtn, "Open File Link(s) (Ctrl+Shift+O)");
+            this.openLinkBtn.UseVisualStyleBackColor = false;
+            this.openLinkBtn.Click += new System.EventHandler(this.openAllLinks_Click);
+            this.openLinkBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.openLinkBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // closeItemTabBtn
+            // 
+            this.closeItemTabBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeItemTabBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.closeItemTabBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closeItemTabBtn.BackgroundImage")));
+            this.closeItemTabBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeItemTabBtn.FlatAppearance.BorderSize = 0;
+            this.closeItemTabBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.closeItemTabBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.closeItemTabBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeItemTabBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeItemTabBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeItemTabBtn.ImageIndex = 0;
+            this.closeItemTabBtn.Location = new System.Drawing.Point(2, 0);
+            this.closeItemTabBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.closeItemTabBtn.Name = "closeItemTabBtn";
+            this.closeItemTabBtn.Size = new System.Drawing.Size(22, 22);
+            this.closeItemTabBtn.TabIndex = 0;
+            this.closeItemTabBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.closeItemTabBtn, "Remove Reference(s) (Ctrl+Shift+X)");
+            this.closeItemTabBtn.UseVisualStyleBackColor = false;
+            this.closeItemTabBtn.Click += new System.EventHandler(this.closeItemButton_Click);
+            this.closeItemTabBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.closeItemTabBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // filesAttachedBtn
+            // 
+            this.filesAttachedBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filesAttachedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.filesAttachedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("filesAttachedBtn.BackgroundImage")));
+            this.filesAttachedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.filesAttachedBtn.FlatAppearance.BorderSize = 0;
+            this.filesAttachedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.filesAttachedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.filesAttachedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.filesAttachedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filesAttachedBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.filesAttachedBtn.Location = new System.Drawing.Point(112, -2);
+            this.filesAttachedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.filesAttachedBtn.Name = "filesAttachedBtn";
+            this.filesAttachedBtn.Size = new System.Drawing.Size(18, 18);
+            this.filesAttachedBtn.TabIndex = 0;
+            this.filesAttachedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.filesAttachedBtn, "Create References(s)");
+            this.filesAttachedBtn.UseVisualStyleBackColor = false;
+            this.filesAttachedBtn.Click += new System.EventHandler(this.filesAttachedBtn_Click);
+            // 
+            // priorityNotificationBtn
+            // 
+            this.priorityNotificationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.priorityNotificationBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("priorityNotificationBtn.BackgroundImage")));
+            this.priorityNotificationBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.priorityNotificationBtn.FlatAppearance.BorderSize = 0;
+            this.priorityNotificationBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.priorityNotificationBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.priorityNotificationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.priorityNotificationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priorityNotificationBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.priorityNotificationBtn.ImageIndex = 0;
+            this.priorityNotificationBtn.Location = new System.Drawing.Point(0, 0);
+            this.priorityNotificationBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.priorityNotificationBtn.Name = "priorityNotificationBtn";
+            this.priorityNotificationBtn.Size = new System.Drawing.Size(20, 20);
+            this.priorityNotificationBtn.TabIndex = 0;
+            this.priorityNotificationBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.priorityNotificationBtn, "Item has priority");
+            this.priorityNotificationBtn.UseVisualStyleBackColor = false;
+            this.priorityNotificationBtn.Visible = false;
+            this.priorityNotificationBtn.Click += new System.EventHandler(this.priorityNotificationBtn_Click);
+            // 
+            // contractInformationUpdatedBtn
+            // 
+            this.contractInformationUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.contractInformationUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contractInformationUpdatedBtn.BackgroundImage")));
+            this.contractInformationUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.contractInformationUpdatedBtn.FlatAppearance.BorderSize = 0;
+            this.contractInformationUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.contractInformationUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.contractInformationUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.contractInformationUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contractInformationUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.contractInformationUpdatedBtn.ImageIndex = 0;
+            this.contractInformationUpdatedBtn.Location = new System.Drawing.Point(46, 0);
+            this.contractInformationUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.contractInformationUpdatedBtn.Name = "contractInformationUpdatedBtn";
+            this.contractInformationUpdatedBtn.Size = new System.Drawing.Size(20, 20);
+            this.contractInformationUpdatedBtn.TabIndex = 0;
+            this.contractInformationUpdatedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.contractInformationUpdatedBtn, "Item contract information has been updated");
+            this.contractInformationUpdatedBtn.UseVisualStyleBackColor = false;
+            this.contractInformationUpdatedBtn.Visible = false;
+            this.contractInformationUpdatedBtn.Click += new System.EventHandler(this.contractInformationUpdatedBtn_Click);
+            this.contractInformationUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // itemExcludedBtn
+            // 
+            this.itemExcludedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.itemExcludedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("itemExcludedBtn.BackgroundImage")));
+            this.itemExcludedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemExcludedBtn.FlatAppearance.BorderSize = 0;
+            this.itemExcludedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.itemExcludedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.itemExcludedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemExcludedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemExcludedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.itemExcludedBtn.ImageIndex = 0;
+            this.itemExcludedBtn.Location = new System.Drawing.Point(92, 0);
+            this.itemExcludedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.itemExcludedBtn.Name = "itemExcludedBtn";
+            this.itemExcludedBtn.Size = new System.Drawing.Size(20, 20);
+            this.itemExcludedBtn.TabIndex = 0;
+            this.itemExcludedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.itemExcludedBtn, "Item is excluded (click to override)");
+            this.itemExcludedBtn.UseVisualStyleBackColor = false;
+            this.itemExcludedBtn.Visible = false;
+            this.itemExcludedBtn.Click += new System.EventHandler(this.itemExcludedBtn_Click);
+            this.itemExcludedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // itemIsDifferentBtn
+            // 
+            this.itemIsDifferentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.itemIsDifferentBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.warningIcon1;
+            this.itemIsDifferentBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemIsDifferentBtn.FlatAppearance.BorderSize = 0;
+            this.itemIsDifferentBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.itemIsDifferentBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.itemIsDifferentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemIsDifferentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemIsDifferentBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.itemIsDifferentBtn.ImageIndex = 0;
+            this.itemIsDifferentBtn.Location = new System.Drawing.Point(114, 0);
+            this.itemIsDifferentBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.itemIsDifferentBtn.Name = "itemIsDifferentBtn";
+            this.itemIsDifferentBtn.Size = new System.Drawing.Size(20, 20);
+            this.itemIsDifferentBtn.TabIndex = 0;
+            this.itemIsDifferentBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.itemIsDifferentBtn, "Item data is not reflected on Certus (click to override)");
+            this.itemIsDifferentBtn.UseVisualStyleBackColor = false;
+            this.itemIsDifferentBtn.Visible = false;
+            this.itemIsDifferentBtn.Click += new System.EventHandler(this.itemIsDifferentBtn_Click);
+            this.itemIsDifferentBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // companyUpdatedBtn
+            // 
+            this.companyUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.companyUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("companyUpdatedBtn.BackgroundImage")));
+            this.companyUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.companyUpdatedBtn.FlatAppearance.BorderSize = 0;
+            this.companyUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.companyUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.companyUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.companyUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.companyUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.companyUpdatedBtn.ImageIndex = 0;
+            this.companyUpdatedBtn.Location = new System.Drawing.Point(22, 0);
+            this.companyUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.companyUpdatedBtn.Name = "companyUpdatedBtn";
+            this.companyUpdatedBtn.Size = new System.Drawing.Size(20, 20);
+            this.companyUpdatedBtn.TabIndex = 0;
+            this.companyUpdatedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.companyUpdatedBtn, "Item company has been updated");
+            this.companyUpdatedBtn.UseVisualStyleBackColor = false;
+            this.companyUpdatedBtn.Visible = false;
+            this.companyUpdatedBtn.Click += new System.EventHandler(this.companyUpdatedBtn_Click);
+            this.companyUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // contractIdOverridenBtn
+            // 
+            this.contractIdOverridenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.contractIdOverridenBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contractIdOverridenBtn.BackgroundImage")));
+            this.contractIdOverridenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.contractIdOverridenBtn.FlatAppearance.BorderSize = 0;
+            this.contractIdOverridenBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.contractIdOverridenBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.contractIdOverridenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.contractIdOverridenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contractIdOverridenBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.contractIdOverridenBtn.ImageIndex = 0;
+            this.contractIdOverridenBtn.Location = new System.Drawing.Point(70, 0);
+            this.contractIdOverridenBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.contractIdOverridenBtn.Name = "contractIdOverridenBtn";
+            this.contractIdOverridenBtn.Size = new System.Drawing.Size(20, 20);
+            this.contractIdOverridenBtn.TabIndex = 0;
+            this.contractIdOverridenBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.contractIdOverridenBtn, "Item contract information has been overridden");
+            this.contractIdOverridenBtn.UseVisualStyleBackColor = false;
+            this.contractIdOverridenBtn.Visible = false;
+            this.contractIdOverridenBtn.Click += new System.EventHandler(this.contractIdOverridenBtn_Click);
+            this.contractIdOverridenBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // openNoteBtn
+            // 
+            this.openNoteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.openNoteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.openNoteBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("openNoteBtn.BackgroundImage")));
+            this.openNoteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.openNoteBtn.FlatAppearance.BorderSize = 0;
+            this.openNoteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.openNoteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.openNoteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openNoteBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.openNoteBtn.Location = new System.Drawing.Point(402, -2);
+            this.openNoteBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.openNoteBtn.Name = "openNoteBtn";
+            this.openNoteBtn.Size = new System.Drawing.Size(18, 18);
+            this.openNoteBtn.TabIndex = 0;
+            this.openNoteBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.openNoteBtn, "View Note in Separate Window");
+            this.openNoteBtn.UseVisualStyleBackColor = false;
+            this.openNoteBtn.Click += new System.EventHandler(this.openNoteBtn_Click);
+            // 
+            // qfndDropBtn
+            // 
+            this.qfndDropBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.qfndDropBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.qfndDropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.dropDownIcon;
+            this.qfndDropBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.qfndDropBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.qfndDropBtn.FlatAppearance.BorderSize = 0;
+            this.qfndDropBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.qfndDropBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.qfndDropBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.qfndDropBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.qfndDropBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.qfndDropBtn.Location = new System.Drawing.Point(73, 0);
+            this.qfndDropBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.qfndDropBtn.Name = "qfndDropBtn";
+            this.qfndDropBtn.Size = new System.Drawing.Size(18, 19);
+            this.qfndDropBtn.TabIndex = 0;
+            this.qfndDropBtn.TabStop = false;
+            this.qfndDropBtn.UseVisualStyleBackColor = false;
+            this.qfndDropBtn.Leave += new System.EventHandler(this.qfndCustomDDLPanel_Leave);
+            this.qfndDropBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.qfndCustomDDLBtns_MouseDown);
+            this.qfndDropBtn.MouseLeave += new System.EventHandler(this.qfndCustomDDLPanel_MouseLeave);
+            this.qfndDropBtn.MouseHover += new System.EventHandler(this.qfndCustomDDLPanel_MouseHover);
+            this.qfndDropBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.qfndCustomDDLPanel_MouseMove);
+            // 
+            // paintFromQueryBtn
+            // 
+            this.paintFromQueryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.paintFromQueryBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.paintBrushIcon1;
+            this.paintFromQueryBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.paintFromQueryBtn.FlatAppearance.BorderSize = 0;
+            this.paintFromQueryBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.paintFromQueryBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.paintFromQueryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.paintFromQueryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paintFromQueryBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.paintFromQueryBtn.Location = new System.Drawing.Point(45, 6);
+            this.paintFromQueryBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.paintFromQueryBtn.Name = "paintFromQueryBtn";
+            this.paintFromQueryBtn.Size = new System.Drawing.Size(22, 22);
+            this.paintFromQueryBtn.TabIndex = 0;
+            this.paintFromQueryBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.paintFromQueryBtn, "Paint Queried Items");
+            this.paintFromQueryBtn.UseVisualStyleBackColor = false;
+            this.paintFromQueryBtn.Click += new System.EventHandler(this.paintFromQueryBtn_Click);
+            this.paintFromQueryBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // checkQueriedItemsBtn
+            // 
+            this.checkQueriedItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.checkQueriedItemsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.checkedIcon;
+            this.checkQueriedItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.checkQueriedItemsBtn.FlatAppearance.BorderSize = 0;
+            this.checkQueriedItemsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.checkQueriedItemsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.checkQueriedItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkQueriedItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkQueriedItemsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkQueriedItemsBtn.Location = new System.Drawing.Point(21, 6);
+            this.checkQueriedItemsBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.checkQueriedItemsBtn.Name = "checkQueriedItemsBtn";
+            this.checkQueriedItemsBtn.Size = new System.Drawing.Size(22, 22);
+            this.checkQueriedItemsBtn.TabIndex = 0;
+            this.checkQueriedItemsBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.checkQueriedItemsBtn, "Check Queried Items on Main Display");
+            this.checkQueriedItemsBtn.UseVisualStyleBackColor = false;
+            this.checkQueriedItemsBtn.Click += new System.EventHandler(this.checkAllItemsInListBtn_Click);
+            this.checkQueriedItemsBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // displayingToolStripDropDownButton
+            // 
+            this.displayingToolStripDropDownButton.AutoSize = false;
+            this.displayingToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.displayingToolStripDropDownButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayingToolStripDropDownButton.ForeColor = System.Drawing.Color.White;
+            this.displayingToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("displayingToolStripDropDownButton.Image")));
+            this.displayingToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.displayingToolStripDropDownButton.Margin = new System.Windows.Forms.Padding(0);
+            this.displayingToolStripDropDownButton.Name = "displayingToolStripDropDownButton";
+            this.displayingToolStripDropDownButton.ShowDropDownArrow = false;
+            this.displayingToolStripDropDownButton.Size = new System.Drawing.Size(62, 22);
+            this.displayingToolStripDropDownButton.Text = "Displaying";
+            this.displayingToolStripDropDownButton.Click += new System.EventHandler(this.displayingToolStripDropDownButton_Click);
+            // 
+            // checkedToolStripDropDownButton
+            // 
+            this.checkedToolStripDropDownButton.AutoSize = false;
+            this.checkedToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.checkedToolStripDropDownButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedToolStripDropDownButton.ForeColor = System.Drawing.Color.White;
+            this.checkedToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("checkedToolStripDropDownButton.Image")));
+            this.checkedToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.checkedToolStripDropDownButton.Margin = new System.Windows.Forms.Padding(0);
+            this.checkedToolStripDropDownButton.Name = "checkedToolStripDropDownButton";
+            this.checkedToolStripDropDownButton.ShowDropDownArrow = false;
+            this.checkedToolStripDropDownButton.Size = new System.Drawing.Size(53, 22);
+            this.checkedToolStripDropDownButton.Text = "Checked";
+            this.checkedToolStripDropDownButton.Click += new System.EventHandler(this.checkedToolStripDropDownButton_Click);
+            // 
+            // queriedToolStripDropDownButton
+            // 
+            this.queriedToolStripDropDownButton.AutoSize = false;
+            this.queriedToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.queriedToolStripDropDownButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.queriedToolStripDropDownButton.ForeColor = System.Drawing.Color.White;
+            this.queriedToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("queriedToolStripDropDownButton.Image")));
+            this.queriedToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.queriedToolStripDropDownButton.Margin = new System.Windows.Forms.Padding(0);
+            this.queriedToolStripDropDownButton.Name = "queriedToolStripDropDownButton";
+            this.queriedToolStripDropDownButton.ShowDropDownArrow = false;
+            this.queriedToolStripDropDownButton.Size = new System.Drawing.Size(50, 22);
+            this.queriedToolStripDropDownButton.Text = "Queried";
+            this.queriedToolStripDropDownButton.Click += new System.EventHandler(this.queriedToolStripDropDownButton_Click);
+            // 
+            // copyContextMenuItem
+            // 
+            this.copyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.copyContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyContextMenuItem.Image = global::CertusCompanion.Properties.Resources.copyIcon2;
+            this.copyContextMenuItem.Name = "copyContextMenuItem";
+            this.copyContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.copyContextMenuItem.Text = "Copy";
+            this.copyContextMenuItem.Click += new System.EventHandler(this.copyContextMenuItem_Click);
+            // 
+            // selectAllContextMenuItem
+            // 
+            this.selectAllContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.selectAllContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectAllContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.selectAllContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("selectAllContextMenuItem.Image")));
+            this.selectAllContextMenuItem.Name = "selectAllContextMenuItem";
+            this.selectAllContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.selectAllContextMenuItem.Text = "Select All";
+            this.selectAllContextMenuItem.Click += new System.EventHandler(this.selectAllContextMenuItem_Click);
+            // 
+            // openLinksContextMenuItem
+            // 
+            this.openLinksContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.openLinksContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openLinksContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.openLinksContextMenuItem.Image = global::CertusCompanion.Properties.Resources.externalLinkIcon;
+            this.openLinksContextMenuItem.Name = "openLinksContextMenuItem";
+            this.openLinksContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openLinksContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.openLinksContextMenuItem.Text = "Open Link(s)";
+            this.openLinksContextMenuItem.Click += new System.EventHandler(this.openLinkContextMenuItem_Click);
+            // 
+            // createReferencesContextMenuItem
+            // 
+            this.createReferencesContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.createReferencesContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createReferencesContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.createReferencesContextMenuItem.Image = global::CertusCompanion.Properties.Resources.downArrowIcon2;
+            this.createReferencesContextMenuItem.Name = "createReferencesContextMenuItem";
+            this.createReferencesContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Down)));
+            this.createReferencesContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.createReferencesContextMenuItem.Text = "Create Reference(s)                    ";
+            this.createReferencesContextMenuItem.Click += new System.EventHandler(this.createReferencesContextMenuItem_Click);
+            // 
+            // addToExportContextMenuItem
+            // 
+            this.addToExportContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.addToExportContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addToExportContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addToExportContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addToExportContextMenuItem.Image")));
+            this.addToExportContextMenuItem.Name = "addToExportContextMenuItem";
+            this.addToExportContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.addToExportContextMenuItem.Text = "Add Item(s) To Export View";
+            this.addToExportContextMenuItem.Click += new System.EventHandler(this.addToExportViewContextMenuItem_Click);
+            // 
+            // removeFromExportContextMenuItem
+            // 
+            this.removeFromExportContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.removeFromExportContextMenuItem.Enabled = false;
+            this.removeFromExportContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeFromExportContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeFromExportContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("removeFromExportContextMenuItem.Image")));
+            this.removeFromExportContextMenuItem.Name = "removeFromExportContextMenuItem";
+            this.removeFromExportContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.removeFromExportContextMenuItem.Text = "Remove Item(s) From Export View";
+            this.removeFromExportContextMenuItem.Click += new System.EventHandler(this.removeFromExportViewContextMenuItem_Click);
+            // 
+            // paintContextMenuItem
+            // 
+            this.paintContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.paintContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paintContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.paintContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("paintContextMenuItem.Image")));
+            this.paintContextMenuItem.Name = "paintContextMenuItem";
+            this.paintContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.paintContextMenuItem.Text = "Paint";
+            this.paintContextMenuItem.Click += new System.EventHandler(this.paintContextMenuItem_Click);
+            // 
+            // removePaintContextMenuItem
+            // 
+            this.removePaintContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.removePaintContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removePaintContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removePaintContextMenuItem.Image = global::CertusCompanion.Properties.Resources.eraseIcon2;
+            this.removePaintContextMenuItem.Name = "removePaintContextMenuItem";
+            this.removePaintContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.removePaintContextMenuItem.Text = "Remove Paint";
+            this.removePaintContextMenuItem.Click += new System.EventHandler(this.removePaintContextMenuItem_Click);
+            // 
+            // markPriorityContextMenuItem
+            // 
+            this.markPriorityContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.markPriorityContextMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.markPriorityContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.markPriorityContextMenuItem.Image = global::CertusCompanion.Properties.Resources.priorityIcon2;
+            this.markPriorityContextMenuItem.Name = "markPriorityContextMenuItem";
+            this.markPriorityContextMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.markPriorityContextMenuItem.Text = "Priority";
+            this.markPriorityContextMenuItem.Click += new System.EventHandler(this.markPriorityContextMenuItem_Click);
+            // 
+            // markExcludedContextMenuItem
+            // 
+            this.markExcludedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.markExcludedContextMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.markExcludedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.markExcludedContextMenuItem.Image = global::CertusCompanion.Properties.Resources.deleteIcon2;
+            this.markExcludedContextMenuItem.Name = "markExcludedContextMenuItem";
+            this.markExcludedContextMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.markExcludedContextMenuItem.Text = "Excluded";
+            this.markExcludedContextMenuItem.Click += new System.EventHandler(this.markExcludedContextMenuItem_Click);
+            // 
+            // unmarkPriorityContextMenuItem
+            // 
+            this.unmarkPriorityContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkPriorityContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkPriorityContextMenuItem.Image = global::CertusCompanion.Properties.Resources.priorityIcon2;
+            this.unmarkPriorityContextMenuItem.Name = "unmarkPriorityContextMenuItem";
+            this.unmarkPriorityContextMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.unmarkPriorityContextMenuItem.Text = "Priority";
+            this.unmarkPriorityContextMenuItem.Click += new System.EventHandler(this.unmarkPriorityContextMenuItem_Click);
+            // 
+            // unmarkExcludedContextMenuItem
+            // 
+            this.unmarkExcludedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkExcludedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkExcludedContextMenuItem.Image = global::CertusCompanion.Properties.Resources.deleteIcon2;
+            this.unmarkExcludedContextMenuItem.Name = "unmarkExcludedContextMenuItem";
+            this.unmarkExcludedContextMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.unmarkExcludedContextMenuItem.Text = "Excluded";
+            this.unmarkExcludedContextMenuItem.Click += new System.EventHandler(this.unmarkExcludedContextMenuItem_Click);
+            // 
+            // unmarkItemChangedContextMenuItem
+            // 
+            this.unmarkItemChangedContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unmarkItemChangedContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unmarkItemChangedContextMenuItem.Image = global::CertusCompanion.Properties.Resources.warningIcon2;
+            this.unmarkItemChangedContextMenuItem.Name = "unmarkItemChangedContextMenuItem";
+            this.unmarkItemChangedContextMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.unmarkItemChangedContextMenuItem.Text = "Item Changed";
+            this.unmarkItemChangedContextMenuItem.Click += new System.EventHandler(this.removeWarningContextMenuItem_Click);
+            // 
+            // modifyContextMenuItem
+            // 
+            this.modifyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.modifyContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modifyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.modifyContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modifyContextMenuItem.Image")));
+            this.modifyContextMenuItem.Name = "modifyContextMenuItem";
+            this.modifyContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.modifyContextMenuItem.Text = "Modify";
+            this.modifyContextMenuItem.Click += new System.EventHandler(this.modifyContextMenuItem_Click);
+            // 
+            // extractContextMenuItem
+            // 
+            this.extractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.extractContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.extractCompanyContextMenuItem,
+            this.extractContractContextMenuItem});
+            this.extractContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.extractContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("extractContextMenuItem.Image")));
+            this.extractContextMenuItem.Name = "extractContextMenuItem";
+            this.extractContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.extractContextMenuItem.Text = "Extract";
+            // 
+            // extractCompanyContextMenuItem
+            // 
+            this.extractCompanyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.extractCompanyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.extractCompanyContextMenuItem.Image = global::CertusCompanion.Properties.Resources.companyIcon2;
+            this.extractCompanyContextMenuItem.Name = "extractCompanyContextMenuItem";
+            this.extractCompanyContextMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.extractCompanyContextMenuItem.Text = "Company";
+            this.extractCompanyContextMenuItem.Click += new System.EventHandler(this.extractCompanyContextMenuItem_Click);
+            // 
+            // extractContractContextMenuItem
+            // 
+            this.extractContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.extractContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.extractContractContextMenuItem.Image = global::CertusCompanion.Properties.Resources.termIcon;
+            this.extractContractContextMenuItem.Name = "extractContractContextMenuItem";
+            this.extractContractContextMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.extractContractContextMenuItem.Text = "Contract";
+            this.extractContractContextMenuItem.Click += new System.EventHandler(this.extractContractContextMenuItem_Click);
+            // 
+            // appendContextMenuItem
+            // 
+            this.appendContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appendCompanyContextMenuItem,
+            this.appendContractContextMenuItem,
+            this.appendAssignmentContextMenuItem});
+            this.appendContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appendContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("appendContextMenuItem.Image")));
+            this.appendContextMenuItem.Name = "appendContextMenuItem";
+            this.appendContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.appendContextMenuItem.Text = "Append";
+            // 
+            // appendCompanyContextMenuItem
+            // 
+            this.appendCompanyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendCompanyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendCompanyContextMenuItem.Image = global::CertusCompanion.Properties.Resources.companyIcon2;
+            this.appendCompanyContextMenuItem.Name = "appendCompanyContextMenuItem";
+            this.appendCompanyContextMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.appendCompanyContextMenuItem.Text = "Company";
+            this.appendCompanyContextMenuItem.Click += new System.EventHandler(this.appendCompaniesContextMenuItem_Click);
+            // 
+            // appendContractContextMenuItem
+            // 
+            this.appendContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendContractContextMenuItem.Image = global::CertusCompanion.Properties.Resources.detailsIcon2;
+            this.appendContractContextMenuItem.Name = "appendContractContextMenuItem";
+            this.appendContractContextMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.appendContractContextMenuItem.Text = "Contract Information";
+            this.appendContractContextMenuItem.Click += new System.EventHandler(this.appendContractContextMenuItem_Click);
+            // 
+            // appendAssignmentContextMenuItem
+            // 
+            this.appendAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendAssignmentContextMenuItem.Image = global::CertusCompanion.Properties.Resources.userIcon;
+            this.appendAssignmentContextMenuItem.Name = "appendAssignmentContextMenuItem";
+            this.appendAssignmentContextMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.appendAssignmentContextMenuItem.Text = "Assignment";
+            this.appendAssignmentContextMenuItem.Click += new System.EventHandler(this.appendAssignmentContextMenuItem_Click);
+            // 
+            // setAssignmentContextMenuItem
+            // 
+            this.setAssignmentContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.setAssignmentContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setAssignmentFindContextMenuItem,
+            this.setAssignmentManuallyContextMenuItem});
+            this.setAssignmentContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setAssignmentContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.setAssignmentContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setAssignmentContextMenuItem.Image")));
+            this.setAssignmentContextMenuItem.Name = "setAssignmentContextMenuItem";
+            this.setAssignmentContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.setAssignmentContextMenuItem.Text = "Set Assignment";
+            // 
+            // setAssignmentFindContextMenuItem
+            // 
+            this.setAssignmentFindContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.setAssignmentFindContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.setAssignmentFindContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("setAssignmentFindContextMenuItem.Image")));
+            this.setAssignmentFindContextMenuItem.Name = "setAssignmentFindContextMenuItem";
+            this.setAssignmentFindContextMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.setAssignmentFindContextMenuItem.Text = "Find";
+            this.setAssignmentFindContextMenuItem.Click += new System.EventHandler(this.setAssignmentFindContextMenuItem_Click);
+            // 
+            // setAssignmentManuallyContextMenuItem
+            // 
+            this.setAssignmentManuallyContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.setAssignmentManuallyContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.setAssignmentManuallyContextMenuItem.Name = "setAssignmentManuallyContextMenuItem";
+            this.setAssignmentManuallyContextMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.setAssignmentManuallyContextMenuItem.Text = "Set Manually";
+            this.setAssignmentManuallyContextMenuItem.Visible = false;
+            this.setAssignmentManuallyContextMenuItem.Click += new System.EventHandler(this.setAssignmentManuallyContextMenuItem_Click);
+            // 
+            // unassignContextMenuItem
+            // 
+            this.unassignContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.unassignContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unassignContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.unassignContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unassignContextMenuItem.Image")));
+            this.unassignContextMenuItem.Name = "unassignContextMenuItem";
+            this.unassignContextMenuItem.Size = new System.Drawing.Size(324, 22);
+            this.unassignContextMenuItem.Text = "Unassign";
+            this.unassignContextMenuItem.Click += new System.EventHandler(this.unassignContextMenuItem_Click);
             // 
             // WorkflowManager
             // 
@@ -6517,7 +6421,6 @@
             this.Name = "WorkflowManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Workflow Manager";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Click += new System.EventHandler(this.certusConnectionBtn_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WorkflowManager_KeyDown);
             this.Resize += new System.EventHandler(this.WorkflowManager_Resize);
@@ -6776,7 +6679,6 @@
         private System.Windows.Forms.ToolStripDropDownButton displayingToolStripDropDownButton;
         private System.Windows.Forms.ToolStripDropDownButton queriedToolStripDropDownButton;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem excludedItemsViewToolStripMenuitem;
         private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker updateRelatedFilesDataBackgroundWorker;
@@ -6787,7 +6689,6 @@
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importCSVToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker importCertificatesBackgroundWorker;
-        private System.Windows.Forms.ToolStripMenuItem certificatesViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maximizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem certusBrowserToolStripMenuItem;
@@ -6809,7 +6710,6 @@
         private System.Windows.Forms.ToolStripSeparator dividerFileToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolTip tbxRemainsToolTip;
-        private System.Windows.Forms.ToolStripMenuItem companiesToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker importCompaniesBackgroundWorker;
         private System.Windows.Forms.Button itemIsDifferentBtn;
         private System.Windows.Forms.ToolStripSeparator dividerDataToolStripMenuItem1;
@@ -6846,7 +6746,6 @@
         private System.Windows.Forms.ToolStripMenuItem appendCompanyContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appendContractContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appendAssignmentContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appendStatusAndAssignmentContextMenuItem;
         private System.Windows.Forms.ColumnHeader contractIdColumnHeader;
         private System.Windows.Forms.Button redrawItemsBtn;
         private System.Windows.Forms.Button contrastItemGroupsBtn;
@@ -6945,9 +6844,6 @@
         private System.Windows.Forms.Button focusDetailPanelBtn10;
         private System.Windows.Forms.Button priorityNotificationBtn;
         private System.Windows.Forms.ToolStripMenuItem unmarkPriorityContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem unmarkCompanyUpdatedContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem unmarkContractInfoUpdatedContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem unmarkContractOverridenContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unmarkExcludedContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unmarkItemChangedContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setAssignmentFindContextMenuItem;
@@ -7012,10 +6908,8 @@
         private System.Windows.Forms.ContextMenuStrip qfndCustomDDLMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem item1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem item2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem item3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem item4ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noAttachToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem autoReplyToolStripMenuItem;
         private System.Windows.Forms.Timer preventDropDownReopen;
         private System.Windows.Forms.Panel vcOuterPanel;
         private System.Windows.Forms.Button vcSelectionBtn;
@@ -7055,7 +6949,6 @@
         private System.Windows.Forms.ToolStripSeparator dividerViewToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem contrastItemGroupsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showItemsSameColorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator dividerViewToolStripMenuItem2;
         private System.Windows.Forms.Panel listViewOptionsDividerPanel4;
         private System.Windows.Forms.Label label1;
     }

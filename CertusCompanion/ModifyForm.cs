@@ -23,6 +23,10 @@ namespace CertusCompanion
 
         //
         // constructor
+        public ModifyForm()
+        {
+            InitializeComponent();
+        }
         public ModifyForm(List<Company> companiesDS, List<Certificate> contractsDS, List<Analyst> analysts, List<string> statuses)
         {
             InitializeComponent();

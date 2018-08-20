@@ -14,6 +14,10 @@ namespace CertusCompanion
 
         //
         // constructors
+        public ImportFromDatabaseForm()
+        {
+            InitializeComponent();
+        }
         public ImportFromDatabaseForm(List<Client> clients)
         {
             InitializeComponent();

@@ -493,7 +493,7 @@
             this.enterIDManuallyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.enterIDManuallyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.enterIDManuallyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_rename_32__1_;
+            this.enterIDManuallyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.renameIcon;
             this.enterIDManuallyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.enterIDManuallyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.enterIDManuallyBtn.FlatAppearance.BorderSize = 0;
@@ -554,8 +554,9 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(360, 300);
             this.Name = "ModifyForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "ModifyForm";
+            this.Text = "Modify";
             this.coOuterPanel.ResumeLayout(false);
             this.coInnerPanel.ResumeLayout(false);
             this.coInnerPanel.PerformLayout();

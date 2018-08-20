@@ -39,6 +39,10 @@ namespace CertusCompanion
 
         //
         // constructors
+        public FiltersForm()
+        {
+            InitializeComponent();
+        }
         public FiltersForm(List<string> colors, List<Analyst> analysts, List<string> statuses, List<Company> companies, List<Contact> contacts)
         {
             InitializeComponent();

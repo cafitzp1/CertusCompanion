@@ -344,7 +344,7 @@
             this.t4DropBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.t4DropBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.t4DropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
+            this.t4DropBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.dropDownIcon;
             this.t4DropBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.t4DropBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.t4DropBtn.FlatAppearance.BorderSize = 0;

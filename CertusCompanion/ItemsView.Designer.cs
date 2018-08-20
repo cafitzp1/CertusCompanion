@@ -47,15 +47,6 @@
             this.searchTbx = new System.Windows.Forms.TextBox();
             this.headerLabel = new System.Windows.Forms.Label();
             this.btnsPanel = new System.Windows.Forms.Panel();
-            this.changeColorCheckBox = new System.Windows.Forms.CheckBox();
-            this.noteLbl = new System.Windows.Forms.Label();
-            this.statusLbl = new System.Windows.Forms.Label();
-            this.notePanel = new System.Windows.Forms.Panel();
-            this.notePanelBtn2 = new System.Windows.Forms.Button();
-            this.notePanelTbx = new System.Windows.Forms.TextBox();
-            this.notePanelBtn1 = new System.Windows.Forms.Button();
-            this.statusComboBox = new System.Windows.Forms.ComboBox();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.exportBtn = new System.Windows.Forms.Button();
             this.footerPanel = new System.Windows.Forms.Panel();
             this.toolStripStatusLabel = new System.Windows.Forms.Label();
@@ -63,7 +54,6 @@
             this.searchTbxActiveBorder.SuspendLayout();
             this.searchTbxInactiveBorder.SuspendLayout();
             this.btnsPanel.SuspendLayout();
-            this.notePanel.SuspendLayout();
             this.footerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,152 +231,12 @@
             // 
             this.btnsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnsPanel.Controls.Add(this.changeColorCheckBox);
-            this.btnsPanel.Controls.Add(this.noteLbl);
-            this.btnsPanel.Controls.Add(this.statusLbl);
-            this.btnsPanel.Controls.Add(this.notePanel);
-            this.btnsPanel.Controls.Add(this.statusComboBox);
-            this.btnsPanel.Controls.Add(this.saveBtn);
             this.btnsPanel.Controls.Add(this.exportBtn);
             this.btnsPanel.Location = new System.Drawing.Point(6, 398);
             this.btnsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.btnsPanel.Name = "btnsPanel";
             this.btnsPanel.Size = new System.Drawing.Size(788, 29);
             this.btnsPanel.TabIndex = 127;
-            // 
-            // changeColorCheckBox
-            // 
-            this.changeColorCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.changeColorCheckBox.AutoSize = true;
-            this.changeColorCheckBox.Checked = true;
-            this.changeColorCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.changeColorCheckBox.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.changeColorCheckBox.Location = new System.Drawing.Point(185, 8);
-            this.changeColorCheckBox.Margin = new System.Windows.Forms.Padding(2);
-            this.changeColorCheckBox.Name = "changeColorCheckBox";
-            this.changeColorCheckBox.Size = new System.Drawing.Size(90, 17);
-            this.changeColorCheckBox.TabIndex = 121;
-            this.changeColorCheckBox.Text = "Change Color";
-            this.changeColorCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // noteLbl
-            // 
-            this.noteLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.noteLbl.AutoSize = true;
-            this.noteLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.noteLbl.Location = new System.Drawing.Point(290, 9);
-            this.noteLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.noteLbl.Name = "noteLbl";
-            this.noteLbl.Size = new System.Drawing.Size(33, 13);
-            this.noteLbl.TabIndex = 120;
-            this.noteLbl.Text = "Note:";
-            // 
-            // statusLbl
-            // 
-            this.statusLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.statusLbl.AutoSize = true;
-            this.statusLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.statusLbl.Location = new System.Drawing.Point(18, 9);
-            this.statusLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.statusLbl.Name = "statusLbl";
-            this.statusLbl.Size = new System.Drawing.Size(40, 13);
-            this.statusLbl.TabIndex = 119;
-            this.statusLbl.Text = "Status:";
-            // 
-            // notePanel
-            // 
-            this.notePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.notePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.notePanel.Controls.Add(this.notePanelBtn2);
-            this.notePanel.Controls.Add(this.notePanelTbx);
-            this.notePanel.Controls.Add(this.notePanelBtn1);
-            this.notePanel.Location = new System.Drawing.Point(326, 8);
-            this.notePanel.Margin = new System.Windows.Forms.Padding(2);
-            this.notePanel.Name = "notePanel";
-            this.notePanel.Size = new System.Drawing.Size(283, 16);
-            this.notePanel.TabIndex = 118;
-            // 
-            // notePanelBtn2
-            // 
-            this.notePanelBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.notePanelBtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.notePanelBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notePanelBtn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.notePanelBtn2.Location = new System.Drawing.Point(264, -1);
-            this.notePanelBtn2.Margin = new System.Windows.Forms.Padding(2);
-            this.notePanelBtn2.Name = "notePanelBtn2";
-            this.notePanelBtn2.Size = new System.Drawing.Size(18, 18);
-            this.notePanelBtn2.TabIndex = 10;
-            this.notePanelBtn2.UseVisualStyleBackColor = false;
-            // 
-            // notePanelTbx
-            // 
-            this.notePanelTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.notePanelTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.notePanelTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.notePanelTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notePanelTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.notePanelTbx.HideSelection = false;
-            this.notePanelTbx.Location = new System.Drawing.Point(16, 1);
-            this.notePanelTbx.Margin = new System.Windows.Forms.Padding(2);
-            this.notePanelTbx.Name = "notePanelTbx";
-            this.notePanelTbx.Size = new System.Drawing.Size(249, 12);
-            this.notePanelTbx.TabIndex = 1;
-            // 
-            // notePanelBtn1
-            // 
-            this.notePanelBtn1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.notePanelBtn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.notePanelBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notePanelBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.notePanelBtn1.Location = new System.Drawing.Point(-1, -1);
-            this.notePanelBtn1.Margin = new System.Windows.Forms.Padding(2);
-            this.notePanelBtn1.Name = "notePanelBtn1";
-            this.notePanelBtn1.Size = new System.Drawing.Size(18, 18);
-            this.notePanelBtn1.TabIndex = 9;
-            this.notePanelBtn1.UseVisualStyleBackColor = false;
-            // 
-            // statusComboBox
-            // 
-            this.statusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.statusComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.statusComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.statusComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusComboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Items.AddRange(new object[] {
-            "Email Recevied",
-            "Documentation Analyst",
-            "Compliance Analyst",
-            "Completed",
-            "Trash"});
-            this.statusComboBox.Location = new System.Drawing.Point(61, 6);
-            this.statusComboBox.Margin = new System.Windows.Forms.Padding(2);
-            this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(100, 21);
-            this.statusComboBox.TabIndex = 117;
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.saveBtn.Location = new System.Drawing.Point(659, 6);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(50, 18);
-            this.saveBtn.TabIndex = 17;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = false;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // exportBtn
             // 
@@ -454,9 +304,6 @@
             this.searchTbxInactiveBorder.ResumeLayout(false);
             this.searchTbxInactiveBorder.PerformLayout();
             this.btnsPanel.ResumeLayout(false);
-            this.btnsPanel.PerformLayout();
-            this.notePanel.ResumeLayout(false);
-            this.notePanel.PerformLayout();
             this.footerPanel.ResumeLayout(false);
             this.footerPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -479,15 +326,6 @@
         private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.Panel btnsPanel;
-        private System.Windows.Forms.CheckBox changeColorCheckBox;
-        private System.Windows.Forms.Label noteLbl;
-        private System.Windows.Forms.Label statusLbl;
-        private System.Windows.Forms.Panel notePanel;
-        private System.Windows.Forms.Button notePanelBtn2;
-        private System.Windows.Forms.TextBox notePanelTbx;
-        private System.Windows.Forms.Button notePanelBtn1;
-        private System.Windows.Forms.ComboBox statusComboBox;
-        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button exportBtn;
         private System.Windows.Forms.Panel footerPanel;
         private System.Windows.Forms.Label toolStripStatusLabel;

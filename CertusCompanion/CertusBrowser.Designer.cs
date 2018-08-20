@@ -182,7 +182,7 @@
             // customScript3Btn
             // 
             this.customScript3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.customScript3Btn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_ios_application_placeholder_32__1_;
+            this.customScript3Btn.BackgroundImage = global::CertusCompanion.Properties.Resources.placeHolderIcon;
             this.customScript3Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.customScript3Btn.Enabled = false;
             this.customScript3Btn.FlatAppearance.BorderSize = 0;
@@ -204,7 +204,7 @@
             // customScript2Btn
             // 
             this.customScript2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.customScript2Btn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_ios_application_placeholder_32__1_;
+            this.customScript2Btn.BackgroundImage = global::CertusCompanion.Properties.Resources.placeHolderIcon;
             this.customScript2Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.customScript2Btn.Enabled = false;
             this.customScript2Btn.FlatAppearance.BorderSize = 0;
@@ -226,7 +226,7 @@
             // customScript1Btn
             // 
             this.customScript1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.customScript1Btn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_ios_application_placeholder_32__1_;
+            this.customScript1Btn.BackgroundImage = global::CertusCompanion.Properties.Resources.placeHolderIcon;
             this.customScript1Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.customScript1Btn.Enabled = false;
             this.customScript1Btn.FlatAppearance.BorderSize = 0;
@@ -248,7 +248,7 @@
             // viewItemsBtn
             // 
             this.viewItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.viewItemsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_view_details_32;
+            this.viewItemsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.viewDetailsIcon;
             this.viewItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.viewItemsBtn.Enabled = false;
             this.viewItemsBtn.FlatAppearance.BorderSize = 0;
@@ -270,7 +270,7 @@
             // distributeItemsScriptBtn
             // 
             this.distributeItemsScriptBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.distributeItemsScriptBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_batch_assign_30;
+            this.distributeItemsScriptBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.batchAssignIcon;
             this.distributeItemsScriptBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.distributeItemsScriptBtn.FlatAppearance.BorderSize = 0;
             this.distributeItemsScriptBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -290,7 +290,7 @@
             // completeItemsScriptBtn
             // 
             this.completeItemsScriptBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.completeItemsScriptBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_tick_box_32;
+            this.completeItemsScriptBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.tickBoxIcon;
             this.completeItemsScriptBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.completeItemsScriptBtn.FlatAppearance.BorderSize = 0;
             this.completeItemsScriptBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -309,7 +309,7 @@
             // 
             // refreshBtn
             // 
-            this.refreshBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_available_updates_48__1_;
+            this.refreshBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.refreshIcon1;
             this.refreshBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.refreshBtn.FlatAppearance.BorderSize = 0;
             this.refreshBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -348,7 +348,7 @@
             // openCompanyBtn
             // 
             this.openCompanyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.openCompanyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_organization_32__8_;
+            this.openCompanyBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.findCompanyIcon;
             this.openCompanyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.openCompanyBtn.FlatAppearance.BorderSize = 0;
             this.openCompanyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -368,7 +368,7 @@
             // openCertificateBtn
             // 
             this.openCertificateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.openCertificateBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_document_32__1_;
+            this.openCertificateBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.searchDocumentIcon;
             this.openCertificateBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.openCertificateBtn.FlatAppearance.BorderSize = 0;
             this.openCertificateBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -388,7 +388,7 @@
             // authenticateBtn
             // 
             this.authenticateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.authenticateBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_signin_32;
+            this.authenticateBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.signInIcon;
             this.authenticateBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.authenticateBtn.FlatAppearance.BorderSize = 0;
             this.authenticateBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -408,7 +408,7 @@
             // homePageBtn
             // 
             this.homePageBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.homePageBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_house_32;
+            this.homePageBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.homeIcon;
             this.homePageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.homePageBtn.FlatAppearance.BorderSize = 0;
             this.homePageBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -427,7 +427,7 @@
             // 
             // previousBtn
             // 
-            this.previousBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_back_48__2_;
+            this.previousBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.backIcon;
             this.previousBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.previousBtn.FlatAppearance.BorderSize = 0;
             this.previousBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -446,7 +446,7 @@
             // 
             // nextBtn
             // 
-            this.nextBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_forward_48__1_;
+            this.nextBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.nextIcon;
             this.nextBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nextBtn.FlatAppearance.BorderSize = 0;
             this.nextBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -504,7 +504,7 @@
             // 
             // navBarSearchBtn
             // 
-            this.navBarSearchBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.icons8_search_24;
+            this.navBarSearchBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.searchIcon;
             this.navBarSearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.navBarSearchBtn.Enabled = false;
             this.navBarSearchBtn.FlatAppearance.BorderSize = 0;

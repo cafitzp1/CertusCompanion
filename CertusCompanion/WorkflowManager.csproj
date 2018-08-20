@@ -492,6 +492,13 @@
     <None Include="Resources\icons8-delete-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-user-32.png" />
+    <None Include="Resources\icons8-details-32.png" />
+    <None Include="Resources\icons8-term-32.png" />
+    <None Include="Resources\icons8-organization-32 %281%29.png" />
+    <None Include="Resources\icons8-error-32.png" />
+    <None Include="Resources\icons8-delete-32.png" />
+    <None Include="Resources\icons8-medium-priority-32.png" />
     <None Include="Resources\icons8-connection-status-on-48_3.png" />
     <None Include="Resources\icons8-connection-status-on-48_2.png" />
     <None Include="Resources\icons8-rename-32 %281%29.png" />
@@ -522,9 +529,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

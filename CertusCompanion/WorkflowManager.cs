@@ -44,7 +44,6 @@ namespace CertusCompanion
         internal WorkflowItem SelectedWorkflowItem { get; set; }
         internal ListViewItem PreviousItem { get; set; }
         internal CertusBrowser CertusBrowser { get; set; }
-        internal ThemeColors ThemeColors { get; set; }
         internal MyRenderer CustomRenderer { get; set; }
         internal LoadingForm LoadingForm { get; set; }
         internal ModifyForm ModifyForm { get; set; }
@@ -60,47 +59,47 @@ namespace CertusCompanion
         internal List<WorkflowItem> TemporaryExportList { get; set; }
         internal List<Certificate> AllCertificatesLoaded { get; set; }
         internal List<Company> AllCompaniesLoaded { get; set; }
-        private List<WorkflowItem> uniqueWorkflowItems;
-        private List<WorkflowItem> workflowItemListPopulated;
-        private List<WorkflowItem> imageWorkflowItems;
-        private List<WorkflowItem> requirementWorkflowItems;
-        private List<WorkflowItem> dupsAndOriginals;
-        private List<WorkflowItem> filteredWfItems;
-        private List<WorkflowItem> originalItems;
-        private List<WorkflowItem> dupItems;
-        private List<WorkflowItem> queriedItemList;
-        private List<ListViewItem> allLvWorkflowItems;
-        private List<ListViewItem> filteredLvWorkflowItems;
-        private List<ListViewItem> dupCertLvItems;
-        private List<ListViewItem> dupCertOriginalLvItems;
-        private List<ListViewItem> lvItemsShowing;
-        private List<DataSource> DataSources { get; set; }
-        private List<string> ColorsDataSource { get; set; }
-        private List<string> StatusesDataSource { get; set; }
-        private List<Client> ClientsDataSource { get; set; }
-        private List<Company> CompaniesSubSource { get; set; }
-        private List<Certificate> CertificatesSubSource { get; set; }
-        private List<Analyst> AnalystsSubSource { get; set; }
-        private List<Contact> ContactsSubSource { get; set; }
-        private List<CertificateLocation> CertificateLocationsSubSource { get; set; }
-        private List<Location> LocationsSubSource { get; set; }
-        private HashSet<string> SenderEmailsSubSource { get; set; }
-        private List<string> excludedItems;
-        private List<string> companiesWhichHadDifferentAnalysts;
-        private List<string> CompanyNamesSubSource { get; set; }
-        private List<string> CertificateNamesSubSource { get; set; }
-        private List<string> AnalystNamesSubSource { get; set; }
-        List<string> CurrentDetailTbxVals { get; set; }
+        internal List<WorkflowItem> UniqueWorkflowItems { get; set; }
+        internal List<WorkflowItem> WorkflowItemListPopulated { get; set; }
+        internal List<WorkflowItem> ImageWorkflowItems { get; set; }
+        internal List<WorkflowItem> RequirementWorkflowItems { get; set; }
+        internal List<WorkflowItem> DupsAndOriginals { get; set; }
+        internal List<WorkflowItem> FilteredWfItems { get; set; }
+        internal List<WorkflowItem> OriginalItems { get; set; }
+        internal List<WorkflowItem> DupItems { get; set; }
+        internal List<WorkflowItem> QueriedItemList { get; set; }
+        internal List<ListViewItem> AllLvWorkflowItems { get; set; }
+        internal List<ListViewItem> FilteredLvWorkflowItems { get; set; }
+        internal List<ListViewItem> DupCertLvItems { get; set; }
+        internal List<ListViewItem> DupCertOriginalLvItems { get; set; }
+        internal List<ListViewItem> LvItemsShowing { get; set; }
+        internal List<DataSource> DataSources { get; set; }
+        internal List<string> ColorsDataSource { get; set; }
+        internal List<string> StatusesDataSource { get; set; }
+        internal List<Client> ClientsDataSource { get; set; }
+        internal List<Company> CompaniesSubSource { get; set; }
+        internal List<Certificate> CertificatesSubSource { get; set; }
+        internal List<Analyst> AnalystsSubSource { get; set; }
+        internal List<Contact> ContactsSubSource { get; set; }
+        internal List<CertificateLocation> CertificateLocationsSubSource { get; set; }
+        internal List<Location> LocationsSubSource { get; set; }
+        internal HashSet<string> SenderEmailsSubSource { get; set; }
+        internal List<string> ExcludedItems { get; set; }
+        internal List<string> CompaniesWhichHadDifferentAnalysts { get; set; }
+        internal List<string> CompanyNamesSubSource { get; set; }
+        internal List<string> CertificateNamesSubSource { get; set; }
+        internal List<string> AnalystNamesSubSource { get; set; }
+        internal List<string> CurrentDetailTbxVals { get; set; }
         //
         // Dictionaries
-        private Dictionary<string, Company> CompanyDictionary { get; set; }
-        private Dictionary<string, string> CompanyNameDictionary { get; set; }
-        private Dictionary<string, List<Contact>> CompanyContactDictionary { get; set; }
-        private Dictionary<string, Color> ItemGroupsSortedColors { get; set; }
-        private Dictionary<string, string> MarketAssignments { get; set; }
-        private Dictionary<string, WorkflowItem> WorkflowItemDictionary { get; set; }
-        private Dictionary<string, string> SystemUserIDsDictionary { get; set; }
-        private Dictionary<string, Certificate> CertificateDictionary { get; set; }
+        internal Dictionary<string, Company> CompanyDictionary { get; set; }
+        internal Dictionary<string, string> CompanyNameDictionary { get; set; }
+        internal Dictionary<string, List<Contact>> CompanyContactDictionary { get; set; }
+        internal Dictionary<string, Color> ItemGroupsSortedColors { get; set; }
+        internal Dictionary<string, string> MarketAssignments { get; set; }
+        internal Dictionary<string, WorkflowItem> WorkflowItemDictionary { get; set; }
+        internal Dictionary<string, string> SystemUserIDsDictionary { get; set; }
+        internal Dictionary<string, Certificate> CertificateDictionary { get; set; }
         //
         // Objects
         private Color currentColor;
@@ -121,13 +120,11 @@ namespace CertusCompanion
         private ListViewItem lastCheckedItem;
         private ListViewItem shiftItemBeingChecked;
         private ListViewColumnSorter lvwColumnSorter;
-        private Image img = CertusCompanion.Properties.Resources.icons8_sort_down_24__8_;
-        private Image img2 = CertusCompanion.Properties.Resources.icons8_sort_down_24__10_;
+        private Image startingDDLImage = CertusCompanion.Properties.Resources.dropDownMouseOverIcon;
+        private Image mouseOverDDLImage = CertusCompanion.Properties.Resources.dropDownSelectedIcon;
         private Image imgToUse;
-        private AutoCompleteStringCollection searchTbxACS;
         //
         // Variables
-        private string defaultClient;
         private string previousEmailDate;
         private string previousSender;
         private string searchVal;
@@ -191,6 +188,7 @@ namespace CertusCompanion
         private string delayedAlertMessage;
         private string delayedAlertHeader;
         private System.Windows.Forms.Timer delayedAlertTimer;
+        private bool certusBrowserOpened;
 
         public string SelectedClientID { get; set; }
         #endregion
@@ -205,56 +203,67 @@ namespace CertusCompanion
             LoadForm();
             InstantiateDataSources();
             PopulateMainFormStatic();
-            Launcher.MoveBar(50);
+            if (CheckIfFormIsOpened("Launcher"))
+            {
+                Launcher.MoveBar(50);
 
-            Launcher.ReportStatus("Attempting to establish database connection...");
-            #if !DEBUG
-            TestDBConnection(5);
-            #else
-            Thread.Sleep(1000);
-            #endif
-            Launcher.MoveBar(50);
+                Launcher.ReportStatus("Attempting to establish database connection...");
+#if !DEBUG
+                TestDBConnection(5);
+#else
+                Thread.Sleep(1000);
+#endif
+                Launcher.MoveBar(50);
+            }
         }
         private void InstantiateWorkflowManagerData()
         {
+            // lists
+            AllWorkflowItemsLoaded = new List<WorkflowItem>();
+            CurrentWorkflowItems = new List<WorkflowItem>();
+            SearchResultsList = new List<WorkflowItem>();
+            TemporaryExportList = new List<WorkflowItem>();
+            AllCertificatesLoaded = new List<Certificate>();
+            AllCompaniesLoaded = new List<Company>();
+            UniqueWorkflowItems = new List<WorkflowItem>();
+            WorkflowItemListPopulated = new List<WorkflowItem>();
+            ImageWorkflowItems = new List<WorkflowItem>();
+            RequirementWorkflowItems = new List<WorkflowItem>();
+            DupsAndOriginals = new List<WorkflowItem>();
+            FilteredWfItems = new List<WorkflowItem>();
+            OriginalItems = new List<WorkflowItem>();
+            DupItems = new List<WorkflowItem>();
+            QueriedItemList = new List<WorkflowItem>();
+            AllLvWorkflowItems = new List<ListViewItem>();
+            FilteredLvWorkflowItems = new List<ListViewItem>();
+            DupCertLvItems = new List<ListViewItem>();
+            DupCertOriginalLvItems = new List<ListViewItem>();
+            LvItemsShowing = new List<ListViewItem>();
+
+            // objects
             PreviousItem = new ListViewItem();
             lvwColumnSorter = new ListViewColumnSorter();
-            filteredWfItems = new List<WorkflowItem>();
-            allLvWorkflowItems = new List<ListViewItem>();
-            filteredLvWorkflowItems = new List<ListViewItem>();
-            dupItems = new List<WorkflowItem>();
-            originalItems = new List<WorkflowItem>();
-            dupsAndOriginals = new List<WorkflowItem>();
-            dupCertLvItems = new List<ListViewItem>();
-            dupCertOriginalLvItems = new List<ListViewItem>();
-            lvItemsShowing = new List<ListViewItem>();
-            AllWorkflowItemsLoaded = new List<WorkflowItem>();
             SenderEmailsSubSource = new HashSet<string>();
             AllItemImportsLoaded = new List<Import>();
             AllItemsCompletedReportsLoaded = new List<ItemsCompletedReport>();
-            CurrentWorkflowItems = new List<WorkflowItem>();
-            TemporaryExportList = new List<WorkflowItem>();
-            SearchResultsList = new List<WorkflowItem>();
             WorkflowItemDictionary = new Dictionary<string, WorkflowItem>();
-            ThemeColors = new ThemeColors();
             spaceDarkBrush = new SolidBrush(ThemeColors.SpaceDark);
             spaceLightBrush = new SolidBrush(ThemeColors.SpaceLight);
             spaceLightOffBrush = new SolidBrush(ThemeColors.SpaceLightOff);
             highlightBrush = new SolidBrush(Color.FromKnownColor(KnownColor.Highlight));
             highlightPen = new Pen(Color.FromKnownColor(KnownColor.Highlight));
             mainThemePen = new Pen(ThemeColors.MainTheme);
-            imgToUse = img;
+            imgToUse = startingDDLImage;
             connectionBtnStatus = 1;
-
             workflowItemsListView.ForeColor = ThemeColors.ItemDefault;
             workflowItemsListView.ListViewItemSorter = lvwColumnSorter;
 
+            // arrays
             itemButtons = new Button[]
             {
                 itemButton0, itemButton1, itemButton2, itemButton3, itemButton4, itemButton5,
                 itemButton6, itemButton7, itemButton8, itemButton9, itemButton10
             };
-
             detailPanels = new Panel[]
             {
                 detailPanel1, detailPanel2, detailPanel3, detailPanel4, detailPanel5,
@@ -262,7 +271,6 @@ namespace CertusCompanion
                 detailPanel11, detailPanel12, detailPanel13, detailPanel14, detailPanel15,
                 detailPanel16, detailPanel17, detailPanel18
             };
-
             focusDetailPanelBtns = new Button[]
             {
                 focusDetailPanelBtn1, focusDetailPanelBtn2, focusDetailPanelBtn3, focusDetailPanelBtn4,
@@ -287,7 +295,7 @@ namespace CertusCompanion
 
             // set starting color for paint button texts / tool tips
             buttonDescToolTip.SetToolTip(paintBtn, $"Paint ({paintColorDialog.Color.Name})");
-            buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint ({paintColorDialog.Color.Name})");
+            buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint Queried Items ({paintColorDialog.Color.Name})");
             paintContextMenuItem.Text = $"Paint ({paintColorDialog.Color.Name})";
 
             // change context menu renderers
@@ -353,7 +361,7 @@ namespace CertusCompanion
             DataSource ds = new DataSource();
 
             // hardcode
-#region HardCode DataSources
+            #region HardCode DataSources
             // --- COLORS --- //
             ds = new DataSource("ALL", "Colors", true);
             ds.Items.Add("Default");
@@ -401,9 +409,9 @@ namespace CertusCompanion
             StatusesDataSource.Add("Compliance Analyst");
             StatusesDataSource.Add("Completed");
             StatusesDataSource.Add("Trash");
-#endregion
+            #endregion
 
-#region Old code (reading datasources from .txt - now generated fron DB conn)
+            #region Old code (reading datasources from .txt - now generated fron DB conn)
             /*
             // get datasources from txt
 #region Pull DataSources
@@ -541,7 +549,7 @@ namespace CertusCompanion
                 }
             }
             */
-#endregion
+            #endregion
         }
         private void PopulateMainFormStatic()
         {
@@ -681,7 +689,37 @@ namespace CertusCompanion
         }
         private void clearWorkspaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.LoadForm();
+            // reset app data
+            this.InstantiateWorkflowManagerData();
+            this.InstantiateDataSources();
+
+            // clear listview items
+            this.workflowItemsListView.Items.Clear();
+            this.workflowItemsListView.Refresh();
+            this.vcSelectionBtn.Text = String.Empty;
+
+            // clear the details panel
+            this.clearItemDetailsBtn.PerformClick();
+
+            // clear query panel
+            this.clearQueryOptionsBtn.PerformClick();
+
+            // clear imports panel
+            this.itemImportsLbx.DataSource = AllItemImportsLoaded;
+            this.ClearImportViewData();
+            this.itemImportsLbx.Refresh();
+
+            // reset status strip
+            this.ResetStatusStrip();
+            this.displayingCountStatusLbl.Text = "0";
+            this.queriedCountStatusLbl.Text = "0";
+            this.checkedCountStatusLbl.Text = "0";
+
+            // repopulate static data sources
+            this.PopulateMainFormStatic();
+
+            // resize the form to fix the column width on the LV (no scroll bar)
+            this.WorkflowManager_Resize(this, null);
         }
         private void saveWorkspaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -875,42 +913,6 @@ namespace CertusCompanion
         }
         //
         // View
-        private void excludedItemsViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-
-            if (excludedItems == null || excludedItems.Count == 0)
-            {
-                SetStatusLabelAndTimer("You must import excluded items first", 5000);
-                MakeErrorSound();
-                return;
-            }
-
-            ItemViewIns = new ItemsView();
-
-            // change for excluded items
-            ItemViewIns.FormatForExcludedItemsView();
-
-            // register event
-            ItemViewIns.ChangeItemsColor += new ItemsColorUpdatedEventHandler(ItemsViewForm_SaveItemsColor);
-
-            // get current list
-            try
-            {
-                excludedItems = File.ReadAllLines(excludedItemsFileName).ToList();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Data loading was unsuccessful", "Error");
-            }
-
-            // pass items to view
-            ItemViewIns.PopulateItems(workflowItemListPopulated, excludedItems);
-
-            ShowAndFocusForm(ItemViewIns);
-
-            Cursor.Current = Cursors.Default;
-        }
         private void itemsViewBtn_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -923,7 +925,7 @@ namespace CertusCompanion
                 ItemViewIns.SaveItemsCompletedReportToFullForm += new ItemsStatusChangedEventHandler(ItemsViewForm_SaveCompletedReport);
 
                 // pass items viewing
-                ItemViewIns.PopulateItems(workflowItemListPopulated);
+                ItemViewIns.PopulateItems(WorkflowItemListPopulated);
 
                 ShowAndFocusForm(ItemViewIns);
             }
@@ -935,55 +937,18 @@ namespace CertusCompanion
 
             Cursor.Current = Cursors.Default;
         }
-        private void certificatesViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-
-            if (AllCertificatesLoaded == null || AllCertificatesLoaded.Count == 0)
-            {
-                SetStatusLabelAndTimer("You must import certificates first", 5000);
-                MakeErrorSound();
-                return;
-            }
-
-            ItemViewIns = new ItemsView();
-
-            ItemViewIns.FormatForCertificatesView();
-
-            // pass items to view
-            ItemViewIns.PopulateCertificates(AllCertificatesLoaded);
-
-            ShowAndFocusForm(ItemViewIns);
-
-            Cursor.Current = Cursors.Default;
-        }
-        private void companiesViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-
-            if (AllCompaniesLoaded == null || AllCompaniesLoaded.Count == 0)
-            {
-                SetStatusLabelAndTimer("You must import companies first", 5000);
-                MakeErrorSound();
-                return;
-            }
-
-            ItemViewIns = new ItemsView();
-
-            ItemViewIns.FormatForCompaniesView();
-
-            // pass items to view
-            ItemViewIns.PopulateCompanies(AllCompaniesLoaded);
-
-
-            ShowAndFocusForm(ItemViewIns);
-
-            Cursor.Current = Cursors.Default;
-        }
         //
         // Tools
         private void certusBrowserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(certusBrowserOpened)
+            {
+                MessageBox.Show("At the moment, the browser can only be opened once per application session. Launching a second instance " +
+                    "(for some reason, I'm not sure why...) will crash the program. Save your current workspace, relaunch the app, and then you " +
+                    "should have no problems reopening the browser.");
+                return;
+            }
+
             if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0) this.CertusBrowser = new CertusBrowser(SelectedClientID, CompaniesSubSource, CertificatesSubSource);
             else
             {
@@ -1030,6 +995,9 @@ namespace CertusCompanion
                 this.certusBrowserToolStripMenuItem.Enabled = false;
             }
             this.CertusBrowser.Show();
+
+            certusBrowserOpened = true;
+
             Application.UseWaitCursor = false;
             Application.DoEvents();
         }
@@ -1078,27 +1046,27 @@ namespace CertusCompanion
         }
         public void ConnectionBtnIncomplete()
         {
-            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48_2;
+            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.partialConnectionIcon;
             buttonDescToolTip.SetToolTip(certusConnectionBtn, $"Clients have been successfully imported. Select a client to complete the import process.");
             connectionBtnStatus = 2;
         }
         public void ConnectionBtnGood()
         {
-            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48;
+            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.connectionGoodIcon;
             buttonDescToolTip.SetToolTip(certusConnectionBtn,
                 $"Data successfully imported from CertusDB. Clients imported: {DataSources[2].DateCreated.ToShortDateString()}. Client information imported: {DataSources[3].DateCreated.ToShortDateString()}");
             connectionBtnStatus = 3;
         }
         public void ConnectionBtnOutdated()
         {
-            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48_3;
+            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.outdatedConnectionIcon;
             buttonDescToolTip.SetToolTip(certusConnectionBtn,
                 $"Client information last updated over a week ago");
             connectionBtnStatus = 4;
         }
         public void ConnectionBtnNoConnection()
         {
-            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_connection_status_on_48__1_;
+            certusConnectionBtn.BackgroundImage = CertusCompanion.Properties.Resources.noConnectionIcon;
             buttonDescToolTip.SetToolTip(certusConnectionBtn, "Import Data Sources from CertusDB");
             connectionBtnStatus = 1;
         }
@@ -1107,7 +1075,7 @@ namespace CertusCompanion
         private void dataSourcesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // generate form
-#region Generate Form
+            #region Generate Form
             DimForm();
 
             if (DataSources != null && DataSources.Count != 0) DataSourceFormIns = new DataSourceForm(DataSources);
@@ -1119,13 +1087,13 @@ namespace CertusCompanion
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
 
-#endregion
+            #endregion
         }
         private void importExcludedItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                excludedItems = new List<string>();
+                ExcludedItems = new List<string>();
                 excludedItemsFileName = "";
 
                 openFileDialog.FileName = "";
@@ -1138,7 +1106,7 @@ namespace CertusCompanion
                 {
                     excludedItemsFileName = openFileDialog.FileName;
 
-                    excludedItems = File.ReadAllLines(excludedItemsFileName).ToList();
+                    ExcludedItems = File.ReadAllLines(excludedItemsFileName).ToList();
 
                     SetDatabaseDetailsProperties();
                     SetStatusLabelAndTimer("Data loaded successfully");
@@ -1393,12 +1361,12 @@ namespace CertusCompanion
             if (!matchSearchResultsCase)
             {
                 matchSearchResultsCase = true;
-                matchCaseBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_uppercase_48__3_;
+                matchCaseBtn.BackgroundImage = CertusCompanion.Properties.Resources.upperCaseIcon;
             }
             else
             {
                 matchSearchResultsCase = false;
-                matchCaseBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_lowercase_48__3_;
+                matchCaseBtn.BackgroundImage = CertusCompanion.Properties.Resources.lowerCaseIcon;
             }
         }
         private int FindMyStringInList(List<WorkflowItem> wi, string searchString, int startIndex)
@@ -1522,14 +1490,14 @@ namespace CertusCompanion
             {
                 this.workflowItemsListView.BeginUpdate();
                 CheckAllListViewItems();
-                bulkCheckBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_checked_checkbox_48__1_;
+                bulkCheckBtn.BackgroundImage = CertusCompanion.Properties.Resources.checkedIcon;
             }
             else
             {
                 // 1 or more items - uncheck all 
                 this.workflowItemsListView.BeginUpdate();
                 UncheckAllListViewItems();
-                bulkCheckBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_unchecked_checkbox_48__1_;
+                bulkCheckBtn.BackgroundImage = CertusCompanion.Properties.Resources.uncheckedIcon;
             }
 
             this.workflowItemsListView.EndUpdate();
@@ -1754,7 +1722,7 @@ namespace CertusCompanion
 
             // now change the tooltips and texts to the new color selected
             buttonDescToolTip.SetToolTip(paintBtn, $"Paint ({paintColorDialog.Color.Name})");
-            buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint ({paintColorDialog.Color.Name})");
+            buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint Queried Items ({paintColorDialog.Color.Name})");
             paintContextMenuItem.Text = $"Paint ({paintColorDialog.Color.Name})";
 
             workflowItemsListView.Focus();
@@ -1912,6 +1880,9 @@ namespace CertusCompanion
             {
                 SenderEmailsSubSource.Add(item.ToString());
             }
+
+            if (this.InvokeRequired) this.Invoke(new Action(() => { clearWorkspaceToolStripMenuItem.Enabled = true; }));
+            else clearWorkspaceToolStripMenuItem.Enabled = true;
         }
         private bool CheckIfItemWasUpdated(WorkflowItem currentItemInDB, WorkflowItem importItem)
         {
@@ -1943,9 +1914,9 @@ namespace CertusCompanion
         }
         private void importFromDatabaseBtn_Click(object sender, EventArgs e)
         {
-#region Generate Form
+            #region Generate Form
 
-            if(importFromDBBackGroundWorker.IsBusy)
+            if (importFromDBBackGroundWorker.IsBusy)
             {
                 MessageBox.Show("Process is still running. Wait a few moments before trying again.");
                 return;
@@ -1956,7 +1927,7 @@ namespace CertusCompanion
             // construct forms
             DimForm();
             string client = clSelectionBtn.Text;
-            if( client!=null && client != String.Empty && client != "Select one...") ImportFromDBForm = new ImportFromDatabaseForm(ClientsDataSource, client);
+            if (client != null && client != String.Empty && client != "Select one...") ImportFromDBForm = new ImportFromDatabaseForm(ClientsDataSource, client);
             else ImportFromDBForm = new ImportFromDatabaseForm(ClientsDataSource);
 
             UseWaitCursor = false;
@@ -1968,7 +1939,7 @@ namespace CertusCompanion
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
 
-#endregion
+            #endregion
 
             if (result == DialogResult.OK)
             {
@@ -2155,7 +2126,7 @@ namespace CertusCompanion
                     break;
                 case "Queried":
                     {
-                        if (queriedItemList == null || queriedItemList.Count == 0)
+                        if (QueriedItemList == null || QueriedItemList.Count == 0)
                         {
                             SetStatusLabelAndTimer("No items in that list", 5000);
                             MakeErrorSound();
@@ -2170,7 +2141,7 @@ namespace CertusCompanion
 
                         try
                         {
-                            PopulateListViewData(queriedItemList);
+                            PopulateListViewData(QueriedItemList);
                         }
                         catch (Exception)
                         {
@@ -2205,7 +2176,7 @@ namespace CertusCompanion
                     list = this.SearchResultsList;
                     break;
                 case "Queried":
-                    list = this.queriedItemList;
+                    list = this.QueriedItemList;
                     break;
                 default:
                     break;
@@ -2218,7 +2189,7 @@ namespace CertusCompanion
             // default
             if (IsFilterActive())
             {
-                return filteredWfItems;
+                return FilteredWfItems;
             }
             else
             {
@@ -2234,7 +2205,7 @@ namespace CertusCompanion
                     case "Search Results":
                         return SearchResultsList;
                     case "Queried":
-                        return queriedItemList;
+                        return QueriedItemList;
                     default:
                         return AllWorkflowItemsLoaded;
                 }
@@ -2287,7 +2258,7 @@ namespace CertusCompanion
                 // populate the lv with the filtered items
                 try
                 {
-                    PopulateListViewData(filteredWfItems);
+                    PopulateListViewData(FilteredWfItems);
                     //filterListView = true;
                     filterStatusLbl.Text = $"Filter: {CurrentFilter.ToString()}";
                 }
@@ -2308,6 +2279,7 @@ namespace CertusCompanion
                 //filterListView = false;
                 filterBtn.BackColor = Color.FromArgb(20, 20, 20);
                 PopulateListViewData(ListViewComboBoxChoice());
+                this.filterStatusLbl.Text = $"Filter: None";
             }
 
             Cursor.Current = Cursors.Default;
@@ -2324,9 +2296,9 @@ namespace CertusCompanion
                 return;
             }
 
-            if (filteredLvWorkflowItems != null && filteredLvWorkflowItems.Count > 0)
+            if (FilteredLvWorkflowItems != null && FilteredLvWorkflowItems.Count > 0)
             {
-                filteredWfItems.Clear();
+                FilteredWfItems.Clear();
             }
 
             List<WorkflowItem> newList = new List<WorkflowItem>();
@@ -2379,7 +2351,7 @@ namespace CertusCompanion
             }
             if (CurrentFilter.QueriedCheckChoice == true)
             {
-                foreach (WorkflowItem item in queriedItemList)
+                foreach (WorkflowItem item in QueriedItemList)
                 {
                     newList.Add(item);
                 }
@@ -2426,7 +2398,7 @@ namespace CertusCompanion
                 }
             }
 
-            filteredWfItems = newList;
+            FilteredWfItems = newList;
         }
         private bool IsFilterActive()
         {
@@ -2504,7 +2476,7 @@ namespace CertusCompanion
         private void enlargeBtn_Click(object sender, EventArgs e)
         {
             this.splitContainerChild1.SplitterDistance = splitContainerChild1.Bottom - 412;
-            this.splitContainerChild2.SplitterDistance = 5000;
+            this.splitContainerChild2.SplitterDistance = Convert.ToInt32(splitContainerChild2.Width*.52294);
             workflowItemsListView.Focus();
         }
         private void refreshListViewBtn_Click(object sender, EventArgs e)
@@ -2542,7 +2514,7 @@ namespace CertusCompanion
 
             try
             {
-                PopulateListViewData(workflowItemListPopulated);
+                PopulateListViewData(WorkflowItemListPopulated);
             }
             catch (Exception)
             {
@@ -3324,7 +3296,7 @@ namespace CertusCompanion
                 return;
             }
 
-#region Generate Form
+            #region Generate Form
 
             DimForm();
             ModifyForm = new ModifyForm(CompaniesSubSource, CertificatesSubSource, AnalystsSubSource, StatusesDataSource);
@@ -3334,7 +3306,7 @@ namespace CertusCompanion
 
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
-#endregion
+            #endregion
 
             if (result == DialogResult.OK)
             {
@@ -3560,7 +3532,7 @@ namespace CertusCompanion
                 return;
             }
 
-#region Generate Form
+            #region Generate Form
             DimForm();
             LoadingForm = new LoadingForm();
             LoadingForm.ChangeHeaderLabel("Set Assignment");
@@ -3568,7 +3540,7 @@ namespace CertusCompanion
             LoadingForm.FormatForDialog("Market", "Company", "Certificate");
             LoadingForm.ShowDialog(TransparentForm);
             this.Focus();
-#endregion
+            #endregion
 
             if (LoadingForm.DialogResult == DialogResult.OK)
             {
@@ -3628,7 +3600,7 @@ namespace CertusCompanion
                 return;
             }
 
-#region Generate Form
+            #region Generate Form
             DimForm();
             LoadingForm = new LoadingForm();
             List<string> options = new List<string>();
@@ -3643,7 +3615,7 @@ namespace CertusCompanion
             LoadingForm.FormatForDialog(options);
             DialogResult result = LoadingForm.ShowDialog();
             this.Focus();
-#endregion
+            #endregion
 
             if (result == DialogResult.OK)
             {
@@ -3923,7 +3895,7 @@ namespace CertusCompanion
                 else e.Item.ForeColor = Color.FromName(itemBeingDrawn.DisplayColor);
             }
             else e.Item.ForeColor = ThemeColors.ItemMonotone;
-            
+
             // function needs these for every item to draw properly
             e.Item.UseItemStyleForSubItems = true;
             e.DrawDefault = true;
@@ -4976,7 +4948,7 @@ namespace CertusCompanion
             string itemID = documentWorkflowItemIdTbx.Text;
             WorkflowItem wi;
 
-#region Generate Form
+            #region Generate Form
             DimForm();
             NoteIns = new NoteForm();
 
@@ -4996,7 +4968,7 @@ namespace CertusCompanion
 
             if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             this.Focus();
-#endregion
+            #endregion
 
             if (result == DialogResult.OK)
             {
@@ -5481,7 +5453,7 @@ namespace CertusCompanion
                 contractIdTbx.AutoCompleteMode = AutoCompleteMode.None;
             }
             else if (this.contractIdDescLbl.Text == ">> Certus ID:")
-            { 
+            {
                 this.contractIdDescLbl.Text = "> Contract ID:";
                 contractIdTbx.AutoCompleteMode = AutoCompleteMode.Append;
             }
@@ -5554,14 +5526,14 @@ namespace CertusCompanion
             try
             {
                 // check to make sure everything needed is there before proceeding
-                if (queriedItemList == null || queriedItemList.Count == 0)
+                if (QueriedItemList == null || QueriedItemList.Count == 0)
                 {
                     SetStatusLabelAndTimer("You must query items first", 3000);
                     MakeErrorSound();
                     return;
                 }
 
-                foreach (WorkflowItem item in queriedItemList)
+                foreach (WorkflowItem item in QueriedItemList)
                 {
                     try
                     {
@@ -5605,7 +5577,7 @@ namespace CertusCompanion
             int itemsPainted = 0;
             List<WorkflowItem> itemsToPaint = new List<WorkflowItem>();
 
-            if (queriedItemList == null || queriedItemList.Count == 0)
+            if (QueriedItemList == null || QueriedItemList.Count == 0)
             {
                 SetStatusLabelAndTimer("You must query items first", 3000);
                 MakeErrorSound();
@@ -5613,7 +5585,7 @@ namespace CertusCompanion
             }
 
             // for each item in the query
-            foreach (WorkflowItem wfItem in queriedItemList)
+            foreach (WorkflowItem wfItem in QueriedItemList)
             {
                 WorkflowItem item = wfItem;
 
@@ -5667,14 +5639,6 @@ namespace CertusCompanion
                     this.queryWhereComboBox.Text = "Req Tmp attached & not alone";
                     this.qwTbx.Text = "Req Tmp attached & not alone";
                     break;
-                case "Same COI":
-                    this.querySelectComboBox.Text = "Items";
-                    this.qsTbx.Text = "Items";
-                    this.queryFromComboBox.Text = "Non-completed";
-                    this.qfTbx.Text = "Non-completed";
-                    this.queryWhereComboBox.Text = "COI attached & file name matches any in DB (all)";
-                    this.qwTbx.Text = "COI attached & file name matches any in DB (all)";
-                    break;
                 case "Clutter":
                     this.querySelectComboBox.Text = "Item Groups";
                     this.qsTbx.Text = "Item Groups";
@@ -5691,10 +5655,6 @@ namespace CertusCompanion
                     this.queryWhereComboBox.Text = "No attachments";
                     this.qwTbx.Text = "No attachments";
                     break;
-                case "Auto Reply":
-                    this.SetStatusLabelAndTimer("That query has not been set up yet");
-                    MakeErrorSound();
-                    return;
                 default:
                     break;
             }
@@ -5709,7 +5669,7 @@ namespace CertusCompanion
                 this.queryFromComboBox.SelectedIndex = -1;
                 this.queryWhereComboBox.SelectedIndex = -1;
                 this.queryIncludeExcludedCheckBox.Checked = false;
-                this.queriedItemList.Clear();
+                this.QueriedItemList.Clear();
                 this.queriedItemsListbox.DataSource = null;
                 this.queriedItemsListbox.DataSource = queriedItemsListbox;
             }
@@ -5723,8 +5683,8 @@ namespace CertusCompanion
         private void Query()
         {
             List<WorkflowItem> fromList = new List<WorkflowItem>();
-            uniqueWorkflowItems = new List<WorkflowItem>();
-            queriedItemList = new List<WorkflowItem>();
+            UniqueWorkflowItems = new List<WorkflowItem>();
+            QueriedItemList = new List<WorkflowItem>();
             IEnumerable<WorkflowItem> results = null;
             string queryListsToConstruct = "";
 
@@ -5734,7 +5694,7 @@ namespace CertusCompanion
             else if (fromSelection == "Non-completed")
                 fromList = this.CurrentWorkflowItems;
             else if (fromSelection == "Current View")
-                fromList = this.workflowItemListPopulated;
+                fromList = this.WorkflowItemListPopulated;
 
             // notify status
             SetStatusLabelAndTimer("Running the query", true);
@@ -5922,7 +5882,7 @@ namespace CertusCompanion
             }
             else if (whereSelection == "")
             {
-                queriedItemList.AddRange(fromList);
+                QueriedItemList.AddRange(fromList);
             }
 
             // notify status
@@ -5955,7 +5915,7 @@ namespace CertusCompanion
                 SetStatusLabelAndTimer("Removing inactive items", true);
 
                 // find the items to replace
-                foreach (WorkflowItem item in queriedItemList)
+                foreach (WorkflowItem item in QueriedItemList)
                 {
                     if (item.DisplayColor != "Gray" && item.DisplayColor != "Silver" && item.DisplayColor != "Black")
                     {
@@ -5964,7 +5924,7 @@ namespace CertusCompanion
                 }
 
                 // replace list
-                queriedItemList = itemsToReplace;
+                QueriedItemList = itemsToReplace;
             }
 
             // if selecting items & connected, add all items with the same sender and email date for each
@@ -5975,11 +5935,11 @@ namespace CertusCompanion
                 // notify status
                 SetStatusLabelAndTimer("Adding each item's connected attachments", true);
 
-                foreach (WorkflowItem item in queriedItemList)
+                foreach (WorkflowItem item in QueriedItemList)
                 {
                     var connectedItemsQuery = from i in this.AllWorkflowItemsLoaded
-                                                where i.EmailFromAddress == item.EmailFromAddress && i.EmailDate == item.EmailDate
-                                                select i;
+                                              where i.EmailFromAddress == item.EmailFromAddress && i.EmailDate == item.EmailDate
+                                              select i;
 
                     // for the workflow items querying from
                     foreach (WorkflowItem wi in connectedItemsQuery)
@@ -5994,22 +5954,22 @@ namespace CertusCompanion
                 }
 
                 // replace list
-                queriedItemList = itemsAndConnected;
+                QueriedItemList = itemsAndConnected;
             }
 
             // notify status
             SetStatusLabelAndTimer("Sorting the list", true);
 
             // sort the list (for now sort by ID as default, but consider adding options for this)
-            queriedItemList = queriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
+            QueriedItemList = QueriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
         }
         private void NormalQueriedItemsLists(dynamic results)
         {
             foreach (var result in results)
             {
-                if (!queriedItemList.Contains(result))
+                if (!QueriedItemList.Contains(result))
                 {
-                    queriedItemList.Add(result);
+                    QueriedItemList.Add(result);
                 }
             }
         }
@@ -6038,69 +5998,69 @@ namespace CertusCompanion
             // results should be the duplicate items
             foreach (var result in results)
             {
-                queriedItemList.Add(result);
+                QueriedItemList.Add(result);
             }
 
             if (whereSelection.EndsWith("(all)"))
             {
-                queriedItemList = queriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
-                originalItems.Clear();
+                QueriedItemList = QueriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
+                OriginalItems.Clear();
 
                 foreach (WorkflowItem wi in fromList)
                 {
                     // if the fileName exists on the queried items list
-                    if (queriedItemList.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
+                    if (QueriedItemList.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
                     {
                         // if the item isn't on the queried item list
-                        if (!queriedItemList.Contains(wi))
+                        if (!QueriedItemList.Contains(wi))
                         {
                             // if the fileName hasn't already been added to the originals and the fileName isn't for this item
-                            if (!originalItems.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
+                            if (!OriginalItems.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
                             {
                                 // add to list
-                                originalItems.Add(wi);
+                                OriginalItems.Add(wi);
                             }
                         }
                     }
                 }
 
                 // save dup and original items
-                this.dupsAndOriginals.Clear();
-                this.dupsAndOriginals.AddRange(originalItems);
-                this.dupsAndOriginals.AddRange(queriedItemList);
+                this.DupsAndOriginals.Clear();
+                this.DupsAndOriginals.AddRange(OriginalItems);
+                this.DupsAndOriginals.AddRange(QueriedItemList);
 
                 // save dup items (results from the original query)
-                this.dupItems.Clear();
-                this.dupItems = queriedItemList;
+                this.DupItems.Clear();
+                this.DupItems = QueriedItemList;
 
                 // change list
-                queriedItemList = dupsAndOriginals;
+                QueriedItemList = DupsAndOriginals;
             }
             else if (whereSelection.EndsWith("(first)"))
             {
                 // same code block as above, until 'save dup and...'
-                queriedItemList = queriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
-                originalItems.Clear();
+                QueriedItemList = QueriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
+                OriginalItems.Clear();
 
                 foreach (WorkflowItem wi in fromList)
                 {
                     // if the fileName exists on the queried items list
-                    if (queriedItemList.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
+                    if (QueriedItemList.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
                     {
                         // if the item isn't on the queried item list
-                        if (!queriedItemList.Contains(wi))
+                        if (!QueriedItemList.Contains(wi))
                         {
                             // if the fileName hasn't already been added to the originals and the fileName isn't for this item
-                            if (!originalItems.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
+                            if (!OriginalItems.Exists(i => i.GetType().GetProperty(property).GetValue(i, null).ToString() == wi.GetType().GetProperty(property).GetValue(wi, null).ToString()))
                             {
                                 // add to list
-                                originalItems.Add(wi);
+                                OriginalItems.Add(wi);
                             }
                         }
                     }
                 }
 
-                queriedItemList = originalItems;
+                QueriedItemList = OriginalItems;
             }
             else if (whereSelection.EndsWith("(duplicate)"))
             {
@@ -6122,14 +6082,14 @@ namespace CertusCompanion
             // results should be the duplicate items
             foreach (var result in results)
             {
-                queriedItemList.Add(result);
+                QueriedItemList.Add(result);
             }
 
             // ...
 
             //if (whereSelection.EndsWith("(all)"))
             //{
-            queriedItemList = queriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
+            QueriedItemList = QueriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
 
             //originalItems.Clear();
 
@@ -6205,17 +6165,17 @@ namespace CertusCompanion
             // set or update the unique items list
             foreach (var item in query)
             {
-                uniqueWorkflowItems.Add(item);
+                UniqueWorkflowItems.Add(item);
             }
 
             // save unique items' ids
-            var uniqueIDs = new HashSet<string>(uniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
+            var uniqueIDs = new HashSet<string>(UniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
 
 
             // query for the items which don't match these ids
             var results = from item in listToQuery
-                            where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
-                            select item;
+                          where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
+                          select item;
 
             return results;
         }
@@ -6229,17 +6189,17 @@ namespace CertusCompanion
             // set or update the unique items list
             foreach (var item in query)
             {
-                uniqueWorkflowItems.Add(item);
+                UniqueWorkflowItems.Add(item);
             }
 
             // save unique items' ids
-            var uniqueIDs = new HashSet<string>(uniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
+            var uniqueIDs = new HashSet<string>(UniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
 
 
             // query for the items which don't match these ids
             var results = from item in listToQuery
-                            where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
-                            select item;
+                          where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
+                          select item;
 
             return results;
         }
@@ -6253,17 +6213,17 @@ namespace CertusCompanion
             // set or update the unique items list
             foreach (var item in query)
             {
-                uniqueWorkflowItems.Add(item);
+                UniqueWorkflowItems.Add(item);
             }
 
             // save unique items' ids
-            var uniqueIDs = new HashSet<string>(uniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
+            var uniqueIDs = new HashSet<string>(UniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
 
 
             // query for the items which don't match these ids
             var results = from item in listToQuery
-                            where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
-                            select item;
+                          where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
+                          select item;
 
             return results;
         }
@@ -6277,20 +6237,20 @@ namespace CertusCompanion
             // set or update the unique items list
             foreach (var item in query)
             {
-                uniqueWorkflowItems.Add(item);
+                UniqueWorkflowItems.Add(item);
             }
 
             // save unique items' ids
-            var uniqueIDs = new HashSet<string>(uniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
+            var uniqueIDs = new HashSet<string>(UniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
 
 
             // query for the items which don't match these ids
             var results = from item in listToQuery
-                            where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
-                            select item;
+                          where !(uniqueIDs.Contains(item.DocumentWorkflowItemID))
+                          select item;
 
             return results;
-        } 
+        }
         private dynamic QueryMatchingEmailDatesAndFileSizes(List<WorkflowItem> listToQuery)
         {
             List<WorkflowItem> tmpList = new List<WorkflowItem>();
@@ -6333,8 +6293,8 @@ namespace CertusCompanion
         private dynamic QueryCOI(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where FilterFileName(item.FileName) == false
-                            select item;
+                          where FilterFileName(item.FileName) == false
+                          select item;
 
             return results;
         }
@@ -6349,20 +6309,20 @@ namespace CertusCompanion
             foreach (var item in queryAllItems)
             {
                 WorkflowItem tmp = item;
-                uniqueWorkflowItems.Add(tmp);
+                UniqueWorkflowItems.Add(tmp);
             }
 
             // if an item is listed in the unique items, run a query to set excluded IDs
-            var excludedIDs = new HashSet<string>(uniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
+            var excludedIDs = new HashSet<string>(UniqueWorkflowItems.Select(o => o.DocumentWorkflowItemID));
 
             // if the excluded items are available
 
             // query to remove items with excluded IDs, filtered filenames, filtered subjects, and loaded in excluded IDs (excludedItems)
             var results = from item in listToQuery
-                            where !(excludedIDs.Contains(item.DocumentWorkflowItemID)) &&
-                                FilterFileName(item.FileName) &&
-                                FilterSubject(item.SubjectLine)
-                            select item;
+                          where !(excludedIDs.Contains(item.DocumentWorkflowItemID)) &&
+                              FilterFileName(item.FileName) &&
+                              FilterSubject(item.SubjectLine)
+                          select item;
 
             return results;
 
@@ -6370,278 +6330,278 @@ namespace CertusCompanion
         private dynamic QueryEndts(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where !FilterFileName(item.FileName)
-                            select item;
+                          where !FilterFileName(item.FileName)
+                          select item;
 
             return results;
         }
         private dynamic QueryAutoEndts(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where !FilterFileName(item.FileName) &&
-                                item.FileName.ToLower().Contains("auto")
-                            select item;
+                          where !FilterFileName(item.FileName) &&
+                              item.FileName.ToLower().Contains("auto")
+                          select item;
 
             return results;
         }
         private dynamic QueryImages(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.FileName.ToLower().EndsWith(".png") ||
-                                    item.FileName.ToLower().EndsWith(".jpeg") ||
-                                    item.FileName.ToLower().EndsWith(".jfif") ||
-                                    item.FileName.ToLower().EndsWith(".exif") ||
-                                    item.FileName.ToLower().EndsWith(".tiff") ||
-                                    item.FileName.ToLower().EndsWith(".gif") ||
-                                    item.FileName.ToLower().EndsWith(".bmp") ||
-                                    item.FileName.ToLower().EndsWith(".jpg"))
-                            select item;
+                          where (item.FileName.ToLower().EndsWith(".png") ||
+                                  item.FileName.ToLower().EndsWith(".jpeg") ||
+                                  item.FileName.ToLower().EndsWith(".jfif") ||
+                                  item.FileName.ToLower().EndsWith(".exif") ||
+                                  item.FileName.ToLower().EndsWith(".tiff") ||
+                                  item.FileName.ToLower().EndsWith(".gif") ||
+                                  item.FileName.ToLower().EndsWith(".bmp") ||
+                                  item.FileName.ToLower().EndsWith(".jpg"))
+                          select item;
 
             return results;
         }
         private dynamic QueryImagesNotAlone(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.FileName.ToLower().EndsWith(".png") ||
-                                    item.FileName.ToLower().EndsWith(".jpeg") ||
-                                    item.FileName.ToLower().EndsWith(".jfif") ||
-                                    item.FileName.ToLower().EndsWith(".exif") ||
-                                    item.FileName.ToLower().EndsWith(".tiff") ||
-                                    item.FileName.ToLower().EndsWith(".gif") ||
-                                    item.FileName.ToLower().EndsWith(".bmp") ||
-                                    item.FileName.ToLower().EndsWith(".jpg")) &&
-                                    ImageNotAlone(listToQuery, item)
-                            select item;
+                          where (item.FileName.ToLower().EndsWith(".png") ||
+                                  item.FileName.ToLower().EndsWith(".jpeg") ||
+                                  item.FileName.ToLower().EndsWith(".jfif") ||
+                                  item.FileName.ToLower().EndsWith(".exif") ||
+                                  item.FileName.ToLower().EndsWith(".tiff") ||
+                                  item.FileName.ToLower().EndsWith(".gif") ||
+                                  item.FileName.ToLower().EndsWith(".bmp") ||
+                                  item.FileName.ToLower().EndsWith(".jpg")) &&
+                                  ImageNotAlone(listToQuery, item)
+                          select item;
 
             return results;
         }
         private bool ImageNotAlone(List<WorkflowItem> listToQuery, WorkflowItem imageWorkflowItem)
         {
-            imageWorkflowItems = new List<WorkflowItem>();
-            imageWorkflowItems.AddRange(listToQuery);
-            imageWorkflowItems.Remove(imageWorkflowItem);
+            ImageWorkflowItems = new List<WorkflowItem>();
+            ImageWorkflowItems.AddRange(listToQuery);
+            ImageWorkflowItems.Remove(imageWorkflowItem);
 
-            bool val = imageWorkflowItems.Exists(x => x.EmailDate == imageWorkflowItem.EmailDate);
+            bool val = ImageWorkflowItems.Exists(x => x.EmailDate == imageWorkflowItem.EmailDate);
             return val;
         }
         private dynamic QueryReqTemplates(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.FileName.ToLower().Contains("requirement") ||
-                            item.FileName.ToLower().Contains("template"))
-                            select item;
+                          where (item.FileName.ToLower().Contains("requirement") ||
+                          item.FileName.ToLower().Contains("template"))
+                          select item;
 
             return results;
         }
         private dynamic QueryReqTemplatesNotAlone(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.FileName.ToLower().Contains("requirement") ||
-                            item.FileName.ToLower().Contains("template")) &&
-                            RequirementNotAlone(listToQuery, item)
-                            select item;
+                          where (item.FileName.ToLower().Contains("requirement") ||
+                          item.FileName.ToLower().Contains("template")) &&
+                          RequirementNotAlone(listToQuery, item)
+                          select item;
 
             return results;
         }
         private bool RequirementNotAlone(List<WorkflowItem> listToQuery, WorkflowItem requirementWorkflowItem)
         {
-            requirementWorkflowItems = new List<WorkflowItem>();
-            requirementWorkflowItems.AddRange(listToQuery);
-            requirementWorkflowItems.Remove(requirementWorkflowItem);
+            RequirementWorkflowItems = new List<WorkflowItem>();
+            RequirementWorkflowItems.AddRange(listToQuery);
+            RequirementWorkflowItems.Remove(requirementWorkflowItem);
 
-            bool val = requirementWorkflowItems.Exists(x => x.EmailDate == requirementWorkflowItem.EmailDate);
+            bool val = RequirementWorkflowItems.Exists(x => x.EmailDate == requirementWorkflowItem.EmailDate);
             return val;
         }
         private dynamic QueryActiveContracts(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.Active == true
-                            select item;
+                          where item.Active == true
+                          select item;
 
             return results;
         }
         private dynamic QueryInactiveContracts(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.Active == false
-                            select item;
+                          where item.Active == false
+                          select item;
 
             return results;
         }
         private dynamic QueryContractInformationUpdated(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.ContractInformationUpdated == true
-                            select item;
+                          where item.ContractInformationUpdated == true
+                          select item;
 
             return results;
         }
         private dynamic QueryContractInformationNotUpdated(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.ContractInformationUpdated == false
-                            select item;
+                          where item.ContractInformationUpdated == false
+                          select item;
 
             return results;
         }
         private dynamic QueryContractOverridden(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.ContractIdOverridden == true
-                            select item;
+                          where item.ContractIdOverridden == true
+                          select item;
 
             return results;
         }
         private dynamic QueryContractNotOverridden(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.ContractIdOverridden == false
-                            select item;
+                          where item.ContractIdOverridden == false
+                          select item;
 
             return results;
         }
         private dynamic QueryCompanyExists(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.VendorName != null && item.VendorName != String.Empty
-                            select item;
+                          where item.VendorName != null && item.VendorName != String.Empty
+                          select item;
 
             return results;
         }
         private dynamic QueryCompanyMissing(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.VendorName == null || item.VendorName == String.Empty
-                            select item;
+                          where item.VendorName == null || item.VendorName == String.Empty
+                          select item;
 
             return results;
         }
         private dynamic QueryCompanyUpdated(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.CompanyUpdated == true
-                            select item;
+                          where item.CompanyUpdated == true
+                          select item;
 
             return results;
         }
         private dynamic QueryCompanyNotUpdated(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.CompanyUpdated == false
-                            select item;
+                          where item.CompanyUpdated == false
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsAssigned(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.AssignedToName != null && item.AssignedToName != String.Empty && item.AssignedToName != "(Unassigned)"
-                            select item;
+                          where item.AssignedToName != null && item.AssignedToName != String.Empty && item.AssignedToName != "(Unassigned)"
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsUnassigned(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.AssignedToName == null || item.AssignedToName == String.Empty || item.AssignedToName == "(Unassigned)"
-                            select item;
+                          where item.AssignedToName == null || item.AssignedToName == String.Empty || item.AssignedToName == "(Unassigned)"
+                          select item;
 
             return results;
-        }  
+        }
         private dynamic QueryItemsStatusCompleted(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.Status == "Completed" || item.Status == "Trash" || item.Status == "Completed/Trash"
-                            select item;
+                          where item.Status == "Completed" || item.Status == "Trash" || item.Status == "Completed/Trash"
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsStatusNotCompleted(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where !(item.Status == "Completed" || item.Status == "Trash" || item.Status == "Completed/Trash")
-                            select item;
+                          where !(item.Status == "Completed" || item.Status == "Trash" || item.Status == "Completed/Trash")
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsStatusEmailReceived(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.Status == "Email Received"
-                            select item;
+                          where item.Status == "Email Received"
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsExcluded(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.Excluded == true
-                            select item;
+                          where item.Excluded == true
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsDifferentThanCertus(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.WorkflowItemInformationDifferentThanCertus == true
-                            select item;
+                          where item.WorkflowItemInformationDifferentThanCertus == true
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsAssignmentColors(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.DisplayColor == "Silver" || item.DisplayColor == "Teal" || item.DisplayColor == "Gray" ||
-                                item.DisplayColor == "Lime" || item.DisplayColor == "SpringGreen" || item.DisplayColor == "Navy" ||
-                                item.DisplayColor == "Blue" || item.DisplayColor == "Black" || item.DisplayColor == "Yellow")
-                            select item;
+                          where (item.DisplayColor == "Silver" || item.DisplayColor == "Teal" || item.DisplayColor == "Gray" ||
+                              item.DisplayColor == "Lime" || item.DisplayColor == "SpringGreen" || item.DisplayColor == "Navy" ||
+                              item.DisplayColor == "Blue" || item.DisplayColor == "Black" || item.DisplayColor == "Yellow")
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsNotGray(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.DisplayColor != "Gray")
-                            select item;
+                          where (item.DisplayColor != "Gray")
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsNotWhite(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.DisplayColor != "SpringGreen")
-                            select item;
+                          where (item.DisplayColor != "SpringGreen")
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsPriority(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (item.ItemHasPriority)
-                            select item;
+                          where (item.ItemHasPriority)
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsNotPriority(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where (!item.ItemHasPriority)
-                            select item;
+                          where (!item.ItemHasPriority)
+                          select item;
 
             return results;
         }
         private dynamic QueryItemsWithNoAttachments(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                            where item.FileName == null ||
-                            item.FileName == String.Empty
-                            select item;
+                          where item.FileName == null ||
+                          item.FileName == String.Empty
+                          select item;
 
             return results;
         }
         private void viewQueryBtn_Click(object sender, EventArgs e)
         {
-            if (workflowItemListPopulated == null || workflowItemListPopulated.Count == 0)
+            if (WorkflowItemListPopulated == null || WorkflowItemListPopulated.Count == 0)
             {
                 SetStatusLabelAndTimer("You need a list of items to query first");
                 MakeErrorSound();
@@ -6688,8 +6648,8 @@ namespace CertusCompanion
         {
             // query the list of all (items to string) for search tbx criteria
             var results = from item in allWorkflowItems
-                            where item.ToString().Contains(searchTbx.Text)
-                            select item;
+                          where item.ToString().Contains(searchTbx.Text)
+                          select item;
 
             return results;
         }
@@ -7003,9 +6963,9 @@ namespace CertusCompanion
         }
         private int CountOfQueriedItems()
         {
-            if (queriedItemList != null && queriedItemList.Count > 0)
+            if (QueriedItemList != null && QueriedItemList.Count > 0)
             {
-                return queriedItemList.Count();
+                return QueriedItemList.Count();
             }
             else
             {
@@ -7093,12 +7053,12 @@ namespace CertusCompanion
         }
         private void queriedToolStripDropDownButton_Click(object sender, EventArgs e)
         {
-            if (this.queriedItemList != null && this.queriedItemList.Count > 0)
+            if (this.QueriedItemList != null && this.QueriedItemList.Count > 0)
             {
                 try
                 {
                     workflowItemsListView.SelectedItems[0].Selected = false;
-                    workflowItemsListView.FindItemWithText(this.queriedItemList[0].DocumentWorkflowItemID, true, 0, false).Selected = true;
+                    workflowItemsListView.FindItemWithText(this.QueriedItemList[0].DocumentWorkflowItemID, true, 0, false).Selected = true;
                 }
                 catch (Exception)
                 {
@@ -7127,8 +7087,8 @@ namespace CertusCompanion
         {
             if (this.InvokeRequired) this.Invoke(new Action(() =>
             {
-    // same code as within the tick event
-    toolStripStatusLabel.Text = "Ready";
+                // same code as within the tick event
+                toolStripStatusLabel.Text = "Ready";
                 this.toolStripStatusLabel.BackColor = Color.FromArgb(46, 204, 113);
                 this.displayingCountStatusLbl.Visible = true;
                 this.checkedCountStatusLbl.Visible = true;
@@ -7462,7 +7422,7 @@ namespace CertusCompanion
                 (sender as TextBox).SelectAll();
                 tabWasPressed = false;
             }
-        } 
+        }
         private void detailPanelTbx_Leave(object sender, EventArgs e)
         {
             (sender as TextBox).DeselectAll();
@@ -7608,7 +7568,7 @@ namespace CertusCompanion
             List<string> vals = ReturnDetailPanelValues();
             foreach (string s in vals)
             {
-                if(s != CurrentDetailTbxVals[indx])
+                if (s != CurrentDetailTbxVals[indx])
                 {
                     itemDetailsChanged = true;
                     break;
@@ -7806,7 +7766,7 @@ namespace CertusCompanion
                     queriedToolStripDropDownButton.Width + queriedCountStatusLbl.Width + filterStatusLbl.Width);
 
                 // splitter distance
-                if(!fullView) splitContainerChild1.SplitterDistance = (Convert.ToInt32(splitContainerChild1.Height * .44));
+                if (!fullView) splitContainerChild1.SplitterDistance = (Convert.ToInt32(splitContainerChild1.Height * .47));
             }
             catch (Exception)
             {
@@ -7901,7 +7861,7 @@ namespace CertusCompanion
                 return;
             }
 
-            imgToUse = img2;
+            imgToUse = mouseOverDDLImage;
             qfndCustomDDLPanel_Enter(sender, e);
 
             // specific to each DDL
@@ -7930,8 +7890,8 @@ namespace CertusCompanion
             // mouse off effect
             qfndSelectionBtn.BackColor = Color.FromArgb(27, 27, 27);
             qfndSplitPanel.Visible = false;
-            qfndDropBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
-            imgToUse = img;
+            qfndDropBtn.BackgroundImage = CertusCompanion.Properties.Resources.dropDownIcon;
+            imgToUse = startingDDLImage;
         }
         private void qfndCustomDDLPanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -7970,7 +7930,7 @@ namespace CertusCompanion
                 return;
             }
 
-            imgToUse = img2;
+            imgToUse = mouseOverDDLImage;
             vcCustomDDLPanel_Enter(sender, e);
 
             // specific to each DDL
@@ -7999,8 +7959,8 @@ namespace CertusCompanion
             // mouse off effect
             vcSelectionBtn.BackColor = Color.FromArgb(27, 27, 27);
             vcSplitPanel.Visible = false;
-            vcDropBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
-            imgToUse = img;
+            vcDropBtn.BackgroundImage = CertusCompanion.Properties.Resources.dropDownIcon;
+            imgToUse = startingDDLImage;
         }
         private void vcCustomDDLPanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -8039,7 +7999,7 @@ namespace CertusCompanion
                 return;
             }
 
-            imgToUse = img2;
+            imgToUse = mouseOverDDLImage;
             clCustomDDLPanel_Enter(sender, e);
 
             // specific to each DDL
@@ -8068,8 +8028,8 @@ namespace CertusCompanion
             // mouse off effect
             clSelectionBtn.BackColor = Color.FromArgb(27, 27, 27);
             clSplitPanel.Visible = false;
-            clDropBtn.BackgroundImage = CertusCompanion.Properties.Resources.icons8_sort_down_24__7_;
-            imgToUse = img;
+            clDropBtn.BackgroundImage = CertusCompanion.Properties.Resources.dropDownIcon;
+            imgToUse = startingDDLImage;
         }
         private void clCustomDDLPanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -8211,7 +8171,7 @@ namespace CertusCompanion
         {
             List<WorkflowItem> tmpList = new List<WorkflowItem>();
 
-            foreach (WorkflowItem item in workflowItemListPopulated)
+            foreach (WorkflowItem item in WorkflowItemListPopulated)
             {
                 if (item.DisplayColor != "Default")
                 {
@@ -8225,7 +8185,7 @@ namespace CertusCompanion
         {
             List<WorkflowItem> tmpList = new List<WorkflowItem>();
 
-            foreach (WorkflowItem item in workflowItemListPopulated)
+            foreach (WorkflowItem item in WorkflowItemListPopulated)
             {
                 if (item.DisplayColor != "Default" && item.DisplayColor != "Gray" && item.DisplayColor != "Silver" && item.DisplayColor != "Black" && item.DisplayColor != "Teal")
                 {
@@ -8239,7 +8199,7 @@ namespace CertusCompanion
         {
             List<WorkflowItem> tmpList = new List<WorkflowItem>();
 
-            foreach (WorkflowItem item in workflowItemListPopulated)
+            foreach (WorkflowItem item in WorkflowItemListPopulated)
             {
                 if (item.DisplayColor == "Gray" || item.DisplayColor == "Silver" || item.DisplayColor == "Black")
                 {
@@ -8336,7 +8296,7 @@ namespace CertusCompanion
         private WorkflowItem GetWorkflowItemFromCurrentViewByID(string id)
         {
             // query the list for id
-            WorkflowItem result = workflowItemListPopulated.Find(o => o.DocumentWorkflowItemID == id);
+            WorkflowItem result = WorkflowItemListPopulated.Find(o => o.DocumentWorkflowItemID == id);
 
             return result;
         }
@@ -8354,7 +8314,7 @@ namespace CertusCompanion
         public void PopulateListViewData(List<WorkflowItem> workflowItemListToPopulate)
         {
             // assign list
-            this.workflowItemListPopulated = workflowItemListToPopulate;
+            this.WorkflowItemListPopulated = workflowItemListToPopulate;
 
             // drawing has to go back to normal whenever the lv is changed
             contrastItemGroups = false;
@@ -8371,7 +8331,7 @@ namespace CertusCompanion
             // save count for progress
             int lvItemCount = 0;
 
-            foreach (WorkflowItem wfItem in this.workflowItemListPopulated)
+            foreach (WorkflowItem wfItem in this.WorkflowItemListPopulated)
             {
                 ListViewItem lvItem = new ListViewItem();
                 lvItem.SubItems.Add(wfItem.DocumentWorkflowItemID.ToString());
@@ -8560,6 +8520,15 @@ namespace CertusCompanion
                 this.itemsUpdatedTbx.Text = (itemImport as DBImport).ItemsUpdated.Count.ToString();
             }
         }
+        private void ClearImportViewData()
+        {
+            this.importDateTbx.Text = String.Empty;
+            this.importFileNameTbx.Text = String.Empty;
+            this.importTypeTbx.Text = String.Empty;
+            this.itemsOnImportTbx.Text = String.Empty;
+            this.itemsAddedTbx.Text = String.Empty;
+            this.itemsUpdatedTbx.Text = String.Empty;
+        }
         #endregion
 
         // ----- LONG PROCESS TASKS ----- //
@@ -8604,13 +8573,11 @@ namespace CertusCompanion
             string fileName = file;
 
             this.AppSave.Load(fileName);
-            this.loadBackgroundWorker.ReportProgress(10);
 
             try
             {
                 this.AppData = AppSave.MostRecentSave;
                 this.StoreAppDataToForm(AppData);
-                this.loadBackgroundWorker.ReportProgress(10);
             }
             catch (Exception)
             {
@@ -8619,7 +8586,6 @@ namespace CertusCompanion
             try
             {
                 this.ItemImportsList = AppData.ItemImportsList;
-                this.loadBackgroundWorker.ReportProgress(10);
             }
             catch (Exception)
             {
@@ -8628,7 +8594,6 @@ namespace CertusCompanion
             try
             {
                 this.ItemsCompletedReportsList = AppData.ItemsCompletedReportsList;
-                this.loadBackgroundWorker.ReportProgress(10);
             }
             catch (Exception)
             {
@@ -8662,7 +8627,6 @@ namespace CertusCompanion
                     clSelectionBtn.Text = $"{clientName} <{clientID}>";
                 }
 
-                this.loadBackgroundWorker.ReportProgress(10);
             }
             catch (Exception)
             {
@@ -8671,7 +8635,6 @@ namespace CertusCompanion
             try
             {
                 this.WorkflowItemDatabase = AppData.WorkflowItemDatabase;
-                this.loadBackgroundWorker.ReportProgress(10);
             }
             catch (Exception)
             {
@@ -8832,22 +8795,21 @@ namespace CertusCompanion
                 // populate lv  
                 this.vcSelectionBtn.Text = "Non-completed";
 
-                // enable clear
-                this.clearWorkspaceToolStripMenuItem.Enabled = true;
-
                 PopulateImportLbx(this.AllItemImportsLoaded);
 
-                if (this.InvokeRequired)
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
                 {
-                    this.Invoke(new Action(() => { this.LoadingForm.CompleteProgress(); }));
-                    this.Invoke(new Action(() => { this.LoadingForm.ChangeLabel("Data loaded successfully"); }));
-                    this.Invoke(new Action(() => { this.loadingFormTimer.Enabled = true; }));
-                }
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Data loaded successfully");
+                    this.loadingFormTimer.Enabled = true;
+                    this.clearWorkspaceToolStripMenuItem.Enabled = true;
+                }));
                 else
                 {
                     this.LoadingForm.CompleteProgress();
                     this.LoadingForm.ChangeLabel("Data loaded successfully");
                     this.loadingFormTimer.Enabled = true;
+                    this.clearWorkspaceToolStripMenuItem.Enabled = true;
                 }
             }
         }
@@ -9027,6 +8989,8 @@ namespace CertusCompanion
         // CSV Import
         private void importWorkflowCSVBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            ImportWorkflowCSV(e.Argument as OpenFileDialog); return;
+
             try
             {
                 ImportWorkflowCSV(e.Argument as OpenFileDialog);
@@ -10107,6 +10071,7 @@ namespace CertusCompanion
                     this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful");
                     this.LoadingForm.ChangeLabel($"{e.Error.Message}");
                     this.LoadingForm.Refresh();
+                    clearWorkspaceToolStripMenuItem.Enabled = true;
                 }));
                 else
                 {
@@ -10115,6 +10080,7 @@ namespace CertusCompanion
                     this.LoadingForm.ChangeHeaderLabel("Import Unsuccessful");
                     this.LoadingForm.ChangeLabel($"{e.Error.Message}");
                     this.LoadingForm.Refresh();
+                    clearWorkspaceToolStripMenuItem.Enabled = true;
                 }
 
                 MessageBox.Show($"Data generation unsuccessful\n\n{e.Error.Message}", "Error");
@@ -10168,15 +10134,15 @@ namespace CertusCompanion
             else
             {
                 // populate the list box with the queried items
-                queriedItemsListbox.DataSource = queriedItemList;
+                queriedItemsListbox.DataSource = QueriedItemList;
 
                 // show correct count of records
                 SetDatabaseDetailsProperties();
 
                 // notify user that the query was successful
-                if (queriedItemList != null && queriedItemList.Count > 0)
+                if (QueriedItemList != null && QueriedItemList.Count > 0)
                 {
-                    SetStatusLabelAndTimer($"Query successful, {queriedItemList.Count} items showing");
+                    SetStatusLabelAndTimer($"Query successful, {QueriedItemList.Count} items showing");
                 }
                 else
                 {
@@ -11129,7 +11095,7 @@ namespace CertusCompanion
                     itemsWhereCompanyNotRecognized = 0;
                     itemsWhereCompanyHadDifferentAnalysts = 0;
                     itemsWhereCompanyHadNoAnalyst = 0;
-                    companiesWhichHadDifferentAnalysts = new List<string>();
+                    CompaniesWhichHadDifferentAnalysts = new List<string>();
                     itemsAlreadyCorrectlyAssigned = 0;
                     itemsSuccessfullyAssigned = 0;
 
@@ -11207,7 +11173,7 @@ namespace CertusCompanion
                                         if (analystsToCheck.Any(o => o != analystsToCheck[0]))
                                 {
                                     ++itemsWhereCompanyHadDifferentAnalysts;
-                                    if (!companiesWhichHadDifferentAnalysts.Contains(wi.VendorName)) companiesWhichHadDifferentAnalysts.Add(wi.VendorName);
+                                    if (!CompaniesWhichHadDifferentAnalysts.Contains(wi.VendorName)) CompaniesWhichHadDifferentAnalysts.Add(wi.VendorName);
                                 }
                                 else // analysts are not different
                                         {
@@ -13113,7 +13079,7 @@ namespace CertusCompanion
         }
         private void SetDatabaseDetailsProperties()
         {
-            displayingCountStatusLbl.Text = $"{workflowItemListPopulated.Count.ToString()}";
+            displayingCountStatusLbl.Text = $"{WorkflowItemListPopulated.Count.ToString()}";
             checkedCountStatusLbl.Text = $"{workflowItemsListView.CheckedItems.Count.ToString()}";
             queriedCountStatusLbl.Text = $"{CountOfQueriedItems().ToString()}";
         }

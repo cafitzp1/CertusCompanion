@@ -1,5 +1,5 @@
 ﻿#define DEBUG
-#undef DEBUG
+//#undef DEBUG
 
 using System;
 using System.Threading;
@@ -14,7 +14,7 @@ namespace CertusCompanion
         /// </summary>
 
         //
-// for using the launch form
+        // for using the launch form
         #if !DEBUG
         [STAThread]
         static void Main(string[] args)
@@ -39,19 +39,19 @@ namespace CertusCompanion
         }
 
         //
-// for starting without the launcher
+        // for starting without the launcher
         #else
-                [STAThread]
-                static void Main(string[] args)
-                {
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new WorkflowManager());
-                }
+        [STAThread]
+        static void Main(string[] args)
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new WorkflowManager());
+        }
         #endif
 
         //
-// for keeping the app alive when terminating the main form
+        // for keeping the app alive when terminating the main form
         /* 
         [STAThread]
         static void Main()
@@ -66,9 +66,9 @@ namespace CertusCompanion
 
         static void FormClosed(object sendert, FormClosedEventArgs e)
         {
-            ((Form)sendert).FormClosed -= FormClosed;
+            ((Form)sender).FormClosed -= FormClosed;
             if (Application.OpenForms.Count == 0) Application.ExitThread();
-            else Application.OpenForms[0].FormClosed += FormClosed;
+            else Application.OpenForms[0].FormClosed += FormClosed; 
         }
         */
     }
