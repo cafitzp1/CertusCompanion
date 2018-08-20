@@ -54,14 +54,7 @@ namespace CertusCompanion
             FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             try
             {
-                // Construct a BinaryFormatter and use it 
-                // to deserialize the data from the stream.
                 BinaryFormatter formatter = new BinaryFormatter();
-
-                // Construct an instance of our the
-                // Version1ToVersion2TypeSerialiationBinder type.
-                // This Binder type can deserialize a Version1Type  
-                // object to a Version2Type object.
 
                 this.SaveData = (List<AppData>)formatter.Deserialize(fs);
                 this.MostRecentSave = SaveData[SaveData.Count - 1];

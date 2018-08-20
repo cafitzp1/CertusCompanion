@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CertusCompanion
@@ -161,8 +155,7 @@ namespace CertusCompanion
             //string path = Path.Combine(directory, filename);
 
             string fileName = $"Workflow Item Export - {DateTime.Now.ToFileTime()}.csv";
-            //string path = $@"\Downloads\{fileName}";
-            string path = fileName;
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),fileName);
 
             // generate header line
             string headerLine = GenerateHeaderLine();
@@ -300,7 +293,7 @@ namespace CertusCompanion
                 this.WriteCSV();
 
                 // notify on items view
-                (Application.OpenForms["ItemsView"] as ItemsView).SetStatusLabelAndTimer("Export to CSV successful");
+                (Application.OpenForms["ItemsView"] as ItemsView).SetStatusLabelAndTimer("Export to CSV successful. The file has been placed on your desktop.");
 
                 // close
                 this.Close();

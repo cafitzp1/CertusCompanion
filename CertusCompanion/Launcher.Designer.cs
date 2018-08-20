@@ -29,15 +29,22 @@
         private void InitializeComponent()
         {
             this.loadBackgroundPanel = new System.Windows.Forms.Panel();
+            this.loadBottomMarginPanel = new System.Windows.Forms.Panel();
+            this.loadRightMarginPanel = new System.Windows.Forms.Panel();
             this.loadForegroundPanel = new System.Windows.Forms.Panel();
+            this.loadLeftMarginPanel = new System.Windows.Forms.Panel();
+            this.loadTopMarginPanel = new System.Windows.Forms.Panel();
             this.CertusCompanionLbl = new System.Windows.Forms.Label();
             this.statusLbl = new System.Windows.Forms.Label();
             this.loadBackgroundPanel.SuspendLayout();
+            this.loadForegroundPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // loadBackgroundPanel
             // 
             this.loadBackgroundPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.loadBackgroundPanel.Controls.Add(this.loadBottomMarginPanel);
+            this.loadBackgroundPanel.Controls.Add(this.loadRightMarginPanel);
             this.loadBackgroundPanel.Controls.Add(this.loadForegroundPanel);
             this.loadBackgroundPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.loadBackgroundPanel.Location = new System.Drawing.Point(0, 175);
@@ -46,14 +53,52 @@
             this.loadBackgroundPanel.Size = new System.Drawing.Size(444, 15);
             this.loadBackgroundPanel.TabIndex = 3;
             // 
+            // loadBottomMarginPanel
+            // 
+            this.loadBottomMarginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.loadBottomMarginPanel.Location = new System.Drawing.Point(0, 14);
+            this.loadBottomMarginPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.loadBottomMarginPanel.Name = "loadBottomMarginPanel";
+            this.loadBottomMarginPanel.Size = new System.Drawing.Size(444, 3);
+            this.loadBottomMarginPanel.TabIndex = 5;
+            // 
+            // loadRightMarginPanel
+            // 
+            this.loadRightMarginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.loadRightMarginPanel.Location = new System.Drawing.Point(443, 0);
+            this.loadRightMarginPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.loadRightMarginPanel.Name = "loadRightMarginPanel";
+            this.loadRightMarginPanel.Size = new System.Drawing.Size(10, 20);
+            this.loadRightMarginPanel.TabIndex = 6;
+            // 
             // loadForegroundPanel
             // 
             this.loadForegroundPanel.BackColor = System.Drawing.Color.Lime;
+            this.loadForegroundPanel.Controls.Add(this.loadLeftMarginPanel);
+            this.loadForegroundPanel.Controls.Add(this.loadTopMarginPanel);
             this.loadForegroundPanel.Location = new System.Drawing.Point(0, 0);
             this.loadForegroundPanel.Margin = new System.Windows.Forms.Padding(2);
             this.loadForegroundPanel.Name = "loadForegroundPanel";
             this.loadForegroundPanel.Size = new System.Drawing.Size(163, 19);
             this.loadForegroundPanel.TabIndex = 0;
+            // 
+            // loadLeftMarginPanel
+            // 
+            this.loadLeftMarginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.loadLeftMarginPanel.Location = new System.Drawing.Point(-9, 0);
+            this.loadLeftMarginPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.loadLeftMarginPanel.Name = "loadLeftMarginPanel";
+            this.loadLeftMarginPanel.Size = new System.Drawing.Size(10, 20);
+            this.loadLeftMarginPanel.TabIndex = 5;
+            // 
+            // loadTopMarginPanel
+            // 
+            this.loadTopMarginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.loadTopMarginPanel.Location = new System.Drawing.Point(0, -2);
+            this.loadTopMarginPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.loadTopMarginPanel.Name = "loadTopMarginPanel";
+            this.loadTopMarginPanel.Size = new System.Drawing.Size(444, 3);
+            this.loadTopMarginPanel.TabIndex = 4;
             // 
             // CertusCompanionLbl
             // 
@@ -92,6 +137,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Launcher";
             this.loadBackgroundPanel.ResumeLayout(false);
+            this.loadForegroundPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +149,9 @@
         private System.Windows.Forms.Panel loadForegroundPanel;
         private System.Windows.Forms.Label CertusCompanionLbl;
         private System.Windows.Forms.Label statusLbl;
+        private System.Windows.Forms.Panel loadRightMarginPanel;
+        private System.Windows.Forms.Panel loadBottomMarginPanel;
+        private System.Windows.Forms.Panel loadTopMarginPanel;
+        private System.Windows.Forms.Panel loadLeftMarginPanel;
     }
 }
