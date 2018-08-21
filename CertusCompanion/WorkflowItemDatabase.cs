@@ -82,7 +82,7 @@ namespace CertusCompanion
         private bool CheckIfItemWasUpdated(WorkflowItem currentItemInDB, WorkflowItem importItem)
         {
             // if any data is not the same, item was changed. return true for check if item was updated 
-            if (currentItemInDB.ContractID != importItem.ContractID || currentItemInDB.Active != importItem.Active ||
+            if (currentItemInDB.CertificateName != importItem.CertificateName || currentItemInDB.Active != importItem.Active ||
                 currentItemInDB.Compliant != importItem.Compliant || currentItemInDB.NextExpirationDate != importItem.NextExpirationDate ||
                 currentItemInDB.WorkflowAnalyst != importItem.WorkflowAnalyst || currentItemInDB.CompanyAnalyst != importItem.CompanyAnalyst ||
                 currentItemInDB.Status != importItem.Status || currentItemInDB.FileSize != importItem.FileSize ||
@@ -95,12 +95,12 @@ namespace CertusCompanion
                 return false;
             }
         }
-        public void AddWorkflowItem(string documentWorkflowItemID, string contractID, string companyName, string companyID, string clientID, bool? active, bool? compliant, DateTime? issueDate, DateTime? nextExpirationDate, string workflowAnalyst, string workflowAnalystID, string companyAnalyst, string companyAnalystID, DateTime? emailDate, string emailFromAddress, string subjectLine, string emailBody, string status, string certusFileID, string fileName, string fileURL, string fileSize, string fileMime, bool? fileExtracted )
+        public void AddWorkflowItem(string documentWorkflowItemID, string CertificateID, string companyName, string companyID, string clientID, bool? active, bool? compliant, DateTime? issueDate, DateTime? nextExpirationDate, string workflowAnalyst, string workflowAnalystID, string companyAnalyst, string companyAnalystID, DateTime? emailDate, string emailFromAddress, string subjectLine, string emailBody, string status, string certusFileID, string fileName, string fileURL, string fileSize, string fileMime, bool? fileExtracted )
         {
             WorkflowItem wi = new WorkflowItem
                 (
                     documentWorkflowItemID,
-                    contractID,
+                    CertificateID,
                     companyName,
                     companyID,
                     clientID,

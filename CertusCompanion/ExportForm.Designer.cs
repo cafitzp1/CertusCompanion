@@ -35,7 +35,7 @@
             this.certificateDateCheckBox = new System.Windows.Forms.CheckBox();
             this.compliantCheckBox = new System.Windows.Forms.CheckBox();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
-            this.contractIDCheckBox = new System.Windows.Forms.CheckBox();
+            this.certificateIDCheckBox = new System.Windows.Forms.CheckBox();
             this.documentWorkflowItemIDCheckBox = new System.Windows.Forms.CheckBox();
             this.exportBtn = new System.Windows.Forms.Button();
             this.fieldsLbl = new System.Windows.Forms.Label();
@@ -167,19 +167,19 @@
             this.activeCheckBox.Text = "Active";
             this.activeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // contractIDCheckBox
+            // certificateIDCheckBox
             // 
-            this.contractIDCheckBox.AutoSize = true;
-            this.contractIDCheckBox.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.contractIDCheckBox.Location = new System.Drawing.Point(22, 78);
-            this.contractIDCheckBox.Margin = new System.Windows.Forms.Padding(2);
-            this.contractIDCheckBox.Name = "contractIDCheckBox";
-            this.contractIDCheckBox.Size = new System.Drawing.Size(80, 17);
-            this.contractIDCheckBox.TabIndex = 2;
-            this.contractIDCheckBox.TabStop = false;
-            this.contractIDCheckBox.Tag = "ContractID";
-            this.contractIDCheckBox.Text = "Contract ID";
-            this.contractIDCheckBox.UseVisualStyleBackColor = true;
+            this.certificateIDCheckBox.AutoSize = true;
+            this.certificateIDCheckBox.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.certificateIDCheckBox.Location = new System.Drawing.Point(22, 78);
+            this.certificateIDCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.certificateIDCheckBox.Name = "certificateIDCheckBox";
+            this.certificateIDCheckBox.Size = new System.Drawing.Size(87, 17);
+            this.certificateIDCheckBox.TabIndex = 2;
+            this.certificateIDCheckBox.TabStop = false;
+            this.certificateIDCheckBox.Tag = "CertificateID";
+            this.certificateIDCheckBox.Text = "Certificate ID";
+            this.certificateIDCheckBox.UseVisualStyleBackColor = true;
             // 
             // documentWorkflowItemIDCheckBox
             // 
@@ -266,7 +266,7 @@
             // presetsComboBox
             // 
             this.presetsComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.presetsComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.presetsComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.presetsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.presetsComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.presetsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -454,7 +454,7 @@
             // assignedToComboBox
             // 
             this.assignedToComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.assignedToComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.assignedToComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.assignedToComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.assignedToComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.assignedToComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -582,7 +582,7 @@
             this.Controls.Add(this.certificateDateCheckBox);
             this.Controls.Add(this.compliantCheckBox);
             this.Controls.Add(this.activeCheckBox);
-            this.Controls.Add(this.contractIDCheckBox);
+            this.Controls.Add(this.certificateIDCheckBox);
             this.Controls.Add(this.documentWorkflowItemIDCheckBox);
             this.Controls.Add(this.borderPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -610,7 +610,7 @@
         private System.Windows.Forms.CheckBox certificateDateCheckBox;
         private System.Windows.Forms.CheckBox compliantCheckBox;
         private System.Windows.Forms.CheckBox activeCheckBox;
-        private System.Windows.Forms.CheckBox contractIDCheckBox;
+        private System.Windows.Forms.CheckBox certificateIDCheckBox;
         private System.Windows.Forms.CheckBox documentWorkflowItemIDCheckBox;
         private System.Windows.Forms.Button exportBtn;
         private System.Windows.Forms.Label fieldsLbl;

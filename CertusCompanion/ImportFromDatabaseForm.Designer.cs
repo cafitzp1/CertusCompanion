@@ -105,7 +105,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar1.AutoSize = false;
             this.trackBar1.Enabled = false;
-            this.trackBar1.LargeChange = 2;
+            this.trackBar1.LargeChange = 1;
             this.trackBar1.Location = new System.Drawing.Point(13, 154);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar1.Name = "trackBar1";
@@ -161,7 +161,7 @@
             this.addAndUpdateCheckBox.Name = "addAndUpdateCheckBox";
             this.addAndUpdateCheckBox.Size = new System.Drawing.Size(104, 17);
             this.addAndUpdateCheckBox.TabIndex = 7;
-            this.addAndUpdateCheckBox.Tag = "ContractID";
+            this.addAndUpdateCheckBox.Tag = "CertificateID";
             this.addAndUpdateCheckBox.Text = "Add and Update";
             this.addAndUpdateCheckBox.UseVisualStyleBackColor = true;
             // 

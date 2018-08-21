@@ -126,6 +126,7 @@
             this.optionsComboBox.TabStop = false;
             this.optionsComboBox.Text = "Select one...";
             this.optionsComboBox.Visible = false;
+            this.optionsComboBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.LoadingForm_PreviewKeyDown);
             // 
             // radioButtonsPanel
             // 
@@ -138,6 +139,7 @@
             this.radioButtonsPanel.Name = "radioButtonsPanel";
             this.radioButtonsPanel.Size = new System.Drawing.Size(326, 59);
             this.radioButtonsPanel.TabIndex = 0;
+            this.radioButtonsPanel.TabStop = true;
             this.radioButtonsPanel.Visible = false;
             // 
             // saveBtn
@@ -151,10 +153,11 @@
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(50, 18);
-            this.saveBtn.TabIndex = 0;
+            this.saveBtn.TabIndex = 1;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Visible = false;
+            this.saveBtn.VisibleChanged += new System.EventHandler(this.saveBtn_VisibleChanged);
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // radioButton3
@@ -168,6 +171,7 @@
             this.radioButton3.TabIndex = 0;
             this.radioButton3.Text = "Option 3";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.LoadingForm_PreviewKeyDown);
             // 
             // radioButton2
             // 
@@ -180,6 +184,7 @@
             this.radioButton2.TabIndex = 0;
             this.radioButton2.Text = "Option 2";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.LoadingForm_PreviewKeyDown);
             // 
             // radioButton1
             // 
@@ -192,11 +197,12 @@
             this.radioButton1.TabIndex = 0;
             this.radioButton1.Text = "Option 1";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.LoadingForm_PreviewKeyDown);
             // 
             // closeBtn
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.Control;
@@ -204,7 +210,7 @@
             this.closeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(50, 18);
-            this.closeBtn.TabIndex = 1;
+            this.closeBtn.TabIndex = 2;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = true;
             this.closeBtn.Visible = false;

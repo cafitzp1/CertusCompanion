@@ -8,7 +8,7 @@ namespace CertusCompanion
     {
         #region Workflow Item Data
         public string DocumentWorkflowItemID { get; set; }
-        public string ContractID { get; set; }
+        public string CertificateName { get; set; }
         public string VendorName { get; set; }
         public string VendorID { get; set; }
         public string ClientID { get; set; }
@@ -43,9 +43,9 @@ namespace CertusCompanion
         public DateTime? DateCompleted { get; set; }
         public string StatusChanges { get; set; }
         public string ItemType { get; set; }
-        public bool ContractIdOverridden { get; set; }
+        public bool CertificateIdOverridden { get; set; }
         public bool WorkflowItemInformationDifferentThanCertus { get; set; }
-        public bool ContractInformationUpdated { get; set; }
+        public bool CertificateInformationUpdated { get; set; }
         public bool CompanyUpdated { get; set; }
         public bool ItemHasPriority { get; set; }
         #endregion
@@ -58,10 +58,10 @@ namespace CertusCompanion
         }
         //
         // parameterized constructor for instantiating existing items
-        public WorkflowItem ( string documentWorkflowItemID, string contractID, string vendorName, string vendorID, string clientID, bool? active, bool? compliant, DateTime? issueDate, DateTime? nextExpirationDate, string workflowAnalyst, string workflowAnalystID, string companyAnalyst, string companyAnalystID, DateTime? emailDate, string emailFromAddress, string subjectLine, string emailBody, string status, string certusFileID, string fileName, string fileURL, string fileSize, string fileMime, bool? fileExtracted)
+        public WorkflowItem ( string documentWorkflowItemID, string certificateName, string vendorName, string vendorID, string clientID, bool? active, bool? compliant, DateTime? issueDate, DateTime? nextExpirationDate, string workflowAnalyst, string workflowAnalystID, string companyAnalyst, string companyAnalystID, DateTime? emailDate, string emailFromAddress, string subjectLine, string emailBody, string status, string certusFileID, string fileName, string fileURL, string fileSize, string fileMime, bool? fileExtracted)
         {
             this.DocumentWorkflowItemID = documentWorkflowItemID;
-            this.ContractID = contractID;
+            this.CertificateName = certificateName;
             this.VendorName = vendorName;
             this.ClientID = clientID;
             this.Active = active;
@@ -111,7 +111,7 @@ namespace CertusCompanion
                 case "Compliance Analyst":
                     return CompanyAnalystID;
                 default:
-                    return "(Unassigned)";
+                    return String.Empty;
             }
         }
         public override string ToString()

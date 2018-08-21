@@ -4,7 +4,7 @@ USE CertusDB
 SELECT		TOP 0--<wi>
 			DocumentWorkflowItem.DocumentWorkflowItemID
 			, ISNULL(CompanyCertificate.Name, '') 
-			AS ContractID
+			AS CertificateID
 			, REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(Company.Name, ''), CHAR(13), ''), CHAR(10), ''), CHAR(9), ''), '=', ' ='), '"', ' "')),' =', CHAR(9)), '=', '-'), CHAR(9), ' ='),' "', CHAR(9)), '"', '-'), CHAR(9), ' "')
 			AS Vendor
 			, DocumentWorkflowItem.CompanyID AS VendorID

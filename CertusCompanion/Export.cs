@@ -8,101 +8,52 @@ namespace CertusCompanion
 {
     public class Export
     {
-        // data
-        bool documentWorkflowItemIDCheckChoice;
-        bool contractIDCheckChoice;
-        bool companyNameCheckChoice;
-        bool activeCheckChoice;
-        bool compliantCheckChoice;
-        bool certificateDateCheckChoice;
-        bool workflowAnalystCheckChoice;
-        bool complianceAnalystCheckChoice;
-        bool emailDateCheckChoice;
-        bool emailFromAddressCheckChoice;
-        bool subjectLineCheckChoice;
-        bool statusCheckChoice;
-        bool certusFileIDCheckChoice;
-        bool fileNameCheckChoice;
-        bool fileURLCheckChoice;
-        bool fileSizeCheckChoice;
-        bool fileMIMECheckChoice;
-        bool assignedToCheckChoice;
-        int assignedToComboBoxSelectedIndex;
-        bool displayColorCheckChoice;
-        bool itemsAttachedCheckChoice;
-        bool noteCheckChoice;
-        int presetsComboBoxSelectedIndex;
-        Export currentExport;
+        //
+        // export data
+        public bool DocumentWorkflowItemIDCheckChoice { get; set; }
+        public bool CertificateIDCheckChoice { get; set; }
+        public bool CompanyNameCheckChoice { get; set; }
+        public bool ActiveCheckChoice { get; set; }
+        public bool CompliantCheckChoice { get; set; }
+        public bool CertificateDateCheckChoice { get; set; }
+        public bool WorkflowAnalystCheckChoice { get; set; }
+        public bool ComplianceAnalystCheckChoice { get; set; }
+        public bool EmailDateCheckChoice { get; set; }
+        public bool EmailFromAddressCheckChoice { get; set; }
+        public bool SubjectLineCheckChoice { get; set; }
+        public bool StatusCheckChoice { get; set; }
+        public bool CertusFileIDCheckChoice { get; set; }
+        public bool FileNameCheckChoice { get; set; }
+        public bool FileURLCheckChoice { get; set; }
+        public bool FileSizeCheckChoice { get; set; }
+        public bool FileMIMECheckChoice { get; set; }
+        public bool AssignedToCheckChoice { get; set; }
+        public int AssignedToComboBoxSelectedIndex { get; set; }
+        public bool DisplayColorCheckChoice { get; set; }
+        public bool ItemsAttachedCheckChoice { get; set; }
+        public bool NoteCheckChoice { get; set; }
+        public int PresetsComboBoxSelectedIndex { get; set; }
+        public Export CurrentExport { get; set; }
 
-        // properties
-        public bool DocumentWorkflowItemIDCheckChoice { get => documentWorkflowItemIDCheckChoice; set => documentWorkflowItemIDCheckChoice = value; }
-        public bool ContractIDCheckChoice { get => contractIDCheckChoice; set => contractIDCheckChoice = value; }
-        public bool CompanyNameCheckChoice { get => companyNameCheckChoice; set => companyNameCheckChoice = value; }
-        public bool ActiveCheckChoice { get => activeCheckChoice; set => activeCheckChoice = value; }
-        public bool CompliantCheckChoice { get => compliantCheckChoice; set => compliantCheckChoice = value; }
-        public bool CertificateDateCheckChoice { get => certificateDateCheckChoice; set => certificateDateCheckChoice = value; }
-        public bool WorkflowAnalystCheckChoice { get => workflowAnalystCheckChoice; set => workflowAnalystCheckChoice = value; }
-        public bool ComplianceAnalystCheckChoice { get => complianceAnalystCheckChoice; set => complianceAnalystCheckChoice = value; }
-        public bool EmailDateCheckChoice { get => emailDateCheckChoice; set => emailDateCheckChoice = value; }
-        public bool EmailFromAddressCheckChoice { get => emailFromAddressCheckChoice; set => emailFromAddressCheckChoice = value; }
-        public bool SubjectLineCheckChoice { get => subjectLineCheckChoice; set => subjectLineCheckChoice = value; }
-        public bool StatusCheckChoice { get => statusCheckChoice; set => statusCheckChoice = value; }
-        public bool CertusFileIDCheckChoice { get => certusFileIDCheckChoice; set => certusFileIDCheckChoice = value; }
-        public bool FileNameCheckChoice { get => fileNameCheckChoice; set => fileNameCheckChoice = value; }
-        public bool FileURLCheckChoice { get => fileURLCheckChoice; set => fileURLCheckChoice = value; }
-        public bool FileSizeCheckChoice { get => fileSizeCheckChoice; set => fileSizeCheckChoice = value; }
-        public bool FileMIMECheckChoice { get => fileMIMECheckChoice; set => fileMIMECheckChoice = value; }
-        public bool AssignedToCheckChoice { get => assignedToCheckChoice; set => assignedToCheckChoice = value; }
-        public int AssignedToComboBoxSelectedIndex { get => assignedToComboBoxSelectedIndex; set => assignedToComboBoxSelectedIndex = value; }
-        public bool DisplayColorCheckChoice { get => displayColorCheckChoice; set => displayColorCheckChoice = value; }
-        public bool ItemsAttachedCheckChoice { get => itemsAttachedCheckChoice; set => itemsAttachedCheckChoice = value; }
-        public bool NoteCheckChoice { get => noteCheckChoice; set => noteCheckChoice = value; }
-        public int PresetsComboBoxSelectedIndex { get => presetsComboBoxSelectedIndex; set => presetsComboBoxSelectedIndex = value; }
-        public Export CurrentExport { get => currentExport; set => currentExport = value; }
-
-        // constructors
+        //
+        // blank constructor
         public Export()
         {
 
         }
 
+        //
         // methods
         public void ResetExport()
         {
             this.CurrentExport = new Export();
         }
-
-        public void SaveExport
-            (
-                bool documentWorkflowItemIDCheckChoice,
-                bool contractIDCheckChoice,
-                bool companyNameCheckChoice,
-                bool activeCheckChoice,
-                bool compliantCheckChoice,
-                bool certificateDateCheckChoice,
-                bool workflowAnalystCheckChoice,
-                bool complianceAnalystCheckChoice,
-                bool emailDateCheckChoice,
-                bool emailFromAddressCheckChoice,
-                bool subjectLineCheckChoice,
-                bool statusCheckChoice,
-                bool certusFileIDCheckChoice,
-                bool fileNameCheckChoice,
-                bool fileURLCheckChoice,
-                bool fileSizeCheckChoice,
-                bool fileMIMECheckChoice,
-                bool assignedToCheckChoice,
-                int assignedToComboBoxSelectedIndex,
-                bool displayColorCheckChoice,
-                bool itemsAttachedCheckChoice,
-                bool noteCheckChoice,
-                int presetsComboBoxSelectedIndex
-            )
+        public void SaveExport(bool documentWorkflowItemIDCheckChoice, bool CertificateIDCheckChoice, bool companyNameCheckChoice, bool activeCheckChoice, bool compliantCheckChoice, bool certificateDateCheckChoice, bool workflowAnalystCheckChoice, bool complianceAnalystCheckChoice, bool emailDateCheckChoice, bool emailFromAddressCheckChoice, bool subjectLineCheckChoice, bool statusCheckChoice, bool certusFileIDCheckChoice, bool fileNameCheckChoice, bool fileURLCheckChoice, bool fileSizeCheckChoice, bool fileMIMECheckChoice, bool assignedToCheckChoice, int assignedToComboBoxSelectedIndex, bool displayColorCheckChoice, bool itemsAttachedCheckChoice, bool noteCheckChoice, int presetsComboBoxSelectedIndex)
         {
             this.CurrentExport = new Export();
 
             this.DocumentWorkflowItemIDCheckChoice = documentWorkflowItemIDCheckChoice;
-            this.ContractIDCheckChoice = contractIDCheckChoice;
+            this.CertificateIDCheckChoice = CertificateIDCheckChoice;
             this.CompanyNameCheckChoice = companyNameCheckChoice;
             this.ActiveCheckChoice = activeCheckChoice;
             this.CompliantCheckChoice = compliantCheckChoice;
@@ -125,12 +76,13 @@ namespace CertusCompanion
             this.NoteCheckChoice = noteCheckChoice;
             this.PresetsComboBoxSelectedIndex = presetsComboBoxSelectedIndex;
         }
-
+        
+        //
+        // return methods
         public Export ReturnExport()
         {
             return this.CurrentExport;
         }
-
         private string GenerateToString()
         {
             string s = "";
@@ -142,7 +94,6 @@ namespace CertusCompanion
 
             return s;
         }
-
         public override string ToString()
         {
             return GenerateToString();

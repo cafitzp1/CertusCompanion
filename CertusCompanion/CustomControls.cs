@@ -157,54 +157,11 @@ namespace CertusCompanion
 
     class ListViewNF : ListView
     {
-        //private bool checkFromDoubleClick = false;
-
         public ListViewNF()
         {
             //Activate double buffering
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
-
-            //Enable the OnNotifyMessage event so we get a chance to filter out Windows messages before they get to the form's WndProc
-            //    this.SetStyle(ControlStyles.EnableNotifyMessage, true);
         }
-
-        //// HUGE PROBELM for program. causes any message box to crash everything.
-        //protected override void OnNotifyMessage(Message m)
-        //{
-        //    //Filter out the WM_ERASEBKGND message
-        //    if (m.Msg != 0x14)
-        //    {
-        //        base.OnNotifyMessage(m);
-        //    }
-        //}
-
-        // prevent double click from checking 
-        //protected override void OnItemCheck(ItemCheckEventArgs ice)
-        //{
-        //    if (this.checkFromDoubleClick)
-        //    {
-        //        ice.NewValue = ice.CurrentValue;
-        //        this.checkFromDoubleClick = false;
-        //    }
-        //    else
-        //        base.OnItemCheck(ice);
-        //}
-
-        //protected override void OnMouseDown(MouseEventArgs e)
-        //{
-        //    // Is this a double-click?
-        //    if ((e.Button == MouseButtons.Left) && (e.Clicks > 1))
-        //    {
-        //        this.checkFromDoubleClick = true;
-        //    }
-        //    base.OnMouseDown(e);
-        //}
-
-        //protected override void OnKeyDown(KeyEventArgs e)
-        //{
-        //    this.checkFromDoubleClick = false;
-        //    base.OnKeyDown(e);
-        //}
     }
 
     /// <summary>

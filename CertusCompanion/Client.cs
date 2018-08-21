@@ -45,7 +45,7 @@ namespace CertusCompanion
         }
         public override string ToString()
         {
-            return $"{Name}\t<{ClientID}>";
+            return $"{Name} <{ClientID}>";
         }
     }
 }

@@ -11,8 +11,8 @@ namespace CertusCompanion
     {
         #region ExportForm Data
         public bool DocumentWorkflowItemIDCheckChoice { get; set; }
-        public bool ContractIDCheckChoice { get; set; }
-        public int ContractComboBoxSelectedIndex { get; set; }
+        public bool CertificateIDCheckChoice { get; set; }
+        public int CertificateComboBoxSelectedIndex { get; set; }
         public bool CompanyNameCheckChoice { get; set; }
         public int CompanyComboBoxSelectedIndex { get; set; }
         public bool ActiveCheckChoice { get; set; }
@@ -61,13 +61,14 @@ namespace CertusCompanion
 
             this.presetsComboBox.SelectedIndex = 0;
         }
+
         //
         // for if export options are to be populated before opening the 
         // form (like for the filter form)
         public void Populate()
         {
             this.documentWorkflowItemIDCheckBox.Checked = CurrentExport.DocumentWorkflowItemIDCheckChoice;
-            this.contractIDCheckBox.Checked = CurrentExport.ContractIDCheckChoice;
+            this.certificateIDCheckBox.Checked = CurrentExport.CertificateIDCheckChoice;
             this.companyNameCheckBox.Checked= CurrentExport.CompanyNameCheckChoice;
             this.activeCheckBox.Checked = CurrentExport.ActiveCheckChoice;
             this.compliantCheckBox.Checked = CurrentExport.CompliantCheckChoice;
@@ -93,7 +94,7 @@ namespace CertusCompanion
         private void Save()
         {
             this.DocumentWorkflowItemIDCheckChoice = documentWorkflowItemIDCheckBox.Checked;
-            this.ContractIDCheckChoice = contractIDCheckBox.Checked;
+            this.CertificateIDCheckChoice = certificateIDCheckBox.Checked;
             this.CompanyNameCheckChoice = companyNameCheckBox.Checked;
             this.ActiveCheckChoice = activeCheckBox.Checked;
             this.CompliantCheckChoice = compliantCheckBox.Checked;
@@ -116,6 +117,7 @@ namespace CertusCompanion
             this.NoteCheckChoice = noteCheckBox.Checked;
             this.PresetsComboBoxSelectedIndex = presetsComboBox.SelectedIndex;
         }
+
         //
         // for generating the export
         private void GenerateExport()
@@ -124,7 +126,7 @@ namespace CertusCompanion
             CurrentExport.SaveExport
                 (
                     this.DocumentWorkflowItemIDCheckChoice,
-                    this.ContractIDCheckChoice,
+                    this.CertificateIDCheckChoice,
                     this.CompanyNameCheckChoice,
                     this.ActiveCheckChoice,
                     this.CompliantCheckChoice,
@@ -195,7 +197,7 @@ namespace CertusCompanion
             List<string> headers = new List<string>();
 
             if (this.DocumentWorkflowItemIDCheckChoice) headers.Add(this.documentWorkflowItemIDCheckBox.Tag as string);
-            if (this.ContractIDCheckChoice) headers.Add(this.contractIDCheckBox.Tag as string);
+            if (this.CertificateIDCheckChoice) headers.Add(this.certificateIDCheckBox.Tag as string);
             if (this.CompanyNameCheckChoice) headers.Add(this.companyNameCheckBox.Tag as string);
             if (this.ActiveCheckChoice) headers.Add(this.activeCheckBox.Tag as string);
             if (this.CompliantCheckChoice) headers.Add(this.compliantCheckBox.Tag as string);
@@ -229,7 +231,7 @@ namespace CertusCompanion
             List<string> ls = new List<string>();
 
             if (this.DocumentWorkflowItemIDCheckChoice) ls.Add(wi.DocumentWorkflowItemID);
-            if (this.ContractIDCheckChoice) if (wi.ContractID != null) ls.Add(wi.ContractID);
+            if (this.CertificateIDCheckChoice) if (wi.CertificateName != null) ls.Add(wi.CertificateName);
                 else ls.Add("");
             if (this.CompanyNameCheckChoice) if (wi.VendorName != null) ls.Add(wi.VendorName);
                 else ls.Add("");
@@ -277,6 +279,7 @@ namespace CertusCompanion
 
             return ls;
         }
+
         //
         // form controls
         private void exportBtn_Click(object sender, EventArgs e)
@@ -310,7 +313,7 @@ namespace CertusCompanion
         {
             // clear data
             //this.documentWorkflowItemIDCheckBox.Checked = false;
-            this.contractIDCheckBox.Checked = false;
+            this.certificateIDCheckBox.Checked = false;
             this.companyNameCheckBox.Checked = false;
             this.activeCheckBox.Checked = false;
             this.compliantCheckBox.Checked = false;
@@ -338,7 +341,7 @@ namespace CertusCompanion
             if((string)presetsComboBox.SelectedItem == "Default")
             {
                 this.documentWorkflowItemIDCheckBox.Checked = true;
-                this.contractIDCheckBox.Checked = true;
+                this.certificateIDCheckBox.Checked = true;
                 this.companyNameCheckBox.Checked = true;
                 this.activeCheckBox.Checked = true;
                 this.compliantCheckBox.Checked = true;
@@ -363,7 +366,7 @@ namespace CertusCompanion
             else if ((string)presetsComboBox.SelectedItem == "Item IDs Only")
             {
                 this.documentWorkflowItemIDCheckBox.Checked = true;
-                this.contractIDCheckBox.Checked = false;
+                this.certificateIDCheckBox.Checked = false;
                 this.companyNameCheckBox.Checked = false;
                 this.activeCheckBox.Checked = false;
                 this.compliantCheckBox.Checked = false;
@@ -388,7 +391,7 @@ namespace CertusCompanion
             else if ((string)presetsComboBox.SelectedItem == "Item Assignment")
             {
                 this.documentWorkflowItemIDCheckBox.Checked = true;
-                this.contractIDCheckBox.Checked = false;
+                this.certificateIDCheckBox.Checked = false;
                 this.companyNameCheckBox.Checked = false;
                 this.activeCheckBox.Checked = false;
                 this.compliantCheckBox.Checked = false;
@@ -416,6 +419,7 @@ namespace CertusCompanion
             //CloseForm();
             this.Close();
         }
+
         //
         // other
         private void CloseForm()

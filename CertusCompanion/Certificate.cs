@@ -25,7 +25,7 @@ namespace CertusCompanion
         public string ServiceType { get; set; }
         #endregion
         //
-        // constructors
+        // blank constructor
         public Certificate()
         {
             CertificateIdentityField = String.Empty;
@@ -44,6 +44,8 @@ namespace CertusCompanion
             Market = String.Empty;
             ServiceType = String.Empty;
         }
+        //
+        // for constructing with the cert name
         public Certificate(string certificateName)
         {
             CertificateIdentityField = String.Empty;
@@ -62,13 +64,15 @@ namespace CertusCompanion
             Market = String.Empty;
             ServiceType = String.Empty;
         }
-        public Certificate(string bcsCertificateID, string certificateName, string certificateIdentityField, string clientID)
+        //
+        // for constructing from DB import
+        public Certificate(string bcsCertificateID, string certificateName, string certificateIdentityField, string clientID, string bcsCompanyID)
         {
             BcsCertificateID = bcsCertificateID;
             CertificateName = certificateName;
             CertificateIdentityField = certificateIdentityField;
             CompanyName = String.Empty;
-            BcsCompanyID = String.Empty;
+            BcsCompanyID = bcsCompanyID;
             ClientID = clientID;
             InsReqCategory = String.Empty;
             IssueDate = null;
@@ -82,6 +86,7 @@ namespace CertusCompanion
             Market = String.Empty;
             ServiceType = String.Empty;
         }
+        // full constructor (used with cvs import)
         public Certificate(string bcsCertificateID, string certificateName, string certificateIdentityField, string companyName, string bcsCompanyID, string clientID, string insReqCategory, DateTime? issueDate, DateTime? nextPolicyExpirationDate, bool? certificateActive, bool? certificateCompliant, string backToClientStatus, string buildings, DateTime? lastNoteDate, string source, string market, string serviceType)
         {
             BcsCertificateID = bcsCertificateID;

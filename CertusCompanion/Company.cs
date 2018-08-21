@@ -23,22 +23,30 @@ namespace CertusCompanion
         public bool? CompanyActive { get; set; }
         public string CompanyComplianceLevel { get; set; }
         public string Analyst { get; set; }
+        public string AnalystID { get; set; }
         public string CompanyLastNoteDate { get; set; }
         internal List<Contact> Contacts { get; set; }
         #endregion
 
         //
-        // constructors
+        // blank constructor
         public Company()
         {
 
         }
-        public Company(string companyName, string bcsCompanyID, string clientID)
+        //
+        // for constructing from the DB
+        public Company(string companyName, string bcsCompanyID, string clientID, string anaystID, string city, string state)
         {
             CompanyName = companyName;
             BcsCompanyID = bcsCompanyID;
             ClientID = clientID;
+            AnalystID = anaystID;
+            City = city;
+            State = state;
         }
+        //
+        // for constructing via CSV
         public Company(string companyName, string bcsCompanyID, string clientID, string vendorID, string dba, string address1, string address2, string city, string state, string zip, string country, string phone, string emailAddress, bool? companyActive, string companyComplianceLevel, string analyst, string companyLastNoteDate, List<Contact> contacts)
         {
             CompanyName = companyName;
@@ -57,11 +65,36 @@ namespace CertusCompanion
             CompanyActive = companyActive;
             CompanyComplianceLevel = companyComplianceLevel;
             Analyst = analyst;
+            AnalystID = null;
             CompanyLastNoteDate = companyLastNoteDate;
             //MainContact = mainContact;
             Contacts = contacts;
         }
-        
+        //
+        // full constructor
+        public Company(string companyName, string bcsCompanyID, string clientID, string vendorID, string dBA, string address1, string address2, string city, string state, string zip, string country, string phone, string emailAddress, bool? companyActive, string companyComplianceLevel, string analyst, string analystID, string companyLastNoteDate, List<Contact> contacts)
+        {
+            CompanyName = companyName;
+            BcsCompanyID = bcsCompanyID;
+            ClientID = clientID;
+            VendorID = vendorID;
+            DBA = dBA;
+            Address1 = address1;
+            Address2 = address2;
+            City = city;
+            State = state;
+            Zip = zip;
+            Country = country;
+            Phone = phone;
+            EmailAddress = emailAddress;
+            CompanyActive = companyActive;
+            CompanyComplianceLevel = companyComplianceLevel;
+            Analyst = analyst;
+            AnalystID = analystID;
+            CompanyLastNoteDate = companyLastNoteDate;
+            Contacts = contacts;
+        }
+
         //
         // interfaces
         public bool Equals(Company other)

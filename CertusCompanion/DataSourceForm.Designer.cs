@@ -495,7 +495,7 @@
             this.typeComboBox.Items.AddRange(new object[] {
             "Clients",
             "Companies",
-            "Contracts",
+            "Certificates",
             "Analysts",
             "Market Assignments"});
             this.typeComboBox.Location = new System.Drawing.Point(1, -2);

@@ -10,7 +10,7 @@ namespace CertusCompanion
     {
         #region ModifyForm Data
         public string SelectedCompany { get; set; }
-        public string SelectedContract { get; set; }
+        public string SelectedCertificate { get; set; }
         public string SelectedAssignment { get; set; }
         public string SelectedAssignmentID { get; set; }
         public string SelectedStatus { get; set; }
@@ -27,12 +27,12 @@ namespace CertusCompanion
         {
             InitializeComponent();
         }
-        public ModifyForm(List<Company> companiesDS, List<Certificate> contractsDS, List<Analyst> analysts, List<string> statuses)
+        public ModifyForm(List<Company> companiesDS, List<Certificate> CertificatesDS, List<Analyst> analysts, List<string> statuses)
         {
             InitializeComponent();
 
             AutoCompleteStringCollection companiesCll = new AutoCompleteStringCollection();
-            AutoCompleteStringCollection contractsCll = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection CertificatesCll = new AutoCompleteStringCollection();
             AutoCompleteStringCollection assignmentsCll = new AutoCompleteStringCollection();
             AutoCompleteStringCollection statusesCll = new AutoCompleteStringCollection();
 
@@ -46,13 +46,13 @@ namespace CertusCompanion
                 }
             }
 
-            // --- CONTRACTS --- //
-            List<string> contracts = contractsDS.Select(i => i.CertificateName).ToList();
-            if (contracts != null && contracts.Count != 0)
+            // --- CertificateS --- //
+            List<string> Certificates = CertificatesDS.Select(i => i.CertificateName).ToList();
+            if (Certificates != null && Certificates.Count != 0)
             {
-                foreach (string item in contracts)
+                foreach (string item in Certificates)
                 {
-                    contractsCll.Add(item);
+                    CertificatesCll.Add(item);
                 }
             }
 
@@ -86,7 +86,7 @@ namespace CertusCompanion
             coTbx.AutoCompleteCustomSource = companiesCll;
             coTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
             ctTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            ctTbx.AutoCompleteCustomSource = contractsCll;
+            ctTbx.AutoCompleteCustomSource = CertificatesCll;
             ctTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             // code to appear in the center of the form
@@ -133,7 +133,7 @@ namespace CertusCompanion
         private void saveBtn_Click(object sender, EventArgs e)
         {
             this.SelectedCompany = this.coTbx.Text;
-            this.SelectedContract = this.ctTbx.Text;
+            this.SelectedCertificate = this.ctTbx.Text;
             this.SelectedAssignment = this.anTbx.Text;
             this.SelectedAssignmentID = this.analystIDTbx.Text;
             this.SelectedStatus = this.stTbx.Text;

@@ -35,7 +35,7 @@
             this.noteLbl = new System.Windows.Forms.Label();
             this.statusLbl = new System.Windows.Forms.Label();
             this.assignmentLbl = new System.Windows.Forms.Label();
-            this.contractLbl = new System.Windows.Forms.Label();
+            this.CertificateLbl = new System.Windows.Forms.Label();
             this.companyLbl = new System.Windows.Forms.Label();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -154,16 +154,16 @@
             this.assignmentLbl.TabIndex = 17;
             this.assignmentLbl.Text = "Analyst:";
             // 
-            // contractLbl
+            // CertificateLbl
             // 
-            this.contractLbl.AutoSize = true;
-            this.contractLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.contractLbl.Location = new System.Drawing.Point(17, 47);
-            this.contractLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.contractLbl.Name = "contractLbl";
-            this.contractLbl.Size = new System.Drawing.Size(50, 13);
-            this.contractLbl.TabIndex = 16;
-            this.contractLbl.Text = "Contract:";
+            this.CertificateLbl.AutoSize = true;
+            this.CertificateLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.CertificateLbl.Location = new System.Drawing.Point(17, 47);
+            this.CertificateLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CertificateLbl.Name = "CertificateLbl";
+            this.CertificateLbl.Size = new System.Drawing.Size(50, 13);
+            this.CertificateLbl.TabIndex = 16;
+            this.CertificateLbl.Text = "Certificate:";
             // 
             // companyLbl
             // 
@@ -545,7 +545,7 @@
             this.Controls.Add(this.noteLbl);
             this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.assignmentLbl);
-            this.Controls.Add(this.contractLbl);
+            this.Controls.Add(this.CertificateLbl);
             this.Controls.Add(this.companyLbl);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
@@ -584,7 +584,7 @@
         private System.Windows.Forms.Label noteLbl;
         private System.Windows.Forms.Label statusLbl;
         private System.Windows.Forms.Label assignmentLbl;
-        private System.Windows.Forms.Label contractLbl;
+        private System.Windows.Forms.Label CertificateLbl;
         private System.Windows.Forms.Label companyLbl;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;

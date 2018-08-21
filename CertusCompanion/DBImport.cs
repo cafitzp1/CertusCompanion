@@ -175,7 +175,7 @@ namespace CertusCompanion
             foreach (DataRow row in wiTable.Rows)
             {
                 string documentWorkflowItemID = row[0].ToString();
-                string contractID = row[1].ToString();
+                string CertificateID = row[1].ToString();
                 string vendorName = row[2].ToString();
                 string vendorID = row[3].ToString();
                 string clID = row[4].ToString();
@@ -199,7 +199,7 @@ namespace CertusCompanion
                 WorkflowItem wi = new WorkflowItem
                 (
                     documentWorkflowItemID,
-                    contractID,
+                    CertificateID,
                     vendorName,
                     vendorID,
                     clID,

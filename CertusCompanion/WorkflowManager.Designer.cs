@@ -141,11 +141,11 @@
             this.focusDetailPanelBtn1 = new System.Windows.Forms.Button();
             this.documentWorkflowItemIdTbx = new System.Windows.Forms.TextBox();
             this.actionDetailPanelBtn1 = new System.Windows.Forms.Button();
-            this.contractIdDescLbl = new System.Windows.Forms.Label();
+            this.certificateIdDescLbl = new System.Windows.Forms.Label();
             this.detailPanel3 = new System.Windows.Forms.Panel();
             this.focusDetailPanelBtn3 = new System.Windows.Forms.Button();
             this.actionDetailPanelBtn3 = new System.Windows.Forms.Button();
-            this.contractIdTbx = new System.Windows.Forms.TextBox();
+            this.certificateIdTbx = new System.Windows.Forms.TextBox();
             this.detailPanel4 = new System.Windows.Forms.Panel();
             this.focusDetailPanelBtn4 = new System.Windows.Forms.Button();
             this.actionDetailPanelBtn4 = new System.Windows.Forms.Button();
@@ -164,11 +164,11 @@
             this.compliantTbx = new System.Windows.Forms.TextBox();
             this.detailNotificationsPanel = new System.Windows.Forms.Panel();
             this.priorityNotificationBtn = new System.Windows.Forms.Button();
-            this.contractInformationUpdatedBtn = new System.Windows.Forms.Button();
+            this.certificateInformationUpdatedBtn = new System.Windows.Forms.Button();
             this.itemExcludedBtn = new System.Windows.Forms.Button();
             this.itemIsDifferentBtn = new System.Windows.Forms.Button();
             this.companyUpdatedBtn = new System.Windows.Forms.Button();
-            this.contractIdOverridenBtn = new System.Windows.Forms.Button();
+            this.certificateIdOverridenBtn = new System.Windows.Forms.Button();
             this.detailsSaveBtn = new System.Windows.Forms.Button();
             this.detailPanel18 = new System.Windows.Forms.Panel();
             this.focusDetailPanelBtn18 = new System.Windows.Forms.Button();
@@ -295,10 +295,9 @@
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataSourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importWorkflowItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importMarketAssignmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dividerDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.updateContractDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateCertificateDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRelatedFilesDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tieUserIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -342,10 +341,10 @@
             this.modifyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extractCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extractContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractCertificateContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appendContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appendCompanyContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendContractContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendCertificateContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appendAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setAssignmentContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setAssignmentFindContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -371,16 +370,16 @@
             this.matchCaseBtn = new System.Windows.Forms.Button();
             this.tbxRemainsToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.importCompaniesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.fillCompanyBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.fillContractInformationBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.fillAssignmentAndStatusBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.fillAssignmentBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.appendCompanyBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.appendCertificateBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.appendStatusAndAssignmentBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.appendAssignmentBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.setAnalystFromCompanyBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.setAnalystFromMarketBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.setAnalystFromCertificateBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.findAndFillCompanyBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.extractContractBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.updateContractInformationBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.extractCompanyBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.extractCertificateBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.updateCertificateInformationBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.importFromDBBackGroundWorker = new System.ComponentModel.BackgroundWorker();
             this.searchTbxActiveBorder = new System.Windows.Forms.Panel();
             this.searchTbxInactiveBorder = new System.Windows.Forms.Panel();
@@ -428,7 +427,7 @@
             this.countColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.itemIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.companyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contractIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.certificateIdColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.senderColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.emailSubjectColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -577,7 +576,7 @@
             // 
             this.clOuterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.clOuterPanel.BackColor = System.Drawing.Color.Red;
+            this.clOuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.clOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.clOuterPanel.Controls.Add(this.clSelectionBtn);
             this.clOuterPanel.Controls.Add(this.clSplitPanel);
@@ -724,7 +723,7 @@
             // 
             // vcOuterPanel
             // 
-            this.vcOuterPanel.BackColor = System.Drawing.Color.Red;
+            this.vcOuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.vcOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.vcOuterPanel.Controls.Add(this.vcSelectionBtn);
             this.vcOuterPanel.Controls.Add(this.vcSplitPanel);
@@ -1263,7 +1262,7 @@
             this.importBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.importBtn, "Import Workflow Items From CSV (Ctrl+Shift+I)");
             this.importBtn.UseVisualStyleBackColor = false;
-            this.importBtn.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
+            this.importBtn.Click += new System.EventHandler(this.importFromCSVBtn_Click);
             this.importBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.importBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
@@ -2479,7 +2478,7 @@
             this.splitterPanelSection1.Controls.Add(this.detailPanel2);
             this.splitterPanelSection1.Controls.Add(this.documentWorkflowItemIdDescLbl);
             this.splitterPanelSection1.Controls.Add(this.detailPanel1);
-            this.splitterPanelSection1.Controls.Add(this.contractIdDescLbl);
+            this.splitterPanelSection1.Controls.Add(this.certificateIdDescLbl);
             this.splitterPanelSection1.Controls.Add(this.detailPanel3);
             this.splitterPanelSection1.Controls.Add(this.detailPanel4);
             this.splitterPanelSection1.Controls.Add(this.companyNameDescLbl);
@@ -2663,18 +2662,18 @@
             this.actionDetailPanelBtn1.TabStop = false;
             this.actionDetailPanelBtn1.UseVisualStyleBackColor = false;
             // 
-            // contractIdDescLbl
+            // certificateIdDescLbl
             // 
-            this.contractIdDescLbl.AutoSize = true;
-            this.contractIdDescLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contractIdDescLbl.Location = new System.Drawing.Point(1, 56);
-            this.contractIdDescLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.contractIdDescLbl.Name = "contractIdDescLbl";
-            this.contractIdDescLbl.Size = new System.Drawing.Size(73, 13);
-            this.contractIdDescLbl.TabIndex = 0;
-            this.contractIdDescLbl.Text = "> Contract ID:";
-            this.contractIdDescLbl.Click += new System.EventHandler(this.contractIdDescLbl_Click);
-            this.contractIdDescLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.changeableDescLbl_MouseMove);
+            this.certificateIdDescLbl.AutoSize = true;
+            this.certificateIdDescLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.certificateIdDescLbl.Location = new System.Drawing.Point(1, 56);
+            this.certificateIdDescLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.certificateIdDescLbl.Name = "certificateIdDescLbl";
+            this.certificateIdDescLbl.Size = new System.Drawing.Size(73, 13);
+            this.certificateIdDescLbl.TabIndex = 0;
+            this.certificateIdDescLbl.Text = "> Certificate ID:";
+            this.certificateIdDescLbl.Click += new System.EventHandler(this.certificateIdDescLbl_Click);
+            this.certificateIdDescLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.changeableDescLbl_MouseMove);
             // 
             // detailPanel3
             // 
@@ -2683,7 +2682,7 @@
             this.detailPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.detailPanel3.Controls.Add(this.focusDetailPanelBtn3);
             this.detailPanel3.Controls.Add(this.actionDetailPanelBtn3);
-            this.detailPanel3.Controls.Add(this.contractIdTbx);
+            this.detailPanel3.Controls.Add(this.certificateIdTbx);
             this.detailPanel3.Location = new System.Drawing.Point(163, 56);
             this.detailPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.detailPanel3.Name = "detailPanel3";
@@ -2728,29 +2727,29 @@
             this.actionDetailPanelBtn3.TabStop = false;
             this.actionDetailPanelBtn3.UseVisualStyleBackColor = false;
             // 
-            // contractIdTbx
+            // certificateIdTbx
             // 
-            this.contractIdTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.certificateIdTbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.contractIdTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.contractIdTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.contractIdTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contractIdTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.contractIdTbx.HideSelection = false;
-            this.contractIdTbx.Location = new System.Drawing.Point(15, 1);
-            this.contractIdTbx.Margin = new System.Windows.Forms.Padding(2);
-            this.contractIdTbx.Name = "contractIdTbx";
-            this.contractIdTbx.Size = new System.Drawing.Size(99, 12);
-            this.contractIdTbx.TabIndex = 0;
-            this.contractIdTbx.TabStop = false;
-            this.contractIdTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
-            this.contractIdTbx.Enter += new System.EventHandler(this.detailPanelTbx_Enter);
-            this.contractIdTbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detailPanelTbx_KeyDown);
-            this.contractIdTbx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.detailPanelTbx_KeyPress);
-            this.contractIdTbx.Leave += new System.EventHandler(this.detailPanelTbx_Leave);
-            this.contractIdTbx.MouseHover += new System.EventHandler(this.detailTbx_MouseHover);
-            this.contractIdTbx.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.detailPanelTbx__PreviewKeyDown);
+            this.certificateIdTbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.certificateIdTbx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.certificateIdTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.certificateIdTbx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.certificateIdTbx.HideSelection = false;
+            this.certificateIdTbx.Location = new System.Drawing.Point(15, 1);
+            this.certificateIdTbx.Margin = new System.Windows.Forms.Padding(2);
+            this.certificateIdTbx.Name = "certificateIdTbx";
+            this.certificateIdTbx.Size = new System.Drawing.Size(99, 12);
+            this.certificateIdTbx.TabIndex = 0;
+            this.certificateIdTbx.TabStop = false;
+            this.certificateIdTbx.TextChanged += new System.EventHandler(this.detailTbx_TextChanged);
+            this.certificateIdTbx.Enter += new System.EventHandler(this.detailPanelTbx_Enter);
+            this.certificateIdTbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detailPanelTbx_KeyDown);
+            this.certificateIdTbx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.detailPanelTbx_KeyPress);
+            this.certificateIdTbx.Leave += new System.EventHandler(this.detailPanelTbx_Leave);
+            this.certificateIdTbx.MouseHover += new System.EventHandler(this.detailTbx_MouseHover);
+            this.certificateIdTbx.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.detailPanelTbx__PreviewKeyDown);
             // 
             // detailPanel4
             // 
@@ -3035,11 +3034,11 @@
             // 
             this.detailNotificationsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.detailNotificationsPanel.Controls.Add(this.priorityNotificationBtn);
-            this.detailNotificationsPanel.Controls.Add(this.contractInformationUpdatedBtn);
+            this.detailNotificationsPanel.Controls.Add(this.certificateInformationUpdatedBtn);
             this.detailNotificationsPanel.Controls.Add(this.itemExcludedBtn);
             this.detailNotificationsPanel.Controls.Add(this.itemIsDifferentBtn);
             this.detailNotificationsPanel.Controls.Add(this.companyUpdatedBtn);
-            this.detailNotificationsPanel.Controls.Add(this.contractIdOverridenBtn);
+            this.detailNotificationsPanel.Controls.Add(this.certificateIdOverridenBtn);
             this.detailNotificationsPanel.Location = new System.Drawing.Point(429, 351);
             this.detailNotificationsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.detailNotificationsPanel.Name = "detailNotificationsPanel";
@@ -3069,29 +3068,29 @@
             this.priorityNotificationBtn.Visible = false;
             this.priorityNotificationBtn.Click += new System.EventHandler(this.priorityNotificationBtn_Click);
             // 
-            // contractInformationUpdatedBtn
+            // certificateInformationUpdatedBtn
             // 
-            this.contractInformationUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.contractInformationUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contractInformationUpdatedBtn.BackgroundImage")));
-            this.contractInformationUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contractInformationUpdatedBtn.FlatAppearance.BorderSize = 0;
-            this.contractInformationUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.contractInformationUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.contractInformationUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.contractInformationUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contractInformationUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contractInformationUpdatedBtn.ImageIndex = 0;
-            this.contractInformationUpdatedBtn.Location = new System.Drawing.Point(46, 0);
-            this.contractInformationUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.contractInformationUpdatedBtn.Name = "contractInformationUpdatedBtn";
-            this.contractInformationUpdatedBtn.Size = new System.Drawing.Size(20, 20);
-            this.contractInformationUpdatedBtn.TabIndex = 0;
-            this.contractInformationUpdatedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.contractInformationUpdatedBtn, "Item contract information has been updated");
-            this.contractInformationUpdatedBtn.UseVisualStyleBackColor = false;
-            this.contractInformationUpdatedBtn.Visible = false;
-            this.contractInformationUpdatedBtn.Click += new System.EventHandler(this.contractInformationUpdatedBtn_Click);
-            this.contractInformationUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.certificateInformationUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.certificateInformationUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("certificateInformationUpdatedBtn.BackgroundImage")));
+            this.certificateInformationUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.certificateInformationUpdatedBtn.FlatAppearance.BorderSize = 0;
+            this.certificateInformationUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.certificateInformationUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.certificateInformationUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.certificateInformationUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.certificateInformationUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.certificateInformationUpdatedBtn.ImageIndex = 0;
+            this.certificateInformationUpdatedBtn.Location = new System.Drawing.Point(46, 0);
+            this.certificateInformationUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.certificateInformationUpdatedBtn.Name = "certificateInformationUpdatedBtn";
+            this.certificateInformationUpdatedBtn.Size = new System.Drawing.Size(20, 20);
+            this.certificateInformationUpdatedBtn.TabIndex = 0;
+            this.certificateInformationUpdatedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.certificateInformationUpdatedBtn, "Item certificate information has been updated");
+            this.certificateInformationUpdatedBtn.UseVisualStyleBackColor = false;
+            this.certificateInformationUpdatedBtn.Visible = false;
+            this.certificateInformationUpdatedBtn.Click += new System.EventHandler(this.certificateInformationUpdatedBtn_Click);
+            this.certificateInformationUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // itemExcludedBtn
             // 
@@ -3165,29 +3164,29 @@
             this.companyUpdatedBtn.Click += new System.EventHandler(this.companyUpdatedBtn_Click);
             this.companyUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
-            // contractIdOverridenBtn
+            // certificateIdOverridenBtn
             // 
-            this.contractIdOverridenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.contractIdOverridenBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contractIdOverridenBtn.BackgroundImage")));
-            this.contractIdOverridenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contractIdOverridenBtn.FlatAppearance.BorderSize = 0;
-            this.contractIdOverridenBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.contractIdOverridenBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.contractIdOverridenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.contractIdOverridenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contractIdOverridenBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.contractIdOverridenBtn.ImageIndex = 0;
-            this.contractIdOverridenBtn.Location = new System.Drawing.Point(70, 0);
-            this.contractIdOverridenBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.contractIdOverridenBtn.Name = "contractIdOverridenBtn";
-            this.contractIdOverridenBtn.Size = new System.Drawing.Size(20, 20);
-            this.contractIdOverridenBtn.TabIndex = 0;
-            this.contractIdOverridenBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.contractIdOverridenBtn, "Item contract information has been overridden");
-            this.contractIdOverridenBtn.UseVisualStyleBackColor = false;
-            this.contractIdOverridenBtn.Visible = false;
-            this.contractIdOverridenBtn.Click += new System.EventHandler(this.contractIdOverridenBtn_Click);
-            this.contractIdOverridenBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.certificateIdOverridenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.certificateIdOverridenBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("certificateIdOverridenBtn.BackgroundImage")));
+            this.certificateIdOverridenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.certificateIdOverridenBtn.FlatAppearance.BorderSize = 0;
+            this.certificateIdOverridenBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.certificateIdOverridenBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.certificateIdOverridenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.certificateIdOverridenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.certificateIdOverridenBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.certificateIdOverridenBtn.ImageIndex = 0;
+            this.certificateIdOverridenBtn.Location = new System.Drawing.Point(70, 0);
+            this.certificateIdOverridenBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.certificateIdOverridenBtn.Name = "certificateIdOverridenBtn";
+            this.certificateIdOverridenBtn.Size = new System.Drawing.Size(20, 20);
+            this.certificateIdOverridenBtn.TabIndex = 0;
+            this.certificateIdOverridenBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.certificateIdOverridenBtn, "Item certificate information has been overridden");
+            this.certificateIdOverridenBtn.UseVisualStyleBackColor = false;
+            this.certificateIdOverridenBtn.Visible = false;
+            this.certificateIdOverridenBtn.Click += new System.EventHandler(this.certificateIdOverridenBtn_Click);
+            this.certificateIdOverridenBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // detailsSaveBtn
             // 
@@ -3780,7 +3779,7 @@
             // qfndOuterPanel
             // 
             this.qfndOuterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.qfndOuterPanel.BackColor = System.Drawing.Color.Red;
+            this.qfndOuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.qfndOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qfndOuterPanel.Controls.Add(this.qfndSelectionBtn);
             this.qfndOuterPanel.Controls.Add(this.qfndSplitPanel);
@@ -3904,7 +3903,7 @@
             // 
             this.qwOuterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.qwOuterPanel.BackColor = System.Drawing.Color.Red;
+            this.qwOuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.qwOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qwOuterPanel.Controls.Add(this.qwInnerPanel);
             this.qwOuterPanel.Controls.Add(this.queryWhereComboBox);
@@ -3917,6 +3916,7 @@
             // 
             this.qwInnerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.qwInnerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.qwInnerPanel.Controls.Add(this.qwLeftMarginPanel);
             this.qwInnerPanel.Controls.Add(this.qwTopMarginPanel);
             this.qwInnerPanel.Controls.Add(this.qwTbx);
@@ -3993,12 +3993,12 @@
             "Image attached & not alone",
             "Req Tmp attached",
             "Req Tmp attached & not alone",
-            "Item contract active",
-            "Item contract inactive",
-            "Item contract information updated",
-            "Item contract information not updated",
-            "Item contract overridden",
-            "Item contract not overridden",
+            "Item certificate active",
+            "Item certificate inactive",
+            "Item certificate information updated",
+            "Item certificate information not updated",
+            "Item certificate overridden",
+            "Item certificate not overridden",
             "Item company exists",
             "Item company missing",
             "Item company updated",
@@ -4014,6 +4014,7 @@
             "Item colors not gray",
             "Item has priority",
             "Item does not have priority",
+            "Item has no analyst ID",
             "No attachments"});
             this.queryWhereComboBox.Location = new System.Drawing.Point(-1, -2);
             this.queryWhereComboBox.Margin = new System.Windows.Forms.Padding(2);
@@ -4027,7 +4028,7 @@
             // 
             this.qfOuterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.qfOuterPanel.BackColor = System.Drawing.Color.Red;
+            this.qfOuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.qfOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qfOuterPanel.Controls.Add(this.qfInnerPanel);
             this.qfOuterPanel.Controls.Add(this.queryFromComboBox);
@@ -4040,6 +4041,7 @@
             // 
             this.qfInnerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.qfInnerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.qfInnerPanel.Controls.Add(this.qfLeftMarginPanel);
             this.qfInnerPanel.Controls.Add(this.qfTopMarginPanel);
             this.qfInnerPanel.Controls.Add(this.qfTbx);
@@ -4106,7 +4108,7 @@
             // 
             this.qsOuterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.qsOuterPanel.BackColor = System.Drawing.Color.Red;
+            this.qsOuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.qsOuterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qsOuterPanel.Controls.Add(this.qsInnerPanel);
             this.qsOuterPanel.Controls.Add(this.querySelectComboBox);
@@ -4624,7 +4626,7 @@
             this.importTypeLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.importTypeLbl.AutoSize = true;
             this.importTypeLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.importTypeLbl.Location = new System.Drawing.Point(4, 278);
+            this.importTypeLbl.Location = new System.Drawing.Point(5, 278);
             this.importTypeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.importTypeLbl.Name = "importTypeLbl";
             this.importTypeLbl.Size = new System.Drawing.Size(63, 13);
@@ -4636,7 +4638,7 @@
             this.updatedSinceLastImportLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.updatedSinceLastImportLbl.AutoSize = true;
             this.updatedSinceLastImportLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.updatedSinceLastImportLbl.Location = new System.Drawing.Point(4, 354);
+            this.updatedSinceLastImportLbl.Location = new System.Drawing.Point(5, 354);
             this.updatedSinceLastImportLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.updatedSinceLastImportLbl.Name = "updatedSinceLastImportLbl";
             this.updatedSinceLastImportLbl.Size = new System.Drawing.Size(157, 13);
@@ -4648,7 +4650,7 @@
             this.newItemsAddedLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.newItemsAddedLbl.AutoSize = true;
             this.newItemsAddedLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.newItemsAddedLbl.Location = new System.Drawing.Point(4, 328);
+            this.newItemsAddedLbl.Location = new System.Drawing.Point(5, 328);
             this.newItemsAddedLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.newItemsAddedLbl.Name = "newItemsAddedLbl";
             this.newItemsAddedLbl.Size = new System.Drawing.Size(94, 13);
@@ -4660,7 +4662,7 @@
             this.importFileNameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.importFileNameLbl.AutoSize = true;
             this.importFileNameLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.importFileNameLbl.Location = new System.Drawing.Point(4, 254);
+            this.importFileNameLbl.Location = new System.Drawing.Point(5, 254);
             this.importFileNameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.importFileNameLbl.Name = "importFileNameLbl";
             this.importFileNameLbl.Size = new System.Drawing.Size(57, 13);
@@ -4746,7 +4748,7 @@
             this.totalItemsOnImportLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalItemsOnImportLbl.AutoSize = true;
             this.totalItemsOnImportLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.totalItemsOnImportLbl.Location = new System.Drawing.Point(4, 304);
+            this.totalItemsOnImportLbl.Location = new System.Drawing.Point(5, 304);
             this.totalItemsOnImportLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.totalItemsOnImportLbl.Name = "totalItemsOnImportLbl";
             this.totalItemsOnImportLbl.Size = new System.Drawing.Size(109, 13);
@@ -5096,7 +5098,7 @@
             this.dataSourcesToolStripMenuItem,
             this.importFromFileToolStripMenuItem,
             this.dividerDataToolStripMenuItem1,
-            this.updateContractDataToolStripMenuItem,
+            this.updateCertificateDataToolStripMenuItem,
             this.addRelatedFilesDataToolStripMenuItem,
             this.tieUserIDsToolStripMenuItem});
             this.dataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -5118,21 +5120,11 @@
             // 
             this.importFromFileToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.importFromFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importWorkflowItemsToolStripMenuItem,
             this.importMarketAssignmentsToolStripMenuItem});
             this.importFromFileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.importFromFileToolStripMenuItem.Name = "importFromFileToolStripMenuItem";
             this.importFromFileToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.importFromFileToolStripMenuItem.Text = "Import From &File";
-            // 
-            // importWorkflowItemsToolStripMenuItem
-            // 
-            this.importWorkflowItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.importWorkflowItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.importWorkflowItemsToolStripMenuItem.Name = "importWorkflowItemsToolStripMenuItem";
-            this.importWorkflowItemsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.importWorkflowItemsToolStripMenuItem.Text = "Workflow Items";
-            this.importWorkflowItemsToolStripMenuItem.Click += new System.EventHandler(this.importWorkflowItemsToolStripMenuItem_Click);
+            this.importFromFileToolStripMenuItem.Text = "&Import Data Sources";
             // 
             // importMarketAssignmentsToolStripMenuItem
             // 
@@ -5151,14 +5143,15 @@
             this.dividerDataToolStripMenuItem1.Name = "dividerDataToolStripMenuItem1";
             this.dividerDataToolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
             // 
-            // updateContractDataToolStripMenuItem
+            // updateCertificateDataToolStripMenuItem
             // 
-            this.updateContractDataToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.updateContractDataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.updateContractDataToolStripMenuItem.Name = "updateContractDataToolStripMenuItem";
-            this.updateContractDataToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.updateContractDataToolStripMenuItem.Text = "U&pdate Contract Data";
-            this.updateContractDataToolStripMenuItem.Click += new System.EventHandler(this.updateContractDataToolStripMenuItem_Click);
+            this.updateCertificateDataToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.updateCertificateDataToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.updateCertificateDataToolStripMenuItem.Name = "updateCertificateDataToolStripMenuItem";
+            this.updateCertificateDataToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.updateCertificateDataToolStripMenuItem.Text = "U&pdate Certificate Data";
+            this.updateCertificateDataToolStripMenuItem.Visible = false;
+            this.updateCertificateDataToolStripMenuItem.Click += new System.EventHandler(this.updateCertificateDataToolStripMenuItem_Click);
             // 
             // addRelatedFilesDataToolStripMenuItem
             // 
@@ -5634,7 +5627,7 @@
             this.extractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.extractContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.extractCompanyContextMenuItem,
-            this.extractContractContextMenuItem});
+            this.extractCertificateContextMenuItem});
             this.extractContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.extractContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("extractContextMenuItem.Image")));
@@ -5652,22 +5645,22 @@
             this.extractCompanyContextMenuItem.Text = "Company";
             this.extractCompanyContextMenuItem.Click += new System.EventHandler(this.extractCompanyContextMenuItem_Click);
             // 
-            // extractContractContextMenuItem
+            // extractCertificateContextMenuItem
             // 
-            this.extractContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.extractContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.extractContractContextMenuItem.Image = global::CertusCompanion.Properties.Resources.termIcon;
-            this.extractContractContextMenuItem.Name = "extractContractContextMenuItem";
-            this.extractContractContextMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.extractContractContextMenuItem.Text = "Contract";
-            this.extractContractContextMenuItem.Click += new System.EventHandler(this.extractContractContextMenuItem_Click);
+            this.extractCertificateContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.extractCertificateContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.extractCertificateContextMenuItem.Image = global::CertusCompanion.Properties.Resources.termIcon;
+            this.extractCertificateContextMenuItem.Name = "extractCertificateContextMenuItem";
+            this.extractCertificateContextMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.extractCertificateContextMenuItem.Text = "Certificate";
+            this.extractCertificateContextMenuItem.Click += new System.EventHandler(this.extractCertificateContextMenuItem_Click);
             // 
             // appendContextMenuItem
             // 
             this.appendContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
             this.appendContextMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.appendCompanyContextMenuItem,
-            this.appendContractContextMenuItem,
+            this.appendCertificateContextMenuItem,
             this.appendAssignmentContextMenuItem});
             this.appendContextMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appendContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
@@ -5686,15 +5679,15 @@
             this.appendCompanyContextMenuItem.Text = "Company";
             this.appendCompanyContextMenuItem.Click += new System.EventHandler(this.appendCompaniesContextMenuItem_Click);
             // 
-            // appendContractContextMenuItem
+            // appendCertificateContextMenuItem
             // 
-            this.appendContractContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.appendContractContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.appendContractContextMenuItem.Image = global::CertusCompanion.Properties.Resources.detailsIcon2;
-            this.appendContractContextMenuItem.Name = "appendContractContextMenuItem";
-            this.appendContractContextMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.appendContractContextMenuItem.Text = "Contract Information";
-            this.appendContractContextMenuItem.Click += new System.EventHandler(this.appendContractContextMenuItem_Click);
+            this.appendCertificateContextMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.appendCertificateContextMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.appendCertificateContextMenuItem.Image = global::CertusCompanion.Properties.Resources.detailsIcon2;
+            this.appendCertificateContextMenuItem.Name = "appendCertificateContextMenuItem";
+            this.appendCertificateContextMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.appendCertificateContextMenuItem.Text = "Certificate Information";
+            this.appendCertificateContextMenuItem.Click += new System.EventHandler(this.appendCertificateContextMenuItem_Click);
             // 
             // appendAssignmentContextMenuItem
             // 
@@ -5808,9 +5801,9 @@
             // updateRelatedFilesDataBackgroundWorker
             // 
             this.updateRelatedFilesDataBackgroundWorker.WorkerReportsProgress = true;
-            this.updateRelatedFilesDataBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateDataBackgroundWorker_DoWork);
+            this.updateRelatedFilesDataBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.addRelatedFilesDataBackgroundWorker_DoWork);
             this.updateRelatedFilesDataBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
-            this.updateRelatedFilesDataBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.updateDataBackgroundWorker_RunWorkerCompleted);
+            this.updateRelatedFilesDataBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.addRelatedFilesDataBackgroundWorker_RunWorkerCompleted);
             // 
             // loadBackgroundWorker
             // 
@@ -5917,33 +5910,33 @@
             this.importCompaniesBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerAllProgress_ProgressChanged);
             this.importCompaniesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.importCompaniesBackgroundWorker_RunWorkerCompleted);
             // 
-            // fillCompanyBackgroundWorker
+            // appendCompanyBackgroundWorker
             // 
-            this.fillCompanyBackgroundWorker.WorkerReportsProgress = true;
-            this.fillCompanyBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendCompanyBackgroundWorker_DoWork);
-            this.fillCompanyBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
-            this.fillCompanyBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
+            this.appendCompanyBackgroundWorker.WorkerReportsProgress = true;
+            this.appendCompanyBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendCompanyBackgroundWorker_DoWork);
+            this.appendCompanyBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
+            this.appendCompanyBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
             // 
-            // fillContractInformationBackgroundWorker
+            // appendCertificateBackgroundWorker
             // 
-            this.fillContractInformationBackgroundWorker.WorkerReportsProgress = true;
-            this.fillContractInformationBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendContractInformationBackgroundWorker_DoWork);
-            this.fillContractInformationBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
-            this.fillContractInformationBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
+            this.appendCertificateBackgroundWorker.WorkerReportsProgress = true;
+            this.appendCertificateBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendCertificateInformationBackgroundWorker_DoWork);
+            this.appendCertificateBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
+            this.appendCertificateBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
             // 
-            // fillAssignmentAndStatusBackgroundWorker
+            // appendStatusAndAssignmentBackgroundWorker
             // 
-            this.fillAssignmentAndStatusBackgroundWorker.WorkerReportsProgress = true;
-            this.fillAssignmentAndStatusBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendAssignedAndStatusBackgroundWorker_DoWork);
-            this.fillAssignmentAndStatusBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
-            this.fillAssignmentAndStatusBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
+            this.appendStatusAndAssignmentBackgroundWorker.WorkerReportsProgress = true;
+            this.appendStatusAndAssignmentBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendAssignedAndStatusBackgroundWorker_DoWork);
+            this.appendStatusAndAssignmentBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
+            this.appendStatusAndAssignmentBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
             // 
-            // fillAssignmentBackgroundWorker
+            // appendAssignmentBackgroundWorker
             // 
-            this.fillAssignmentBackgroundWorker.WorkerReportsProgress = true;
-            this.fillAssignmentBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendAssignedBackgroundWorker_DoWork);
-            this.fillAssignmentBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
-            this.fillAssignmentBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
+            this.appendAssignmentBackgroundWorker.WorkerReportsProgress = true;
+            this.appendAssignmentBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.appendAssignedBackgroundWorker_DoWork);
+            this.appendAssignmentBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
+            this.appendAssignmentBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.appendDataBackgroundWorker_RunWorkerCompleted);
             // 
             // setAnalystFromCompanyBackgroundWorker
             // 
@@ -5966,23 +5959,23 @@
             this.setAnalystFromCertificateBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerIncrementalProgress_ProgressChanged);
             this.setAnalystFromCertificateBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.setAnalystFromCertificateBackgroundWorker_RunWorkerCompleted);
             // 
-            // findAndFillCompanyBackgroundWorker
+            // extractCompanyBackgroundWorker
             // 
-            this.findAndFillCompanyBackgroundWorker.WorkerReportsProgress = true;
-            this.findAndFillCompanyBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.extractCompanyBackgroundWorker_DoWork);
-            this.findAndFillCompanyBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extractCompanyBackgroundWorker_RunWorkerCompleted);
+            this.extractCompanyBackgroundWorker.WorkerReportsProgress = true;
+            this.extractCompanyBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.extractCompanyBackgroundWorker_DoWork);
+            this.extractCompanyBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extractCompanyBackgroundWorker_RunWorkerCompleted);
             // 
-            // extractContractBackgroundWorker
+            // extractCertificateBackgroundWorker
             // 
-            this.extractContractBackgroundWorker.WorkerReportsProgress = true;
-            this.extractContractBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.extractContractBackgroundWorker_DoWork);
-            this.extractContractBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extractContractInformationBackgroundWorker_RunWorkerCompleted);
+            this.extractCertificateBackgroundWorker.WorkerReportsProgress = true;
+            this.extractCertificateBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.extractCertificateBackgroundWorker_DoWork);
+            this.extractCertificateBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extractCertificateInformationBackgroundWorker_RunWorkerCompleted);
             // 
-            // updateContractInformationBackgroundWorker
+            // updateCertificateInformationBackgroundWorker
             // 
-            this.updateContractInformationBackgroundWorker.WorkerReportsProgress = true;
-            this.updateContractInformationBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateContractInformationBackgroundWorker_DoWork);
-            this.updateContractInformationBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.updateContractInformationBackgroundWorker_RunWorkerCompleted);
+            this.updateCertificateInformationBackgroundWorker.WorkerReportsProgress = true;
+            this.updateCertificateInformationBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateCertificateInformationBackgroundWorker_DoWork);
+            this.updateCertificateInformationBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.updateCertificateInformationBackgroundWorker_RunWorkerCompleted);
             // 
             // importFromDBBackGroundWorker
             // 
@@ -6439,7 +6432,7 @@
             this.countColumnHeader,
             this.itemIdColumnHeader,
             this.companyColumnHeader,
-            this.contractIdColumnHeader,
+            this.certificateIdColumnHeader,
             this.dateColumnHeader,
             this.senderColumnHeader,
             this.emailSubjectColumnHeader,
@@ -6490,10 +6483,10 @@
             this.companyColumnHeader.Text = "Company";
             this.companyColumnHeader.Width = 70;
             // 
-            // contractIdColumnHeader
+            // certificateIdColumnHeader
             // 
-            this.contractIdColumnHeader.Text = "Contract";
-            this.contractIdColumnHeader.Width = 70;
+            this.certificateIdColumnHeader.Text = "Certificate";
+            this.certificateIdColumnHeader.Width = 70;
             // 
             // dateColumnHeader
             // 
@@ -6560,6 +6553,7 @@
             this.Name = "WorkflowManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Workflow Manager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Click += new System.EventHandler(this.certusConnectionBtn_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WorkflowManager_KeyDown);
             this.Resize += new System.EventHandler(this.WorkflowManager_Resize);
@@ -6854,7 +6848,7 @@
         private System.Windows.Forms.Button itemIsDifferentBtn;
         private System.Windows.Forms.ToolStripSeparator dividerDataToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addRelatedFilesDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updateContractDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateCertificateDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem copyIDsContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openLinksContextMenuItem;
@@ -6867,26 +6861,26 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Button itemExcludedBtn;
         private System.Windows.Forms.Button companyUpdatedBtn;
-        private System.Windows.Forms.Button contractInformationUpdatedBtn;
-        private System.Windows.Forms.Button contractIdOverridenBtn;
-        private System.ComponentModel.BackgroundWorker fillCompanyBackgroundWorker;
-        private System.ComponentModel.BackgroundWorker fillContractInformationBackgroundWorker;
-        private System.ComponentModel.BackgroundWorker fillAssignmentAndStatusBackgroundWorker;
+        private System.Windows.Forms.Button certificateInformationUpdatedBtn;
+        private System.Windows.Forms.Button certificateIdOverridenBtn;
+        private System.ComponentModel.BackgroundWorker appendCompanyBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker appendCertificateBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker appendStatusAndAssignmentBackgroundWorker;
         private System.Windows.Forms.ToolStripMenuItem setAssignmentContextMenuItem;
-        private System.ComponentModel.BackgroundWorker fillAssignmentBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker appendAssignmentBackgroundWorker;
         private System.ComponentModel.BackgroundWorker setAnalystFromCompanyBackgroundWorker;
         private System.ComponentModel.BackgroundWorker setAnalystFromMarketBackgroundWorker;
         private System.ComponentModel.BackgroundWorker setAnalystFromCertificateBackgroundWorker;
-        private System.ComponentModel.BackgroundWorker findAndFillCompanyBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker extractCompanyBackgroundWorker;
         private System.Windows.Forms.ToolStripMenuItem unassignContextMenuItem;
-        private System.ComponentModel.BackgroundWorker extractContractBackgroundWorker;
-        private System.ComponentModel.BackgroundWorker updateContractInformationBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker extractCertificateBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker updateCertificateInformationBackgroundWorker;
         private System.Windows.Forms.Panel detailNotificationsPanel;
         private System.Windows.Forms.ToolStripMenuItem appendContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appendCompanyContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appendContractContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appendCertificateContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appendAssignmentContextMenuItem;
-        private System.Windows.Forms.ColumnHeader contractIdColumnHeader;
+        private System.Windows.Forms.ColumnHeader certificateIdColumnHeader;
         private System.Windows.Forms.Button redrawItemsBtn;
         private System.Windows.Forms.Button contrastItemGroupsBtn;
         private System.Windows.Forms.Button showItemsMonotoneBtn;
@@ -6931,11 +6925,11 @@
         private System.Windows.Forms.Button actionDetailPanelBtn1;
         private System.Windows.Forms.TextBox documentWorkflowItemIdTbx;
         private System.Windows.Forms.Button focusDetailPanelBtn1;
-        private System.Windows.Forms.Label contractIdDescLbl;
+        private System.Windows.Forms.Label certificateIdDescLbl;
         private System.Windows.Forms.Label fileNameDescLbl;
         private System.Windows.Forms.Panel detailPanel3;
         private System.Windows.Forms.Button actionDetailPanelBtn3;
-        private System.Windows.Forms.TextBox contractIdTbx;
+        private System.Windows.Forms.TextBox certificateIdTbx;
         private System.Windows.Forms.Button focusDetailPanelBtn3;
         private System.Windows.Forms.Label companyNameDescLbl;
         private System.Windows.Forms.Panel detailPanel11;
@@ -6996,7 +6990,7 @@
         private System.Windows.Forms.ToolStripMenuItem modifyContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractCompanyContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem extractContractContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractCertificateContextMenuItem;
         private System.Windows.Forms.Panel listViewOptionsDividerPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button importFromDatabaseBtn;
@@ -7013,7 +7007,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.Panel searchTbxActiveBorder;
         private System.Windows.Forms.Panel searchTbxInactiveBorder;
-        private System.Windows.Forms.ToolStripMenuItem importWorkflowItemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importMarketAssignmentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataSourcesToolStripMenuItem;
         private System.Windows.Forms.Label clientLbl;

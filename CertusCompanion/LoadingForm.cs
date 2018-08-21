@@ -188,6 +188,11 @@ namespace CertusCompanion
 
             CloseForm();
         }
+        private void saveBtn_VisibleChanged(object sender, EventArgs e)
+        {
+            saveBtn.FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
+            closeBtn.FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
+        }
         private void CloseForm()
         {
             try
@@ -210,6 +215,11 @@ namespace CertusCompanion
             if (e.Alt && e.KeyCode == Keys.F4)
             {
                 this.CloseForm();
+            }
+            else if (e.KeyCode==Keys.Enter)
+            {
+                if (saveBtn.Visible) saveBtn.PerformClick();
+                else closeBtn.PerformClick();
             }
         }
     }

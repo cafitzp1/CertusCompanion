@@ -94,7 +94,7 @@ namespace CertusCompanion
             acceptableHeaderValuesAndTheirIndexes = new List<Tuple<int, string>>();
 
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "DocumentWorkflowItemID"));
-            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "ContractID"));
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CertificateID"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Vendor"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company")); //same as above
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "VendorID"));
@@ -176,7 +176,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "ContractID," +
+                    "CertificateID," +
                     "CompanyName," +
                     "Active," +
                     "Compliant," +
@@ -198,7 +198,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "ContractID," +
+                    "CertificateID," +
                     "SubjectLine," +
                     "Active," +
                     "Compliant," +
@@ -222,7 +222,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "ContractID," +
+                    "CertificateID," +
                     "Vendor," +
                     "Active," +
                     "Compliant," +
@@ -246,7 +246,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "ContractID," +
+                    "CertificateID," +
                     "Vendor," +
                     "Active," +
                     "Compliant," +
@@ -275,7 +275,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "ContractID," +
+                    "CertificateID," +
                     "Vendor," +
                     "VendorID," +
                     "WorkflowAnalyst," +
@@ -299,7 +299,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "ContractID," +
+                    "CertificateID," +
                     "Vendor," +
                     "VendorID," +
                     "ClientID," +
@@ -359,11 +359,11 @@ namespace CertusCompanion
                 int indx = 0;
                 string documentWorkflowItemID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
-                // --- ContractID --- //
+                // --- CertificateID --- //
                 ++indx;
-                string contractID = "";
+                string CertificateID = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
-                    contractID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+                    CertificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 // --- Vendor --- //
                 ++indx;
@@ -610,7 +610,7 @@ namespace CertusCompanion
                 itemToImport = new WorkflowItem
                     (
                         documentWorkflowItemID,
-                        contractID,
+                        CertificateID,
                         vendorName,
                         vendorID,
                         clientID,
@@ -725,7 +725,7 @@ namespace CertusCompanion
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Certificate Name"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Certificate Identity Field"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Identity Field")); // same as above
-            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Contract ID")); // same as above
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Certificate ID")); // same as above
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company Name"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "BCS Company ID"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company ID")); // same as above
@@ -841,7 +841,7 @@ namespace CertusCompanion
                 ++indx;
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     certificateIdentityField = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
-                // --- Contract ID --- // (same as above)
+                // --- Certificate ID --- // (same as above)
                 ++indx;
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     certificateIdentityField = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];

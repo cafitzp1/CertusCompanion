@@ -52,7 +52,7 @@ namespace CertusCompanion
         //
         // Lists
         internal List<WorkflowItem> AllWorkflowItemsLoaded { get; set; }
-        internal List<WorkflowItem> CurrentWorkflowItems { get; set; }
+        internal List<WorkflowItem> NoncompleteWorkflowItems { get; set; }
         internal List<WorkflowItem> SearchResultsList { get; set; }
         internal List<WorkflowItem> TemporaryExportList { get; set; }
         internal List<Certificate> AllCertificatesLoaded { get; set; }
@@ -89,6 +89,7 @@ namespace CertusCompanion
         internal List<string> CertificateNamesSubSource { get; set; }
         internal List<string> AnalystNamesSubSource { get; set; }
         internal List<string> CurrentDetailTbxVals { get; set; }
+        internal List<string> CurrentlyCheckedItemIDs { get; set; }
         //
         // Dictionaries
         internal Dictionary<string, Company> CompanyDictionary { get; set; }
@@ -97,7 +98,7 @@ namespace CertusCompanion
         internal Dictionary<string, Color> ItemGroupsSortedColors { get; set; }
         internal Dictionary<string, string> MarketAssignments { get; set; }
         internal Dictionary<string, WorkflowItem> WorkflowItemDictionary { get; set; }
-        internal Dictionary<string, string> SystemUserIDsDictionary { get; set; }
+        internal Dictionary<string, Analyst> SystemUserIDsDictionary { get; set; }
         internal Dictionary<string, Certificate> CertificateDictionary { get; set; }
         //
         // Objects
@@ -124,6 +125,7 @@ namespace CertusCompanion
         private Image imgToUse;
         //
         // Variables
+        public string SelectedClientID { get; set; }
         private string previousEmailDate;
         private string previousSender;
         private string searchVal;
@@ -152,11 +154,11 @@ namespace CertusCompanion
         private int itemsSuccessfullyAssigned;
         private int itemsWhereMarketNotFound;
         private int itemsWithNoCertificate;
-        private int itemsWhereContractUnrecognized;
+        private int itemsWhereCertificateUnrecognized;
         private int searchIndex;
         private int itemsUpdated;
         private int itemsUpToDate;
-        private int contractsPulled;
+        private int certificatesPulled;
         private int detailNotificationPanelTop;
         private int detailNotificationPanelLeft;
         private int countOfListViewItems;
@@ -188,8 +190,6 @@ namespace CertusCompanion
         private System.Windows.Forms.Timer delayedAlertTimer;
         private bool certusBrowserOpened;
         private bool ignorethisEvent;
-
-        public string SelectedClientID { get; set; }
         #endregion
 
         // ----- APPLICATION STARTUP ----- //
@@ -204,7 +204,7 @@ namespace CertusCompanion
             PopulateMainFormStatic();
             if (CheckIfFormIsOpened("Launcher"))
             {
-                Launcher.MoveBar(50);
+                //Launcher.MoveBar(50);
 
                 Launcher.ReportStatus("Attempting to establish database connection...");
 #if !DEBUG
@@ -212,14 +212,14 @@ namespace CertusCompanion
 #else
                 Thread.Sleep(1000);
 #endif
-                Launcher.MoveBar(50);
+                //Launcher.MoveBar(50);
             }
         }
         private void InstantiateWorkflowManagerData()
         {
             // lists
             AllWorkflowItemsLoaded = new List<WorkflowItem>();
-            CurrentWorkflowItems = new List<WorkflowItem>();
+            NoncompleteWorkflowItems = new List<WorkflowItem>();
             SearchResultsList = new List<WorkflowItem>();
             TemporaryExportList = new List<WorkflowItem>();
             AllCertificatesLoaded = new List<Certificate>();
@@ -574,9 +574,9 @@ namespace CertusCompanion
                 certificatesACS.Add(o.CertificateName);
             }
 
-            contractIdTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            contractIdTbx.AutoCompleteCustomSource = certificatesACS;
-            contractIdTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            certificateIdTbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            certificateIdTbx.AutoCompleteCustomSource = certificatesACS;
+            certificateIdTbx.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         public void EnableOptionsPanels()
         {
@@ -613,6 +613,8 @@ namespace CertusCompanion
                 delayedAlertTimer.Interval = 1500;
                 delayedAlertTimer.Enabled = true;
             }
+
+            this.Focus();
         }
         private void SetDelayedAlert(string message, string header)
         {
@@ -929,7 +931,7 @@ namespace CertusCompanion
                 List<WorkflowItem> checkedItems = GetWorkflowItemsFromChecked(workflowItemsListView);
                 foreach (WorkflowItem item in checkedItems)
                 {
-                    if (item.AssignedToID == null || item.AssignedToID == "0" || !Char.IsDigit(item.AssignedToID[0]))
+                    if (item.AssignedToID == null || item.AssignedToID == "0" || !Char.IsDigit(item.AssignedToID[0]) || item.AssignedToID==String.Empty)
                     {
                         itemsMissingID = true;
                     }
@@ -1057,34 +1059,6 @@ namespace CertusCompanion
 
             #endregion
         }
-        private void importWorkflowItemsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            importFileBeingWorkedOn = 1;
-
-            openFileDialog.Multiselect = true;
-
-            try
-            {
-                openFileDialog.FileName = "";
-                openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-                openFileDialog.FilterIndex = 1;
-
-                DialogResult dialogResult = openFileDialog.ShowDialog();
-
-                if (dialogResult == DialogResult.OK)
-                {
-                    UseWaitCursor = true;
-                    importWorkflowItemsBackgroundWorker.RunWorkerAsync(openFileDialog);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("The import was unsuccessful.", "Error");
-                // should save back to old state (does not). same with any loading/saving if it catches an exception
-            }
-
-            workflowItemsListView.Focus();
-        }
         private void importMarketAssignmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog.FileName = "";
@@ -1140,34 +1114,39 @@ namespace CertusCompanion
 
             UseWaitCursor = false;
         }
-        //private void importCertificatesToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    openFileDialog.FileName = "";
-        //    openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-        //    openFileDialog.FilterIndex = 1;
+        private void importCertificatesToolStripMenuItem_Click(object sender, EventArgs e)//-
+        {
+            // removed as certificates are now datasources. may bring back functionality at some point 
+            // in time to allow for easier access to certificates, with more flexible data options
 
-        //    DialogResult dialogResult = openFileDialog.ShowDialog();
+            openFileDialog.FileName = "";
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            openFileDialog.FilterIndex = 1;
 
-        //    if (dialogResult == DialogResult.OK)
-        //    {
-        //        UseWaitCursor = true;
-        //        importCertificatesBackgroundWorker.RunWorkerAsync(openFileDialog);
-        //    }
-        //}
-        //private void importCompaniesToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    openFileDialog.FileName = "";
-        //    openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-        //    openFileDialog.FilterIndex = 1;
+            DialogResult dialogResult = openFileDialog.ShowDialog();
 
-        //    DialogResult dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                UseWaitCursor = true;
+                importCertificatesBackgroundWorker.RunWorkerAsync(openFileDialog);
+            }
+        }
+        private void importCompaniesToolStripMenuItem_Click(object sender, EventArgs e)//-
+        {
+            // see above handler for why this was removed
 
-        //    if (dialogResult == DialogResult.OK)
-        //    {
-        //        UseWaitCursor = true;
-        //        importCompaniesBackgroundWorker.RunWorkerAsync(openFileDialog);
-        //    }
-        //}
+            openFileDialog.FileName = "";
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            openFileDialog.FilterIndex = 1;
+
+            DialogResult dialogResult = openFileDialog.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                UseWaitCursor = true;
+                importCompaniesBackgroundWorker.RunWorkerAsync(openFileDialog);
+            }
+        }
         private void updatRelatedFilesDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.AllWorkflowItemsLoaded == null || this.AllWorkflowItemsLoaded.Count == 0)
@@ -1175,8 +1154,10 @@ namespace CertusCompanion
 
             updateRelatedFilesDataBackgroundWorker.RunWorkerAsync();
         }
-        private void updateContractDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private void updateCertificateDataToolStripMenuItem_Click(object sender, EventArgs e)//-
         {
+            // see importcertificates handler for why this was removed (no certificate data to update)
+
             if (CertificateDictionary == null || CertificateDictionary.Count == 0)
             {
                 SetStatusLabelAndTimer("Certificates need to be imported for this function");
@@ -1186,7 +1167,7 @@ namespace CertusCompanion
 
             UseWaitCursor = true;
 
-            updateContractInformationBackgroundWorker.RunWorkerAsync(AllWorkflowItemsLoaded);
+            updateCertificateInformationBackgroundWorker.RunWorkerAsync(AllWorkflowItemsLoaded);
         }
         private void tieUserIDsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1567,6 +1548,14 @@ namespace CertusCompanion
                 return;
             }
 
+            // return if more than 10
+            if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 10)
+            {
+                SetStatusLabelAndTimer("Can't more than 10 references at a time");
+                MakeErrorSound();
+                return;
+            }
+
             Cursor.Current = Cursors.WaitCursor;
 
             try
@@ -1633,6 +1622,13 @@ namespace CertusCompanion
                 return;
             }
 
+            // warn if there's alot of checked items
+            else if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 500)
+            {
+                DialogResult dr = MessageBox.Show("This may take a little while to process with that many items checked. Proceed?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
+            }
+
             Cursor.Current = Cursors.WaitCursor;
 
             List<WorkflowItem> itemsToPaint = new List<WorkflowItem>();
@@ -1681,6 +1677,13 @@ namespace CertusCompanion
                 SetStatusLabelAndTimer("Items need to be checked for that", 5000);
                 MakeErrorSound();
                 return;
+            }
+
+            // warn if there's alot of checked items
+            else if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 500)
+            {
+                DialogResult dr = MessageBox.Show("This may take a little while to process with that many items checked. Proceed?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
             }
 
             Cursor.Current = Cursors.WaitCursor;
@@ -1766,6 +1769,34 @@ namespace CertusCompanion
             buttonDescToolTip.SetToolTip(paintBtn, $"Paint ({colorDialogSelection.Name}) (5)");
             buttonDescToolTip.SetToolTip(paintFromQueryBtn, $"Paint Queried Items ({colorDialogSelection.Name})");
             paintContextMenuItem.Text = $"Paint ({colorDialogSelection.Name})";
+        }
+        private void importFromCSVBtn_Click(object sender, EventArgs e)
+        {
+            importFileBeingWorkedOn = 1;
+
+            openFileDialog.Multiselect = true;
+
+            try
+            {
+                openFileDialog.FileName = "";
+                openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+                openFileDialog.FilterIndex = 1;
+
+                DialogResult dialogResult = openFileDialog.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    UseWaitCursor = true;
+                    importWorkflowItemsBackgroundWorker.RunWorkerAsync(openFileDialog);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The import was unsuccessful.", "Error");
+                // should save back to old state (does not). same with any loading/saving if it catches an exception
+            }
+
+            workflowItemsListView.Focus();
         }
         private void AddItemsToAllWorkflowItemsLoaded(string fileName, List<WorkflowItem> currentImportItems, int valueToIncrementByIfLoading = 1)
         {
@@ -1899,7 +1930,7 @@ namespace CertusCompanion
         private bool CheckIfItemWasUpdated(WorkflowItem currentItemInDB, WorkflowItem importItem)
         {
             // if any data is not the same, item was changed. return true for check if item was updated 
-            if (currentItemInDB.ContractID != importItem.ContractID || currentItemInDB.Active != importItem.Active ||
+            if (currentItemInDB.CertificateName != importItem.CertificateName || currentItemInDB.Active != importItem.Active ||
                 currentItemInDB.Compliant != importItem.Compliant || currentItemInDB.NextExpirationDate != importItem.NextExpirationDate ||
                 currentItemInDB.WorkflowAnalyst != importItem.WorkflowAnalyst || currentItemInDB.CompanyAnalyst != importItem.CompanyAnalyst ||
                 currentItemInDB.Status != importItem.Status || currentItemInDB.FileSize != importItem.FileSize ||
@@ -1969,6 +2000,8 @@ namespace CertusCompanion
         {
             Cursor.Current = Cursors.WaitCursor;
 
+            if (vcSelectionBtn.Text == String.Empty) return;
+
             switch (vcSelectionBtn.Text)
             {
                 case "All Workflow":
@@ -2001,7 +2034,7 @@ namespace CertusCompanion
                     break;
                 case "Non-completed":
                     {
-                        if (this.CurrentWorkflowItems == null || this.CurrentWorkflowItems.Count == 0)
+                        if (this.NoncompleteWorkflowItems == null || this.NoncompleteWorkflowItems.Count == 0)
                         {
                             SetStatusLabelAndTimer("No items in that list", 5000);
                             MakeErrorSound();
@@ -2016,7 +2049,7 @@ namespace CertusCompanion
 
                         try
                         {
-                            PopulateListViewData(CurrentWorkflowItems);
+                            PopulateListViewData(NoncompleteWorkflowItems);
                             CountListViewItems(workflowItemsListView);
                         }
                         catch (Exception)
@@ -2184,7 +2217,7 @@ namespace CertusCompanion
                     list = AllWorkflowItemsLoaded;
                     break;
                 case "Non-completed":
-                    list = this.CurrentWorkflowItems;
+                    list = this.NoncompleteWorkflowItems;
                     break;
                 case "Export":
                     list = this.TemporaryExportList;
@@ -2216,7 +2249,7 @@ namespace CertusCompanion
                     case "All Workflow":
                         return AllWorkflowItemsLoaded;
                     case "Non-completed":
-                        return CurrentWorkflowItems;
+                        return NoncompleteWorkflowItems;
                     case "Export":
                         return TemporaryExportList;
                     case "Search Results":
@@ -2545,8 +2578,15 @@ namespace CertusCompanion
         }
         private void redrawItemsBtn_Click(object sender, EventArgs e)
         {
-            UseWaitCursor = true;
-            this.Refresh();
+            // don't let too many items be redrawn because this takes forever
+            if(workflowItemsListView.CheckedItems!=null&&workflowItemsListView.CheckedItems.Count>200)
+            {
+                MessageBox.Show("Unfortunately, this feature doesn't work well at the moment with too many checked items. Please refresh the list instead (button right next to this one).");
+                return;
+            }
+
+            Application.UseWaitCursor = true;
+            Application.DoEvents();
 
             try
             {
@@ -2562,7 +2602,7 @@ namespace CertusCompanion
                     // repopulate item at the checked index
                     workflowItemsListView.Items[index].SubItems[1].Text = wi.DocumentWorkflowItemID;
                     workflowItemsListView.Items[index].SubItems[2].Text = wi.VendorName;
-                    workflowItemsListView.Items[index].SubItems[3].Text = wi.ContractID;
+                    workflowItemsListView.Items[index].SubItems[3].Text = wi.CertificateName;
                     workflowItemsListView.Items[index].SubItems[4].Text = wi.EmailDate.Value.ToString();
                     workflowItemsListView.Items[index].SubItems[5].Text = wi.EmailFromAddress;
                     workflowItemsListView.Items[index].SubItems[6].Text = wi.SubjectLine;
@@ -2587,7 +2627,9 @@ namespace CertusCompanion
                 MakeErrorSound();
             }
 
-            UseWaitCursor = false;
+            Application.UseWaitCursor = false;
+            Application.DoEvents();
+
             workflowItemsListView.Focus();
         }
         private void contrastItemGroupsBtn_Click(object sender, EventArgs e)
@@ -2718,7 +2760,7 @@ namespace CertusCompanion
             this.importFromDatabaseBtn.Enabled = true;
         }
         //
-        // ContextMenu
+        // Context Menu
         //
         //
         // Copy and Selection
@@ -2968,6 +3010,19 @@ namespace CertusCompanion
                 SetStatusLabelAndTimer("Items need to be checked for that", 5000);
                 MakeErrorSound();
                 return;
+            }
+
+            // warn if there's alot of checked items
+            if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 1000)
+            {
+                DialogResult dr = MessageBox.Show("It is not recommended you perform this function with that many items checked. While the request will eventually process, " +
+                    "there's no telling how long it will take. Proceed anyway?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
+            }
+            else if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 200)
+            {
+                DialogResult dr = MessageBox.Show("This may take a little while to process with that many items checked. Proceed?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
             }
 
             Cursor.Current = Cursors.WaitCursor;
@@ -3303,6 +3358,7 @@ namespace CertusCompanion
         }
         //
         // Item Edit (workflow info)
+        //
         private void modifyContextMenuItem_Click(object sender, EventArgs e)
         {
             // return if no checked items
@@ -3334,7 +3390,7 @@ namespace CertusCompanion
                 List<WorkflowItem> checkedItems = GetWorkflowItemsFromChecked(workflowItemsListView);
 
                 string selectedCompany = ModifyForm.SelectedCompany;
-                string selectedContract = ModifyForm.SelectedContract;
+                string selectedCertificate = ModifyForm.SelectedCertificate;
                 string selectedAssignment = ModifyForm.SelectedAssignment;
                 string selectedAssignmentID = ModifyForm.SelectedAssignmentID;
                 string selectedStatus = ModifyForm.SelectedStatus;
@@ -3346,15 +3402,15 @@ namespace CertusCompanion
                     // item edit here
                     if (selectedCompany != null && selectedCompany != String.Empty)
                     {
-                        // add code for each to pull related data (ex: ids, contract info, etc...)
+                        // add code for each to pull related data (ex: ids, certificate info, etc...)
                         wi.VendorName = selectedCompany;
                         wi.CompanyUpdated = true;
                         itemsToUpdate.Add(wi);
                     }
-                    if (selectedContract != null && selectedContract != String.Empty)
+                    if (selectedCertificate != null && selectedCertificate != String.Empty)
                     {
-                        wi.ContractID = selectedContract;
-                        wi.ContractIdOverridden = true;
+                        wi.CertificateName = selectedCertificate;
+                        wi.CertificateIdOverridden = true;
                         itemsToUpdate.Add(wi);
                     }
                     if (selectedAssignment != null && selectedAssignment != String.Empty)
@@ -3366,7 +3422,7 @@ namespace CertusCompanion
                         wi.DisplayColor = "SpringGreen";
                         itemsToUpdate.Add(wi);
                     }
-                    if (selectedAssignmentID != null && selectedAssignmentID != String.Empty)
+                    if (selectedAssignmentID != null && selectedAssignmentID != String.Empty && selectedAssignmentID.ToLower() != "null")
                     {
                         wi.AssignedToID = selectedAssignmentID;
                         wi.WorkflowItemInformationDifferentThanCertus = true;
@@ -3397,6 +3453,8 @@ namespace CertusCompanion
                 Application.DoEvents();
             }
         }
+        //
+        // Extraction
         private void extractCompanyContextMenuItem_Click(object sender, EventArgs e)
         {
             // return if no checked items
@@ -3415,6 +3473,7 @@ namespace CertusCompanion
                 return;
             }
             
+            // generate form
             DimForm();
             LoadingForm = new LoadingForm();
             LoadingForm.ChangeHeaderLabel("Find Company");
@@ -3429,109 +3488,56 @@ namespace CertusCompanion
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
-                SetStatusLabelAndTimer("Getting the checked items together. This sometimes takes awhile...", true);
+
+                SetStatusLabelAndTimer("Initializing the request...", true);
                 this.Refresh();
+
                 try
                 {
                     GenerateCompanyLists();
                     GenerateContactDictionary();
+                    GenerateCurrentlyCheckedIDs();
                 }
-                catch (Exception)
+                catch (Exception m)
                 {
-                    MessageBox.Show("Could not generate the lists needed for finding companies.");
+                    MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                    Application.UseWaitCursor = false;
+                    Application.DoEvents();
+                    UseWaitCursor = false;
+                    ResetStatusStrip();
+                    return;
                 }
-                findAndFillCompanyBackgroundWorker.RunWorkerAsync("subject");
+
+                extractCompanyBackgroundWorker.RunWorkerAsync("sender");
             }
             else if (LoadingForm.DialogResult == DialogResult.OK)
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
-                SetStatusLabelAndTimer("Getting the checked items together. This sometimes takes awhile...", true);
+
+                SetStatusLabelAndTimer("Initializing the request...", true);
                 this.Refresh();
+
                 try
                 {
                     GenerateCompanyLists();
                     GenerateContactDictionary();
+                    GenerateCurrentlyCheckedIDs();
                 }
-                catch (Exception)
+                catch (Exception m)
                 {
-                    MessageBox.Show("Could not generate the lists needed for finding contacts.");
+                    MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                    Application.UseWaitCursor = false;
+                    Application.DoEvents();
+                    UseWaitCursor = false;
+                    ResetStatusStrip();
+                    return;
                 }
-                findAndFillCompanyBackgroundWorker.RunWorkerAsync("sender");
-            }
-            else if (LoadingForm.DialogResult == DialogResult.Cancel)
-            {
-                //UseWaitCursor = true;
-                //findAndFillCompanyBackgroundWorker.RunWorkerAsync("all");
+
+                extractCompanyBackgroundWorker.RunWorkerAsync("subject");
             }
         }
-        private void GenerateCompanyLists()
-        {
-            this.AllCompaniesLoaded = new List<Company>();
-            this.CompanyDictionary = new Dictionary<string, Company>();
-            this.CompanyNameDictionary = new Dictionary<string, string>();
-
-            foreach (Company co in DataSources[3].Items)
-            {
-                this.AllCompaniesLoaded.Add(co);
-                this.CompanyDictionary.Add(co.BcsCompanyID, co);
-                this.CompanyNameDictionary.Add(co.BcsCompanyID, co.CompanyName);
-            }
-        }
-        private void GenerateContactDictionary()
-        {
-            this.CompanyContactDictionary = new Dictionary<string, List<Contact>>();
-            List<Contact> contacts = new List<Contact>();
-
-            // get the contacts per company
-            foreach (Contact c in DataSources[6].Items)
-            {
-                contacts.Add(c);
-            }
-
-            var groupedContacts = contacts
-                .GroupBy(c => c.CompanyID)
-                .Select(grp => grp.ToList())
-                .ToList();
-
-            foreach (List<Contact> cList in groupedContacts)
-            {
-                CompanyContactDictionary.Add(cList[0].CompanyID, cList);
-            }
-
-            CompanyContactDictionary.OrderBy(i => i.Key);
-        }
-        private void GenerateCertificateDictionary()
-        {
-            // generate certificate dictionary
-            AllCertificatesLoaded = new List<Certificate>();
-            CertificateDictionary = new Dictionary<string, Certificate>();
-
-            foreach (Certificate ct in DataSources[4].Items)
-            {
-                if (!this.CertificateDictionary.ContainsKey(ct.CertificateName))
-                {
-                    this.AllCertificatesLoaded.Add(ct);
-                    this.CertificateDictionary.Add(ct.CertificateName, ct);
-                }
-            }
-        }
-        private void GenerateMarketAssignments()
-        {
-            MarketAssignments = new Dictionary<string, string>();
-            string market;
-            string name;
-
-            foreach (string s in DataSources[9].Items)
-            {
-                int delim = s.IndexOf(':');
-                market = s.Substring(0, delim - 1);
-                name = s.Substring(delim, s.Length - delim);
-
-                MarketAssignments.Add(market, name);
-            }
-        }
-        private void extractContractContextMenuItem_Click(object sender, EventArgs e)
+        private void extractCertificateContextMenuItem_Click(object sender, EventArgs e)
         {
             // return if no checked items
             if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0)
@@ -3552,14 +3558,28 @@ namespace CertusCompanion
             Application.UseWaitCursor = true;
             Application.DoEvents();
 
-            SetStatusLabelAndTimer("Getting the checked items together. This sometimes takes awhile...", true);
+            SetStatusLabelAndTimer("Initializing the request...", true);
             this.Refresh();
 
-            GenerateCertificateDictionary();
+            try
+            {
+                GenerateCertificateDictionary();
+                GenerateCurrentlyCheckedIDs();
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
+                UseWaitCursor = false;
+                ResetStatusStrip();
+                return;
+            }
 
-            List<WorkflowItem> checkedItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-            extractContractBackgroundWorker.RunWorkerAsync(checkedItems);
+            extractCertificateBackgroundWorker.RunWorkerAsync();
         }
+        //
+        // Appending
         private void appendCompaniesContextMenuItem_Click(object sender, EventArgs e)
         {
             // return if no checked items
@@ -3573,11 +3593,26 @@ namespace CertusCompanion
             Application.UseWaitCursor = true;
             Application.DoEvents();
 
-            SetStatusLabelAndTimer("Getting items...", true);
+            SetStatusLabelAndTimer("Initializing the request...", true);
             this.Refresh();
-            fillCompanyBackgroundWorker.RunWorkerAsync();
+
+            try
+            {
+                GenerateCurrentlyCheckedIDs();
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
+                UseWaitCursor = false;
+                ResetStatusStrip();
+                return;
+            }
+
+            appendCompanyBackgroundWorker.RunWorkerAsync();
         }
-        private void appendContractContextMenuItem_Click(object sender, EventArgs e)
+        private void appendCertificateContextMenuItem_Click(object sender, EventArgs e)
         {
             // return if no checked items
             if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0)
@@ -3590,9 +3625,24 @@ namespace CertusCompanion
             Application.UseWaitCursor = true;
             Application.DoEvents();
 
-            SetStatusLabelAndTimer("Getting items...", true);
+            SetStatusLabelAndTimer("Initializing the request...", true);
             this.Refresh();
-            fillContractInformationBackgroundWorker.RunWorkerAsync();
+
+            try
+            {
+                GenerateCurrentlyCheckedIDs();
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
+                UseWaitCursor = false;
+                ResetStatusStrip();
+                return;
+            }
+
+            appendCertificateBackgroundWorker.RunWorkerAsync();
         }
         private void appendAssignmentContextMenuItem_Click(object sender, EventArgs e)
         {
@@ -3607,12 +3657,29 @@ namespace CertusCompanion
             Application.UseWaitCursor = true;
             Application.DoEvents();
 
-            SetStatusLabelAndTimer("Getting items...", true);
+            SetStatusLabelAndTimer("Initializing the request...", true);
             this.Refresh();
-            fillAssignmentBackgroundWorker.RunWorkerAsync();
+
+            try
+            {
+                GenerateCurrentlyCheckedIDs();
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
+                UseWaitCursor = false;
+                ResetStatusStrip();
+                return;
+            }
+
+            appendAssignmentBackgroundWorker.RunWorkerAsync();
         }
-        private void appendStatusAndAssignmentContextMenuItem_Click(object sender, EventArgs e)
+        private void appendStatusAndAssignmentContextMenuItem_Click(object sender, EventArgs e)//-
         {
+            // not currently in use
+
             // return if no checked items
             if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0)
             {
@@ -3624,10 +3691,26 @@ namespace CertusCompanion
             Application.UseWaitCursor = true;
             Application.DoEvents();
 
-            SetStatusLabelAndTimer("Getting items...", true);
+            SetStatusLabelAndTimer("Initializing the request...", true);
             this.Refresh();
-            fillAssignmentAndStatusBackgroundWorker.RunWorkerAsync();
+
+            try
+            {
+                GenerateCurrentlyCheckedIDs();
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
+                UseWaitCursor = false;
+                return;
+            }
+
+            appendStatusAndAssignmentBackgroundWorker.RunWorkerAsync();
         }
+        //
+        // Finding Assignment
         private void setAssignmentFindContextMenuItem_Click(object sender, EventArgs e)
         {
             // return if no checked items
@@ -3638,26 +3721,27 @@ namespace CertusCompanion
                 return;
             }
 
-            #region Generate Form
+            // return if no client specific datasources
+            if (DataSources == null || DataSources.Count <= 3)
+            {
+                SetStatusLabelAndTimer("Client specific datasources are required for this function");
+                MakeErrorSound();
+                return;
+            }
+
+            // generate form
             DimForm();
             LoadingForm = new LoadingForm();
             LoadingForm.ChangeHeaderLabel("Set Assignment");
             LoadingForm.ChangeLabel("Assign by (options sorted least to most accurate): ");
             LoadingForm.FormatForDialog("Market", "Company", "Certificate");
+
+            // show form
             LoadingForm.ShowDialog(TransparentForm);
             this.Focus();
-            #endregion
 
             if (LoadingForm.DialogResult == DialogResult.OK)
             {
-                // return if no client specific datasources
-                if (DataSources == null || DataSources.Count <= 3)
-                {
-                    SetStatusLabelAndTimer("Client specific datasources are required for this function");
-                    MakeErrorSound();
-                    return;
-                }
-
                 switch (LoadingForm.SelectedRadioButton)
                 {
                     case 1:
@@ -3665,37 +3749,96 @@ namespace CertusCompanion
                             // return if no market datasource
                             if (DataSources == null || DataSources.Count < 10)
                             {
-                                SetStatusLabelAndTimer("A market assignment data source is required for this function");
+                                SetStatusLabelAndTimer("A market assignments data source is required for this function");
                                 MakeErrorSound();
                                 return;
                             }
 
-                            UseWaitCursor = true;
-                            GenerateCompanyLists();
-                            GenerateMarketAssignments();
+                            Application.UseWaitCursor = true;
+                            Application.DoEvents();
+
+                            SetStatusLabelAndTimer("Initializing the request...", true);
+                            this.Refresh();
+
+                            try
+                            {
+                                GenerateCompanyLists();
+                                GenerateMarketAssignments();
+                                GenerateAnalystDictionary();
+                                GenerateCurrentlyCheckedIDs();
+                            }
+                            catch (Exception m)
+                            {
+                                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                                Application.UseWaitCursor = false;
+                                Application.DoEvents();
+                                UseWaitCursor = false;
+                                ResetStatusStrip();
+                                return;
+                            }
+
                             setAnalystFromMarketBackgroundWorker.RunWorkerAsync();
                         }
                         break;
                     case 2:
                         {
-                            UseWaitCursor = true;
-                            GenerateCompanyLists();
+                            Application.UseWaitCursor = true;
+                            Application.DoEvents();
+
+                            SetStatusLabelAndTimer("Initializing the request...", true);
+                            this.Refresh();
+
+                            try
+                            {
+                                GenerateCompanyLists();
+                                GenerateAnalystDictionary();
+                                GenerateCurrentlyCheckedIDs();
+                            }
+                            catch (Exception m)
+                            {
+                                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                                Application.UseWaitCursor = false;
+                                Application.DoEvents();
+                                UseWaitCursor = false;
+                                ResetStatusStrip();
+                                return;
+                            }
+
                             setAnalystFromCompanyBackgroundWorker.RunWorkerAsync();
                         }
                         break;
                     case 3:
                         {
-                            UseWaitCursor = true;
-                            GenerateCompanyLists();
-                            GenerateCertificateDictionary();
-                            List<WorkflowItem> checkedItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-                            setAnalystFromCertificateBackgroundWorker.RunWorkerAsync(checkedItems);
+                            Application.UseWaitCursor = true;
+                            Application.DoEvents();
+
+                            SetStatusLabelAndTimer("Initializing the request...", true);
+                            this.Refresh();
+
+                            try
+                            {
+                                GenerateCompanyLists();
+                                GenerateCertificateDictionary();
+                                GenerateAnalystDictionary();
+                                GenerateCurrentlyCheckedIDs();
+                            }
+                            catch (Exception m)
+                            {
+                                MessageBox.Show($"There was a problem generating the data required for this function.\n\nError message: {m.Message}", "Error");
+                                Application.UseWaitCursor = false;
+                                Application.DoEvents();
+                                UseWaitCursor = false;
+                                ResetStatusStrip();
+                                return;
+                            }
+
+                            setAnalystFromCertificateBackgroundWorker.RunWorkerAsync();
                         }
                         break;
                 }
             }
         }
-        private void setAssignmentManuallyContextMenuItem_Click(object sender, EventArgs e)
+        private void setAssignmentManuallyContextMenuItem_Click(object sender, EventArgs e)//-
         {
             // return if no checked items
             if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0)
@@ -3759,7 +3902,7 @@ namespace CertusCompanion
                 Application.DoEvents();
             }
         }
-        private void unassignContextMenuItem_Click(object sender, EventArgs e)
+        private void unassignContextMenuItem_Click(object sender, EventArgs e)//-
         {
             // return if no checked items
             if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0)
@@ -3803,6 +3946,94 @@ namespace CertusCompanion
             }
 
             Cursor.Current = Cursors.Default;
+        }
+        //
+        // Methods to set lists needed for the above item edit processes
+        private void GenerateCompanyLists()
+        {
+            this.AllCompaniesLoaded = new List<Company>();
+            this.CompanyDictionary = new Dictionary<string, Company>();
+            this.CompanyNameDictionary = new Dictionary<string, string>();
+
+            foreach (Company co in DataSources[3].Items)
+            {
+                this.AllCompaniesLoaded.Add(co);
+                this.CompanyDictionary.Add(co.BcsCompanyID, co);
+                this.CompanyNameDictionary.Add(co.BcsCompanyID, co.CompanyName);
+            }
+        }
+        private void GenerateContactDictionary()
+        {
+            this.CompanyContactDictionary = new Dictionary<string, List<Contact>>();
+            List<Contact> contacts = new List<Contact>();
+
+            // get the contacts per company
+            foreach (Contact c in DataSources[6].Items)
+            {
+                contacts.Add(c);
+            }
+
+            var groupedContacts = contacts
+                .GroupBy(c => c.CompanyID)
+                .Select(grp => grp.ToList())
+                .ToList();
+
+            foreach (List<Contact> cList in groupedContacts)
+            {
+                CompanyContactDictionary.Add(cList[0].CompanyID, cList);
+            }
+
+            CompanyContactDictionary.OrderBy(i => i.Key);
+        }
+        private void GenerateCertificateDictionary()
+        {
+            AllCertificatesLoaded = new List<Certificate>();
+            CertificateDictionary = new Dictionary<string, Certificate>();
+
+            foreach (Certificate ct in DataSources[4].Items)
+            {
+                if (!this.CertificateDictionary.ContainsKey(ct.CertificateName))
+                {
+                    this.AllCertificatesLoaded.Add(ct);
+                    this.CertificateDictionary.Add(ct.CertificateName, ct);
+                }
+            }
+        }
+        private void GenerateMarketAssignments()
+        {
+            MarketAssignments = new Dictionary<string, string>();
+            string market;
+            string name;
+
+            foreach (string s in DataSources[9].Items)
+            {
+                int delim = s.IndexOf(':');
+                market = s.Substring(0, delim - 1);
+                name = s.Substring(delim+2, s.Length - delim-2);
+
+                MarketAssignments.Add(market, name);
+            }
+        }
+        private void GenerateCurrentlyCheckedIDs()
+        {
+            this.CurrentlyCheckedItemIDs = new List<string>();
+
+            foreach (ListViewItem lvi in workflowItemsListView.CheckedItems)
+            {
+                CurrentlyCheckedItemIDs.Add(lvi.SubItems[1].Text);
+            }
+        }
+        private void GenerateAnalystDictionary()
+        {
+            SystemUserIDsDictionary = new Dictionary<string, Analyst>();
+
+            foreach (Analyst an in DataSources[5].Items)
+            {
+                if (!SystemUserIDsDictionary.ContainsKey(an.SystemUserID))
+                {
+                    SystemUserIDsDictionary.Add(an.SystemUserID, an);
+                }
+            }
         }
         #endregion
 
@@ -4977,11 +5208,16 @@ namespace CertusCompanion
                     MakeErrorSound();
                     return;
                 }
-                else if (Convert.ToInt32(filesAttachedTbx.Text) > 10)
+                else if (Convert.ToInt32(filesAttachedTbx.Text) > 30)
                 {
-                    SetStatusLabelAndTimer("Can't show more than 10 items at a time");
+                    SetStatusLabelAndTimer("Can't add that many items as references");
                     MakeErrorSound();
                     return;
+                }
+                else if (Convert.ToInt32(filesAttachedTbx.Text) > 10)
+                {
+                    SetStatusLabelAndTimer("Not all of the items were added as references because only 10 can be shown at a time");
+                    MakeErrorSound();
                 }
 
                 string idShowing = this.documentWorkflowItemIdTbx.Text;
@@ -5090,9 +5326,6 @@ namespace CertusCompanion
         }
         private void detailsSaveBtn_Click(object sender, EventArgs e)
         {
-            // add a field check sometime in the future
-            // ...
-
             UseWaitCursor = true;
 
             try
@@ -5121,10 +5354,6 @@ namespace CertusCompanion
             }
 
             UseWaitCursor = false;
-
-            // that item now equals this item
-
-            // this item's display color is now white
         }
         //
         // Notifications
@@ -5190,7 +5419,7 @@ namespace CertusCompanion
                 MakeErrorSound();
             }
         }
-        private void contractIdOverridenBtn_Click(object sender, EventArgs e)
+        private void certificateIdOverridenBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -5199,11 +5428,11 @@ namespace CertusCompanion
                 int index;
                 wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
                 index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.ContractIdOverridden = false;
+                wi.CertificateIdOverridden = false;
                 AllWorkflowItemsLoaded[index] = wi;
 
                 // hide btn
-                contractIdOverridenBtn.Visible = false;
+                certificateIdOverridenBtn.Visible = false;
             }
             catch (NullReferenceException m)
             {
@@ -5221,7 +5450,7 @@ namespace CertusCompanion
                 MakeErrorSound();
             }
         }
-        private void contractInformationUpdatedBtn_Click(object sender, EventArgs e)
+        private void certificateInformationUpdatedBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -5230,11 +5459,11 @@ namespace CertusCompanion
                 int index;
                 wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
                 index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.ContractInformationUpdated = false;
+                wi.CertificateInformationUpdated = false;
                 AllWorkflowItemsLoaded[index] = wi;
 
                 // hide btn
-                contractInformationUpdatedBtn.Visible = false;
+                certificateInformationUpdatedBtn.Visible = false;
             }
             catch (NullReferenceException m)
             {
@@ -5326,10 +5555,10 @@ namespace CertusCompanion
                 itemToSave.CompanyUpdated = true;
             }
 
-            if (itemToSave.ContractID != contractIdTbx.Text && contractIdDescLbl.Text == "> Contract ID:")
+            if (itemToSave.CertificateName != certificateIdTbx.Text && certificateIdDescLbl.Text == "> Certificate Name")
             {
-                itemToSave.ContractID = contractIdTbx.Text;
-                itemToSave.ContractInformationUpdated = true;
+                itemToSave.CertificateName = certificateIdTbx.Text;
+                itemToSave.CertificateInformationUpdated = true;
             }
 
             if (itemToSave.NextExpirationDate != null && itemToSave.NextExpirationDate.HasValue && itemToSave.NextExpirationDate.Value.ToShortDateString() != nextExpDateTbx.Text && nextExpDateDescLbl.Text == ">> Next Expiration Date:")
@@ -5337,7 +5566,7 @@ namespace CertusCompanion
                 DateTime result;
                 DateTime.TryParse(nextExpDateTbx.Text, out result);
                 itemToSave.NextExpirationDate = result;
-                itemToSave.ContractInformationUpdated = true;
+                itemToSave.CertificateInformationUpdated = true;
             }
 
             // if there is a value in active tbx (has to be true or false or this will not go through)
@@ -5348,7 +5577,7 @@ namespace CertusCompanion
                     if (itemToSave.Active != Convert.ToBoolean(activeTbx.Text))
                     {
                         itemToSave.Active = Convert.ToBoolean(activeTbx.Text);
-                        itemToSave.ContractInformationUpdated = true;
+                        itemToSave.CertificateInformationUpdated = true;
                     }
                 }
                 else // no value in tbx
@@ -5356,7 +5585,7 @@ namespace CertusCompanion
                     if (itemToSave.Active != null)
                     {
                         itemToSave.Active = null;
-                        itemToSave.ContractInformationUpdated = true;
+                        itemToSave.CertificateInformationUpdated = true;
                     }
                 }
             }
@@ -5369,7 +5598,7 @@ namespace CertusCompanion
                     if (itemToSave.Compliant != Convert.ToBoolean(compliantTbx.Text))
                     {
                         itemToSave.Compliant = Convert.ToBoolean(compliantTbx.Text);
-                        itemToSave.ContractInformationUpdated = true;
+                        itemToSave.CertificateInformationUpdated = true;
                     }
                 }
                 else // no value in tbx
@@ -5377,7 +5606,7 @@ namespace CertusCompanion
                     if (itemToSave.Compliant != null)
                     {
                         itemToSave.Compliant = null;
-                        itemToSave.ContractInformationUpdated = true;
+                        itemToSave.CertificateInformationUpdated = true;
                     }
                 }
             }
@@ -5550,17 +5779,17 @@ namespace CertusCompanion
             if (this.documentWorkflowItemIdTbx.Text != String.Empty)
                 PopulateDetailsViewData(GetWorkflowItemFromCurrentViewByID(this.documentWorkflowItemIdTbx.Text));
         }
-        private void contractIdDescLbl_Click(object sender, EventArgs e)
+        private void certificateIdDescLbl_Click(object sender, EventArgs e)
         {
-            if (this.contractIdDescLbl.Text == "> Contract ID:")
+            if (this.certificateIdDescLbl.Text == "> Certificate Name")
             {
-                this.contractIdDescLbl.Text = ">> Certus ID:";
-                contractIdTbx.AutoCompleteMode = AutoCompleteMode.None;
+                this.certificateIdDescLbl.Text = ">> Certus ID:";
+                certificateIdTbx.AutoCompleteMode = AutoCompleteMode.None;
             }
-            else if (this.contractIdDescLbl.Text == ">> Certus ID:")
+            else if (this.certificateIdDescLbl.Text == ">> Certus ID:")
             {
-                this.contractIdDescLbl.Text = "> Contract ID:";
-                contractIdTbx.AutoCompleteMode = AutoCompleteMode.Append;
+                this.certificateIdDescLbl.Text = "> Certificate Name";
+                certificateIdTbx.AutoCompleteMode = AutoCompleteMode.Append;
             }
 
             if (this.documentWorkflowItemIdTbx.Text != String.Empty)
@@ -5622,22 +5851,34 @@ namespace CertusCompanion
         // Query options/controls
         private void checkAllItemsInListBtn_Click(object sender, EventArgs e)
         {
-            int itemsNotChecked = 0;
+            // return if no queried items
+            if (QueriedItemList == null || QueriedItemList.Count == 0)
+            {
+                SetStatusLabelAndTimer("You must query items first", 5000);
+                MakeErrorSound();
+                return;
+            }
+
+            // warn if there's alot of queried items
+            if (QueriedItemList != null && QueriedItemList.Count > 2000)
+            {
+                DialogResult dr = MessageBox.Show("It is not recommended you perform this function with that many queried items. While the request will eventually process, " +
+                    "there's no telling how long it will take. Proceed anyway?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
+            }
+            else if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 500)
+            {
+                DialogResult dr = MessageBox.Show("This may take a little while to process with that many queried items. Proceed?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
+            }
 
             Cursor.Current = Cursors.WaitCursor;
-
             this.workflowItemsListView.BeginUpdate();
+
+            int itemsNotChecked = 0;
 
             try
             {
-                // check to make sure everything needed is there before proceeding
-                if (QueriedItemList == null || QueriedItemList.Count == 0)
-                {
-                    SetStatusLabelAndTimer("You must query items first", 3000);
-                    MakeErrorSound();
-                    return;
-                }
-
                 foreach (WorkflowItem item in QueriedItemList)
                 {
                     try
@@ -5675,8 +5916,28 @@ namespace CertusCompanion
         }
         private void paintFromQueryBtn_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
+            // return if no queried items
+            if (QueriedItemList == null || QueriedItemList.Count == 0)
+            {
+                SetStatusLabelAndTimer("You must query items first", 5000);
+                MakeErrorSound();
+                return;
+            }
 
+            // warn if there's alot of queried items
+            if (QueriedItemList != null && QueriedItemList.Count > 2000)
+            {
+                DialogResult dr = MessageBox.Show("It is not recommended you perform this function with that many queried items. While the request will eventually process, " +
+                    "there's no telling how long it will take. Proceed anyway?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
+            }
+            else if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 500)
+            {
+                DialogResult dr = MessageBox.Show("This may take a little while to process with that many queried items. Proceed?", "Warning", MessageBoxButtons.YesNo);
+                if (!(dr == DialogResult.Yes)) return;
+            }
+
+            Cursor.Current = Cursors.WaitCursor;
             this.workflowItemsListView.BeginUpdate();
 
             int itemsPainted = 0;
@@ -5797,7 +6058,7 @@ namespace CertusCompanion
             if (fromSelection == "All Workflow")
                 fromList = this.AllWorkflowItemsLoaded;
             else if (fromSelection == "Non-completed")
-                fromList = this.CurrentWorkflowItems;
+                fromList = this.NoncompleteWorkflowItems;
             else if (fromSelection == "Current View")
                 fromList = this.WorkflowItemListPopulated;
 
@@ -5870,34 +6131,34 @@ namespace CertusCompanion
                 results = QueryReqTemplates(fromList);
                 queryListsToConstruct = "normal";
             }
-            else if (whereSelection == "Item contract active")
+            else if (whereSelection == "Item certificate active")
             {
-                results = QueryActiveContracts(fromList);
+                results = QueryActiveCertificates(fromList);
                 queryListsToConstruct = "normal";
             }
-            else if (whereSelection == "Item contract inactive")
+            else if (whereSelection == "Item certificate inactive")
             {
-                results = QueryInactiveContracts(fromList);
+                results = QueryInactiveCertificates(fromList);
                 queryListsToConstruct = "normal";
             }
-            else if (whereSelection == "Item contract information updated")
+            else if (whereSelection == "Item certificate information updated")
             {
-                results = QueryContractInformationUpdated(fromList);
+                results = QueryCertificateInformationUpdated(fromList);
                 queryListsToConstruct = "normal";
             }
-            else if (whereSelection == "Item contract information not updated")
+            else if (whereSelection == "Item certificate information not updated")
             {
-                results = QueryContractInformationNotUpdated(fromList);
+                results = QueryCertificateInformationNotUpdated(fromList);
                 queryListsToConstruct = "normal";
             }
-            else if (whereSelection == "Item contract overridden")
+            else if (whereSelection == "Item certificate overridden")
             {
-                results = QueryContractOverridden(fromList);
+                results = QueryCertificateOverridden(fromList);
                 queryListsToConstruct = "normal";
             }
-            else if (whereSelection == "Item contract not overridden")
+            else if (whereSelection == "Item certificate not overridden")
             {
-                results = QueryContractNotOverridden(fromList);
+                results = QueryCertificateNotOverridden(fromList);
                 queryListsToConstruct = "normal";
             }
             else if (whereSelection == "Item company exists")
@@ -5980,6 +6241,11 @@ namespace CertusCompanion
                 results = QueryItemsNotPriority(fromList);
                 queryListsToConstruct = "normal";
             }
+            else if (whereSelection == "Item has no analyst ID")
+            {
+                results = QueryItemsWithNoAssignID(fromList);
+                queryListsToConstruct = "normal";
+            }
             else if (whereSelection == "No attachments")
             {
                 results = QueryItemsWithNoAttachments(fromList);
@@ -5991,7 +6257,7 @@ namespace CertusCompanion
             }
 
             // notify status
-            SetStatusLabelAndTimer("Putting together the list of items", true);
+            SetStatusLabelAndTimer("Putting together the list of items...", true);
 
             // construct queried items list
             if (queryListsToConstruct == "normal")
@@ -6017,7 +6283,7 @@ namespace CertusCompanion
                 List<WorkflowItem> itemsToReplace = new List<WorkflowItem>();
 
                 // notify status
-                SetStatusLabelAndTimer("Removing inactive items", true);
+                SetStatusLabelAndTimer("Removing inactive items...", true);
 
                 // find the items to replace
                 foreach (WorkflowItem item in QueriedItemList)
@@ -6038,7 +6304,7 @@ namespace CertusCompanion
                 List<WorkflowItem> itemsAndConnected = new List<WorkflowItem>();
 
                 // notify status
-                SetStatusLabelAndTimer("Adding each item's connected attachments", true);
+                SetStatusLabelAndTimer("Adding each item's connected attachments...", true);
 
                 foreach (WorkflowItem item in QueriedItemList)
                 {
@@ -6063,7 +6329,7 @@ namespace CertusCompanion
             }
 
             // notify status
-            SetStatusLabelAndTimer("Sorting the list", true);
+            SetStatusLabelAndTimer("Sorting the list...", true);
 
             // sort the list (for now sort by ID as default, but consider adding options for this)
             QueriedItemList = QueriedItemList.OrderBy(i => i.DocumentWorkflowItemID).ToList();
@@ -6517,7 +6783,7 @@ namespace CertusCompanion
             bool val = RequirementWorkflowItems.Exists(x => x.EmailDate == requirementWorkflowItem.EmailDate);
             return val;
         }
-        private dynamic QueryActiveContracts(List<WorkflowItem> listToQuery)
+        private dynamic QueryActiveCertificates(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
                           where item.Active == true
@@ -6525,7 +6791,7 @@ namespace CertusCompanion
 
             return results;
         }
-        private dynamic QueryInactiveContracts(List<WorkflowItem> listToQuery)
+        private dynamic QueryInactiveCertificates(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
                           where item.Active == false
@@ -6533,34 +6799,34 @@ namespace CertusCompanion
 
             return results;
         }
-        private dynamic QueryContractInformationUpdated(List<WorkflowItem> listToQuery)
+        private dynamic QueryCertificateInformationUpdated(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                          where item.ContractInformationUpdated == true
+                          where item.CertificateInformationUpdated == true
                           select item;
 
             return results;
         }
-        private dynamic QueryContractInformationNotUpdated(List<WorkflowItem> listToQuery)
+        private dynamic QueryCertificateInformationNotUpdated(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                          where item.ContractInformationUpdated == false
+                          where item.CertificateInformationUpdated == false
                           select item;
 
             return results;
         }
-        private dynamic QueryContractOverridden(List<WorkflowItem> listToQuery)
+        private dynamic QueryCertificateOverridden(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                          where item.ContractIdOverridden == true
+                          where item.CertificateIdOverridden == true
                           select item;
 
             return results;
         }
-        private dynamic QueryContractNotOverridden(List<WorkflowItem> listToQuery)
+        private dynamic QueryCertificateNotOverridden(List<WorkflowItem> listToQuery)
         {
             var results = from item in listToQuery
-                          where item.ContractIdOverridden == false
+                          where item.CertificateIdOverridden == false
                           select item;
 
             return results;
@@ -6692,6 +6958,16 @@ namespace CertusCompanion
             var results = from item in listToQuery
                           where (!item.ItemHasPriority)
                           select item;
+
+            return results;
+        }
+        private dynamic QueryItemsWithNoAssignID(List<WorkflowItem> listToQuery)
+        {
+            //Item has no analyst ID
+
+            var results = from item in listToQuery
+                where (item.AssignedToID == null || item.AssignedToID == "0" || !Char.IsDigit(item.AssignedToID[0]) || item.AssignedToID == String.Empty || item.AssignedToID.ToLower() == "null")
+                select item;
 
             return results;
         }
@@ -7034,12 +7310,12 @@ namespace CertusCompanion
                 fileName.ToLower().Contains("endt") != true &&
                 fileName.ToLower().Contains("endo") != true &&
                 fileName.ToLower().Contains("cg ") != true &&
-                fileName.ToLower().Contains("as required by written contract") != true &&
+                fileName.ToLower().Contains("as required by written certificate") != true &&
                 fileName.ToLower().Contains("per project") != true &&
                 fileName.ToLower().Contains("per proj") != true &&
                 fileName.ToLower().Contains("policy forms") != true &&
                 fileName.ToLower().StartsWith("acord_25") != true &&
-                fileName.ToLower().StartsWith("contract_") != true &&
+                fileName.ToLower().StartsWith("certificate_") != true &&
                 fileName.ToLower().StartsWith("cg2") != true &&
                 fileName.ToLower().StartsWith("cg7") != true &&
                 fileName.ToLower().StartsWith("cgd") != true &&
@@ -7871,7 +8147,7 @@ namespace CertusCompanion
                     queriedToolStripDropDownButton.Width + queriedCountStatusLbl.Width + filterStatusLbl.Width);
 
                 // splitter distance
-                if (!fullView) splitContainerChild1.SplitterDistance = (Convert.ToInt32(splitContainerChild1.Height * .47));
+                if (!fullView) splitContainerChild1.SplitterDistance = (Convert.ToInt32(splitContainerChild1.Height * .5));
             }
             catch (Exception)
             {
@@ -8084,6 +8360,7 @@ namespace CertusCompanion
         }
         private void vcCustomDDLContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            vcSelectionBtn.Text = String.Empty;
             vcSelectionBtn.Text = e.ClickedItem.Text;
             vcCustomDDLPanel_MouseLeave(sender, e);
             contextMenuOpened = false;
@@ -8265,13 +8542,13 @@ namespace CertusCompanion
         }
         private void SetNonCompletedItemsList()
         {
-            CurrentWorkflowItems.Clear();
+            NoncompleteWorkflowItems.Clear();
 
             foreach (WorkflowItem item in AllWorkflowItemsLoaded)
             {
                 if (item.Status != "Completed" && item.Status != "Trash" && item.Status != "Completed/Trash")
                 {
-                    CurrentWorkflowItems.Add(item);
+                    NoncompleteWorkflowItems.Add(item);
                 }
             }
         }
@@ -8444,7 +8721,7 @@ namespace CertusCompanion
                 ListViewItem lvItem = new ListViewItem();
                 lvItem.SubItems.Add(wfItem.DocumentWorkflowItemID.ToString());
                 lvItem.SubItems.Add(wfItem.VendorName);
-                lvItem.SubItems.Add(wfItem.ContractID);
+                lvItem.SubItems.Add(wfItem.CertificateName);
                 lvItem.SubItems.Add(wfItem.EmailDate.ToString());
                 lvItem.SubItems.Add(wfItem.EmailFromAddress);
                 lvItem.SubItems.Add(wfItem.SubjectLine);
@@ -8491,9 +8768,9 @@ namespace CertusCompanion
 
             companyNameTbx.Text = wi.VendorName;
 
-            if (contractIdDescLbl.Text == "> Contract ID:")
-                contractIdTbx.Text = wi.ContractID;
-            else contractIdTbx.Text = wi.CertusFileID;
+            if (certificateIdDescLbl.Text == "> Certificate Name")
+                certificateIdTbx.Text = wi.CertificateName;
+            else certificateIdTbx.Text = wi.CertusFileID;
 
             if (nextExpDateDescLbl.Text == "> Issue Date:")
             {
@@ -8581,11 +8858,11 @@ namespace CertusCompanion
             if (wi.Excluded == true) itemExcludedBtn.Visible = true;
             else itemExcludedBtn.Visible = false;
 
-            if (wi.ContractIdOverridden) contractIdOverridenBtn.Visible = true;
-            else contractIdOverridenBtn.Visible = false;
+            if (wi.CertificateIdOverridden) certificateIdOverridenBtn.Visible = true;
+            else certificateIdOverridenBtn.Visible = false;
 
-            if (wi.ContractInformationUpdated) contractInformationUpdatedBtn.Visible = true;
-            else contractInformationUpdatedBtn.Visible = false;
+            if (wi.CertificateInformationUpdated) certificateInformationUpdatedBtn.Visible = true;
+            else certificateInformationUpdatedBtn.Visible = false;
 
             if (wi.CompanyUpdated) companyUpdatedBtn.Visible = true;
             else companyUpdatedBtn.Visible = false;
@@ -9227,7 +9504,7 @@ namespace CertusCompanion
             UseWaitCursor = false;
             Cursor.Current = Cursors.Default;
         }
-        private void importCertificatesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void importCertificatesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)//-
         {
             OpenFileDialog openFileDialog = e.Argument as OpenFileDialog;
             importFileName = openFileDialog.FileName;
@@ -9250,7 +9527,7 @@ namespace CertusCompanion
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Certificate Name"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Certificate Identity Field"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Identity Field")); // same as above
-            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Contract ID")); // same as above
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Certificate ID")); // same as above
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company Name"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "BCS Company ID"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company ID")); // same as above
@@ -9390,7 +9667,7 @@ namespace CertusCompanion
                     if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                         certificateIdentityField = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
-                    // --- Contract ID --- // (same as above)
+                    // --- Certificate ID --- // (same as above)
                     ++indx;
                     if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                         certificateIdentityField = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
@@ -9551,7 +9828,7 @@ namespace CertusCompanion
 
                 itemsUpdated = 0;
                 itemsUpToDate = 0;
-                itemsWhereContractUnrecognized = 0;
+                itemsWhereCertificateUnrecognized = 0;
                 itemsWithNoCertificate = 0;
 
                 // for loading bar
@@ -9563,7 +9840,7 @@ namespace CertusCompanion
                 {
                     List<string> companyIdsToCheck = new List<string>();
                     List<Company> companiesToCheck = new List<Company>();
-                    Certificate contract = new Certificate();
+                    Certificate certificate = new Certificate();
 
                     // keep track of which item is being iterated for the loading bar
                     ++itemOn;
@@ -9586,25 +9863,25 @@ namespace CertusCompanion
                         }
                     }
 
-                    // if there's a contract id for the item
-                    if (wi.ContractID != null && wi.ContractID != String.Empty)
+                    // if there's a certificate id for the item
+                    if (wi.CertificateName != null && wi.CertificateName != String.Empty)
                     {
-                        // if the contract id is recognized
-                        if (CertificateDictionary.ContainsKey(wi.ContractID))
+                        // if the certificate id is recognized
+                        if (CertificateDictionary.ContainsKey(wi.CertificateName))
                         {
-                            // get this contract
-                            contract = CertificateDictionary[wi.ContractID];
+                            // get this certificate
+                            certificate = CertificateDictionary[wi.CertificateName];
 
-                            // if any contract related info is different
-                            if (wi.Active != contract.CertificateActive || wi.Active != contract.CertificateCompliant)
+                            // if any certificate related info is different
+                            if (wi.Active != certificate.CertificateActive || wi.Active != certificate.CertificateCompliant)
                             {
-                                // update contract info
-                                wi.Active = contract.CertificateActive;
-                                wi.Compliant = contract.CertificateCompliant;
-                                wi.NextExpirationDate = contract.NextPolicyExpirationDate;
-                                wi.ContractInformationUpdated = true;
+                                // update certificate info
+                                wi.Active = certificate.CertificateActive;
+                                wi.Compliant = certificate.CertificateCompliant;
+                                wi.NextExpirationDate = certificate.NextPolicyExpirationDate;
+                                wi.CertificateInformationUpdated = true;
 
-                                // an item will be marked as updated even if only the company needs changing... this is fine. companyName is now technically contract info
+                                // an item will be marked as updated even if only the company needs changing... this is fine. companyName is now technically certificate info
                                 ++itemsUpdated;
 
                                 itemsToUpdate.Add(wi);
@@ -9614,7 +9891,7 @@ namespace CertusCompanion
                                 ++itemsUpToDate;
                             }
                         }
-                        else ++itemsWhereContractUnrecognized;
+                        else ++itemsWhereCertificateUnrecognized;
                     }
                     else ++itemsWithNoCertificate;
                 }
@@ -9638,7 +9915,7 @@ namespace CertusCompanion
 #endregion Update WF Items
             }
         }
-        private void importCertificatesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void importCertificatesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)//-
         {
             if (e.Cancelled == true)
             {
@@ -9684,7 +9961,7 @@ namespace CertusCompanion
 
             UseWaitCursor = false;
         }
-        private void importCompaniesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void importCompaniesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)//-
         {
             OpenFileDialog openFileDialog = e.Argument as OpenFileDialog;
             importFileName = openFileDialog.FileName;
@@ -10055,7 +10332,7 @@ namespace CertusCompanion
                 }
             }
         }
-        private void importCompaniesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void importCompaniesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)//-
         {
             if (e.Cancelled == true)
             {
@@ -10257,7 +10534,7 @@ namespace CertusCompanion
         }
         //
         // Update workflow item data
-        private void updateDataBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void addRelatedFilesDataBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             // data for reporting progress
             int valueToIncrement = (int)(this.AllWorkflowItemsLoaded.Count * .01);
@@ -10441,7 +10718,7 @@ namespace CertusCompanion
                 this.LoadingForm.Refresh();
             }
         }
-        private void updateDataBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void addRelatedFilesDataBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled == true)
             {
@@ -10476,443 +10753,987 @@ namespace CertusCompanion
             }
         }
         //
-        // Fill workflow item data 
-        private void appendCompanyBackgroundWorker_DoWork(object sender, DoWorkEventArgs e) //*
+        // Extraction
+        private void extractCompanyBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
+            string selection = e.Argument as string;
+
+            switch (selection)
             {
-                this.Invoke(new Action(() =>
+                case "sender":
+                    {
+                        ExtractCompanyFromSender();
+                    }
+                    break;
+                case "subject":
+                    {
+                        ExtractCompanyFromSubject();
+                    }
+                    break;
+                case "all":
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void ExtractCompanyFromSubject()
+        {
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
+
+            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
+            itemsUpdated = 0;
+
+            // for loading bar
+            LoadingForm = new LoadingForm();
+            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
+            if (valueToIncrement <= 0) valueToIncrement = 1;
+            int itemOn = 0;
+
+            // show loading form if more than 50 items
+            if (checkedWorkflowItems.Count > 50)
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
                 {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }));
+                else
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }
 
-                    int valueToIncrement = 0;
+                DimForm();
 
-                    // only make the loading form if more than 100 items are being checked
-                    if (this.workflowItemsListView.CheckedItems.Count > 100)
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }
+            }
+            // use status label when less
+            else
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
+                }
+                else
+                {
+                    SetStatusLabelAndTimer("Processing the request...", true);
+                }
+            }
+
+            // process
+            foreach (WorkflowItem wi in checkedWorkflowItems)
+            {
+                List<string> companiesToSettleOn = new List<string>();
+                string companySettledOn = "";
+
+                // keep track of which item is being iterated for the loading bar
+                ++itemOn;
+
+                // update loading progress for increment value 
+                if (itemOn % valueToIncrement == 0)
+                {
+                    if (this.InvokeRequired)
                     {
-                        valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 75);
-                        if (valueToIncrement <= 0) valueToIncrement = 1;
-                        DimForm();
-                        LoadingForm = new LoadingForm();
-                        LoadingForm.Show(TransparentForm);
+                        this.Invoke(new Action(() =>
+                        {
+                            LoadingForm.MoveBar(1);
+                        }));
                     }
-
-                    WorkflowItem wi = new WorkflowItem();
-                    WorkflowItem previousItem = new WorkflowItem();
-                    List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
-                    itemsInfoAppended = 0;
-                    itemsCouldNotBeAppended = false;
-
-                    // --- status update --- //
-                    if (LoadingForm != null && LoadingForm.Visible)
+                    else
                     {
-                        LoadingForm.ChangeLabel("Finding items to append...");
+                        LoadingForm.MoveBar(1);
+                    }
+                }
+
+                // get subject line with only letters/numbers to match more company names
+                string subject = wi.SubjectLine;
+                string subjectWithOnlyLettersAndNumbers = new String(subject.Where(c => Char.IsLetter(c) || Char.IsNumber(c)).ToArray());
+
+                foreach (string companyName in CompanyNameDictionary.Values)
+                {
+                    string companyWithOnlyLettersAndNumbers = new String(companyName.Where(c => Char.IsLetter(c) || Char.IsNumber(c)).ToArray());
+
+                    if (subjectWithOnlyLettersAndNumbers.ToLower().Contains(companyWithOnlyLettersAndNumbers.ToLower())
+                        //&& companyName.ToLower() != "" && companyName.ToLower() != "west" && companyName.ToLower() != "arc" && companyName.ToLower() != "dsi")
+                        && companyWithOnlyLettersAndNumbers.Count() > 4)
+                    {
+                        if (wi.VendorName.ToLower() != companyName.ToLower())
+                        {
+                            companiesToSettleOn.Add(companyName);
+                        }
+                    }
+                }
+
+                if (companiesToSettleOn != null && companiesToSettleOn.Count > 0)
+                {
+                    companySettledOn = companiesToSettleOn.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);
+                }
+
+                if (companySettledOn != null && companySettledOn != String.Empty)
+                {
+                    if (wi.VendorName.ToLower() != companySettledOn.ToLower())
+                    {
+                        wi.VendorName = companySettledOn;
+                        wi.CompanyUpdated = true;
+                        itemsToUpdate.Add(wi);
+                        ++itemsUpdated;
+                    }
+                }
+            }
+
+            if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
+        }
+        private void ExtractCompanyFromSender()
+        {
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
+
+            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
+            itemsUpdated = 0;
+
+            // for loading bar
+            LoadingForm = new LoadingForm();
+            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
+            if (valueToIncrement <= 0) valueToIncrement = 1;
+            int itemOn = 0;
+
+            // show loading form if more than 50 items
+            if (checkedWorkflowItems.Count > 50)
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }));
+                else
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }
+
+                DimForm();
+
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }
+            }
+            // use status label when less
+            else
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
+                }
+                else
+                {
+                    SetStatusLabelAndTimer("Processing the request...", true);
+                }
+            }
+
+            // process
+            foreach (WorkflowItem wi in checkedWorkflowItems)
+            {
+                // keep track of which item is being iterated for the loading bar
+                ++itemOn;
+
+                // update loading progress for increment value 
+                if (itemOn % valueToIncrement == 0)
+                {
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            LoadingForm.MoveBar(1);
+                        }));
+                    }
+                    else
+                    {
+                        LoadingForm.MoveBar(1);
+                    }
+                }
+
+                bool emailWasFound = false;
+                bool emailOccuredTwice = false;
+                List<string> companyIdsToCheck = new List<string>();
+                List<Company> companiesToCheck = new List<Company>();
+
+
+                foreach (var keyValuePair in CompanyContactDictionary)
+                {
+                    if (keyValuePair.Value.Any(i => i.Email == wi.EmailFromAddress && i.Title != "CBRE Certificate Manager"))
+                    {
+                        if (emailWasFound) emailOccuredTwice = true;
+
+                        emailWasFound = true;
+                        companyIdsToCheck.Add(keyValuePair.Key);
+                    }
+                }
+
+                foreach (string id in companyIdsToCheck)
+                {
+                    companiesToCheck.Add(CompanyDictionary[id]);
+                }
+
+                if (emailOccuredTwice)
+                {
+                    // check if the email was for different companies
+
+                    if (companiesToCheck.Any(o => o.CompanyName != companiesToCheck[0].CompanyName))
+                    {
+                        // email was for different companies
+                        continue;
+                    }
+                    else
+                    {
+                        // company is the same. contact can be tied
+                        if (wi.VendorName != companiesToCheck[0].CompanyName)
+                        {
+                            wi.VendorName = companiesToCheck[0].CompanyName;
+                            wi.CompanyUpdated = true;
+                            itemsToUpdate.Add(wi);
+                            ++itemsUpdated;
+                        }
+                    }
+                }
+                // contact is unique
+                else if (emailWasFound)
+                {
+                    // contact can be tied
+                    if (wi.VendorName != companiesToCheck[0].CompanyName)
+                    {
+                        wi.VendorName = companiesToCheck[0].CompanyName;
+                        wi.CompanyUpdated = true;
+                        itemsToUpdate.Add(wi);
+                        ++itemsUpdated;
+                    }
+                }
+            }
+
+            if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
+        }
+        private void extractCompanyBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Application.UseWaitCursor = false;
+            Application.DoEvents();
+
+            if (e.Cancelled == true)
+            {
+                SetStatusLabelAndTimer("Operation was canceled");
+                MakeErrorSound();
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show($"Operation unsuccessful\n\nReason: {e.Error.Message}", "Error");
+                if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
+                ResetStatusStrip();
+            }
+            else
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Loading Complete");
                         this.LoadingForm.Refresh();
-                    }
+                        this.loadingFormTimer.Enabled = true;
+                        this.SetStatusLabelAndTimer($"Company data updated for {itemsUpdated} item(s)", true);
+                    }));
+                }
+                else
+                {
+                    this.LoadingForm.CompleteProgress();
+                    this.LoadingForm.ChangeLabel("Loading Complete");
+                    this.LoadingForm.Refresh();
+                    this.loadingFormTimer.Enabled = true;
+                    this.SetStatusLabelAndTimer($"Company data updated for {itemsUpdated} item(s)", true);
+                }
+            }
+        }
+        private void extractCertificateBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
 
-                    foreach (ListViewItem checkedItem in workflowItemsListView.CheckedItems)
+            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
+            itemsUpdated = 0;
+            certificatesPulled = 0;
+
+            // for loading bar
+            LoadingForm = new LoadingForm();
+            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
+            if (valueToIncrement <= 0) valueToIncrement = 1;
+            int itemOn = 0;
+
+            // show loading form if more than 50 items
+            if (checkedWorkflowItems.Count > 50)
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }));
+                else
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }
+
+                DimForm();
+
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }
+            }
+            // use status label when less
+            else
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
+                else SetStatusLabelAndTimer("Processing the request...", true);
+            }
+
+            foreach (WorkflowItem wi in checkedWorkflowItems)
+            {
+                List<string> companyIdsToCheck = new List<string>();
+                List<Company> companiesToCheck = new List<Company>();
+                bool certificateFound = false;
+
+                // keep track of which item is being iterated for the loading bar
+                ++itemOn;
+
+                // update loading progress for increment value 
+                if (itemOn % valueToIncrement == 0)
+                {
+                    if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                    else LoadingForm.MoveBar(1);
+                }
+
+                foreach (var keyValuePair in CertificateDictionary)
+                {
+                    if (certificateFound) continue;
+
+                    if (wi.SubjectLine.Contains(keyValuePair.Key))
                     {
-                        List<WorkflowItem> itemsInGroup;
-                        string companyNameToFill;
+                        int index = wi.SubjectLine.IndexOf(keyValuePair.Key);
+                        char charBefore = '<';
+                        char charAfter = '>';
 
-                        // get the item, return if there's only 1 in the item group or if the previous item has the same time and sender
-                        wi = GetWorkflowItemFromLvItem(checkedItem);
+                        if (index != 0) charBefore = wi.SubjectLine[index - 1];
+                        if (index + keyValuePair.Key.Length != wi.SubjectLine.Length) charAfter = wi.SubjectLine[index + keyValuePair.Key.Length];
 
-                        // update loading progress for increment value 
-                        if (LoadingForm != null && LoadingForm.Visible)
+                        if (!Char.IsNumber(charBefore) && !Char.IsNumber(charAfter))
                         {
-                            if (workflowItemsListView.CheckedItems.IndexOf(checkedItem) % valueToIncrement == 0)
+                            // certificate is there
+                            certificateFound = true;
+
+                            // update all certificate information associated with wf item
+                            if (wi.CertificateName != keyValuePair.Key)
                             {
-                                LoadingForm.MoveBar(1);
-                            }
-                        }
+                                // company
+                                if (wi.VendorName != keyValuePair.Value.CompanyName)
+                                {
+                                    wi.VendorName = keyValuePair.Value.CompanyName;
+                                    wi.CompanyUpdated = true;
+                                    ++itemsUpdated;
+                                }
 
-                        if (wi.ItemsAttached == null) // additional item info is required for this function
-                        {
-                            itemsCouldNotBeAppended = true;
-                            continue;
-                        }
-                        if (wi.ItemsAttached.Count == 1) continue;
+                                // certificate
+                                wi.CertificateName = keyValuePair.Key;
+                                wi.CertificateIdOverridden = true;
+                                ++certificatesPulled;
 
-                        // get all the items from the item group into a list
-                        itemsInGroup = new List<WorkflowItem>();
-                        companyNameToFill = "";
+                                // certificate info
+                                wi.Active = keyValuePair.Value.CertificateActive;
+                                wi.Compliant = keyValuePair.Value.CertificateCompliant;
+                                wi.NextExpirationDate = null; // next exp data is not included on cert imports (can change in future if necessary)
+                                wi.CertificateInformationUpdated = true;
 
-                        foreach (string id in wi.ItemsAttached)
-                        {
-                            itemsInGroup.Add(GetWorkflowItemFromAllByID(id));
-                        }
-
-                        // if any item in the group has a company name, end the loop and the name 
-                        for (int i = 0; i < itemsInGroup.Count(); i++)
-                        {
-                            if (itemsInGroup[i].VendorName != String.Empty)
-                            {
-                                companyNameToFill = itemsInGroup[i].VendorName;
-                                i = itemsInGroup.Count();
-                            }
-                        }
-
-                        // if a name was saved
-                        if (companyNameToFill != String.Empty)
-                        {
-                            // change this item
-
-                            if (wi.VendorName != companyNameToFill)
-                            {
-                                wi.VendorName = companyNameToFill;
-                                wi.CompanyUpdated = true;
-                                ++itemsInfoAppended;
-
-                                // add this item to list to update
                                 itemsToUpdate.Add(wi);
                             }
                         }
-                        previousItem = wi;
                     }
-
-                    // --- status update --- //
-                    if (LoadingForm != null && LoadingForm.Visible)
+                    else
                     {
-                        LoadingForm.ChangeLabel("Updating items...");
-                        this.LoadingForm.Refresh();
+                        // The following snippet is for removing certificate id's when a certificate id is not found
+                        
+                        /*
+                        // certificate is not there
+                        wi.CertificateID = String.Empty; // remove because current certificate IDs cannot be trusted
+                        wi.CertificateIdOverridden = true;
+                        */
                     }
-
-                    if (itemsToUpdate != null && itemsToUpdate.Count > 0)
-                    {
-                        valueToIncrement = (int)(25 / itemsToUpdate.Count);
-                        if (valueToIncrement <= 0) valueToIncrement = 1;
-
-                        foreach (WorkflowItem item in itemsToUpdate)
-                        {
-                            var tmpItem = AllWorkflowItemsLoaded.First(i => i.DocumentWorkflowItemID == item.DocumentWorkflowItemID);
-                            int index = AllWorkflowItemsLoaded.IndexOf(tmpItem as WorkflowItem);
-
-                            this.AllWorkflowItemsLoaded[index] = item;
-
-                            // update loading progress for increment value 
-                            if (LoadingForm != null && LoadingForm.Visible)
-                            {
-                                if (itemsToUpdate.IndexOf(item) % valueToIncrement == 0)
-                                {
-                                    LoadingForm.MoveBar(1);
-                                }
-                            }
-                        }
-                    }
-                }));
-            }
-            catch (Exception)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    SetStatusLabelAndTimer("Could not process the request");
-                    MakeErrorSound();
-                }));
+                }
             }
 
-            Application.UseWaitCursor = false;
+            if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
         }
-        private void appendContractInformationBackgroundWorker_DoWork(object sender, DoWorkEventArgs e) //*
+        private void extractCertificateInformationBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            try
-            {
-                this.Invoke(new Action(() =>
-                {
-
-                    int valueToIncrement = 0;
-
-                    // only make the loading form if more than 100 items are being checked
-                    if (this.workflowItemsListView.CheckedItems.Count > 100)
-                    {
-                        valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 75);
-                        if (valueToIncrement <= 0) valueToIncrement = 1;
-                        DimForm();
-                        LoadingForm = new LoadingForm();
-                        LoadingForm.Show(TransparentForm);
-                    }
-
-                    WorkflowItem wi = new WorkflowItem();
-                    WorkflowItem previousItem = new WorkflowItem();
-                    List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
-                    itemsInfoAppended = 0;
-                    itemsCouldNotBeAppended = false;
-
-                    // --- status update --- //
-                    if (LoadingForm != null && LoadingForm.Visible)
-                    {
-                        LoadingForm.ChangeLabel("Finding items to append...");
-                        this.LoadingForm.Refresh();
-                    }
-
-                    foreach (ListViewItem checkedItem in workflowItemsListView.CheckedItems)
-                    {
-                        List<WorkflowItem> itemsInGroup;
-                        string contractIdToFill;
-                        bool? activeBoolToFill;
-                        bool? compliantIntToFill;
-                        DateTime? nextExpDateToFill;
-
-                        // get the item, return if there's only 1 in the item group or if the previous item has the same time and sender
-                        wi = GetWorkflowItemFromLvItem(checkedItem);
-
-                        // update loading progress for increment value 
-                        if (LoadingForm != null && LoadingForm.Visible)
-                        {
-                            if (workflowItemsListView.CheckedItems.IndexOf(checkedItem) % valueToIncrement == 0)
-                            {
-                                LoadingForm.MoveBar(1);
-                            }
-                        }
-
-                        if (wi.ItemsAttached == null) // additional item info is required for this function
-                        {
-                            itemsCouldNotBeAppended = true;
-                            continue;
-                        }
-                        if (wi.ItemsAttached.Count == 1) continue;
-
-                        // get all the items from the item group into a list
-                        itemsInGroup = new List<WorkflowItem>();
-                        contractIdToFill = "";
-                        activeBoolToFill = null;
-                        compliantIntToFill = null;
-                        nextExpDateToFill = null;
-
-                        foreach (string id in wi.ItemsAttached)
-                        {
-                            itemsInGroup.Add(GetWorkflowItemFromAllByID(id));
-                        }
-
-                        // if any item in the group has a contract number, end the loop and save the data 
-                        for (int i = 0; i < itemsInGroup.Count(); i++)
-                        {
-                            if (itemsInGroup[i].ContractID != String.Empty)
-                            {
-                                contractIdToFill = itemsInGroup[i].ContractID;
-                                activeBoolToFill = itemsInGroup[i].Active;
-                                compliantIntToFill = itemsInGroup[i].Compliant;
-                                nextExpDateToFill = itemsInGroup[i].NextExpirationDate;
-
-                                i = itemsInGroup.Count();
-                            }
-                        }
-
-                        // if a contract id was saved
-                        if (contractIdToFill != String.Empty)
-                        {
-                            // change this item
-
-                            if (wi.ContractID != contractIdToFill)
-                            {
-                                wi.ContractID = contractIdToFill;
-                                wi.Active = activeBoolToFill;
-                                wi.Compliant = compliantIntToFill;
-                                wi.NextExpirationDate = nextExpDateToFill;
-
-                                wi.ContractInformationUpdated = true;
-                                ++itemsInfoAppended;
-
-                                // add this item to list to update
-                                itemsToUpdate.Add(wi);
-                            }
-                        }
-
-                        //previousItem = wi;
-                    }
-
-                    // --- status update --- //
-                    if (LoadingForm != null && LoadingForm.Visible)
-                    {
-                        LoadingForm.ChangeLabel("Updating items...");
-                        this.LoadingForm.Refresh();
-                    }
-
-                    if (itemsToUpdate != null && itemsToUpdate.Count > 0)
-                    {
-                        valueToIncrement = (int)(25 / itemsToUpdate.Count);
-                        if (valueToIncrement <= 0) valueToIncrement = 1;
-
-                        foreach (WorkflowItem item in itemsToUpdate)
-                        {
-                            var tmpItem = AllWorkflowItemsLoaded.First(i => i.DocumentWorkflowItemID == item.DocumentWorkflowItemID);
-                            int index = AllWorkflowItemsLoaded.IndexOf(tmpItem as WorkflowItem);
-
-                            this.AllWorkflowItemsLoaded[index] = item;
-
-                            // update loading progress for increment value 
-                            if (LoadingForm != null && LoadingForm.Visible)
-                            {
-                                if (itemsToUpdate.IndexOf(item) % valueToIncrement == 0)
-                                {
-                                    LoadingForm.MoveBar(1);
-                                }
-                            }
-                        }
-                    }
-                }));
-            }
-            catch (Exception)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    SetStatusLabelAndTimer("Could not process the request");
-                    MakeErrorSound();
-                }));
-            }
-
             Application.UseWaitCursor = false;
-        }
-        private void appendAssignedBackgroundWorker_DoWork(object sender, DoWorkEventArgs e) //*
-        {
-            try
+            Application.DoEvents();
+
+            this.Invoke(new Action(() =>
             {
-                this.Invoke(new Action(() =>
+
+                UseWaitCursor = false;
+
+                if (e.Cancelled == true)
                 {
-
-                    int valueToIncrement = 0;
-
-                    // only make the loading form if more than 100 items are being checked
-                    if (this.workflowItemsListView.CheckedItems.Count > 100)
-                    {
-                        valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 75);
-                        if (valueToIncrement <= 0) valueToIncrement = 1;
-                        DimForm();
-                        LoadingForm = new LoadingForm();
-                        LoadingForm.Show(TransparentForm);
-                    }
-
-                    WorkflowItem wi = new WorkflowItem();
-                    WorkflowItem previousItem = new WorkflowItem();
-                    List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
-                    itemsInfoAppended = 0;
-                    itemsCouldNotBeAppended = false;
-
-                    // --- status update --- //
-                    if (LoadingForm != null && LoadingForm.Visible)
-                    {
-                        LoadingForm.ChangeLabel("Finding items to append...");
-                        this.LoadingForm.Refresh();
-                    }
-
-                    foreach (ListViewItem checkedItem in workflowItemsListView.CheckedItems)
-                    {
-                        List<WorkflowItem> itemsInGroup;
-                        //string status;
-                        string assignedTo;
-
-                        // get the item, return if there's only 1 in the item group
-                        wi = GetWorkflowItemFromLvItem(checkedItem);
-
-                        // update loading progress for increment value 
-                        if (LoadingForm != null && LoadingForm.Visible)
-                        {
-                            if (workflowItemsListView.CheckedItems.IndexOf(checkedItem) % valueToIncrement == 0)
-                            {
-                                LoadingForm.MoveBar(1);
-                            }
-                        }
-
-                        if (wi.ItemsAttached == null) // additional item info is required for this function
-                        {
-                            itemsCouldNotBeAppended = true;
-                            continue;
-                        }
-                        if (wi.ItemsAttached.Count == 1) continue;
-
-                        // get all the items from the item group into a list
-                        itemsInGroup = new List<WorkflowItem>();
-                        assignedTo = "";
-
-                        foreach (string id in wi.ItemsAttached)
-                        {
-                            itemsInGroup.Add(GetWorkflowItemFromAllByID(id));
-                        }
-
-                        // take first assigned to val that's not unsg
-                        for (int i = 0; i < itemsInGroup.Count(); i++)
-                        {
-                            if (itemsInGroup[i].AssignedToName != String.Empty && itemsInGroup[i].AssignedToName != "(Unassigned)")
-                            {
-                                assignedTo = itemsInGroup[i].AssignedToName;
-
-                                i = itemsInGroup.Count();
-                            }
-                        }
-
-                        // if assigned was saved
-                        if (assignedTo != String.Empty)
-                        {
-                            // change this item
-                            if (wi.AssignedToName != assignedTo)
-                            {
-                                wi.AssignedToName = assignedTo;
-                                if (AnalystsSubSource.Any(i => i.Name == assignedTo))
-                                    wi.AssignedToID = (AnalystsSubSource.Where(i => i.Name == assignedTo).FirstOrDefault() as Analyst).SystemUserID;
-
-                                //if (status == "Documentation Analyst")
-                                //{
-                                //    wi.WorkflowAnalyst = assignedTo;
-                                //}
-                                //else if (status == "Company Analyst")
-                                //{
-                                //    wi.CompanyAnalyst = assignedTo;
-                                //}
-
-                                // changing this information is critical and therefore will change the item appearance
-                                wi.WorkflowItemInformationDifferentThanCertus = true;
-                                wi.DisplayColor = "SpringGreen";
-                                ++itemsInfoAppended;
-
-                                // add this item to list to update
-                                itemsToUpdate.Add(wi);
-                            }
-                        }
-                    }
-
-                    // --- status update --- //
-                    if (LoadingForm != null && LoadingForm.Visible)
-                    {
-                        LoadingForm.ChangeLabel("Updating items...");
-                        this.LoadingForm.Refresh();
-                    }
-
-                    if (itemsToUpdate != null && itemsToUpdate.Count > 0)
-                    {
-                        valueToIncrement = (int)(25 / itemsToUpdate.Count);
-                        if (valueToIncrement <= 0) valueToIncrement = 1;
-
-                        foreach (WorkflowItem item in itemsToUpdate)
-                        {
-                            var tmpItem = AllWorkflowItemsLoaded.First(i => i.DocumentWorkflowItemID == item.DocumentWorkflowItemID);
-                            int index = AllWorkflowItemsLoaded.IndexOf(tmpItem as WorkflowItem);
-
-                            this.AllWorkflowItemsLoaded[index] = item;
-
-                            // update loading progress for increment value 
-                            if (LoadingForm != null && LoadingForm.Visible)
-                            {
-                                if (itemsToUpdate.IndexOf(item) % valueToIncrement == 0)
-                                {
-                                    LoadingForm.MoveBar(1);
-                                }
-                            }
-                        }
-                    }
-                }));
-            }
-            catch (Exception)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    SetStatusLabelAndTimer("Could not process the request");
+                    SetStatusLabelAndTimer("Operation was canceled");
                     MakeErrorSound();
+                }
+                else if (e.Error != null)
+                {
+                    MessageBox.Show($"Operation unsuccessful\n\nReason: {e.Error.Message}", "Error");
+                    if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
+                    ResetStatusStrip();
+                }
+                else
+                {
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            this.LoadingForm.CompleteProgress();
+                            this.LoadingForm.ChangeLabel("Loading Complete");
+                            this.LoadingForm.Refresh();
+                            this.loadingFormTimer.Enabled = true;
+                            if (itemsUpdated > 0) this.SetStatusLabelAndTimer($"Certificate(s) pulled for {certificatesPulled} item(s). Company data updated for {itemsUpdated} item(s)", true);
+                            else this.SetStatusLabelAndTimer($"Certificate(s) pulled for {certificatesPulled} item(s)");
+                        }));
+                    }
+                    else
+                    {
+                        this.LoadingForm.CompleteProgress();
+                        this.LoadingForm.ChangeLabel("Loading Complete");
+                        this.LoadingForm.Refresh();
+                        this.loadingFormTimer.Enabled = true;
+                        if (itemsUpdated > 0) this.SetStatusLabelAndTimer($"Certificate(s) pulled for {certificatesPulled} item(s). Company data updated for {itemsUpdated} item(s)", true);
+                        else this.SetStatusLabelAndTimer($"Certificate(s) pulled for {certificatesPulled} item(s)");
+                    }
+                }
+
+            }));
+        }
+        //
+        // Appending
+        private void appendCompanyBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
+
+            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
+            WorkflowItem previousItem = new WorkflowItem();
+            itemsInfoAppended = 0;
+            itemsCouldNotBeAppended = false;
+
+            // for loading bar
+            LoadingForm = new LoadingForm();
+            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
+            if (valueToIncrement <= 0) valueToIncrement = 1;
+            int itemOn = 0;
+
+            // show loading form if more than 100 items
+            if (checkedWorkflowItems.Count > 100)
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
                 }));
+                else
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }
+
+                DimForm();
+
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }
+            }
+            // use status label when less
+            else
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
+                else SetStatusLabelAndTimer("Processing the request...", true);
             }
 
-            Application.UseWaitCursor = false;
+            foreach (WorkflowItem wi in checkedWorkflowItems)
+            {
+                List<WorkflowItem> itemsInGroup;
+                string companyNameToFill;
+
+                // keep track of which item is being iterated for the loading bar
+                ++itemOn;
+
+                // update loading progress for increment value 
+                if (itemOn % valueToIncrement == 0)
+                {
+                    if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                    else LoadingForm.MoveBar(1);
+                }
+
+                if (wi.ItemsAttached == null) // additional item info is required for this function
+                {
+                    itemsCouldNotBeAppended = true;
+                    return; // change to continue here if process should keep going when some have this data and some don't
+                }
+                if (wi.ItemsAttached.Count == 1) continue;
+
+                // get all the items from the item group into a list
+                itemsInGroup = new List<WorkflowItem>();
+                companyNameToFill = "";
+
+                foreach (string id in wi.ItemsAttached)
+                {
+                    itemsInGroup.Add(GetWorkflowItemFromAllByID(id));
+                }
+
+                // if any item in the group has a company name, end the loop and the name 
+                for (int i = 0; i < itemsInGroup.Count(); i++)
+                {
+                    if (itemsInGroup[i].VendorName != String.Empty)
+                    {
+                        companyNameToFill = itemsInGroup[i].VendorName;
+                        i = itemsInGroup.Count();
+                    }
+                }
+
+                // if a name was saved
+                if (companyNameToFill != String.Empty)
+                {
+                    // change this item
+
+                    if (wi.VendorName != companyNameToFill)
+                    {
+                        wi.VendorName = companyNameToFill;
+                        wi.CompanyUpdated = true;
+                        ++itemsInfoAppended;
+
+                        // add this item to list to update
+                        itemsToUpdate.Add(wi);
+                    }
+                }
+                previousItem = wi;
+            }
+
+            // Update items, begin new loading sequence
+            if (checkedWorkflowItems.Count > 100)
+            {
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Updating items...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Updating items...");
+                    LoadingForm.Refresh();
+                }
+                if (this.InvokeRequired) this.Invoke(new Action(() => { ResetStatusStrip(); }));
+                else ResetStatusStrip();
+            }
+            else
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { SetStatusLabelAndTimer("Updating items...", true); ; }));
+                else SetStatusLabelAndTimer("Updating items...", true);
+            }
+
+            if (itemsToUpdate != null && itemsToUpdate.Count > 0)
+            {
+                valueToIncrement = (int)(itemsToUpdate.Count / 100);
+                if (valueToIncrement <= 0) valueToIncrement = 1;
+
+                foreach (WorkflowItem item in itemsToUpdate)
+                {
+                    // update loading progress for increment value 
+                    if (itemOn % valueToIncrement == 0)
+                    {
+                        if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                        else LoadingForm.MoveBar(1);
+                    }
+
+                    var tmpItem = AllWorkflowItemsLoaded.First(i => i.DocumentWorkflowItemID == item.DocumentWorkflowItemID);
+                    int index = AllWorkflowItemsLoaded.IndexOf(tmpItem as WorkflowItem);
+
+                    this.AllWorkflowItemsLoaded[index] = item;
+                }
+            }
         }
-        private void appendAssignedAndStatusBackgroundWorker_DoWork(object sender, DoWorkEventArgs e) //*
+        private void appendCertificateInformationBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
+
+            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
+            WorkflowItem previousItem = new WorkflowItem();
+            itemsInfoAppended = 0;
+            itemsCouldNotBeAppended = false;
+
+            // for loading bar
+            LoadingForm = new LoadingForm();
+            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
+            if (valueToIncrement <= 0) valueToIncrement = 1;
+            int itemOn = 0;
+
+            // show loading form if more than 100 items
+            if (checkedWorkflowItems.Count > 100)
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }));
+                else
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }
+
+                DimForm();
+
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }
+            }
+            // use status label when less
+            else
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
+                else SetStatusLabelAndTimer("Processing the request...", true);
+            }
+
+            foreach (WorkflowItem wi in checkedWorkflowItems)
+            {
+                List<WorkflowItem> itemsInGroup;
+                string certificateIdToFill;
+                bool? activeBoolToFill;
+                bool? compliantIntToFill;
+                DateTime? nextExpDateToFill;
+
+                // keep track of which item is being iterated for the loading bar
+                ++itemOn;
+
+                // update loading progress for increment value 
+                if (itemOn % valueToIncrement == 0)
+                {
+                    if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                    else LoadingForm.MoveBar(1);
+                }
+
+                if (wi.ItemsAttached == null) // additional item info is required for this function
+                {
+                    itemsCouldNotBeAppended = true;
+                    return;
+                }
+                if (wi.ItemsAttached.Count == 1) continue;
+
+                // get all the items from the item group into a list
+                itemsInGroup = new List<WorkflowItem>();
+                certificateIdToFill = "";
+                activeBoolToFill = null;
+                compliantIntToFill = null;
+                nextExpDateToFill = null;
+
+                foreach (string id in wi.ItemsAttached)
+                {
+                    itemsInGroup.Add(GetWorkflowItemFromAllByID(id));
+                }
+
+                // if any item in the group has a certificate number, end the loop and save the data 
+                for (int i = 0; i < itemsInGroup.Count(); i++)
+                {
+                    if (itemsInGroup[i].CertificateName != String.Empty)
+                    {
+                        certificateIdToFill = itemsInGroup[i].CertificateName;
+                        activeBoolToFill = itemsInGroup[i].Active;
+                        compliantIntToFill = itemsInGroup[i].Compliant;
+                        nextExpDateToFill = itemsInGroup[i].NextExpirationDate;
+
+                        i = itemsInGroup.Count();
+                    }
+                }
+
+                // if a certificate id was saved
+                if (certificateIdToFill != String.Empty)
+                {
+                    // change this item
+
+                    if (wi.CertificateName != certificateIdToFill)
+                    {
+                        wi.CertificateName = certificateIdToFill;
+                        wi.Active = activeBoolToFill;
+                        wi.Compliant = compliantIntToFill;
+                        wi.NextExpirationDate = nextExpDateToFill;
+
+                        wi.CertificateInformationUpdated = true;
+                        ++itemsInfoAppended;
+
+                        // add this item to list to update
+                        itemsToUpdate.Add(wi);
+                    }
+                }
+                //previousItem = wi;
+            }
+
+            // Update items, begin new loading sequence
+            if (checkedWorkflowItems.Count > 100)
+            {
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Updating items...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Updating items...");
+                    LoadingForm.Refresh();
+                }
+                if (this.InvokeRequired) this.Invoke(new Action(() => { ResetStatusStrip(); }));
+                else ResetStatusStrip();
+            }
+            else
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { SetStatusLabelAndTimer("Updating items...", true); ; }));
+                else SetStatusLabelAndTimer("Updating items...", true);
+            }
+
+            if (itemsToUpdate != null && itemsToUpdate.Count > 0)
+            {
+                valueToIncrement = (int)(itemsToUpdate.Count / 100);
+                if (valueToIncrement <= 0) valueToIncrement = 1;
+
+                foreach (WorkflowItem item in itemsToUpdate)
+                {
+                    // update loading progress for increment value 
+                    if (itemOn % valueToIncrement == 0)
+                    {
+                        if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                        else LoadingForm.MoveBar(1);
+                    }
+
+                    var tmpItem = AllWorkflowItemsLoaded.First(i => i.DocumentWorkflowItemID == item.DocumentWorkflowItemID);
+                    int index = AllWorkflowItemsLoaded.IndexOf(tmpItem as WorkflowItem);
+
+                    this.AllWorkflowItemsLoaded[index] = item;
+                }
+            }
+        }
+        private void appendAssignedBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
+
+            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
+            WorkflowItem previousItem = new WorkflowItem();
+            itemsInfoAppended = 0;
+            itemsCouldNotBeAppended = false;
+
+            // for loading bar
+            LoadingForm = new LoadingForm();
+            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
+            if (valueToIncrement <= 0) valueToIncrement = 1;
+            int itemOn = 0;
+
+            // show loading form if more than 100 items
+            if (checkedWorkflowItems.Count > 100)
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }));
+                else
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }
+
+                DimForm();
+
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }
+            }
+            // use status label when less
+            else
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
+                else SetStatusLabelAndTimer("Processing the request...", true);
+            }
+
+            foreach (WorkflowItem wi in checkedWorkflowItems)
+            {
+                List<WorkflowItem> itemsInGroup;
+                string assignedTo;
+                string assignedID;
+
+                ++itemOn;
+
+                if (itemOn % valueToIncrement == 0)
+                {
+                    if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                    else LoadingForm.MoveBar(1);
+                }
+
+                if (wi.ItemsAttached == null)
+                {
+                    itemsCouldNotBeAppended = true;
+                    return;
+                }
+                if (wi.ItemsAttached.Count == 1) continue;
+
+                // get all the items from the item group into a list
+                itemsInGroup = new List<WorkflowItem>();
+                assignedTo = String.Empty;
+                assignedID = String.Empty;
+
+                foreach (string id in wi.ItemsAttached)
+                {
+                    itemsInGroup.Add(GetWorkflowItemFromAllByID(id));
+                }
+
+                // take first assigned to val that's not unsg
+                for (int i = 0; i < itemsInGroup.Count(); i++)
+                {
+                    if (itemsInGroup[i].AssignedToName != String.Empty && itemsInGroup[i].AssignedToName != "(Unassigned)")
+                    {
+                        assignedTo = itemsInGroup[i].AssignedToName;
+                        assignedID = itemsInGroup[i].AssignedToID;
+
+                        i = itemsInGroup.Count();
+                    }
+                }
+
+                // if assigned was saved
+                if (assignedTo != String.Empty)
+                {
+                    // change this item
+                    if (wi.AssignedToName != assignedTo)
+                    {
+                        wi.AssignedToName = assignedTo;
+                        wi.AssignedToID = assignedID;
+
+                        // changing this information is critical and therefore will change the item appearance
+                        wi.WorkflowItemInformationDifferentThanCertus = true;
+                        wi.DisplayColor = "SpringGreen";
+                        ++itemsInfoAppended;
+
+                        // add this item to list to update
+                        itemsToUpdate.Add(wi);
+                    }
+                }
+            }
+
+            // Update items, begin new loading sequence
+            if (checkedWorkflowItems.Count > 100)
+            {
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+                {
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Updating items...");
+                    LoadingForm.Refresh();
+                }));
+                else
+                {
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Updating items...");
+                    LoadingForm.Refresh();
+                }
+                if (this.InvokeRequired) this.Invoke(new Action(() => { ResetStatusStrip(); }));
+                else ResetStatusStrip();
+            }
+            else
+            {
+                if (this.InvokeRequired) this.Invoke(new Action(() => { SetStatusLabelAndTimer("Updating items...", true); ; }));
+                else SetStatusLabelAndTimer("Updating items...", true);
+            }
+
+            if (itemsToUpdate != null && itemsToUpdate.Count > 0)
+            {
+                foreach (WorkflowItem item in itemsToUpdate)
+                {
+                    var tmpItem = AllWorkflowItemsLoaded.First(i => i.DocumentWorkflowItemID == item.DocumentWorkflowItemID);
+                    int index = AllWorkflowItemsLoaded.IndexOf(tmpItem as WorkflowItem);
+
+                    this.AllWorkflowItemsLoaded[index] = item;
+                }
+            }
+        }
+        private void appendAssignedAndStatusBackgroundWorker_DoWork(object sender, DoWorkEventArgs e) //-*
+        {
+            // this code is not currently in use
+            // code needs to be updated if re-implementing (see other append background workers)
+
             try
             {
                 this.Invoke(new Action(() =>
@@ -10964,7 +11785,7 @@ namespace CertusCompanion
                         if (wi.ItemsAttached == null) // additional item info is required for this function
                         {
                             itemsCouldNotBeAppended = true;
-                            continue;
+                            return;
                         }
                         if (wi.ItemsAttached.Count == 1) continue;
 
@@ -11110,8 +11931,11 @@ namespace CertusCompanion
 
             Application.UseWaitCursor = false;
         }
-        private void appendDataBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) //*
+        private void appendDataBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            Application.UseWaitCursor = false;
+            Application.DoEvents();
+
             if (e.Cancelled == true)
             {
                 SetStatusLabelAndTimer("Operation was canceled");
@@ -11120,44 +11944,29 @@ namespace CertusCompanion
             else if (e.Error != null)
             {
                 MessageBox.Show($"Data appending unsuccessful\n\nReason: {e.Error.Message}", "Error");
-                if (CheckIfFormIsOpened("Transparent Form"))
-                    this.Invoke(new Action(() => { TransparentForm.Close(); }));
+                if (CheckIfFormIsOpened("Transparent Form")) this.Invoke(new Action(() => { TransparentForm.Close(); }));
             }
             else
             {
-                // refresh
-                //this.refreshBtn.PerformClick();
-
-                if (this.InvokeRequired)
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
                 {
-                    this.Invoke(new Action(() =>
+                    this.LoadingForm.CompleteProgress();
+                    if (itemsCouldNotBeAppended)
                     {
-                        Application.UseWaitCursor = false;
-
-                        this.LoadingForm.CompleteProgress();
-            //this.loadingForm.ChangeLabel("Items appended successfully");
-            //this.loadingFormTimer.Enabled = true;
-            if (itemsCouldNotBeAppended)
-                        {
-                            this.LoadingForm.ChangeLabel($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended");
-                            SetStatusLabelAndTimer($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended", true);
-                        }
-                        else
-                        {
-                            this.LoadingForm.ChangeLabel($"{itemsInfoAppended} item(s) appended");
-                            SetStatusLabelAndTimer($"{itemsInfoAppended} item(s) appended", true);
-                        }
-                        this.LoadingForm.ShowCloseBtn();
-                        this.LoadingForm.Refresh();
-                    }));
-                }
+                        this.LoadingForm.ChangeLabel($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended");
+                        SetStatusLabelAndTimer($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended", true);
+                    }
+                    else
+                    {
+                        this.LoadingForm.ChangeLabel($"{itemsInfoAppended} item(s) appended");
+                        SetStatusLabelAndTimer($"{itemsInfoAppended} item(s) appended", true);
+                    }
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
+                }));
                 else
                 {
-                    Application.UseWaitCursor = false;
-
                     this.LoadingForm.CompleteProgress();
-                    //this.loadingForm.ChangeLabel("Items appended successfully");
-                    //this.loadingFormTimer.Enabled = true;
                     if (itemsCouldNotBeAppended)
                     {
                         this.LoadingForm.ChangeLabel($"1 or more items did not have information required for this function. {itemsInfoAppended} item(s) appended");
@@ -11174,385 +11983,162 @@ namespace CertusCompanion
             }
         }
         //
-        // Find workflow item data
-        private void setAnalystFromCompanyBackgroundWorker_DoWork(object sender, DoWorkEventArgs e) //*
+        // Finding Assignment
+        private void setAnalystFromMarketBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.Invoke(new Action(() =>
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
+            List<WorkflowItem> workflowItemsUpdated = new List<WorkflowItem>();
+
+            itemsWithNoCompany = 0;
+            itemsWhereCompanyNotRecognized = 0;
+            itemsAlreadyCorrectlyAssigned = 0;
+            itemsWhereCompanyHadDifferentMarkets = 0;
+            itemsSuccessfullyAssigned = 0;
+            itemsWhereMarketNotFound = 0;
+            string market = String.Empty;
+
+            // for loading bar
+            LoadingForm = new LoadingForm();
+            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
+            if (valueToIncrement <= 0) valueToIncrement = 1;
+            int itemOn = 0;
+
+            // show loading form
+            if (this.InvokeRequired) this.Invoke(new Action(() =>
             {
+                ResetStatusStrip();
                 if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
-                DimForm();
-                LoadingForm = new LoadingForm();
+            }));
+            else
+            {
+                ResetStatusStrip();
+                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+            }
+
+            DimForm();
+
+            if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+            {
                 LoadingForm.Show(TransparentForm);
-                LoadingForm.ChangeLabel("Attempting to assign analysts based on company data...");
-                this.LoadingForm.Refresh();
+                LoadingForm.ChangeHeaderLabel("Loading");
+                LoadingForm.ChangeLabel("Processing the request...");
+                LoadingForm.Refresh();
             }));
-
-            this.Invoke(new Action(() =>
+            else
             {
-                try
-                {
-                    #region Data Declaration/Instantiation
-                    itemsWithNoCompany = 0;
-                    itemsWhereCompanyNotRecognized = 0;
-                    itemsWhereCompanyHadDifferentAnalysts = 0;
-                    itemsWhereCompanyHadNoAnalyst = 0;
-                    CompaniesWhichHadDifferentAnalysts = new List<string>();
-                    itemsAlreadyCorrectlyAssigned = 0;
-                    itemsSuccessfullyAssigned = 0;
+                LoadingForm.Show(TransparentForm);
+                LoadingForm.ChangeHeaderLabel("Loading");
+                LoadingForm.ChangeLabel("Processing the request...");
+                LoadingForm.Refresh();
+            }
 
-                    int valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 100);
-                    if (valueToIncrement <= 0) valueToIncrement = 1;
-                    int itemOn = 0;
-
-                    List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-                    List<WorkflowItem> workflowItemsUpdated = new List<WorkflowItem>();
-                    #endregion Data Declaration/Instantiation
-
-                    foreach (WorkflowItem wi in checkedWorkflowItems)
-                    {
-                        // keep track of which item is being iterated for the loading bar
-                        ++itemOn;
-
-                        // update loading progress for increment value 
-                        if (itemOn % valueToIncrement == 0)
-                        {
-                            LoadingForm.MoveBar(1);
-                            this.LoadingForm.Refresh();
-                        }
-
-                        // return if no company
-                        if (wi.VendorName == null || wi.VendorName == String.Empty)
-                        {
-                            ++itemsWithNoCompany;
-                            continue;
-                        }
-                        // return if company isn't in the dictionary
-                        else if (!CompanyNameDictionary.ContainsValue(wi.VendorName))
-                        {
-                            ++itemsWhereCompanyNotRecognized;
-                            continue;
-                        }
-                        // company does exists, check further
-                        else
-                        {
-                            // if the company name is a value more than once in the dictionary
-                            if (CompanyNameDictionary.Count(i => i.Value == wi.VendorName) > 1)
-                            {
-                                List<string> companyIdsWhereValueIsSame = new List<string>();
-                                List<Company> companiesToCheck = new List<Company>();
-                                List<string> analystsToCheck = new List<string>();
-
-                                // get company ids where value occurs twice in compNameDic
-                                foreach (var keyValuePair in CompanyNameDictionary)
-                                {
-                                    if (keyValuePair.Value == wi.VendorName) companyIdsWhereValueIsSame.Add(keyValuePair.Key);
-                                }
-
-                                // get companies from company ids out of the companyDic
-                                foreach (var companyId in companyIdsWhereValueIsSame)
-                                {
-                                    foreach (var keyValuePair in CompanyDictionary)
-                                    {
-                                        if (keyValuePair.Key == companyId) companiesToCheck.Add(keyValuePair.Value);
-                                    }
-                                }
-
-                                // get analysts from the companies. only add if analyst is there
-                                foreach (Company comp in companiesToCheck)
-                                {
-                                    if (comp.Analyst != null && comp.Analyst != String.Empty && comp.Analyst != "Richard Ellis") analystsToCheck.Add(comp.Analyst);
-                                }
-
-                                // if analysts are not there, company doesn't have any analyst
-                                if (analystsToCheck == null || analystsToCheck.Count == 0)
-                                {
-                                    ++itemsWhereCompanyHadNoAnalyst;
-                                    continue;
-                                }
-
-                                // if analysts are different, save company name if it hasn't been saved already
-                                if (analystsToCheck.Any(o => o != analystsToCheck[0]))
-                                {
-                                    ++itemsWhereCompanyHadDifferentAnalysts;
-                                    if (!CompaniesWhichHadDifferentAnalysts.Contains(wi.VendorName)) CompaniesWhichHadDifferentAnalysts.Add(wi.VendorName);
-                                }
-                                else // analysts are not different
-                                {
-                                    // finally, check to make sure this analyst isn't already assigned
-                                    if (wi.AssignedToName == analystsToCheck[0])
-                                    {
-                                        ++itemsAlreadyCorrectlyAssigned;
-                                        continue;
-                                    }
-
-                                    ++itemsSuccessfullyAssigned;
-                                    wi.AssignedToName = analystsToCheck[0];
-                                    wi.WorkflowItemInformationDifferentThanCertus = true;
-                                    wi.DisplayColor = "SpringGreen";
-                                    workflowItemsUpdated.Add(wi);
-                                }
-                            }
-                            // company only appears once in the dictionary
-                            else
-                            {
-                                // get company
-                                string companyId = null;
-
-                                foreach (var keyValuePair in CompanyNameDictionary)
-                                {
-                                    if (keyValuePair.Value == wi.VendorName) companyId = keyValuePair.Key;
-                                }
-
-                                Company comp = CompanyDictionary[companyId];
-
-                                // if company has no analyst (richard ellis is not an analyst)
-                                if (comp.Analyst == null || comp.Analyst == String.Empty || comp.Analyst == "Richard Ellis")
-                                {
-                                    ++itemsWhereCompanyHadNoAnalyst;
-                                    continue;
-                                }
-                                else // company has an analyst
-                                {
-                                    // finally, check to make sure this analyst isn't already assigned
-                                    if (wi.AssignedToName == comp.Analyst)
-                                    {
-                                        ++itemsAlreadyCorrectlyAssigned;
-                                        continue;
-                                    }
-
-                                    ++itemsSuccessfullyAssigned;
-                                    wi.AssignedToName = comp.Analyst;
-
-                                    // attempting to set the ID as well
-                                    if (AnalystsSubSource.Any(i => i.Name == wi.AssignedToName))
-                                        wi.AssignedToID = (AnalystsSubSource.Where(i => i.Name == wi.AssignedToName).FirstOrDefault() as Analyst).SystemUserID;
-
-                                    wi.WorkflowItemInformationDifferentThanCertus = true;
-                                    wi.DisplayColor = "SpringGreen";
-                                    workflowItemsUpdated.Add(wi);
-                                }
-                            }
-                        }
-                    }
-
-                    // Update loaded items if items were updated
-                    if (workflowItemsUpdated != null && workflowItemsUpdated.Count > 0) UpdateAllLoadedWorkflowItems(workflowItemsUpdated);
-
-                    return;
-                }
-                catch (NullReferenceException m)
-                {
-                    MessageBox.Show($"Encountered an error while processing the request.\n\nMessage: {m.Message}", "Error");
-                    MakeErrorSound();
-                }
-                catch (IndexOutOfRangeException m)
-                {
-                    MessageBox.Show($"Encountered an error while processing the request.\n\nMessage: {m.Message}", "Error");
-                    MakeErrorSound();
-                }
-                catch (Exception m)
-                {
-                    MessageBox.Show($"Encountered an error while processing the request.\n\nMessage: {m.Message}", "Error");
-                    MakeErrorSound();
-                }
-
-            }));
-        }
-        private void setAnalystFromCompanyBackgroundWork_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) //*
-        {
-            this.Invoke(new Action(() =>
+            foreach (WorkflowItem wi in checkedWorkflowItems)
             {
-                Application.UseWaitCursor = false;
+                // keep track of which item is being iterated for the loading bar
+                ++itemOn;
 
-                if (e.Cancelled == true)
+                // update loading progress for increment value 
+                if (itemOn % valueToIncrement == 0)
                 {
-                    SetStatusLabelAndTimer("Operation was canceled");
-                    MakeErrorSound();
+                    if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                    else LoadingForm.MoveBar(1);
                 }
-                else if (e.Error != null)
+
+                // return if no company
+                if (wi.VendorName == null || wi.VendorName == String.Empty)
                 {
-                    SetStatusLabelAndTimer("Operation unsuccessful");
-                    MessageBox.Show($"Operation unsuccessful\n\nReason: {e.Error.Message}", "Error");
-                    if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
+                    ++itemsWithNoCompany;
+                    continue;
                 }
+                // return if company isn't in the dictionary
+                else if (!CompanyNameDictionary.ContainsValue(wi.VendorName))
+                {
+                    ++itemsWhereCompanyNotRecognized;
+                    continue;
+                }
+                // company does exists, check further
                 else
                 {
-                    this.LoadingForm.FormatForReport(140);
-                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
-                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
-                        $"Items assigned: {itemsSuccessfullyAssigned}\n" +
-                        $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsWhereCompanyHadNoAnalyst + itemsWhereCompanyHadDifferentAnalysts + itemsAlreadyCorrectlyAssigned}\n" +
-                        $"---------------------------------------------------------------------------\n" +
-                        $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
-                        $"    Items with no company: {itemsWithNoCompany}\n" +
-                        $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
-                        $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
-                        $"    Items where the company had different analysts: {itemsWhereCompanyHadDifferentAnalysts}");
-                    this.LoadingForm.ShowCloseBtn();
-                    this.LoadingForm.Refresh();
-                }
+                    List<string> companyIdsWhereValueIsSame = new List<string>();
+                    List<Company> companiesToCheck = new List<Company>();
+                    List<string> marketsToCheck = new List<string>();
 
-            }));
-        }
-        private void setAnalystFromMarketBackgroundWorker_DoWork(object sender, DoWorkEventArgs e) //*
-        {
-            this.Invoke(new Action(() =>
-            {
-                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
-                DimForm();
-                LoadingForm = new LoadingForm();
-                LoadingForm.Show(TransparentForm);
-                LoadingForm.ChangeLabel("Attempting to assign analysts based on company market data...");
-                this.LoadingForm.Refresh();
-            }));
-
-            this.Invoke(new Action(() =>
-            {
-                try
-                {
-#region Data Declaration/Instantiation
-                    itemsWithNoCompany = 0;
-                    itemsWhereCompanyNotRecognized = 0;
-                    itemsAlreadyCorrectlyAssigned = 0;
-                    itemsWhereCompanyHadDifferentMarkets = 0;
-                    itemsSuccessfullyAssigned = 0;
-                    itemsWhereMarketNotFound = 0;
-                    string market = "";
-
-                    int valueToIncrement = (int)(this.workflowItemsListView.CheckedItems.Count / 100);
-                    if (valueToIncrement <= 0) valueToIncrement = 1;
-                    int itemOn = 0;
-
-                    List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-                    List<WorkflowItem> workflowItemsUpdated = new List<WorkflowItem>();
-#endregion Data Declaration/Instantiation
-
-                    foreach (WorkflowItem wi in checkedWorkflowItems)
+                    // get company ids where value occurs twice in compNameDic
+                    foreach (var keyValuePair in CompanyNameDictionary)
                     {
-                        // keep track of which item is being iterated for the loading bar
-                        ++itemOn;
+                        if (keyValuePair.Value == wi.VendorName) companyIdsWhereValueIsSame.Add(keyValuePair.Key);
+                    }
 
-                        // update loading progress for increment value 
-                        if (itemOn % valueToIncrement == 0)
+                    // get companies from company ids out of the companyDic
+                    foreach (var companyId in companyIdsWhereValueIsSame)
+                    {
+                        foreach (var keyValuePair in CompanyDictionary)
                         {
-                            LoadingForm.MoveBar(1);
-                            this.LoadingForm.Refresh();
-                        }
-
-                        // return if no company
-                        if (wi.VendorName == null || wi.VendorName == String.Empty)
-                        {
-                            ++itemsWithNoCompany;
-                            continue;
-                        }
-                        // return if company isn't in the dictionary
-                        else if (!CompanyNameDictionary.ContainsValue(wi.VendorName))
-                        {
-                            ++itemsWhereCompanyNotRecognized;
-                            continue;
-                        }
-                        // company does exists, check further
-                        else
-                        {
-                            List<string> companyIdsWhereValueIsSame = new List<string>();
-                            List<Company> companiesToCheck = new List<Company>();
-                            List<string> marketsToCheck = new List<string>();
-
-                            // get company ids where value occurs twice in compNameDic
-                            foreach (var keyValuePair in CompanyNameDictionary)
-                            {
-                                if (keyValuePair.Value == wi.VendorName) companyIdsWhereValueIsSame.Add(keyValuePair.Key);
-                            }
-
-                            // get companies from company ids out of the companyDic
-                            foreach (var companyId in companyIdsWhereValueIsSame)
-                            {
-                                foreach (var keyValuePair in CompanyDictionary)
-                                {
-                                    if (keyValuePair.Key == companyId) companiesToCheck.Add(keyValuePair.Value);
-                                }
-                            }
-
-                            // determine if a market can be found
-                            foreach (Company com in companiesToCheck)
-                            {
-                                if (MarketAssignments.ContainsKey(com.City))
-                                {
-                                    marketsToCheck.Add(com.City);
-                                    continue;
-                                }
-                                else if (MarketAssignments.ContainsKey(com.State))
-                                {
-                                    marketsToCheck.Add(com.City);
-                                    continue;
-                                }
-                                else // market is not found
-                                {
-                                    market = "";
-                                }
-                            }
-
-                            // if markets are different, save and continue
-                            if (marketsToCheck.Any(o => o != marketsToCheck[0]))
-                            {
-                                ++itemsWhereCompanyHadDifferentMarkets;
-                                continue;
-                            }
-
-                            if (marketsToCheck == null || marketsToCheck.Count == 0)
-                            {
-                                ++itemsWhereMarketNotFound;
-                                continue;
-                            }
-                            else // market is found
-                            {
-                                market = marketsToCheck[0];
-                                string analyst = MarketAssignments[market];
-                                if (wi.AssignedToName != analyst)
-                                {
-                                    wi.AssignedToName = analyst;
-                                    if (AnalystsSubSource.Any(i => i.Name == analyst))
-                                        wi.AssignedToID = (AnalystsSubSource.Where(i => i.Name == analyst).FirstOrDefault() as Analyst).SystemUserID;
-                                }
-                                else
-                                {
-                                    ++itemsAlreadyCorrectlyAssigned;
-                                    continue;
-                                }
-                                wi.DisplayColor = "SpringGreen";
-                                wi.WorkflowItemInformationDifferentThanCertus = true;
-                                ++itemsSuccessfullyAssigned;
-                                workflowItemsUpdated.Add(wi);
-                            }
+                            if (keyValuePair.Key == companyId) companiesToCheck.Add(keyValuePair.Value);
                         }
                     }
 
-                    // Update loaded items if items were updated
-                    if (workflowItemsUpdated != null && workflowItemsUpdated.Count > 0) UpdateAllLoadedWorkflowItems(workflowItemsUpdated);
+                    // determine if a market can be found
+                    foreach (Company com in companiesToCheck)
+                    {
+                        if (MarketAssignments.ContainsKey(com.City))
+                        {
+                            marketsToCheck.Add(com.City);
+                            continue;
+                        }
+                        else if (MarketAssignments.ContainsKey(com.State))
+                        {
+                            marketsToCheck.Add(com.State);
+                            continue;
+                        }
+                        else // market is not found
+                        {
+                            market = "";
+                        }
+                    }
 
-                    return;
-                }
-                catch (NullReferenceException m)
-                {
-                    MessageBox.Show($"Encountered an error while processing the request.\n\nMessage: {m.Message}", "Error");
-                    MakeErrorSound();
-                }
-                catch (IndexOutOfRangeException m)
-                {
-                    MessageBox.Show($"Encountered an error while processing the request.\n\nMessage: {m.Message}", "Error");
-                    MakeErrorSound();
-                }
-                catch (Exception m)
-                {
-                    MessageBox.Show($"Encountered an error while processing the request.\n\nMessage: {m.Message}", "Error");
-                    MakeErrorSound();
-                }
+                    // if markets are different, save and continue
+                    if (marketsToCheck.Any(o => o != marketsToCheck[0]))
+                    {
+                        ++itemsWhereCompanyHadDifferentMarkets;
+                        continue;
+                    }
 
-            }));
+                    if (marketsToCheck == null || marketsToCheck.Count == 0)
+                    {
+                        ++itemsWhereMarketNotFound;
+                        continue;
+                    }
+                    else // market is found
+                    {
+                        market = marketsToCheck[0];
+                        string analyst = MarketAssignments[market];
+                        if (wi.AssignedToName != analyst)
+                        {
+                            wi.AssignedToName = analyst;
+                            if (AnalystsSubSource.Any(i => i.Name == analyst))
+                                wi.AssignedToID = (AnalystsSubSource.Where(i => i.Name == analyst).FirstOrDefault() as Analyst).SystemUserID;
+                        }
+                        else
+                        {
+                            ++itemsAlreadyCorrectlyAssigned;
+                            continue;
+                        }
+                        wi.DisplayColor = "SpringGreen";
+                        wi.WorkflowItemInformationDifferentThanCertus = true;
+                        ++itemsSuccessfullyAssigned;
+                        workflowItemsUpdated.Add(wi);
+                    }
+                }
+            }
+
+            // Update loaded items if items were updated
+            if (workflowItemsUpdated != null && workflowItemsUpdated.Count > 0) UpdateAllLoadedWorkflowItems(workflowItemsUpdated);
         }
-        private void setAnalystFromMarketBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) //*
+        private void setAnalystFromMarketBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            UseWaitCursor = false;
+            Application.UseWaitCursor = false;
+            Application.DoEvents();
 
             if (e.Cancelled == true)
             {
@@ -11568,21 +12154,21 @@ namespace CertusCompanion
             else
             {
                 if (this.InvokeRequired) this.Invoke(new Action(() =>
-                    {
-                        this.LoadingForm.FormatForReport(140);
-                        this.LoadingForm.ChangeHeaderLabel("Operation Complete");
-                        this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
-                            $"Items assigned: {itemsSuccessfullyAssigned}\n" +
-                            $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsAlreadyCorrectlyAssigned + itemsWhereCompanyHadDifferentMarkets + itemsWhereMarketNotFound}\n" +
-                            $"---------------------------------------------------------------------------\n" +
-                            $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
-                            $"    Items with no company: {itemsWithNoCompany}\n" +
-                            $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
-                            $"    Items where the company had different markets: {itemsWhereCompanyHadDifferentMarkets}\n" +
-                            $"    Items where the market was not found: {itemsWhereMarketNotFound}");
-                        this.LoadingForm.ShowCloseBtn();
-                        this.LoadingForm.Refresh();
-                    }));
+                {
+                    this.LoadingForm.FormatForReport(140);
+                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                        $"Items assigned: {itemsSuccessfullyAssigned}\n" +
+                        $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsAlreadyCorrectlyAssigned + itemsWhereCompanyHadDifferentMarkets + itemsWhereMarketNotFound}\n" +
+                        $"---------------------------------------------------------------------------\n" +
+                        $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
+                        $"    Items with no company: {itemsWithNoCompany}\n" +
+                        $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
+                        $"    Items where the company had different markets: {itemsWhereCompanyHadDifferentMarkets}\n" +
+                        $"    Items where the market was not found: {itemsWhereMarketNotFound}");
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
+                }));
                 else
                 {
                     this.LoadingForm.FormatForReport(140);
@@ -11601,17 +12187,16 @@ namespace CertusCompanion
                 }
             }
         }
-        private void setAnalystFromCertificateBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void setAnalystFromCompanyBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            UseWaitCursor = true;
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
 
-            List<WorkflowItem> checkedWorkflowItems = e.Argument as List<WorkflowItem>;
-            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
-
-            // data to track
-            itemsWithNoCertificate = 0;
-            itemsWhereContractUnrecognized = 0;
+            List<WorkflowItem> workflowItemsUpdated = new List<WorkflowItem>();
+            itemsWithNoCompany = 0;
+            itemsWhereCompanyNotRecognized = 0;
+            itemsWhereCompanyHadDifferentAnalysts = 0;
             itemsWhereCompanyHadNoAnalyst = 0;
+            CompaniesWhichHadDifferentAnalysts = new List<string>();
             itemsAlreadyCorrectlyAssigned = 0;
             itemsSuccessfullyAssigned = 0;
 
@@ -11621,98 +12206,168 @@ namespace CertusCompanion
             if (valueToIncrement <= 0) valueToIncrement = 1;
             int itemOn = 0;
 
-            // show loading form regardless
-            DimForm();
-            if (TransparentForm.InvokeRequired)
+            // show loading form
+            if (this.InvokeRequired) this.Invoke(new Action(() =>
             {
-                TransparentForm.Invoke(new Action(() => { LoadingForm.Show(TransparentForm); }));
+                ResetStatusStrip();
+                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+            }));
+            else
+            {
+                ResetStatusStrip();
+                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             }
+
+            DimForm();
+
+            if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+            {
+                LoadingForm.Show(TransparentForm);
+                LoadingForm.ChangeHeaderLabel("Loading");
+                LoadingForm.ChangeLabel("Processing the request...");
+                LoadingForm.Refresh();
+            }));
             else
             {
                 LoadingForm.Show(TransparentForm);
+                LoadingForm.ChangeHeaderLabel("Loading");
+                LoadingForm.ChangeLabel("Processing the request...");
+                LoadingForm.Refresh();
             }
 
-            // start process
             foreach (WorkflowItem wi in checkedWorkflowItems)
             {
-                List<string> companyIdsToCheck = new List<string>();
-                List<Company> companiesToCheck = new List<Company>();
-                Certificate contract = new Certificate();
-
                 // keep track of which item is being iterated for the loading bar
                 ++itemOn;
 
                 // update loading progress for increment value 
                 if (itemOn % valueToIncrement == 0)
                 {
-                    if (this.InvokeRequired)
-                    {
-                        this.Invoke(new Action(() =>
-                        {
-                            LoadingForm.MoveBar(1);
-                                    //this.loadingForm.Refresh();
-                                }));
-                    }
-                    else
-                    {
-                        LoadingForm.MoveBar(1);
-                        //this.loadingForm.Refresh();
-                    }
+                    if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                    else LoadingForm.MoveBar(1);
                 }
 
-                // return if no certificate
-                if (wi.ContractID == null || wi.ContractID == String.Empty)
+                // return if no company
+                if (wi.VendorName == null || wi.VendorName == String.Empty)
                 {
-                    ++itemsWithNoCertificate;
+                    ++itemsWithNoCompany;
                     continue;
                 }
-                // return if certificate isn't in the dictionary
-                else if (!CertificateDictionary.ContainsKey(wi.ContractID))
+                // return if company isn't in the dictionary
+                else if (!CompanyNameDictionary.ContainsValue(wi.VendorName))
                 {
-                    ++itemsWhereContractUnrecognized;
+                    ++itemsWhereCompanyNotRecognized;
                     continue;
                 }
-                // contract does exists, check further
+                // company does exists, check further
                 else
                 {
-                    Certificate cert = CertificateDictionary[wi.ContractID];
-                    string companyID = cert.BcsCompanyID;
-
-                    Company company = new Company();
-                    if (CompanyDictionary.ContainsKey(companyID)) company = CompanyDictionary[companyID]; // not all companies were tied at this step...
-                    else continue;
-
-                    // analyst is not listed for the company
-                    if (company.Analyst == null || company.Analyst == String.Empty || company.Analyst == "Richard Ellis")
+                    // if the company name is a value more than once in the dictionary
+                    if (CompanyNameDictionary.Count(i => i.Value == wi.VendorName) > 1)
                     {
-                        ++itemsWhereCompanyHadNoAnalyst;
-                        continue;
-                    }
-                    else
-                    {
-                        // analyst is already assigned
-                        if (wi.AssignedToName == company.Analyst)
+                        List<string> companyIdsWhereValueIsSame = new List<string>();
+                        List<Company> companiesToCheck = new List<Company>();
+                        List<string> analystsToCheck = new List<string>();
+
+                        // get company ids where value occurs twice in compNameDic
+                        foreach (var keyValuePair in CompanyNameDictionary)
                         {
-                            ++itemsAlreadyCorrectlyAssigned;
+                            if (keyValuePair.Value == wi.VendorName) companyIdsWhereValueIsSame.Add(keyValuePair.Key);
+                        }
+
+                        // get companies from company ids out of the companyDic
+                        foreach (var companyId in companyIdsWhereValueIsSame)
+                        {
+                            foreach (var keyValuePair in CompanyDictionary)
+                            {
+                                if (keyValuePair.Key == companyId) companiesToCheck.Add(keyValuePair.Value);
+                            }
+                        }
+
+                        // get analysts from the companies. only add if analyst is there and not richard ellis
+                        foreach (Company comp in companiesToCheck)
+                        {
+                            if (comp.AnalystID != null && comp.AnalystID != String.Empty && comp.AnalystID != "881") analystsToCheck.Add(comp.AnalystID);
+                        }
+
+                        // if analysts are not there, company doesn't have any analyst
+                        if (analystsToCheck == null || analystsToCheck.Count == 0)
+                        {
+                            ++itemsWhereCompanyHadNoAnalyst;
                             continue;
                         }
-                        // item gets assigned successfully
-                        else
+
+                        // if analysts are different, save company name if it hasn't been saved already
+                        if (analystsToCheck.Any(o => o != analystsToCheck[0]))
                         {
-                            wi.AssignedToName = company.Analyst;
-                            if (AnalystsSubSource.Any(i => i.Name == company.Analyst))
-                                wi.AssignedToID = (AnalystsSubSource.Where(i => i.Name == company.Analyst).FirstOrDefault() as Analyst).SystemUserID;
+                            ++itemsWhereCompanyHadDifferentAnalysts;
+                            if (!CompaniesWhichHadDifferentAnalysts.Contains(wi.VendorName)) CompaniesWhichHadDifferentAnalysts.Add(wi.VendorName);
+                        }
+                        else // analysts are not different
+                        {
+                            // finally, check to make sure this analyst isn't already assigned
+                            if (wi.AssignedToName == analystsToCheck[0])
+                            {
+                                ++itemsAlreadyCorrectlyAssigned;
+                                continue;
+                            }
+
+                            ++itemsSuccessfullyAssigned;
+                            wi.AssignedToID = analystsToCheck[0];
+                            if (SystemUserIDsDictionary.ContainsKey(wi.AssignedToID)) wi.AssignedToName = SystemUserIDsDictionary[wi.AssignedToID].Name;
+                            else wi.AssignedToName = "NULL";
                             wi.WorkflowItemInformationDifferentThanCertus = true;
                             wi.DisplayColor = "SpringGreen";
+                            workflowItemsUpdated.Add(wi);
+                        }
+                    }
+                    // company only appears once in the dictionary
+                    else
+                    {
+                        // get company
+                        string companyId = null;
+
+                        foreach (var keyValuePair in CompanyNameDictionary)
+                        {
+                            if (keyValuePair.Value == wi.VendorName) companyId = keyValuePair.Key;
+                        }
+
+                        Company comp = CompanyDictionary[companyId];
+
+                        // if company has no analyst (richard ellis is not an analyst)
+                        if (comp.AnalystID == null || comp.AnalystID == String.Empty || comp.AnalystID == "881")
+                        {
+                            ++itemsWhereCompanyHadNoAnalyst;
+                            continue;
+                        }
+                        else // company has an analyst
+                        {
+                            // finally, check to make sure this analyst isn't already assigned
+                            if (wi.AssignedToID == comp.AnalystID)
+                            {
+                                ++itemsAlreadyCorrectlyAssigned;
+                                continue;
+                            }
+
                             ++itemsSuccessfullyAssigned;
+                            wi.AssignedToID = comp.AnalystID;
+                            if (SystemUserIDsDictionary.ContainsKey(wi.AssignedToID)) wi.AssignedToName = SystemUserIDsDictionary[wi.AssignedToID].Name;
+                            else wi.AssignedToName = "NULL";
+                            wi.WorkflowItemInformationDifferentThanCertus = true;
+                            wi.DisplayColor = "SpringGreen";
+                            workflowItemsUpdated.Add(wi);
                         }
                     }
                 }
             }
+
+            // Update loaded items if items were updated
+            if (workflowItemsUpdated != null && workflowItemsUpdated.Count > 0) UpdateAllLoadedWorkflowItems(workflowItemsUpdated);
         }
-        private void setAnalystFromCertificateBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void setAnalystFromCompanyBackgroundWork_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            UseWaitCursor = false;
+            Application.UseWaitCursor = false;
+            Application.DoEvents();
 
             if (e.Cancelled == true)
             {
@@ -11727,81 +12382,51 @@ namespace CertusCompanion
             }
             else
             {
-                if (this.InvokeRequired)
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
                 {
-                    this.Invoke(new Action(() =>
-                    {
-                        this.LoadingForm.FormatForReport(140);
-                        this.LoadingForm.ChangeHeaderLabel("Operation Complete");
-                        this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
-                            $"Items assigned: {itemsSuccessfullyAssigned}\n" +
-                            $"Items not assigned: {itemsWithNoCertificate + itemsWhereContractUnrecognized + itemsWhereCompanyHadNoAnalyst + itemsAlreadyCorrectlyAssigned}\n" +
-                            $"---------------------------------------------------------------------------\n" +
-                            $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
-                            $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
-                            $"    Items where the certificate was unrecognized: {itemsWhereContractUnrecognized}\n" +
-                            $"    Items with no certificate: {itemsWithNoCertificate}\n");
-                        this.LoadingForm.ShowCloseBtn();
-                        this.LoadingForm.Refresh();
-                    }));
-                }
+                    this.LoadingForm.FormatForReport(140);
+                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                        $"Items assigned: {itemsSuccessfullyAssigned}\n" +
+                        $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsWhereCompanyHadNoAnalyst + itemsWhereCompanyHadDifferentAnalysts + itemsAlreadyCorrectlyAssigned}\n" +
+                        $"---------------------------------------------------------------------------\n" +
+                        $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
+                        $"    Items with no company: {itemsWithNoCompany}\n" +
+                        $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
+                        $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
+                        $"    Items where the company had different analysts: {itemsWhereCompanyHadDifferentAnalysts}");
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
+                }));
                 else
                 {
                     this.LoadingForm.FormatForReport(140);
                     this.LoadingForm.ChangeHeaderLabel("Operation Complete");
                     this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
                         $"Items assigned: {itemsSuccessfullyAssigned}\n" +
-                        $"Items not assigned: {itemsWithNoCertificate + itemsWhereContractUnrecognized + itemsWhereCompanyHadNoAnalyst + itemsAlreadyCorrectlyAssigned}\n" +
+                        $"Items not assigned: {itemsWithNoCompany + itemsWhereCompanyNotRecognized + itemsWhereCompanyHadNoAnalyst + itemsWhereCompanyHadDifferentAnalysts + itemsAlreadyCorrectlyAssigned}\n" +
                         $"---------------------------------------------------------------------------\n" +
                         $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
+                        $"    Items with no company: {itemsWithNoCompany}\n" +
+                        $"    Items where the company was unrecognized: {itemsWhereCompanyNotRecognized}\n" +
                         $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
-                        $"    Items where the certificate was unrecognized: {itemsWhereContractUnrecognized}\n" +
-                        $"    Items with no certificate: {itemsWithNoCertificate}\n");
+                        $"    Items where the company had different analysts: {itemsWhereCompanyHadDifferentAnalysts}");
                     this.LoadingForm.ShowCloseBtn();
                     this.LoadingForm.Refresh();
                 }
             }
         }
-        private void extractCompanyBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void setAnalystFromCertificateBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string selection = e.Argument as string;
-
-            switch (selection)
-            {
-                case "sender":
-                    {
-                        CheckSenderForCompany();
-                    }
-                    break;
-                case "subject":
-                    {
-                        CheckSubjectForCompany();
-                    }
-                    break;
-                case "all":
-                    break;
-                default:
-                    break;
-            }
-        }
-        private void CheckSubjectForCompany()
-        {
-            List<WorkflowItem> checkedWorkflowItems = new List<WorkflowItem>();
-
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-                }));
-            }
-            else
-            {
-                checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-            }
-
+            List<WorkflowItem> checkedWorkflowItems = GetWorkflowItemsFromIDs(CurrentlyCheckedItemIDs);
             List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
-            itemsUpdated = 0;
+
+            // data to track
+            itemsWithNoCertificate = 0;
+            itemsWhereCertificateUnrecognized = 0;
+            itemsWhereCompanyHadNoAnalyst = 0;
+            itemsAlreadyCorrectlyAssigned = 0;
+            itemsSuccessfullyAssigned = 0;
 
             // for loading bar
             LoadingForm = new LoadingForm();
@@ -11809,250 +12434,107 @@ namespace CertusCompanion
             if (valueToIncrement <= 0) valueToIncrement = 1;
             int itemOn = 0;
 
-            // show loading form if more than 50 items
-            if (checkedWorkflowItems.Count > 50)
+            // show loading form regardless
+            if (this.InvokeRequired) this.Invoke(new Action(() =>
             {
-                DimForm();
-
-                if (TransparentForm.InvokeRequired)
-                {
-                    TransparentForm.Invoke(new Action(() =>
-                    {
-                        LoadingForm.Show(TransparentForm);
-                        LoadingForm.ChangeHeaderLabel("Loading");
-                        LoadingForm.ChangeLabel("Processing the request...");
-                        LoadingForm.Refresh();
-                    }));
-                }
-                else
-                {
-                    LoadingForm.Show(TransparentForm);
-                    LoadingForm.ChangeHeaderLabel("Loading");
-                    LoadingForm.ChangeLabel("Processing the request...");
-                    LoadingForm.Refresh();
-                }
-            }
-            // use status label when less
+                ResetStatusStrip();
+                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+            }));
             else
             {
-                if (this.InvokeRequired)
-                {
-                    this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
-                }
-                else
-                {
-                    SetStatusLabelAndTimer("Processing the request...", true);
-                }
+                ResetStatusStrip();
+                if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
             }
 
-            // process
+            DimForm();
+
+            if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
+            {
+                LoadingForm.Show(TransparentForm);
+                LoadingForm.ChangeHeaderLabel("Loading");
+                LoadingForm.ChangeLabel("Processing the request...");
+                LoadingForm.Refresh();
+            }));
+            else
+            {
+                LoadingForm.Show(TransparentForm);
+                LoadingForm.ChangeHeaderLabel("Loading");
+                LoadingForm.ChangeLabel("Processing the request...");
+                LoadingForm.Refresh();
+            }
+
+            // start process
             foreach (WorkflowItem wi in checkedWorkflowItems)
             {
-                List<string> companiesToSettleOn = new List<string>();
-                string companySettledOn = "";
-
-                // keep track of which item is being iterated for the loading bar
-                ++itemOn;
-
-                // update loading progress for increment value 
-                if (itemOn % valueToIncrement == 0)
-                {
-                    if (this.InvokeRequired)
-                    {
-                        this.Invoke(new Action(() =>
-                        {
-                            LoadingForm.MoveBar(1);
-                        }));
-                    }
-                    else
-                    {
-                        LoadingForm.MoveBar(1);
-                    }
-                }
-
-                // get subject line with only letters/numbers to match more company names
-                string subject = wi.SubjectLine;
-                string subjectWithOnlyLettersAndNumbers = new String(subject.Where(c => Char.IsLetter(c) || Char.IsNumber(c)).ToArray());
-
-                foreach (string companyName in CompanyNameDictionary.Values)
-                {
-                    string companyWithOnlyLettersAndNumbers = new String(companyName.Where(c => Char.IsLetter(c) || Char.IsNumber(c)).ToArray());
-
-                    if (subjectWithOnlyLettersAndNumbers.ToLower().Contains(companyWithOnlyLettersAndNumbers.ToLower())
-                        //&& companyName.ToLower() != "" && companyName.ToLower() != "west" && companyName.ToLower() != "arc" && companyName.ToLower() != "dsi")
-                        && companyWithOnlyLettersAndNumbers.Count() > 4)
-                    {
-                        if (wi.VendorName.ToLower() != companyName.ToLower())
-                        {
-                            companiesToSettleOn.Add(companyName);
-                        }
-                    }
-                }
-
-                if (companiesToSettleOn != null && companiesToSettleOn.Count > 0)
-                {
-                    companySettledOn = companiesToSettleOn.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);
-                }
-
-                if (companySettledOn != null && companySettledOn != String.Empty)
-                {
-                    if (wi.VendorName.ToLower() != companySettledOn.ToLower())
-                    {
-                        wi.VendorName = companySettledOn;
-                        wi.CompanyUpdated = true;
-                        itemsToUpdate.Add(wi);
-                        ++itemsUpdated;
-                    }
-                }
-            }
-
-            if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
-        }
-        private void CheckSenderForCompany()
-        {
-            List<WorkflowItem> checkedWorkflowItems = new List<WorkflowItem>();
-
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-                }));
-            }
-            else
-            {
-                checkedWorkflowItems = GetWorkflowItemsFromChecked(workflowItemsListView);
-            }
-
-            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
-            itemsUpdated = 0;
-
-            // for loading bar
-            LoadingForm = new LoadingForm();
-            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
-            if (valueToIncrement <= 0) valueToIncrement = 1;
-            int itemOn = 0;
-
-            // show loading form if more than 50 items
-            if (checkedWorkflowItems.Count > 50)
-            {
-                DimForm();
-
-                if (TransparentForm.InvokeRequired)
-                {
-                    TransparentForm.Invoke(new Action(() =>
-                    {
-                        //ResetStatusStrip();
-                        LoadingForm.Show(TransparentForm);
-                        LoadingForm.ChangeHeaderLabel("Loading");
-                        LoadingForm.ChangeLabel("Processing the request...");
-                        LoadingForm.Refresh();
-                    }));
-                }
-                else
-                {
-                    //ResetStatusStrip();
-                    LoadingForm.Show(TransparentForm);
-                    LoadingForm.ChangeHeaderLabel("Loading");
-                    LoadingForm.ChangeLabel("Processing the request...");
-                    LoadingForm.Refresh();
-                }
-            }
-            // use status label when less
-            else
-            {
-                if (this.InvokeRequired)
-                {
-                    this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
-                }
-                else
-                {
-                    SetStatusLabelAndTimer("Processing the request...", true);
-                }
-            }
-
-            // process
-            foreach (WorkflowItem wi in checkedWorkflowItems)
-            {
-                // keep track of which item is being iterated for the loading bar
-                ++itemOn;
-
-                // update loading progress for increment value 
-                if (itemOn % valueToIncrement == 0)
-                {
-                    if (this.InvokeRequired)
-                    {
-                        this.Invoke(new Action(() =>
-                        {
-                            LoadingForm.MoveBar(1);
-                        }));
-                    }
-                    else
-                    {
-                        LoadingForm.MoveBar(1);
-                    }
-                }
-
-                bool emailWasFound = false;
-                bool emailOccuredTwice = false;
                 List<string> companyIdsToCheck = new List<string>();
                 List<Company> companiesToCheck = new List<Company>();
+                Certificate certificate = new Certificate();
 
+                // keep track of which item is being iterated for the loading bar
+                ++itemOn;
 
-                foreach (var keyValuePair in CompanyContactDictionary)
+                // update loading progress for increment value 
+                if (itemOn % valueToIncrement == 0)
                 {
-                    if (keyValuePair.Value.Any(i => i.Email == wi.EmailFromAddress && i.Title != "CBRE Contract Manager"))
-                    {
-                        if (emailWasFound) emailOccuredTwice = true;
-
-                        emailWasFound = true;
-                        companyIdsToCheck.Add(keyValuePair.Key);
-                    }
+                    if (this.InvokeRequired) this.Invoke(new Action(() => { LoadingForm.MoveBar(1); }));
+                    else LoadingForm.MoveBar(1);
                 }
 
-                foreach (string id in companyIdsToCheck)
+                // return if no certificate
+                if (wi.CertificateName == null || wi.CertificateName == String.Empty)
                 {
-                    companiesToCheck.Add(CompanyDictionary[id]);
+                    ++itemsWithNoCertificate;
+                    continue;
                 }
-
-                if (emailOccuredTwice)
+                // return if certificate isn't in the dictionary
+                else if (!CertificateDictionary.ContainsKey(wi.CertificateName))
                 {
-                    // check if the email was for different companies
+                    ++itemsWhereCertificateUnrecognized;
+                    continue;
+                }
+                // certificate does exists, check further
+                else
+                {
+                    Certificate cert = CertificateDictionary[wi.CertificateName];
+                    string companyID = cert.BcsCompanyID;
 
-                    if (companiesToCheck.Any(o => o.CompanyName != companiesToCheck[0].CompanyName))
+                    Company company = new Company();
+                    if (CompanyDictionary.ContainsKey(companyID)) company = CompanyDictionary[companyID]; // not all companies were tied at this step...
+                    else continue;
+
+                    // if company has no analyst (richard ellis is not an analyst)
+                    if (company.AnalystID == null || company.AnalystID == String.Empty || company.AnalystID == "881")
                     {
-                        // email was for different companies
+                        ++itemsWhereCompanyHadNoAnalyst;
                         continue;
                     }
                     else
                     {
-                        // company is the same. contact can be tied
-                        if (wi.VendorName != companiesToCheck[0].CompanyName)
+                        // check to make sure this analyst isn't already assigned
+                        if (wi.AssignedToID == company.AnalystID)
                         {
-                            wi.VendorName = companiesToCheck[0].CompanyName;
-                            wi.CompanyUpdated = true;
-                            itemsToUpdate.Add(wi);
-                            ++itemsUpdated;
+                            ++itemsAlreadyCorrectlyAssigned;
+                            continue;
                         }
-                    }
-                }
-                // contact is unique
-                else if (emailWasFound)
-                {
-                    // contact can be tied
-                    if (wi.VendorName != companiesToCheck[0].CompanyName)
-                    {
-                        wi.VendorName = companiesToCheck[0].CompanyName;
-                        wi.CompanyUpdated = true;
-                        itemsToUpdate.Add(wi);
-                        ++itemsUpdated;
+                        // item gets assigned successfully
+                        else
+                        {
+                            ++itemsSuccessfullyAssigned;
+                            wi.AssignedToID = company.AnalystID;
+                            if (SystemUserIDsDictionary.ContainsKey(wi.AssignedToID)) wi.AssignedToName = SystemUserIDsDictionary[wi.AssignedToID].Name;
+                            else wi.AssignedToName = "NULL";
+                            wi.WorkflowItemInformationDifferentThanCertus = true;
+                            wi.DisplayColor = "SpringGreen";
+                            itemsToUpdate.Add(wi);
+                        }
                     }
                 }
             }
 
+            // Update loaded items if items were updated
             if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
         }
-        private void extractCompanyBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void setAnalystFromCertificateBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Application.UseWaitCursor = false;
             Application.DoEvents();
@@ -12064,217 +12546,47 @@ namespace CertusCompanion
             }
             else if (e.Error != null)
             {
+                SetStatusLabelAndTimer("Operation unsuccessful");
                 MessageBox.Show($"Operation unsuccessful\n\nReason: {e.Error.Message}", "Error");
                 if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
-                ResetStatusStrip();
             }
             else
             {
-                if (this.InvokeRequired)
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
                 {
-                    this.Invoke(new Action(() =>
-                    {
-                        this.LoadingForm.CompleteProgress();
-                        this.LoadingForm.ChangeLabel("Loading Complete");
-                        this.LoadingForm.Refresh();
-                        this.loadingFormTimer.Enabled = true;
-                        this.SetStatusLabelAndTimer($"Company data updated for {itemsUpdated} item(s)", true);
-                    }));
-                }
-                else
-                {
-                    this.LoadingForm.CompleteProgress();
-                    this.LoadingForm.ChangeLabel("Loading Complete");
+                    this.LoadingForm.FormatForReport(140);
+                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                        $"Items assigned: {itemsSuccessfullyAssigned}\n" +
+                        $"Items not assigned: {itemsWithNoCertificate + itemsWhereCertificateUnrecognized + itemsWhereCompanyHadNoAnalyst + itemsAlreadyCorrectlyAssigned}\n" +
+                        $"---------------------------------------------------------------------------\n" +
+                        $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
+                        $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
+                        $"    Items where the certificate was unrecognized: {itemsWhereCertificateUnrecognized}\n" +
+                        $"    Items with no certificate: {itemsWithNoCertificate}\n");
+                    this.LoadingForm.ShowCloseBtn();
                     this.LoadingForm.Refresh();
-                    this.loadingFormTimer.Enabled = true;
-                    this.SetStatusLabelAndTimer($"Company data updated for {itemsUpdated} item(s)", true);
+                }));
+                else
+                {
+                    this.LoadingForm.FormatForReport(140);
+                    this.LoadingForm.ChangeHeaderLabel("Operation Complete");
+                    this.LoadingForm.ChangeLabel($"Assignment Operation successful;\n\n" +
+                        $"Items assigned: {itemsSuccessfullyAssigned}\n" +
+                        $"Items not assigned: {itemsWithNoCertificate + itemsWhereCertificateUnrecognized + itemsWhereCompanyHadNoAnalyst + itemsAlreadyCorrectlyAssigned}\n" +
+                        $"---------------------------------------------------------------------------\n" +
+                        $"    Items already correctly assigned: {itemsAlreadyCorrectlyAssigned}\n" +
+                        $"    Items where the company had no analyst: {itemsWhereCompanyHadNoAnalyst}\n" +
+                        $"    Items where the certificate was unrecognized: {itemsWhereCertificateUnrecognized}\n" +
+                        $"    Items with no certificate: {itemsWithNoCertificate}\n");
+                    this.LoadingForm.ShowCloseBtn();
+                    this.LoadingForm.Refresh();
                 }
             }
         }
-        private void extractContractBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            UseWaitCursor = true;
-
-            List<WorkflowItem> checkedWorkflowItems = e.Argument as List<WorkflowItem>;
-            List<WorkflowItem> itemsToUpdate = new List<WorkflowItem>();
-            itemsUpdated = 0;
-            contractsPulled = 0;
-            LoadingForm = new LoadingForm();
-
-            // for loading bar
-            int valueToIncrement = (int)(checkedWorkflowItems.Count / 100);
-            if (valueToIncrement <= 0) valueToIncrement = 1;
-            int itemOn = 0;
-
-            // show loading form if more than 50 items
-            if (checkedWorkflowItems.Count > 50)
-            {
-                DimForm();
-
-                if (TransparentForm.InvokeRequired)
-                {
-                    TransparentForm.Invoke(new Action(() =>
-                    {
-                        ResetStatusStrip();
-                        LoadingForm.Show(TransparentForm);
-                        LoadingForm.ChangeHeaderLabel("Loading");
-                        LoadingForm.ChangeLabel("Processing the request...");
-                        LoadingForm.Refresh();
-                    }));
-                }
-                else
-                {
-                    ResetStatusStrip();
-                    LoadingForm.Show(TransparentForm);
-                    LoadingForm.ChangeHeaderLabel("Loading");
-                    LoadingForm.ChangeLabel("Processing the request...");
-                    LoadingForm.Refresh();
-                }
-            }
-            // use status label when less
-            else
-            {
-                if (this.InvokeRequired)
-                {
-                    this.Invoke(new Action(() => { SetStatusLabelAndTimer("Processing the request...", true); ; }));
-                }
-                else
-                {
-                    SetStatusLabelAndTimer("Processing the request...", true);
-                }
-            }
-
-            foreach (WorkflowItem wi in checkedWorkflowItems)
-            {
-                List<string> companyIdsToCheck = new List<string>();
-                List<Company> companiesToCheck = new List<Company>();
-                bool contractFound = false;
-
-                // keep track of which item is being iterated for the loading bar
-                ++itemOn;
-
-                // update loading progress for increment value 
-                if (itemOn % valueToIncrement == 0)
-                {
-                    if (this.InvokeRequired)
-                    {
-                        this.Invoke(new Action(() =>
-                        {
-                            LoadingForm.MoveBar(1);
-                //this.loadingForm.Refresh();
-            }));
-                    }
-                    else
-                    {
-                        LoadingForm.MoveBar(1);
-                        //this.loadingForm.Refresh();
-                    }
-                }
-
-                foreach (var keyValuePair in CertificateDictionary)
-                {
-                    if (contractFound) continue;
-
-                    if (wi.SubjectLine.Contains(keyValuePair.Key))
-                    {
-                        int index = wi.SubjectLine.IndexOf(keyValuePair.Key);
-                        char charBefore = '<';
-                        char charAfter = '>';
-
-                        if (index != 0) charBefore = wi.SubjectLine[index - 1];
-                        if (index + keyValuePair.Key.Length != wi.SubjectLine.Length) charAfter = wi.SubjectLine[index + keyValuePair.Key.Length];
-
-                        if (!Char.IsNumber(charBefore) && !Char.IsNumber(charAfter))
-                        {
-                            // contract is there
-                            contractFound = true;
-
-                            // update all contract information associated with wf item
-                            if (wi.ContractID != keyValuePair.Key)
-                            {
-                                // company
-                                if (wi.VendorName != keyValuePair.Value.CompanyName)
-                                {
-                                    wi.VendorName = keyValuePair.Value.CompanyName;
-                                    wi.CompanyUpdated = true;
-                                    ++itemsUpdated;
-                                }
-
-                                // contract
-                                wi.ContractID = keyValuePair.Key;
-                                wi.ContractIdOverridden = true;
-                                ++contractsPulled;
-
-                                // contract info
-                                wi.Active = keyValuePair.Value.CertificateActive;
-                                wi.Compliant = keyValuePair.Value.CertificateCompliant;
-                                wi.NextExpirationDate = null; // next exp data is not included on cert imports (can change in future if necessary)
-                                wi.ContractInformationUpdated = true;
-
-                                itemsToUpdate.Add(wi);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // contract is not there
-                        //wi.ContractID = String.Empty; // remove because current contract IDs cannot be trusted
-                        //wi.ContractIdOverridden = true;
-                    }
-                }
-            }
-
-            if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
-        }
-        private void extractContractInformationBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Application.UseWaitCursor = false;
-            Application.DoEvents();
-
-            this.Invoke(new Action(() =>
-            {
-
-                UseWaitCursor = false;
-
-                if (e.Cancelled == true)
-                {
-                    SetStatusLabelAndTimer("Operation was canceled");
-                    MakeErrorSound();
-                }
-                else if (e.Error != null)
-                {
-                    MessageBox.Show($"Operation unsuccessful\n\nReason: {e.Error.Message}", "Error");
-                    if (CheckIfFormIsOpened("Transparent Form")) this.TransparentForm.Close();
-                    ResetStatusStrip();
-                }
-                else
-                {
-                    if (this.InvokeRequired)
-                    {
-                        this.Invoke(new Action(() =>
-                        {
-                            this.LoadingForm.CompleteProgress();
-                            this.LoadingForm.ChangeLabel("Loading Complete");
-                            this.LoadingForm.Refresh();
-                            this.loadingFormTimer.Enabled = true;
-                            if (itemsUpdated > 0) this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s). Company data updated for {itemsUpdated} item(s)", true);
-                            else this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s)");
-                        }));
-                    }
-                    else
-                    {
-                        this.LoadingForm.CompleteProgress();
-                        this.LoadingForm.ChangeLabel("Loading Complete");
-                        this.LoadingForm.Refresh();
-                        this.loadingFormTimer.Enabled = true;
-                        if (itemsUpdated > 0) this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s). Company data updated for {itemsUpdated} item(s)", true);
-                        else this.SetStatusLabelAndTimer($"Contract(s) pulled for {contractsPulled} item(s)");
-                    }
-                }
-
-            }));
-        }
-        private void updateContractInformationBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        //
+        // Update certificate information (currently will not function as certificates no longer contain this data)
+        private void updateCertificateInformationBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)//-
         {
             UseWaitCursor = true;
 
@@ -12283,7 +12595,7 @@ namespace CertusCompanion
 
             itemsUpdated = 0;
             itemsUpToDate = 0;
-            itemsWhereContractUnrecognized = 0;
+            itemsWhereCertificateUnrecognized = 0;
             itemsWithNoCertificate = 0;
 
             // for loading bar
@@ -12295,18 +12607,26 @@ namespace CertusCompanion
             // show loading form if more than 50 items
             if (checkedWorkflowItems.Count > 50)
             {
+                if (this.InvokeRequired) this.Invoke(new Action(() =>
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }));
+                else
+                {
+                    ResetStatusStrip();
+                    if (CheckIfFormIsOpened("Transparent Form")) TransparentForm.Close();
+                }
+
                 DimForm();
 
-                if (TransparentForm.InvokeRequired)
+                if (TransparentForm.InvokeRequired) TransparentForm.Invoke(new Action(() =>
                 {
-                    TransparentForm.Invoke(new Action(() =>
-                    {
-                        LoadingForm.Show(TransparentForm);
-                        LoadingForm.ChangeHeaderLabel("Loading");
-                        LoadingForm.ChangeLabel("Processing the request...");
-                        LoadingForm.Refresh();
-                    }));
-                }
+                    LoadingForm.Show(TransparentForm);
+                    LoadingForm.ChangeHeaderLabel("Loading");
+                    LoadingForm.ChangeLabel("Processing the request...");
+                    LoadingForm.Refresh();
+                }));
                 else
                 {
                     LoadingForm.Show(TransparentForm);
@@ -12332,7 +12652,7 @@ namespace CertusCompanion
             {
                 List<string> companyIdsToCheck = new List<string>();
                 List<Company> companiesToCheck = new List<Company>();
-                Certificate contract = new Certificate();
+                Certificate certificate = new Certificate();
 
                 // keep track of which item is being iterated for the loading bar
                 ++itemOn;
@@ -12355,32 +12675,32 @@ namespace CertusCompanion
                     }
                 }
 
-                // if there's a contract id for the item
-                if (wi.ContractID != null && wi.ContractID != String.Empty)
+                // if there's a certificate id for the item
+                if (wi.CertificateName != null && wi.CertificateName != String.Empty)
                 {
-                    // if the contract id is recognized
-                    if (CertificateDictionary.ContainsKey(wi.ContractID))
+                    // if the certificate id is recognized
+                    if (CertificateDictionary.ContainsKey(wi.CertificateName))
                     {
-                        // get this contract
-                        contract = CertificateDictionary[wi.ContractID];
+                        // get this certificate
+                        certificate = CertificateDictionary[wi.CertificateName];
 
-                        // if any contract related info is different (including the companyName)
-                        if (wi.VendorName != contract.CompanyName || wi.Active != contract.CertificateActive || wi.Active != contract.CertificateCompliant)
+                        // if any certificate related info is different (including the companyName)
+                        if (wi.VendorName != certificate.CompanyName || wi.Active != certificate.CertificateActive || wi.Active != certificate.CertificateCompliant)
                         {
                             // update company only if not the same to preserve the indicator accuracy
-                            if (wi.VendorName != contract.CompanyName)
+                            if (wi.VendorName != certificate.CompanyName)
                             {
-                                wi.VendorName = contract.CompanyName;
+                                wi.VendorName = certificate.CompanyName;
                                 wi.CompanyUpdated = true;
                             }
 
-                            // update contract info
-                            wi.Active = contract.CertificateActive;
-                            wi.Compliant = contract.CertificateCompliant;
-                            wi.NextExpirationDate = contract.NextPolicyExpirationDate;
-                            wi.ContractInformationUpdated = true;
+                            // update certificate info
+                            wi.Active = certificate.CertificateActive;
+                            wi.Compliant = certificate.CertificateCompliant;
+                            wi.NextExpirationDate = certificate.NextPolicyExpirationDate;
+                            wi.CertificateInformationUpdated = true;
 
-                            // an item will be marked as updated even if only the company needs changing... this is fine. companyName is now technically contract info
+                            // an item will be marked as updated even if only the company needs changing... this is fine. companyName is now technically certificate info
                             ++itemsUpdated;
 
                             itemsToUpdate.Add(wi);
@@ -12390,14 +12710,14 @@ namespace CertusCompanion
                             ++itemsUpToDate;
                         }
                     }
-                    else ++itemsWhereContractUnrecognized;
+                    else ++itemsWhereCertificateUnrecognized;
                 }
                 else ++itemsWithNoCertificate;
             }
 
             if (itemsToUpdate != null && itemsToUpdate.Count > 0) UpdateAllLoadedWorkflowItems(itemsToUpdate);
         }
-        private void updateContractInformationBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void updateCertificateInformationBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)//-
         {
             UseWaitCursor = false;
 
@@ -12421,8 +12741,8 @@ namespace CertusCompanion
                         this.LoadingForm.ChangeLabel("Loading Complete");
                         this.LoadingForm.Refresh();
                         this.loadingFormTimer.Enabled = true;
-                        this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
-                            $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized, {itemsWithNoCertificate} w/ no contract(s)", true);
+                        this.SetStatusLabelAndTimer($"{itemsUpdated} certificate(s) updated; {itemsUpToDate + itemsWhereCertificateUnrecognized + itemsWithNoCertificate} not updated - " +
+                            $"{itemsUpToDate} already up to date, {itemsWhereCertificateUnrecognized} certificate(s) unrecognized, {itemsWithNoCertificate} w/ no certificate(s)", true);
                     }));
                 }
                 else
@@ -12431,8 +12751,8 @@ namespace CertusCompanion
                     this.LoadingForm.ChangeLabel("Loading Complete");
                     this.LoadingForm.Refresh();
                     this.loadingFormTimer.Enabled = true;
-                    this.SetStatusLabelAndTimer($"{itemsUpdated} contract(s) updated; {itemsUpToDate + itemsWhereContractUnrecognized + itemsWithNoCertificate} not updated - " +
-                        $"{itemsUpToDate} already up to date, {itemsWhereContractUnrecognized} contract(s) unrecognized - {itemsWithNoCertificate} w/ no contract(s)", true);
+                    this.SetStatusLabelAndTimer($"{itemsUpdated} certificate(s) updated; {itemsUpToDate + itemsWhereCertificateUnrecognized + itemsWithNoCertificate} not updated - " +
+                        $"{itemsUpToDate} already up to date, {itemsWhereCertificateUnrecognized} certificate(s) unrecognized - {itemsWithNoCertificate} w/ no certificate(s)", true);
                 }
             }
         }
@@ -12459,12 +12779,6 @@ namespace CertusCompanion
                 LoadingForm.ShowCloseBtn();
                 LoadingForm.Refresh();
             }
-
-            //this.Invoke(new Action(() => 
-            //{
-            //    LoadingForm.ChangeLabel("Establishing DB Connection...");
-            //    LoadingForm.Refresh();
-            //}));
 #endregion
 
             // establish DB connection
@@ -12678,11 +12992,11 @@ namespace CertusCompanion
             // add to subsource
             foreach (DataRow row in coTable.Rows)
             {
-                Company co = new Company(row["CompanyName"].ToString(), row["CompanyID"].ToString(), row["ClientID"].ToString());
-                co.City = row["City"].ToString();
-
+                string city = row["City"].ToString();
                 string s = row["Name"].ToString();
-                co.State = ti.ToTitleCase(s.ToLower());
+                string state = ti.ToTitleCase(s.ToLower());
+
+                Company co = new Company(row["CompanyName"].ToString(), row["CompanyID"].ToString(), row["ClientID"].ToString(), row["AnalystID"].ToString(), city, state);
 
                 CompaniesSubSource.Add(co);
             }
@@ -12728,7 +13042,7 @@ namespace CertusCompanion
             // add to subsource
             foreach (DataRow row in ctTable.Rows)
             {
-                Certificate ct = new Certificate(row["CompanyCertificateID"].ToString(), row["Name"].ToString(), row["IdentityField"].ToString(), row["ClientID"].ToString());
+                Certificate ct = new Certificate(row["CompanyCertificateID"].ToString(), row["Name"].ToString(), row["IdentityField"].ToString(), row["ClientID"].ToString(),row["CompanyID"].ToString());
 
                 CertificatesSubSource.Add(ct);
             }

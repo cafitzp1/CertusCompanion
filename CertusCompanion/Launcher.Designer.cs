@@ -104,7 +104,7 @@
             // 
             this.CertusCompanionLbl.AutoSize = true;
             this.CertusCompanionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CertusCompanionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.CertusCompanionLbl.ForeColor = System.Drawing.SystemColors.Control;
             this.CertusCompanionLbl.Location = new System.Drawing.Point(58, 74);
             this.CertusCompanionLbl.Name = "CertusCompanionLbl";
             this.CertusCompanionLbl.Size = new System.Drawing.Size(329, 42);
@@ -117,7 +117,7 @@
             this.statusLbl.AutoSize = true;
             this.statusLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLbl.ForeColor = System.Drawing.Color.Gray;
-            this.statusLbl.Location = new System.Drawing.Point(8, 155);
+            this.statusLbl.Location = new System.Drawing.Point(8, 156);
             this.statusLbl.Name = "statusLbl";
             this.statusLbl.Size = new System.Drawing.Size(32, 12);
             this.statusLbl.TabIndex = 4;
