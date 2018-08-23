@@ -911,6 +911,7 @@ namespace CertusCompanion
         // Tools
         private void certusBrowserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // return conditions
             if(certusBrowserOpened)
             {
                 MessageBox.Show("At the moment, the browser can only be opened once per application session. Launching a second instance " +
@@ -918,9 +919,8 @@ namespace CertusCompanion
                     "should have no problems reopening the browser.");
                 return;
             }
-
-            if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0) this.CertusBrowser = new CertusBrowser(SelectedClientID, CompaniesSubSource, CertificatesSubSource);
-            else
+            else if (workflowItemsListView.CheckedItems == null || workflowItemsListView.CheckedItems.Count == 0) this.CertusBrowser = new CertusBrowser(SelectedClientID, CompaniesSubSource, CertificatesSubSource);
+            else // open browser
             {
                 this.Invoke(new Action(() => { SetStatusLabelAndTimer($"Opening certus browser with {workflowItemsListView.CheckedItems.Count} items..."); }));
                 Application.UseWaitCursor = true;
@@ -931,7 +931,7 @@ namespace CertusCompanion
                 List<WorkflowItem> checkedItems = GetWorkflowItemsFromChecked(workflowItemsListView);
                 foreach (WorkflowItem item in checkedItems)
                 {
-                    if (item.AssignedToID == null || item.AssignedToID == "0" || !Char.IsDigit(item.AssignedToID[0]) || item.AssignedToID==String.Empty)
+                    if (item.AssignedToID == null || item.AssignedToID == "0" || item.AssignedToID == String.Empty || !Char.IsDigit(item.AssignedToID[0]))
                     {
                         itemsMissingID = true;
                     }
@@ -1622,13 +1622,6 @@ namespace CertusCompanion
                 return;
             }
 
-            // warn if there's alot of checked items
-            else if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 500)
-            {
-                DialogResult dr = MessageBox.Show("This may take a little while to process with that many items checked. Proceed?", "Warning", MessageBoxButtons.YesNo);
-                if (!(dr == DialogResult.Yes)) return;
-            }
-
             Cursor.Current = Cursors.WaitCursor;
 
             List<WorkflowItem> itemsToPaint = new List<WorkflowItem>();
@@ -1677,13 +1670,6 @@ namespace CertusCompanion
                 SetStatusLabelAndTimer("Items need to be checked for that", 5000);
                 MakeErrorSound();
                 return;
-            }
-
-            // warn if there's alot of checked items
-            else if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 500)
-            {
-                DialogResult dr = MessageBox.Show("This may take a little while to process with that many items checked. Proceed?", "Warning", MessageBoxButtons.YesNo);
-                if (!(dr == DialogResult.Yes)) return;
             }
 
             Cursor.Current = Cursors.WaitCursor;

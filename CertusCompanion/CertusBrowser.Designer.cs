@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CertusBrowser));
             this.statusLbl = new System.Windows.Forms.Label();
             this.browserPanel = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.copyLogBtn = new System.Windows.Forms.Button();
             this.clearLogBtn = new System.Windows.Forms.Button();
             this.testBtn = new System.Windows.Forms.Button();
+            this.menuBtn = new System.Windows.Forms.Button();
             this.customScript3Btn = new System.Windows.Forms.Button();
             this.customScript2Btn = new System.Windows.Forms.Button();
             this.customScript1Btn = new System.Windows.Forms.Button();
@@ -43,7 +43,6 @@
             this.distributeItemsScriptBtn = new System.Windows.Forms.Button();
             this.completeItemsScriptBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
-            this.showPanelBtn = new System.Windows.Forms.Button();
             this.openCompanyBtn = new System.Windows.Forms.Button();
             this.openCertificateBtn = new System.Windows.Forms.Button();
             this.authenticateBtn = new System.Windows.Forms.Button();
@@ -75,6 +74,9 @@
             this.customScript1BackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.customScript2BackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.customScript3BackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.browserSettingsContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.browserPanel.SuspendLayout();
             this.dividerPanel.SuspendLayout();
             this.navBarPanel.SuspendLayout();
@@ -90,6 +92,7 @@
             this.consoleOutputOptionsPanel.SuspendLayout();
             this.certInputContextMenuStrip.SuspendLayout();
             this.companyInputContextMenuStrip.SuspendLayout();
+            this.browserSettingsContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusLbl
@@ -181,6 +184,25 @@
             this.toolTip1.SetToolTip(this.testBtn, "Test Console Output");
             this.testBtn.UseVisualStyleBackColor = false;
             this.testBtn.Click += new System.EventHandler(this.testBtn_Click);
+            // 
+            // menuBtn
+            // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.menuIcon;
+            this.menuBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuBtn.FlatAppearance.BorderSize = 0;
+            this.menuBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.menuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuBtn.ImageKey = "icons8-close-window-50 (1).png";
+            this.menuBtn.Location = new System.Drawing.Point(827, 7);
+            this.menuBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.menuBtn.Name = "menuBtn";
+            this.menuBtn.Size = new System.Drawing.Size(20, 20);
+            this.menuBtn.TabIndex = 0;
+            this.menuBtn.TabStop = false;
+            this.toolTip1.SetToolTip(this.menuBtn, "Show Console Panel");
+            this.menuBtn.UseVisualStyleBackColor = true;
+            this.menuBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuBtn_MouseDown);
             // 
             // customScript3Btn
             // 
@@ -328,25 +350,6 @@
             this.toolTip1.SetToolTip(this.refreshBtn, "Refresh");
             this.refreshBtn.UseVisualStyleBackColor = true;
             this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
-            // 
-            // showPanelBtn
-            // 
-            this.showPanelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.showPanelBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPanelBtn.BackgroundImage")));
-            this.showPanelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.showPanelBtn.FlatAppearance.BorderSize = 0;
-            this.showPanelBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.showPanelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.showPanelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showPanelBtn.ImageKey = "icons8-close-window-50 (1).png";
-            this.showPanelBtn.Location = new System.Drawing.Point(825, 7);
-            this.showPanelBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.showPanelBtn.Name = "showPanelBtn";
-            this.showPanelBtn.Size = new System.Drawing.Size(20, 20);
-            this.showPanelBtn.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.showPanelBtn, "Show Console Panel");
-            this.showPanelBtn.UseVisualStyleBackColor = true;
-            this.showPanelBtn.Click += new System.EventHandler(this.showPanelBtn_Click);
             // 
             // openCompanyBtn
             // 
@@ -499,11 +502,12 @@
             this.navBarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.navBarPanel.Controls.Add(this.navBarSearchBtn);
             this.navBarPanel.Controls.Add(this.navigationComboBox);
-            this.navBarPanel.Location = new System.Drawing.Point(88, 6);
+            this.navBarPanel.Location = new System.Drawing.Point(87, 6);
             this.navBarPanel.Margin = new System.Windows.Forms.Padding(2);
             this.navBarPanel.Name = "navBarPanel";
-            this.navBarPanel.Size = new System.Drawing.Size(729, 23);
-            this.navBarPanel.TabIndex = 3;
+            this.navBarPanel.Size = new System.Drawing.Size(728, 23);
+            this.navBarPanel.TabIndex = 0;
+            this.navBarPanel.TabStop = true;
             // 
             // navBarSearchBtn
             // 
@@ -535,16 +539,16 @@
             this.navigationComboBox.Location = new System.Drawing.Point(20, -1);
             this.navigationComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.navigationComboBox.Name = "navigationComboBox";
-            this.navigationComboBox.Size = new System.Drawing.Size(706, 24);
+            this.navigationComboBox.Size = new System.Drawing.Size(705, 24);
             this.navigationComboBox.TabIndex = 0;
             this.navigationComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.navigationComboBox_KeyDown);
             // 
             // headerPanel
             // 
             this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.headerPanel.Controls.Add(this.menuBtn);
             this.headerPanel.Controls.Add(this.scriptOptionsPanel);
             this.headerPanel.Controls.Add(this.refreshBtn);
-            this.headerPanel.Controls.Add(this.showPanelBtn);
             this.headerPanel.Controls.Add(this.testBtn);
             this.headerPanel.Controls.Add(this.openCompanyBtn);
             this.headerPanel.Controls.Add(this.openCertificateBtn);
@@ -570,7 +574,7 @@
             this.scriptOptionsPanel.Controls.Add(this.viewItemsBtn);
             this.scriptOptionsPanel.Controls.Add(this.distributeItemsScriptBtn);
             this.scriptOptionsPanel.Controls.Add(this.completeItemsScriptBtn);
-            this.scriptOptionsPanel.Location = new System.Drawing.Point(713, 36);
+            this.scriptOptionsPanel.Location = new System.Drawing.Point(716, 36);
             this.scriptOptionsPanel.Name = "scriptOptionsPanel";
             this.scriptOptionsPanel.Size = new System.Drawing.Size(135, 22);
             this.scriptOptionsPanel.TabIndex = 23;
@@ -746,6 +750,39 @@
             this.customScript3BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.customScript3BackgroundWorker_DoWork);
             this.customScript3BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.customScriptBackgroundWorker_RunWorkerCompleted);
             // 
+            // browserSettingsContextMenuStrip
+            // 
+            this.browserSettingsContextMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.browserSettingsContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem,
+            this.showConsoleToolStripMenuItem});
+            this.browserSettingsContextMenuStrip.Name = "contextMenuStrip1";
+            this.browserSettingsContextMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.browserSettingsContextMenuStrip.ShowImageMargin = false;
+            this.browserSettingsContextMenuStrip.Size = new System.Drawing.Size(125, 48);
+            this.browserSettingsContextMenuStrip.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.browserSettingsContextMenuStrip_Closed);
+            this.browserSettingsContextMenuStrip.Opened += new System.EventHandler(this.browserSettingsContextMenuStrip_Opened);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.settingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // showConsoleToolStripMenuItem
+            // 
+            this.showConsoleToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.showConsoleToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
+            this.showConsoleToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
+            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.showConsoleToolStripMenuItem.Text = "Console Panel";
+            this.showConsoleToolStripMenuItem.Click += new System.EventHandler(this.showConsoleToolStripMenuItem_Click);
+            // 
             // CertusBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -780,6 +817,7 @@
             this.certInputContextMenuStrip.PerformLayout();
             this.companyInputContextMenuStrip.ResumeLayout(false);
             this.companyInputContextMenuStrip.PerformLayout();
+            this.browserSettingsContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -800,7 +838,6 @@
         private System.Windows.Forms.Button openCertificateBtn;
         private System.Windows.Forms.Button openCompanyBtn;
         private System.Windows.Forms.Panel headerPanel;
-        private System.Windows.Forms.Button showPanelBtn;
         private System.Windows.Forms.Button testBtn;
         private System.Windows.Forms.Button copyLogBtn;
         private System.Windows.Forms.TextBox intputTbx;
@@ -830,5 +867,9 @@
         private System.ComponentModel.BackgroundWorker customScript1BackgroundWorker;
         private System.ComponentModel.BackgroundWorker customScript2BackgroundWorker;
         private System.ComponentModel.BackgroundWorker customScript3BackgroundWorker;
+        private System.Windows.Forms.Button menuBtn;
+        private System.Windows.Forms.ContextMenuStrip browserSettingsContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
     }
 }

@@ -21,6 +21,7 @@ namespace CertusCompanion
 
         #region Certus Browser Data
         ChromiumWebBrowser chrome;
+        BrowserConfigForm configForm;
         List<WorkflowItem> itemList1;
         MyRenderer myRenderer;
         Dictionary<string, string> itemIDsAndAssignmentIDsDict;
@@ -59,6 +60,7 @@ namespace CertusCompanion
         string customScript1; //...
         string customScript2; //...
         string customScript3; //...
+        private bool contextMenuOpen;
         #endregion
 
         // 
@@ -107,16 +109,18 @@ namespace CertusCompanion
             // change context renderers
             certInputContextMenuStrip.Renderer = myRenderer;
             companyInputContextMenuStrip.Renderer = myRenderer;
+            browserSettingsContextMenuStrip.Renderer = myRenderer;
 
             // register events
             navigationComboBox.KeyDown += navigationComboBox_KeyDown;
             chrome.AddressChanged += Chrome_AddressChanged;
             chrome.StatusMessage += Chrome_StatusMessage;
             chrome.ConsoleMessage += Chrome_ConsoleMessage;
+            menuBtn.FlatAppearance.MouseOverBackColor = menuBtn.FlatAppearance.MouseDownBackColor;
 
             // this is the only way I can get the panel to close properly on form load...
-            this.showPanelBtn_Click(sender, e);
-            this.showPanelBtn_Click(sender, e);
+            this.showConsoleToolStripMenuItem_Click(sender, e);
+            this.showConsoleToolStripMenuItem_Click(sender, e);
 
             // read the configration .txt file
             string configFileContents = ReadConfig();
@@ -1843,17 +1847,32 @@ namespace CertusCompanion
             else MessageBox.Show("No process is currently running.");
         }
         //
-        // Console options
-        //
-        private void showPanelBtn_Click(object sender, EventArgs e)
+        // Browser menu options
+        private void menuBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            browserSettingsContextMenuStrip.Show(menuBtn, new Point(-105, menuBtn.Height + 6));
+        }
+        private void browserSettingsContextMenuStrip_Opened(object sender, EventArgs e)
+        {
+            menuBtn.BackColor = Color.FromArgb(64, 64, 64);
+            //menuBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(27, 27, 27);
+        }
+        private void browserSettingsContextMenuStrip_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            menuBtn.BackColor = Color.FromArgb(27, 27, 27);
+            //menuBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(64, 64, 64);
+        }
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            configForm = new BrowserConfigForm();
+            DialogResult dr = configForm.ShowDialog();
+        }
+        private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // entering full view
             if (!panelVisible)
             {
                 panelVisible = true;
-
-                // change appearance of button 
-                showPanelBtn.BackColor = Color.FromArgb(15,15,15);
 
                 splitContainer1.Panel2Collapsed = false;
                 splitContainer1.SplitterDistance = this.ClientSize.Width - 225;
@@ -1862,12 +1881,11 @@ namespace CertusCompanion
             {
                 panelVisible = false;
 
-                // change appearance of button 
-                showPanelBtn.BackColor = Color.FromArgb(27,27,27);
-
                 splitContainer1.Panel2Collapsed = true;
             }
         }
+        //
+        // Console options
         private void clearLogBtn_Click(object sender, EventArgs e)
         {
             outputTbx.Clear();
@@ -1883,7 +1901,7 @@ namespace CertusCompanion
 #endregion Form Controls
 
         // --- OTHER --- //
-#region Other
+        #region Other
         private void SetCredentials()
         {
             //userName = "cfitzpatrick@bcsops.com";

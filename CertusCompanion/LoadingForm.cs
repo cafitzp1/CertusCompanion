@@ -209,7 +209,8 @@ namespace CertusCompanion
             }
             catch (Exception) { }
         }
-
+        //
+        // form accessibility
         private void LoadingForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.Alt && e.KeyCode == Keys.F4)

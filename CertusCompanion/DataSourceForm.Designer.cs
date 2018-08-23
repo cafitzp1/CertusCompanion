@@ -809,6 +809,7 @@
             this.MinimumSize = new System.Drawing.Size(480, 350);
             this.Name = "DataSourceForm";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Data Sources";
             this.Load += new System.EventHandler(this.DataSources_Load);

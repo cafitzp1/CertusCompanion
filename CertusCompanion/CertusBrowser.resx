@@ -120,43 +120,31 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="showPanelBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAdxJREFUWEftlb9Kw1AUxiOCiIvgLDi5FBMKHdz7AG6dnBU6qLl10K3QpU+gfQEn
-        NyenIi5SzKWD+AZuTi4OgljPl3zGmD/1Jo3SIT+4NPnOOV/uvbk5tSoq5grbU7btudcNfbJKqTTgCW88
-        g1ISCY4crSbyO6w9dpcozwy84EnvEeUk9uhgXZKekOh46sKaWAsMFUc84OV7ijeewUg62CJbuy/BJNwz
-        yoWBB7zgCW/K03G025TCt2DW7inl3KCWCxEvt0nZDPu+s2Nr9S7b97Gl3V3KxqAGtfCAF+V8OF6nHWxf
-        PpNw8v7qO23KxZD31vcn4alXxzvappwJcvzcoKZPeQbkFMtqBjR8ro8PNxlJgBhyuGuDUr4i0LpsLcoh
-        uvK3NONT+vEJSy5qGCqHht5fkdX5jUpO9UO0W+IaGmLIQS5D+Qhmrya8TdzX7tRa5EHDjZvuMgau/VyJ
-        IYfpv/olMCmIb/W0V0PdfAKmyIq/u6WMXF2uLOSf7TycgFxT/h/kE9sLuxy7JTSG/5Z4lyvaLQsR63I9
-        yjgTPWpG3bIQ9fFxTR4QdLmUd/51JpCDXMrlYNLlTLrlr7A4e3jqdlqXQww5qbWRwfQkacnhiLXfLKJt
-        OWswtaJiHrCsTzD8xCa8AltDAAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="distributeItemsBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>179, 17</value>
+    <value>114, 17</value>
   </metadata>
   <metadata name="completeItemsBackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>418, 17</value>
+    <value>353, 17</value>
   </metadata>
   <metadata name="certInputContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>656, 17</value>
+    <value>591, 17</value>
   </metadata>
   <metadata name="statusLblTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>835, 17</value>
+    <value>791, 17</value>
   </metadata>
   <metadata name="companyInputContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>966, 17</value>
+    <value>922, 17</value>
   </metadata>
   <metadata name="customScript1BackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1176, 17</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="customScript2BackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>-20, 41</value>
+    <value>251, 56</value>
   </metadata>
   <metadata name="customScript3BackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>181, 41</value>
+    <value>723, 56</value>
+  </metadata>
+  <metadata name="browserSettingsContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>485, 56</value>
   </metadata>
 </root>

@@ -103,3 +103,4 @@ C:\Users\fitz0\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\Workfl
 C:\Users\fitz0\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\CertusCompanion.exe
 C:\Users\fitz0\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\CertusCompanion.pdb
 C:\Users\fitz0\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\WorkflowManager.csprojAssemblyReference.cache
+C:\Users\fitz0\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\CertusCompanion.BrowserConfigForm.resources

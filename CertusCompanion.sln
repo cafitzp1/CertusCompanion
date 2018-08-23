@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowManager", "CertusCompanion\WorkflowManager.csproj", "{6578E053-4FD9-411D-A2C9-4DA7DB5D0B26}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CertusCompanionSetup", "CertusCompanionSetup\CertusCompanionSetup.vdproj", "{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,13 @@ Global
 		{6578E053-4FD9-411D-A2C9-4DA7DB5D0B26}.Release|x64.Build.0 = Release|Any CPU
 		{6578E053-4FD9-411D-A2C9-4DA7DB5D0B26}.Release|x86.ActiveCfg = Release|x86
 		{6578E053-4FD9-411D-A2C9-4DA7DB5D0B26}.Release|x86.Build.0 = Release|x86
+		{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}.Debug|Any CPU.ActiveCfg = Debug
+		{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}.Debug|x64.ActiveCfg = Debug
+		{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}.Debug|x86.ActiveCfg = Debug
+		{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}.Release|Any CPU.ActiveCfg = Release
+		{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}.Release|x64.ActiveCfg = Release
+		{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}.Release|x86.ActiveCfg = Release
+		{9B3EC8C9-7C7A-41D9-BA66-1221B1C31E02}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

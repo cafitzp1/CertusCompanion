@@ -45,7 +45,7 @@ namespace CertusCompanion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WorkflowManager());
+            Application.Run(new CertusBrowser());
         }
         #endif
 

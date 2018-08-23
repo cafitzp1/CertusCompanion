@@ -161,7 +161,7 @@
             this.CertificateLbl.Location = new System.Drawing.Point(17, 47);
             this.CertificateLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CertificateLbl.Name = "CertificateLbl";
-            this.CertificateLbl.Size = new System.Drawing.Size(50, 13);
+            this.CertificateLbl.Size = new System.Drawing.Size(57, 13);
             this.CertificateLbl.TabIndex = 16;
             this.CertificateLbl.Text = "Certificate:";
             // 
@@ -555,6 +555,7 @@
             this.MinimumSize = new System.Drawing.Size(360, 300);
             this.Name = "ModifyForm";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Modify";
             this.coOuterPanel.ResumeLayout(false);

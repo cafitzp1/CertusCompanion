@@ -134,6 +134,8 @@
             this.Controls.Add(this.CertusCompanionLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Launcher";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Launcher";
             this.loadBackgroundPanel.ResumeLayout(false);

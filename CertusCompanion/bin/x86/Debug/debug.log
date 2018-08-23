@@ -2943,3 +2943,8 @@ C:\fakepath(87,10-42): warning X3571: pow(f, e) will not work for negative f, us
 [0820/062901.145:INFO:CONSOLE(85)] "Mixed Content: The page at 'https://www.bcscertus.com/workflow.aspx?c=36' was loaded over HTTPS, but requested an insecure image 'http://certus-prod-logos.s3-website-us-east-1.amazonaws.com/daef7ae5-baac-455d-8679-9efab14eb56e.png'. This content should also be served over HTTPS.", source: https://www.bcscertus.com/workflow.aspx?c=36 (85)
 [0820/063531.154:INFO:CONSOLE(85)] "Mixed Content: The page at 'https://www.bcscertus.com/workflow.aspx?c=36' was loaded over HTTPS, but requested an insecure image 'http://certus-prod-logos.s3-website-us-east-1.amazonaws.com/daef7ae5-baac-455d-8679-9efab14eb56e.png'. This content should also be served over HTTPS.", source: https://www.bcscertus.com/workflow.aspx?c=36 (85)
 [0820/063550.393:INFO:CONSOLE(123)] "Mixed Content: The page at 'https://www.bcscertus.com/managecertificate.aspx?c=36&co=100804&ct=124978' was loaded over HTTPS, but requested an insecure image 'http://certus-prod-logos.s3-website-us-east-1.amazonaws.com/daef7ae5-baac-455d-8679-9efab14eb56e.png'. This content should also be served over HTTPS.", source: https://www.bcscertus.com/managecertificate.aspx?c=36&co=100804&ct=124978 (123)
+[0822/134617.673:ERROR:backend_impl.cc(1055)] Critical error found -8
+[0822/134617.692:ERROR:shader_disk_cache.cc(238)] Failed to create shader cache entry: -2
+[0822/135747.395:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0822/135747.398:ERROR:broker_win.cc(134)] Error sending sync broker message
+[0822/135747.398:ERROR:command_buffer_proxy_impl.cc(101)] ContextResult::kFatalFailure: AllocateAndMapSharedMemory failed
