@@ -72,6 +72,8 @@
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.saveBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.saveBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // startDateTimePicker
             // 
@@ -261,6 +263,8 @@
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            this.clearBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.clearBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // statusLbl
             // 

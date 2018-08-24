@@ -135,16 +135,15 @@ namespace CertusCompanion
         private string bindedColor3 = "Teal";
         private string bindedColor4 = "Blue";
         private string bindedColor5 = "Black";
-        private string importFileName = "";
-        private string selectSelection = "";
-        private string fromSelection = "";
-        private string whereSelection = "";
+        private string importFileName;
+        private string selectSelection;
+        private string fromSelection;
+        private string whereSelection;
         private string loadedWorkspacePath;
-        private const int tab_margin = 3;
+        private const int TAB_MARGIN = 3;
         private int currentSplitter1Distance = 0;
-        private int splitContainerChild1Panel2MinSize;
         private int itemsInfoAppended;
-        private int nextAvailableButton = 1;
+        private int nextAvailableButton;
         private int itemsWithNoCompany;
         private int itemsWhereCompanyNotRecognized;
         private int itemsWhereCompanyHadDifferentAnalysts;
@@ -204,15 +203,13 @@ namespace CertusCompanion
             PopulateMainFormStatic();
             if (CheckIfFormIsOpened("Launcher"))
             {
-                //Launcher.MoveBar(50);
-
-                Launcher.ReportStatus("Attempting to establish database connection...");
 #if !DEBUG
-                TestDBConnection(5);
+                //Launcher.ReportStatus("Attempting to establish database connection...");
+                //TestDBConnection(5);
+                Thread.Sleep(1000);
 #else
                 Thread.Sleep(1000);
 #endif
-                //Launcher.MoveBar(50);
             }
         }
         private void InstantiateWorkflowManagerData()
@@ -279,6 +276,14 @@ namespace CertusCompanion
                 focusDetailPanelBtn13, focusDetailPanelBtn14, focusDetailPanelBtn15, focusDetailPanelBtn16,
                 focusDetailPanelBtn17, focusDetailPanelBtn18
             };
+
+            // vars
+            bindedColor1 = "Default";
+            bindedColor2 = "Gray";
+            bindedColor3 = "Teal";
+            bindedColor4 = "Blue";
+            bindedColor5 = "Black";
+            nextAvailableButton = 1;
         }
         private void LoadForm()
         {
@@ -666,6 +671,7 @@ namespace CertusCompanion
 
             // clear the details panel
             this.clearItemDetailsBtn.PerformClick();
+            this.ClearReferenceButtons();
 
             // clear query panel
             this.clearQueryOptionsBtn.PerformClick();
@@ -4995,7 +5001,7 @@ namespace CertusCompanion
                 }
             }
 
-            itemButtons[visibleButtons - 1].Text = "item";
+            itemButtons[visibleButtons - 1].Text = "Item";
             itemButtons[visibleButtons - 1].Visible = false;
         }
         private int VisibleItemButtons()
@@ -5014,7 +5020,7 @@ namespace CertusCompanion
         }
         // 
         // The normal viewable controls for the details view
-        private void closeItemButton_Click(object sender, EventArgs e)
+        private void removeReferenceButton_Click(object sender, EventArgs e)
         {
             int i = 0;
             int visibleButtons = VisibleItemButtons();
@@ -5055,6 +5061,16 @@ namespace CertusCompanion
             else
             {
                 ClearItemDetails();
+            }
+        }
+        private void ClearReferenceButtons()
+        {
+            foreach (Button btn in itemButtons)
+            {
+                if (btn.Name == "itemButton0") continue;
+
+                btn.Text = "Item";
+                btn.Visible = false;
             }
         }
         private void openAllLinks_Click(object sender, EventArgs e)
@@ -5541,7 +5557,7 @@ namespace CertusCompanion
                 itemToSave.CompanyUpdated = true;
             }
 
-            if (itemToSave.CertificateName != certificateIdTbx.Text && certificateIdDescLbl.Text == "> Certificate Name")
+            if (itemToSave.CertificateName != certificateIdTbx.Text && certificateNameDescLbl.Text == "> Certificate Name")
             {
                 itemToSave.CertificateName = certificateIdTbx.Text;
                 itemToSave.CertificateInformationUpdated = true;
@@ -5767,14 +5783,14 @@ namespace CertusCompanion
         }
         private void certificateIdDescLbl_Click(object sender, EventArgs e)
         {
-            if (this.certificateIdDescLbl.Text == "> Certificate Name")
+            if (this.certificateNameDescLbl.Text == "> Certificate Name:")
             {
-                this.certificateIdDescLbl.Text = ">> Certus ID:";
+                this.certificateNameDescLbl.Text = ">> Certus ID:";
                 certificateIdTbx.AutoCompleteMode = AutoCompleteMode.None;
             }
-            else if (this.certificateIdDescLbl.Text == ">> Certus ID:")
+            else if (this.certificateNameDescLbl.Text == ">> Certus ID:")
             {
-                this.certificateIdDescLbl.Text = "> Certificate Name";
+                this.certificateNameDescLbl.Text = "> Certificate Name";
                 certificateIdTbx.AutoCompleteMode = AutoCompleteMode.Append;
             }
 
@@ -8754,7 +8770,7 @@ namespace CertusCompanion
 
             companyNameTbx.Text = wi.VendorName;
 
-            if (certificateIdDescLbl.Text == "> Certificate Name")
+            if (certificateNameDescLbl.Text == "> Certificate Name")
                 certificateIdTbx.Text = wi.CertificateName;
             else certificateIdTbx.Text = wi.CertusFileID;
 
@@ -10381,31 +10397,29 @@ namespace CertusCompanion
             if (this.InvokeRequired) this.Invoke(new Action(() => 
             {
                 LoadingForm.ChangeLabel($"Establishing DB Connection...");
-                LoadingForm.ShowCloseBtn("Close");
                 LoadingForm.Refresh();
             }));
             else
             {
                 LoadingForm.ChangeLabel($"Establishing DB Connection...");
-                LoadingForm.ShowCloseBtn("Close");
                 LoadingForm.Refresh();
             }
 
             DBImport import = new DBImport();
             import.InitiateWorkflowImport(ImportFromDBForm.ClientIDSelection, ImportFromDBForm.WorkflowItemsSelection, ImportFromDBForm.WorkflowItemsAmount);
 
-            if (this.InvokeRequired)
+            if (this.InvokeRequired && this.importFromDBBackGroundWorker.IsBusy)
             {
                 this.Invoke(new Action(() => 
                 {
-                    importWorkflowItemsBackgroundWorker.ReportProgress(50);
+                    LoadingForm.MoveBar(50);
                     LoadingForm.ChangeLabel("Adding imported items to the current list..."); 
                     LoadingForm.Refresh();
                 }));
             }
             else
             {
-                importWorkflowItemsBackgroundWorker.ReportProgress(50);
+                LoadingForm.MoveBar(50);
                 LoadingForm.ChangeLabel("Adding imported items to the current list...");
                 LoadingForm.Refresh();
             }
@@ -12755,14 +12769,12 @@ namespace CertusCompanion
             {
                 LoadingForm.Show(this.TransparentForm);
                 LoadingForm.ChangeLabel("Establishing DB Connection...");
-                LoadingForm.ShowCloseBtn();
                 LoadingForm.Refresh();
             }));
             else
             {
                 LoadingForm.Show(this.TransparentForm);
                 LoadingForm.ChangeLabel("Establishing DB Connection...");
-                LoadingForm.ShowCloseBtn();
                 LoadingForm.Refresh();
             }
 #endregion
@@ -12906,13 +12918,11 @@ namespace CertusCompanion
             if (this.InvokeRequired) this.Invoke(new Action(() => 
             {
                 LoadingForm.ChangeLabel("Connecting..."); 
-                LoadingForm.ShowCloseBtn();
                 LoadingForm.Refresh();
             }));
             else
             {
                 LoadingForm.ChangeLabel("Connecting...");
-                LoadingForm.ShowCloseBtn();
                 LoadingForm.Refresh();
             }
 #endregion

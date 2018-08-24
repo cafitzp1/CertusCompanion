@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
+using System.Drawing;
 
 namespace CertusCompanion
 {
@@ -38,11 +39,15 @@ namespace CertusCompanion
         #endregion
 
         //
-        // constructors
+        // form startup
+        //
+        // constructor for new filter, no datasources loaded into the program
         public FiltersForm()
         {
             InitializeComponent();
         }
+        //
+        // new filter, data sources available
         public FiltersForm(List<string> colors, List<Analyst> analysts, List<string> statuses, List<Company> companies, List<Contact> contacts)
         {
             InitializeComponent();
@@ -58,6 +63,8 @@ namespace CertusCompanion
 
             PopulateSources();
         }
+        //
+        // filter already active, data sources available
         public FiltersForm(Filter filter, List<string> colors, List<Analyst> analysts, List<string> statuses, List<Company> companies, List<Contact> contacts)
         {
             InitializeComponent();
@@ -73,8 +80,6 @@ namespace CertusCompanion
 
             PopulateSources();
         }
-        //
-        // methods
         private void FiltersForm_Load(object sender, EventArgs e)
         {
             this.startDateTimePicker.Value = DateTime.Now.Date.AddDays(-1);
@@ -169,6 +174,10 @@ namespace CertusCompanion
             this.startDateTimePicker.Value = currentFilter.StartDate;
             this.endDateTimePicker.Value = currentFilter.EndDate;
         }
+
+        //
+        // form functionality
+        //
         private void Save()
         {
             this.colorCheckChoice = this.colorCheckBox.Checked;
@@ -305,7 +314,11 @@ namespace CertusCompanion
             this.endDateTimePicker.Value = DateTime.Now;
         }
 
-        #region Enable/Disable Tab Stops
+        //
+        // form behavior
+        //
+        // handlers for enabling tabstops whether or not checkboxes are checked
+        //
         private void colorCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.colorCheckBox.Checked) colorComboBox.TabStop = true;
@@ -353,6 +366,14 @@ namespace CertusCompanion
             if (this.senderCheckBox.Checked) senderEmailTbx.TabStop = true;
             else senderEmailTbx.TabStop = false;
         }
-        #endregion
+
+        private void optionBtn_Enter(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
+        }
+        private void optionBtn_Leave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
+        }
     }
 }

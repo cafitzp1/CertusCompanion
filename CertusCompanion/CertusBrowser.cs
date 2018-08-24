@@ -125,17 +125,18 @@ namespace CertusCompanion
             // read the configration .txt file
             string configFileContents = ReadConfig();
 
+            
             // store options
             try
             {
-                homeURI = ExtractConfig(configFileContents, "<< HOMEPAGE >>"); //https://www.bcscertus.com/sign-in.aspx?returnURL=%2fworkflow.aspx%3fc%3d36
-                userName = ExtractConfig(configFileContents, "<< USERNAME >>"); //username
-                passWord = ExtractConfig(configFileContents, "<< PASSWORD >>"); //password
-                completeStatusID = ExtractConfig(configFileContents, "<< COMPLETE STATUS ID >>"); //4
-                assignStatusID = ExtractConfig(configFileContents, "<< DISTRIBUTE STATUS ID >>"); //2
-                customScript1 = ExtractConfig(configFileContents, "<< CUSTOM SCRIPT 1 >>"); //...
-                customScript2 = ExtractConfig(configFileContents, "<< CUSTOM SCRIPT 2 >>"); //...
-                customScript3 = ExtractConfig(configFileContents, "<< CUSTOM SCRIPT 3 >>"); //...
+                homeURI = Properties.Settings.Default.HomePage;
+                userName = Properties.Settings.Default.Username;
+                passWord = Properties.Settings.Default.Password;
+                completeStatusID = Properties.Settings.Default.CompleteID.ToString();
+                assignStatusID = Properties.Settings.Default.DistributeID.ToString();
+                customScript1 = Properties.Settings.Default.CustomScript1;
+                customScript2 = Properties.Settings.Default.CustomScript2;
+                customScript3 = Properties.Settings.Default.CustomScript3;
             }
             catch (Exception m)
             {
@@ -148,8 +149,10 @@ namespace CertusCompanion
             // set buttons
             SetCustomScriptButtons();
         }
-        private string ReadConfig()
+        private string ReadConfig()//-
         {
+            // no longer being used -- configuration file functionality replaced with application Properties.Settings
+
             string s=String.Empty;
 
             using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.BrowserConfiguration.txt"))
@@ -162,8 +165,10 @@ namespace CertusCompanion
 
             return s;
         }
-        private string ExtractConfig(string fileContents, string tag)
+        private string ExtractConfig(string fileContents, string tag)//-
         {
+            // see ReadConfig()
+
             string s = String.Empty;
 
             // get lines beneath tag up to either '#' or '<' symbol IF line is not blank or '...'
@@ -220,12 +225,13 @@ namespace CertusCompanion
 
                 if (customScript1 != null && customScript1 != String.Empty && customScript1 != "...")
                 {
-                    // write
 #if DEBUG
+                    /* // snippet is for testing when running only the browser and not WorkflowManager first
                     itemIDs = new List<string>();
                     itemIDs.Add("123");
                     itemIDs.Add("234");
                     itemIDs.Add("345");
+                    */
 #endif
 
                     if (itemIDs != null && itemIDs.Count > 0)
@@ -256,6 +262,12 @@ namespace CertusCompanion
         }
         private string AddTransferArrayFunctionToScript(string script)
         {
+            // method will insert the javascript code needed for declaring and instantiating an array of items (checked items brought over from WorkflowManager.cs)
+            // prior to the custom script's beginning (array instantiated in javascript within the scope of the user entered script). If user decides to use the data,
+            // user only has to call the function and save it to their own variable prior to the execution of their script. ex: var myData = transferArray();
+            // Funciton returns the array (this array is only a IDs <string> at the moment). If user decides not to use the array, the code is still there but user
+            // does not have to call the function.
+
             string s = script;
 
             string fScript =
@@ -1850,7 +1862,7 @@ namespace CertusCompanion
         // Browser menu options
         private void menuBtn_MouseDown(object sender, MouseEventArgs e)
         {
-            browserSettingsContextMenuStrip.Show(menuBtn, new Point(-105, menuBtn.Height + 6));
+            browserSettingsContextMenuStrip.Show(menuBtn, new Point(-145, menuBtn.Height + 6));
         }
         private void browserSettingsContextMenuStrip_Opened(object sender, EventArgs e)
         {

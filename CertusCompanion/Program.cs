@@ -26,7 +26,6 @@ namespace CertusCompanion
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             WorkflowManager workflowManager = new WorkflowManager();
-            workflowManager.WindowState = FormWindowState.Maximized;
 
             // delay startup to show the launch form
             Launcher.ReportStatus("Launching...");
@@ -45,7 +44,7 @@ namespace CertusCompanion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CertusBrowser());
+            Application.Run(new WorkflowManager());
         }
         #endif
 

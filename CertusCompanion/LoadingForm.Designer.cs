@@ -159,6 +159,8 @@
             this.saveBtn.Visible = false;
             this.saveBtn.VisibleChanged += new System.EventHandler(this.saveBtn_VisibleChanged);
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.saveBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.saveBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // radioButton3
             // 
@@ -202,7 +204,7 @@
             // closeBtn
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.SystemColors.Control;
@@ -215,6 +217,8 @@
             this.closeBtn.UseVisualStyleBackColor = true;
             this.closeBtn.Visible = false;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            this.closeBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.closeBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // statusLabel
             // 

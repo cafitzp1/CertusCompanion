@@ -155,7 +155,7 @@
             this.focusDetailPanelBtn1 = new System.Windows.Forms.Button();
             this.documentWorkflowItemIdTbx = new System.Windows.Forms.TextBox();
             this.actionDetailPanelBtn1 = new System.Windows.Forms.Button();
-            this.certificateIdDescLbl = new System.Windows.Forms.Label();
+            this.certificateNameDescLbl = new System.Windows.Forms.Label();
             this.detailPanel3 = new System.Windows.Forms.Panel();
             this.focusDetailPanelBtn3 = new System.Windows.Forms.Button();
             this.actionDetailPanelBtn3 = new System.Windows.Forms.Button();
@@ -1618,7 +1618,7 @@
             this.closeItemTabBtn.TabStop = false;
             this.buttonDescToolTip.SetToolTip(this.closeItemTabBtn, "Remove Reference(s) (Ctrl+Shift+X)");
             this.closeItemTabBtn.UseVisualStyleBackColor = false;
-            this.closeItemTabBtn.Click += new System.EventHandler(this.closeItemButton_Click);
+            this.closeItemTabBtn.Click += new System.EventHandler(this.removeReferenceButton_Click);
             this.closeItemTabBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.closeItemTabBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
@@ -1726,7 +1726,7 @@
             this.closeItemBtn2.Text = "X";
             this.buttonDescToolTip.SetToolTip(this.closeItemBtn2, "Remove Reference(s) (Ctrl+Shift+X)");
             this.closeItemBtn2.UseVisualStyleBackColor = false;
-            this.closeItemBtn2.Click += new System.EventHandler(this.closeItemButton_Click);
+            this.closeItemBtn2.Click += new System.EventHandler(this.removeReferenceButton_Click);
             this.closeItemBtn2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.closeItemBtn2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
@@ -2591,7 +2591,7 @@
             this.splitterPanelSection1.Controls.Add(this.detailPanel2);
             this.splitterPanelSection1.Controls.Add(this.documentWorkflowItemIdDescLbl);
             this.splitterPanelSection1.Controls.Add(this.detailPanel1);
-            this.splitterPanelSection1.Controls.Add(this.certificateIdDescLbl);
+            this.splitterPanelSection1.Controls.Add(this.certificateNameDescLbl);
             this.splitterPanelSection1.Controls.Add(this.detailPanel3);
             this.splitterPanelSection1.Controls.Add(this.detailPanel4);
             this.splitterPanelSection1.Controls.Add(this.companyNameDescLbl);
@@ -2775,18 +2775,18 @@
             this.actionDetailPanelBtn1.TabStop = false;
             this.actionDetailPanelBtn1.UseVisualStyleBackColor = false;
             // 
-            // certificateIdDescLbl
+            // certificateNameDescLbl
             // 
-            this.certificateIdDescLbl.AutoSize = true;
-            this.certificateIdDescLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.certificateIdDescLbl.Location = new System.Drawing.Point(1, 56);
-            this.certificateIdDescLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.certificateIdDescLbl.Name = "certificateIdDescLbl";
-            this.certificateIdDescLbl.Size = new System.Drawing.Size(80, 13);
-            this.certificateIdDescLbl.TabIndex = 0;
-            this.certificateIdDescLbl.Text = "> Certificate ID:";
-            this.certificateIdDescLbl.Click += new System.EventHandler(this.certificateIdDescLbl_Click);
-            this.certificateIdDescLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.changeableDescLbl_MouseMove);
+            this.certificateNameDescLbl.AutoSize = true;
+            this.certificateNameDescLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.certificateNameDescLbl.Location = new System.Drawing.Point(1, 56);
+            this.certificateNameDescLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.certificateNameDescLbl.Name = "certificateNameDescLbl";
+            this.certificateNameDescLbl.Size = new System.Drawing.Size(97, 13);
+            this.certificateNameDescLbl.TabIndex = 0;
+            this.certificateNameDescLbl.Text = "> Certificate Name:";
+            this.certificateNameDescLbl.Click += new System.EventHandler(this.certificateIdDescLbl_Click);
+            this.certificateNameDescLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.changeableDescLbl_MouseMove);
             // 
             // detailPanel3
             // 
@@ -4468,7 +4468,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(269, 378);
+            this.importPanel.Size = new System.Drawing.Size(270, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4482,7 +4482,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(168, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(169, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4492,7 +4492,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(149, -1);
+            this.button26.Location = new System.Drawing.Point(150, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4514,7 +4514,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(145, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(146, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4545,7 +4545,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(256, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(257, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4557,7 +4557,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(174, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(175, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4618,7 +4618,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsUpdatedTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(174, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(175, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4683,7 +4683,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(168, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(169, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4693,7 +4693,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(149, -1);
+            this.button22.Location = new System.Drawing.Point(150, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4715,7 +4715,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(145, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(146, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4793,7 +4793,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(168, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(169, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4803,7 +4803,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(149, -1);
+            this.button24.Location = new System.Drawing.Point(150, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4825,7 +4825,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(145, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(146, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4875,7 +4875,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(174, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(175, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -6924,7 +6924,7 @@
         private System.Windows.Forms.Button actionDetailPanelBtn1;
         private System.Windows.Forms.TextBox documentWorkflowItemIdTbx;
         private System.Windows.Forms.Button focusDetailPanelBtn1;
-        private System.Windows.Forms.Label certificateIdDescLbl;
+        private System.Windows.Forms.Label certificateNameDescLbl;
         private System.Windows.Forms.Label fileNameDescLbl;
         private System.Windows.Forms.Panel detailPanel3;
         private System.Windows.Forms.Button actionDetailPanelBtn3;

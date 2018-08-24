@@ -96,6 +96,8 @@
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            this.clearBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.clearBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // emailDateCheckBox
             // 
@@ -214,6 +216,8 @@
             this.exportBtn.Text = "Export";
             this.exportBtn.UseVisualStyleBackColor = true;
             this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
+            this.exportBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.exportBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // fieldsLbl
             // 
@@ -281,6 +285,7 @@
             this.presetsComboBox.Name = "presetsComboBox";
             this.presetsComboBox.Size = new System.Drawing.Size(116, 21);
             this.presetsComboBox.TabIndex = 0;
+            this.presetsComboBox.TabStop = false;
             this.presetsComboBox.SelectedIndexChanged += new System.EventHandler(this.presetsComboBox_SelectedIndexChanged);
             // 
             // subjectLineCheckBox
@@ -549,6 +554,8 @@
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.cancelBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.cancelBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // ExportForm
             // 
@@ -593,6 +600,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Export Options";
+            this.Load += new System.EventHandler(this.ExportForm_Load);
             this.dividerPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.borderPanel1.ResumeLayout(false);

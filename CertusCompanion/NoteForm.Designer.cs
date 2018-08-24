@@ -61,10 +61,11 @@
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(50, 18);
             this.saveBtn.TabIndex = 1;
-            this.saveBtn.TabStop = false;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.saveBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.saveBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // cancelBtn
             // 
@@ -79,10 +80,11 @@
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(50, 18);
             this.cancelBtn.TabIndex = 2;
-            this.cancelBtn.TabStop = false;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = false;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.cancelBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.cancelBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // NoteForm
             // 
@@ -101,6 +103,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Note";
+            this.Load += new System.EventHandler(this.NoteForm_Load);
             this.Shown += new System.EventHandler(this.NoteForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();

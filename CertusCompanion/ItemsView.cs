@@ -68,6 +68,9 @@ namespace CertusCompanion
             int x = Application.OpenForms[0].Location.X + (Application.OpenForms[0].Bounds.Width / 2 - this.Width / 2);
             int y = Application.OpenForms[0].Location.Y + (Application.OpenForms[0].Bounds.Height / 2 - this.Height / 2);
             this.Location = new Point(x, y);
+
+            // should focus the export btn
+            exportBtn.Focus();
         }
         #endregion
 
@@ -505,6 +508,14 @@ namespace CertusCompanion
             //    CorrectColumnHeaderSize(viewColumnHeader5);
             //}
             //else CorrectColumnHeaderSize(viewColumnHeader4);
+        }
+        private void optionBtn_Enter(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
+        }
+        private void optionBtn_Leave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
         }
         #endregion
 

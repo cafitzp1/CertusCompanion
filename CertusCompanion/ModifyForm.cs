@@ -22,11 +22,13 @@ namespace CertusCompanion
         #endregion
 
         //
-        // constructor
+        // constructor for no data sources
         public ModifyForm()
         {
             InitializeComponent();
         }
+        //
+        // constructor for data sources
         public ModifyForm(List<Company> companiesDS, List<Certificate> CertificatesDS, List<Analyst> analysts, List<string> statuses)
         {
             InitializeComponent();
@@ -96,9 +98,13 @@ namespace CertusCompanion
 
             this.ShowInTaskbar = false;
         }
+        private void ModifyForm_Load(object sender, EventArgs e)
+        {
+            this.cancelBtn.Focus();
+        }
 
         //
-        // methods
+        // form functionality
         private void anTbx_TextChanged(object sender, EventArgs e)
         {
             if (analystNames == null || analystNames.Count == 0) return;
@@ -175,6 +181,20 @@ namespace CertusCompanion
             }
             catch (Exception) { }
         }
+
+        //
+        // form behavior
+        private void optionBtn_Enter(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
+        }
+        private void optionBtn_Leave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
+        }
+
+        //
+        // form accessibility
         private void CloseForm()
         {
             try

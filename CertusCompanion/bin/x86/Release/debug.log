@@ -1,0 +1,2 @@
+[0820/180140.535:ERROR:gles2_command_buffer_stub.cc(226)] ContextResult::kFatalFailure: Failed to create surface.
+[0820/180140.551:ERROR:gpu_process_transport_factory.cc(1029)] Lost UI shared context.

@@ -14,17 +14,16 @@ namespace CertusCompanion
     {
         public string Note { get; set; }
 
+        //
+        // startup
         public NoteForm()
         {
             InitializeComponent();
         }
-
-        private void NoteForm_Shown(object sender, EventArgs e)
+        private void NoteForm_Load(object sender, EventArgs e)
         {
             noteTbx.Focus();
-            noteTbx.SelectAll();
         }
-
         public void Populate(WorkflowItem item)
         {
             this.Note = item.Note;
@@ -32,6 +31,8 @@ namespace CertusCompanion
             this.noteTbx.Text = item.Note;
         }
 
+        //
+        // form functionality
         private void saveBtn_Click(object sender, EventArgs e)
         {
             this.Note = noteTbx.Text;
@@ -40,7 +41,31 @@ namespace CertusCompanion
 
             CloseForm();
         }
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
 
+            CloseForm();
+        }
+
+        //
+        // form behavior
+        private void NoteForm_Shown(object sender, EventArgs e)
+        {
+            noteTbx.Focus();
+            noteTbx.SelectAll();
+        }
+        private void optionBtn_Enter(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
+        }
+        private void optionBtn_Leave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
+        }
+
+        //
+        // form accessibility
         private void CloseForm()
         {
             try
@@ -56,13 +81,6 @@ namespace CertusCompanion
                 this.Close();
             }
             catch (Exception) { }
-        }
-
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-
-            CloseForm();
         }
     }
 }

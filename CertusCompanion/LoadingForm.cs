@@ -20,8 +20,9 @@ namespace CertusCompanion
         public string SelectedComboBoxText { get; set; }
         public int SelectedRadioButton { get; set; }
         #endregion  
+
         //
-        // constructor
+        // blank constructor
         public LoadingForm()
         {
             InitializeComponent();
@@ -35,8 +36,9 @@ namespace CertusCompanion
             this.loadForegroundPanel.Width = 0;
             this.barWidth = this.loadBackgroundPanel.Width-1;
         }
+
         //
-        // loading form manipulation methods
+        // loading form manipulation
         public void ChangeLabel(string label)
         {
             this.statusLabel.Text = label;   
@@ -86,6 +88,9 @@ namespace CertusCompanion
         {
             closeBtn.Visible = false;
         }
+
+        //
+        // form style changes
         public void FormatForReport(int pixelsToMove)
         {
             int fix = pixelsToMove;
@@ -155,6 +160,9 @@ namespace CertusCompanion
 
             saveBtn.Visible = true;
         }
+
+        //
+        // functionality
         private void closeBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -188,11 +196,9 @@ namespace CertusCompanion
 
             CloseForm();
         }
-        private void saveBtn_VisibleChanged(object sender, EventArgs e)
-        {
-            saveBtn.FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
-            closeBtn.FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
-        }
+
+        //
+        // form accessibility
         private void CloseForm()
         {
             try
@@ -209,8 +215,6 @@ namespace CertusCompanion
             }
             catch (Exception) { }
         }
-        //
-        // form accessibility
         private void LoadingForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.Alt && e.KeyCode == Keys.F4)
@@ -222,6 +226,21 @@ namespace CertusCompanion
                 if (saveBtn.Visible) saveBtn.PerformClick();
                 else closeBtn.PerformClick();
             }
+        }
+
+        //
+        // form behavior
+        private void optionBtn_Enter(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
+        }
+        private void optionBtn_Leave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
+        }
+        private void saveBtn_VisibleChanged(object sender, EventArgs e)
+        {
+            //
         }
     }
 }

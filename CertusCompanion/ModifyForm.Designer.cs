@@ -187,10 +187,12 @@
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(50, 18);
-            this.cancelBtn.TabIndex = 8;
+            this.cancelBtn.TabIndex = 0;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.cancelBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.cancelBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // saveBtn
             // 
@@ -207,6 +209,8 @@
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.saveBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.saveBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // coOuterPanel
             // 
@@ -558,6 +562,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Modify";
+            this.Load += new System.EventHandler(this.ModifyForm_Load);
             this.coOuterPanel.ResumeLayout(false);
             this.coInnerPanel.ResumeLayout(false);
             this.coInnerPanel.PerformLayout();

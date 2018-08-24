@@ -85,14 +85,12 @@ namespace CertusCompanion
                 if (Application.OpenForms[0].InvokeRequired) Application.OpenForms[0].Invoke(new Action(() =>
                 {
                     (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Executing query...");
-                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
                     (Application.OpenForms["LoadingForm"] as LoadingForm).HideCloseBtn();
                     (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
                 }));
                 else
                 {
                     (Application.OpenForms["LoadingForm"] as LoadingForm).ChangeLabel($"Executing query...");
-                    (Application.OpenForms["LoadingForm"] as LoadingForm).MoveBar(25);
                     (Application.OpenForms["LoadingForm"] as LoadingForm).HideCloseBtn();
                     (Application.OpenForms["LoadingForm"] as LoadingForm).Refresh();
                 }

@@ -102,7 +102,7 @@
             this.statusLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.statusLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLbl.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.statusLbl.Location = new System.Drawing.Point(2, 479);
+            this.statusLbl.Location = new System.Drawing.Point(1, 481);
             this.statusLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.statusLbl.Name = "statusLbl";
             this.statusLbl.Size = new System.Drawing.Size(70, 13);
@@ -759,7 +759,7 @@
             this.browserSettingsContextMenuStrip.Name = "contextMenuStrip1";
             this.browserSettingsContextMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.browserSettingsContextMenuStrip.ShowImageMargin = false;
-            this.browserSettingsContextMenuStrip.Size = new System.Drawing.Size(125, 48);
+            this.browserSettingsContextMenuStrip.Size = new System.Drawing.Size(164, 48);
             this.browserSettingsContextMenuStrip.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.browserSettingsContextMenuStrip_Closed);
             this.browserSettingsContextMenuStrip.Opened += new System.EventHandler(this.browserSettingsContextMenuStrip_Opened);
             // 
@@ -769,7 +769,7 @@
             this.settingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -779,8 +779,8 @@
             this.showConsoleToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
             this.showConsoleToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.showConsoleToolStripMenuItem.Text = "Console Panel";
+            this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.showConsoleToolStripMenuItem.Text = "Console Panel             ";
             this.showConsoleToolStripMenuItem.Click += new System.EventHandler(this.showConsoleToolStripMenuItem_Click);
             // 
             // CertusBrowser

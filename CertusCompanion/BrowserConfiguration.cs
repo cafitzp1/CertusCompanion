@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace CertusCompanion
             customScript2Tbx.Text = Properties.Settings.Default.CustomScript2;
             customScript3Tbx.Text = Properties.Settings.Default.CustomScript3;
         }
+
         //
         // form functionality
         private void saveBtn_Click(object sender, EventArgs e)
@@ -49,12 +51,26 @@ namespace CertusCompanion
 
             Properties.Settings.Default.Save();
 
+            DialogResult dr = MessageBox.Show("Changes saved. In order for the new settings to take effect, you'll have to restart the browser.");
+
             CloseForm();
         }
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             CloseForm();
         }
+
+        //
+        // form behavior
+        private void optionBtn_Enter(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
+        }
+        private void optionBtn_Leave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
+        }
+
         //
         // form accessibility
         private void CloseForm()
@@ -79,16 +95,6 @@ namespace CertusCompanion
             {
                 this.CloseForm();
             }
-        }
-        //
-        // form behavior
-        private void optionBtn_Enter(object sender, EventArgs e)
-        {
-            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.Highlight);
-        }
-        private void optionBtn_Leave(object sender, EventArgs e)
-        {
-            (sender as Button).FlatAppearance.BorderColor = Color.FromKnownColor(KnownColor.WindowFrame);
         }
     }
 }

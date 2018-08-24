@@ -94,7 +94,7 @@ namespace CertusCompanion
             acceptableHeaderValuesAndTheirIndexes = new List<Tuple<int, string>>();
 
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "DocumentWorkflowItemID"));
-            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CertificateID"));
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "ContractID"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Vendor"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company")); //same as above
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "VendorID"));
@@ -176,7 +176,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "CertificateID," +
+                    "ContractID," +
                     "CompanyName," +
                     "Active," +
                     "Compliant," +
@@ -198,7 +198,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "CertificateID," +
+                    "ContractID," +
                     "SubjectLine," +
                     "Active," +
                     "Compliant," +
@@ -222,7 +222,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "CertificateID," +
+                    "ContractID," +
                     "Vendor," +
                     "Active," +
                     "Compliant," +
@@ -246,7 +246,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "CertificateID," +
+                    "ContractID," +
                     "Vendor," +
                     "Active," +
                     "Compliant," +
@@ -275,7 +275,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "CertificateID," +
+                    "ContractID," +
                     "Vendor," +
                     "VendorID," +
                     "WorkflowAnalyst," +
@@ -299,7 +299,7 @@ namespace CertusCompanion
                 (
                     csvFileHeaderLine ==
                     "DocumentWorkflowItemID," +
-                    "CertificateID," +
+                    "ContractID," +
                     "Vendor," +
                     "VendorID," +
                     "ClientID," +

@@ -70,7 +70,8 @@
             this.viewColorsCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.viewColorsCheckBox.Name = "viewColorsCheckBox";
             this.viewColorsCheckBox.Size = new System.Drawing.Size(81, 17);
-            this.viewColorsCheckBox.TabIndex = 129;
+            this.viewColorsCheckBox.TabIndex = 0;
+            this.viewColorsCheckBox.TabStop = false;
             this.viewColorsCheckBox.Text = "View Colors";
             this.viewColorsCheckBox.UseVisualStyleBackColor = true;
             this.viewColorsCheckBox.Visible = false;
@@ -103,7 +104,8 @@
             this.itemsListView.Name = "itemsListView";
             this.itemsListView.OwnerDraw = true;
             this.itemsListView.Size = new System.Drawing.Size(746, 352);
-            this.itemsListView.TabIndex = 125;
+            this.itemsListView.TabIndex = 0;
+            this.itemsListView.TabStop = false;
             this.itemsListView.UseCompatibleStateImageBehavior = false;
             this.itemsListView.View = System.Windows.Forms.View.Details;
             this.itemsListView.VirtualListSize = 100000;
@@ -175,7 +177,7 @@
             this.searchTbxActiveBorder.Location = new System.Drawing.Point(617, 1);
             this.searchTbxActiveBorder.Name = "searchTbxActiveBorder";
             this.searchTbxActiveBorder.Size = new System.Drawing.Size(157, 19);
-            this.searchTbxActiveBorder.TabIndex = 19;
+            this.searchTbxActiveBorder.TabIndex = 0;
             // 
             // searchTbxInactiveBorder
             // 
@@ -187,7 +189,7 @@
             this.searchTbxInactiveBorder.Location = new System.Drawing.Point(1, 1);
             this.searchTbxInactiveBorder.Name = "searchTbxInactiveBorder";
             this.searchTbxInactiveBorder.Size = new System.Drawing.Size(155, 17);
-            this.searchTbxInactiveBorder.TabIndex = 2;
+            this.searchTbxInactiveBorder.TabIndex = 0;
             // 
             // searchTbx
             // 
@@ -202,7 +204,8 @@
             this.searchTbx.Margin = new System.Windows.Forms.Padding(15);
             this.searchTbx.Name = "searchTbx";
             this.searchTbx.Size = new System.Drawing.Size(147, 13);
-            this.searchTbx.TabIndex = 15;
+            this.searchTbx.TabIndex = 0;
+            this.searchTbx.TabStop = false;
             this.searchTbx.Text = "Search Items (Ctrl+F)";
             this.searchTbx.TextChanged += new System.EventHandler(this.searchTbx_TextChanged);
             this.searchTbx.Enter += new System.EventHandler(this.searchTbx_Enter);
@@ -236,7 +239,8 @@
             this.btnsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.btnsPanel.Name = "btnsPanel";
             this.btnsPanel.Size = new System.Drawing.Size(788, 29);
-            this.btnsPanel.TabIndex = 127;
+            this.btnsPanel.TabIndex = 0;
+            this.btnsPanel.TabStop = true;
             // 
             // exportBtn
             // 
@@ -249,10 +253,12 @@
             this.exportBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exportBtn.Name = "exportBtn";
             this.exportBtn.Size = new System.Drawing.Size(50, 18);
-            this.exportBtn.TabIndex = 16;
+            this.exportBtn.TabIndex = 0;
             this.exportBtn.Text = "Export";
             this.exportBtn.UseVisualStyleBackColor = false;
             this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
+            this.exportBtn.Enter += new System.EventHandler(this.optionBtn_Enter);
+            this.exportBtn.Leave += new System.EventHandler(this.optionBtn_Leave);
             // 
             // footerPanel
             // 
