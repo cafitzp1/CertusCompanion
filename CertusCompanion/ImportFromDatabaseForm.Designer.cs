@@ -32,7 +32,7 @@
             this.workflowItemsLbl = new System.Windows.Forms.Label();
             this.dividerPanel = new System.Windows.Forms.Panel();
             this.dividerLbl = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBar = new System.Windows.Forms.TrackBar();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.importBtn = new System.Windows.Forms.Button();
             this.addAndUpdateCheckBox = new System.Windows.Forms.CheckBox();
@@ -47,7 +47,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dividerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             this.clientPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -99,19 +99,19 @@
             this.dividerLbl.Size = new System.Drawing.Size(394, 2);
             this.dividerLbl.TabIndex = 0;
             // 
-            // trackBar1
+            // trackBar
             // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.Enabled = false;
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(13, 154);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(406, 22);
-            this.trackBar1.TabIndex = 2;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackBar.AutoSize = false;
+            this.trackBar.Enabled = false;
+            this.trackBar.LargeChange = 1;
+            this.trackBar.Location = new System.Drawing.Point(13, 154);
+            this.trackBar.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBar.Name = "trackBar";
+            this.trackBar.Size = new System.Drawing.Size(406, 22);
+            this.trackBar.TabIndex = 2;
+            this.trackBar.Scroll += new System.EventHandler(this.trackBar_Scroll);
             // 
             // cancelBtn
             // 
@@ -211,6 +211,8 @@
             this.clientComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.clientComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.clientComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.clientComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.clientComboBox.DropDownWidth = 300;
             this.clientComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clientComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientComboBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -232,7 +234,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Non-completed";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -245,7 +247,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Most Recent...";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -258,7 +260,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Most Recent (Non-completed)...";
             this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -271,7 +273,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Most Recent (Completed)...";
             this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // panel1
             // 
@@ -315,7 +317,7 @@
             this.Controls.Add(this.addAndUpdateCheckBox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.importBtn);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.trackBar);
             this.Controls.Add(this.dividerPanel);
             this.Controls.Add(this.workflowItemsLbl);
             this.Controls.Add(this.clientLbl);
@@ -328,7 +330,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Import From Database";
             this.dividerPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             this.clientPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -341,7 +343,7 @@
         private System.Windows.Forms.Label workflowItemsLbl;
         private System.Windows.Forms.Panel dividerPanel;
         private System.Windows.Forms.Label dividerLbl;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button importBtn;
         private System.Windows.Forms.CheckBox addAndUpdateCheckBox;

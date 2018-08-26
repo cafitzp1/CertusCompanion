@@ -48,20 +48,20 @@ namespace CertusCompanion
                 clientComboBox.Items.Add($"{o.Name} <{o.ClientID}>");
             }
         }
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void trackBar_Scroll(object sender, EventArgs e)
         {
-            tickCountLbl.Text = (trackBar1.Value * 5000).ToString();
+            tickCountLbl.Text = (trackBar.Value * 5000).ToString();
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
-                trackBar1.Enabled = false;
+                trackBar.Enabled = false;
                 tickCountLbl.Visible = false;
             }
             else
             {
-                trackBar1.Enabled = true;
+                trackBar.Enabled = true;
                 tickCountLbl.Visible = true;
             }
         }
@@ -107,6 +107,7 @@ namespace CertusCompanion
         }
         private bool FieldCheck()
         {
+            // no client in tbx
             if (clientComboBox.Text == String.Empty || clientComboBox.Text == null)
             {
                 statusLbl.Visible = true;
@@ -114,6 +115,7 @@ namespace CertusCompanion
                 return false;
             }
 
+            // client invalid
             if (clientComboBox.Items != null && clientComboBox.Items.Count > 0 && !clientComboBox.Items.Contains(clientComboBox.Text))
             {
                 statusLbl.Visible = true;
@@ -121,6 +123,18 @@ namespace CertusCompanion
                 return false;
             }
 
+            // invalid character in cient text
+            foreach (char c in clientComboBox.Text)
+            {
+                if (c==';')
+                {
+                    statusLbl.Visible = true;
+                    statusLbl.Text = "Invalid character in Cient selection";
+                    return false;
+                }
+            }
+
+            // client id missing
             if (!clientComboBox.Text.Contains("<") || !clientComboBox.Text.Contains(">"))
             {
                 statusLbl.Visible = true;
@@ -128,6 +142,7 @@ namespace CertusCompanion
                 return false;
             }
 
+            // no option selected
             if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked && !radioButton4.Checked)
             {
                 statusLbl.Visible = true;
@@ -135,6 +150,7 @@ namespace CertusCompanion
                 return false;
             }
 
+            // no amount selected
             if (!radioButton1.Checked && tickCountLbl.Text == "0")
             {
                 statusLbl.Visible = true;

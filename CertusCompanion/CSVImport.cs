@@ -54,7 +54,7 @@ namespace CertusCompanion
             this.currentImportCertificates = new List<Certificate>();
             this.currentImportCompanies = new List<Company>();
         }
-        
+
         //
         // workflow Import
         private void WorkflowImportRouter(int i)
@@ -94,11 +94,14 @@ namespace CertusCompanion
             acceptableHeaderValuesAndTheirIndexes = new List<Tuple<int, string>>();
 
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "DocumentWorkflowItemID"));
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "ItemID")); // goes with DocumentWorkflowItemID
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "ContractID"));
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Certificate")); // goes with ContractID
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CertificateName")); // goes with ContractID
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Vendor"));
-            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company")); //same as above
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Company")); // goes with Vendor
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "VendorID"));
-            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CompanyID")); // same as above
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CompanyID")); // goes with VendorID
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "ClientID"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Active"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Compliant"));
@@ -109,8 +112,11 @@ namespace CertusCompanion
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CompanyAnalyst"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CompanyAnalystID"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "EmailDate"));
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Date")); // goes with EmailDate
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "EmailFromAddress"));
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Sender")); // goes with EmailFromAddress
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "SubjectLine"));
+            acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "EmailSubject")); // goes with SubjectLine
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "EmailBody"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "Status"));
             acceptableHeaderValuesAndTheirIndexes.Add(new Tuple<int, string>(-1, "CertusFileID"));
@@ -165,7 +171,7 @@ namespace CertusCompanion
             }
 
             // right now, return if DocumentWorkflowItemID is not in index 0
-            if (acceptableHeaderValuesAndTheirIndexes[0].Item1 != 0)
+            if (acceptableHeaderValuesAndTheirIndexes[0].Item1 != 0 || acceptableHeaderValuesAndTheirIndexes[1].Item1 != 0)
             {
                 throw new WorkflowItemImportNotCorrectFormatException("CSV file is not recognized as an acceptable Workflow Item Export. 'DocumentWorkflowItemID' must be in the first column.");
             }
@@ -320,6 +326,19 @@ namespace CertusCompanion
             {
                 this.ImportType += " (WIR 4.0)";
             }
+            else if
+                (
+                    csvFileHeaderLine ==
+                    "Item ID," +
+                    "Company," +
+                    "Certificate," +
+                    "Date," +
+                    "Sender," +
+                    "Email Subject"
+                )
+            {
+                this.ImportType += " (WIR C)";
+            }
             else
             {
                 this.ImportType = "(Unrecognized)";
@@ -359,15 +378,31 @@ namespace CertusCompanion
                 int indx = 0;
                 string documentWorkflowItemID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
+
                 // --- CertificateID --- //
                 ++indx;
-                string CertificateID = "";
+                string certificateID = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
-                    CertificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+                    certificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+
+                ++indx;
+                certificateID = "";
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                    certificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+
+                ++indx;
+                certificateID = "";
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                    certificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 // --- Vendor --- //
                 ++indx;
                 string vendorName = "";
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                    vendorName = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+
+                ++indx;
+                vendorName = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     vendorName = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
@@ -379,6 +414,11 @@ namespace CertusCompanion
                 // --- VendorID --- //
                 ++indx;
                 string vendorID = "";
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                    vendorID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+
+                ++indx;
+                vendorID = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     vendorID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
@@ -520,15 +560,33 @@ namespace CertusCompanion
                     emailDate = parsedDateTimeValue;
                 }
 
+                ++indx;
+                emailDate = null;
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                {
+                    DateTime.TryParse(result[acceptableHeaderValuesAndTheirIndexes[indx].Item1], out parsedDateTimeValue);
+                    emailDate = parsedDateTimeValue;
+                }
+
                 // --- EmailFromAddress --- //
                 ++indx;
                 string emailFromAddress = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     emailFromAddress = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
+                ++indx;
+                emailFromAddress = "";
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                    emailFromAddress = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+
                 // --- SubjectLine --- //
                 ++indx;
                 string subjectLine = "";
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                    subjectLine = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
+
+                ++indx;
+                subjectLine = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     subjectLine = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
@@ -610,7 +668,7 @@ namespace CertusCompanion
                 itemToImport = new WorkflowItem
                     (
                         documentWorkflowItemID,
-                        CertificateID,
+                        certificateID,
                         vendorName,
                         vendorID,
                         clientID,

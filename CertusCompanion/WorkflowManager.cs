@@ -1557,7 +1557,7 @@ namespace CertusCompanion
             // return if more than 10
             if (workflowItemsListView.CheckedItems != null && workflowItemsListView.CheckedItems.Count > 10)
             {
-                SetStatusLabelAndTimer("Can't more than 10 references at a time");
+                SetStatusLabelAndTimer("Can't hold more than 10 references at a time");
                 MakeErrorSound();
                 return;
             }
@@ -5557,7 +5557,7 @@ namespace CertusCompanion
                 itemToSave.CompanyUpdated = true;
             }
 
-            if (itemToSave.CertificateName != certificateIdTbx.Text && certificateNameDescLbl.Text == "> Certificate Name")
+            if (itemToSave.CertificateName != certificateIdTbx.Text && certificateNameDescLbl.Text == "> Certificate Name:")
             {
                 itemToSave.CertificateName = certificateIdTbx.Text;
                 itemToSave.CertificateInformationUpdated = true;
@@ -5790,7 +5790,7 @@ namespace CertusCompanion
             }
             else if (this.certificateNameDescLbl.Text == ">> Certus ID:")
             {
-                this.certificateNameDescLbl.Text = "> Certificate Name";
+                this.certificateNameDescLbl.Text = "> Certificate Name:";
                 certificateIdTbx.AutoCompleteMode = AutoCompleteMode.Append;
             }
 
@@ -8770,7 +8770,7 @@ namespace CertusCompanion
 
             companyNameTbx.Text = wi.VendorName;
 
-            if (certificateNameDescLbl.Text == "> Certificate Name")
+            if (certificateNameDescLbl.Text == "> Certificate Name:")
                 certificateIdTbx.Text = wi.CertificateName;
             else certificateIdTbx.Text = wi.CertusFileID;
 
@@ -9172,8 +9172,10 @@ namespace CertusCompanion
                     LoadingForm.Refresh();
                 }
 
-                // populate lv  
-                if(AllWorkflowItemsLoaded != null && AllWorkflowItemsLoaded.Count>0) this.vcSelectionBtn.Text = "Non-completed";
+                // populate lv if non-completed items available
+                if(AllWorkflowItemsLoaded != null && AllWorkflowItemsLoaded.Count>0 && 
+                    NoncompleteWorkflowItems != null && NoncompleteWorkflowItems.Count > 0)
+                    this.vcSelectionBtn.Text = "Non-completed";
 
                 PopulateImportLbx(this.AllItemImportsLoaded);
 
