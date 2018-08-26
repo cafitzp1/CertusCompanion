@@ -3066,7 +3066,6 @@
             this.buttonDescToolTip.SetToolTip(this.priorityNotificationBtn, "Item has priority");
             this.priorityNotificationBtn.UseVisualStyleBackColor = false;
             this.priorityNotificationBtn.Visible = false;
-            this.priorityNotificationBtn.Click += new System.EventHandler(this.priorityNotificationBtn_Click);
             // 
             // certificateInformationUpdatedBtn
             // 
@@ -3089,7 +3088,6 @@
             this.buttonDescToolTip.SetToolTip(this.certificateInformationUpdatedBtn, "Item certificate information has been updated");
             this.certificateInformationUpdatedBtn.UseVisualStyleBackColor = false;
             this.certificateInformationUpdatedBtn.Visible = false;
-            this.certificateInformationUpdatedBtn.Click += new System.EventHandler(this.certificateInformationUpdatedBtn_Click);
             this.certificateInformationUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // itemExcludedBtn
@@ -3113,7 +3111,6 @@
             this.buttonDescToolTip.SetToolTip(this.itemExcludedBtn, "Item is excluded (click to override)");
             this.itemExcludedBtn.UseVisualStyleBackColor = false;
             this.itemExcludedBtn.Visible = false;
-            this.itemExcludedBtn.Click += new System.EventHandler(this.itemExcludedBtn_Click);
             this.itemExcludedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // itemIsDifferentBtn
@@ -3137,7 +3134,6 @@
             this.buttonDescToolTip.SetToolTip(this.itemIsDifferentBtn, "Item data is not reflected on Certus (click to override)");
             this.itemIsDifferentBtn.UseVisualStyleBackColor = false;
             this.itemIsDifferentBtn.Visible = false;
-            this.itemIsDifferentBtn.Click += new System.EventHandler(this.itemIsDifferentBtn_Click);
             this.itemIsDifferentBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // companyUpdatedBtn
@@ -3161,7 +3157,6 @@
             this.buttonDescToolTip.SetToolTip(this.companyUpdatedBtn, "Item company has been updated");
             this.companyUpdatedBtn.UseVisualStyleBackColor = false;
             this.companyUpdatedBtn.Visible = false;
-            this.companyUpdatedBtn.Click += new System.EventHandler(this.companyUpdatedBtn_Click);
             this.companyUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // certificateIdOverridenBtn
@@ -3185,7 +3180,6 @@
             this.buttonDescToolTip.SetToolTip(this.certificateIdOverridenBtn, "Item certificate information has been overridden");
             this.certificateIdOverridenBtn.UseVisualStyleBackColor = false;
             this.certificateIdOverridenBtn.Visible = false;
-            this.certificateIdOverridenBtn.Click += new System.EventHandler(this.certificateIdOverridenBtn_Click);
             this.certificateIdOverridenBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // detailsSaveBtn

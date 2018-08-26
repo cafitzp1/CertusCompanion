@@ -1531,7 +1531,9 @@ namespace CertusCompanion
             {
                 if (workflowItemsListView.SelectedItems != null && workflowItemsListView.SelectedItems.Count > 0)
                 {
-                    for (int i = 0; i < workflowItemsListView.SelectedItems.Count; i++)
+                    int selectedItems = workflowItemsListView.SelectedItems.Count;
+
+                    for (int i = 0; i < selectedItems; i++)
                     {
                         workflowItemsListView.SelectedItems[i].Selected = false;
                     }
@@ -1881,7 +1883,7 @@ namespace CertusCompanion
                 }
 
                 // complete and paint items gray if they're not on the current import
-                foreach (WorkflowItem item in currentImportItems)
+                foreach (WorkflowItem item in AllWorkflowItemsLoaded)
                 {
                     // if the item isn't on the import list, that means it was completed or trashed. importItems only included non-completed or trashed items
                     if (!currentImportItems.Exists(i => i.DocumentWorkflowItemID == item.DocumentWorkflowItemID))
@@ -1889,7 +1891,7 @@ namespace CertusCompanion
                         if (item.Status != "Completed/Trash" && item.Status != "Completed" && item.Status != "Trash")
                         {
                             item.Status = "Completed/Trash";
-                            item.Note += $"<completed via clean-up from '{fileName}'> ";
+                            item.Note += $"<completed via '{fileName}'> ";
                         }
 
                         // by default, these items should show the completed color which is gray. don't remove black
@@ -5359,191 +5361,29 @@ namespace CertusCompanion
         }
         //
         // Notifications
-        private void itemIsDifferentBtn_Click(object sender, EventArgs e)
+        private void itemIsDifferentBtn_Click(object sender, EventArgs e)//-
         {
-            try
-            {
-                // get the old item position, change, replace
-                WorkflowItem wi = new WorkflowItem();
-                int index;
-                wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
-                index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.WorkflowItemInformationDifferentThanCertus = false;
-                AllWorkflowItemsLoaded[index] = wi;
 
-                // hide btn
-                itemIsDifferentBtn.Visible = false;
-            }
-            catch (NullReferenceException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (IndexOutOfRangeException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Could not process that request");
-                MakeErrorSound();
-            }
         }
-        private void itemExcludedBtn_Click(object sender, EventArgs e)
+        private void itemExcludedBtn_Click(object sender, EventArgs e)//-
         {
-            try
-            {
-                // get the old item position, change, replace
-                WorkflowItem wi = new WorkflowItem();
-                int index;
-                wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
-                index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.Excluded = false;
-                AllWorkflowItemsLoaded[index] = wi;
 
-                // hide btn
-                itemIsDifferentBtn.Visible = false;
-            }
-            catch (NullReferenceException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (IndexOutOfRangeException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Could not process that request");
-                MakeErrorSound();
-            }
         }
-        private void certificateIdOverridenBtn_Click(object sender, EventArgs e)
+        private void certificateIdOverridenBtn_Click(object sender, EventArgs e)//-
         {
-            try
-            {
-                // get the old item position, change, replace
-                WorkflowItem wi = new WorkflowItem();
-                int index;
-                wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
-                index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.CertificateIdOverridden = false;
-                AllWorkflowItemsLoaded[index] = wi;
 
-                // hide btn
-                certificateIdOverridenBtn.Visible = false;
-            }
-            catch (NullReferenceException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (IndexOutOfRangeException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Could not process that request");
-                MakeErrorSound();
-            }
         }
-        private void certificateInformationUpdatedBtn_Click(object sender, EventArgs e)
+        private void certificateInformationUpdatedBtn_Click(object sender, EventArgs e)//-
         {
-            try
-            {
-                // get the old item position, change, replace
-                WorkflowItem wi = new WorkflowItem();
-                int index;
-                wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
-                index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.CertificateInformationUpdated = false;
-                AllWorkflowItemsLoaded[index] = wi;
 
-                // hide btn
-                certificateInformationUpdatedBtn.Visible = false;
-            }
-            catch (NullReferenceException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (IndexOutOfRangeException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Could not process that request");
-                MakeErrorSound();
-            }
         }
-        private void companyUpdatedBtn_Click(object sender, EventArgs e)
+        private void companyUpdatedBtn_Click(object sender, EventArgs e)//-
         {
-            try
-            {
-                // get the old item position, change, replace
-                WorkflowItem wi = new WorkflowItem();
-                int index;
-                wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
-                index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.CompanyUpdated = false;
-                AllWorkflowItemsLoaded[index] = wi;
 
-                // hide btn
-                companyUpdatedBtn.Visible = false;
-            }
-            catch (NullReferenceException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (IndexOutOfRangeException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Could not process that request");
-                MakeErrorSound();
-            }
         }
-        private void priorityNotificationBtn_Click(object sender, EventArgs e)
+        private void priorityNotificationBtn_Click(object sender, EventArgs e)//-
         {
-            try
-            {
-                // get the old item position, change, replace
-                WorkflowItem wi = new WorkflowItem();
-                int index;
-                wi = GetWorkflowItemFromAllByID(documentWorkflowItemIdTbx.Text);
-                index = AllWorkflowItemsLoaded.IndexOf(wi);
-                wi.ItemHasPriority = false;
-                AllWorkflowItemsLoaded[index] = wi;
 
-                // hide btn
-                priorityNotificationBtn.Visible = false;
-            }
-            catch (NullReferenceException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (IndexOutOfRangeException m)
-            {
-                SetStatusLabelAndTimer(m.Message);
-                MakeErrorSound();
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Could not process that request");
-                MakeErrorSound();
-            }
         }
         private void SaveItemChanges(string id)
         {
@@ -9371,8 +9211,10 @@ namespace CertusCompanion
         // CSV Import
         private void importWorkflowCSVBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            ImportWorkflowCSV(e.Argument as OpenFileDialog); return;
+            ImportWorkflowCSV(e.Argument as OpenFileDialog);
+            return;
 
+            /*
             try
             {
                 ImportWorkflowCSV(e.Argument as OpenFileDialog);
@@ -9381,6 +9223,7 @@ namespace CertusCompanion
             {
                 MessageBox.Show("Something went wrong with the import.\n\nReason " + m.Message);
             }
+            */
         }
         private void ImportWorkflowCSV(OpenFileDialog ofd)
         {

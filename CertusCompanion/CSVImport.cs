@@ -171,7 +171,7 @@ namespace CertusCompanion
             }
 
             // right now, return if DocumentWorkflowItemID is not in index 0
-            if (acceptableHeaderValuesAndTheirIndexes[0].Item1 != 0 || acceptableHeaderValuesAndTheirIndexes[1].Item1 != 0)
+            if (acceptableHeaderValuesAndTheirIndexes[0].Item1 != 0 && acceptableHeaderValuesAndTheirIndexes[1].Item1 != 0)
             {
                 throw new WorkflowItemImportNotCorrectFormatException("CSV file is not recognized as an acceptable Workflow Item Export. 'DocumentWorkflowItemID' must be in the first column.");
             }
@@ -378,6 +378,9 @@ namespace CertusCompanion
                 int indx = 0;
                 string documentWorkflowItemID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
+                ++indx;
+                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
+                    documentWorkflowItemID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 // --- CertificateID --- //
                 ++indx;
@@ -386,23 +389,16 @@ namespace CertusCompanion
                     certificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 ++indx;
-                certificateID = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     certificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 ++indx;
-                certificateID = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     certificateID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 // --- Vendor --- //
                 ++indx;
                 string vendorName = "";
-                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
-                    vendorName = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
-
-                ++indx;
-                vendorName = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     vendorName = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
@@ -414,11 +410,6 @@ namespace CertusCompanion
                 // --- VendorID --- //
                 ++indx;
                 string vendorID = "";
-                if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
-                    vendorID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
-
-                ++indx;
-                vendorID = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     vendorID = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
@@ -561,7 +552,6 @@ namespace CertusCompanion
                 }
 
                 ++indx;
-                emailDate = null;
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                 {
                     DateTime.TryParse(result[acceptableHeaderValuesAndTheirIndexes[indx].Item1], out parsedDateTimeValue);
@@ -575,7 +565,6 @@ namespace CertusCompanion
                     emailFromAddress = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 ++indx;
-                emailFromAddress = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     emailFromAddress = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
@@ -586,7 +575,6 @@ namespace CertusCompanion
                     subjectLine = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
                 ++indx;
-                subjectLine = "";
                 if (acceptableHeaderValuesAndTheirIndexes[indx].Item1 > 0 && result[acceptableHeaderValuesAndTheirIndexes[indx].Item1] != null)
                     subjectLine = result[acceptableHeaderValuesAndTheirIndexes[indx].Item1];
 
@@ -716,11 +704,25 @@ namespace CertusCompanion
                 // add to new list
                 updateList.Add(item);
 
-                // edit
-                if (updateList[indx].Status == "Completed/Trash" || updateList[indx].Status == "Completed" || updateList[indx].Status == "Trash")
+                // generate note
+                //
+                // completed/trash (could be the case if exported and reimported from this app)
+                if (updateList[indx].Status == "Completed/Trash")
                 {
                     updateList[indx].DisplayColor = "Gray";
-                    updateList[indx].Note += $"<item added as completed/trash via '{FileName}' > ";
+                    updateList[indx].Note += $"<item added as Completed/Trash via '{FileName}' > ";
+                }
+                // item imported as completed
+                else if (updateList[indx].Status == "Completed")
+                {
+                    updateList[indx].DisplayColor = "Gray";
+                    updateList[indx].Note += $"<item added as Completed via '{FileName}' > ";
+                }
+                // item imported as trash
+                else if (updateList[indx].Status == "Trash")
+                {
+                    updateList[indx].DisplayColor = "Gray";
+                    updateList[indx].Note += $"<item added as Trash via '{FileName}' > ";
                 }
                 else
                 {
