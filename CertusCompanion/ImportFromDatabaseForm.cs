@@ -30,10 +30,14 @@ namespace CertusCompanion
         {
             InitializeComponent();
 
+            // save clients
             this.clients = clients;
-            this.clientComboBox.Text = selectedClient;
-
+        
+            // populate ddl
             PopulateSources();
+
+            // pre-select client
+            this.clientComboBox.SelectedIndex = clientComboBox.FindStringExact(selectedClient);
         }
 
         //

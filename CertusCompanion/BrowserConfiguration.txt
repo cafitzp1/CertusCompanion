@@ -38,7 +38,7 @@ mentation analyst... etc.
 
 Custom scripts to be used with the browser (the code will automatically generate a function
 to transfer the checked items if there are checked items from the Workflow Manager into an array of IDs. 
-All you have to do is call the function 'trasnferArray();' and assign it to a variable such as 
+All you have to do is call the function 'transferArray();' and assign it to a variable such as 
 'myData' if you intend on using this array of IDs. If you do not intend on using this array, just 
 don't call the function. If you do not intend on using any custom scripts, leave the edit area 
 blank or as '...' otherwise whatever you put in that area will be binded to the custom script 

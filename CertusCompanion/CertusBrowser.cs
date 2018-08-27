@@ -68,6 +68,10 @@ namespace CertusCompanion
         public CertusBrowser()
         {
             InitializeComponent();
+
+            // no items. disable preset scripts
+            completeItemsScriptBtn.Enabled = false;
+            distributeItemsScriptBtn.Enabled = false;
         }
         //
         // Constructor for datasources but no items list
@@ -78,18 +82,52 @@ namespace CertusCompanion
             this.clientID = clientID;
             this.companiesDataSource = companiesList;
             this.certificatesDataSource = certificatesList;
+
+            // no items. disable preset scripts
+            completeItemsScriptBtn.Enabled = false;
+            distributeItemsScriptBtn.Enabled = false;
         }
         // 
         // Constructor for all current browser features
-        public CertusBrowser(string clientID, List<WorkflowItem> itemList1, List<Company> companiesList, List<Certificate> certificatesList)
+        public CertusBrowser(string clientID, List<WorkflowItem> transferredWorkflowItems, List<Company> companiesList, List<Certificate> certificatesList)
         {
             InitializeComponent();
 
-            this.itemList1 = itemList1;
+            this.itemList1 = transferredWorkflowItems;
 
             this.clientID = clientID;
             this.companiesDataSource = companiesList;
             this.certificatesDataSource = certificatesList;
+
+            // disable preset scripts if no items / missing id / etc
+            if (transferredWorkflowItems==null || transferredWorkflowItems.Count==0 || transferredWorkflowItems[0].DocumentWorkflowItemID==string.Empty || transferredWorkflowItems[0].DocumentWorkflowItemID==null)
+            {
+                completeItemsScriptBtn.Enabled = false;
+                distributeItemsScriptBtn.Enabled = false;
+                return;
+            }
+
+            // disable distribute script if...
+            foreach (WorkflowItem item in transferredWorkflowItems)
+            {
+                // ... any missing analyst id
+                if (item.AssignedToID==null || item.AssignedToID==String.Empty)
+                {
+                    distributeItemsScriptBtn.Enabled = false;
+                    MessageBox.Show("One or more items were missing Assigned IDs. Distribute items feature has been disabled.");
+                    return;
+                }
+                // ... any id not all numbers
+                foreach (char c in item.AssignedToID)
+                {
+                    if (!Char.IsDigit(c))
+                    {
+                        distributeItemsScriptBtn.Enabled = false;
+                        MessageBox.Show("One or more items had invalid Assigned IDs. Distribute items feature has been disabled.");
+                        return;
+                    }
+                }
+            }
         }
         
         private void BetterBrowser_Load(object sender, EventArgs e)
@@ -121,10 +159,6 @@ namespace CertusCompanion
             // this is the only way I can get the panel to close properly on form load...
             this.showConsoleToolStripMenuItem_Click(sender, e);
             this.showConsoleToolStripMenuItem_Click(sender, e);
-
-            // read the configration .txt file
-            string configFileContents = ReadConfig();
-
             
             // store options
             try

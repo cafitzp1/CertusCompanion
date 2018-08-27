@@ -672,6 +672,12 @@ namespace CertusCompanion
             // clear the details panel
             this.clearItemDetailsBtn.PerformClick();
             this.ClearReferenceButtons();
+            this.priorityNotificationBtn.Visible = false;
+            this.companyUpdatedBtn.Visible = false;
+            this.certificateInformationUpdatedBtn.Visible = false;
+            this.certificateIdOverridenBtn.Visible = false;
+            this.itemExcludedBtn.Visible = false;
+            this.itemIsDifferentBtn.Visible = false;
 
             // clear query panel
             this.clearQueryOptionsBtn.PerformClick();
@@ -696,6 +702,8 @@ namespace CertusCompanion
 
             // resize the form to fix the column width on the LV (no scroll bar)
             this.WorkflowManager_Resize(this, null);
+
+            SetStatusLabelAndTimer("Workspace cleared");
         }
         private void saveWorkspaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1472,11 +1480,11 @@ namespace CertusCompanion
 
         // ----- START PROCESSES ----- //
         #region Start Processes
-        private void ItemsViewForm_OpenCertificate(object sender, string[] certificatesIds)
+        private void ItemsViewForm_OpenCertificate(object sender, string[] certificatesIds)//-*
         {
             throw new NotImplementedException();
         }
-        private void ItemsViewForm_OpenCompany(object sender, string[] companyIds)
+        private void ItemsViewForm_OpenCompany(object sender, string[] companyIds)//-*
         {
             throw new NotImplementedException();
         }
@@ -2493,8 +2501,8 @@ namespace CertusCompanion
                 detailsOptionsPanel.Visible = false;
 
                 // move notifications panel
-                detailNotificationsPanel.Top = detailsOptionsPanel2.Top + 1;
-                detailNotificationsPanel.Left = detailsOptionsPanel2.Left - 250;
+                detailNotificationsPanel.Top = itemButton0.Top-1;
+                detailNotificationsPanel.Left = itemButton0.Left+400;
 
                 workflowItemsListView.Focus();
             }
@@ -5652,12 +5660,12 @@ namespace CertusCompanion
             if (this.assignedToDescLbl.Text == "> Assigned To:")
             {
                 this.assignedToDescLbl.Text = ">> Assigned ID:";
-                this.assignedToTbx.ReadOnly = false;
+                //this.assignedToTbx.ReadOnly = false;
             }
             else if (this.assignedToDescLbl.Text == ">> Assigned ID:")
             {
                 this.assignedToDescLbl.Text = ">>> Workflow Analyst:";
-                this.assignedToTbx.ReadOnly = true;
+                //this.assignedToTbx.ReadOnly = true;
             }
             else if (this.assignedToDescLbl.Text == ">>> Workflow Analyst:")
             {
@@ -9325,8 +9333,10 @@ namespace CertusCompanion
             }
             else
             {
-                // populate lv
-                this.vcSelectionBtn.Text = "Non-completed";
+                // populate lv if non-completed items available
+                if (AllWorkflowItemsLoaded != null && AllWorkflowItemsLoaded.Count > 0 &&
+                    NoncompleteWorkflowItems != null && NoncompleteWorkflowItems.Count > 0)
+                    this.vcSelectionBtn.Text = "Non-completed";
 
                 // populate lbx
                 PopulateImportLbx(this.AllItemImportsLoaded);
@@ -10313,8 +10323,10 @@ namespace CertusCompanion
             }
             else
             {
-                // populate lv
-                this.vcSelectionBtn.Text = "Non-completed";
+                // populate lv if non-completed items available
+                if (AllWorkflowItemsLoaded != null && AllWorkflowItemsLoaded.Count > 0 &&
+                    NoncompleteWorkflowItems != null && NoncompleteWorkflowItems.Count > 0)
+                    this.vcSelectionBtn.Text = "Non-completed";
 
                 // populate lbx
                 PopulateImportLbx(this.AllItemImportsLoaded);
