@@ -591,9 +591,9 @@
             this.intputTbx.Name = "intputTbx";
             this.intputTbx.Size = new System.Drawing.Size(188, 118);
             this.intputTbx.TabIndex = 0;
-            this.intputTbx.Text = "For custom scripts... call function \'transferArray();\' to get transferred workflo" +
-    "w items (returns array of IDs)\r\n\r\n         - - - - - - - - - - - - - - - - - - -" +
-    " - - - \r\n\r\n\r\n";
+            this.intputTbx.Text = "\r\nFor custom scripts... call function \'transferArray();\' to get transferred workf" +
+    "low items (returns array of IDs)\r\n\r\n         - - - - - - - - - - - - - - - - - -" +
+    " - - - - \r\n\r\n\r\n";
             // 
             // consoleInputPanel
             // 

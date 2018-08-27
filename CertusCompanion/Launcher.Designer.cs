@@ -109,7 +109,7 @@
             this.CertusCompanionLbl.Name = "CertusCompanionLbl";
             this.CertusCompanionLbl.Size = new System.Drawing.Size(329, 42);
             this.CertusCompanionLbl.TabIndex = 2;
-            this.CertusCompanionLbl.Text = "Certus Companion";
+            this.CertusCompanionLbl.Text = "Workflow Manager";
             // 
             // statusLbl
             // 
