@@ -1,54 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CertusCompanion
 {
     public class Filter
     {
-        // data
-        bool colorCheckChoice;
-        bool analystCheckChoice;
-        bool statusCheckChoice;
-        bool queriedCheckChoice;
-        bool companyCheckChoice;
-        bool senderCheckChoice;
-        bool subjectCheckChoice; //
-        bool dateCheckChoice;
-        string colorSelection;
-        string analystSelection;
-        string statusSelection;
-        string queriedSelection;
-        string companySelection;
-        string senderSelection;
-        string subjectSelection; //
-        DateTime startDate;
-        DateTime endDate;
-        Filter currentFilter;
-
+        //
         // properties
-        public bool ColorCheckChoice { get => colorCheckChoice; set => colorCheckChoice = value; }
-        public bool AnalystCheckChoice { get => analystCheckChoice; set => analystCheckChoice = value; }
-        public bool StatusCheckChoice { get => statusCheckChoice; set => statusCheckChoice = value; }
-        public bool QueriedCheckChoice { get => queriedCheckChoice; set => queriedCheckChoice = value; }
-        public bool CompanyCheckChoice { get => companyCheckChoice; set => companyCheckChoice = value; }
-        public bool SenderCheckChoice { get => senderCheckChoice; set => senderCheckChoice = value; }
-        public bool SubjectCheckChoice { get => subjectCheckChoice; set => subjectCheckChoice = value; } //
-        public bool DateCheckChoice { get => dateCheckChoice; set => dateCheckChoice = value; }
-        public string ColorSelection { get => colorSelection; set => colorSelection = value; }
-        public string AnalystSelection { get => analystSelection; set => analystSelection = value; }
-        public string StatusSelection { get => statusSelection; set => statusSelection = value; }
-        public string QueriedSelection { get => queriedSelection; set => queriedSelection = value; }
-        public string CompanySelection { get => companySelection; set => companySelection = value; }
-        public string SenderSelection { get => senderSelection; set => senderSelection = value; }
-        public string SubjectSelection { get => subjectSelection; set => subjectSelection = value; } //
-        public DateTime StartDate { get => startDate; set => startDate = value; }
-        public DateTime EndDate { get => endDate; set => endDate = value; }
-        internal Filter CurrentFilter { get => currentFilter; set => currentFilter = value; }
+        public bool ColorCheckChoice { get; set; }
+        public bool AnalystCheckChoice { get; set; }
+        public bool StatusCheckChoice { get; set; }
+        public bool QueriedCheckChoice { get; set; }
+        public bool CompanyCheckChoice { get; set; }
+        public bool SenderCheckChoice { get; set; }
+        public bool SubjectCheckChoice { get; set; } //
+        public bool DateCheckChoice { get; set; }
+        public string ColorSelection { get; set; }
+        public string AnalystSelection { get; set; }
+        public string StatusSelection { get; set; }
+        public string QueriedSelection { get; set; }
+        public string CompanySelection { get; set; }
+        public string SenderSelection { get; set; }
+        public string SubjectSelection { get; set; } //
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        internal Filter CurrentFilter { get; set; }
 
-
+        //
         // constructors
         public Filter()
         {
@@ -71,18 +49,13 @@ namespace CertusCompanion
             this.EndDate = DateTime.Now;
         }
 
+        //
         // methods
         public void ResetFilter()
         {
             this.CurrentFilter = new Filter();
         }
-
-        public void SaveFilter(
-            bool colorCheckChoice, bool analystCheckChoice, bool statusCheckChoice,
-            bool queriedCheckChoice, bool companyCheckChoice, bool senderCheckChoice, bool subjectCheckChoice,
-            bool dateCheckChoice, string colorSelection, string analystSelection,
-            string statusSelection, string queriedSelection, string companySelection,
-            string senderSelection, string subjectSelection, DateTime startDate, DateTime endDate)
+        public void SaveFilter(bool colorCheckChoice, bool analystCheckChoice, bool statusCheckChoice, bool queriedCheckChoice, bool companyCheckChoice, bool senderCheckChoice, bool subjectCheckChoice, bool dateCheckChoice, string colorSelection, string analystSelection, string statusSelection, string queriedSelection, string companySelection, string senderSelection, string subjectSelection, DateTime startDate, DateTime endDate)
         {
             this.CurrentFilter = new Filter();
 
@@ -104,12 +77,13 @@ namespace CertusCompanion
             this.StartDate = startDate;
             this.EndDate = endDate;
         }
-
+        
+        //
+        // export
         public Filter ReturnFilter()
         {
             return this.CurrentFilter;
         }
-
         private string GenerateToString()
         {
             string s = "";
@@ -155,7 +129,6 @@ namespace CertusCompanion
 
             return s;
         }
-
         public override string ToString()
         {
             return GenerateToString();

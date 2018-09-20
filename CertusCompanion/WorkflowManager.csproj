@@ -520,6 +520,8 @@
     <EmbeddedResource Include="ImportQueries\ContactDS.sql" />
     <EmbeddedResource Include="ImportQueries\LocationDS.sql" />
     <EmbeddedResource Include="ImportQueries\SystemUserDS.sql" />
+    <None Include="Resources\icons8-link-48.png" />
+    <None Include="Resources\icons8-edit-32 %281%29.png" />
     <Content Include="Resources\image001_zyE_icon.ico" />
     <EmbeddedResource Include="ImportQueries\ClientDS.sql" />
     <EmbeddedResource Include="ImportQueries\WIR4.0_DS.sql" />

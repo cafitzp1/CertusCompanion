@@ -164,6 +164,7 @@
             this.colorCheckBox.Name = "colorCheckBox";
             this.colorCheckBox.Size = new System.Drawing.Size(53, 17);
             this.colorCheckBox.TabIndex = 0;
+            this.colorCheckBox.TabStop = false;
             this.colorCheckBox.Text = "Color:";
             this.colorCheckBox.UseVisualStyleBackColor = true;
             this.colorCheckBox.CheckedChanged += new System.EventHandler(this.colorCheckBox_CheckedChanged);
@@ -176,7 +177,8 @@
             this.analystCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.analystCheckBox.Name = "analystCheckBox";
             this.analystCheckBox.Size = new System.Drawing.Size(63, 17);
-            this.analystCheckBox.TabIndex = 2;
+            this.analystCheckBox.TabIndex = 0;
+            this.analystCheckBox.TabStop = false;
             this.analystCheckBox.Text = "Analyst:";
             this.analystCheckBox.UseVisualStyleBackColor = true;
             this.analystCheckBox.CheckedChanged += new System.EventHandler(this.analystCheckBox_CheckedChanged);
@@ -189,7 +191,8 @@
             this.statusCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.statusCheckBox.Name = "statusCheckBox";
             this.statusCheckBox.Size = new System.Drawing.Size(59, 17);
-            this.statusCheckBox.TabIndex = 4;
+            this.statusCheckBox.TabIndex = 0;
+            this.statusCheckBox.TabStop = false;
             this.statusCheckBox.Text = "Status:";
             this.statusCheckBox.UseVisualStyleBackColor = true;
             this.statusCheckBox.CheckedChanged += new System.EventHandler(this.statusCheckBox_CheckedChanged);
@@ -204,7 +207,8 @@
             this.queriedCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.queriedCheckBox.Name = "queriedCheckBox";
             this.queriedCheckBox.Size = new System.Drawing.Size(63, 17);
-            this.queriedCheckBox.TabIndex = 6;
+            this.queriedCheckBox.TabIndex = 0;
+            this.queriedCheckBox.TabStop = false;
             this.queriedCheckBox.Text = "Queried";
             this.queriedCheckBox.UseVisualStyleBackColor = true;
             this.queriedCheckBox.CheckedChanged += new System.EventHandler(this.queriedCheckBox_CheckedChanged);
@@ -217,7 +221,8 @@
             this.companyCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.companyCheckBox.Name = "companyCheckBox";
             this.companyCheckBox.Size = new System.Drawing.Size(73, 17);
-            this.companyCheckBox.TabIndex = 8;
+            this.companyCheckBox.TabIndex = 0;
+            this.companyCheckBox.TabStop = false;
             this.companyCheckBox.Text = "Company:";
             this.companyCheckBox.UseVisualStyleBackColor = true;
             this.companyCheckBox.CheckedChanged += new System.EventHandler(this.companyCheckBox_CheckedChanged);
@@ -230,7 +235,8 @@
             this.senderCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.senderCheckBox.Name = "senderCheckBox";
             this.senderCheckBox.Size = new System.Drawing.Size(91, 17);
-            this.senderCheckBox.TabIndex = 10;
+            this.senderCheckBox.TabIndex = 0;
+            this.senderCheckBox.TabStop = false;
             this.senderCheckBox.Text = "Sender Email:";
             this.senderCheckBox.UseVisualStyleBackColor = true;
             this.senderCheckBox.CheckedChanged += new System.EventHandler(this.senderCheckBox_CheckedChanged);
@@ -243,7 +249,8 @@
             this.dateCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.dateCheckBox.Name = "dateCheckBox";
             this.dateCheckBox.Size = new System.Drawing.Size(52, 17);
-            this.dateCheckBox.TabIndex = 14;
+            this.dateCheckBox.TabIndex = 0;
+            this.dateCheckBox.TabStop = false;
             this.dateCheckBox.Text = "Date:";
             this.dateCheckBox.UseVisualStyleBackColor = true;
             this.dateCheckBox.CheckedChanged += new System.EventHandler(this.dateCheckBox_CheckedChanged);
@@ -287,7 +294,8 @@
             this.subjectCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.subjectCheckBox.Name = "subjectCheckBox";
             this.subjectCheckBox.Size = new System.Drawing.Size(93, 17);
-            this.subjectCheckBox.TabIndex = 12;
+            this.subjectCheckBox.TabIndex = 0;
+            this.subjectCheckBox.TabStop = false;
             this.subjectCheckBox.Text = "Email Subject:";
             this.subjectCheckBox.UseVisualStyleBackColor = true;
             this.subjectCheckBox.CheckedChanged += new System.EventHandler(this.subjectCheckBox_CheckedChanged);

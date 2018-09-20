@@ -40,6 +40,7 @@
             this.clDropBtn = new System.Windows.Forms.Button();
             this.clientLbl = new System.Windows.Forms.Label();
             this.listViewOptionsPanel = new System.Windows.Forms.Panel();
+            this.linkActivationBtn = new System.Windows.Forms.Button();
             this.listViewOptionsDividerPanel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.vcOuterPanel = new System.Windows.Forms.Panel();
@@ -94,6 +95,13 @@
             this.selectAllItemsBtn = new System.Windows.Forms.Button();
             this.openLinkBtn = new System.Windows.Forms.Button();
             this.closeItemTabBtn = new System.Windows.Forms.Button();
+            this.detailNotificationsPanel = new System.Windows.Forms.Panel();
+            this.priorityNotificationBtn = new System.Windows.Forms.Button();
+            this.certificateInformationUpdatedBtn = new System.Windows.Forms.Button();
+            this.itemExcludedBtn = new System.Windows.Forms.Button();
+            this.itemIsDifferentBtn = new System.Windows.Forms.Button();
+            this.companyUpdatedBtn = new System.Windows.Forms.Button();
+            this.certificateIdOverridenBtn = new System.Windows.Forms.Button();
             this.detailsOptionsPanel2 = new System.Windows.Forms.Panel();
             this.copyIdsBtn2 = new System.Windows.Forms.Button();
             this.selectAllItemsBtn2 = new System.Windows.Forms.Button();
@@ -176,13 +184,6 @@
             this.focusDetailPanelBtn6 = new System.Windows.Forms.Button();
             this.actionDetailPanelBtn6 = new System.Windows.Forms.Button();
             this.compliantTbx = new System.Windows.Forms.TextBox();
-            this.detailNotificationsPanel = new System.Windows.Forms.Panel();
-            this.priorityNotificationBtn = new System.Windows.Forms.Button();
-            this.certificateInformationUpdatedBtn = new System.Windows.Forms.Button();
-            this.itemExcludedBtn = new System.Windows.Forms.Button();
-            this.itemIsDifferentBtn = new System.Windows.Forms.Button();
-            this.companyUpdatedBtn = new System.Windows.Forms.Button();
-            this.certificateIdOverridenBtn = new System.Windows.Forms.Button();
             this.detailsSaveBtn = new System.Windows.Forms.Button();
             this.detailPanel18 = new System.Windows.Forms.Panel();
             this.focusDetailPanelBtn18 = new System.Windows.Forms.Button();
@@ -455,6 +456,7 @@
             this.splitContainerChild2.Panel2.SuspendLayout();
             this.splitContainerChild2.SuspendLayout();
             this.detailsOptionsPanel.SuspendLayout();
+            this.detailNotificationsPanel.SuspendLayout();
             this.detailsOptionsPanel2.SuspendLayout();
             this.itemButtonsPanel.SuspendLayout();
             this.itemDetailsPanel.SuspendLayout();
@@ -473,7 +475,6 @@
             this.detailPanel4.SuspendLayout();
             this.detailPanel5.SuspendLayout();
             this.detailPanel6.SuspendLayout();
-            this.detailNotificationsPanel.SuspendLayout();
             this.detailPanel18.SuspendLayout();
             this.detailPanel17.SuspendLayout();
             this.detailPanel16.SuspendLayout();
@@ -669,6 +670,7 @@
             // 
             // listViewOptionsPanel
             // 
+            this.listViewOptionsPanel.Controls.Add(this.linkActivationBtn);
             this.listViewOptionsPanel.Controls.Add(this.listViewOptionsDividerPanel4);
             this.listViewOptionsPanel.Controls.Add(this.vcOuterPanel);
             this.listViewOptionsPanel.Controls.Add(this.listViewOptionsDividerPanel2);
@@ -697,8 +699,31 @@
             this.listViewOptionsPanel.Location = new System.Drawing.Point(6, 2);
             this.listViewOptionsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.listViewOptionsPanel.Name = "listViewOptionsPanel";
-            this.listViewOptionsPanel.Size = new System.Drawing.Size(732, 24);
+            this.listViewOptionsPanel.Size = new System.Drawing.Size(768, 24);
             this.listViewOptionsPanel.TabIndex = 0;
+            // 
+            // linkActivationBtn
+            // 
+            this.linkActivationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.linkActivationBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.linkActivationIcon;
+            this.linkActivationBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.linkActivationBtn.FlatAppearance.BorderSize = 0;
+            this.linkActivationBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.linkActivationBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.linkActivationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.linkActivationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkActivationBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.linkActivationBtn.Location = new System.Drawing.Point(646, 1);
+            this.linkActivationBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.linkActivationBtn.Name = "linkActivationBtn";
+            this.linkActivationBtn.Size = new System.Drawing.Size(20, 20);
+            this.linkActivationBtn.TabIndex = 0;
+            this.linkActivationBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.linkActivationBtn, "Toggle Link Activation");
+            this.linkActivationBtn.UseVisualStyleBackColor = false;
+            this.linkActivationBtn.Click += new System.EventHandler(this.linkActivationBtn_Click);
+            this.linkActivationBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            this.linkActivationBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
             // 
             // listViewOptionsDividerPanel4
             // 
@@ -832,7 +857,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(648, 1);
+            this.button1.Location = new System.Drawing.Point(675, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(60, 21);
             this.button1.TabIndex = 0;
@@ -933,7 +958,7 @@
             // redrawItemsBtn
             // 
             this.redrawItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.redrawItemsBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("redrawItemsBtn.BackgroundImage")));
+            this.redrawItemsBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.redrawIcon;
             this.redrawItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.redrawItemsBtn.FlatAppearance.BorderSize = 0;
             this.redrawItemsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
@@ -1231,7 +1256,7 @@
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.refreshBtn.Location = new System.Drawing.Point(622, 1);
+            this.refreshBtn.Location = new System.Drawing.Point(621, 1);
             this.refreshBtn.Margin = new System.Windows.Forms.Padding(2);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(20, 20);
@@ -1622,6 +1647,158 @@
             this.closeItemTabBtn.Click += new System.EventHandler(this.removeReferenceButton_Click);
             this.closeItemTabBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             this.closeItemTabBtn.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.optionButtons_PreviewKeyDown);
+            // 
+            // detailNotificationsPanel
+            // 
+            this.detailNotificationsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.detailNotificationsPanel.Controls.Add(this.priorityNotificationBtn);
+            this.detailNotificationsPanel.Controls.Add(this.certificateInformationUpdatedBtn);
+            this.detailNotificationsPanel.Controls.Add(this.itemExcludedBtn);
+            this.detailNotificationsPanel.Controls.Add(this.itemIsDifferentBtn);
+            this.detailNotificationsPanel.Controls.Add(this.companyUpdatedBtn);
+            this.detailNotificationsPanel.Controls.Add(this.certificateIdOverridenBtn);
+            this.detailNotificationsPanel.Location = new System.Drawing.Point(435, 380);
+            this.detailNotificationsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.detailNotificationsPanel.Name = "detailNotificationsPanel";
+            this.detailNotificationsPanel.Size = new System.Drawing.Size(144, 20);
+            this.detailNotificationsPanel.TabIndex = 3;
+            // 
+            // priorityNotificationBtn
+            // 
+            this.priorityNotificationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.priorityNotificationBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("priorityNotificationBtn.BackgroundImage")));
+            this.priorityNotificationBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.priorityNotificationBtn.FlatAppearance.BorderSize = 0;
+            this.priorityNotificationBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.priorityNotificationBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.priorityNotificationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.priorityNotificationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priorityNotificationBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.priorityNotificationBtn.ImageIndex = 0;
+            this.priorityNotificationBtn.Location = new System.Drawing.Point(0, 0);
+            this.priorityNotificationBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.priorityNotificationBtn.Name = "priorityNotificationBtn";
+            this.priorityNotificationBtn.Size = new System.Drawing.Size(20, 20);
+            this.priorityNotificationBtn.TabIndex = 0;
+            this.priorityNotificationBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.priorityNotificationBtn, "Item has priority");
+            this.priorityNotificationBtn.UseVisualStyleBackColor = false;
+            this.priorityNotificationBtn.Visible = false;
+            // 
+            // certificateInformationUpdatedBtn
+            // 
+            this.certificateInformationUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.certificateInformationUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("certificateInformationUpdatedBtn.BackgroundImage")));
+            this.certificateInformationUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.certificateInformationUpdatedBtn.FlatAppearance.BorderSize = 0;
+            this.certificateInformationUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.certificateInformationUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.certificateInformationUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.certificateInformationUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.certificateInformationUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.certificateInformationUpdatedBtn.ImageIndex = 0;
+            this.certificateInformationUpdatedBtn.Location = new System.Drawing.Point(46, 0);
+            this.certificateInformationUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.certificateInformationUpdatedBtn.Name = "certificateInformationUpdatedBtn";
+            this.certificateInformationUpdatedBtn.Size = new System.Drawing.Size(20, 20);
+            this.certificateInformationUpdatedBtn.TabIndex = 0;
+            this.certificateInformationUpdatedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.certificateInformationUpdatedBtn, "Item certificate information has been updated");
+            this.certificateInformationUpdatedBtn.UseVisualStyleBackColor = false;
+            this.certificateInformationUpdatedBtn.Visible = false;
+            this.certificateInformationUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // itemExcludedBtn
+            // 
+            this.itemExcludedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.itemExcludedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("itemExcludedBtn.BackgroundImage")));
+            this.itemExcludedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemExcludedBtn.FlatAppearance.BorderSize = 0;
+            this.itemExcludedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.itemExcludedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.itemExcludedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemExcludedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemExcludedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.itemExcludedBtn.ImageIndex = 0;
+            this.itemExcludedBtn.Location = new System.Drawing.Point(92, 0);
+            this.itemExcludedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.itemExcludedBtn.Name = "itemExcludedBtn";
+            this.itemExcludedBtn.Size = new System.Drawing.Size(20, 20);
+            this.itemExcludedBtn.TabIndex = 0;
+            this.itemExcludedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.itemExcludedBtn, "Item is excluded (click to override)");
+            this.itemExcludedBtn.UseVisualStyleBackColor = false;
+            this.itemExcludedBtn.Visible = false;
+            this.itemExcludedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // itemIsDifferentBtn
+            // 
+            this.itemIsDifferentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.itemIsDifferentBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.warningIcon1;
+            this.itemIsDifferentBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemIsDifferentBtn.FlatAppearance.BorderSize = 0;
+            this.itemIsDifferentBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.itemIsDifferentBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.itemIsDifferentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemIsDifferentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemIsDifferentBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.itemIsDifferentBtn.ImageIndex = 0;
+            this.itemIsDifferentBtn.Location = new System.Drawing.Point(114, 0);
+            this.itemIsDifferentBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.itemIsDifferentBtn.Name = "itemIsDifferentBtn";
+            this.itemIsDifferentBtn.Size = new System.Drawing.Size(20, 20);
+            this.itemIsDifferentBtn.TabIndex = 0;
+            this.itemIsDifferentBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.itemIsDifferentBtn, "Item data is not reflected on Certus (click to override)");
+            this.itemIsDifferentBtn.UseVisualStyleBackColor = false;
+            this.itemIsDifferentBtn.Visible = false;
+            this.itemIsDifferentBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // companyUpdatedBtn
+            // 
+            this.companyUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.companyUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("companyUpdatedBtn.BackgroundImage")));
+            this.companyUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.companyUpdatedBtn.FlatAppearance.BorderSize = 0;
+            this.companyUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.companyUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.companyUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.companyUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.companyUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.companyUpdatedBtn.ImageIndex = 0;
+            this.companyUpdatedBtn.Location = new System.Drawing.Point(22, 0);
+            this.companyUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.companyUpdatedBtn.Name = "companyUpdatedBtn";
+            this.companyUpdatedBtn.Size = new System.Drawing.Size(20, 20);
+            this.companyUpdatedBtn.TabIndex = 0;
+            this.companyUpdatedBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.companyUpdatedBtn, "Item company has been updated");
+            this.companyUpdatedBtn.UseVisualStyleBackColor = false;
+            this.companyUpdatedBtn.Visible = false;
+            this.companyUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
+            // 
+            // certificateIdOverridenBtn
+            // 
+            this.certificateIdOverridenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.certificateIdOverridenBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("certificateIdOverridenBtn.BackgroundImage")));
+            this.certificateIdOverridenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.certificateIdOverridenBtn.FlatAppearance.BorderSize = 0;
+            this.certificateIdOverridenBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.certificateIdOverridenBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.certificateIdOverridenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.certificateIdOverridenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.certificateIdOverridenBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.certificateIdOverridenBtn.ImageIndex = 0;
+            this.certificateIdOverridenBtn.Location = new System.Drawing.Point(70, 0);
+            this.certificateIdOverridenBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.certificateIdOverridenBtn.Name = "certificateIdOverridenBtn";
+            this.certificateIdOverridenBtn.Size = new System.Drawing.Size(20, 20);
+            this.certificateIdOverridenBtn.TabIndex = 0;
+            this.certificateIdOverridenBtn.TabStop = false;
+            this.buttonDescToolTip.SetToolTip(this.certificateIdOverridenBtn, "Item certificate information has been overridden");
+            this.certificateIdOverridenBtn.UseVisualStyleBackColor = false;
+            this.certificateIdOverridenBtn.Visible = false;
+            this.certificateIdOverridenBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
             // 
             // detailsOptionsPanel2
             // 
@@ -3143,158 +3320,6 @@
             this.compliantTbx.MouseHover += new System.EventHandler(this.detailTbx_MouseHover);
             this.compliantTbx.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.detailPanelTbx__PreviewKeyDown);
             // 
-            // detailNotificationsPanel
-            // 
-            this.detailNotificationsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.detailNotificationsPanel.Controls.Add(this.priorityNotificationBtn);
-            this.detailNotificationsPanel.Controls.Add(this.certificateInformationUpdatedBtn);
-            this.detailNotificationsPanel.Controls.Add(this.itemExcludedBtn);
-            this.detailNotificationsPanel.Controls.Add(this.itemIsDifferentBtn);
-            this.detailNotificationsPanel.Controls.Add(this.companyUpdatedBtn);
-            this.detailNotificationsPanel.Controls.Add(this.certificateIdOverridenBtn);
-            this.detailNotificationsPanel.Location = new System.Drawing.Point(435, 380);
-            this.detailNotificationsPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.detailNotificationsPanel.Name = "detailNotificationsPanel";
-            this.detailNotificationsPanel.Size = new System.Drawing.Size(144, 20);
-            this.detailNotificationsPanel.TabIndex = 3;
-            // 
-            // priorityNotificationBtn
-            // 
-            this.priorityNotificationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.priorityNotificationBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("priorityNotificationBtn.BackgroundImage")));
-            this.priorityNotificationBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.priorityNotificationBtn.FlatAppearance.BorderSize = 0;
-            this.priorityNotificationBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.priorityNotificationBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.priorityNotificationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.priorityNotificationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priorityNotificationBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.priorityNotificationBtn.ImageIndex = 0;
-            this.priorityNotificationBtn.Location = new System.Drawing.Point(0, 0);
-            this.priorityNotificationBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.priorityNotificationBtn.Name = "priorityNotificationBtn";
-            this.priorityNotificationBtn.Size = new System.Drawing.Size(20, 20);
-            this.priorityNotificationBtn.TabIndex = 0;
-            this.priorityNotificationBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.priorityNotificationBtn, "Item has priority");
-            this.priorityNotificationBtn.UseVisualStyleBackColor = false;
-            this.priorityNotificationBtn.Visible = false;
-            // 
-            // certificateInformationUpdatedBtn
-            // 
-            this.certificateInformationUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.certificateInformationUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("certificateInformationUpdatedBtn.BackgroundImage")));
-            this.certificateInformationUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.certificateInformationUpdatedBtn.FlatAppearance.BorderSize = 0;
-            this.certificateInformationUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.certificateInformationUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.certificateInformationUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.certificateInformationUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.certificateInformationUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.certificateInformationUpdatedBtn.ImageIndex = 0;
-            this.certificateInformationUpdatedBtn.Location = new System.Drawing.Point(46, 0);
-            this.certificateInformationUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.certificateInformationUpdatedBtn.Name = "certificateInformationUpdatedBtn";
-            this.certificateInformationUpdatedBtn.Size = new System.Drawing.Size(20, 20);
-            this.certificateInformationUpdatedBtn.TabIndex = 0;
-            this.certificateInformationUpdatedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.certificateInformationUpdatedBtn, "Item certificate information has been updated");
-            this.certificateInformationUpdatedBtn.UseVisualStyleBackColor = false;
-            this.certificateInformationUpdatedBtn.Visible = false;
-            this.certificateInformationUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // itemExcludedBtn
-            // 
-            this.itemExcludedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.itemExcludedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("itemExcludedBtn.BackgroundImage")));
-            this.itemExcludedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.itemExcludedBtn.FlatAppearance.BorderSize = 0;
-            this.itemExcludedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.itemExcludedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.itemExcludedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemExcludedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemExcludedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemExcludedBtn.ImageIndex = 0;
-            this.itemExcludedBtn.Location = new System.Drawing.Point(92, 0);
-            this.itemExcludedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.itemExcludedBtn.Name = "itemExcludedBtn";
-            this.itemExcludedBtn.Size = new System.Drawing.Size(20, 20);
-            this.itemExcludedBtn.TabIndex = 0;
-            this.itemExcludedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.itemExcludedBtn, "Item is excluded (click to override)");
-            this.itemExcludedBtn.UseVisualStyleBackColor = false;
-            this.itemExcludedBtn.Visible = false;
-            this.itemExcludedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // itemIsDifferentBtn
-            // 
-            this.itemIsDifferentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.itemIsDifferentBtn.BackgroundImage = global::CertusCompanion.Properties.Resources.warningIcon1;
-            this.itemIsDifferentBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.itemIsDifferentBtn.FlatAppearance.BorderSize = 0;
-            this.itemIsDifferentBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.itemIsDifferentBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.itemIsDifferentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemIsDifferentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemIsDifferentBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.itemIsDifferentBtn.ImageIndex = 0;
-            this.itemIsDifferentBtn.Location = new System.Drawing.Point(114, 0);
-            this.itemIsDifferentBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.itemIsDifferentBtn.Name = "itemIsDifferentBtn";
-            this.itemIsDifferentBtn.Size = new System.Drawing.Size(20, 20);
-            this.itemIsDifferentBtn.TabIndex = 0;
-            this.itemIsDifferentBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.itemIsDifferentBtn, "Item data is not reflected on Certus (click to override)");
-            this.itemIsDifferentBtn.UseVisualStyleBackColor = false;
-            this.itemIsDifferentBtn.Visible = false;
-            this.itemIsDifferentBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // companyUpdatedBtn
-            // 
-            this.companyUpdatedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.companyUpdatedBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("companyUpdatedBtn.BackgroundImage")));
-            this.companyUpdatedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.companyUpdatedBtn.FlatAppearance.BorderSize = 0;
-            this.companyUpdatedBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.companyUpdatedBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.companyUpdatedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.companyUpdatedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.companyUpdatedBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.companyUpdatedBtn.ImageIndex = 0;
-            this.companyUpdatedBtn.Location = new System.Drawing.Point(22, 0);
-            this.companyUpdatedBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.companyUpdatedBtn.Name = "companyUpdatedBtn";
-            this.companyUpdatedBtn.Size = new System.Drawing.Size(20, 20);
-            this.companyUpdatedBtn.TabIndex = 0;
-            this.companyUpdatedBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.companyUpdatedBtn, "Item company has been updated");
-            this.companyUpdatedBtn.UseVisualStyleBackColor = false;
-            this.companyUpdatedBtn.Visible = false;
-            this.companyUpdatedBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
-            // certificateIdOverridenBtn
-            // 
-            this.certificateIdOverridenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.certificateIdOverridenBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("certificateIdOverridenBtn.BackgroundImage")));
-            this.certificateIdOverridenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.certificateIdOverridenBtn.FlatAppearance.BorderSize = 0;
-            this.certificateIdOverridenBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
-            this.certificateIdOverridenBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.certificateIdOverridenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.certificateIdOverridenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.certificateIdOverridenBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.certificateIdOverridenBtn.ImageIndex = 0;
-            this.certificateIdOverridenBtn.Location = new System.Drawing.Point(70, 0);
-            this.certificateIdOverridenBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.certificateIdOverridenBtn.Name = "certificateIdOverridenBtn";
-            this.certificateIdOverridenBtn.Size = new System.Drawing.Size(20, 20);
-            this.certificateIdOverridenBtn.TabIndex = 0;
-            this.certificateIdOverridenBtn.TabStop = false;
-            this.buttonDescToolTip.SetToolTip(this.certificateIdOverridenBtn, "Item certificate information has been overridden");
-            this.certificateIdOverridenBtn.UseVisualStyleBackColor = false;
-            this.certificateIdOverridenBtn.Visible = false;
-            this.certificateIdOverridenBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.optionButtons_KeyDown);
-            // 
             // detailsSaveBtn
             // 
             this.detailsSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -4462,7 +4487,7 @@
             this.importPanel.Location = new System.Drawing.Point(15, 30);
             this.importPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importPanel.Name = "importPanel";
-            this.importPanel.Size = new System.Drawing.Size(272, 378);
+            this.importPanel.Size = new System.Drawing.Size(274, 378);
             this.importPanel.TabIndex = 0;
             // 
             // importDateTbxPanel
@@ -4476,7 +4501,7 @@
             this.importDateTbxPanel.Location = new System.Drawing.Point(95, 229);
             this.importDateTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbxPanel.Name = "importDateTbxPanel";
-            this.importDateTbxPanel.Size = new System.Drawing.Size(171, 16);
+            this.importDateTbxPanel.Size = new System.Drawing.Size(173, 16);
             this.importDateTbxPanel.TabIndex = 76;
             // 
             // button26
@@ -4486,7 +4511,7 @@
             this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button26.Location = new System.Drawing.Point(152, -1);
+            this.button26.Location = new System.Drawing.Point(154, -1);
             this.button26.Margin = new System.Windows.Forms.Padding(2);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(18, 18);
@@ -4508,7 +4533,7 @@
             this.importDateTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importDateTbx.Name = "importDateTbx";
             this.importDateTbx.ReadOnly = true;
-            this.importDateTbx.Size = new System.Drawing.Size(148, 12);
+            this.importDateTbx.Size = new System.Drawing.Size(150, 12);
             this.importDateTbx.TabIndex = 0;
             this.importDateTbx.TabStop = false;
             // 
@@ -4539,7 +4564,7 @@
             this.itemImportsLbx.Location = new System.Drawing.Point(8, 6);
             this.itemImportsLbx.Margin = new System.Windows.Forms.Padding(2);
             this.itemImportsLbx.Name = "itemImportsLbx";
-            this.itemImportsLbx.Size = new System.Drawing.Size(259, 210);
+            this.itemImportsLbx.Size = new System.Drawing.Size(261, 210);
             this.itemImportsLbx.TabIndex = 0;
             this.itemImportsLbx.TabStop = false;
             this.itemImportsLbx.SelectedIndexChanged += new System.EventHandler(this.itemImportsLbx_SelectedIndexChanged);
@@ -4551,7 +4576,7 @@
             this.importTotalItemsTbxPanel.Controls.Add(this.button20);
             this.importTotalItemsTbxPanel.Controls.Add(this.itemsOnImportTbx);
             this.importTotalItemsTbxPanel.Controls.Add(this.button21);
-            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(177, 304);
+            this.importTotalItemsTbxPanel.Location = new System.Drawing.Point(179, 304);
             this.importTotalItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importTotalItemsTbxPanel.Name = "importTotalItemsTbxPanel";
             this.importTotalItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4612,7 +4637,7 @@
             this.importsCompSinceTbxPanel.Controls.Add(this.button16);
             this.importsCompSinceTbxPanel.Controls.Add(this.itemsUpdatedTbx);
             this.importsCompSinceTbxPanel.Controls.Add(this.button17);
-            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(177, 354);
+            this.importsCompSinceTbxPanel.Location = new System.Drawing.Point(179, 354);
             this.importsCompSinceTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importsCompSinceTbxPanel.Name = "importsCompSinceTbxPanel";
             this.importsCompSinceTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -4677,7 +4702,7 @@
             this.importDescriptionTbxPanel.Location = new System.Drawing.Point(95, 280);
             this.importDescriptionTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importDescriptionTbxPanel.Name = "importDescriptionTbxPanel";
-            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(171, 16);
+            this.importDescriptionTbxPanel.Size = new System.Drawing.Size(173, 16);
             this.importDescriptionTbxPanel.TabIndex = 75;
             // 
             // button22
@@ -4687,7 +4712,7 @@
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button22.Location = new System.Drawing.Point(152, -1);
+            this.button22.Location = new System.Drawing.Point(154, -1);
             this.button22.Margin = new System.Windows.Forms.Padding(2);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(18, 18);
@@ -4709,7 +4734,7 @@
             this.importTypeTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importTypeTbx.Name = "importTypeTbx";
             this.importTypeTbx.ReadOnly = true;
-            this.importTypeTbx.Size = new System.Drawing.Size(148, 12);
+            this.importTypeTbx.Size = new System.Drawing.Size(150, 12);
             this.importTypeTbx.TabIndex = 0;
             this.importTypeTbx.TabStop = false;
             // 
@@ -4787,7 +4812,7 @@
             this.importFileNameTbxPanel.Location = new System.Drawing.Point(95, 254);
             this.importFileNameTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbxPanel.Name = "importFileNameTbxPanel";
-            this.importFileNameTbxPanel.Size = new System.Drawing.Size(171, 16);
+            this.importFileNameTbxPanel.Size = new System.Drawing.Size(173, 16);
             this.importFileNameTbxPanel.TabIndex = 74;
             // 
             // button24
@@ -4797,7 +4822,7 @@
             this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button24.Location = new System.Drawing.Point(152, -1);
+            this.button24.Location = new System.Drawing.Point(154, -1);
             this.button24.Margin = new System.Windows.Forms.Padding(2);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(18, 18);
@@ -4819,7 +4844,7 @@
             this.importFileNameTbx.Margin = new System.Windows.Forms.Padding(2);
             this.importFileNameTbx.Name = "importFileNameTbx";
             this.importFileNameTbx.ReadOnly = true;
-            this.importFileNameTbx.Size = new System.Drawing.Size(148, 12);
+            this.importFileNameTbx.Size = new System.Drawing.Size(150, 12);
             this.importFileNameTbx.TabIndex = 0;
             this.importFileNameTbx.TabStop = false;
             // 
@@ -4869,7 +4894,7 @@
             this.importNewItemsTbxPanel.Controls.Add(this.button18);
             this.importNewItemsTbxPanel.Controls.Add(this.itemsAddedTbx);
             this.importNewItemsTbxPanel.Controls.Add(this.button19);
-            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(177, 330);
+            this.importNewItemsTbxPanel.Location = new System.Drawing.Point(179, 330);
             this.importNewItemsTbxPanel.Margin = new System.Windows.Forms.Padding(2);
             this.importNewItemsTbxPanel.Name = "importNewItemsTbxPanel";
             this.importNewItemsTbxPanel.Size = new System.Drawing.Size(89, 16);
@@ -6570,6 +6595,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChild2)).EndInit();
             this.splitContainerChild2.ResumeLayout(false);
             this.detailsOptionsPanel.ResumeLayout(false);
+            this.detailNotificationsPanel.ResumeLayout(false);
             this.detailsOptionsPanel2.ResumeLayout(false);
             this.itemButtonsPanel.ResumeLayout(false);
             this.itemDetailsPanel.ResumeLayout(false);
@@ -6603,7 +6629,6 @@
             this.detailPanel5.PerformLayout();
             this.detailPanel6.ResumeLayout(false);
             this.detailPanel6.PerformLayout();
-            this.detailNotificationsPanel.ResumeLayout(false);
             this.detailPanel18.ResumeLayout(false);
             this.detailPanel18.PerformLayout();
             this.detailPanel17.ResumeLayout(false);
@@ -7088,5 +7113,6 @@
         private System.Windows.Forms.ToolStripMenuItem colorItem10;
         private System.Windows.Forms.ToolStripMenuItem colorItem11;
         private System.Windows.Forms.ToolStripMenuItem colorItem12;
+        private System.Windows.Forms.Button linkActivationBtn;
     }
 }

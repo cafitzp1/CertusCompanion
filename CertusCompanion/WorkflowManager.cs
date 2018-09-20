@@ -128,11 +128,11 @@ namespace CertusCompanion
         private string previousSender;
         private string searchVal;
         private string previousSearch;
-        private string bindedColor1 = "Default";
-        private string bindedColor2 = "Gray";
-        private string bindedColor3 = "Teal";
-        private string bindedColor4 = "Blue";
-        private string bindedColor5 = "Black";
+        private string bindedColor1;
+        private string bindedColor2;
+        private string bindedColor3;
+        private string bindedColor4;
+        private string bindedColor5;
         private string importFileName;
         private string selectSelection;
         private string fromSelection;
@@ -187,6 +187,7 @@ namespace CertusCompanion
         private System.Windows.Forms.Timer delayedAlertTimer;
         private bool certusBrowserOpened;
         private bool ignorethisEvent;
+        private bool linksActive;
         #endregion
 
         // ----- APPLICATION STARTUP ----- //
@@ -376,146 +377,6 @@ namespace CertusCompanion
             StatusesDataSource.Add("Compliance Analyst");
             StatusesDataSource.Add("Completed");
             StatusesDataSource.Add("Trash");
-            #endregion
-
-            #region Old code (reading datasources from .txt - now generated fron DB conn)
-            /*
-            // get datasources from txt
-#region Pull DataSources
-            string itemType = "";
-            List<object> itemsToAdd = new List<object>();
-            Client cl = new Client();
-            Company co = new Company();
-            Certificate ct = new Certificate();
-            Analyst anl = new Analyst();
-
-            using (Stream strm = Assembly.GetExecutingAssembly().GetManifestResourceStream("CertusCompanion.Configuration.StaticDataSources.txt"))
-            {
-                using (StreamReader sr = new StreamReader(strm))
-                {
-                    string line;
-
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        // if line is blank continue
-                        if (line == String.Empty) continue;
-
-                        // if line is # file is done
-                        if (line.StartsWith("#"))
-                        {
-                            if (itemsToAdd != null && itemsToAdd.Count != 0)
-                            {
-                                ds.Items = itemsToAdd;
-                                DataSources.Add(ds);
-                                return;
-                            }
-                        }
-
-                        // if line starts with '<<' it is not an item
-                        if (line.StartsWith("<<"))
-                        {
-                            // save list to DS (will skip the first time)
-                            if (itemsToAdd != null && itemsToAdd.Count != 0)
-                            {
-                                ds.Items = itemsToAdd;
-                                DataSources.Add(ds);
-                            }
-
-                            itemsToAdd = new List<object>();
-
-                            switch (line.Substring(2, line.IndexOf('>') - 2))
-                            {
-                                case "CLIENTS":
-                                    {
-                                        ds = new DataSource("ALL", "Clients", true);
-                                        itemType = "client";
-                                    }
-                                    break;
-                                case "COMPANIES":
-                                    {
-                                        ds = new DataSource("ALL", "Companies");
-                                        itemType = "company";
-                                    }
-                                    break;
-                                case "CERTIFICATES":
-                                    {
-                                        ds = new DataSource("ALL", "Certificates");
-                                        itemType = "certificate";
-                                    }
-                                    break;
-                                case "ANALYSTS":
-                                    {
-                                        ds = new DataSource("ALL", "Analysts");
-                                        itemType = "analyst";
-                                    }
-                                    break;
-                                case "MARKET ASSIGNMENTS":
-                                    {
-                                        ds = new DataSource("", "Market Assignments", true); // needs to be changed
-                                        itemType = "market assignment";
-                                    }
-                                    break;
-                            }
-
-                            continue;
-                        }
-
-                        // return fields in a string array split by commas (not including those which are within quotations)
-                        string[] result = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-
-                        // remove paranthesis if comma is in value
-                        for (int i = 0; i < result.Length; i++)
-                        {
-                            if (result[i].Contains(',') == true)
-                            {
-                                result[i] = result[i].Remove(0, 1);
-                                result[i] = result[i].Remove(result[i].Length - 1, 1);
-                            }
-                        }
-
-                        // save items
-                        switch (itemType)
-                        {
-                            case "client":
-                                {
-                                    // add to DS list
-                                    cl = new Client(result[0], result[1]);
-                                    ClientsDataSource.Add(cl);
-                                    itemsToAdd.Add(cl);
-                                }
-                                break;
-                            case "company":
-                                {
-                                    co = new Company(result[2], result[0], result[1]);
-                                    CompaniesDataSource.Add(co);
-                                    itemsToAdd.Add(co);
-                                }
-                                break;
-                            case "certificate":
-                                {
-                                    ct = new Certificate(result[0], result[3], result[2], result[1]);
-                                    CertificatesDataSource.Add(ct);
-                                    itemsToAdd.Add(ct);
-                                }
-                                break;
-                            case "analyst":
-                                {
-                                    anl = new Analyst(result[0], result[1], result[2]);
-                                    AnalystsDataSource.Add(anl);
-                                    itemsToAdd.Add(anl);
-                                }
-                                break;
-                            case "market assignment":
-                                {
-                                    MarketAssignments.Add(result[0], result[1]);
-                                    itemsToAdd.Add($"{result[1]} <{result[0]}>");
-                                }
-                                break;
-                        }
-                    }
-                }
-            }
-            */
             #endregion
         }
         private void PopulateMainFormStatic()
@@ -2381,11 +2242,32 @@ namespace CertusCompanion
             }
             if (CurrentFilter.AnalystCheckChoice == true)
             {
-                foreach (WorkflowItem item in lvList)
+                if (CurrentFilter.AnalystSelection == "Analysts With Markets" || CurrentFilter.AnalystSelection == "Analysts Without Markets")
                 {
-                    if (item.AssignedToName == CurrentFilter.AnalystSelection)
+                    // if no markets, notify there was no source and return
+                    if (DataSources == null || DataSources.Count < 10)
                     {
-                        newList.Add(item);
+                        SetStatusLabelAndTimer("There is no market data source available");
+                        return;
+                    }
+
+                    if (CurrentFilter.AnalystSelection == "Analysts With Markets")
+                    {
+                        newList.AddRange(GetAnalystsWithMarkets());
+                    }
+                    if (CurrentFilter.AnalystSelection == "Analysts Without Markets")
+                    {
+                        newList.AddRange(GetAnalystsWithoutMarkets());
+                    }
+                }
+                else
+                {
+                    foreach (WorkflowItem item in lvList)
+                    {
+                        if (item.AssignedToName == CurrentFilter.AnalystSelection)
+                        {
+                            newList.Add(item);
+                        }
                     }
                 }
             }
@@ -2529,53 +2411,6 @@ namespace CertusCompanion
             this.splitContainerChild2.SplitterDistance = Convert.ToInt32(splitContainerChild2.Width*.52294);
             workflowItemsListView.Focus();
         }
-        private void refreshListViewBtn_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-
-            try
-            {
-                // update filtered items
-                if (IsFilterActive())
-                {
-                    SaveFilteredItemList();
-                }
-
-                // populate views 
-                this.RefreshListView();
-                this.PopulateImportLbx(AllItemImportsLoaded);
-
-                // refresh views
-                itemImportsLbx.Refresh();
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("Could not refresh", 3000);
-                MakeErrorSound();
-            }
-
-            Cursor.Current = Cursors.Default;
-            workflowItemsListView.Focus();
-        }
-        private void RefreshListView()
-        {
-            workflowItemsListView.OwnerDraw = false;
-            workflowItemsListView.Visible = false;
-
-            try
-            {
-                PopulateListViewData(WorkflowItemListPopulated);
-            }
-            catch (Exception)
-            {
-                SetStatusLabelAndTimer("There was a problem refreshing");
-                MakeErrorSound();
-            }
-
-            workflowItemsListView.OwnerDraw = true;
-            workflowItemsListView.Visible = true;
-            this.Refresh();
-        }
         private void redrawItemsBtn_Click(object sender, EventArgs e)
         {
             // don't let too many items be redrawn because this takes forever
@@ -2708,6 +2543,69 @@ namespace CertusCompanion
             for (int i = 0; i < workflowItemsListView.Columns.Count - 1; i++)
             {
                 workflowItemsListView.Columns[i].Width = 70;
+            }
+        }
+        private void refreshListViewBtn_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                // update filtered items
+                if (IsFilterActive())
+                {
+                    SaveFilteredItemList();
+                }
+
+                // populate views 
+                this.RefreshListView();
+                this.PopulateImportLbx(AllItemImportsLoaded);
+
+                // refresh views
+                itemImportsLbx.Refresh();
+            }
+            catch (Exception)
+            {
+                SetStatusLabelAndTimer("Could not refresh", 3000);
+                MakeErrorSound();
+            }
+
+            Cursor.Current = Cursors.Default;
+            workflowItemsListView.Focus();
+        }
+        private void RefreshListView()
+        {
+            workflowItemsListView.OwnerDraw = false;
+            workflowItemsListView.Visible = false;
+
+            try
+            {
+                PopulateListViewData(WorkflowItemListPopulated);
+            }
+            catch (Exception)
+            {
+                SetStatusLabelAndTimer("There was a problem refreshing");
+                MakeErrorSound();
+            }
+
+            workflowItemsListView.OwnerDraw = true;
+            workflowItemsListView.Visible = true;
+            this.Refresh();
+        }
+        private void linkActivationBtn_Click(object sender, EventArgs e)
+        {
+            // toggle on
+            if (linksActive == false)
+            {
+                linksActive = true;
+                linkActivationBtn.BackColor = Color.FromName("Highlight");
+                //...
+            }
+            else
+            {
+                linksActive = false;
+                linkActivationBtn.BackColor = Color.FromArgb(20, 20, 20);
+                //...
             }
         }
         private void clCustomDDLSelectionBtn_TextChanged(object sender, EventArgs e)
@@ -4373,7 +4271,11 @@ namespace CertusCompanion
             if (hoverItem.SubItem != null && hoverItem.SubItem == hoverItem.Item.SubItems[fileUrlColumnHeader.Index])
             {
                 workflowItemsListView.MouseDown += workflowItemsListView_MouseDown;
-                workflowItemsListView.Cursor = Cursors.Hand;
+                if (hoverItem.SubItem.Text != null && hoverItem.SubItem.Text != String.Empty && linksActive)
+                {
+                    workflowItemsListView.Cursor = Cursors.Hand;
+                }
+                else workflowItemsListView.Cursor = Cursors.Default;
             }
             else if (hoverItem.Item != null && hoverItem.Item.Checked == true)
             {
@@ -4409,14 +4311,16 @@ namespace CertusCompanion
 
                     listViewContextMenuStrip.Show(Cursor.Position);
                 }
-                if (clickedItem.SubItem != null && clickedItem.SubItem.Text != String.Empty && clickedItem.SubItem == clickedItem.Item.SubItems[fileUrlColumnHeader.Index])
+                else if (clickedItem.SubItem != null && clickedItem.SubItem.Text != String.Empty && clickedItem.SubItem == clickedItem.Item.SubItems[fileUrlColumnHeader.Index])
                 {
-                    Cursor.Current = Cursors.WaitCursor;
-                    string targetURL = clickedItem.Item.SubItems[fileUrlColumnHeader.Index].Text;
-
-                    System.Diagnostics.Process.Start(targetURL);
+                    if (linksActive)
+                    {
+                        // launch url
+                        Cursor.Current = Cursors.WaitCursor;
+                        string targetURL = clickedItem.Item.SubItems[fileUrlColumnHeader.Index].Text;
+                        System.Diagnostics.Process.Start(targetURL);
+                    }
                 }
-
             }
             catch (Exception)
             {
@@ -5346,8 +5250,10 @@ namespace CertusCompanion
                     // save data to a new workflow item
                     SaveItemChanges(documentWorkflowItemIdTbx.Text);
 
+                    // make sure the leave w/o save alert doesn't appear
                     itemDetailsChanged = false;
                     selectedIndexChangedEventIgnored = false;
+                    CurrentDetailTbxVals = ReturnDetailPanelValues();
 
                     // notify
                     SetStatusLabelAndTimer($"Changes to item '{documentWorkflowItemIdTbx.Text}' saved");
@@ -8435,6 +8341,36 @@ namespace CertusCompanion
             foreach (WorkflowItem item in WorkflowItemListPopulated)
             {
                 if (item.DisplayColor == "Gray" || item.DisplayColor == "Silver" || item.DisplayColor == "Black")
+                {
+                    tmpList.Add(item);
+                }
+            }
+
+            return tmpList;
+        }
+        private List<WorkflowItem> GetAnalystsWithMarkets()
+        {
+            List<WorkflowItem> tmpList = new List<WorkflowItem>();
+
+            GenerateMarketAssignments();
+            foreach (WorkflowItem item in WorkflowItemListPopulated)
+            {
+                if (MarketAssignments.ContainsValue(item.AssignedToName))
+                {
+                    tmpList.Add(item);
+                }
+            }
+
+            return tmpList;
+        }
+        private List<WorkflowItem> GetAnalystsWithoutMarkets()
+        {
+            List<WorkflowItem> tmpList = new List<WorkflowItem>();
+
+            GenerateMarketAssignments();
+            foreach (WorkflowItem item in WorkflowItemListPopulated)
+            {
+                if (!MarketAssignments.ContainsValue(item.AssignedToName))
                 {
                     tmpList.Add(item);
                 }
@@ -12909,7 +12845,8 @@ namespace CertusCompanion
             // --- ANALYSTS --- //
 #region Analysts
             ds = new DataSource();
-            ds.Name = clientName;
+            //ds.Name = clientName;
+            ds.Name = "All";
             ds.Type = "Analysts";
             ds.Binded = true;
 
@@ -12925,8 +12862,8 @@ namespace CertusCompanion
                 }
             }
 
-            // specifiy the client
-            query += $"\nWHERE\t\tSU.DefaultClientID = {clientID};";
+            // specifiy the client ***CHANGED - just grab all...
+            //query += $"\nWHERE\t\tSU.DefaultClientID = {clientID};";
             command.CommandText = query;
             command.CommandType = CommandType.Text;
             command.CommandTimeout = 450;

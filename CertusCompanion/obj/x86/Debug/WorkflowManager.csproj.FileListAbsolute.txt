@@ -209,3 +209,4 @@ C:\Users\Connor\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\Workf
 C:\Users\Connor\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\WorkflowManager.csproj.CoreCompileInputs.cache
 C:\Users\Connor\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\CertusCompanion.exe
 C:\Users\Connor\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\CertusCompanion.pdb
+C:\Users\Connor\source\repos\CertusCompanion\CertusCompanion\obj\x86\Debug\WorkflowManager.csprojAssemblyReference.cache

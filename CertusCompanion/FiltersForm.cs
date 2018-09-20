@@ -125,6 +125,9 @@ namespace CertusCompanion
                 analystComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             }
 
+            analystComboBox.Items.Add("Analysts With Markets");
+            analystComboBox.Items.Add("Analysts Without Markets");
+
             // --- COMPANIES TBX --- //
             AutoCompleteStringCollection companyACS = new AutoCompleteStringCollection();
 

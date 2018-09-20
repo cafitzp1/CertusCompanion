@@ -29,9 +29,6 @@ namespace CertusCompanion
         public DataSourceForm()
         {
             InitializeComponent();
-
-            // read from .txt and generate lists here
-            // ...
         }
         public DataSourceForm(List<DataSource> dataSourceList)
         {
