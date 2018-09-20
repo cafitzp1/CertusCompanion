@@ -456,7 +456,7 @@ namespace CertusCompanion
                 if (attempts % 100 == 0) //10 seconds worth of attempts
                 {
                     ++messages;
-                    if (messages > 5) abort = true;
+                    if (messages > 20) abort = true;
                     else
                     {
                         logMessage = $"Awaiting console instruction (attempt: {messages})...";

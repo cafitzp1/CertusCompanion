@@ -635,6 +635,7 @@
             this.itemsListView.ForeColor = System.Drawing.SystemColors.Control;
             this.itemsListView.FullRowSelect = true;
             this.itemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.itemsListView.HideSelection = false;
             this.itemsListView.Location = new System.Drawing.Point(0, 96);
             this.itemsListView.Name = "itemsListView";
             this.itemsListView.Size = new System.Drawing.Size(278, 156);

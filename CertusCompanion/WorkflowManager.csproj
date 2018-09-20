@@ -80,7 +80,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>image001_zyE_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\image001_zyE_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -101,9 +101,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analyst.cs" />
-    <Compile Include="AppData.cs" />
-    <Compile Include="AppSave.cs" />
+    <Compile Include="AppCode\Analyst.cs" />
+    <Compile Include="AppCode\AppData.cs" />
+    <Compile Include="AppCode\AppSave.cs" />
     <Compile Include="BrowserConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,66 +116,66 @@
     <Compile Include="CertusBrowser.Designer.cs">
       <DependentUpon>CertusBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Certificate.cs" />
-    <Compile Include="CertificateLocation.cs" />
-    <Compile Include="DBImport.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="Company.cs" />
-    <Compile Include="Contact.cs" />
-    <Compile Include="CustomControls.cs" />
-    <Compile Include="CustomExceptions.cs" />
-    <Compile Include="DataSource.cs" />
+    <Compile Include="AppCode\Certificate.cs" />
+    <Compile Include="AppCode\CertificateLocation.cs" />
+    <Compile Include="AppCode\DBImport.cs" />
+    <Compile Include="AppCode\Client.cs" />
+    <Compile Include="AppCode\Company.cs" />
+    <Compile Include="AppCode\Contact.cs" />
+    <Compile Include="AppCode\CustomControls.cs" />
+    <Compile Include="AppCode\CustomExceptions.cs" />
+    <Compile Include="AppCode\DataSource.cs" />
     <Compile Include="DataSourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataSourceForm.Designer.cs">
       <DependentUpon>DataSourceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Export.cs" />
+    <Compile Include="AppCode\Export.cs" />
     <Compile Include="ExportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ExportForm.Designer.cs">
       <DependentUpon>ExportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filter.cs" />
+    <Compile Include="AppCode\Filter.cs" />
     <Compile Include="FiltersForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FiltersForm.Designer.cs">
       <DependentUpon>FiltersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Import.cs" />
+    <Compile Include="AppCode\Import.cs" />
     <Compile Include="ImportFromDatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImportFromDatabaseForm.Designer.cs">
       <DependentUpon>ImportFromDatabaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemComparer.cs" />
+    <Compile Include="AppCode\ItemComparer.cs" />
     <Compile Include="Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Launcher.Designer.cs">
       <DependentUpon>Launcher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Location.cs" />
+    <Compile Include="AppCode\Location.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
+    <Compile Include="AppCode\Settings.cs" />
     <Compile Include="Test.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="CSVImport.cs" />
-    <Compile Include="ItemImports.cs" />
-    <Compile Include="ItemsCompletedReport.cs" />
-    <Compile Include="ItemsCompletedReports.cs" />
+    <Compile Include="AppCode\CSVImport.cs" />
+    <Compile Include="AppCode\ItemImports.cs" />
+    <Compile Include="AppCode\ItemsCompletedReport.cs" />
+    <Compile Include="AppCode\ItemsCompletedReports.cs" />
     <Compile Include="LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,8 +188,8 @@
     <Compile Include="ModifyForm.Designer.cs">
       <DependentUpon>ModifyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThemeColors.cs" />
-    <Compile Include="WorkflowItemDatabase.cs" />
+    <Compile Include="AppCode\ThemeColors.cs" />
+    <Compile Include="AppCode\WorkflowItemDatabase.cs" />
     <Compile Include="ItemsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,9 +208,9 @@
     <Compile Include="NoteForm.Designer.cs">
       <DependentUpon>NoteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="AppCode\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkflowItem.cs" />
+    <Compile Include="AppCode\WorkflowItem.cs" />
     <EmbeddedResource Include="BrowserConfiguration.resx">
       <DependentUpon>BrowserConfiguration.cs</DependentUpon>
     </EmbeddedResource>
@@ -504,7 +504,6 @@
   <ItemGroup>
     <None Include="Resources\icons8-menu-vertical-32.png" />
     <None Include="Resources\icons8-console-32.png" />
-    <EmbeddedResource Include="BrowserConfiguration.txt" />
     <None Include="Resources\icons8-user-32.png" />
     <None Include="Resources\icons8-details-32.png" />
     <None Include="Resources\icons8-term-32.png" />
@@ -521,7 +520,7 @@
     <EmbeddedResource Include="ImportQueries\ContactDS.sql" />
     <EmbeddedResource Include="ImportQueries\LocationDS.sql" />
     <EmbeddedResource Include="ImportQueries\SystemUserDS.sql" />
-    <Content Include="image001_zyE_icon.ico" />
+    <Content Include="Resources\image001_zyE_icon.ico" />
     <EmbeddedResource Include="ImportQueries\ClientDS.sql" />
     <EmbeddedResource Include="ImportQueries\WIR4.0_DS.sql" />
     <None Include="Resources\icons8-search-24.png" />

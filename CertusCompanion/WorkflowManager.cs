@@ -1,6 +1,4 @@
-﻿//WorkflowManager v4.3
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6816,7 +6814,7 @@ namespace CertusCompanion
             //Item has no analyst ID
 
             var results = from item in listToQuery
-                where (item.AssignedToID == null || item.AssignedToID == "0" || !Char.IsDigit(item.AssignedToID[0]) || item.AssignedToID == String.Empty || item.AssignedToID.ToLower() == "null")
+                where (item.AssignedToID == null || item.AssignedToID == "0" || item.AssignedToID == String.Empty || item.AssignedToID.ToLower() == "null")
                 select item;
 
             return results;

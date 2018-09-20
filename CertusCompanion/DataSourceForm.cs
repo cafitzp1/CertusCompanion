@@ -422,6 +422,8 @@ namespace CertusCompanion
                     return;
                 }
 
+                e.Handled = true;
+                e.SuppressKeyPress = true;
                 searchVal = searchTbx.Text;
                 searchTbx.SelectAll();
 
