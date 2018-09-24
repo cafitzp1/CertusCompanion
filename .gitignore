@@ -2,3 +2,5 @@
 .vs
 .DS_Store
 CertusCompanion/App.config
+CertusCompanion/bin/x86/Debug/debug.log
+CertusCompanion/bin/x86/Debug/GPUCache/data_1
