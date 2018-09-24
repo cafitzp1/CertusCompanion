@@ -3,4 +3,8 @@
 .DS_Store
 CertusCompanion/App.config
 CertusCompanion/bin/x86/Debug/debug.log
+<<<<<<< HEAD
 CertusCompanion/bin/x86/Debug/GPUCache/data_1
+=======
+CertusCompanion/bin/x86/Debug/GPUCache/data_1
+>>>>>>> dev
