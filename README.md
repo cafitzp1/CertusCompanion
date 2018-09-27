@@ -50,3 +50,5 @@ Integrated chrome web browser with embedded javascript functions for automatical
 * Removed close option for database connection loading forms (user can press F4 if they have to)
 ### v1.0.0
 * Application release launch
+
+[Functionality Overview](https://drive.google.com/file/d/1cd2-Y6AmM1LioP-wisgXv9-s_m0ankap/view?usp=sharing)
