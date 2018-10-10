@@ -22,7 +22,7 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# misc
+# other
 /.sass-cache
 /connect.lock
 /coverage
