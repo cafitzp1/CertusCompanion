@@ -1,10 +1,49 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 # misc
-.vs
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
 .DS_Store
+Thumbs.db
+
+# misc
 CertusCompanion/App.config
 CertusCompanion/bin/x86/Debug/debug.log
-<<<<<<< HEAD
 CertusCompanion/bin/x86/Debug/GPUCache/data_1
-=======
-CertusCompanion/bin/x86/Debug/GPUCache/data_1
->>>>>>> dev
+bin/
+obj/
+*.user
+*.suo
+*.sln.cache
+*.Publish.xml
+.vs

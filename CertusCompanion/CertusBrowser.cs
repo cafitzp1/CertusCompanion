@@ -259,14 +259,14 @@ namespace CertusCompanion
 
                 if (customScript1 != null && customScript1 != String.Empty && customScript1 != "...")
                 {
-#if DEBUG
+                    #if DEBUG
                     /* // snippet is for testing when running only the browser and not WorkflowManager first
                     itemIDs = new List<string>();
                     itemIDs.Add("123");
                     itemIDs.Add("234");
                     itemIDs.Add("345");
                     */
-#endif
+                    #endif
 
                     if (itemIDs != null && itemIDs.Count > 0)
                     {
@@ -845,11 +845,11 @@ namespace CertusCompanion
                     $"SelectElement('ctl00_cphPopups_m_BulkDocumentWorkflowStatusDDL', '{completeStatusID}'); " +
 
                     // click save button
-#if !DEBUG
+                    #if !DEBUG
                     "document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
-#elif DEBUG
+                    #elif DEBUG
                     "document.getElementById('ctl00_cphPopups_m_WorkflowBulkCancelBTN').click(); " + // cancel button (for debugging)
-#endif
+                    #endif
 
                     // wait for response
                     "g(); " +
@@ -1423,11 +1423,11 @@ namespace CertusCompanion
                     $"SelectElement('ctl00_cphPopups_m_BulkDocumentWorkflowStatusDDL', '{currentStatusIDToAssign}'); " +
 
                     // click save button
-#if !DEBUG
+                    #if !DEBUG
                     "document.getElementById('ctl00_cphPopups_m_WorkflowBulkSaveBTN').click(); " +
-#elif DEBUG
+                    #elif DEBUG
                     "document.getElementById('ctl00_cphPopups_m_WorkflowBulkCancelBTN').click(); " + // cancel button (for debugging)
-#endif
+                    #endif
 
                     // wait for response
                     "g(); " +
@@ -1436,8 +1436,7 @@ namespace CertusCompanion
 
                 // call
                 "bulkAction(); ";
-
-#endregion
+                #endregion
 
             // Execute as task
             var taskY = chrome.EvaluateScriptAsync(scriptY, 300001);
@@ -1446,7 +1445,7 @@ namespace CertusCompanion
             taskY.Wait();
 
             // Evaluate
-#region Evaluate
+            #region Evaluate
             var responseY = taskY.Result;
 
             if (responseY.Success)
@@ -1492,14 +1491,14 @@ namespace CertusCompanion
 
                 throw new Exception($"Process failed while executing '{script}' script for userID: {currentUserIDToAssign} ({dictCount}/{subItemIDsAndAssignmentIDsDictList.Count})");
             }
-#endregion
+            #endregion
         }
         private void DistributeStep4()
         {
             this.Invoke(new Action(() => { LogEvent("Navigating to previous page..."); this.Refresh(); }));
 
             // write script - Prev page
-#region scriptZ
+            #region scriptZ
             script = "Navigate to prev page";
 
             string scriptZ =
@@ -1534,8 +1533,7 @@ namespace CertusCompanion
 
                 // call
                 "prevPage(); ";
-
-#endregion
+                #endregion
 
             // Execute as task
             var taskZ = chrome.EvaluateScriptAsync(scriptZ, 300001);
@@ -1544,7 +1542,7 @@ namespace CertusCompanion
             taskZ.Wait();
 
             // Evaluate
-#region Evaluate
+            #region Evaluate
             var responseZ = taskZ.Result;
 
             if (responseZ.Success)
@@ -1589,7 +1587,7 @@ namespace CertusCompanion
 
                 throw new Exception($"Process failed while executing '{script}' script for userID: {currentUserIDToAssign} ({dictCount}/{subItemIDsAndAssignmentIDsDictList.Count})");
             }
-#endregion
+        #endregion
         }
         //
         // custom scripts
@@ -1944,7 +1942,7 @@ namespace CertusCompanion
 
             if (s != String.Empty) Clipboard.SetText(s);
         }
-#endregion Form Controls
+        #endregion Form Controls
 
         // --- OTHER --- //
         #region Other
